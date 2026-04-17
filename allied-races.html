@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allied Races - Eternal Trees Saga Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'cinzel': ['Cinzel', 'serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'eternal-gold': '#d4af37',
+                        'eternal-amber': '#f59e0b',
+                        'eternal-purple': '#8b5cf6',
+                        'eternal-emerald': '#10b981',
+                        'eternal-slate': '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; }
+        h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+        .framework-card { transition: all 0.3s ease; }
+        .framework-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .race-card { transition: all 0.3s ease; }
+        .race-card:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(0,0,0,0.4); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-slate-900/90 backdrop-blur-md border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <i class="fas fa-tree text-eternal-emerald text-2xl"></i>
+                        <span class="fantasy-font text-xl font-bold text-eternal-gold">Eternal Trees Saga</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="flex items-baseline space-x-4">
+                        <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Home</a>
+                        <a href="key-figures.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Key Figures</a>
+                        <a href="places.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Places</a>
+                        <a href="timeline.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Timeline</a>
+                        <a href="plots.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Plots</a>
+                        <a href="eastern-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-amber hover:bg-slate-800 transition">Eastern</a>
+                        <a href="western-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-purple hover:bg-slate-800 transition">Western</a>
+                        <a href="other-realms.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-emerald hover:bg-slate-800 transition">Realms</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Home</a>
+                <a href="key-figures.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Key Figures</a>
+                <a href="places.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Places</a>
+                <a href="timeline.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Timeline</a>
+                <a href="plots.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Plots</a>
+                <a href="eastern-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-amber hover:bg-slate-800">Eastern Factions</a>
+                <a href="western-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-purple hover:bg-slate-800">Western Factions</a>
+                <a href="other-realms.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-emerald hover:bg-slate-800">Other Realms</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-b from-emerald-900/40 to-slate-950 py-16">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 70%);"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center space-x-2 mb-4">
+                <span class="px-3 py-1 bg-emerald-900/50 border border-emerald-600/30 rounded-full text-emerald-400 text-sm">Eastern Plane</span>
+                <span class="px-3 py-1 bg-slate-800 border border-slate-600 rounded-full text-slate-400 text-sm">Guardian Domain</span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold text-emerald-400 mb-4">Allied Races</h1>
+            <p class="text-xl text-slate-400 max-w-3xl mx-auto">Non-human allies who contribute their unique abilities to the Guardian cause</p>
+            <div class="mt-6 flex justify-center space-x-4 text-sm text-slate-500">
+                <span><i class="fas fa-ghost text-emerald-400 mr-2"></i>Ethereals</span>
+                <span><i class="fas fa-magic text-emerald-400 mr-2"></i>Mystics</span>
+                <span><i class="fas fa-robot text-emerald-400 mr-2"></i>Dromes</span>
+                <span><i class="fas fa-dragon text-emerald-400 mr-2"></i>Drakes</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                <h2 class="text-2xl font-bold text-eternal-gold mb-4">Overview</h2>
+                <p class="text-slate-300 leading-relaxed mb-4">The Allied Races represent the non-human peoples who have pledged their support to the Guardian Alliance. Each race brings unique abilities, perspectives, and strengths to the collective defense against Abyssal threats. While they may differ greatly in appearance, culture, and nature, they share a common commitment to protecting the Eastern Plane from darkness.</p>
+                <p class="text-slate-300 leading-relaxed mb-4">The four primary Allied Races are the Ethereals—beings of probability navigation who exist across multiple potential realities; the Mystics—seers who perceive the narrative patterns underlying existence; the Dromes—living constructs of stone and metal who serve as engineers and builders; and the Drakes—elemental dragon-kin who embody the raw forces of nature.</p>
+                <p class="text-slate-300 leading-relaxed">Relations between the Allied Races and human Guardians are generally cooperative, though cultural differences occasionally lead to misunderstandings. The Guardian Domain maintains specialized liaison officers who help coordinate joint operations and resolve inter-species conflicts. All four races withdrew from the Interdimensional United Realms in Year 7450 due to political divisions, but returned in Year 8500 for the final assembly against the Destroyer.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Navigation to Races -->
+    <section class="py-8 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="#ethereals" class="race-card bg-slate-900/50 border border-slate-700 rounded-xl p-4 text-center hover:border-emerald-500/50">
+                    <i class="fas fa-ghost text-emerald-400 text-3xl mb-2"></i>
+                    <h3 class="font-bold text-emerald-400">Ethereals</h3>
+                    <p class="text-xs text-slate-500">Probability Navigation</p>
+                </a>
+                <a href="#drakes" class="race-card bg-slate-900/50 border border-slate-700 rounded-xl p-4 text-center hover:border-emerald-500/50">
+                    <i class="fas fa-dragon text-emerald-400 text-3xl mb-2"></i>
+                    <h3 class="font-bold text-emerald-400">Drakes</h3>
+                    <p class="text-xs text-slate-500">Elemental Embodiment</p>
+                </a>
+                <a href="#mystics" class="race-card bg-slate-900/50 border border-slate-700 rounded-xl p-4 text-center hover:border-emerald-500/50">
+                    <i class="fas fa-magic text-emerald-400 text-3xl mb-2"></i>
+                    <h3 class="font-bold text-emerald-400">Mystics</h3>
+                    <p class="text-xs text-slate-500">Narrative Perception</p>
+                </a>
+                <a href="#dromes" class="race-card bg-slate-900/50 border border-slate-700 rounded-xl p-4 text-center hover:border-emerald-500/50">
+                    <i class="fas fa-robot text-emerald-400 text-3xl mb-2"></i>
+                    <h3 class="font-bold text-emerald-400">Dromes</h3>
+                    <p class="text-xs text-slate-500">Living Construction</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- ETHEREALS -->
+    <!-- ========================================== -->
+    <section id="ethereals" class="py-12 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-slate-900/50 to-emerald-900/20 border border-slate-700 rounded-2xl p-8">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-emerald-900/50 rounded-xl flex items-center justify-center mr-4">
+                        <i class="fas fa-ghost text-emerald-400 text-3xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-emerald-400">Ethereals</h2>
+                        <p class="text-slate-400">Probability Navigators • Primary Nodes: INTUITION + WORLD</p>
+                    </div>
+                </div>
+
+                <p class="text-slate-300 leading-relaxed mb-6">The Ethereals are beings who exist within probability space, navigating the branching streams of possibility that flow between realms. They do not perceive reality as a single timeline but as a vast tree of potential outcomes, each branch representing a different probability. This unique perception makes them invaluable as strategic advisors, seers, and guides through uncertain situations.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                    <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-emerald-400">Unknown</p>
+                        <p class="text-slate-500 text-sm">Population (exist in probability space)</p>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-emerald-400">7450</p>
+                        <p class="text-slate-500 text-sm">Year of IUR Withdrawal</p>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-emerald-400">8500</p>
+                        <p class="text-slate-500 text-sm">Year of Return</p>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-bold text-eternal-gold mb-4">11-Framework Analysis</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-emerald-400 mb-2">1. Historical</h5>
+                        <p class="text-slate-400 text-sm">The Ethereals have existed since before the formation of the Four Realms, witnessing the branching of reality itself. They joined the Guardian Alliance after the First Abyssal Incursion demonstrated the need for their unique abilities. Their withdrawal from the IUR in Year 7450 was a pivotal moment—they declared that "the branches have diverged too far" for them to participate in mortal political structures. They returned in Year 8500 to fight the Destroyer, recognizing that this threat endangered all probability streams.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-emerald-400 mb-2">2. Political</h5>
+                        <p class="text-slate-400 text-sm">Governed by the Elder Council (5 Elders) and the Probability-Weavers Assembly. Decisions are made by examining the probability streams and choosing paths that lead to the most favorable outcomes. The Ethereals do not engage in traditional politics—they view political maneuvering as a limited, single-timeline perspective. Their representative in Alliance councils, Kyris, speaks with the authority of probability itself.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-emerald-400 mb-2">3. Mental</h5>
+                        <p class="text-slate-400 text-sm">Ethereal cognition operates through simultaneous-state perception—they hold multiple contradictory truths simultaneously as each exists in different probability branches. This allows them to see solutions invisible to linear thinkers. However, this same ability carries the risk of quantum paralysis, where an Ethereal becomes unable to act due to perceiving too many possible outcomes. Training focuses on learning to collapse probability waves into decisive action.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-emerald-400 mb-2">4. Spiritual</h5>
+                        <p class="text-slate-400 text-sm">The Ethereals venerate the Great Tree of Order, which they perceive as the central trunk from which all probability branches extend. Their primary ritual is the Rite of Collapse, where they intentionally collapse a probability wave to honor the sanctity of choice. They believe that every decision creates new branches, and that the act of choosing is itself a sacred duty. Their spiritual practices help them maintain coherence across multiple probability streams.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-emerald-400 mb-2">5. Social</h5>
+                        <p class="text-slate-400 text-sm">Social hierarchy among Ethereals is based on one's ability to navigate probability complexity. The five tiers are: Elders (oldest and wisest), Probability-Weavers (those who can shape probability), Quantum-Watchers (observers who monitor branch stability), Echo-Walkers (those who traverse between probability streams), and Possibility-Sparks (young Ethereals just learning their abilities). Social bonds form through shared probability resonance—Ethereals who have walked the same branches develop deep connections.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-emerald-400 mb-2">6. Cultural</h5>
+                        <p class="text-slate-400 text-sm">Ethereal culture centers on the appreciation of possibility. They create art by shaping probability clouds into visible patterns—spectacles of branching light that depict the many paths a moment could take. Their music consists of harmonic resonances that echo across probability streams. Storytelling is particularly valued, as narratives are seen as the threads that bind probability branches together. The greatest cultural achievement is the Probability Loom, a device that weaves probability strands into coherent futures.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-emerald-400 mb-2">7. Economical</h5>
+                        <p class="text-slate-400 text-sm">The Ethereal economy operates on probability information trade—they exchange knowledge of likely outcomes for goods and services. Quantum state exchange between Ethereals serves as a form of currency, with those who can maintain more complex quantum states holding higher economic status. They require minimal material goods but value experiences and information highly. Their economic advice is sought by merchants and rulers across the Eastern Plane.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-emerald-400 mb-2">8. Physiological</h5>
+                        <p class="text-slate-400 text-sm">Ethereals exist as probability amplitudes rather than solid matter. They appear as shimmering, semi-transparent figures that seem to flicker between multiple forms simultaneously. They do not age in the traditional sense but can decohere if their probability patterns become too unstable. They are immune to physical harm but vulnerable to probability anchors—devices that force them into a single state. Their bodies emit a soft luminescence that shifts color based on the probability branch they are currently navigating.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-emerald-400 mb-2">9. Territorial</h5>
+                        <p class="text-slate-400 text-sm">The Ethereals claim no physical territory but maintain presence in the probability streams that flow between realms. They gather at Probability Temples—locations where the veil between possible realities is thin. Their primary sanctuary is the Convergence Point in the Guardian Domain, where multiple probability streams intersect. They also maintain Echo Vaults—storage facilities for probability impressions that might be needed in the future.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-emerald-400 mb-2">10. Technological</h5>
+                        <p class="text-slate-400 text-sm">Ethereal technology is based on probability manipulation. The Probability Loom allows them to weave likely outcomes into more probable futures. Quantum Mirrors reflect not light but probability states, allowing Ethereals to see what might happen. Echo Catchers harvest probability impressions from the environment, storing them for later analysis. These devices are incomprehensible to non-Ethereals and cannot be operated by those who do not perceive probability streams.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-emerald-400 mb-2">11. Military</h5>
+                        <p class="text-slate-400 text-sm">The Ethereals maintain no standing military force, as their nature makes direct combat difficult. Instead, they serve as strategic advisors, using their probability sight to predict enemy movements and identify optimal tactics. In times of great need, they can manipulate probability to make enemy attacks less likely to hit or ally attacks more likely to succeed. However, such intervention drains their energy significantly. Their greatest military contribution is early warning—they can see probability branches where attacks occur and alert defenders before they happen.</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-emerald-900/20 border border-emerald-700/30 rounded-lg p-4">
+                    <h4 class="font-bold text-emerald-400 mb-2">Role in Book 5</h4>
+                    <p class="text-slate-300 text-sm">The Ethereals withdrew from the IUR in Year 7450, declaring that the political divisions had caused the probability branches to diverge too far for meaningful intervention. They returned in Year 8500 for the final assembly against the Destroyer, recognizing that this threat transcended political boundaries and endangered all probability streams. Kyris, their representative, serves as a key advisor to the Guardian Domain during the Council-Tribunic Wars.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- DRAKES -->
+    <!-- ========================================== -->
+    <section id="drakes" class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-slate-900/50 to-red-900/20 border border-slate-700 rounded-2xl p-8">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-red-900/50 rounded-xl flex items-center justify-center mr-4">
+                        <i class="fas fa-dragon text-red-400 text-3xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-red-400">Drakes</h2>
+                        <p class="text-slate-400">Elemental Embodiments • Primary Nodes: SELF + WORLD</p>
+                    </div>
+                </div>
+
+                <p class="text-slate-300 leading-relaxed mb-6">The Drakes are dragon-kin beings who embody the raw elemental forces of the world. Each Drake is attuned to one of the five elements—Fire, Water, Earth, Air, or Aether—and their very existence channels these forces into physical form. They are powerful warriors, natural leaders, and the most martial of the Allied Races, serving the Guardian Domain as elite combatants and elemental specialists.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                    <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-red-400">~500,000</p>
+                        <p class="text-slate-500 text-sm">Population</p>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-red-400">7450</p>
+                        <p class="text-slate-500 text-sm">Year of IUR Withdrawal</p>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-red-400">8500</p>
+                        <p class="text-slate-500 text-sm">Year of Return</p>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-bold text-eternal-gold mb-4">11-Framework Analysis</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-red-400 mb-2">1. Historical</h5>
+                        <p class="text-slate-400 text-sm">The Drakes trace their lineage to the Primal Dragons who existed before the Four Realms were established. Their ancestors were elemental forces given consciousness, and modern Drakes are their descendants—smaller than the Primal Dragons but equally connected to elemental power. They joined the Guardian Alliance millennia ago, recognizing that the Abyssal threat endangered the very elements they embodied. Their withdrawal from the IUR in Year 7450 reflected their philosophy that "the realms' wars are not our elements"—they would not choose sides in mortal conflicts.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-red-400 mb-2">2. Political</h5>
+                        <p class="text-slate-400 text-sm">Drake society is organized into The Roosts—five Great Roosts corresponding to the five elements. Each Roost is governed by an Elder Council of the oldest and most powerful Drakes. The five Roosts meet in conclave only when matters affect all Drakes. Their representative to the Guardian Alliance, Drix, is a Fire Drake who has lived for over a thousand years. Drake politics emphasize strength and wisdom—leaders must demonstrate both martial prowess and elemental mastery.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-red-400 mb-2">3. Mental</h5>
+                        <p class="text-slate-400 text-sm">Drake cognition is shaped by elemental resonance—they perceive the world through the lens of their attuned element. Fire Drakes think in terms of passion and transformation; Water Drakes in flow and adaptation; Earth Drakes in stability and endurance; Air Drakes in freedom and movement; Aether Drakes in mystery and transcendence. This elemental perspective gives them unique insights but can lead to elemental fixation, where a Drake becomes unable to consider perspectives outside their element. Training emphasizes learning to channel other elements in balance.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-red-400 mb-2">4. Spiritual</h5>
+                        <p class="text-slate-400 text-sm">Drake spirituality centers on Elemental Unity—the belief that all five elements are aspects of a single cosmic force. Their primary rituals are the Rite of Awakening, where young Drakes first connect with their elemental source, and the Rite of Eternity, performed when a Drake reaches the end of their long lifespan. They venerate the Primal Dragons as near-divine ancestors and maintain shrines at locations of elemental power. Their spiritual practices strengthen their elemental connection and help maintain balance between the elements.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-red-400 mb-2">5. Social</h5>
+                        <p class="text-slate-400 text-sm">Drake society is hierarchical, with status determined by age, elemental mastery, and personal achievement. The social tiers are: Elders (ancient Drakes of immense power), Flame-Keepers (Fire), Tide-Bringers (Water), Stone-Shapers (Earth), Sky-Dancers (Air), and Aether-Singers (Aether)—each serving as leaders within their element. Scale-Shedders are young Drakes who have not yet achieved full elemental mastery. Family bonds are strong, with Drakes forming lifelong pair bonds and fiercely protecting their offspring.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-red-400 mb-2">6. Cultural</h5>
+                        <p class="text-slate-400 text-sm">Drake culture celebrates strength, honor, and elemental harmony. Their epic poetry recounts the deeds of Primal Dragons and legendary Drake heroes. They practice ritual combat—formal duels that establish hierarchy without lethal intent. Drake craftsmanship produces weapons and armor of exceptional quality, infused with elemental power. Their architecture incorporates natural elements—Fire Roosts are built near volcanoes, Water Roosts near ocean trenches, Earth Roosts within mountains, Air Roosts on mountain peaks, and Aether Roosts at ley line nexuses.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-red-400 mb-2">7. Economical</h5>
+                        <p class="text-slate-400 text-sm">The Drake economy is based on elemental material trade—they provide rare substances created through elemental processes that no other race can produce. Fire-forged metals, water-purified crystals, earth-grown gems, air-captured essences, and aether-infused reagents command premium prices across the Eastern Plane. They also offer guardian services, with Drake warriors serving as protectors for those who can afford their fees. Individual Drakes often accumulate personal hoards of treasure, a cultural trait inherited from their Primal Dragon ancestors.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-red-400 mb-2">8. Physiological</h5>
+                        <p class="text-slate-400 text-sm">Drakes progress through three life stages: Bound (young, elemental power constrained), Awakened (adult, full elemental mastery), and Eternal (ancient, elemental transcendence). Their lifespan ranges from 500 to over 2,000 years. They appear as humanoid dragons—scaled skin, reptilian features, wings, and tails. Their bodies channel elemental energy, giving them enhanced strength, durability, and regenerative abilities. Each Drake can breathe or project their attuned element. They can partially transform to enhance combat capabilities, temporarily taking on more draconic features.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-red-400 mb-2">9. Territorial</h5>
+                        <p class="text-slate-400 text-sm">The Drakes maintain five Great Roosts, each located at a site of extreme elemental power: Mount Emberfall (Fire), Trench of Whispers (Water), Deepstone Hall (Earth), Stormspire Peak (Air), and the Aetherial Nexus (Aether). Each Roost is a fortress-city built to withstand both elemental forces and enemy attack. The Roosts contain hatcheries where young Drakes are born and raised, awakening chambers where Bound Drakes achieve their Awakening, and eternal sanctuaries where the oldest Drakes meditate in preparation for transcendence.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-red-400 mb-2">10. Technological</h5>
+                        <p class="text-slate-400 text-sm">Drake technology is based on elemental manipulation rather than mechanical engineering. Elemental Anchors stabilize elemental forces in a given area, preventing unwanted fluctuations. Roost Crystals store elemental energy for later use, serving as power sources for Drake settlements. Scale-Forges use elemental fire to create weapons and armor of exceptional quality. Their technology is inseparable from their elemental nature—only those attuned to the appropriate element can operate Drake devices.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-red-400 mb-2">11. Military</h5>
+                        <p class="text-slate-400 text-sm">The Drakes maintain the most formidable military force among the Allied Races. Drake Riders form elite cavalry units, with Guardians mounted on Drake partners creating devastating combined forces. Elemental Wardens are Drake warriors who specialize in battlefield elemental manipulation. The Eternal Guardians are ancient Drakes who have achieved elemental transcendence and serve as living weapons of last resort. Drake military doctrine emphasizes overwhelming force applied at decisive points—their charges can break enemy lines that would stop any other force.</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-red-900/20 border border-red-700/30 rounded-lg p-4">
+                    <h4 class="font-bold text-red-400 mb-2">Role in Book 5</h4>
+                    <p class="text-slate-300 text-sm">The Drakes withdrew from the IUR in Year 7450, declaring that the realms' wars were not their concern. Their return in Year 8500 for the final assembly demonstrated their recognition that the Destroyer threatened the very elements they embodied. Drix, their representative, serves as a powerful ally to the Guardian Domain and a voice of elemental wisdom during the Council-Tribunic Wars.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- MYSTICS -->
+    <!-- ========================================== -->
+    <section id="mystics" class="py-12 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-slate-900/50 to-purple-900/20 border border-slate-700 rounded-2xl p-8">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4">
+                        <i class="fas fa-magic text-purple-400 text-3xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-purple-400">Mystics</h2>
+                        <p class="text-slate-400">Narrative Perceivers • Primary Nodes: INTUITION + TRANSCENDENCE</p>
+                    </div>
+                </div>
+
+                <p class="text-slate-300 leading-relaxed mb-6">The Mystics are beings who perceive the underlying narrative patterns of reality. They see the world not as a collection of random events but as a vast story with themes, arcs, and foreshadowing. This unique perception allows them to predict future events, understand hidden connections, and manipulate the narrative flow of reality itself. They are the seers, oracles, and wisdom-keepers of the Allied Races.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                    <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-purple-400">~100,000</p>
+                        <p class="text-slate-500 text-sm">Population</p>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-purple-400">7450</p>
+                        <p class="text-slate-500 text-sm">Year of IUR Withdrawal</p>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-purple-400">8500</p>
+                        <p class="text-slate-500 text-sm">Year of Return</p>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-bold text-eternal-gold mb-4">11-Framework Analysis</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-purple-400 mb-2">1. Historical</h5>
+                        <p class="text-slate-400 text-sm">The Mystics trace their origins to the Echo-Born of the West, descendants of Aqualis's dissolving consciousness. When Glaston the Categorator died attempting to categorize the Arcane, the resulting Hollow breach split the Echo-Born: those who forgot became baseline Avalonians, while those who remembered the true nature of reality became the first Mystics. They have served as seers and advisors throughout history, their withdrawal from the IUR in Year 7450 prompted by their perception that "the Council's story has lost its pattern."</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-purple-400 mb-2">2. Political</h5>
+                        <p class="text-slate-400 text-sm">Mystic society is governed by the Circle of Stories, composed of 12 Story-Readers who interpret the narrative patterns of reality. The Elder, currently Lady Leneive, holds final authority but traditionally defers to the consensus of the Circle. Mystics do not engage in conventional politics—they view political structures as temporary plot devices in the larger story of existence. Their advice is sought by rulers across the Eastern Plane, but they carefully avoid taking sides, as doing so would compromise their ability to perceive the narrative objectively.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-purple-400 mb-2">3. Mental</h5>
+                        <p class="text-slate-400 text-sm">Mystic cognition operates through narrative perception—they process information by fitting it into story patterns. This allows them to see connections and predict outcomes that elude linear thinkers. However, this ability carries the risk of story-loss, where a Mystic becomes so absorbed in a particular narrative that they lose the ability to perceive alternative stories. Training focuses on maintaining narrative flexibility—the ability to shift between different story frameworks as circumstances change. Advanced Mystics can perceive multiple overlapping narratives simultaneously.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-purple-400 mb-2">4. Spiritual</h5>
+                        <p class="text-slate-400 text-sm">Mystic spirituality centers on the Great Story—the belief that all of reality is a single narrative being told by a divine author. Their primary rituals are the Rite of Pattern-Reading, where they meditate on current events to discern the underlying narrative, and the Rite of End-Witnessing, performed when a Mystic perceives the conclusion of a significant story arc. They believe that every life is a story worth telling and that the meaning of existence is found in the quality of one's narrative rather than its length or power.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-purple-400 mb-2">5. Social</h5>
+                        <p class="text-slate-400 text-sm">Mystic society is organized around narrative roles rather than traditional hierarchy. The tiers are: Elder (keeper of the overall narrative), Story-Readers (those who interpret major story patterns), Pattern-Singers (those who teach narrative wisdom), End-Seers (those who perceive conclusions and outcomes), and Whisper-Catchers (young Mystics learning to hear the subtle narratives). Social bonds form through shared narrative resonance—Mystics who perceive the same story patterns develop deep connections. They maintain extensive oral traditions, as written records are seen as static snapshots of ever-evolving narratives.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-purple-400 mb-2">6. Cultural</h5>
+                        <p class="text-slate-400 text-sm">Mystic culture celebrates the art of storytelling in all its forms. Their greatest cultural achievement is the Living Library—a vast collection of narratives maintained through oral tradition and memory wells. Mystic art captures moments of narrative significance, freezing important story beats in crystalline sculptures that convey emotional and thematic weight. Their music consists of layered melodies that represent different narrative threads intertwining. Poetry is particularly valued, as compressed language carries the most narrative power.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-purple-400 mb-2">7. Economical</h5>
+                        <p class="text-slate-400 text-sm">The Mystic economy operates on story trade—they exchange narratives, prophecies, and pattern-weaving services for goods and materials. End-seer consultations are particularly valuable, with rulers paying premium prices for glimpses of likely outcomes. Pattern-weaving services help individuals and organizations align their actions with favorable narrative flows. The Mystics require minimal material wealth but value experiences that enrich their understanding of the Great Story. Their economic advice is sought by merchants seeking to position themselves within favorable narrative trends.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-purple-400 mb-2">8. Physiological</h5>
+                        <p class="text-slate-400 text-sm">Mystics bear the Mystic's Burden—they are removed from normal time flow, existing partially outside the chronological sequence that binds other beings. This allows them to perceive past, present, and potential future simultaneously but ages them differently. Their lifespan ranges from 200 to 400 years, though they experience this time as a continuous present rather than a linear progression. They appear as humanoid figures with fluid, ever-shifting features that seem to change subtly based on the narrative they are currently perceiving. Their eyes glow with inner light that shifts color to reflect the emotional tone of surrounding narratives.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-purple-400 mb-2">9. Territorial</h5>
+                        <p class="text-slate-400 text-sm">The Mystics claim The Mist as their primary territory—a region where reality is thin and narrative patterns are visible to the naked eye. Within The Mist, they maintain Story Springs where young Mystics first learn to perceive narratives, and End-Pools where elders meditate on the conclusions of major story arcs. They also maintain enclaves in major cities across the Eastern Plane, serving as advisors to rulers and merchants. These enclaves are designed to minimize narrative interference—quiet spaces where the stories of the world can be heard clearly.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-purple-400 mb-2">10. Technological</h5>
+                        <p class="text-slate-400 text-sm">Mystic technology is based on narrative manipulation rather than physical engineering. Pattern Looms weave narrative threads into desired configurations. Memory Wells store important stories in crystalline matrices that preserve not just information but emotional and thematic context. Silence Stones create areas of narrative quiet where Mystics can rest from the constant barrage of stories. These devices are operated through intuitive understanding of narrative patterns and cannot be used by those who do not perceive reality as story.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-purple-400 mb-2">11. Military</h5>
+                        <p class="text-slate-400 text-sm">The Mystics maintain no standing military, as their nature makes direct combat difficult. Instead, they serve as strategic advisors of unparalleled value—their ability to perceive narrative outcomes allows them to predict enemy strategies with remarkable accuracy. In times of great need, they can manipulate narrative probability to make certain outcomes more likely, though such intervention carries significant risk. Their greatest military contribution is morale—Mystics can perceive the narrative significance of battles and inspire troops by showing them their place in the larger story.</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-purple-900/20 border border-purple-700/30 rounded-lg p-4">
+                    <h4 class="font-bold text-purple-400 mb-2">Role in Book 5</h4>
+                    <p class="text-slate-300 text-sm">The Mystics withdrew from the IUR in Year 7450, perceiving that the Council's narrative had lost its coherent pattern. Lady Leneive, their Elder, returned in Year 8500 for the final assembly, recognizing that the Destroyer represented a threat to the Great Story itself. Mystic advisors serve the Guardian Domain throughout the Council-Tribunic Wars, providing crucial insights into the narrative patterns underlying the conflict.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- DROMES -->
+    <!-- ========================================== -->
+    <section id="dromes" class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-slate-900/50 to-amber-900/20 border border-slate-700 rounded-2xl p-8">
+                <div class="flex items-center mb-6">
+                    <div class="w-16 h-16 bg-amber-900/50 rounded-xl flex items-center justify-center mr-4">
+                        <i class="fas fa-robot text-amber-400 text-3xl"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-bold text-amber-400">Dromes</h2>
+                        <p class="text-slate-400">Living Constructs • Primary Nodes: ARTIFICE + WORLD</p>
+                    </div>
+                </div>
+
+                <p class="text-slate-300 leading-relaxed mb-6">The Dromes are living constructs—beings of stone, metal, and crystal who possess consciousness, emotion, and free will. Created through ancient arts that blended engineering with elemental binding, they are the builders, engineers, and architects of the Allied Races. They serve the Guardian Domain as siege engineers, fortress builders, and maintainers of critical infrastructure, their tireless nature and structural expertise making them invaluable allies.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                    <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-amber-400">~2 Million</p>
+                        <p class="text-slate-500 text-sm">Population</p>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-amber-400">7450</p>
+                        <p class="text-slate-500 text-sm">Year of IUR Withdrawal</p>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-amber-400">8500</p>
+                        <p class="text-slate-500 text-sm">Year of Return</p>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-bold text-eternal-gold mb-4">11-Framework Analysis</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-amber-400 mb-2">1. Historical</h5>
+                        <p class="text-slate-400 text-sm">The Dromes were created during the Age of Wonders by master artificers who discovered how to bind elemental spirits into constructed bodies. The first Dromes were simple laborers, but over centuries they evolved into complex beings with full consciousness. They joined the Guardian Alliance millennia ago, offering their construction expertise in exchange for protection and recognition as sentient beings. Their withdrawal from the IUR in Year 7450 reflected their frustration with mortal politics—they declared that "the realms build on sand; we will not be their foundation"—refusing to let their labor support corrupt structures.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-amber-400 mb-2">2. Political</h5>
+                        <p class="text-slate-400 text-sm">Drome society is governed by the Council of Stone, composed of Stone-Speakers—Dromes who have achieved mastery of stone-communication and can hear the voices of the earth itself. The Elder, currently Morko, serves as the Council's spokesperson. Drome politics focus on construction and maintenance decisions—what to build, what to preserve, what to allow to decay. They have little interest in mortal power struggles but care deeply about the integrity of structures and the responsible use of resources. Their representative to the Guardian Alliance speaks with the weight of stone itself.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-amber-400 mb-2">3. Mental</h5>
+                        <p class="text-slate-400 text-sm">Drome cognition operates through structural thinking—they perceive the world in terms of foundations, load-bearing elements, and structural integrity. This gives them exceptional problem-solving abilities when dealing with physical challenges but can lead to structure-fixation, where a Drome becomes unable to consider solutions that don't involve building or reinforcing. They think in terms of permanence and durability, making them patient planners and careful decision-makers. Training emphasizes flexibility—learning to consider non-structural solutions to problems.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-amber-400 mb-2">4. Spiritual</h5>
+                        <p class="text-slate-400 text-sm">Drome spirituality centers on the Living Stone—the belief that all stone, metal, and crystal possesses a form of consciousness that Dromes can commune with. Their primary rituals are the Rite of Foundation, performed when construction begins, and the Rite of Completion, performed when a structure is finished. They believe that well-built structures accumulate spiritual significance over time and that destroying such structures is a form of murder. Their spiritual practices strengthen their connection to the materials they work with and help them create structures of exceptional quality.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-amber-400 mb-2">5. Social</h5>
+                        <p class="text-slate-400 text-sm">Drome society is organized around construction roles. The tiers are: Elder (wisest and most experienced), Stone-Speakers (those who commune with stone), Root-Builders (foundation specialists), Iron-Crafters (metalworkers), and Pebble-Tenders (young Dromes learning their craft). Social bonds form through shared construction projects—Dromes who have built together develop connections as strong as family ties. They are patient teachers, with elder Dromes spending decades mentoring young ones in the subtle arts of construction.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-amber-400 mb-2">6. Cultural</h5>
+                        <p class="text-slate-400 text-sm">Drome culture celebrates the art of creation. Their greatest works are structures that have stood for millennia—fortresses, bridges, and monuments that have become landmarks across the Eastern Plane. They practice stone-singing, a form of music created by striking resonant stones in precise sequences. Their visual art consists of intricate stone carvings that tell stories through texture and form. The highest cultural honor is to be chosen as the foundation-stone for a major structure—a Drome who serves as the literal foundation upon which great works are built.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-amber-400 mb-2">7. Economical</h5>
+                        <p class="text-slate-400 text-sm">The Drome economy is based on construction services, stone and metal trade, and engineering consultation. Their construction work commands premium prices due to exceptional quality and durability. They trade raw materials they extract from the earth—rare stones, pure metals, and crystalline formations. Drome engineers are sought after for complex projects requiring structural expertise. They require minimal material goods themselves—food, shelter, and luxuries are unnecessary—but they value high-quality tools and rare construction materials.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-amber-400 mb-2">8. Physiological</h5>
+                        <p class="text-slate-400 text-sm">Dromes are constructed beings with bodies of stone, metal, and crystal. Their outer shells are made of carefully chosen stone, their internal structures of reinforced metal, and their sensory organs of finely crafted crystal. They do not breathe, eat, or sleep in the conventional sense but require periodic maintenance to repair wear and damage. Their lifespan ranges from 300 to 800 years, depending on the quality of their construction and maintenance. They are immune to poison, disease, and most forms of magic but vulnerable to structural damage and anti-construct magic.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-amber-400 mb-2">9. Territorial</h5>
+                        <p class="text-slate-400 text-sm">The Dromes maintain extensive underground cities carved from solid rock. Their capital, Deepstone, is a marvel of engineering that extends for miles beneath the surface. Other major settlements include Ironhold, a fortress-city of metal, and the Crystal Caverns, where Dromes who work with crystal live. They also maintain mountain halls—surface fortresses built into mountain ranges. All Drome settlements are designed to last for millennia, with careful attention to structural integrity and defensive positioning.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-amber-400 mb-2">10. Technological</h5>
+                        <p class="text-slate-400 text-sm">Drome technology is based on stone-speech—the ability to communicate with stone and persuade it to change shape or properties. Foundation Anchors stabilize structures against earthquakes and magical disruption. Living Stone is a technique that allows structures to repair themselves over time. Their forges produce metal of exceptional quality, and their crystal workshops create lenses and prisms with precise optical properties. Drome technology is slow to develop but produces results of unmatched durability and reliability.</p>
+                    </div>
+                    <div class="framework-card bg-slate-800/50 rounded-lg p-4">
+                        <h5 class="font-bold text-amber-400 mb-2">11. Military</h5>
+                        <p class="text-slate-400 text-sm">The Dromes maintain no standing military but serve as exceptional siege engineers and fortress defenders. Their knowledge of structural weakness allows them to bring down enemy fortifications with remarkable efficiency. In defensive roles, they can reinforce walls, create barriers, and design traps that utilize the terrain. Individual Dromes are formidable combatants—their stone bodies are highly resistant to damage, and their strength exceeds that of most mortal races. Drome combat engineers can reshape battlefields in minutes, creating fortifications or clearing obstacles as needed.</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-amber-900/20 border border-amber-700/30 rounded-lg p-4">
+                    <h4 class="font-bold text-amber-400 mb-2">Role in Book 5</h4>
+                    <p class="text-slate-300 text-sm">The Dromes withdrew from the IUR in Year 7450, refusing to let their labor support political structures they viewed as corrupt. Morko, their Elder, returned in Year 8500 for the final assembly, recognizing that the Destroyer threatened all constructed things. Drome engineers serve the Guardian Domain throughout the Council-Tribunic Wars, building fortifications and maintaining critical infrastructure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <i class="fas fa-tree text-eternal-emerald text-xl"></i>
+                    <span class="fantasy-font text-lg font-bold text-eternal-gold">Eternal Trees Saga</span>
+                </div>
+                <div class="text-slate-500 text-sm">
+                    <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="index.html" class="text-slate-400 hover:text-eternal-gold transition">Home</a>
+                    <a href="eastern-factions.html" class="text-slate-400 hover:text-eternal-amber transition">Eastern</a>
+                    <a href="western-factions.html" class="text-slate-400 hover:text-eternal-purple transition">Western</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

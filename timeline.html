@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline - Eternal Trees Saga Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #e2e8f0; }
+    h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+    .gold-gradient { background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .timeline-line { position: absolute; left: 1rem; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, #c9a227, #7c3aed, #10b981); }
+    .timeline-dot { position: absolute; left: 0.6rem; width: 12px; height: 12px; background: #c9a227; border: 3px solid #0a0a0f; border-radius: 50%; }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
+    <div class="flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <i class="fas fa-tree text-amber-400 text-2xl"></i>
+        <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
+        <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
+        <a href="timeline.html" class="text-amber-400 font-medium">Timeline</a>
+        <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
+        <a href="eastern-factions.html" class="text-slate-300 hover:text-amber-400 transition">Eastern</a>
+        <a href="western-factions.html" class="text-slate-300 hover:text-amber-400 transition">Western</a>
+        <a href="other-realms.html" class="text-slate-300 hover:text-amber-400 transition">Realms</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400"><i class="fas fa-bars text-xl"></i></button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
+    <div class="p-4">
+      <div class="flex justify-between items-center mb-6">
+        <span class="font-bold text-lg">Navigation</span>
+        <button id="closeMenu" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+      </div>
+      <nav class="space-y-2">
+        <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
+        <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
+        <a href="timeline.html" class="block px-4 py-3 rounded-lg text-amber-400 bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
+        <a href="plots.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
+        <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
+        <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
+        <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto p-4 md:p-8">
+    <div class="text-center py-8 mb-10">
+      <h1 class="text-4xl font-bold mb-4 fantasy-font"><span class="gold-gradient">Timeline</span></h1>
+      <p class="text-slate-400">Sixty thousand years of history across Two Planes</p>
+    </div>
+
+    <!-- Eastern Plane Timeline -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-tree mr-2"></i>Eastern Plane Timeline</h2>
+      <div class="relative pl-8">
+        <div class="timeline-line"></div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Pre-Time</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 0</span>
+            </div>
+            <p class="text-slate-300">Endless Seed; Earlier Gods; Void Wars; Civil War</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Abs. 1</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 0.5</span>
+            </div>
+            <p class="text-slate-300">Last Observer plants Tree of Order; Ancient Ones bind themselves</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Abs. 2,586</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 1</span>
+            </div>
+            <p class="text-slate-300">First Myriad begins; Four Realms formalized</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Abs. 3,735</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 1</span>
+            </div>
+            <p class="text-slate-300">Order of the Star founded by Celestine</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Abs. 3,785</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 1</span>
+            </div>
+            <p class="text-slate-300">Root Sanctuary founded; dedicated by Kenshiro</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Abs. 4,085</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 1</span>
+            </div>
+            <p class="text-slate-300">Havenfire Guild founded by Thornwood</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Abs. 4,385</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 1</span>
+            </div>
+            <p class="text-slate-300">Filwind Institute founded by Vance</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Abs. 4,586</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 1</span>
+            </div>
+            <p class="text-slate-300">School of Arcadia founded</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Abs. 7,585-9,588</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 1.5</span>
+            </div>
+            <p class="text-slate-300">War of the Grenlians; 5-Star Battalion sealed</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Abs. 9,588</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 2</span>
+            </div>
+            <p class="text-slate-300">Conclave of Shadows; Three guardians corrupted into Dark Emperors</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Abs. 9,590</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 2</span>
+            </div>
+            <p class="text-slate-300">Octagram founded by Selene</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Abs. 23,507</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 3</span>
+            </div>
+            <p class="text-slate-300">Rite of Balancing; Lucius Arogzan born</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Abs. 23,508</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 3</span>
+            </div>
+            <p class="text-slate-300">Dark Emperors break free from Tartarus</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Abs. 23,740</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 3</span>
+            </div>
+            <p class="text-slate-300">Battle of Nexus; Dark Emperors defeated</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Abs. 23,751</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 4</span>
+            </div>
+            <p class="text-slate-300">Lucius begins Wanderer's Path</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Abs. 32,588</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 5</span>
+            </div>
+            <p class="text-slate-300">IUR founded; 25th Guardian departs Arcadia</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Abs. 34,018</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 5</span>
+            </div>
+            <p class="text-slate-300">Guardian Domain intervenes; Inquisitor arrested</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Abs. 34,234</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 5</span>
+            </div>
+            <p class="text-slate-300">Accord of Arcadia ratified; Watchers' Charter formalized</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Abs. 34,430-34,500</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 6</span>
+            </div>
+            <p class="text-slate-300">Dark Realm-Inquisitor War</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-amber-400 font-bold">Abs. 51,235</span>
+              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 6</span>
+            </div>
+            <p class="text-slate-300">The Convergence Approaches</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Western Plane Timeline -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-tree mr-2"></i>Western Plane Timeline</h2>
+      <div class="relative pl-8">
+        <div class="timeline-line"></div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. 1</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">1st Myriad</span>
+            </div>
+            <p class="text-slate-300">The Seeding: Tree of Chaos planted; Primordial Eight emerge</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. 500</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">1st Myriad</span>
+            </div>
+            <p class="text-slate-300">First Covenant; Blood-River formed; Ethereal Five emerge</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. ~4,987</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">1st Myriad</span>
+            </div>
+            <p class="text-slate-300">Dr. Lucien George Elder summoned from Earth (Oxford, 2024)</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. 5,000</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">1st Myriad</span>
+            </div>
+            <p class="text-slate-300">Kronos establishes Library of Lumeria</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. 10,000</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">1st-2nd Myriad</span>
+            </div>
+            <p class="text-slate-300">Logos merges with Index; The Silence begins</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. ~12,000</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">2nd Myriad</span>
+            </div>
+            <p class="text-slate-300">Aurelius Empire founded; Argos City established</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. 16,723</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">2nd Myriad</span>
+            </div>
+            <p class="text-slate-300">Fall of Aurelius Empire; Imperial line extinguished</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. 20,001</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">3rd Myriad</span>
+            </div>
+            <p class="text-slate-300">Lucien Jela appointed Fourth Librarian; Xi Dynasty founded</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. 20,203</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">3rd Myriad</span>
+            </div>
+            <p class="text-slate-300">Great Decay: First Metaphysical Embargo on Xi Dynasty</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. 20,212</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">3rd Myriad</span>
+            </div>
+            <p class="text-slate-300">Xi Dynasty falls; Federation of Sixteen Nations emerges</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. 21,325</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">3rd Myriad</span>
+            </div>
+            <p class="text-slate-300">The Legion founded by Aurelius Augustus Titus</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. 28,223</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">3rd Myriad</span>
+            </div>
+            <p class="text-slate-300">The Great Divide: Eastern/Western land routes severed</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. 39,668-39,675</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">4th Myriad</span>
+            </div>
+            <p class="text-slate-300">The Library War: Jurisdictional schism</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. 40,203</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">4th Myriad</span>
+            </div>
+            <p class="text-slate-300">Great Exclusion (Second Metaphysical Embargo)</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. 47,430</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">5th Myriad</span>
+            </div>
+            <p class="text-slate-300">Burning of Xeria: First Unbecoming manifestation</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. 47,502-49,634</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">5th Myriad</span>
+            </div>
+            <p class="text-slate-300">Two-Millennia War: Tellerium vs. United Realms</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. 49,636</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">5th Myriad</span>
+            </div>
+            <p class="text-slate-300">Trials of Tellerium; Union proclaimed</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. 49,662</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">5th Myriad</span>
+            </div>
+            <p class="text-slate-300">Gaius appointed Fifth Librarian</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. 49,890</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">5th Myriad</span>
+            </div>
+            <p class="text-slate-300">Academia of Lumeria founded</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. 51,200</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">6th Myriad</span>
+            </div>
+            <p class="text-slate-300">Dominion Republic of Argos proclaimed</p>
+          </div>
+        </div>
+        
+        <div class="relative mb-6">
+          <div class="timeline-dot" style="top: 0.5rem;"></div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
+            <div class="flex flex-wrap items-center gap-2 mb-2">
+              <span class="text-purple-400 font-bold">Abs. 51,235+</span>
+              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">6th Myriad</span>
+            </div>
+            <p class="text-slate-300">The Convergence Approaches; seeds stir</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dating Systems Reference -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400"><i class="fas fa-calendar mr-2"></i>Dating Systems</h2>
+      <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-slate-700">
+                <th class="text-left py-2 text-slate-400">System</th>
+                <th class="text-left py-2 text-slate-400">Epoch</th>
+                <th class="text-left py-2 text-slate-400">Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate-800">
+                <td class="py-2 text-slate-200">Absolute Year</td>
+                <td class="py-2 text-slate-400">(Myriad - 1) × 10,000 + Year</td>
+                <td class="py-2 text-slate-400">5M Y9662 = Abs. 49,662</td>
+              </tr>
+              <tr class="border-b border-slate-800">
+                <td class="py-2 text-slate-200">Imperial Years (Aurelius)</td>
+                <td class="py-2 text-slate-400">Year 1 = Abs. 10,001</td>
+                <td class="py-2 text-slate-400">Empire founded Year 5234 = Abs. 15,234</td>
+              </tr>
+              <tr class="border-b border-slate-800">
+                <td class="py-2 text-slate-200">Xi Dynasty Years</td>
+                <td class="py-2 text-slate-400">Year 1 = Abs. 20,001</td>
+                <td class="py-2 text-slate-400">Great Decay Year 203 = Abs. 20,203</td>
+              </tr>
+              <tr class="border-b border-slate-800">
+                <td class="py-2 text-slate-200">Federation Years</td>
+                <td class="py-2 text-slate-400">Abs. 20,212 = Fed. Year 1</td>
+                <td class="py-2 text-slate-400">Abs. 51,200 = Fed. Year 30,988</td>
+              </tr>
+              <tr class="border-b border-slate-800">
+                <td class="py-2 text-slate-200">Union Years</td>
+                <td class="py-2 text-slate-400">Abs. 49,636 = Union Year 1</td>
+                <td class="py-2 text-slate-400">Abs. 51,235 = Union Year 1,599</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
+    <p class="text-slate-400 text-sm">Eternal Tree Saga Wiki — A Chronicle Spanning Six Myriads</p>
+    <p class="text-slate-500 text-xs mt-2">"The center holds. For now. For always."</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
+    if (closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
+  </script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plots & Story Arcs - Eternal Trees Saga Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #e2e8f0; }
+    h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+    .gold-gradient { background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(124, 58, 237, 0.2); }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
+    <div class="flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <i class="fas fa-tree text-amber-400 text-2xl"></i>
+        <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
+        <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
+        <a href="timeline.html" class="text-slate-300 hover:text-amber-400 transition">Timeline</a>
+        <a href="plots.html" class="text-amber-400 font-medium">Plots</a>
+        <a href="eastern-factions.html" class="text-slate-300 hover:text-amber-400 transition">Eastern</a>
+        <a href="western-factions.html" class="text-slate-300 hover:text-amber-400 transition">Western</a>
+        <a href="other-realms.html" class="text-slate-300 hover:text-amber-400 transition">Realms</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400"><i class="fas fa-bars text-xl"></i></button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
+    <div class="p-4">
+      <div class="flex justify-between items-center mb-6">
+        <span class="font-bold text-lg">Navigation</span>
+        <button id="closeMenu" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+      </div>
+      <nav class="space-y-2">
+        <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
+        <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
+        <a href="timeline.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
+        <a href="plots.html" class="block px-4 py-3 rounded-lg text-amber-400 bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
+        <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
+        <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
+        <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto p-4 md:p-8">
+    <div class="text-center py-8 mb-10">
+      <h1 class="text-4xl font-bold mb-4 fantasy-font"><span class="gold-gradient">Plots & Story Arcs</span></h1>
+      <p class="text-slate-400">The turning points that shaped the Eternal Tree Saga</p>
+    </div>
+
+    <!-- Cosmic Events -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-star mr-2"></i>Cosmic Events</h2>
+      <div class="space-y-4">
+        <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+            <h3 class="text-xl font-bold text-slate-200">The Void Wars</h3>
+            <span class="text-amber-400 text-sm">Before Time</span>
+          </div>
+          <p class="text-slate-300 mb-3">The Earlier Gods united to push back the Void (anti-relation) from consuming creation. All three factions—Dominator, Intervenor, and Observer—contributed to forging the Firmament.</p>
+          <p class="text-slate-400 text-sm"><span class="text-amber-400">Significance:</span> Created the boundary between existence and non-existence</p>
+        </div>
+        <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+            <h3 class="text-xl font-bold text-slate-200">The Civil War</h3>
+            <span class="text-amber-400 text-sm">Before Time</span>
+          </div>
+          <p class="text-slate-300 mb-3">After the Void Wars, Dominators and Intervenors turned on the Observers, destroying the Wild of Aletheia. Aletheia transformed destruction into new cosmology.</p>
+          <p class="text-slate-400 text-sm"><span class="text-amber-400">Significance:</span> Led to the creation of the Two Trees and the Five Personas</p>
+        </div>
+        <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+            <h3 class="text-xl font-bold text-slate-200">The Seeding</h3>
+            <span class="text-amber-400 text-sm">Abs. 1</span>
+          </div>
+          <p class="text-slate-300 mb-3">The Last Observer planted two seeds from the fruit of Intervenor essence, tempered by Observer detachment. The Tree of Order (Eastern) and Tree of Chaos (Western) grew.</p>
+          <p class="text-slate-400 text-sm"><span class="text-amber-400">Significance:</span> Established the Two Planes and the Blood-River between them</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Eastern Plane Conflicts -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-tree mr-2"></i>Eastern Plane Conflicts</h2>
+      <div class="space-y-4">
+        <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+            <h3 class="text-xl font-bold text-slate-200">First Hollow Breach</h3>
+            <span class="text-amber-400 text-sm">Abs. 3,712</span>
+          </div>
+          <p class="text-slate-300 mb-3">First manifestation of Void-touched scouts (Hollow) in the Eastern Plane. Gallian led the first coordinated defense.</p>
+          <p class="text-slate-400 text-sm"><span class="text-amber-400">Significance:</span> Revealed the Grenlian threat; led to renewal of Covenant</p>
+        </div>
+        <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+            <h3 class="text-xl font-bold text-slate-200">War of the Grenlians</h3>
+            <span class="text-amber-400 text-sm">Abs. 7,585-9,588</span>
+          </div>
+          <p class="text-slate-300 mb-3">Six thousand years of warfare against Ordered Void manifestations. The 5-Star Battalion was founded and sealed.</p>
+          <p class="text-slate-400 text-sm"><span class="text-amber-400">Significance:</span> Three Guardians corrupted into Dark Emperors</p>
+        </div>
+        <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+            <h3 class="text-xl font-bold text-slate-200">Conclave of Shadows</h3>
+            <span class="text-amber-400 text-sm">Abs. 9,588-9,590</span>
+          </div>
+          <p class="text-slate-300 mb-3">Formal alliance between Four Covert Orders and Four Allied Races. Celestine exiled to Dark Realm.</p>
+          <p class="text-slate-400 text-sm"><span class="text-amber-400">Significance:</span> Established unified resistance against Grey Tide</p>
+        </div>
+        <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+            <h3 class="text-xl font-bold text-slate-200">Rite of Balancing</h3>
+            <span class="text-amber-400 text-sm">Abs. 23,507</span>
+          </div>
+          <p class="text-slate-300 mb-3">Performed at Sanctuary of Eight Paths to strengthen seals. Catastrophically destabilized instead. Lucius Arogzan born in aftermath.</p>
+          <p class="text-slate-400 text-sm"><span class="text-amber-400">Significance:</span> Birth of the Wanderer; Aneian homeworld consumed</p>
+        </div>
+        <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+            <h3 class="text-xl font-bold text-slate-200">Dark Emperors' Rise</h3>
+            <span class="text-amber-400 text-sm">Abs. 23,508-23,750</span>
+          </div>
+          <p class="text-slate-300 mb-3">Tomoyama, Kross, and Marcus broke free from Tartarus, building the Dread Horde. Two-century war across Four Realms.</p>
+          <p class="text-slate-400 text-sm"><span class="text-amber-400">Significance:</span> Tested the Guardian Order; Lucius's emergence</p>
+        </div>
+        <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+            <h3 class="text-xl font-bold text-slate-200">Wanderer's Path</h3>
+            <span class="text-amber-400 text-sm">Abs. 23,751-23,755</span>
+          </div>
+          <p class="text-slate-300 mb-3">Lucius walked the eight-clue spiral path through all realms, meeting the Fourth Lord at the Sanctuary.</p>
+          <p class="text-slate-400 text-sm"><span class="text-amber-400">Significance:</span> Lucius received the Essence of WILL; became 25th Guardian</p>
+        </div>
+        <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+            <h3 class="text-xl font-bold text-slate-200">Inquisitor's Reign</h3>
+            <span class="text-amber-400 text-sm">Abs. 33,965-34,018</span>
+          </div>
+          <p class="text-slate-300 mb-3">Grand Marshal Redford Heinsforth exceeded mandate, conducting retroactive arrests, executions, and experiments on Aneian prisoners.</p>
+          <p class="text-slate-400 text-sm"><span class="text-amber-400">Significance:</span> Demonstrated dangers of unchecked investigative power</p>
+        </div>
+        <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+            <h3 class="text-xl font-bold text-slate-200">Accord of Arcadia</h3>
+            <span class="text-amber-400 text-sm">Abs. 34,234</span>
+          </div>
+          <p class="text-slate-300 mb-3">New covenant ratified establishing Council and Tribune as separate but covenantally linked. Watchers' Charter formalized.</p>
+          <p class="text-slate-400 text-sm"><span class="text-amber-400">Significance:</span> Established Guardian Domain as neutral 'Fifth Realm'</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Western Plane Conflicts -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-tree mr-2"></i>Western Plane Conflicts</h2>
+      <div class="space-y-4">
+        <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+            <h3 class="text-xl font-bold text-slate-200">Great Decay</h3>
+            <span class="text-purple-400 text-sm">Abs. 20,203</span>
+          </div>
+          <p class="text-slate-300 mb-3">First Metaphysical Embargo imposed on Xi Dynasty for perverting cultivation into rigid hierarchy.</p>
+          <p class="text-slate-400 text-sm"><span class="text-purple-400">Significance:</span> Demonstrated Library's power to withdraw knowledge</p>
+        </div>
+        <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+            <h3 class="text-xl font-bold text-slate-200">The Great Divide</h3>
+            <span class="text-purple-400 text-sm">Abs. 28,223</span>
+          </div>
+          <p class="text-slate-300 mb-3">Dimensional rift severed all land transport between Eastern and Western Continents.</p>
+          <p class="text-slate-400 text-sm"><span class="text-purple-400">Significance:</span> Isolated the two Planes for millennia</p>
+        </div>
+        <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+            <h3 class="text-xl font-bold text-slate-200">Library War</h3>
+            <span class="text-purple-400 text-sm">Abs. 39,668-39,675</span>
+          </div>
+          <p class="text-slate-300 mb-3">Jurisdictional schism between Vice-Chair and Chairman over preferential access. Lucien imposed Concordance of Jurisdictions.</p>
+          <p class="text-slate-400 text-sm"><span class="text-purple-400">Significance:</span> Established Triadic Governance permanently</p>
+        </div>
+        <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+            <h3 class="text-xl font-bold text-slate-200">Burning of Xeria</h3>
+            <span class="text-purple-400 text-sm">Abs. 47,430</span>
+          </div>
+          <p class="text-slate-300 mb-3">First Unbecoming manifestation when Tellerium attempted to digitize The Lost into Paraformer Arrays.</p>
+          <p class="text-slate-400 text-sm"><span class="text-purple-400">Significance:</span> Revealed the chaotic Plenitude threat</p>
+        </div>
+        <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+            <h3 class="text-xl font-bold text-slate-200">Two-Millennia War</h3>
+            <span class="text-purple-400 text-sm">Abs. 47,502-49,634</span>
+          </div>
+          <p class="text-slate-300 mb-3">Tellerium High Society vs. United Realms. Tellerium weaponized controlled Unbecoming but lost control.</p>
+          <p class="text-slate-400 text-sm"><span class="text-purple-400">Significance:</span> Led to Trials of Tellerium and Union proclamation</p>
+        </div>
+        <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+            <h3 class="text-xl font-bold text-slate-200">Trials of Tellerium</h3>
+            <span class="text-purple-400 text-sm">Abs. 49,636</span>
+          </div>
+          <p class="text-slate-300 mb-3">War crimes trials led by Valeria Scipio. Helena Cross and Kael Varus executed; others imprisoned.</p>
+          <p class="text-slate-400 text-sm"><span class="text-purple-400">Significance:</span> Established post-war justice framework</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Convergence -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400"><i class="fas fa-infinity mr-2"></i>The Convergence</h2>
+      <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6 card-hover">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+          <h3 class="text-xl font-bold text-slate-200">The Convergence Approaches</h3>
+          <span class="text-emerald-400 text-sm">Abs. 51,235+</span>
+        </div>
+        <p class="text-slate-300 mb-3">The Three Trees (Order, Chaos, Old Tree) prepare to meet. Lucius and Lucien reunite in the Meadow Realm. The boundary between Planes begins to dissolve.</p>
+        <p class="text-slate-400 text-sm"><span class="text-emerald-400">Significance:</span> The center holds. For now. For always.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
+    <p class="text-slate-400 text-sm">Eternal Tree Saga Wiki — A Chronicle Spanning Six Myriads</p>
+    <p class="text-slate-500 text-xs mt-2">"The center holds. For now. For always."</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
+    if (closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
+  </script>
+</body>
+</html>

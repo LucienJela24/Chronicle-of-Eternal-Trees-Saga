@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5-Star Battalion - Eternal Trees Saga Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'cinzel': ['Cinzel', 'serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'eternal-gold': '#d4af37',
+                        'eternal-amber': '#f59e0b',
+                        'eternal-purple': '#8b5cf6',
+                        'eternal-emerald': '#10b981',
+                        'eternal-slate': '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; }
+        h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+        .framework-card { transition: all 0.3s ease; }
+        .framework-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-slate-900/90 backdrop-blur-md border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <i class="fas fa-tree text-eternal-emerald text-2xl"></i>
+                        <span class="fantasy-font text-xl font-bold text-eternal-gold">Eternal Trees Saga</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="flex items-baseline space-x-4">
+                        <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Home</a>
+                        <a href="key-figures.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Key Figures</a>
+                        <a href="places.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Places</a>
+                        <a href="timeline.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Timeline</a>
+                        <a href="plots.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Plots</a>
+                        <a href="eastern-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-amber hover:bg-slate-800 transition">Eastern</a>
+                        <a href="western-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-purple hover:bg-slate-800 transition">Western</a>
+                        <a href="other-realms.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-emerald hover:bg-slate-800 transition">Realms</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Home</a>
+                <a href="key-figures.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Key Figures</a>
+                <a href="places.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Places</a>
+                <a href="timeline.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Timeline</a>
+                <a href="plots.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Plots</a>
+                <a href="eastern-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-amber hover:bg-slate-800">Eastern Factions</a>
+                <a href="western-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-purple hover:bg-slate-800">Western Factions</a>
+                <a href="other-realms.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-emerald hover:bg-slate-800">Other Realms</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-b from-emerald-900/40 to-slate-950 py-16">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 70%);"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center space-x-2 mb-4">
+                <span class="px-3 py-1 bg-emerald-900/50 border border-emerald-600/30 rounded-full text-emerald-400 text-sm">Guardian Domain</span>
+                <span class="px-3 py-1 bg-slate-800 border border-slate-600 rounded-full text-slate-400 text-sm">Elite Forces</span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold text-emerald-400 mb-4">5-Star Battalion</h1>
+            <p class="text-xl text-slate-400 max-w-3xl mx-auto">An elite unit of five legendary Guardians who undertake the most dangerous missions</p>
+            <div class="mt-6 flex justify-center space-x-4 text-sm text-slate-500">
+                <span><i class="fas fa-star text-emerald-400 mr-2"></i>5 Members</span>
+                <span><i class="fas fa-medal text-emerald-400 mr-2"></i>Legendary</span>
+                <span><i class="fas fa-bolt text-emerald-400 mr-2"></i>Strike Force</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                <h2 class="text-2xl font-bold text-eternal-gold mb-4">Overview</h2>
+                <p class="text-slate-300 leading-relaxed mb-4">The 5-Star Battalion represents the absolute elite of Guardian military capability—a handpicked unit of five legendary warriors who undertake missions too dangerous for any other force. When the Guardian Domain faces a threat that requires decisive action, when enemy strongholds must be destroyed, or when critical objectives must be secured at any cost, the 5-Star Battalion receives the call.</p>
+                <p class="text-slate-300 leading-relaxed mb-4">Each member of the Battalion has earned their place through exceptional combat prowess, tactical brilliance, and unwavering dedication to the Guardian cause. They are not merely soldiers but living legends whose names are spoken with reverence throughout the Eastern Plane. Their exploits are celebrated in songs and stories, and their presence on a battlefield can turn the tide of entire campaigns.</p>
+                <p class="text-slate-300 leading-relaxed">The 5-Star Battalion operates under the direct command of the Captain-Commander, receiving orders only from the highest authority. They have the authority to requisition any resources they need and to command any Guardian forces in support of their missions. Their autonomy reflects the trust placed in their judgment and the unique nature of their duties.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Five Stars -->
+    <section class="py-12 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-8">The Five Stars</h2>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 text-center">
+                    <div class="w-16 h-16 bg-emerald-900/50 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-star text-eternal-gold text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">First Star</h3>
+                    <p class="text-slate-400 text-sm">Battalion Leader</p>
+                    <p class="text-slate-500 text-xs mt-2">Commands the unit and speaks with the Captain-Commander's voice</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 text-center">
+                    <div class="w-16 h-16 bg-emerald-900/50 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-star text-slate-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Second Star</h3>
+                    <p class="text-slate-400 text-sm">Tactical Expert</p>
+                    <p class="text-slate-500 text-xs mt-2">Master of battlefield strategy and mission planning</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 text-center">
+                    <div class="w-16 h-16 bg-emerald-900/50 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-star text-slate-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Third Star</h3>
+                    <p class="text-slate-400 text-sm">Combat Specialist</p>
+                    <p class="text-slate-500 text-xs mt-2">Unmatched prowess in direct combat engagements</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 text-center">
+                    <div class="w-16 h-16 bg-emerald-900/50 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-star text-slate-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Fourth Star</h3>
+                    <p class="text-slate-400 text-sm">Support Expert</p>
+                    <p class="text-slate-500 text-xs mt-2">Specializes in magical support and healing</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 text-center">
+                    <div class="w-16 h-16 bg-emerald-900/50 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-star text-slate-400 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Fifth Star</h3>
+                    <p class="text-slate-400 text-sm">Intelligence</p>
+                    <p class="text-slate-500 text-xs mt-2">Master of reconnaissance and information gathering</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11 Frameworks Analysis -->
+    <section class="py-12 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-12">11-Framework Analysis</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Historical Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-landmark text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">1. Historical Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The 5-Star Battalion was founded during the darkest days of the Second Abyssal Incursion, when five extraordinary Guardians came together to turn the tide of a seemingly hopeless battle. Their victory that day became legend, and they formalized their alliance as a permanent unit. Since then, the Battalion has been reformed many times as members fall in battle or retire, but the tradition of excellence continues. Each generation of the 5-Star Battalion has added to its glorious history, and their combined achievements fill volumes in the Guardian archives. The current roster represents the finest Guardians of their generation.</p>
+                </div>
+
+                <!-- Political Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-balance-scale text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">2. Political Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The 5-Star Battalion operates with unique political authority within the Guardian Domain. They report directly to the Captain-Commander and can bypass normal chains of command when necessary. The Battalion Leader, designated as First Star, speaks with the Captain-Commander's voice in emergency situations. This extraordinary authority is balanced by strict accountability—each mission is reviewed afterward, and misuse of power results in immediate dismissal. The Battalion's political influence extends beyond the Domain, as their actions can shape relations with allied nations. Their presence at diplomatic events carries significant weight.</p>
+                </div>
+
+                <!-- Mental Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-brain text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">3. Mental Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Members of the 5-Star Battalion possess exceptional mental capabilities that match their physical prowess. They are strategic thinkers who can analyze complex situations quickly and make sound decisions under extreme pressure. Their training includes advanced tactics, leadership, and crisis management. The psychological demands of their position are immense—they regularly face situations where their choices determine the fate of thousands. Mental conditioning helps them maintain focus and clarity even in the chaos of battle. Regular psychological assessments ensure they remain fit for duty.</p>
+                </div>
+
+                <!-- Spiritual Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-praying-hands text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">4. Spiritual Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The 5-Star Battalion maintains profound spiritual connections that sustain them in their duties. Each member has a unique relationship with the Light, developed through years of service and sacrifice. They perform rituals together before major missions, binding their spirits in common purpose. The spiritual bond between Battalion members is said to be visible in battle—they fight as one entity, anticipating each other's movements with supernatural precision. Their faith is tested constantly by the horrors they face, but their devotion remains unshakable. Spiritual advisors work with them to maintain their connection to the divine.</p>
+                </div>
+
+                <!-- Social Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-users text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">5. Social Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The five members of the Battalion form an extraordinarily close bond, closer than family, forged through shared trials and mutual dependence. They live together, train together, and fight together, developing an intimacy of understanding that transcends words. Outside the Battalion, they are treated with awe and respect by other Guardians, which can create social distance. Romantic relationships are difficult to maintain given the demands of their service, and most Battalion members remain devoted solely to their duty and their comrades. Their social isolation is considered a necessary sacrifice for their role.</p>
+                </div>
+
+                <!-- Cultural Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-palette text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">6. Cultural Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The 5-Star Battalion occupies a central place in Guardian culture, representing the ideal of heroic service. Epic poems recount their battles, and artists compete to create the most stirring depictions of their deeds. Each member has a symbolic identity—the First Star, the Second Star, and so on—that carries cultural meaning. The Battalion's colors, five stars on a field of emerald, appear on banners throughout the Domain. Their motto, "Through Darkness, Light," is spoken by Guardians facing impossible odds. Cultural celebrations mark their victories and memorials honor their fallen.</p>
+                </div>
+
+                <!-- Economical Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-coins text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">7. Economical Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The 5-Star Battalion receives substantial funding that reflects their importance to the Guardian Domain. Each member has a generous stipend, though most donate much of it to support fallen comrades' families or Guardian charitable causes. The Battalion has unlimited access to equipment, weapons, and supplies—whatever they need for their missions. They also control discretionary funds for supporting allies, bribing informants, or purchasing intelligence. The economic cost of maintaining the Battalion is high, but the value of their accomplishments far exceeds the expense. Their missions often recover valuable resources from enemy territory.</p>
+                </div>
+
+                <!-- Physiological Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-heartbeat text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">8. Physiological Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Members of the 5-Star Battalion represent the peak of Guardian physical capability. Their hybrid nature has been honed through years of intensive training to achieve superhuman strength, speed, and endurance. They can fight for days without rest, survive wounds that would kill ordinary beings, and recover from injuries at remarkable rates. The Domain's best medical staff attend to their health, and they have access to experimental treatments and enhancements. Despite these advantages, the physical toll of their service is immense—most members retire within a decade due to accumulated injuries. Their bodies bear the marks of countless battles.</p>
+                </div>
+
+                <!-- Territorial Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-map-marked-alt text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">9. Territorial Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The 5-Star Battalion maintains a headquarters within the Guardian Domain's central fortress—a compound that includes training facilities, armories, and living quarters. The compound is both a home and a shrine, with walls covered in trophies from past victories and memorials to fallen members. Beyond this base, the Battalion operates across the entire Eastern Plane and beyond, wherever their missions take them. They have priority access to all Guardian facilities and can commandeer resources as needed. Their operational territory extends to any location where the Captain-Commander requires their presence.</p>
+                </div>
+
+                <!-- Technological Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-cogs text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">10. Technological Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Each member of the 5-Star Battalion wields legendary equipment crafted specifically for them by the Domain's master artisans. Their weapons are works of art, imbued with powerful enchantments and blessed by the Light. Their armor provides protection without sacrificing mobility, allowing them to fight at peak effectiveness. The Battalion also has access to experimental technologies not yet available to other Guardians—devices for communication, transportation, and combat that can provide decisive advantages in critical situations. Their equipment is maintained by dedicated support staff who ensure everything functions perfectly.</p>
+                </div>
+
+                <!-- Military Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-shield-alt text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">11. Military Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The 5-Star Battalion operates as a self-contained strike force capable of undertaking any mission. Their tactics emphasize speed, precision, and overwhelming force applied at decisive points. They can function as shock troops, assassins, saboteurs, or commanders as the situation requires. When they fight together, their coordination is supernatural—each member anticipates the others' actions, creating a combat effectiveness far exceeding their numbers. The Battalion can be reinforced by other Guardian forces for larger operations, but they are most deadly when operating as a pure five-person unit. Their military doctrine is studied by all Guardian officers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notable Missions -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-8">Notable Missions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Defense of Lumeria</h3>
+                    <p class="text-slate-300 text-sm">The Battalion held the line against overwhelming Abyssal forces during the siege of Lumeria, buying time for civilian evacuation and reinforcements to arrive.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Assassination of the Dark Emperor</h3>
+                    <p class="text-slate-300 text-sm">A covert operation that eliminated a major threat to the Eastern Plane, demonstrating the Battalion's ability to strike at the heart of enemy power.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Recovery of the Eternal Seed</h3>
+                    <p class="text-slate-300 text-sm">A desperate mission into Abyssal territory to recover a sacred artifact essential to the Guardian Alliance's spiritual defenses.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">The Battle of the Thousand Shadows</h3>
+                    <p class="text-slate-300 text-sm">The Battalion turned the tide of a massive engagement, their coordinated assault breaking the enemy's formation and securing victory.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <i class="fas fa-tree text-eternal-emerald text-xl"></i>
+                    <span class="fantasy-font text-lg font-bold text-eternal-gold">Eternal Trees Saga</span>
+                </div>
+                <div class="text-slate-500 text-sm">
+                    <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="index.html" class="text-slate-400 hover:text-eternal-gold transition">Home</a>
+                    <a href="eastern-factions.html" class="text-slate-400 hover:text-eternal-amber transition">Eastern</a>
+                    <a href="western-factions.html" class="text-slate-400 hover:text-eternal-purple transition">Western</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grenlians | Eternal Trees Saga Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#1e293b',
+                        accent: '#0d9488',
+                        'accent-light': '#14b8a6',
+                        gold: '#fbbf24',
+                        'gold-light': '#fcd34d',
+                        dark: '#020617',
+                        'dark-light': '#1e293b'
+                    },
+                    fontFamily: {
+                        'heading': ['Cinzel', 'serif'],
+                        'body': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            min-height: 100vh;
+        }
+        .fantasy-heading {
+            font-family: 'Cinzel', serif;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .framework-card {
+            background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid rgba(13, 148, 136, 0.2);
+        }
+        .framework-card:hover {
+            border-color: rgba(13, 148, 136, 0.5);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #0d9488;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.8) 0%, rgba(15, 23, 42, 0.95) 100%);
+        }
+        .threat-glow {
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.3);
+        }
+    </style>
+</head>
+<body class="text-gray-100">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-primary/95 backdrop-blur-md border-b border-accent/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-tree text-accent text-2xl"></i>
+                    <span class="fantasy-heading text-xl font-bold gradient-text">Eternal Trees Saga</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-accent transition">Home</a>
+                    <a href="key-figures.html" class="nav-link text-gray-300 hover:text-accent transition">Key Figures</a>
+                    <a href="places.html" class="nav-link text-gray-300 hover:text-accent transition">Places</a>
+                    <a href="factions.html" class="nav-link text-gray-300 hover:text-accent transition">Factions</a>
+                    <a href="threats-enemies.html" class="nav-link text-accent-light transition">Threats</a>
+                    <a href="timelines.html" class="nav-link text-gray-300 hover:text-accent transition">Timelines</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-accent">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-secondary border-t border-accent/20">
+            <div class="px-4 py-3 space-y-2">
+                <a href="index.html" class="block py-2 text-gray-300 hover:text-accent">Home</a>
+                <a href="key-figures.html" class="block py-2 text-gray-300 hover:text-accent">Key Figures</a>
+                <a href="places.html" class="block py-2 text-gray-300 hover:text-accent">Places</a>
+                <a href="factions.html" class="block py-2 text-gray-300 hover:text-accent">Factions</a>
+                <a href="threats-enemies.html" class="block py-2 text-accent-light">Threats</a>
+                <a href="timelines.html" class="block py-2 text-gray-300 hover:text-accent">Timelines</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-12">
+        <div class="absolute inset-0 bg-gradient-to-b from-green-900/20 via-primary to-primary"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-900/30 border-2 border-green-500/50 mb-6">
+                    <i class="fas fa-biohazard text-green-500 text-4xl"></i>
+                </div>
+                <h1 class="fantasy-heading text-5xl md:text-6xl font-bold text-white mb-4">Grenlians</h1>
+                <p class="text-xl text-green-400 mb-2">The Corrupted Swarm</p>
+                <p class="text-gray-400 max-w-3xl mx-auto">Once a noble race of nature guardians, the Grenlians have been twisted by dark corruption into a hive-mind swarm that consumes everything in its path. They are the living manifestation of nature's fury turned malignant.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-secondary/50 rounded-xl p-8 border border-green-500/20">
+                <h2 class="fantasy-heading text-3xl font-bold text-white mb-6">
+                    <i class="fas fa-info-circle text-green-500 mr-3"></i>Overview
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <p class="text-gray-300 leading-relaxed mb-4">The Grenlians were once the Guardians of the Verdant Ways, a peaceful race of plant-like beings who tended to the world's forests and maintained the balance of nature. When the Void's hunger pressed against the Firmament, the Grenlians became its first victims among the natural orders—consumed not by corruption but by unmaking itself.</p>
+                        <p class="text-gray-300 leading-relaxed">Now they exist as the <strong>Hollow Ones</strong>—former Grenlians fully unmade, serving as the Legion of Hollow within the Dread Horde. They have no hive-mind, no consciousness, no hunger even—they simply erase existence by passing through it. Where they walk, reality itself becomes thin.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                            <span class="text-gray-400">Threat Level</span>
+                            <span class="text-green-500 font-bold">Apocalyptic</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                            <span class="text-gray-400">Current Status</span>
+                            <span class="text-gray-200">Hollow Ones (Unmade)</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                            <span class="text-gray-400">Affiliation</span>
+                            <span class="text-gray-200">Dread Horde - Legion of Hollow</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                            <span class="text-gray-400">Nature</span>
+                            <span class="text-gray-200">Reality-Eroding Void-Touched</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11 Frameworks Analysis -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="fantasy-heading text-4xl font-bold text-center text-white mb-12">
+                <i class="fas fa-cube text-green-500 mr-3"></i>11 Frameworks Analysis
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Historical Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-history text-green-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Historical</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Before the corruption, Grenlians were among the oldest races in the world, having existed since the First Forests took root. They were revered as nature spirits and guardians of the wild places. The corruption that created the modern Grenlians occurred during the First Cataclysm when dark energy surged through their sacred groves. Since then, they have been a persistent threat, their territory expanding slowly but inexorably as the blight spreads. Several attempts to purify the Grenlians have failed, each one adding more victims to their ranks.</p>
+                </div>
+
+                <!-- Political Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-project-diagram text-green-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Political</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Grenlians operate as a true hive-mind with no individual political structure. The swarm consciousness makes decisions collectively, with each Grenlian acting as a cell in a larger organism. There is no hierarchy, no leaders, and no political maneuvering—only the will of the collective. This makes them unpredictable to conventional political analysis, as they cannot be negotiated with, bribed, or intimidated. Their "politics" consist solely of expanding the swarm and eliminating threats to its growth.</p>
+                </div>
+
+                <!-- Mental Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-brain text-green-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Mental</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Grenlian hive-mind is a singular consciousness distributed across countless individual bodies. It thinks with perfect clarity and terrifying focus, unburdened by individual doubts or fears. The collective intelligence is vast, incorporating the knowledge and memories of all who have been absorbed into the swarm. This makes the Grenlians incredibly adaptable—they learn from every encounter and share that knowledge instantaneously across the entire swarm. Their mental state is one of absolute certainty and unwavering purpose.</p>
+                </div>
+
+                <!-- Spiritual Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-leaf text-green-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Spiritual</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Spiritually, the Grenlians represent a perversion of nature's sacred role. Where once they channeled the life-giving energy of the natural world, they now spread corruption and decay. Their spiritual presence is like a cancer in the world's life force—where they go, the connection to natural spirits is severed and replaced with the hunger of the swarm. The old nature deities have abandoned them, but the Grenlians have gained a dark spiritual connection to the corrupting force that transformed them, drawing power from the very blight they spread.</p>
+                </div>
+
+                <!-- Social Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-network-wired text-green-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Social</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Grenlian society is not society in any conventional sense—it is a biological collective where individual identity has been completely subsumed. There are no families, no communities, no social bonds as mortals understand them. Each Grenlian is a cell in a larger organism, connected to all others through the hive-mind. They operate with perfect coordination, each individual acting in perfect harmony with the collective will. New members are added through infection and conversion, their individual identities dissolved into the swarm.</p>
+                </div>
+
+                <!-- Cultural Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-seedling text-green-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Cultural</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Grenlians have no culture in the traditional sense—no art, no music, no traditions. What remains of their former cultural identity has been twisted into something alien and disturbing. The blighted groves they create have their own horrific beauty, with corrupted vegetation forming patterns that seem almost intentional. Their "art" is the spread of corruption itself—each blighted area a testament to the swarm's expansion. The only cultural practice that remains is their instinctive connection to plant life, though now expressed through corruption rather than nurturing.</p>
+                </div>
+
+                <!-- Economical Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-recycle text-green-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Economical</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Grenlian economy is based entirely on consumption and conversion. They take what they need from the environment, converting all organic matter into more Grenlians or fuel for the swarm. They do not trade, produce, or accumulate wealth in any conventional sense. Resources are distributed perfectly efficiently through the hive-mind, with each part of the swarm receiving exactly what it needs to function. The concept of scarcity does not apply to them—as long as there is organic matter to consume, the swarm can grow indefinitely.</p>
+                </div>
+
+                <!-- Physiological Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-dna text-green-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Physiological</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Grenlians are plant-based lifeforms with fungal and bacterial symbiotes that make up the corrupting agent. Their bodies are composed of dense vegetable matter, fibrous tissues, and woody structures that provide natural armor. They do not have vital organs as animals do—damage to any part of their body can be regenerated as long as the core consciousness remains intact. They absorb nutrients through root-like structures and can enter a dormant state to survive harsh conditions. The corruption has made them immune to most toxins and diseases, though they remain vulnerable to fire and certain purifying magics.</p>
+                </div>
+
+                <!-- Territorial Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-map text-green-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Territorial</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Grenlians occupy the Blighted Groves, vast regions of corrupted forest that expand slowly but inexorably. Within these territories, the natural environment has been completely transformed—plants, animals, and even the soil itself have been converted to serve the swarm. The borders of Grenlian territory are constantly shifting as the blight spreads or is pushed back by defenders. Unlike conventional territories, the Blighted Groves are not static—the very land is alive with the swarm consciousness, making incursions incredibly dangerous.</p>
+                </div>
+
+                <!-- Technological Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-flask text-green-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Technological</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Grenlian technology is entirely biological. They have no tools, weapons, or structures as conventional races understand them. Instead, they have evolved biological adaptations that serve similar functions—hardened growths that function as armor and weapons, spore-based communication systems, and organic structures grown rather than built. Their most terrifying technology is the corruption itself—a biological agent that can convert other lifeforms into Grenlians. They have also developed various strains of toxic spores, digestive acids, and defensive secretions through biological adaptation.</p>
+                </div>
+
+                <!-- Military Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-shield-virus text-green-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Military</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Grenlian military is the swarm itself—every Grenlian is a soldier, and their numbers are effectively limitless as long as they have organic matter to convert. They fight with perfect coordination, the hive-mind allowing them to execute complex strategies instantaneously. Their tactics rely on overwhelming numbers, biological warfare through spores and toxins, and the conversion of enemies into more Grenlians. Specialized forms have evolved for different military roles—drones for overwhelming attacks, spore-bearers for area denial, and massive siege forms for breaking fortifications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hollow Types Section -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="fantasy-heading text-3xl font-bold text-white mb-8">
+                <i class="fas fa-layer-group text-green-500 mr-3"></i>Hierarchy of Unmaking
+            </h2>
+            <div class="bg-secondary/50 rounded-xl p-6 border border-green-500/20 mb-8">
+                <p class="text-gray-400 text-sm mb-4">The Grenlians have passed through nine stages of void-consumption, from their original nature as nature guardians to their current state as Hollow Ones. Each stage represents further dissolution into the Great Void.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-secondary/50 rounded-xl p-6 border border-green-500/20">
+                    <div class="flex items-center mb-3">
+                        <span class="text-green-500 font-bold mr-2">1st</span>
+                        <h3 class="fantasy-heading text-lg font-bold text-white">Grenlian Guardian</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm">Original nature—nature guardians of the Verdant Ways, peaceful tenders of forests.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-6 border border-green-500/20">
+                    <div class="flex items-center mb-3">
+                        <span class="text-green-400 font-bold mr-2">2nd</span>
+                        <h3 class="fantasy-heading text-lg font-bold text-white">Void-Touched</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm">Initial exposure to the Great Void's hunger—beginning of consciousness erosion.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-6 border border-green-500/20">
+                    <div class="flex items-center mb-3">
+                        <span class="text-green-400 font-bold mr-2">3rd</span>
+                        <h3 class="fantasy-heading text-lg font-bold text-white">Corrupted</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm">Partial unmaking—retaining some awareness but driven by void-hunger.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-6 border border-green-500/20">
+                    <div class="flex items-center mb-3">
+                        <span class="text-green-400 font-bold mr-2">4th</span>
+                        <h3 class="fantasy-heading text-lg font-bold text-white">Hollow Scout</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm">Semi-autonomous void-touched scouts—reality eroders, still partially aware.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-6 border border-green-500/20">
+                    <div class="flex items-center mb-3">
+                        <span class="text-green-400 font-bold mr-2">5th</span>
+                        <h3 class="fantasy-heading text-lg font-bold text-white">Dread Warrior</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm">Organized unmaking infantry—shock troops of the Legion of Hollow.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-6 border border-gray-500/30">
+                    <div class="flex items-center mb-3">
+                        <span class="text-gray-400 font-bold mr-2">6th</span>
+                        <h3 class="fantasy-heading text-lg font-bold text-gray-300">Hollow General</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm">Commanders of unmade legions—mass erosion tactics, minimal remaining will.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-6 border border-gray-500/30">
+                    <div class="flex items-center mb-3">
+                        <span class="text-gray-400 font-bold mr-2">7th</span>
+                        <h3 class="fantasy-heading text-lg font-bold text-gray-300">Dread One</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm">Command cadre—corruption spreaders, scout-grade unmaking infantry.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-6 border border-gray-500/30">
+                    <div class="flex items-center mb-3">
+                        <span class="text-gray-400 font-bold mr-2">8th</span>
+                        <h3 class="fantasy-heading text-lg font-bold text-gray-300">Hollow</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm">Void-touched scouts—reality eroders. Still semi-autonomous.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-6 border border-slate-500/30">
+                    <div class="flex items-center mb-3">
+                        <span class="text-slate-400 font-bold mr-2">9th</span>
+                        <h3 class="fantasy-heading text-lg font-bold text-slate-300">Unmade</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm">Mindless erosion—consumption drones. Fully consumed; no will, only hunger.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Hollow Ones Section -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="fantasy-heading text-3xl font-bold text-white mb-8">
+                <i class="fas fa-circle text-gray-500 mr-3"></i>The Hollow Ones
+            </h2>
+            <div class="bg-secondary/50 rounded-xl p-8 border border-gray-500/20">
+                <p class="text-gray-300 leading-relaxed mb-4">The Hollow Ones are former Grenlians who have been fully unmade by the Great Void. They represent the final stage of void-consumption—beings who have lost not only their original nature as nature guardians but even the semblance of consciousness that marked earlier stages of corruption.</p>
+                <p class="text-gray-300 leading-relaxed mb-4">Where the Dread Horde's other legions employ weapons of unmaking—cold fire, silver chains, pest consciousness—the Hollow Ones <em>are</em> unmaking manifest. They do not attack; they simply pass through, and where they pass, existence itself becomes questionable.</p>
+                <p class="text-gray-300 leading-relaxed">The Hollow Ones serve within the Legion of Hollow, commanded by Hollow Generals who retain just enough tactical awareness to direct their mindless advance. They are deployed as the Dread Horde's ultimate weapon—an erosion of reality that cannot be fought, only fled.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark border-t border-accent/20 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <i class="fas fa-tree text-accent text-xl"></i>
+                    <span class="fantasy-heading text-lg font-bold gradient-text">Eternal Trees Saga</span>
+                </div>
+                <div class="flex space-x-6 text-sm text-gray-400">
+                    <a href="index.html" class="hover:text-accent transition">Home</a>
+                    <a href="key-figures.html" class="hover:text-accent transition">Key Figures</a>
+                    <a href="places.html" class="hover:text-accent transition">Places</a>
+                    <a href="factions.html" class="hover:text-accent transition">Factions</a>
+                </div>
+            </div>
+            <div class="mt-6 pt-6 border-t border-gray-800 text-center text-sm text-gray-500">
+                <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

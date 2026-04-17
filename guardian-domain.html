@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardian Domain - Eternal Trees Saga Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'cinzel': ['Cinzel', 'serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'eternal-gold': '#d4af37',
+                        'eternal-amber': '#f59e0b',
+                        'eternal-purple': '#8b5cf6',
+                        'eternal-emerald': '#10b981',
+                        'eternal-slate': '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; }
+        h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+        .framework-card { transition: all 0.3s ease; }
+        .framework-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-slate-900/90 backdrop-blur-md border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <i class="fas fa-tree text-eternal-emerald text-2xl"></i>
+                        <span class="fantasy-font text-xl font-bold text-eternal-gold">Eternal Trees Saga</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="flex items-baseline space-x-4">
+                        <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Home</a>
+                        <a href="key-figures.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Key Figures</a>
+                        <a href="places.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Places</a>
+                        <a href="timeline.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Timeline</a>
+                        <a href="plots.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Plots</a>
+                        <a href="eastern-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-amber hover:bg-slate-800 transition">Eastern</a>
+                        <a href="western-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-purple hover:bg-slate-800 transition">Western</a>
+                        <a href="other-realms.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-emerald hover:bg-slate-800 transition">Realms</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Home</a>
+                <a href="key-figures.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Key Figures</a>
+                <a href="places.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Places</a>
+                <a href="timeline.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Timeline</a>
+                <a href="plots.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Plots</a>
+                <a href="eastern-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-amber hover:bg-slate-800">Eastern Factions</a>
+                <a href="western-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-purple hover:bg-slate-800">Western Factions</a>
+                <a href="other-realms.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-emerald hover:bg-slate-800">Other Realms</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-b from-emerald-900/40 to-slate-950 py-16">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 70%);"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center space-x-2 mb-4">
+                <span class="px-3 py-1 bg-emerald-900/50 border border-emerald-600/30 rounded-full text-emerald-400 text-sm">Eastern Plane</span>
+                <span class="px-3 py-1 bg-slate-800 border border-slate-600 rounded-full text-slate-400 text-sm">Military Organization</span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold text-emerald-400 mb-4">Guardian Domain</h1>
+            <p class="text-xl text-slate-400 max-w-3xl mx-auto">The military backbone of the Guardian Alliance, training elite warriors to defend against the Abyssal threat</p>
+            <div class="mt-6 flex justify-center space-x-4 text-sm text-slate-500">
+                <span><i class="fas fa-shield-alt text-emerald-400 mr-2"></i>5,000 Cadets</span>
+                <span><i class="fas fa-users text-emerald-400 mr-2"></i>10,000 Hybrid Guardians</span>
+                <span><i class="fas fa-crown text-emerald-400 mr-2"></i>8 Divisions</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                <h2 class="text-2xl font-bold text-eternal-gold mb-4">Overview</h2>
+                <p class="text-slate-300 leading-relaxed mb-4">The Guardian Domain serves as the primary military training and operational headquarters for the Guardian Alliance. Located in a strategically fortified position, it houses the Guardian Order, the 5-Star Battalion, and serves as the base of operations for the Octagram—the eight most powerful Guardians who lead the defense against Abyssal incursions.</p>
+                <p class="text-slate-300 leading-relaxed mb-4">The Domain operates under a strict hierarchical structure, with the Captain-Commander at its apex, followed by the Octagram members who each lead specialized divisions. The organization maintains a careful balance between traditional military discipline and the unique abilities of its hybrid Guardian forces.</p>
+                <p class="text-slate-300 leading-relaxed">Under the leadership of Captain-Commander Aria, the Guardian Domain has become the most formidable military force in the Eastern Plane, capable of responding to threats ranging from minor Abyssal incursions to full-scale invasions by the Dark Empires.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11 Frameworks Analysis -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-12">11 Frameworks Analysis</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Historical Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-landmark text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">1. Historical Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The Guardian Domain traces its origins to the aftermath of the First Abyssal Incursion, when the need for a unified military force became apparent. Founded by the first Captain-Commander, it emerged from scattered mercenary bands and noble house guards into a professional standing army. The Domain has weathered countless crises including the Second and Third Abyssal Incursions, the Fall of Aneia, and ongoing conflicts with the Dark Empires. Each generation has added to its institutional knowledge, creating a military tradition that spans centuries. The current era under Captain-Commander Aria represents a golden age of Guardian military prowess.</p>
+                </div>
+
+                <!-- Political Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-balance-scale text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">2. Political Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The Domain maintains political autonomy while serving the broader Guardian Alliance. The Captain-Commander holds ultimate authority over military decisions affecting Alliance territories. The Octagram serves as an advisory council with significant influence over strategic planning. Internal politics involve competition between divisions for resources and prestige, balanced by the Octagram's collective authority. The Domain maintains diplomatic relations with allied nations including Lumeria, the Lux Imperio, and various independent city-states. Political considerations often influence military deployments, requiring careful navigation of alliance obligations.</p>
+                </div>
+
+                <!-- Mental Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-brain text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">3. Mental Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Guardians undergo rigorous mental conditioning to resist Abyssal corruption and maintain combat effectiveness. Training emphasizes tactical thinking, strategic planning, and psychological resilience. Cadets receive instruction in illusion resistance, fear management, and decision-making under extreme pressure. The Domain maintains specialized mental health facilities to address the psychological toll of fighting the Abyss. Advanced training includes resistance to mind-reading, telepathic assault, and emotional manipulation. Mental fortitude is considered as important as physical prowess, with regular assessments ensuring all Guardians maintain psychological readiness.</p>
+                </div>
+
+                <!-- Spiritual Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-praying-hands text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">4. Spiritual Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Guardians maintain profound spiritual connections to the Eternal Trees and the Light. Daily meditation and prayer rituals strengthen their resistance to dark forces. The Domain maintains chapels and spiritual advisors who help Guardians maintain their connection to divine power sources. Religious observances include the Dawn Vigil, the Oath of the Guardian, and memorial services for fallen comrades. The Ethereals serve as spiritual guides, helping Guardians navigate the metaphysical aspects of their hybrid nature. Spiritual corruption is considered as dangerous as physical injury, with purification rituals available for those exposed to Abyssal taint.</p>
+                </div>
+
+                <!-- Social Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-users text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">5. Social Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">A strict hierarchy defines social interactions within the Domain. Rank determines privileges, quarters assignment, and access to resources. The Captain-Commander and Octagram occupy the highest tier, followed by division captains, squad leaders, and rank-and-file Guardians. Merit-based advancement allows exceptional individuals to rise regardless of background. Social bonds form through shared training, combat experience, and the unique challenges of Guardian life. Family connections exist but are secondary to military obligations. The Domain provides social services including housing, healthcare, and education for Guardian families.</p>
+                </div>
+
+                <!-- Cultural Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-palette text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">6. Cultural Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Guardian culture emphasizes honor, duty, and sacrifice. Traditional ceremonies mark promotions, retirements, and memorials for fallen comrades. Each division maintains distinct cultural traditions—the First Division values aggressive valor, the Second Division emphasizes steadfast defense, the Third Division prizes stealth and cunning, and so on. Epic poetry recounts legendary battles, and songs celebrate heroic deeds. The Guardian's Oath is considered sacred, binding members to their duty even beyond death. Artwork throughout the Domain depicts historical victories and honored ancestors, reinforcing cultural values.</p>
+                </div>
+
+                <!-- Economical Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-coins text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">7. Economical Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The Domain operates through funding from Alliance member states, supplemented by spoils from successful campaigns against Abyssal forces. Internal economy uses a requisition system where divisions compete for equipment and supplies based on mission priority. Guardians receive salaries appropriate to their rank, with additional hazard pay for frontline service. The Domain maintains extensive supply chains for weapons, armor, food, and medical supplies. Economic planning considers long-term sustainability, with investments in training facilities and infrastructure. Trade agreements with allied nations provide access to rare materials needed for Guardian equipment.</p>
+                </div>
+
+                <!-- Physiological Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-heartbeat text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">8. Physiological Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Hybrid Guardians possess enhanced physical capabilities beyond normal humans—superior strength, speed, endurance, and regenerative abilities. The Domain maintains extensive medical facilities and research programs to understand and enhance these hybrid traits. Training regimens develop physical conditioning appropriate to each Guardian's hybrid type. Medical staff specialize in treating hybrid-specific injuries and conditions. Nutrition programs ensure Guardians receive appropriate sustenance for their enhanced metabolisms. The physical toll of Guardian service is significant, with retirement typically required after 20-30 years of active duty.</p>
+                </div>
+
+                <!-- Territorial Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-map-marked-alt text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">9. Territorial Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The Domain encompasses the main fortress complex, training grounds, barracks, armories, and support facilities. The central citadel houses command facilities, the Octagram Hall, and the Captain-Commander's quarters. Training grounds include combat arenas, obstacle courses, and simulated battlefield environments. Satellite outposts extend Guardian presence across Alliance territories. Each division maintains designated operational zones where they hold primary responsibility for defense. The Domain's location was chosen for strategic defensibility and proximity to major population centers requiring protection.</p>
+                </div>
+
+                <!-- Technological Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-cogs text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">10. Technological Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The Domain employs advanced weaponry, armor, and communication systems developed through Alliance research. Specialized equipment includes Abyssal detection devices, barrier generators, and enhanced healing technologies. The Engineering Division constantly develops new tools for combating dark forces. Weapons range from traditional melee arms to enchanted firearms and magical implements. Armor incorporates both physical protection and magical wards. Communication systems enable coordination across vast distances. Research facilities investigate Abyssal weaknesses and develop countermeasures.</p>
+                </div>
+
+                <!-- Military Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-shield-alt text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">11. Military Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Military organization follows the Eight Division structure, each specializing in different combat roles: Assault, Defense, Reconnaissance, Support, Engineering, Medical, Intelligence, and Special Operations. Chain of command flows from Captain-Commander to Octagram members to Division Captains to Squad Leaders. Training programs develop both individual combat skills and unit coordination. Tactical doctrine emphasizes combined arms operations leveraging each division's strengths. Strategic planning considers long-term campaigns against persistent threats. The military framework enables rapid response to emergencies while maintaining sustained operations against entrenched enemies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Captain System -->
+    <section class="py-12 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-8">Captain System</h2>
+            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                <p class="text-slate-300 mb-6">The Guardian Domain operates under a sophisticated Captain System where each of the eight divisions is led by a Captain who reports directly to the Octagram. These Captains are among the most powerful Guardians, having proven their worth through countless battles against Abyssal forces.</p>
+                
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-left">
+                        <thead class="text-xs text-slate-400 uppercase bg-slate-800/50">
+                            <tr>
+                                <th class="px-4 py-3 rounded-tl-lg">Division</th>
+                                <th class="px-4 py-3">Specialization</th>
+                                <th class="px-4 py-3">Forces</th>
+                                <th class="px-4 py-3 rounded-tr-lg">Primary Role</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-700">
+                            <tr class="hover:bg-slate-800/30">
+                                <td class="px-4 py-3 font-medium text-emerald-400">First Division</td>
+                                <td class="px-4 py-3 text-slate-300">Assault & Vanguard</td>
+                                <td class="px-4 py-3 text-slate-300">1,500 Guardians</td>
+                                <td class="px-4 py-3 text-slate-300">Frontline combat operations</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30">
+                                <td class="px-4 py-3 font-medium text-emerald-400">Second Division</td>
+                                <td class="px-4 py-3 text-slate-300">Defense & Fortification</td>
+                                <td class="px-4 py-3 text-slate-300">1,200 Guardians</td>
+                                <td class="px-4 py-3 text-slate-300">Stronghold defense</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30">
+                                <td class="px-4 py-3 font-medium text-emerald-400">Third Division</td>
+                                <td class="px-4 py-3 text-slate-300">Reconnaissance</td>
+                                <td class="px-4 py-3 text-slate-300">800 Guardians</td>
+                                <td class="px-4 py-3 text-slate-300">Scouting & intelligence gathering</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30">
+                                <td class="px-4 py-3 font-medium text-emerald-400">Fourth Division</td>
+                                <td class="px-4 py-3 text-slate-300">Support & Logistics</td>
+                                <td class="px-4 py-3 text-slate-300">1,000 Guardians</td>
+                                <td class="px-4 py-3 text-slate-300">Supply lines & reinforcement</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30">
+                                <td class="px-4 py-3 font-medium text-emerald-400">Fifth Division</td>
+                                <td class="px-4 py-3 text-slate-300">Engineering & Siege</td>
+                                <td class="px-4 py-3 text-slate-300">600 Guardians</td>
+                                <td class="px-4 py-3 text-slate-300">Siege warfare & construction</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30">
+                                <td class="px-4 py-3 font-medium text-emerald-400">Sixth Division</td>
+                                <td class="px-4 py-3 text-slate-300">Medical & Recovery</td>
+                                <td class="px-4 py-3 text-slate-300">700 Guardians</td>
+                                <td class="px-4 py-3 text-slate-300">Battlefield medicine & rehabilitation</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30">
+                                <td class="px-4 py-3 font-medium text-emerald-400">Seventh Division</td>
+                                <td class="px-4 py-3 text-slate-300">Intelligence & Counter-intel</td>
+                                <td class="px-4 py-3 text-slate-300">500 Guardians</td>
+                                <td class="px-4 py-3 text-slate-300">Espionage & security</td>
+                            </tr>
+                            <tr class="hover:bg-slate-800/30">
+                                <td class="px-4 py-3 font-medium text-emerald-400">Eighth Division</td>
+                                <td class="px-4 py-3 text-slate-300">Special Operations</td>
+                                <td class="px-4 py-3 text-slate-300">400 Guardians</td>
+                                <td class="px-4 py-3 text-slate-300">Covert missions & assassination</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sub-Organizations -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-12">Sub-Organizations</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Octagram -->
+                <a href="octagram.html" class="group bg-slate-900/50 border border-slate-700 rounded-xl p-6 hover:border-emerald-500/50 transition-all">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-emerald-800/50 transition">
+                            <i class="fas fa-star text-emerald-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-emerald-400">The Octagram</h3>
+                            <p class="text-xs text-slate-500">Elite Council</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 text-sm">The eight most powerful Guardians who serve as the ultimate authority within the Domain, each representing a different aspect of Guardian power.</p>
+                </a>
+
+                <!-- Watchers -->
+                <a href="watchers.html" class="group bg-slate-900/50 border border-slate-700 rounded-xl p-6 hover:border-emerald-500/50 transition-all">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-emerald-800/50 transition">
+                            <i class="fas fa-eye text-emerald-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-emerald-400">The Watchers</h3>
+                            <p class="text-xs text-slate-500">Surveillance Division</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 text-sm">Elite scouts and observers who monitor Abyssal activities across the Eastern Plane, providing early warning of impending attacks.</p>
+                </a>
+
+                <!-- Guardian Order -->
+                <a href="#" class="group bg-slate-900/50 border border-slate-700 rounded-xl p-6 hover:border-emerald-500/50 transition-all">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-emerald-800/50 transition">
+                            <i class="fas fa-shield-alt text-emerald-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-emerald-400">Guardian Order</h3>
+                            <p class="text-xs text-slate-500">Core Military</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 text-sm">The main body of Guardian forces, comprising trained soldiers who form the backbone of Alliance military operations.</p>
+                </a>
+
+                <!-- 5-Star Battalion -->
+                <a href="5-star-battalion.html" class="group bg-slate-900/50 border border-slate-700 rounded-xl p-6 hover:border-emerald-500/50 transition-all">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-emerald-800/50 transition">
+                            <i class="fas fa-medal text-emerald-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-emerald-400">5-Star Battalion</h3>
+                            <p class="text-xs text-slate-500">Elite Forces</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 text-sm">An elite unit of five legendary Guardians who undertake the most dangerous missions and serve as the Captain-Commander's personal strike force.</p>
+                </a>
+
+                <!-- Allied Races -->
+                <a href="#" class="group bg-slate-900/50 border border-slate-700 rounded-xl p-6 hover:border-emerald-500/50 transition-all">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-emerald-800/50 transition">
+                            <i class="fas fa-dragon text-emerald-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-emerald-400">Allied Races</h3>
+                            <p class="text-xs text-slate-500">Ethereals, Mystics, Dromes, Drakes</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 text-sm">Non-human allies who contribute their unique abilities to the Guardian cause, including the ethereal spirits, mystical beings, drome constructs, and drake warriors.</p>
+                </a>
+
+                <!-- Dark Empires -->
+                <a href="#" class="group bg-slate-900/50 border border-slate-700 rounded-xl p-6 hover:border-red-500/50 transition-all">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-red-900/50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-red-800/50 transition">
+                            <i class="fas fa-skull text-red-400 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-red-400">Dark Empires</h3>
+                            <p class="text-xs text-slate-500">Aneians, Dread Horde, Dark Emperors, Grenlians</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 text-sm">Fallen nations and corrupted beings who have succumbed to Abyssal influence, serving as the primary antagonists that Guardians must oppose.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <i class="fas fa-tree text-eternal-emerald text-xl"></i>
+                    <span class="fantasy-font text-lg font-bold text-eternal-gold">Eternal Trees Saga</span>
+                </div>
+                <div class="text-slate-500 text-sm">
+                    <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="index.html" class="text-slate-400 hover:text-eternal-gold transition">Home</a>
+                    <a href="eastern-factions.html" class="text-slate-400 hover:text-eternal-amber transition">Eastern</a>
+                    <a href="western-factions.html" class="text-slate-400 hover:text-eternal-purple transition">Western</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

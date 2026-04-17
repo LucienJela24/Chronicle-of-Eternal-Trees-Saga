@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eastern Plane Factions - Eternal Trees Saga Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #e2e8f0; }
+    h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+    .gold-gradient { background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(201, 162, 39, 0.2); }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
+    <div class="flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <i class="fas fa-tree text-amber-400 text-2xl"></i>
+        <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
+        <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
+        <a href="timeline.html" class="text-slate-300 hover:text-amber-400 transition">Timeline</a>
+        <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
+        <a href="eastern-factions.html" class="text-amber-400 font-medium">Eastern</a>
+        <a href="western-factions.html" class="text-slate-300 hover:text-amber-400 transition">Western</a>
+        <a href="other-realms.html" class="text-slate-300 hover:text-amber-400 transition">Realms</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400"><i class="fas fa-bars text-xl"></i></button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
+    <div class="p-4">
+      <div class="flex justify-between items-center mb-6">
+        <span class="font-bold text-lg">Navigation</span>
+        <button id="closeMenu" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+      </div>
+      <nav class="space-y-2">
+        <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
+        <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
+        <a href="timeline.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
+        <a href="plots.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
+        <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-amber-400 bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
+        <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
+        <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto p-4 md:p-8">
+    <div class="text-center py-8 mb-10">
+      <h1 class="text-4xl font-bold mb-4 fantasy-font"><span class="gold-gradient">Eastern Plane Factions</span></h1>
+      <p class="text-slate-400">Tree of Order — Structured, Hierarchical, Crystalline</p>
+    </div>
+
+    <!-- Overview -->
+    <section class="mb-12">
+      <div class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-6">
+        <h2 class="text-xl font-bold text-amber-400 mb-4">Overview</h2>
+        <p class="text-slate-300 mb-4">The Eastern Plane is governed by the Tree of Order, rooted in the essence of Cosmarchos (the Earlier God of Order). It consists of Four Great Realms, each aligned with a cardinal direction and elemental force, plus the neutral Guardian Domain at Arcadia Isle.</p>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <p class="text-slate-400 text-sm mb-2"><span class="text-amber-400">Protector:</span> Luminara (North), Ryūjin (East), Morvoren (West), Mechanus (South)</p>
+            <p class="text-slate-400 text-sm mb-2"><span class="text-amber-400">Primary Nodes:</span> Transcendence, Pact, Self, Inheritance, Science, Intuition, World, Artifice</p>
+          </div>
+          <div>
+            <p class="text-slate-400 text-sm mb-2"><span class="text-amber-400">Covert Orders:</span> Order of the Star, Root Sanctuary, Havenfire Guild, Filwind Institute</p>
+            <p class="text-slate-400 text-sm"><span class="text-amber-400">Allied Races:</span> Ethereals, Drakes, Mystics, Dromes</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Four Realms -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-chess-rook mr-2"></i>The Four Realms</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="lux-imperio.html" class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <i class="fas fa-sun text-amber-400 text-2xl"></i>
+            <h3 class="text-xl font-bold text-amber-400">Lux Imperio</h3>
+          </div>
+          <p class="text-slate-400 text-sm mb-2">North — Realm of Light</p>
+          <p class="text-slate-300 text-sm mb-3">Theocratic dual government of Pope and Emperor. Light-based magic and Eclipse shadow-rites.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">50M Population</span>
+            <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">Transcendence Node</span>
+          </div>
+        </a>
+        <a href="chuugoku.html" class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <i class="fas fa-dragon text-amber-400 text-2xl"></i>
+            <h3 class="text-xl font-bold text-amber-400">Chuugoku Empire</h3>
+          </div>
+          <p class="text-slate-400 text-sm mb-2">East — Realm of Elements</p>
+          <p class="text-slate-300 text-sm mb-3">Five Great Houses rule through chi-cultivation. Dragon Throne holds temporal power.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">80M Population</span>
+            <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">Self Node</span>
+          </div>
+        </a>
+        <a href="avalon.html" class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <i class="fas fa-hat-wizard text-amber-400 text-2xl"></i>
+            <h3 class="text-xl font-bold text-amber-400">Seven Kingdoms of Avalon</h3>
+          </div>
+          <p class="text-slate-400 text-sm mb-2">West — Realm of Magic</p>
+          <p class="text-slate-300 text-sm mb-3">High King and Council of Magisters govern. Five Categories of Magic define society.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">60M Population</span>
+            <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">Intuition Node</span>
+          </div>
+        </a>
+        <a href="helron.html" class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <i class="fas fa-flask text-amber-400 text-2xl"></i>
+            <h3 class="text-xl font-bold text-amber-400">Helron State</h3>
+          </div>
+          <p class="text-slate-400 text-sm mb-2">South — Realm of Knowledge</p>
+          <p class="text-slate-300 text-sm mb-3">Triumvirate governs through certification tiers. Paraformer technology and Null Chamber research.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">100M Population</span>
+            <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">Science Node</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Guardian Domain -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400"><i class="fas fa-shield-alt mr-2"></i>Guardian Domain</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <a href="guardian-domain.html" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6 card-hover">
+          <h3 class="text-lg font-bold text-emerald-400 mb-2">Guardian Order</h3>
+          <p class="text-slate-300 text-sm">The hybrid military force defending all Four Realms. Founded by Gallian.</p>
+        </a>
+        <a href="octagram.html" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6 card-hover">
+          <h3 class="text-lg font-bold text-emerald-400 mb-2">The Octagram</h3>
+          <p class="text-slate-300 text-sm">Secret society preserving cross-node synthesis. Founded by Selene.</p>
+        </a>
+        <a href="watchers.html" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6 card-hover">
+          <h3 class="text-lg font-bold text-emerald-400 mb-2">The Watchers</h3>
+          <p class="text-slate-300 text-sm">Investigative specialists monitoring threats. Eye-trained seers.</p>
+        </a>
+        <a href="5-star-battalion.html" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6 card-hover">
+          <h3 class="text-lg font-bold text-emerald-400 mb-2">5-Star Battalion</h3>
+          <p class="text-slate-300 text-sm">Proto-mixed realm anti-incursion force. Sealed for 8,000 years.</p>
+        </a>
+        <a href="allied-races.html" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6 card-hover">
+          <h3 class="text-lg font-bold text-emerald-400 mb-2">Allied Races</h3>
+          <p class="text-slate-300 text-sm">Ethereals, Drakes, Mystics, and Dromes—non-human allies.</p>
+        </a>
+        <a href="aneians.html" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6 card-hover">
+          <h3 class="text-lg font-bold text-emerald-400 mb-2">The Aneians</h3>
+          <p class="text-slate-300 text-sm">Refugee people from consumed homeworld. Lucius's heritage.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Threats -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-red-400"><i class="fas fa-skull mr-2"></i>Threats & Enemies</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <a href="dread-horde.html" class="bg-slate-900/50 border border-red-500/30 rounded-xl p-6 card-hover">
+          <h3 class="text-lg font-bold text-red-400 mb-2">Dread Horde</h3>
+          <p class="text-slate-300 text-sm">Servants of the Dark Emperors. Hierarchy from Dread Generals to Hollow.</p>
+        </a>
+        <a href="dark-emperors.html" class="bg-slate-900/50 border border-red-500/30 rounded-xl p-6 card-hover">
+          <h3 class="text-lg font-bold text-red-400 mb-2">Dark Emperors</h3>
+          <p class="text-slate-300 text-sm">Three corrupted Guardians: Tomoyama, Kross, and Marcus.</p>
+        </a>
+        <a href="grenlians.html" class="bg-slate-900/50 border border-red-500/30 rounded-xl p-6 card-hover">
+          <h3 class="text-lg font-bold text-red-400 mb-2">The Grenlians</h3>
+          <p class="text-slate-300 text-sm">Ordered Void manifestations. The Grey Tide—structured anti-reality.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Four Covert Orders -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-mask mr-2"></i>Four Covert Orders</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="order-of-the-star.html" class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+          <h3 class="text-lg font-bold text-amber-400 mb-2">Order of the Star</h3>
+          <p class="text-slate-400 text-sm mb-2">Lux Imperio (North) — Founded Abs. 3,735</p>
+          <p class="text-slate-300 text-sm">Eclipse Legions — 'Shadow supports Light'. Military: 50k active / 200k reserve.</p>
+        </a>
+        <a href="root-sanctuary.html" class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+          <h3 class="text-lg font-bold text-amber-400 mb-2">Root Sanctuary</h3>
+          <p class="text-slate-400 text-sm mb-2">Chuugoku (East) — Founded Abs. 3,785</p>
+          <p class="text-slate-300 text-sm">House Legions — 'Mixed harmony'. Military: 80k active / 400k reserve.</p>
+        </a>
+        <a href="havenfire-guild.html" class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+          <h3 class="text-lg font-bold text-amber-400 mb-2">Havenfire Guild</h3>
+          <p class="text-slate-400 text-sm mb-2">Avalon (West) — Founded Abs. 4,085</p>
+          <p class="text-slate-300 text-sm">Category Battlemages — 'Adaptive Categories'. Military: 60k active / 300k reserve.</p>
+        </a>
+        <a href="filwind-institute.html" class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+          <h3 class="text-lg font-bold text-amber-400 mb-2">Filwind Institute</h3>
+          <p class="text-slate-400 text-sm mb-2">Helron (South) — Founded Abs. 4,385</p>
+          <p class="text-slate-300 text-sm">Augmented Cohorts — 'Adaptive uncertainty'. Military: 100k active / 500k reserve.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
+    <p class="text-slate-400 text-sm">Eternal Tree Saga Wiki — A Chronicle Spanning Six Myriads</p>
+    <p class="text-slate-500 text-xs mt-2">"The center holds. For now. For always."</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
+    if (closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
+  </script>
+</body>
+</html>

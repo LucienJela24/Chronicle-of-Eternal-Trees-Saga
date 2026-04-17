@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seven Kingdoms of Avalon - Eternal Trees Saga Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'cinzel': ['Cinzel', serif],
+                        'inter': ['Inter', sans-serif],
+                    },
+                    colors: {
+                        'eternal-gold': '#d4af37',
+                        'eternal-amber': '#f59e0b',
+                        'eternal-purple': '#8b5cf6',
+                        'eternal-emerald': '#10b981',
+                        'eternal-slate': '#1e293b',
+                        'royal-blue': '#4169e1',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; }
+        h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+        .framework-card { transition: all 0.3s ease; }
+        .framework-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .gold-gradient { background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-slate-900/90 backdrop-blur-md border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <i class="fas fa-tree text-eternal-emerald text-2xl"></i>
+                        <span class="fantasy-font text-xl font-bold text-eternal-gold">Eternal Trees Saga</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="flex items-baseline space-x-4">
+                        <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Home</a>
+                        <a href="key-figures.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Key Figures</a>
+                        <a href="places.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Places</a>
+                        <a href="timeline.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Timeline</a>
+                        <a href="plots.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Plots</a>
+                        <a href="eastern-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-amber hover:bg-slate-800 transition">Eastern</a>
+                        <a href="western-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-purple hover:bg-slate-800 transition">Western</a>
+                        <a href="other-realms.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-emerald hover:bg-slate-800 transition">Realms</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Home</a>
+                <a href="key-figures.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Key Figures</a>
+                <a href="places.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Places</a>
+                <a href="timeline.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Timeline</a>
+                <a href="plots.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Plots</a>
+                <a href="eastern-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-amber hover:bg-slate-800">Eastern Factions</a>
+                <a href="western-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-purple hover:bg-slate-800">Western Factions</a>
+                <a href="other-realms.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-emerald hover:bg-slate-800">Other Realms</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-b from-blue-900/40 to-slate-950 py-16">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 50% 50%, rgba(65, 105, 225, 0.2) 0%, transparent 70%);"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center space-x-2 mb-4">
+                <span class="px-3 py-1 bg-blue-900/50 border border-blue-600/30 rounded-full text-blue-400 text-sm">Eastern Plane</span>
+                <span class="px-3 py-1 bg-slate-800 border border-slate-600 rounded-full text-slate-400 text-sm">Seven Kingdoms</span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold text-blue-400 mb-4 fantasy-font">Seven Kingdoms of Avalon</h1>
+            <p class="text-xl text-slate-400 max-w-3xl mx-auto">A Confederation of Arcane Monarchies — Where Magic and Chivalry Reign</p>
+            <div class="mt-6 flex justify-center space-x-4 text-sm text-slate-500">
+                <span><i class="fas fa-chess-king text-blue-400 mr-2"></i>High King System</span>
+                <span><i class="fas fa-hat-wizard text-blue-400 mr-2"></i>Five Magical Arts</span>
+                <span><i class="fas fa-shield-alt text-blue-400 mr-2"></i>Knightly Orders</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="py-8 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-4">
+                <div class="bg-slate-900/50 border border-blue-500/30 rounded-xl p-4 text-center">
+                    <div class="text-2xl font-bold text-blue-400">35 Million</div>
+                    <div class="text-sm text-slate-400">Total Population</div>
+                </div>
+                <div class="bg-slate-900/50 border border-blue-500/30 rounded-xl p-4 text-center">
+                    <div class="text-2xl font-bold text-blue-400">175,000</div>
+                    <div class="text-sm text-slate-400">Combined Military</div>
+                </div>
+                <div class="bg-slate-900/50 border border-blue-500/30 rounded-xl p-4 text-center">
+                    <div class="text-2xl font-bold text-blue-400">Morgana</div>
+                    <div class="text-sm text-slate-400">Protector</div>
+                </div>
+                <div class="bg-slate-900/50 border border-blue-500/30 rounded-xl p-4 text-center">
+                    <div class="text-2xl font-bold text-blue-400">Harmony</div>
+                    <div class="text-sm text-slate-400">Primary Node</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                <h2 class="text-2xl font-bold text-blue-400 mb-4 fantasy-font"><i class="fas fa-crown mr-2"></i>Overview</h2>
+                <p class="text-slate-300 leading-relaxed mb-4">The Seven Kingdoms of Avalon represent a unique political entity in the Eastern Plane—a confederation of sovereign monarchies united by ancient treaties, intermarriage, shared magical traditions, and common defense. Named after the legendary island-kingdom from ancient myths, Avalon prides itself on chivalric traditions, courtly culture, and magical scholarship unmatched elsewhere in the realm.</p>
+                <p class="text-slate-300 leading-relaxed mb-4">The confederation's origins trace back to the Primordial Era, when the Echo-Born—humans who could hear and channel the World Tree's whispers—gathered in the fertile heartlands of what would become Avalon. These early magic-users established the first academies of the Five Categories: Incantation, Sorcery, Ritual, Armament, and Arcane. Over millennia, their descendants founded the seven kingdoms that now comprise the confederation.</p>
+                <p class="text-slate-300 leading-relaxed">At the center of Avalon's governance stands the rotating High King (or Queen), chosen annually from among the seven monarchs. This system prevents any single kingdom from dominating while ensuring unified leadership for confederation matters. The current tension with the Havenfire Guild—a rising mercantile-magical organization—threatens this carefully balanced system by challenging the traditional magical hierarchy.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11 Frameworks Analysis -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-blue-400 mb-12 fantasy-font"><i class="fas fa-layer-group mr-2"></i>11 Frameworks Analysis</h2>
+            
+            <!-- Historical Framework -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
+                <h3 class="text-lg font-bold text-blue-400 mb-3"><i class="fas fa-landmark mr-2"></i>1. Historical Framework</h3>
+                <p class="text-slate-300 text-sm mb-3"><strong>Primordial Origins (Abs. 1,300-2,584):</strong> Avalon's earliest inhabitants were the Echo-Born—humans who developed the ability to hear and channel the World Tree's whispers during the Primordial Era's magical awakening. These proto-mages gathered in the heartlands where ley lines converged, establishing the first magical communities.</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>The Five Categories Development (Abs. 1,800-2,200):</strong> Echo-Born scholars systematized magic into five distinct categories, each becoming a specialized discipline:</p>
+                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                    <li>• <strong>Incantation:</strong> Spoken magic, words of power</li>
+                    <li>• <strong>Sorcery:</strong> Internal magic, will and visualization</li>
+                    <li>• <strong>Ritual:</strong> Ceremonial magic, symbolic actions</li>
+                    <li>• <strong>Armament:</strong> Enchanted objects and weapons</li>
+                    <li>• <strong>Arcane:</strong> Abstract magic, theoretical and complex</li>
+                </ul>
+                <p class="text-slate-300 text-sm mb-3"><strong>The Covenant of Lies (Abs. 2,584):</strong> Avalon's ancestors negotiated for the central heartlands, arguing that their magical expertise would be essential for defending against future threats. The Covenant's signatories agreed, recognizing the strategic value of powerful mages.</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>Fragmentation into Kingdoms (Year 500-900 / Abs. 3,085-3,485):</strong> The ancient Avalonian magical community gradually fragmented into seven distinct realms as different magical philosophies and bloodlines developed territorial identities. This fragmentation was initially seen as a tragedy but eventually proved to create healthy competition and diversity.</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>Treaty of Seven Crowns (Year 1,000 / Abs. 3,585):</strong> The seven kingdoms formally established their confederation, creating the High Council and the rotating High Kingship. This treaty has remained the foundation of Avalonian governance for over 8,500 years.</p>
+                <p class="text-slate-300 text-sm"><strong>Havenfire Guild Emergence (Year 8,500 / Abs. 11,085):</strong> The Havenfire Guild began as a mercantile cooperative but has grown into a major magical power, challenging the traditional dominance of the royal academies. This represents the most significant internal threat to Avalon's stability in millennia.</p>
+            </div>
+
+            <!-- Political Framework -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
+                <h3 class="text-lg font-bold text-blue-400 mb-3"><i class="fas fa-balance-scale mr-2"></i>2. Political Framework</h3>
+                <p class="text-slate-300 text-sm mb-3"><strong>The High King System:</strong> Each year, one of the seven monarchs serves as High King (or Queen), providing unified leadership for confederation matters. The rotation follows a fixed order established by the Treaty of Seven Crowns:</p>
+                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                    <li>• <strong>Camelot:</strong> First month (ceremonial opening)</li>
+                    <li>• <strong>Lyonesse:</strong> Second month</li>
+                    <li>• <strong>Gorre:</strong> Third month</li>
+                    <li>• <strong>Orcanie:</strong> Fourth month</li>
+                    <li>• <strong>Gaunes:</strong> Fifth month</li>
+                    <li>• <strong>Estregales:</strong> Sixth month</li>
+                    <li>• <strong>Sorelois:</strong> Seventh month (ceremonial closing)</li>
+                </ul>
+                <p class="text-slate-300 text-sm mb-3"><strong>The High Council:</strong> Comprising the seven monarchs plus representatives from major knightly orders and magical academies, the Council makes decisions affecting the entire confederation. Each kingdom has one vote, with the High King breaking ties.</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>Kingdom Sovereignty:</strong> Each kingdom maintains:</p>
+                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                    <li>• Independent hereditary monarchy</li>
+                    <li>• Own laws and legal system</li>
+                    <li>• Own military forces</li>
+                    <li>• Control over internal magical education</li>
+                    <li>• Right to conduct foreign relations (with Council notification)</li>
+                </ul>
+                <p class="text-slate-300 text-sm mb-3"><strong>Magical Aristocracy:</strong> Social status is heavily influenced by magical ability. Those showing strong magical talent receive noble titles regardless of birth, creating a meritocratic element within the feudal structure.</p>
+                <p class="text-slate-300 text-sm"><strong>Havenfire Guild Challenge:</strong> The Guild has begun fielding candidates for local offices and demanding representation on the High Council, arguing that their economic power and magical innovation entitle them to political voice. This challenge threatens to transform Avalon's political structure.</p>
+            </div>
+
+            <!-- Mental Framework -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
+                <h3 class="text-lg font-bold text-blue-400 mb-3"><i class="fas fa-brain mr-2"></i>3. Mental Framework</h3>
+                <p class="text-slate-300 text-sm mb-3"><strong>Seven Liberal Arts:</strong> Education in Avalon emphasizes the classical seven liberal arts, augmented by magical theory:</p>
+                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                    <li>• <strong>Trivium:</strong> Grammar, Logic, Rhetoric</li>
+                    <li>• <strong>Quadrivium:</strong> Arithmetic, Geometry, Music, Astronomy</li>
+                    <li>• <strong>Magica:</strong> Theory and practice of the Five Categories</li>
+                </ul>
+                <p class="text-slate-300 text-sm mb-3"><strong>Chivalric Ideals:</strong> Knights and nobles are expected to embody chivalric virtues: courage, honor, courtesy, loyalty, and generosity. These ideals shape mental frameworks across social classes, with even commoners aspiring to chivalric behavior.</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>Pathology: Arcane Obsession:</strong> The primary psychological risk among Avalon's magic-users is fixation on magical power to the exclusion of all else. This manifests as social withdrawal, ethical compromise, and eventually magical corruption. The academies provide counseling, but cases persist.</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>Critical Thinking Tradition:</strong> Unlike some realms that discourage questioning, Avalon's academies encourage debate and intellectual challenge. The famous "Avalonian Method" involves testing magical theories through rigorous experimentation and peer review.</p>
+                <p class="text-slate-300 text-sm"><strong>Courtly Love Psychology:</strong> The tradition of courtly love—idealized, often unrequited romantic devotion—shapes emotional expression among the aristocracy. This can be psychologically complex, providing inspiration while sometimes creating unrealistic expectations.</p>
+            </div>
+
+            <!-- Spiritual Framework -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
+                <h3 class="text-lg font-bold text-blue-400 mb-3"><i class="fas fa-praying-hands mr-2"></i>4. Spiritual Framework</h3>
+                <p class="text-slate-300 text-sm mb-3"><strong>The Church of the Eternal Light:</strong> While Avalon is less theocratic than Lux Imperio, the Church maintains significant influence. It teaches that magic is a divine gift to be used responsibly, and that the World Tree's whispers are messages from the divine.</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>World Tree Veneration:</strong> Unlike other realms that worship specific Ethereals, Avalonian spirituality centers on the World Tree itself—the source of all magic. Major ceremonies occur at sites where ley lines converge, believed to be points where the Tree's presence is strongest.</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>The Pendragon Legacy:</strong> The ruling dynasty of Camelot claims descent from the Pendragon line, ancient dragon-blooded mages who were among the first Echo-Born. This lineage is considered spiritually significant, though other kingdoms dispute its unique importance.</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>Magical Ethics:</strong> Each of the Five Categories has associated ethical codes. Violations—using Incantation for deception, Sorcery for domination, Ritual for desecration, Armament for unjust war, or Arcane for reality-breaking—are considered spiritual failings as well as crimes.</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>Pilgrimage Traditions:</strong> Major pilgrimage sites include the First Echo (where the first Echo-Born heard the Tree), the Seven Springs (where the kingdoms' founders met), and various ley line confluences. Pilgrimages are considered spiritually cleansing regardless of social status.</p>
+                <p class="text-slate-300 text-sm"><strong>Primary Ethereals:</strong> Morgana (Wisdom) receives particular veneration as patron of magical scholarship. Other widely worshipped Ethereals include those associated with knowledge, craft, and protection.</p>
+            </div>
+
+            <!-- Social Framework -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
+                <h3 class="text-lg font-bold text-blue-400 mb-3"><i class="fas fa-users mr-2"></i>5. Social Framework</h3>
+                <p class="text-slate-300 text-sm mb-3"><strong>Feudal Hierarchy with Magical Meritocracy:</strong></p>
+                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                    <li>• <strong>Royalty:</strong> Reigning monarchs and immediate family</li>
+                    <li>• <strong>High Nobility:</strong> Dukes, counts, and major magical houses</li>
+                    <li>• <strong>Lesser Nobility:</strong> Barons, knights, and minor magical lines</li>
+                    <li>• <strong>Knightly Class:</strong> Warriors with or without magical ability</li>
+                    <li>• <strong>Magical Commoners:</strong> Those with magic but no noble title</li>
+                    <li>• <strong>Merchants:</strong> Growing class, increasingly powerful</li>
+                    <li>• <strong>Artisans and Peasants:</strong> Traditional commoner classes</li>
+                </ul>
+                <p class="text-slate-300 text-sm mb-3"><strong>Social Mobility:</strong> Unlike more rigid feudal systems, Avalon permits significant movement between classes:</p>
+                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                    <li>• Magical awakening can elevate commoners to nobility</li>
+                    <li>• Knightly service can grant commoners knighthood</li>
+                    <li>• Commercial success can purchase noble titles (controversial)</li>
+                    <li>• Academic achievement can lead to advisory positions</li>
+                </ul>
+                <p class="text-slate-300 text-sm mb-3"><strong>Intermarriage Politics:</strong> Marriages between kingdoms are carefully negotiated to strengthen political bonds. The children of such unions often have complex loyalties, serving as bridges between realms.</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>Gender Dynamics:</strong> Women can hold any position including monarch, knight, and academy master. However, inheritance typically follows male-preference primogeniture, creating occasional succession disputes.</p>
+                <p class="text-slate-300 text-sm"><strong>Havenfire Guild Impact:</strong> The Guild's rise has created a new social category—magical professionals who owe loyalty to their employer rather than their kingdom. This challenges traditional feudal obligations.</p>
+            </div>
+
+            <!-- Cultural Framework -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
+                <h3 class="text-lg font-bold text-blue-400 mb-3"><i class="fas fa-palette mr-2"></i>6. Cultural Framework</h3>
+                <p class="text-slate-300 text-sm mb-3"><strong>Bardic Traditions:</strong> Bards hold honored positions as keepers of history, performers, and magical practitioners (Incantation category). The greatest bards can weave magic into their performances, influencing emotions and even reality through song and story.</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>Courtly Culture:</strong> Each kingdom maintains elaborate courtly traditions including:</p>
+                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                    <li>• <strong>Poetry competitions:</strong> Testing wit and romantic expression</li>
+                    <li>• <strong>Musical performances:</strong> Both magical and mundane</li>
+                    <li>• <strong>Illuminated manuscripts:</strong> Combining art, calligraphy, and minor enchantments</li>
+                    <li>• <strong>Courtly love rituals:</strong> Formalized romantic expression</li>
+                </ul>
+                <p class="text-slate-300 text-sm mb-3"><strong>Tournaments:</strong> Jousting, melee combat, and magical competitions entertain the nobility while demonstrating martial skill. The Grand Tournament, held annually at rotating locations, draws participants from all seven kingdoms.</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>Arthurian Legacy:</strong> The legend of King Arthur and the Knights of the Round Table serves as cultural inspiration. While historians debate Arthur's historical existence, his story shapes Avalonian ideals of unity, chivalry, and noble sacrifice.</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>Magical Arts:</strong> Beyond practical magic, Avalon has developed magical art forms—enchanted paintings that move, music that creates visual displays, sculptures that respond to touch. Master magical artists are celebrated throughout the confederation.</p>
+                <p class="text-slate-300 text-sm"><strong>Cuisine:</strong> Regional cuisines vary by kingdom, with magical ingredients and preparation methods creating unique dishes. Feast culture is important, with elaborate meals serving social and diplomatic functions.</p>
+            </div>
+
+            <!-- Economical Framework -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
+                <h3 class="text-lg font-bold text-blue-400 mb-3"><i class="fas fa-coins mr-2"></i>7. Economical Framework</h3>
+                <p class="text-slate-300 text-sm mb-3"><strong>Currency System:</strong></p>
+                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                    <li>• <strong>Avalonian Crowns (Gold):</strong> High-value currency accepted across all seven kingdoms</li>
+                    <li>• <strong>Kingdom Marks (Silver):</strong> Kingdom-specific currency, exchangeable at fixed rates</li>
+                    <li>• <strong>Copper Pennies:</strong> Standard small transactions</li>
+                </ul>
+                <p class="text-slate-300 text-sm mb-3"><strong>Kingdom Specializations:</strong></p>
+                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                    <li>• <strong>Camelot:</strong> Magical research, education, high-value enchantments</li>
+                    <li>• <strong>Lyonesse:</strong> Maritime trade, shipbuilding, naval services</li>
+                    <li>• <strong>Gorre:</strong> Mining, metallurgy, weapon and armor production</li>
+                    <li>• <strong>Orcanie:</strong> Magical components, rare herbs, mystical artifacts</li>
+                    <li>• <strong>Gaunes:</strong> Agriculture, wine production, food exports</li>
+                    <li>• <strong>Estregales:</strong> Military equipment, border defense services</li>
+                    <li>• <strong>Sorelois:</strong> Magical services, divination, arcane consultation</li>
+                </ul>
+                <p class="text-slate-300 text-sm mb-3"><strong>Internal Free Trade:</strong> The Treaty of Seven Crowns guarantees free trade between kingdoms, creating a unified market larger than any single kingdom's economy. This has been a major factor in Avalon's prosperity.</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>Guild System:</strong> Craft and merchant guilds regulate trades, maintain quality standards, and provide social services. The Havenfire Guild began as a merchant guild before expanding into magical services.</p>
+                <p class="text-slate-300 text-sm"><strong>Magical Economy:</strong> A significant portion of Avalon's economy involves magical goods and services—enchanted items, magical healing, divination, and education. This magical economy gives Avalon unique advantages in inter-realm trade.</p>
+            </div>
+
+            <!-- Physiological Framework -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
+                <h3 class="text-lg font-bold text-blue-400 mb-3"><i class="fas fa-heartbeat mr-2"></i>8. Physiological Framework</h3>
+                <p class="text-slate-300 text-sm mb-3"><strong>Magical Sensitivity:</strong> Avalonians show higher rates of magical sensitivity than populations elsewhere, likely due to centuries of selective pressure and ley line exposure. Approximately 15% of the population shows some magical ability, compared to 5% in other realms.</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>Lifespan:</strong> Average lifespan is 130 years, with magical practitioners often living longer due to healing magic and vitality enchantments. The longest-lived Avalonians are typically Arcane specialists who develop longevity rituals.</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>Healing Practices:</strong> Avalon has the most advanced healing traditions in the Eastern Plane, combining:</p>
+                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                    <li>• <strong>Magical healing:</strong> Direct magical intervention for injuries and disease</li>
+                    <li>• <strong>Herbal medicine:</strong> Sophisticated pharmacology using magical and mundane plants</li>
+                    <li>• <strong>Surgical techniques:</strong> Advanced for the setting, aided by magical anesthesia</li>
+                    <li>• <strong>Preventive care:</strong> Vitality enchantments and health monitoring</li>
+                </ul>
+                <p class="text-slate-300 text-sm mb-3"><strong>Magical Exhaustion:</strong> Common condition among magic-users who overextend their abilities. Symptoms include headache, nosebleeds, unconsciousness, and in severe cases, magical burnout (permanent loss of abilities).</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>Physical Training:</strong> Knights and warriors maintain rigorous fitness regimens. Even magic-users are encouraged to maintain physical health, as bodily condition affects magical capacity.</p>
+                <p class="text-slate-300 text-sm"><strong>Dietary Practices:</strong> Magical nutrition supplements traditional diet. Enchanted foods provide enhanced nutrition, while alchemical preparations address specific health needs.</p>
+            </div>
+
+            <!-- Territorial Framework -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
+                <h3 class="text-lg font-bold text-blue-400 mb-3"><i class="fas fa-map-marked-alt mr-2"></i>9. Territorial Framework</h3>
+                <p class="text-slate-300 text-sm mb-3"><strong>Geographic Overview:</strong> The Seven Kingdoms occupy a contiguous territory in the heart of the Eastern Plane, encompassing:</p>
+                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                    <li>• <strong>Rolling hills and fertile valleys:</strong> Agricultural heartland</li>
+                    <li>• <strong>Ancient forests:</strong> Magical wood sources and sacred sites</li>
+                    <li>• <strong>Coastal regions:</strong> Maritime access (primarily Lyonesse)</li>
+                    <li>• <strong>Magical ley line confluences:</strong> Powering the realm's magic</li>
+                </ul>
+                <p class="text-slate-300 text-sm mb-3"><strong>The Seven Kingdoms:</strong></p>
+                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                    <li>• <strong>Camelot:</strong> Largest kingdom, political and magical center, home to the rotating High Council seat</li>
+                    <li>• <strong>Lyonesse:</strong> Maritime realm with powerful navy and thriving ports</li>
+                    <li>• <strong>Gorre:</strong> Mountain kingdom rich in minerals and metals, master smiths</li>
+                    <li>• <strong>Orcanie:</strong> Northern reach with strong magical traditions and druidic sites</li>
+                    <li>• <strong>Gaunes:</strong> Verdant agricultural land, Avalon's breadbasket</li>
+                    <li>• <strong>Estregales:</strong> Border march guarding against external threats</li>
+                    <li>• <strong>Sorelois:</strong> Enchanted isle with highest magical academy concentration</li>
+                </ul>
+                <p class="text-slate-300 text-sm mb-3"><strong>Border Fortresses:</strong> A network of fortifications protects Avalon's borders, maintained jointly by all seven kingdoms. The fortress garrisons include knights from multiple kingdoms, fostering inter-kingdom cooperation.</p>
+                <p class="text-slate-300 text-sm"><strong>Road Networks:</strong> Well-maintained roads connect all seven kingdoms, facilitating trade, communication, and military movement. The Royal Road runs through all seven capitals.</p>
+            </div>
+
+            <!-- Technological Framework -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
+                <h3 class="text-lg font-bold text-blue-400 mb-3"><i class="fas fa-cogs mr-2"></i>10. Technological Framework</h3>
+                <p class="text-slate-300 text-sm mb-3"><strong>Magical Technology:</strong> Avalon's "technology" is primarily magical rather than mechanical:</p>
+                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                    <li>• <strong>Communication:</strong> Message spells, scrying crystals, enchanted mirrors</li>
+                    <li>• <strong>Transportation:</strong> Portal networks (limited), flying mounts, levitation enchantments</li>
+                    <li>• <strong>Manufacturing:</strong> Enchanted tools, animated assistants, magical forging</li>
+                    <li>• <strong>Defense:</strong> Wards, magical barriers, animated guardians</li>
+                </ul>
+                <p class="text-slate-300 text-sm mb-3"><strong>Metallurgy:</strong> Gorre's master smiths produce the finest weapons and armor in the Eastern Plane, often with minor enchantments. Avalonian steel is prized throughout the realms.</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>Magical Research:</strong> The University of Avalon (in Camelot) serves as the premier center for magical research. Current projects include:</p>
+                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                    <li>• Long-distance communication improvements</li>
+                    <li>• Healing magic advancement</li>
+                    <li>• Defensive ward enhancement</li>
+                    <li>• Theoretical Arcane studies</li>
+                </ul>
+                <p class="text-slate-300 text-sm mb-3"><strong>Architectural Engineering:</strong> Magical construction techniques allow impressive structures—floating towers, self-maintaining fortresses, buildings larger than mundane engineering would permit.</p>
+                <p class="text-slate-300 text-sm"><strong>Havenfire Innovation:</strong> The Guild has developed new magical techniques, particularly in practical applications and mass production. Their innovations challenge the academies' traditional dominance in magical research.</p>
+            </div>
+
+            <!-- Military Framework -->
+            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
+                <h3 class="text-lg font-bold text-blue-400 mb-3"><i class="fas fa-shield-alt mr-2"></i>11. Military Framework</h3>
+                <p class="text-slate-300 text-sm mb-3"><strong>Kingdom Forces:</strong> Each kingdom maintains its own military:</p>
+                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                    <li>• <strong>Camelot:</strong> 40,000 (largest force, includes magical elite)</li>
+                    <li>• <strong>Lyonesse:</strong> 25,000 (primarily naval)</li>
+                    <li>• <strong>Gorre:</strong> 30,000 (heavy infantry specialists)</li>
+                    <li>• <strong>Orcanie:</strong> 20,000 (includes druidic warriors)</li>
+                    <li>• <strong>Gaunes:</strong> 25,000 (primarily militia)</li>
+                    <li>• <strong>Estregales:</strong> 20,000 (border specialists)</li>
+                    <li>• <strong>Sorelois:</strong> 15,000 (magical specialists)</li>
+                </ul>
+                <p class="text-slate-300 text-sm mb-3"><strong>The Avalonian Knights:</strong> A pan-kingdom order serving as rapid response forces for confederation defense. Membership is highly prestigious, requiring noble birth, magical ability, and exceptional martial skill. Approximately 5,000 knights serve at any time.</p>
+                <p class="text-slate-300 text-sm mb-3"><strong>Knightly Orders:</strong> Beyond the Avalonian Knights, each kingdom maintains specialized orders:</p>
+                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                    <li>• <strong>Order of the Round Table:</strong> Camelot's elite, bodyguards to the High King</li>
+                    <li>• <strong>Sea Guard:</strong> Lyonesse's naval knights</li>
+                    <li>• <strong>Stone Sentinels:</strong> Gorre's fortress defenders</li>
+                    <li>• <strong>Wild Hunt:</strong> Orcanie's druidic cavalry</li>
+                </ul>
+                <p class="text-slate-300 text-sm mb-3"><strong>Military Organization:</strong> Feudal levies supplemented by professional soldiers. Knights form the elite core, supported by men-at-arms, archers, and magical support. Combined arms tactics integrate heavy cavalry, infantry, archers, and battle-mages.</p>
+                <p class="text-slate-300 text-sm"><strong>Havenfire Military Role:</strong> The Guild maintains private security forces that some kingdoms have begun hiring, raising concerns about mercenary dependence and Guild military influence.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fatal Risk -->
+    <section class="py-12 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-red-900/20 border border-red-900/30 rounded-xl p-6">
+                <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-exclamation-triangle mr-2"></i>Fatal Risk: Havenfire Guild Challenge</h3>
+                <p class="text-slate-300 text-sm mb-3">The Havenfire Guild's rise represents an existential threat to Avalon's traditional structure:</p>
+                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                    <li>• <strong>Political Challenge:</strong> Demanding Council representation, undermining royal authority</li>
+                    <li>• <strong>Economic Challenge:</strong> Controlling growing portions of the magical economy</li>
+                    <li>• <strong>Military Challenge:</strong> Maintaining private forces that rival kingdom militias</li>
+                    <li>• <strong>Cultural Challenge:</strong> Promoting meritocratic values that conflict with feudal traditions</li>
+                </ul>
+                <p class="text-slate-300 text-sm mb-3">If the Guild continues growing unchecked, it could:</p>
+                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                    <li>• Transform Avalon from a confederation of monarchies into a mercantile oligarchy</li>
+                    <li>• Destroy the magical academy system that has preserved knowledge for millennia</li>
+                    <li>• Create internal conflict as kingdoms take sides in the dispute</li>
+                    <li>• Weaken Avalon's ability to respond to external threats like the Abyss</li>
+                </ul>
+                <p class="text-slate-300 text-sm">The kingdoms must either integrate the Guild into their structure (risking transformation) or suppress it (risking civil conflict). Neither option guarantees Avalon's continued stability.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Locations -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold mb-6 fantasy-font text-blue-400"><i class="fas fa-map-marker-alt mr-2"></i>Key Locations</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 framework-card">
+                    <h3 class="text-lg font-bold text-slate-200 mb-2">Camelot</h3>
+                    <p class="text-slate-400 text-sm">The High Kingdom and largest realm. Contains the Round Table, the University of Avalon, and the rotating seat of the High Council. Political and magical center of the confederation.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 framework-card">
+                    <h3 class="text-lg font-bold text-slate-200 mb-2">University of Avalon</h3>
+                    <p class="text-slate-400 text-sm">Premier center for magical research and education. Houses the largest library in the Eastern Plane and trains the most powerful mages. Currently threatened by Havenfire Guild competition.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 framework-card">
+                    <h3 class="text-lg font-bold text-slate-200 mb-2">Havenfire Guildhall</h3>
+                    <p class="text-slate-400 text-sm">Sprawling complex serving as the Guild's headquarters. Contains research facilities, training centers, and administrative offices. Symbol of the challenge to traditional magical authority.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 framework-card">
+                    <h3 class="text-lg font-bold text-slate-200 mb-2">The First Echo</h3>
+                    <p class="text-slate-400 text-sm">Sacred site where the first Echo-Born heard the World Tree's whispers. Major pilgrimage destination and ley line nexus of immense power.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 framework-card">
+                    <h3 class="text-lg font-bold text-slate-200 mb-2">Border Fortresses</h3>
+                    <p class="text-slate-400 text-sm">Network of fortifications protecting Avalon's borders. Jointly maintained by all seven kingdoms, with garrisons including knights from multiple realms.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 framework-card">
+                    <h3 class="text-lg font-bold text-slate-200 mb-2">Seven Springs</h3>
+                    <p class="text-slate-400 text-sm">Historic meeting place where the kingdoms' founders gathered. Site of the Treaty of Seven Crowns signing. Continuing location for major diplomatic ceremonies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Government Structure -->
+    <section class="py-12 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold mb-6 fantasy-font text-blue-400"><i class="fas fa-sitemap mr-2"></i>Government Structure</h2>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="bg-slate-900/50 border border-blue-500/30 rounded-xl p-6">
+                    <h3 class="text-lg font-bold text-blue-400 mb-4"><i class="fas fa-crown mr-2"></i>Confederation Level</h3>
+                    <ul class="space-y-2 text-slate-300 text-sm">
+                        <li><strong>High King/Queen:</strong> Rotating annual leadership</li>
+                        <li><strong>High Council:</strong> Seven monarchs plus advisors</li>
+                        <li><strong>Avalonian Knights:</strong> Pan-kingdom military order</li>
+                        <li><strong>University:</strong> Confederation-funded research</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-900/50 border border-blue-500/30 rounded-xl p-6">
+                    <h3 class="text-lg font-bold text-blue-400 mb-4"><i class="fas fa-chess-king mr-2"></i>Kingdom Level</h3>
+                    <ul class="space-y-2 text-slate-300 text-sm">
+                        <li><strong>Monarch:</strong> Hereditary ruler</li>
+                        <li><strong>Royal Council:</strong> Advisors and ministers</li>
+                        <li><strong>Magical Academy:</strong> Kingdom-sponsored education</li>
+                        <li><strong>Knightly Orders:</strong> Kingdom military elite</li>
+                    </ul>
+                </div>
+                <div class="bg-slate-900/50 border border-blue-500/30 rounded-xl p-6">
+                    <h3 class="text-lg font-bold text-blue-400 mb-4"><i class="fas fa-users mr-2"></i>Local Level</h3>
+                    <ul class="space-y-2 text-slate-300 text-sm">
+                        <li><strong>Nobles:</strong> Regional governance</li>
+                        <li><strong>Guilds:</strong> Trade regulation and services</li>
+                        <li><strong>Magisters:</strong> Local magical oversight</li>
+                        <li><strong>Local Courts:</strong> Justice administration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <i class="fas fa-tree text-eternal-emerald text-xl"></i>
+                    <span class="fantasy-font text-lg font-bold text-eternal-gold">Eternal Trees Saga</span>
+                </div>
+                <div class="text-slate-500 text-sm">
+                    <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="index.html" class="text-slate-400 hover:text-eternal-gold transition">Home</a>
+                    <a href="eastern-factions.html" class="text-slate-400 hover:text-eternal-amber transition">Eastern</a>
+                    <a href="western-factions.html" class="text-slate-400 hover:text-eternal-purple transition">Western</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

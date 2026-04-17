@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eternal Trees Saga Wiki - Complete Chronicle</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            background: '#0a0a0f',
+            foreground: '#e2e8f0',
+            card: '#12121a',
+            primary: '#c9a227',
+            secondary: '#1e293b',
+            accent: '#7c3aed',
+            muted: '#94a3b8',
+            eastern: '#c9a227',
+            western: '#7c3aed',
+            oldtree: '#10b981',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0f;
+      color: #e2e8f0;
+    }
+    
+    h1, h2, h3, .fantasy-font {
+      font-family: 'Cinzel', serif;
+    }
+    
+    .gold-gradient {
+      background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .purple-gradient {
+      background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 50%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .emerald-gradient {
+      background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(124, 58, 237, 0.2);
+    }
+    
+    .nav-link:hover {
+      background: linear-gradient(90deg, rgba(201, 162, 39, 0.1), transparent);
+    }
+    
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c9a227, transparent);
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
+    <div class="flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <i class="fas fa-tree text-amber-400 text-2xl"></i>
+        <h1 class="font-bold text-xl fantasy-font">
+          <span class="gold-gradient">Eternal Tree Saga</span>
+        </h1>
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
+        <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
+        <a href="timeline.html" class="text-slate-300 hover:text-amber-400 transition">Timeline</a>
+        <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
+        <a href="eastern-factions.html" class="text-slate-300 hover:text-amber-400 transition">Eastern</a>
+        <a href="western-factions.html" class="text-slate-300 hover:text-amber-400 transition">Western</a>
+        <a href="other-realms.html" class="text-slate-300 hover:text-amber-400 transition">Realms</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
+    <div class="p-4">
+      <div class="flex justify-between items-center mb-6">
+        <span class="font-bold text-lg">Navigation</span>
+        <button id="closeMenu" class="text-slate-400 hover:text-white">
+          <i class="fas fa-times text-xl"></i>
+        </button>
+      </div>
+      <nav class="space-y-2">
+        <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
+        <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
+        <a href="timeline.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
+        <a href="plots.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
+        <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
+        <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
+        <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto p-4 md:p-8">
+    
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 via-purple-950 to-slate-900 p-8 md:p-16 text-center mb-12">
+      <div class="absolute inset-0 opacity-20">
+        <div class="absolute top-10 left-10 w-32 h-32 bg-amber-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute top-1/2 left-1/2 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+      </div>
+      <div class="relative z-10">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4 fantasy-font">
+          <span class="gold-gradient">The Eternal Tree Saga</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto mb-4">
+          A Chronicle Spanning Six Myriads Across Two Planes of Existence
+        </p>
+        <p class="text-lg text-slate-400 max-w-2xl mx-auto mb-8">
+          Absolute Years 1 — 51,235+ | Books 0-11 | Eastern & Western Planes
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="key-figures.html" class="px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white rounded-lg font-medium transition">
+            <i class="fas fa-users mr-2"></i>Explore Characters
+          </a>
+          <a href="timeline.html" class="px-6 py-3 border border-purple-500 text-purple-300 hover:bg-purple-950 rounded-lg font-medium transition">
+            <i class="fas fa-clock mr-2"></i>View Timeline
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Theme -->
+    <section class="text-center py-8 mb-12">
+      <blockquote class="text-2xl md:text-3xl italic text-amber-400 fantasy-font">
+        "Purity creates vacuums; relation fills them."
+      </blockquote>
+      <p class="text-slate-400 mt-4">— The Central Thematic Statement</p>
+    </section>
+
+    <!-- The Three Trees -->
+    <section class="mb-12">
+      <h2 class="text-3xl font-bold text-center mb-8 fantasy-font">
+        <span class="gold-gradient">The Three Trees</span>
+      </h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-4">
+            <i class="fas fa-tree text-amber-400 text-2xl"></i>
+            <h3 class="text-xl font-bold text-amber-400 fantasy-font">Tree of Order</h3>
+          </div>
+          <p class="text-slate-300 mb-4">Eastern Plane</p>
+          <p class="text-sm text-slate-400 mb-4">Structured, hierarchical, crystalline. Rooted in Dominator essence (Cosmarchos). The foundation of the Four Realms.</p>
+          <div class="flex flex-wrap gap-2">
+            <a href="lux-imperio.html" class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded hover:bg-amber-900/50 transition">Lux Imperio</a>
+            <a href="chuugoku.html" class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded hover:bg-amber-900/50 transition">Chuugoku</a>
+            <a href="avalon.html" class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded hover:bg-amber-900/50 transition">Avalon</a>
+            <a href="helron.html" class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded hover:bg-amber-900/50 transition">Helron</a>
+          </div>
+        </div>
+        <div class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-4">
+            <i class="fas fa-tree text-purple-400 text-2xl"></i>
+            <h3 class="text-xl font-bold text-purple-400 fantasy-font">Tree of Chaos</h3>
+          </div>
+          <p class="text-slate-300 mb-4">Western Plane</p>
+          <p class="text-sm text-slate-400 mb-4">Fluid, experimental, adaptive. Born from Intervenor (Symphion) and Observer (Aletheia) essence.</p>
+          <div class="flex flex-wrap gap-2">
+            <a href="lumeria.html" class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded hover:bg-purple-900/50 transition">Library</a>
+            <a href="federation.html" class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded hover:bg-purple-900/50 transition">Federation</a>
+            <a href="union.html" class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded hover:bg-purple-900/50 transition">Union</a>
+            <a href="dominion-republic.html" class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded hover:bg-purple-900/50 transition">Dominion Republic</a>
+          </div>
+        </div>
+        <div class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-4">
+            <i class="fas fa-tree text-emerald-400 text-2xl"></i>
+            <h3 class="text-xl font-bold text-emerald-400 fantasy-font">The Old Tree</h3>
+          </div>
+          <p class="text-slate-300 mb-4">Meridian Domain</p>
+          <p class="text-sm text-slate-400 mb-4">Last remnant of the Wild of Aletheia. The boundary-wood, witness, liminal space between the Two Trees.</p>
+          <div class="flex flex-wrap gap-2">
+            <a href="other-realms.html" class="px-2 py-1 bg-emerald-900/30 text-emerald-300 text-xs rounded hover:bg-emerald-900/50 transition">Sanctuary</a>
+            <a href="other-realms.html" class="px-2 py-1 bg-emerald-900/30 text-emerald-300 text-xs rounded hover:bg-emerald-900/50 transition">Fourth Lord</a>
+            <a href="other-realms.html" class="px-2 py-1 bg-emerald-900/30 text-emerald-300 text-xs rounded hover:bg-emerald-900/50 transition">Overseers</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font">Universe at a Glance</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+          <div class="text-3xl font-bold text-amber-400">60,000+</div>
+          <div class="text-sm text-slate-400">Years Span</div>
+        </div>
+        <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+          <div class="text-3xl font-bold text-purple-400">12</div>
+          <div class="text-sm text-slate-400">Books</div>
+        </div>
+        <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+          <div class="text-3xl font-bold text-emerald-400">2</div>
+          <div class="text-sm text-slate-400">Parallel Planes</div>
+        </div>
+        <div class="bg-slate-800/50 rounded-lg p-4 text-center">
+          <div class="text-3xl font-bold text-blue-400">4+</div>
+          <div class="text-sm text-slate-400">Great Realms</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bridge Figures -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font">The Bridge Figures</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-slate-900/50 border border-amber-500/20 rounded-xl p-6 card-hover">
+          <h3 class="text-xl font-bold text-amber-400 mb-2">Lucien Jela</h3>
+          <p class="text-sm text-slate-400 mb-3">The Fourth Librarian</p>
+          <p class="text-slate-300 text-sm">Summoned from distant Earth (Oxford, 2024), he became the keeper of the Library of Lumeria for nearly 30,000 years. The Elder of the Old Tree.</p>
+        </div>
+        <div class="bg-slate-900/50 border border-purple-500/20 rounded-xl p-6 card-hover">
+          <h3 class="text-xl font-bold text-purple-400 mb-2">Lucius Arogzan</h3>
+          <p class="text-sm text-slate-400 mb-3">The Wanderer, 25th Guardian</p>
+          <p class="text-slate-300 text-sm">Born of the Eastern Plane, yet haunted by inexplicable perspectives. He walked the eight-clue path and became the bridge between worlds.</p>
+        </div>
+        <div class="bg-slate-900/50 border border-emerald-500/20 rounded-xl p-6 card-hover">
+          <h3 class="text-xl font-bold text-emerald-400 mb-2">Gaius</h3>
+          <p class="text-sm text-slate-400 mb-3">The Fifth Librarian</p>
+          <p class="text-slate-300 text-sm">First cross-planar Librarian, bridging Eastern cultivation and Western paraformer science. Rector Magnificus of the Academia.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Grid -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font">Explore the Saga</h2>
+      <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <a href="key-figures.html" class="bg-slate-800/30 border border-slate-700 rounded-xl p-6 card-hover">
+          <i class="fas fa-users text-amber-400 text-2xl mb-3"></i>
+          <h3 class="font-bold text-lg text-slate-200">Key Figures</h3>
+          <p class="text-sm text-slate-400">Heroes, villains, and legends</p>
+        </a>
+        <a href="places.html" class="bg-slate-800/30 border border-slate-700 rounded-xl p-6 card-hover">
+          <i class="fas fa-map-marker-alt text-amber-400 text-2xl mb-3"></i>
+          <h3 class="font-bold text-lg text-slate-200">Important Places</h3>
+          <p class="text-sm text-slate-400">Realms, cities, sacred sites</p>
+        </a>
+        <a href="timeline.html" class="bg-slate-800/30 border border-slate-700 rounded-xl p-6 card-hover">
+          <i class="fas fa-clock text-amber-400 text-2xl mb-3"></i>
+          <h3 class="font-bold text-lg text-slate-200">Timeline</h3>
+          <p class="text-sm text-slate-400">Six myriads of history</p>
+        </a>
+        <a href="plots.html" class="bg-slate-800/30 border border-slate-700 rounded-xl p-6 card-hover">
+          <i class="fas fa-book text-amber-400 text-2xl mb-3"></i>
+          <h3 class="font-bold text-lg text-slate-200">Plots</h3>
+          <p class="text-sm text-slate-400">Story arcs and narratives</p>
+        </a>
+        <a href="eastern-factions.html" class="bg-slate-800/30 border border-amber-500/30 rounded-xl p-6 card-hover">
+          <i class="fas fa-shield-alt text-amber-400 text-2xl mb-3"></i>
+          <h3 class="font-bold text-lg text-slate-200">Eastern Factions</h3>
+          <p class="text-sm text-slate-400">Four Realms & Guardian Domain</p>
+        </a>
+        <a href="western-factions.html" class="bg-slate-800/30 border border-purple-500/30 rounded-xl p-6 card-hover">
+          <i class="fas fa-shield-alt text-purple-400 text-2xl mb-3"></i>
+          <h3 class="font-bold text-lg text-slate-200">Western Factions</h3>
+          <p class="text-sm text-slate-400">Library, Federation, Union & Republic</p>
+        </a>
+        <a href="other-realms.html" class="bg-slate-800/30 border border-emerald-500/30 rounded-xl p-6 card-hover">
+          <i class="fas fa-globe text-emerald-400 text-2xl mb-3"></i>
+          <h3 class="font-bold text-lg text-slate-200">Other Realms</h3>
+          <p class="text-sm text-slate-400">Divine and liminal spaces</p>
+        </a>
+        <a href="eight-nodes.html" class="bg-slate-800/30 border border-slate-700 rounded-xl p-6 card-hover">
+          <i class="fas fa-project-diagram text-emerald-400 text-2xl mb-3"></i>
+          <h3 class="font-bold text-lg text-slate-200">Eight Nodes</h3>
+          <p class="text-sm text-slate-400">Topology of the Planes</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Eastern Factions Quick Links -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400">Eastern Plane Factions</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <a href="lux-imperio.html" class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-4 card-hover">
+          <h3 class="font-bold text-amber-400">Lux Imperio</h3>
+          <p class="text-sm text-slate-400">Realm of Light (North)</p>
+        </a>
+        <a href="chuugoku.html" class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-4 card-hover">
+          <h3 class="font-bold text-amber-400">Chuugoku Empire</h3>
+          <p class="text-sm text-slate-400">Realm of Elements (East)</p>
+        </a>
+        <a href="avalon.html" class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-4 card-hover">
+          <h3 class="font-bold text-amber-400">Seven Kingdoms of Avalon</h3>
+          <p class="text-sm text-slate-400">Realm of Magic (West)</p>
+        </a>
+        <a href="helron.html" class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-4 card-hover">
+          <h3 class="font-bold text-amber-400">Helron State</h3>
+          <p class="text-sm text-slate-400">Realm of Knowledge (South)</p>
+        </a>
+      </div>
+      <div class="mt-4 grid md:grid-cols-3 gap-4">
+        <a href="guardian-domain.html" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-4 card-hover">
+          <h3 class="font-bold text-emerald-400">Guardian Domain</h3>
+          <p class="text-sm text-slate-400">Arcadia Isle & Guardian Order</p>
+        </a>
+        <a href="octagram.html" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-4 card-hover">
+          <h3 class="font-bold text-emerald-400">The Octagram</h3>
+          <p class="text-sm text-slate-400">Secret society of harmony</p>
+        </a>
+        <a href="dread-horde.html" class="bg-slate-900/50 border border-red-500/30 rounded-xl p-4 card-hover">
+          <h3 class="font-bold text-red-400">Dread Horde</h3>
+          <p class="text-sm text-slate-400">Dark Emperors & Grenlians</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Western Factions Quick Links -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400">Western Plane Factions</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <a href="central-continent.html" class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-4 card-hover">
+          <h3 class="font-bold text-purple-400">Central Continent</h3>
+          <p class="text-sm text-slate-400">Aurelius Empire, Legion, Republic, Dominion</p>
+        </a>
+        <a href="zhonggou-continent.html" class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-4 card-hover">
+          <h3 class="font-bold text-purple-400">Zhonggou Continent</h3>
+          <p class="text-sm text-slate-400">Xi Dynasty, Five Kingdoms, Ming, Union</p>
+        </a>
+        <a href="seventeen-archipelago.html" class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-4 card-hover">
+          <h3 class="font-bold text-purple-400">Seventeen Archipelago</h3>
+          <p class="text-sm text-slate-400">Institute, Association, Council, Tellerium</p>
+        </a>
+        <a href="federation.html" class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-4 card-hover">
+          <h3 class="font-bold text-purple-400">Federation of Sixteen Nations</h3>
+          <p class="text-sm text-slate-400">Maritime covenant of the Western Archipelago</p>
+        </a>
+        <a href="lumeria.html" class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-4 card-hover">
+          <h3 class="font-bold text-purple-400">Lumeria</h3>
+          <p class="text-sm text-slate-400">Library of Lumeria & Academia</p>
+        </a>
+        <a href="unbecoming.html" class="bg-slate-900/50 border border-red-500/30 rounded-xl p-4 card-hover">
+          <h3 class="font-bold text-red-400">The Unbecoming</h3>
+          <p class="text-sm text-slate-400">Chaotic Plenitude manifestation</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Other Realms Quick Links -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400">Other Realms</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <a href="other-realms.html#meridian" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-4 card-hover">
+          <h3 class="font-bold text-emerald-400">Meridian Threshold</h3>
+          <p class="text-sm text-slate-400">Primary sealing point</p>
+        </a>
+        <a href="other-realms.html#domain" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-4 card-hover">
+          <h3 class="font-bold text-emerald-400">Meridian Domain</h3>
+          <p class="text-sm text-slate-400">Fourth Lord's Sanctuary</p>
+        </a>
+        <a href="other-realms.html#sanctuary" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-4 card-hover">
+          <h3 class="font-bold text-emerald-400">Sanctuary</h3>
+          <p class="text-sm text-slate-400">Between the Two Trees</p>
+        </a>
+        <a href="other-realms.html#meadow" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-4 card-hover">
+          <h3 class="font-bold text-emerald-400">Meadow Realm</h3>
+          <p class="text-sm text-slate-400">Space between Planes</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
+    <p class="text-slate-400 text-sm">
+      Eternal Tree Saga Wiki — A Chronicle Spanning Six Myriads
+    </p>
+    <p class="text-slate-500 text-xs mt-2">
+      "The center holds. For now. For always."
+    </p>
+  </footer>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Other Realms - Eternal Trees Saga Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #e2e8f0; }
+    h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+    .emerald-gradient { background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #10b981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(16, 185, 129, 0.2); }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
+    <div class="flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <i class="fas fa-tree text-amber-400 text-2xl"></i>
+        <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
+        <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
+        <a href="timeline.html" class="text-slate-300 hover:text-amber-400 transition">Timeline</a>
+        <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
+        <a href="eastern-factions.html" class="text-slate-300 hover:text-amber-400 transition">Eastern</a>
+        <a href="western-factions.html" class="text-slate-300 hover:text-amber-400 transition">Western</a>
+        <a href="other-realms.html" class="text-emerald-400 font-medium">Realms</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400"><i class="fas fa-bars text-xl"></i></button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
+    <div class="p-4">
+      <div class="flex justify-between items-center mb-6">
+        <span class="font-bold text-lg">Navigation</span>
+        <button id="closeMenu" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+      </div>
+      <nav class="space-y-2">
+        <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
+        <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
+        <a href="timeline.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
+        <a href="plots.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
+        <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
+        <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
+        <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-emerald-400 bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto p-4 md:p-8">
+    <div class="text-center py-8 mb-10">
+      <h1 class="text-4xl font-bold mb-4 fantasy-font"><span class="emerald-gradient">Other Realms</span></h1>
+      <p class="text-slate-400">Celestial domains, liminal spaces, and divine realms</p>
+    </div>
+
+    <!-- Overview -->
+    <section class="mb-12">
+      <div class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+        <h2 class="text-xl font-bold text-emerald-400 mb-4">Overview</h2>
+        <p class="text-slate-300 mb-4">Beyond the Two Planes exist realms that transcend ordinary geography—the domains of the Five Personas, liminal spaces between realities, and the meeting grounds where the boundaries between existence dissolve.</p>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div>
+            <p class="text-slate-400 text-sm mb-2"><span class="text-emerald-400">Divine Domains:</span> Celestial Realm, Great Forest, The Mist, Sanctuary</p>
+          </div>
+          <div>
+            <p class="text-slate-400 text-sm mb-2"><span class="text-emerald-400">Liminal Spaces:</span> Meridian Threshold, Meridian Domain, Meadow Realm</p>
+          </div>
+          <div>
+            <p class="text-slate-400 text-sm"><span class="text-emerald-400">The Old Tree:</span> Last remnant of the Wild of Aletheia</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divine Domains (Five Personas) -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400"><i class="fas fa-crown mr-2"></i>Divine Domains (The Five Personas)</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6 card-hover">
+          <h3 class="text-xl font-bold text-emerald-400 mb-2">Celestial Realm</h3>
+          <p class="text-slate-400 text-sm mb-2">Apex of the Tree — First Persona's Domain</p>
+          <p class="text-slate-300 text-sm mb-3">Domain of Reality, Energy, and Essence. Home of the Protectors: Luminara, Ryūjin, Morvoren, and Mechanus.</p>
+          <p class="text-slate-400 text-sm"><span class="text-emerald-400">Significance:</span> Ground of being; elemental reality. Wanderer's Path sixth clue location.</p>
+        </div>
+        <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6 card-hover">
+          <h3 class="text-xl font-bold text-emerald-400 mb-2">Great Forest</h3>
+          <p class="text-slate-400 text-sm mb-2">Branches of the Tree — Second Persona's Domain</p>
+          <p class="text-slate-300 text-sm mb-3">Domain of Knowledge, Time, and Space. Home of the Keepers: Goldroad, Orientalis, Occidens, Meridionalis, and Portalis.</p>
+          <p class="text-slate-400 text-sm"><span class="text-emerald-400">Significance:</span> Framework of experience; forest of paths. Nexus of Ways.</p>
+        </div>
+        <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6 card-hover">
+          <h3 class="text-xl font-bold text-emerald-400 mb-2">The Mist</h3>
+          <p class="text-slate-400 text-sm mb-2">Roots of the Tree — Third Persona's Domain</p>
+          <p class="text-slate-300 text-sm mb-3">Domain of Life and Death. Home of Auriel (Life Bringer) and Umbra (Death Reaper). Where souls journey between lives.</p>
+          <p class="text-slate-400 text-sm"><span class="text-emerald-400">Significance:</span> Meaning through finitude and consequence. Wanderer's Path seventh clue.</p>
+        </div>
+        <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6 card-hover">
+          <h3 class="text-xl font-bold text-emerald-400 mb-2">Sanctuary</h3>
+          <p class="text-slate-400 text-sm mb-2">Between the Two Trees — Fourth Persona's Domain</p>
+          <p class="text-slate-300 text-sm mb-3">Domain of Mystery and Magic. Prevents the Two Trees from consuming each other. Place of hidden revelations.</p>
+          <p class="text-slate-400 text-sm"><span class="text-emerald-400">Guardian:</span> Fourth Lord (Fourth Persona). Wanderer's Path eighth clue.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Liminal Spaces -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400"><i class="fas fa-door-open mr-2"></i>Liminal Spaces</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6 card-hover">
+          <h3 class="text-xl font-bold text-emerald-400 mb-2">Meridian Threshold</h3>
+          <p class="text-slate-400 text-sm mb-2">Between Eastern & Western Planes</p>
+          <p class="text-slate-300 text-sm mb-3">Primary sealing point between the Two Planes. Gallian's anchor maintains the seal. Critical junction for planar travel.</p>
+          <p class="text-slate-400 text-sm"><span class="text-emerald-400">Guardian:</span> Gallian (First Guardian)</p>
+          <p class="text-slate-400 text-sm"><span class="text-emerald-400">Status:</span> Active seal; weakening for Convergence</p>
+        </div>
+        <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6 card-hover">
+          <h3 class="text-xl font-bold text-emerald-400 mb-2">Meridian Domain</h3>
+          <p class="text-slate-400 text-sm mb-2">Fourth Lord's Sanctuary</p>
+          <p class="text-slate-300 text-sm mb-3">The Old Tree grows here—last remnant of the Wild of Aletheia. Lucien Jela's retirement location.</p>
+          <p class="text-slate-400 text-sm"><span class="text-emerald-400">Inhabitants:</span> Fourth Lord, Lucien Jela, Eida Jada (Copy XII)</p>
+          <p class="text-slate-400 text-sm"><span class="text-emerald-400">Features:</span> Sanctuary of Eight Paths</p>
+        </div>
+        <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6 card-hover">
+          <h3 class="text-xl font-bold text-emerald-400 mb-2">Meadow Realm</h3>
+          <p class="text-slate-400 text-sm mb-2">Space Between the Two Trees</p>
+          <p class="text-slate-300 text-sm mb-3">The Blood-River flows here. Last Observer's eternal vigil. Where Lucius and Lucien reunite for the Convergence.</p>
+          <p class="text-slate-400 text-sm"><span class="text-emerald-400">Guardian:</span> Last Observer (Aletheia)</p>
+          <p class="text-slate-400 text-sm"><span class="text-emerald-400">Significance:</span> Preparing for Convergence</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Old Tree -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400"><i class="fas fa-tree mr-2"></i>The Old Tree</h2>
+      <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6">
+        <p class="text-slate-300 mb-4">The last remnant of the Wild of Aletheia—the primordial forest destroyed in the Civil War. It stands in the Meridian Domain as witness to all that has passed and all that will come.</p>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <p class="text-slate-400 text-sm mb-2"><span class="text-emerald-400">Nature:</span> The boundary-wood; liminal space between the Two Trees</p>
+            <p class="text-slate-400 text-sm mb-2"><span class="text-emerald-400">Significance:</span> Prevents premature convergence; maintains separation</p>
+          </div>
+          <div>
+            <p class="text-slate-400 text-sm mb-2"><span class="text-emerald-400">The Elder:</span> Lucien Jela, Fourth Librarian, keeper of the Old Tree</p>
+            <p class="text-slate-400 text-sm"><span class="text-emerald-400">The Wood:</span> Remembers all that the Two Trees have forgotten</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Blood-River -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400"><i class="fas fa-water mr-2"></i>The Blood-River</h2>
+      <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6">
+        <p class="text-slate-300 mb-4">Flows through the Meadow Realm, connecting the Two Trees. Formed from the essence of Symphion (Intervenor) and tempered by Aletheia's (Observer) detachment. The river of becoming that carries possibility between Order and Chaos.</p>
+        <p class="text-slate-400 text-sm"><span class="text-emerald-400">Significance:</span> The medium of exchange between the Two Planes; source of all cross-planar travel</p>
+      </div>
+    </section>
+
+    <!-- The Convergence -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400"><i class="fas fa-infinity mr-2"></i>The Convergence</h2>
+      <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6">
+        <p class="text-slate-300 mb-4">At Absolute Year 51,235 and beyond, the Three Trees (Order, Chaos, and Old Tree) prepare to meet. The boundary between Planes begins to dissolve. Lucius and Lucien reunite in the Meadow Realm.</p>
+        <blockquote class="text-xl italic text-emerald-400 fantasy-font text-center my-6">
+          "The center holds. For now. For always."
+        </blockquote>
+        <p class="text-slate-400 text-sm text-center">The eternal question: What happens when Order and Chaos finally meet?</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
+    <p class="text-slate-400 text-sm">Eternal Tree Saga Wiki — A Chronicle Spanning Six Myriads</p>
+    <p class="text-slate-500 text-xs mt-2">"The center holds. For now. For always."</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
+    if (closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
+  </script>
+</body>
+</html>

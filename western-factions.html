@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Western Plane Factions - Eternal Trees Saga Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #e2e8f0; }
+    h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+    .purple-gradient { background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 50%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(124, 58, 237, 0.2); }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
+    <div class="flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <i class="fas fa-tree text-amber-400 text-2xl"></i>
+        <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
+        <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
+        <a href="timeline.html" class="text-slate-300 hover:text-amber-400 transition">Timeline</a>
+        <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
+        <a href="eastern-factions.html" class="text-slate-300 hover:text-amber-400 transition">Eastern</a>
+        <a href="western-factions.html" class="text-purple-400 font-medium">Western</a>
+        <a href="other-realms.html" class="text-slate-300 hover:text-amber-400 transition">Realms</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400"><i class="fas fa-bars text-xl"></i></button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
+    <div class="p-4">
+      <div class="flex justify-between items-center mb-6">
+        <span class="font-bold text-lg">Navigation</span>
+        <button id="closeMenu" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+      </div>
+      <nav class="space-y-2">
+        <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
+        <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
+        <a href="timeline.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
+        <a href="plots.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
+        <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
+        <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-purple-400 bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
+        <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto p-4 md:p-8">
+    <div class="text-center py-8 mb-10">
+      <h1 class="text-4xl font-bold mb-4 fantasy-font"><span class="purple-gradient">Western Plane Factions</span></h1>
+      <p class="text-slate-400">Tree of Chaos — Fluid, Experimental, Adaptive</p>
+    </div>
+
+    <!-- Overview -->
+    <section class="mb-12">
+      <div class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
+        <h2 class="text-xl font-bold text-purple-400 mb-4">Overview</h2>
+        <p class="text-slate-300 mb-4">The Western Plane is governed by the Tree of Chaos, born from Intervenor (Symphion) and Observer (Aletheia) essence. It is a realm of constant change, experimentation, and adaptation—where order emerges from chaos rather than being imposed upon it.</p>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <p class="text-slate-400 text-sm mb-2"><span class="text-purple-400">Divine Pantheon:</span> Primordial Eight (Kronos, Logos, Freya, Kairos, Archelaus, Nyx, Eres, Artemis)</p>
+            <p class="text-slate-400 text-sm mb-2"><span class="text-purple-400">Ethereal Five:</span> Vertus, Minerva, Serena, Dionysus, Morpheus</p>
+          </div>
+          <div>
+            <p class="text-slate-400 text-sm mb-2"><span class="text-purple-400">Key Institutions:</span> Library of Lumeria, Academia, Serene Fleet</p>
+            <p class="text-slate-400 text-sm"><span class="text-purple-400">Great Divide:</span> Abs. 28,223 — severed Eastern/Western contact for 26,000 years</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Major Factions -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-chess-rook mr-2"></i>Major Factions</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="central-continent.html" class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <i class="fas fa-landmark text-purple-400 text-2xl"></i>
+            <h3 class="text-xl font-bold text-purple-400">Central Continent</h3>
+          </div>
+          <p class="text-slate-300 text-sm mb-3">Aurelius Empire, The Legion, Republic of Argos, Neo-Imperium, Dominion Republic</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">5 Great Houses</span>
+            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">Military Meritocracy</span>
+          </div>
+        </a>
+        <a href="zhonggou-continent.html" class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <i class="fas fa-dragon text-purple-400 text-2xl"></i>
+            <h3 class="text-xl font-bold text-purple-400">Zhonggou Continent</h3>
+          </div>
+          <p class="text-slate-300 text-sm mb-3">Xi Dynasty, Five Kingdoms Period, Ming Dynasty, The Union</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">7 Great Sects</span>
+            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">4 Schools</span>
+          </div>
+        </a>
+        <a href="seventeen-archipelago.html" class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <i class="fas fa-water text-purple-400 text-2xl"></i>
+            <h3 class="text-xl font-bold text-purple-400">Seventeen Archipelago</h3>
+          </div>
+          <p class="text-slate-300 text-sm mb-3">Old Institute, Association of Scientific Studies, Council of the Arcane, Tellerium High Society, Neo-Magic Institute</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">Paraformer Tech</span>
+            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">Two-Millennia War</span>
+          </div>
+        </a>
+        <a href="federation.html" class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <i class="fas fa-ship text-purple-400 text-2xl"></i>
+            <h3 class="text-xl font-bold text-purple-400">Federation of Sixteen Nations</h3>
+          </div>
+          <p class="text-slate-300 text-sm mb-3">Maritime covenant of the Western Archipelago. Three capitals: Aethelgard, Castelmar, Portus Mare</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">Serene Fleet</span>
+            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">5 Ethereals</span>
+          </div>
+        </a>
+        <a href="lumeria.html" class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <i class="fas fa-book text-purple-400 text-2xl"></i>
+            <h3 class="text-xl font-bold text-purple-400">Lumeria</h3>
+          </div>
+          <p class="text-slate-300 text-sm mb-3">Library of Lumeria and Academia. Repository of all knowledge; cultivator of what will be</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">5 Librarians</span>
+            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">7 Colleges</span>
+          </div>
+        </a>
+        <a href="unbecoming.html" class="bg-slate-900/50 border border-red-500/30 rounded-xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <i class="fas fa-exclamation-triangle text-red-400 text-2xl"></i>
+            <h3 class="text-xl font-bold text-red-400">The Unbecoming</h3>
+          </div>
+          <p class="text-slate-300 text-sm mb-3">Chaotic Plenitude manifestation. Anti-definition; unmaking through chaotic plenitude</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-red-900/30 text-red-300 text-xs rounded">Xeria Gap</span>
+            <span class="px-2 py-1 bg-red-900/30 text-red-300 text-xs rounded">Stutter-Zones</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Library of Lumeria -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-book-open mr-2"></i>Library of Lumeria</h2>
+      <div class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="text-lg font-bold text-purple-400 mb-3">Overview</h3>
+            <p class="text-slate-300 text-sm mb-3">Founded Abs. 5,000 by Kronos (First Librarian). Neutral archival institution; repository of all knowledge across both Planes.</p>
+            <p class="text-slate-400 text-sm mb-2"><span class="text-purple-400">Governance:</span> Triadic Governance — Prime Librarian, Vice-Chair Internal, Chairman External</p>
+            <p class="text-slate-400 text-sm mb-2"><span class="text-purple-400">12 Councils:</span> Scribes, Researchers, Custodians, Metallurgy, Artifacts, Medical, Sociological, Jurisprudence, Chronomancy, Agricultural, Technological, External Libraries</p>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-purple-400 mb-3">Branch Network</h3>
+            <div class="space-y-2 text-sm">
+              <p class="text-slate-300"><span class="text-purple-400">Tier I:</span> Central Nexus — Lumeria (1)</p>
+              <p class="text-slate-300"><span class="text-purple-400">Tier II:</span> Grand Archives — Alexandria, Argos Prime, Linzi, Portus, Chengdu, Castra Ferrum, Havenfire, Xeria Memorial (8)</p>
+              <p class="text-slate-300"><span class="text-purple-400">Tier III:</span> Provincial Libraries (24)</p>
+              <p class="text-slate-300"><span class="text-purple-400">Tier IV:</span> Satellite Stations (100+)</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6">
+          <h3 class="text-lg font-bold text-purple-400 mb-3">Metaphysical Embargo Stages</h3>
+          <div class="grid md:grid-cols-4 gap-2 text-sm">
+            <div class="bg-slate-800/50 rounded p-3">
+              <p class="text-amber-400 font-medium">I: Notice</p>
+              <p class="text-slate-400">CUSTODIA-AMBER</p>
+              <p class="text-slate-500 text-xs">30-90 days</p>
+            </div>
+            <div class="bg-slate-800/50 rounded p-3">
+              <p class="text-yellow-400 font-medium">II: Limitation</p>
+              <p class="text-slate-400">PRAECIDIO-YELLOW</p>
+              <p class="text-slate-500 text-xs">90 days-5 years</p>
+            </div>
+            <div class="bg-slate-800/50 rounded p-3">
+              <p class="text-orange-400 font-medium">III: Restriction</p>
+              <p class="text-slate-400">INTERDICT-ORANGE</p>
+              <p class="text-slate-500 text-xs">5-500 years</p>
+            </div>
+            <div class="bg-slate-800/50 rounded p-3">
+              <p class="text-red-400 font-medium">IV: Embargo</p>
+              <p class="text-slate-400">SILENTIUM-RUBRUM</p>
+              <p class="text-slate-500 text-xs">Indefinite</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Academia -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-graduation-cap mr-2"></i>Academia of Lumeria</h2>
+      <div class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
+        <p class="text-slate-300 text-sm mb-4">Founded Abs. 49,890 by Lucien Jela and Gaius. Philosophy: "While the Library preserves what WAS, the Academia cultivates what WILL BE."</p>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h3 class="text-lg font-bold text-purple-400 mb-3">Seven Grand Colleges</h3>
+            <div class="space-y-1 text-sm">
+              <p class="text-slate-300"><span class="text-purple-400">Preservation:</span> Conservation arts, crystallized memory</p>
+              <p class="text-slate-300"><span class="text-purple-400">Interpretation:</span> Translation, cross-cultural understanding</p>
+              <p class="text-slate-300"><span class="text-purple-400">Acquisition:</span> Field research, rescue of threatened knowledge</p>
+              <p class="text-slate-300"><span class="text-purple-400">Medical Synthesis:</span> Healing body/mind/node</p>
+              <p class="text-slate-300"><span class="text-purple-400">Sociological Studies:</span> Governance training</p>
+              <p class="text-slate-300"><span class="text-purple-400">Technological Synthesis:</span> Paraformer-Arcane integration</p>
+              <p class="text-slate-300"><span class="text-purple-400">Chronomancy & Mysteries:</span> Temporal navigation</p>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-purple-400 mb-3">Five Tiers (Dual Path)</h3>
+            <div class="space-y-1 text-sm">
+              <p class="text-slate-300"><span class="text-purple-400">I. Seekers:</span> Apprentice / Qi Gathering</p>
+              <p class="text-slate-300"><span class="text-purple-400">II. Adepts:</span> Journeyman / Foundation Establishment</p>
+              <p class="text-slate-300"><span class="text-purple-400">III. Luminaries:</span> Master / Core Formation</p>
+              <p class="text-slate-300"><span class="text-purple-400">IV. Rectors:</span> Professor / Spirit Refinement</p>
+              <p class="text-slate-300"><span class="text-purple-400">V. Archons:</span> The 12 / Chen Mastery</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
+    <p class="text-slate-400 text-sm">Eternal Tree Saga Wiki — A Chronicle Spanning Six Myriads</p>
+    <p class="text-slate-500 text-xs mt-2">"The center holds. For now. For always."</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
+    if (closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
+  </script>
+</body>
+</html>

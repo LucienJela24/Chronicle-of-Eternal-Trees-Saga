@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Federation of Sixteen Independent Nations - Eternal Trees Saga Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'cinzel': ['Cinzel', 'serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'eternal-gold': '#d4af37',
+                        'eternal-amber': '#f59e0b',
+                        'eternal-purple': '#8b5cf6',
+                        'eternal-emerald': '#10b981',
+                        'eternal-slate': '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; }
+        h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+        .framework-card { transition: all 0.3s ease; }
+        .framework-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-slate-900/90 backdrop-blur-md border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <i class="fas fa-tree text-eternal-emerald text-2xl"></i>
+                        <span class="fantasy-font text-xl font-bold text-eternal-gold">Eternal Trees Saga</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="flex items-baseline space-x-4">
+                        <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Home</a>
+                        <a href="key-figures.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Key Figures</a>
+                        <a href="places.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Places</a>
+                        <a href="timeline.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Timeline</a>
+                        <a href="plots.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Plots</a>
+                        <a href="eastern-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-amber hover:bg-slate-800 transition">Eastern</a>
+                        <a href="western-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-purple hover:bg-slate-800 transition">Western</a>
+                        <a href="other-realms.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-emerald hover:bg-slate-800 transition">Realms</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Home</a>
+                <a href="key-figures.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Key Figures</a>
+                <a href="places.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Places</a>
+                <a href="timeline.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Timeline</a>
+                <a href="plots.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Plots</a>
+                <a href="eastern-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-amber hover:bg-slate-800">Eastern Factions</a>
+                <a href="western-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-purple hover:bg-slate-800">Western Factions</a>
+                <a href="other-realms.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-emerald hover:bg-slate-800">Other Realms</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-b from-purple-900/40 to-slate-950 py-16">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.2) 0%, transparent 70%);"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center space-x-2 mb-4">
+                <span class="px-3 py-1 bg-purple-900/50 border border-purple-600/30 rounded-full text-purple-400 text-sm">Western Plane</span>
+                <span class="px-3 py-1 bg-slate-800 border border-slate-600 rounded-full text-slate-400 text-sm">Federal Alliance</span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold text-purple-400 mb-4">Federation of Sixteen Independent Nations</h1>
+            <p class="text-xl text-slate-400 max-w-3xl mx-auto">A grand alliance of sovereign states united by treaty, trade, and common defense against the Abyssal threat</p>
+            <div class="mt-6 flex justify-center space-x-4 text-sm text-slate-500">
+                <span><i class="fas fa-flag text-purple-400 mr-2"></i>16 Member Nations</span>
+                <span><i class="fas fa-handshake text-purple-400 mr-2"></i>Federal Council</span>
+                <span><i class="fas fa-shield-alt text-purple-400 mr-2"></i>Unified Defense</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                <h2 class="text-2xl font-bold text-eternal-gold mb-4">Overview</h2>
+                <p class="text-slate-300 leading-relaxed mb-4">The Federation of Sixteen Independent Nations represents one of the most ambitious political experiments in the Western Plane—a voluntary alliance of sovereign states that have chosen to pool certain powers while retaining individual sovereignty. Founded in response to the growing Abyssal threat, the Federation has proven remarkably durable despite the diverse interests of its member states.</p>
+                <p class="text-slate-300 leading-relaxed mb-4">Each member nation maintains its own government, laws, and military forces, but coordinates with other members through the Federal Council on matters of trade, defense, and foreign policy. The Federation Charter establishes common standards for human rights, trade practices, and mutual defense obligations.</p>
+                <p class="text-slate-300 leading-relaxed">The Federation's success has made it a model for other regional organizations, though few have achieved the same level of integration. Its combined military forces represent a significant power in the Western Plane, and its economic cooperation has created prosperity that benefits all members.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11 Frameworks Analysis -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-12">Organizational Framework Analysis</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Historical Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-landmark text-purple-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-purple-400">1. Historical Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Founded after the Second Abyssal Incursion demonstrated the need for coordinated defense. The original Charter was signed by eight nations, with eight more joining over subsequent decades. The Federation has survived numerous challenges, including member disputes, economic crises, and military threats.</p>
+                </div>
+
+                <!-- Political Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-balance-scale text-purple-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-purple-400">2. Political Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Federal system with power divided between member nations and federal institutions. The Federal Council serves as the primary legislative body, with each nation having representation proportional to its population. The High Commissioner acts as chief executive, elected by the Council for renewable terms.</p>
+                </div>
+
+                <!-- Mental Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-brain text-purple-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-purple-400">3. Mental Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Education systems vary by member nation but share common standards established by the Federal Educational Council. Critical thinking, civic education, and multilingualism are emphasized. The Federal University system allows students to study across national boundaries.</p>
+                </div>
+
+                <!-- Spiritual Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-praying-hands text-purple-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-purple-400">4. Spiritual Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Religious freedom is guaranteed by the Charter, and member nations maintain diverse spiritual traditions. The Federation maintains no official religion, though various faiths have influence in different regions. Interfaith dialogue is encouraged as a means of promoting unity.</p>
+                </div>
+
+                <!-- Social Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-users text-purple-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-purple-400">5. Social Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Social structures vary by member nation, but the Charter establishes common standards for rights and freedoms. Free movement between member nations allows citizens to live, work, and study across the Federation. A common citizenship supplements national identities.</p>
+                </div>
+
+                <!-- Cultural Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-palette text-purple-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-purple-400">6. Cultural Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Rich cultural diversity is celebrated as a Federation strength. Federal cultural programs promote exchange and understanding between nations. A common artistic tradition has emerged alongside national cultures, creating a distinctive "Federation style" in architecture, music, and visual arts.</p>
+                </div>
+
+                <!-- Economical Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-coins text-purple-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-purple-400">7. Economical Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Common market allows free trade between member nations with standardized regulations. The Federal Bank manages a common currency used alongside national currencies. Economic development programs assist less prosperous regions. Combined, the Federation represents one of the largest economies in the Western Plane.</p>
+                </div>
+
+                <!-- Physiological Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-heartbeat text-purple-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-purple-400">8. Physiological Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Federal health standards ensure minimum care levels across all member nations. The Federal Health Organization coordinates responses to epidemics and medical emergencies. Medical professionals can practice across national boundaries, facilitating the exchange of expertise.</p>
+                </div>
+
+                <!-- Territorial Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-map-marked-alt text-purple-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-purple-400">9. Territorial Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The Federation spans diverse territories across the Western Plane, from coastal regions to interior plains and mountain ranges. Federal territories include shared infrastructure like highways, canals, and border fortifications. The capital district, neutral territory, houses federal institutions.</p>
+                </div>
+
+                <!-- Technological Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-cogs text-purple-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-purple-400">10. Technological Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Federal research programs coordinate technological development across member nations. The Federal Institute of Technology conducts advanced research and trains engineers and scientists. Standardized technical specifications facilitate interoperability of infrastructure and military equipment.</p>
+                </div>
+
+                <!-- Military Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-shield-alt text-purple-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-purple-400">11. Military Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Combined military forces operate under unified command during joint operations. Member nations maintain national forces for internal security and contribute to federal forces for external defense. The Federal High Command coordinates strategy and operations, with officers from all member nations serving at all levels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Member Nations -->
+    <section class="py-12 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-8">Member Nations</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
+                    <p class="text-slate-300 text-sm font-medium">Aethelgard</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
+                    <p class="text-slate-300 text-sm font-medium">Brennheim</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
+                    <p class="text-slate-300 text-sm font-medium">Caldoria</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
+                    <p class="text-slate-300 text-sm font-medium">Deltara</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
+                    <p class="text-slate-300 text-sm font-medium">Eldoria</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
+                    <p class="text-slate-300 text-sm font-medium">Frostmark</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
+                    <p class="text-slate-300 text-sm font-medium">Galeron</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
+                    <p class="text-slate-300 text-sm font-medium">Holloway</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
+                    <p class="text-slate-300 text-sm font-medium">Ilmara</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
+                    <p class="text-slate-300 text-sm font-medium">Jorvik</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
+                    <p class="text-slate-300 text-sm font-medium">Keldara</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
+                    <p class="text-slate-300 text-sm font-medium">Luminar</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
+                    <p class="text-slate-300 text-sm font-medium">Misthaven</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
+                    <p class="text-slate-300 text-sm font-medium">Norcroft</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
+                    <p class="text-slate-300 text-sm font-medium">Ostmark</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
+                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
+                    <p class="text-slate-300 text-sm font-medium">Prydwen</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <i class="fas fa-tree text-eternal-emerald text-xl"></i>
+                    <span class="fantasy-font text-lg font-bold text-eternal-gold">Eternal Trees Saga</span>
+                </div>
+                <div class="text-slate-500 text-sm">
+                    <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="index.html" class="text-slate-400 hover:text-eternal-gold transition">Home</a>
+                    <a href="eastern-factions.html" class="text-slate-400 hover:text-eternal-amber transition">Eastern</a>
+                    <a href="western-factions.html" class="text-slate-400 hover:text-eternal-purple transition">Western</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

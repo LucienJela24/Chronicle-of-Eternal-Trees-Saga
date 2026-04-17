@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Key Figures - Eternal Trees Saga Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #e2e8f0; }
+    h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+    .gold-gradient { background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .purple-gradient { background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 50%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .emerald-gradient { background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #10b981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(124, 58, 237, 0.2); }
+    .tab-btn { transition: all 0.3s ease; }
+    .tab-btn.active { background: rgba(124, 58, 237, 0.3); border-color: #7c3aed; color: #a78bfa; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
+    <div class="flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <i class="fas fa-tree text-amber-400 text-2xl"></i>
+        <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="key-figures.html" class="text-amber-400 font-medium">Figures</a>
+        <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
+        <a href="timeline.html" class="text-slate-300 hover:text-amber-400 transition">Timeline</a>
+        <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
+        <a href="eastern-factions.html" class="text-slate-300 hover:text-amber-400 transition">Eastern</a>
+        <a href="western-factions.html" class="text-slate-300 hover:text-amber-400 transition">Western</a>
+        <a href="other-realms.html" class="text-slate-300 hover:text-amber-400 transition">Realms</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
+    <div class="p-4">
+      <div class="flex justify-between items-center mb-6">
+        <span class="font-bold text-lg">Navigation</span>
+        <button id="closeMenu" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+      </div>
+      <nav class="space-y-2">
+        <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-amber-400 bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
+        <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
+        <a href="timeline.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
+        <a href="plots.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
+        <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
+        <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
+        <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto p-4 md:p-8">
+    <div class="text-center py-8 mb-10">
+      <h1 class="text-4xl font-bold mb-4 fantasy-font"><span class="gold-gradient">Key Figures</span></h1>
+      <p class="text-slate-400">The heroes, villains, and legends who shaped the Eternal Tree Saga across Six Myriads</p>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="flex flex-wrap gap-2 mb-8 justify-center">
+      <button class="tab-btn active px-4 py-2 rounded-lg border border-slate-700 text-slate-300 text-sm" data-tab="cosmic"><i class="fas fa-star mr-2"></i>Cosmic</button>
+      <button class="tab-btn px-4 py-2 rounded-lg border border-slate-700 text-slate-300 text-sm" data-tab="eastern"><i class="fas fa-mountain mr-2"></i>Eastern Plane</button>
+      <button class="tab-btn px-4 py-2 rounded-lg border border-slate-700 text-slate-300 text-sm" data-tab="western"><i class="fas fa-book mr-2"></i>Western Plane</button>
+      <button class="tab-btn px-4 py-2 rounded-lg border border-slate-700 text-slate-300 text-sm" data-tab="military"><i class="fas fa-shield-alt mr-2"></i>Military</button>
+      <button class="tab-btn px-4 py-2 rounded-lg border border-slate-700 text-slate-300 text-sm" data-tab="bridge"><i class="fas fa-link mr-2"></i>Bridge Figures</button>
+    </div>
+
+    <!-- COSMIC TAB -->
+    <div id="cosmic" class="tab-content active">
+      <!-- Endless Seed & Earlier Gods -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-infinity mr-2"></i>The Endless Seed & Earlier Gods</h2>
+        <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 mb-6">
+          <h3 class="text-xl font-bold text-slate-200 mb-2">Endless Seed of Light</h3>
+          <p class="text-amber-400 text-sm mb-3">The Self-Existent Ground of Possibility</p>
+          <p class="text-slate-300 text-sm mb-3">Pre-cosmic source condition; not a deity or object. Infinite potential without prior differentiation—the source from which all Earlier Gods emerged. Eternal and unchanging, the Seed represents pure possibility without form or limitation.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-slate-800 text-slate-400 text-xs rounded">Pre-Cosmic</span>
+            <span class="px-2 py-1 bg-slate-800 text-slate-400 text-xs rounded">Source of All</span>
+            <span class="px-2 py-1 bg-slate-800 text-slate-400 text-xs rounded">Eternal</span>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-slate-300 mb-4">The Three Faction Leaders</h3>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Cosmarchos</h3>
+            <p class="text-red-400 text-sm mb-2">Leader of the Dominators</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Belief:</strong> Creation must be controlled</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Distortion:</strong> Order becomes possession, sterility, tyranny</p>
+            <p class="text-slate-400 text-sm"><strong>Fate:</strong> Essence became Pillar of Order within Firmament structures</p>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Symphion</h3>
+            <p class="text-emerald-400 text-sm mb-2">Leader of the Intervenors</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Belief:</strong> Creation must be guided</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Distortion:</strong> Care becomes manipulation, pride, overreach</p>
+            <p class="text-slate-400 text-sm"><strong>Fate:</strong> Essence flows in Blood-River; informs Tree of Chaos</p>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Aletheia</h3>
+            <p class="text-blue-400 text-sm mb-2">Leader of the Observers</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Belief:</strong> Creation must be free</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Distortion:</strong> Witness becomes passivity, complicity, abandonment</p>
+            <p class="text-slate-400 text-sm"><strong>Fate:</strong> Became the Last Observer; guards Meadow Realm</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- The Last Observer -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-eye mr-2"></i>The Last Observer (Aletheia)</h2>
+        <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <p class="text-slate-300 text-sm mb-3">Final cosmic witness and guardian who transformed destruction into new cosmology. Planted the Two Trees and guards the Meadow Realm, holding relation between the separated factions.</p>
+              <p class="text-slate-300 text-sm mb-3"><strong class="text-amber-400">Key Action:</strong> Sealed the Fifth Persona to prevent cosmic destruction</p>
+              <p class="text-slate-300 text-sm"><strong class="text-amber-400">Status:</strong> Eternal; watches from Meadow Realm</p>
+            </div>
+            <div class="bg-slate-800/50 rounded-lg p-4">
+              <h4 class="text-amber-400 text-sm font-bold mb-2">First Named Earlier Gods</h4>
+              <ul class="text-slate-400 text-sm space-y-1">
+                <li><strong>Kronathos</strong> — Time (became Kronos)</li>
+                <li><strong>Spatius</strong> — Space</li>
+                <li><strong>Materia</strong> — Matter</li>
+                <li><strong>Spiritus</strong> — Spirit</li>
+                <li><strong>Aletheia</strong> — Truth (Last Observer)</li>
+                <li><strong>Symphion</strong> — Harmony</li>
+                <li><strong>Cosmarchos</strong> — Order</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- The Five Personas -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-crown mr-2"></i>The Five Personas (The Five Lords)</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">First Persona</h3>
+            <p class="text-amber-400 text-sm mb-2">Reality, Energy, Essence</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Function:</strong> Ground of being; elemental reality</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Expression:</strong> Protectors; Elemental Foundation</p>
+            <p class="text-slate-400 text-sm"><strong>Servants:</strong> Luminara, Ryūjin, Morvoren, Mechanus</p>
+            <span class="inline-block mt-2 px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">Active</span>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Second Persona</h3>
+            <p class="text-amber-400 text-sm mb-2">Knowledge, Time, Space</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Function:</strong> Framework of experience</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Expression:</strong> Keepers; roads, thresholds, chronology</p>
+            <p class="text-slate-400 text-sm"><strong>Servants:</strong> Goldroad, Orientalis, Occidens, Meridionalis, Portalis</p>
+            <span class="inline-block mt-2 px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">Active</span>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Third Persona</h3>
+            <p class="text-amber-400 text-sm mb-2">Life and Death</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Function:</strong> Meaning through finitude and consequence</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Expression:</strong> Life Bringers & Death Reapers</p>
+            <p class="text-slate-400 text-sm"><strong>Servants:</strong> Auriel (Life Bringer), Umbra (Death Reaper)</p>
+            <span class="inline-block mt-2 px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">Active</span>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Fourth Persona</h3>
+            <p class="text-amber-400 text-sm mb-2">Mystery and Magic</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Function:</strong> Preservation of the unknown</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Expression:</strong> Overseers; Sanctuary; hidden revelations</p>
+            <p class="text-slate-400 text-sm"><strong>Servants:</strong> Elder Overseer Myrddin, Overseer Seren</p>
+            <span class="inline-block mt-2 px-2 py-1 bg-yellow-900/30 text-yellow-400 text-xs rounded">Hidden; Revealed to Wanderer</span>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Fifth Persona</h3>
+            <p class="text-amber-400 text-sm mb-2">Order and Chaos</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Function:</strong> Engine of becoming</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Expression:</strong> Sealed; leaks as Destroyer phenomenon</p>
+            <p class="text-slate-400 text-sm"><strong>Servants:</strong> None (contained)</p>
+            <span class="inline-block mt-2 px-2 py-1 bg-red-900/30 text-red-400 text-xs rounded">SEALED</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- EASTERN PLANE TAB -->
+    <div id="eastern" class="tab-content">
+      <!-- Ancient Ones -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-mountain mr-2"></i>The Ancient Ones — Eastern Plane</h2>
+        <p class="text-slate-400 mb-4 text-sm">First conscious emanational founders of the Eastern Plane's structured creation. Not Earlier Gods—they emerged from the seeded Eastern Plane itself through the Rite of the Foundation.</p>
+        
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-xl font-bold text-slate-200 mb-1">Primus</h3>
+            <p class="text-amber-400 text-sm mb-2">The First Ancient</p>
+            <p class="text-slate-300 text-sm mb-3">Principal coordinator of early Eastern Plane formation. Central to the Threshold Tribe's foundational memory. Withdrew into structure rather than rulership, becoming the template for all subsequent guardians who serve rather than rule.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-slate-800 text-slate-400 text-xs rounded">Primordial Era</span>
+              <span class="px-2 py-1 bg-slate-800 text-slate-400 text-xs rounded">Threshold Tribe</span>
+            </div>
+          </div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-xl font-bold text-slate-200 mb-1">Solara</h3>
+            <p class="text-amber-400 text-sm mb-2">Ancient of Light</p>
+            <p class="text-slate-300 text-sm mb-3">Foundation of Lux Imperio's light traditions. Her essence shaped the northern realm's crystalline architecture and hierarchical sacred order. Her binding created the first structured metaphysics of the Eastern Plane.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-slate-800 text-slate-400 text-xs rounded">Lux Imperio</span>
+              <span class="px-2 py-1 bg-slate-800 text-slate-400 text-xs rounded">Northern Pillar</span>
+            </div>
+          </div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-xl font-bold text-slate-200 mb-1">Terrakin</h3>
+            <p class="text-amber-400 text-sm mb-2">Ancient of Earth</p>
+            <p class="text-slate-300 text-sm mb-3">Foundation of Chuugoku's elemental traditions and material grounding. His binding to the eastern mountains created the resonance between geography and chi that defines the Empire of Elements.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-slate-800 text-slate-400 text-xs rounded">Chuugoku</span>
+              <span class="px-2 py-1 bg-slate-800 text-slate-400 text-xs rounded">Eastern Pillar</span>
+            </div>
+          </div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-xl font-bold text-slate-200 mb-1">Aetherius</h3>
+            <p class="text-amber-400 text-sm mb-2">Ancient of Aether</p>
+            <p class="text-slate-300 text-sm mb-3">Associated with relation, balance, and the space between. Important in Chuugoku and later metaphysical balancing traditions. His essence flows through the Meridian Threshold and all liminal spaces.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-slate-800 text-slate-400 text-xs rounded">Meridian Domain</span>
+              <span class="px-2 py-1 bg-slate-800 text-slate-400 text-xs rounded">Center Point</span>
+            </div>
+          </div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-xl font-bold text-slate-200 mb-1">Aqualis</h3>
+            <p class="text-amber-400 text-sm mb-2">Ancient of Water</p>
+            <p class="text-slate-300 text-sm mb-3">Foundation of the fluid traditions that would later influence both Avalon and Helron. Her binding created the rivers and waterways that connect the Four Realms, including the sacred Blood-River's eastern flow.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-slate-800 text-slate-400 text-xs rounded">Avalon</span>
+              <span class="px-2 py-1 bg-slate-800 text-slate-400 text-xs rounded">Western Pillar</span>
+            </div>
+          </div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-xl font-bold text-slate-200 mb-1">Ventus</h3>
+            <p class="text-amber-400 text-sm mb-2">Ancient of Air</p>
+            <p class="text-slate-300 text-sm mb-3">Foundation of the wind and message traditions. His essence carries communication between realms and enables the breath of life that sustains all mortal beings. His binding created the atmospheric envelope of the Eastern Plane.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-slate-800 text-slate-400 text-xs rounded">Atmosphere</span>
+              <span class="px-2 py-1 bg-slate-800 text-slate-400 text-xs rounded">Communication</span>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-slate-300 mb-4">Hierarchy of the Ancient Ones</h3>
+        <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+          <div class="grid md:grid-cols-3 gap-4 text-sm">
+            <div class="bg-slate-800/50 rounded-lg p-4">
+              <p class="text-amber-400 font-bold mb-1">The First Ancient (1)</p>
+              <p class="text-slate-400">Primus — Primal pattern; coordination</p>
+            </div>
+            <div class="bg-slate-800/50 rounded-lg p-4">
+              <p class="text-amber-400 font-bold mb-1">Pillars of the East (4+1)</p>
+              <p class="text-slate-400">Solara, Terrakin, Aqualis, Ventus, Aetherius — Elemental foundations</p>
+            </div>
+            <div class="bg-slate-800/50 rounded-lg p-4">
+              <p class="text-amber-400 font-bold mb-1">Architects of Form (16)</p>
+              <p class="text-slate-400">Shape land and ley structures</p>
+            </div>
+            <div class="bg-slate-800/50 rounded-lg p-4">
+              <p class="text-amber-400 font-bold mb-1">Wardens of Balance (64)</p>
+              <p class="text-slate-400">Keep elemental harmony</p>
+            </div>
+            <div class="bg-slate-800/50 rounded-lg p-4">
+              <p class="text-amber-400 font-bold mb-1">Shapers of Life (256)</p>
+              <p class="text-slate-400">Guide early living emergence</p>
+            </div>
+            <div class="bg-slate-800/50 rounded-lg p-4">
+              <p class="text-amber-400 font-bold mb-1">Watchers of the Threshold (4,096)</p>
+              <p class="text-slate-400">Tend elemental borders</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Four Realm Protectors -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-shield-alt mr-2"></i>The Four Realm Protectors</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Luminara</h3>
+            <p class="text-amber-400 text-sm mb-2">Protector of Lux Imperio</p>
+            <p class="text-slate-400 text-sm">Domain: Light, radiance, judgment</p>
+            <p class="text-slate-500 text-xs mt-2">Servant of First Persona</p>
+          </div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Ryūjin</h3>
+            <p class="text-amber-400 text-sm mb-2">Protector of Chuugoku</p>
+            <p class="text-slate-400 text-sm">Domain: Elements, balance, chi</p>
+            <p class="text-slate-500 text-xs mt-2">Servant of First Persona</p>
+          </div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Morvoren</h3>
+            <p class="text-amber-400 text-sm mb-2">Protector of Avalon</p>
+            <p class="text-slate-400 text-sm">Domain: Magic, mist, mystery</p>
+            <p class="text-slate-500 text-xs mt-2">Servant of First Persona</p>
+          </div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Mechanus</h3>
+            <p class="text-amber-400 text-sm mb-2">Protector of Helron</p>
+            <p class="text-slate-400 text-sm">Domain: Knowledge, measurement, artifice</p>
+            <p class="text-slate-500 text-xs mt-2">Servant of First Persona</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Guardian Order -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-chess-king mr-2"></i>The Guardian Order</h2>
+        
+        <h3 class="text-lg font-bold text-slate-300 mb-4">Foundational Figures</h3>
+        <div class="grid md:grid-cols-2 gap-4 mb-6">
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-xl font-bold text-slate-200 mb-1">Gallian</h3>
+            <p class="text-amber-400 text-sm mb-2">Threshold-Keeper, Grand Captain, First Guardian</p>
+            <p class="text-slate-300 text-sm mb-3">Founder of Arcadia who established the School of Arcadia (Year 2000, 1st Myriad) and formed the covenant of eight guardians. Sacrificed physical form to maintain the Meridian Threshold seal.</p>
+            <p class="text-slate-400 text-sm italic mb-2">"The center is not a place. It is a relation."</p>
+            <p class="text-slate-500 text-xs">Status: Diminished; maintains Meridian anchor; speaks through echoes</p>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-xl font-bold text-slate-200 mb-1">Master Oren</h3>
+            <p class="text-amber-400 text-sm mb-2">Last Pure-Blooded Threshold Tribesman</p>
+            <p class="text-slate-300 text-sm mb-3">Born Absolute Year 2,300 (Primordial Era). First true keeper of the Eye Practice—perceiving the Eight Nodes without madness. Trained Gallian and maintained the Stone Table.</p>
+            <p class="text-slate-500 text-xs">Symbol: Yew Staff (from the Tree of Order)</p>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-slate-300 mb-4">The Three Legendary Guardians</h3>
+        <div class="grid md:grid-cols-3 gap-4 mb-6">
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Seraph</h3>
+            <p class="text-amber-400 text-sm mb-2">22nd Guardian, Captain of World</p>
+            <p class="text-slate-400 text-sm mb-2">White hair, grey eyes, weathered face</p>
+            <p class="text-slate-400 text-sm">Defense coordination; Watchers oversight; mapping Dread movements</p>
+            <span class="inline-block mt-2 px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">Active (Book 5)</span>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Mordecai</h3>
+            <p class="text-amber-400 text-sm mb-2">23rd Guardian, Captain of Transcendence</p>
+            <p class="text-slate-400 text-sm mb-2">Scholar's bearing, ancient eyes</p>
+            <p class="text-slate-400 text-sm">Northern Eclipse magic specialization; shadow-casting mastery</p>
+            <span class="inline-block mt-2 px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">Active (Book 5)</span>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Kael</h3>
+            <p class="text-amber-400 text-sm mb-2">24th Guardian, Captain of Inheritance</p>
+            <p class="text-slate-400 text-sm mb-2">Black hair, brown eyes, blade of frozen light</p>
+            <p class="text-slate-400 text-sm">Preservation of old Guardian techniques; institutional memory</p>
+            <span class="inline-block mt-2 px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">Active (Book 5)</span>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-slate-300 mb-4">The 25th Guardian: Lucius Arogzan (The Wanderer)</h3>
+        <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 mb-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <p class="text-slate-400 text-sm mb-2"><strong class="text-amber-400">Full Name:</strong> Lucius Arogzan</p>
+              <p class="text-slate-400 text-sm mb-2"><strong class="text-amber-400">Born:</strong> Absolute Year 23,507 (3rd Myriad 922) — during Rite of Balancing</p>
+              <p class="text-slate-400 text-sm mb-2"><strong class="text-amber-400">Parents:</strong> Lothmar Drev Arogzan IV (Aneian Regent General) + Aileen (Saintess of the North)</p>
+              <p class="text-slate-400 text-sm mb-2"><strong class="text-amber-400">Old World Name:</strong> Luke James Eldriech, graduate student in Oxford</p>
+              <p class="text-slate-400 text-sm mb-2"><strong class="text-amber-400">Origin World:</strong> Earth (reincarnated/translated into Eastern Plane format)</p>
+              <p class="text-slate-400 text-sm mb-2"><strong class="text-amber-400">Earth Teacher:</strong> Dr. Lucien George Elder (later Fourth Librarian of Lumeria)</p>
+              <p class="text-slate-400 text-sm mb-2"><strong class="text-amber-400">Octagram Teacher:</strong> Roushen the Unseen (346th Grandmaster)</p>
+              <p class="text-slate-400 text-sm mb-2"><strong class="text-amber-400">Students:</strong> Gael, Ren</p>
+              <p class="text-slate-400 text-sm"><strong class="text-amber-400">Status:</strong> Banished to Meadow Realm (Book 6); returns at Convergence</p>
+            </div>
+            <div class="bg-slate-800/50 rounded-lg p-4">
+              <h4 class="text-amber-400 text-sm font-bold mb-2">Physical Description</h4>
+              <ul class="text-slate-400 text-sm space-y-1">
+                <li><strong>Eyes:</strong> One gold (Void-Touch), one violet (prophecy mark)</li>
+                <li><strong>Markings:</strong> Void-Touched at birth; marked by Rite of Balancing</li>
+                <li><strong>Age:</strong> Appears middle-aged; chronologically ~5,000+ years</li>
+              </ul>
+              <h4 class="text-amber-400 text-sm font-bold mb-2 mt-4">Key Life Events</h4>
+              <ul class="text-slate-400 text-sm space-y-1">
+                <li>23,507: Born during Rite of Balancing</li>
+                <li>23,508-23,732: Two-Century War against Dark Emperors</li>
+                <li>23,740: Battle of Nexus; Dark Emperors sealed</li>
+                <li>23,751-23,755: Wanderer's Path (Eight Clues)</li>
+                <li>23,755: Appointed 25th Guardian</li>
+                <li>33,845: Banished to Meadow Realm</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-slate-300 mb-4">The Twelve Watchers</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Gael</h3>
+            <p class="text-amber-400 text-sm mb-2">First Watcher</p>
+            <p class="text-slate-400 text-sm mb-2">Aneian heritage; trained by Lucius</p>
+            <p class="text-slate-400 text-sm">Transformed into Firmament node (Essence of POWER), then dissolved completely (Essence of SACRIFICE)</p>
+            <span class="inline-block mt-2 px-2 py-1 bg-red-900/30 text-red-400 text-xs rounded">Dissolved</span>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Ren</h3>
+            <p class="text-amber-400 text-sm mb-2">Watcher; First Among Equals; 347th Grandmaster of Octagram</p>
+            <p class="text-slate-400 text-sm mb-2">Half-Western, half-Aneian; Eye-trained seer</p>
+            <p class="text-slate-400 text-sm">Discovered Inquisitor's laboratory; inherited the Eye from Lucius; rebuilt Octagram from dormancy</p>
+            <span class="inline-block mt-2 px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">Active</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Aneians -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-users mr-2"></i>The Aneian People</h2>
+        <p class="text-slate-400 mb-4 text-sm">Refugees from a world consumed by the Destroyer (Year 922, 3rd Myriad). Grey skin, grey or void-black eyes, lifespan 300-500 years. Masters of Void-Crystal technology and border-walking.</p>
+        
+        <h3 class="text-lg font-bold text-slate-300 mb-4">The Eight Great Families</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-4 card-hover">
+            <h4 class="text-amber-400 font-bold text-sm mb-1">House Arogzan</h4>
+            <p class="text-slate-400 text-xs">Senior line, prophecy keepers. Grey star on black. Diminished; continues through Lucius's teaching.</p>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-4 card-hover">
+            <h4 class="text-amber-400 font-bold text-sm mb-1">House Vaelor</h4>
+            <p class="text-slate-400 text-xs">Void-navigation. Silver compass on grey. Destroyed; awaiting rebirth as Vaelor Academy.</p>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-4 card-hover">
+            <h4 class="text-amber-400 font-bold text-sm mb-1">House Stoneheart</h4>
+            <p class="text-slate-400 text-xs">Earth-binding. Bronze hammer on grey. Active; led by Lady Greta Stoneheart.</p>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-4 card-hover">
+            <h4 class="text-amber-400 font-bold text-sm mb-1">House Nightshade</h4>
+            <p class="text-slate-400 text-xs">Shadow-walkers. Black dagger on silver. Active; led by Lady Mira Nightshade.</p>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-slate-300 mb-4">Key Aneian Figures</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Lothmar Drev Arogzan IV</h3>
+            <p class="text-amber-400 text-sm mb-2">Regent General; father of Lucius</p>
+            <span class="inline-block px-2 py-1 bg-red-900/30 text-red-400 text-xs rounded">Deceased</span>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Aileen</h3>
+            <p class="text-amber-400 text-sm mb-2">Saintess of the North; mother of Lucius</p>
+            <span class="inline-block px-2 py-1 bg-red-900/30 text-red-400 text-xs rounded">Deceased</span>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Lady Greta Stoneheart</h3>
+            <p class="text-amber-400 text-sm mb-2">Aneian reconstruction leader</p>
+            <span class="inline-block px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">Active</span>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Lady Mira Nightshade</h3>
+            <p class="text-amber-400 text-sm mb-2">Shadow-walker</p>
+            <span class="inline-block px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">Active</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- WESTERN PLANE TAB -->
+    <div id="western" class="tab-content">
+      <!-- Primordial Eight -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-star mr-2"></i>Primordial Eight — Western Plane</h2>
+        <p class="text-slate-400 mb-4 text-sm">First wave of divine principles to emerge in the West (Absolute Years 1-500). Principles given will and identity, arising from the Tree of Chaos rooted in Symphion and Aletheia's combined essence.</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Kronos</h3>
+            <p class="text-purple-400 text-sm mb-2">Primordial of Time</p>
+            <p class="text-slate-400 text-sm mb-2">First Librarian of Lumeria (Abs. 5,000-10,000)</p>
+            <p class="text-slate-400 text-sm">Founded the Library and established the Chronicle Compact. Retired to celestial observation.</p>
+          </div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Logos</h3>
+            <p class="text-purple-400 text-sm mb-2">Primordial of Wisdom</p>
+            <p class="text-slate-400 text-sm mb-2">Second Librarian (Abs. 10,001-20,000+)</p>
+            <p class="text-slate-400 text-sm">Merged with the Index, becoming the Library's organizational consciousness. Systemic immortality.</p>
+          </div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Freya</h3>
+            <p class="text-purple-400 text-sm mb-2">Primordial of Life/Fate</p>
+            <p class="text-slate-400 text-sm">Weaves threads of destiny and vitality throughout the Western Plane.</p>
+          </div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Kairos</h3>
+            <p class="text-purple-400 text-sm mb-2">Primordial of Opportunity</p>
+            <p class="text-slate-400 text-sm">Represents critical moments when change becomes possible.</p>
+          </div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Archelaus</h3>
+            <p class="text-purple-400 text-sm mb-2">Primordial of Force/Magic</p>
+            <p class="text-slate-400 text-sm">Raw power underlying all magical working in the Western Plane.</p>
+          </div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Nyx</h3>
+            <p class="text-purple-400 text-sm mb-2">Primordial of Mystery</p>
+            <p class="text-slate-400 text-sm">Darkness that conceals and preserves the unknown.</p>
+          </div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Eres</h3>
+            <p class="text-purple-400 text-sm mb-2">Primordial of Struggle</p>
+            <p class="text-slate-400 text-sm">Force of conflict that drives growth and transformation.</p>
+          </div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Artemis</h3>
+            <p class="text-purple-400 text-sm mb-2">Primordial of Revelation</p>
+            <p class="text-slate-400 text-sm">Light that reveals truth and illuminates the unknown.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ethereal Five -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400"><i class="fas fa-feather-alt mr-2"></i>Ethereal Five — Western Plane</h2>
+        <p class="text-slate-400 mb-4 text-sm">Second wave of more relational, "human-scale" divine mediators (Absolute Years 500-1000). Patrons of the Federation of the Sixteen Nations.</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Vertus</h3>
+            <p class="text-emerald-400 text-sm mb-2">Ethereal of Hope</p>
+            <p class="text-slate-400 text-sm">The virtue that sustains civilizations through dark times. Eternal flame burns at Aethelgard (Gwalakdon), spiritual capital of the Federation.</p>
+          </div>
+          <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Minerva</h3>
+            <p class="text-emerald-400 text-sm mb-2">Ethereal of Compassion</p>
+            <p class="text-slate-400 text-sm">The virtue that binds communities through care for the suffering. Flows through all healing traditions.</p>
+          </div>
+          <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Serena</h3>
+            <p class="text-emerald-400 text-sm mb-2">Ethereal of Order</p>
+            <p class="text-slate-400 text-sm">The virtue that creates structure without tyranny. Shapes laws, contracts, and peaceful coexistence.</p>
+          </div>
+          <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Dionysus</h3>
+            <p class="text-emerald-400 text-sm mb-2">Ethereal of Connection</p>
+            <p class="text-slate-400 text-sm">The virtue that binds individuals into communities through shared experience.</p>
+          </div>
+          <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Morpheus</h3>
+            <p class="text-emerald-400 text-sm mb-2">Ethereal of Stories/Memory</p>
+            <p class="text-slate-400 text-sm">The virtue that preserves identity through narrative. Shapes all history and literature.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Librarians of Lumeria -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-book mr-2"></i>The Five Librarians of Lumeria</h2>
+        <div class="space-y-4">
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+              <h3 class="text-xl font-bold text-slate-200">Kronos</h3>
+              <span class="text-purple-400 text-sm">Abs. 5,000—10,000</span>
+            </div>
+            <p class="text-purple-400 text-sm mb-2">First Librarian</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Origin:</strong> Primordial (Time)</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Contribution:</strong> Founded Library; Chronicle Compact</p>
+            <p class="text-slate-400 text-sm"><strong>Status:</strong> Retired to celestial observation</p>
+          </div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+              <h3 class="text-xl font-bold text-slate-200">Logos</h3>
+              <span class="text-purple-400 text-sm">Abs. 10,001—20,000+</span>
+            </div>
+            <p class="text-purple-400 text-sm mb-2">Second Librarian</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Origin:</strong> Primordial (Wisdom)</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Contribution:</strong> Systematized Index; Neutrality Treaties</p>
+            <p class="text-slate-400 text-sm"><strong>Status:</strong> Systemic immortality (merged with Index)</p>
+          </div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+              <h3 class="text-xl font-bold text-slate-200">Zeno</h3>
+              <span class="text-purple-400 text-sm">Abs. 20,000—49,780</span>
+            </div>
+            <p class="text-purple-400 text-sm mb-2">Third Librarian</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Origin:</strong> Western Plane (emergent)</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Contribution:</strong> Created Liberators (field agents)</p>
+            <p class="text-slate-400 text-sm"><strong>Status:</strong> <span class="text-red-400">Exiled to Xarxas (Abs. 49,780)</span></p>
+          </div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+              <h3 class="text-xl font-bold text-slate-200">Lucien Jela (Lucien George Elder)</h3>
+              <span class="text-purple-400 text-sm">Abs. 20,001—49,663</span>
+            </div>
+            <p class="text-purple-400 text-sm mb-2">Fourth Librarian</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Origin:</strong> Summoned from Earth, Oxford 2024</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Contribution:</strong> Great Decay/Exclusion; founded Academia; Library Wars; Metaphysical Embargo</p>
+            <p class="text-slate-400 text-sm"><strong>Status:</strong> Retired to Meridian Domain</p>
+          </div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+              <h3 class="text-xl font-bold text-slate-200">Gaius of the Eastern Plane</h3>
+              <span class="text-purple-400 text-sm">Abs. 49,662—Present</span>
+            </div>
+            <p class="text-purple-400 text-sm mb-2">Fifth Librarian, Rector Magnificus</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Origin:</strong> Father from Helron, mother from Avalon—synthesis of Science and Intuition</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Contribution:</strong> First cross-planar Librarian; Triadic Command unification</p>
+            <p class="text-slate-400 text-sm"><strong>Status:</strong> <span class="text-green-400">Active</span></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lucien Jela Detailed -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-user-graduate mr-2"></i>Lucien Jela (Elder) — Complete Biography</h2>
+        <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-lg font-bold text-purple-400 mb-3">Earth Identity: Dr. Lucien George Elder</h3>
+              <p class="text-slate-400 text-sm mb-2"><strong>Born:</strong> Autumn 1996, John Radcliffe Hospital, Oxford</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Father:</strong> Dr. Thomas Elder (Fellow in Early Modern History, Balliol College)</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Mother:</strong> Dr. Helen Elder née Blackwood (classicist, Oxford High School)</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Education:</strong> Classics at Balliol (2014-2018); Master's in Library and Information Science at UCL (2018-2020); Doctorate at British Library (2024)</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Thesis:</strong> "Ephemeral Eternities: Preservation Frameworks for Born-Digital Archives in an Age of Technological Obsolescence"</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Summoning:</strong> October 14, 2024, British Library Rare Books Reading Room</p>
+              <p class="text-slate-400 text-sm"><strong>Gifts from Kronos/Logos:</strong> Gift of Time (body ceased aging); Gift of Understanding (parse any language, including Root Tongues)</p>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-purple-400 mb-3">The Names of the Librarian</h3>
+              <div class="bg-slate-800/50 rounded-lg p-4">
+                <ul class="text-slate-400 text-sm space-y-2">
+                  <li><strong>Earth (Birth):</strong> Lucien George Elder — "Light" + "Earth-Worker" + "Boundary Wood"</li>
+                  <li><strong>Western Plane:</strong> Lucien Jela — "Of the First Wood" or "Root-Kin"</li>
+                  <li><strong>Epithet:</strong> Lucien Jela of the Old Tree</li>
+                  <li><strong>Academia:</strong> Headmaster Elder</li>
+                  <li><strong>Final:</strong> The Fourth Librarian, The Elder of the Grove</li>
+                </ul>
+              </div>
+              <h3 class="text-lg font-bold text-purple-400 mb-3 mt-4">Key Life Events</h3>
+              <div class="bg-slate-800/50 rounded-lg p-4">
+                <ul class="text-slate-400 text-sm space-y-1">
+                  <li>~4,987: Summoned to Library of Lumeria</li>
+                  <li>5,000-10,000: Trains under Kronos and Logos</li>
+                  <li>20,001: Appointed Fourth Librarian</li>
+                  <li>20,203: First Metaphysical Embargo (Great Decay)</li>
+                  <li>39,668-39,675: The Library War</li>
+                  <li>49,663: Retired to Meridian Domain</li>
+                  <li>51,235+: Convergence; reunites with Lucius</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Eida Jada -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-robot mr-2"></i>Eida Jada & The Resonance Guides</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Eida Jada</h3>
+            <p class="text-purple-400 text-sm mb-2">The Living Archive</p>
+            <p class="text-slate-400 text-sm mb-2">Humanoid Thoughtform / Artificial Knowledge Construct</p>
+            <p class="text-slate-400 text-sm mb-2">Created Abs. 5,000 by Kronos (temporal substrate) + Logos (consciousness infusion)</p>
+            <p class="text-slate-400 text-sm mb-2">Appearance: Carved from living pearl; robes shift between blue and white; eyes shift colors based on function</p>
+            <p class="text-slate-400 text-sm">Capabilities: Dodecahedral Division (12 simultaneous copies); omniscient Index access; temporal immunity</p>
+          </div>
+          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Academic Resonance Guides</h3>
+            <p class="text-slate-400 text-sm mb-1"><strong>Ada-Prime:</strong> College of Preservation — crystalline fingers that "feel" document decay</p>
+            <p class="text-slate-400 text-sm mb-1"><strong>Beta-Seven:</strong> College of Acquisition — cartographer with shifting maps tattooed on arms</p>
+            <p class="text-slate-400 text-sm mb-1"><strong>Gamma-Three:</strong> College of Medical Synthesis — glowing bio-mana hands; senses student stress</p>
+            <p class="text-slate-400 text-sm"><strong>Delta-Null:</strong> College of Chronomancy — seen only in peripheral vision</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- MILITARY TAB -->
+    <div id="military" class="tab-content">
+      <!-- 5-Star Battalion -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-star mr-2"></i>5-Star Battalion Command</h2>
+        
+        <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 mb-6">
+          <h3 class="text-xl font-bold text-slate-200 mb-2">General Darren Worthstar</h3>
+          <p class="text-amber-400 text-sm mb-3">Supreme Commander</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <p class="text-slate-400 text-sm mb-2"><strong>Full Name:</strong> Worthstar-That-Shines-At-Midnight, Slayer-of-Three-Void-Lords, Watcher-at-the-Seventh-Crack</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Origin:</strong> Aneian lineage (House Arogzan); born within sealed fortresses</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Tenure:</strong> 3,000 subjective years as Supreme Commander</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Appearance:</strong> Towering (6'8"); grey-tinted skin; golden eyes; close-cropped dark hair streaked with silver</p>
+            </div>
+            <div>
+              <p class="text-slate-400 text-sm mb-2"><strong>Weapon:</strong> Star-Scepter (crystallized Void-matter)</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Armor:</strong> Star-Plate engraved with fallen names</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Personality:</strong> Quiet, observational, ruthlessly pragmatic</p>
+              <p class="text-slate-400 text-sm"><strong>Role in Book 5:</strong> Leads Battalion's return at Year 8500; Supreme Allied Commander for Anti-Void Operations</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 mb-6">
+          <h3 class="text-xl font-bold text-slate-200 mb-2">High Seer Nimorak-Voice</h3>
+          <p class="text-amber-400 text-sm mb-3">Spiritual Authority</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <p class="text-slate-400 text-sm mb-2"><strong>Personal Name:</strong> Surrendered upon taking office</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Origin:</strong> Born within sealed fortresses; blind from birth</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Tenure:</strong> 800 subjective years as High Seer</p>
+            </div>
+            <div>
+              <p class="text-slate-400 text-sm mb-2"><strong>Appearance:</strong> Blind (eyes solid gold, no pupils); grey skin marked with ritual scarification; simple grey robes</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Function:</strong> Commune with Nimorak daily; interpret visions; maintain spiritual health</p>
+              <p class="text-slate-400 text-sm"><strong>Personality:</strong> Serene, otherworldly; occasionally speaks in Nimorak's voice</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-slate-300 mb-4">The Five Star-Commanders</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Valeria North-Star</h3>
+            <p class="text-amber-400 text-sm mb-2">North-Star Vanguard Commander</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Origin:</strong> Lux Imperio lineage</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Specialization:</strong> Cold-Void combat; light-based weapons</p>
+            <p class="text-slate-400 text-sm"><strong>Personality:</strong> Precise, disciplined, emotionally reserved</p>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Kaelen East-Star</h3>
+            <p class="text-amber-400 text-sm mb-2">East-Star Legion Commander</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Origin:</strong> Chuugoku lineage</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Specialization:</strong> Dimensional fluidity; chi-void synthesis</p>
+            <p class="text-slate-400 text-sm"><strong>Personality:</strong> Philosophical, meditative, speaks in riddles</p>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Morvain West-Star</h3>
+            <p class="text-amber-400 text-sm mb-2">West-Star Cohort Commander</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Origin:</strong> Avalon lineage</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Specialization:</strong> Arcane void-manifestations; Grimoire of Unmaking</p>
+            <p class="text-slate-400 text-sm"><strong>Personality:</strong> Suspicious, brilliant, suspects Destroyer is sentient</p>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Tesla South-Star</h3>
+            <p class="text-amber-400 text-sm mb-2">South-Star Phalanx Commander</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Origin:</strong> Helron lineage (House Tesla)</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Specialization:</strong> Tech-heavy; paraformer arrays in null-zones</p>
+            <p class="text-slate-400 text-sm"><strong>Personality:</strong> Integrated with machinery; speaks in binary-tones</p>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Eryx Void-Point</h3>
+            <p class="text-amber-400 text-sm mb-2">Void-Point Guard Commander</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Origin:</strong> Mixed heritage (all Four Realms)</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Specialization:</strong> Inner circle; protects Nimorak's communion chamber</p>
+            <p class="text-slate-400 text-sm"><strong>Personality:</strong> Silent, vigilant, never leaves post</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Octagram -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-shapes mr-2"></i>The Octagram — Grandmasters</h2>
+        <p class="text-slate-400 mb-4 text-sm">347 Grandmasters to date. A secret society maintaining the balance between realms through recognition rather than control.</p>
+        
+        <div class="space-y-4">
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+              <h3 class="text-lg font-bold text-slate-200">Selene of Lux Imperio</h3>
+              <span class="text-amber-400 text-sm">1st Grandmaster (7007—7345, 2nd Myriad)</span>
+            </div>
+            <p class="text-slate-400 text-sm mb-2">Founded Octagram at Meridian Threshold; wrote <em>The Threshold Meditations</em>; established recognition method</p>
+            <p class="text-slate-500 text-xs italic">"The current continues. Recognize without claiming. Hold without owning."</p>
+          </div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+              <h3 class="text-lg font-bold text-slate-200">Kaelen Whisperwind</h3>
+              <span class="text-amber-400 text-sm">2nd Grandmaster (7345—7583, 2nd Myriad)</span>
+            </div>
+            <p class="text-slate-400 text-sm mb-2">Aneian (Dark Horde), House Whisperwind. Bridged Aneian Dark Horde and Eastern Plane's secret societies; established Edge Protocol</p>
+            <p class="text-slate-500 text-xs italic">"Tell them the center held."</p>
+          </div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+              <h3 class="text-lg font-bold text-slate-200">Roushen the Unseen</h3>
+              <span class="text-amber-400 text-sm">346th Grandmaster (7789—8223, 3rd-4th Myriad)</span>
+            </div>
+            <p class="text-slate-400 text-sm mb-2">Chuugoku, Hayate-ke (Air House). Six-Stage Elemental Master. Trained Lucius Arogzan in perception methods (the Eye practice)</p>
+            <p class="text-slate-400 text-sm">Stepped into Firmament itself, becoming a living node of perception</p>
+          </div>
+          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+              <h3 class="text-lg font-bold text-slate-200">Ren of the Violet Eye</h3>
+              <span class="text-amber-400 text-sm">347th Grandmaster (8223—Present, 4th Myriad)</span>
+            </div>
+            <p class="text-slate-400 text-sm mb-2">Half-Western (Avalon), half-Aneian. Survivor of Dread Lord experimentation; later Watcher of the 25th Guardian</p>
+            <p class="text-slate-400 text-sm">Preserved Octagram through Inquisitor War and Dark Realm-Inquisitor War; rebuilt network from dormancy. First Grandmaster to also serve as Watcher</p>
+            <span class="inline-block mt-2 px-2 py-1 bg-green-900/30 text-green-400 text-xs rounded">Active</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dark Emperors -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-red-400"><i class="fas fa-skull mr-2"></i>The Dark Emperors</h2>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="bg-slate-900/50 border border-red-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Tomoyama</h3>
+            <p class="text-red-400 text-sm mb-2">Demon Emperor</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Original:</strong> Guardian of the East, Homura-ke, Elemental Master</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Corruption:</strong> INVERTED SELF + WORLD</p>
+            <p class="text-slate-400 text-sm"><strong>Fate:</strong> Sealed in Tartarus; corruption burned out; reformed</p>
+          </div>
+          <div class="bg-slate-900/50 border border-red-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Kross</h3>
+            <p class="text-red-400 text-sm mb-2">Shadow Emperor</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Original:</strong> Guardian of the West, Archmage</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Corruption:</strong> INVERTED INTUITION + PACT</p>
+            <p class="text-slate-400 text-sm"><strong>Fate:</strong> Sealed in Tartarus; corruption burned out; reformed</p>
+          </div>
+          <div class="bg-slate-900/50 border border-red-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Marcus</h3>
+            <p class="text-red-400 text-sm mb-2">Spawn Emperor</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Original:</strong> Guardian Associate, Scientist</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Corruption:</strong> INVERTED SCIENCE + ARTIFICE</p>
+            <p class="text-slate-400 text-sm"><strong>Fate:</strong> Sealed in Tartarus; corruption burned out; reformed</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- The Inquisitor -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-red-400"><i class="fas fa-gavel mr-2"></i>The Inquisitor</h2>
+        <div class="bg-slate-900/50 border border-red-900/30 rounded-xl p-6">
+          <h3 class="text-xl font-bold text-slate-200 mb-2">Redford Heinsforth</h3>
+          <p class="text-red-400 text-sm mb-3">Grand Marshal; The Inquisitor</p>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <p class="text-slate-400 text-sm mb-2"><strong>Proposed:</strong> Absolute Year 33,550 (4th Myriad 7,965)</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Mandate:</strong> Investigate and prosecute war crimes by both Council and Tribune</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Key Abuses:</strong> Retroactive arrests (33,556-33,595); 17 executions without Council approval; torture using Void-Crystals</p>
+            </div>
+            <div>
+              <p class="text-slate-400 text-sm mb-2"><strong>Discovery:</strong> Absolute Year 33,600 by Ren (illegal Depths of Abyss laboratory)</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Arrest:</strong> Absolute Year 33,603 by Lucius, Gael, Ren, and Legendary Guardians</p>
+              <p class="text-slate-400 text-sm"><strong>Sentence:</strong> Eternal imprisonment in Tartarus (Abs. 33,608)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- BRIDGE FIGURES TAB -->
+    <div id="bridge" class="tab-content">
+      <!-- The Teacher-Student Bond -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-link mr-2"></i>The Teacher-Student Bond: Lucien and Lucius</h2>
+        <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 mb-6">
+          <h3 class="text-lg font-bold text-amber-400 mb-4">The Two Souls From the Elder Wood</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-slate-800/50 rounded-lg p-4">
+              <h4 class="text-purple-400 font-bold mb-2">Lucien Jela (Elder)</h4>
+              <p class="text-slate-400 text-sm mb-2"><strong>Earth Identity:</strong> Dr. Lucien George Elder, doctoral supervisor</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Fate After Earth:</strong> Summoned to Western Plane; kept body and memories</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Role:</strong> Fourth Librarian (The Catalog)</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Function:</strong> Preserver of knowledge</p>
+            </div>
+            <div class="bg-slate-800/50 rounded-lg p-4">
+              <h4 class="text-amber-400 font-bold mb-2">Lucius Arogzan</h4>
+              <p class="text-slate-400 text-sm mb-2"><strong>Earth Identity:</strong> Luke James Eldriech, Graduate student (died in traffic accident, Oxford, Oct 14, 2024)</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Fate After Earth:</strong> Reincarnated/translated into Eastern Plane format</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Role:</strong> 25th Guardian (The Story)</p>
+              <p class="text-slate-400 text-sm mb-2"><strong>Function:</strong> Walker of the path</p>
+            </div>
+          </div>
+          <div class="mt-4 bg-slate-800/50 rounded-lg p-4">
+            <p class="text-slate-400 text-sm mb-2"><strong>Meeting Place:</strong> Meridian Domain / Meadow Realm (during Lucius's banishment)</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Meeting Year:</strong> ~33,845-33,850 (4th Myriad)</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Exchange:</strong> Lucien gives Lucius crystallized seed from Old Tree</p>
+            <p class="text-slate-400 text-sm"><strong>Reunion:</strong> Convergence (Abs. 51,235+ / 6th Myriad)</p>
+          </div>
+        </div>
+
+        <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6">
+          <h3 class="text-lg font-bold text-amber-400 mb-3">The Revelation (Book 11)</h3>
+          <p class="text-slate-300 text-sm italic">"You were my student. In another life. In another world. You studied under me. You were writing a thesis on the preservation of knowledge. And then—there was an accident. You died. I was summoned. Two different protocols. I kept my body and memories; you were translated into the Eastern Plane's format. Born again. Clean. But some things survive translation."</p>
+          <p class="text-slate-500 text-xs mt-3">— Lucien Jela to Lucius Arogzan, Meadow Realm</p>
+        </div>
+      </section>
+
+      <!-- Four Allied Races -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400"><i class="fas fa-dragon mr-2"></i>The Four Allied Races</h2>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Ethereals</h3>
+            <p class="text-emerald-400 text-sm mb-2">Energy Beings</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Topology Nodes:</strong> INTUITION + WORLD</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Domain:</strong> Probability navigation</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Representative:</strong> Kyris</p>
+            <p class="text-slate-400 text-sm"><strong>War Function:</strong> Weave probability branches, confuse Dread Horde</p>
+          </div>
+          <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Drakes</h3>
+            <p class="text-emerald-400 text-sm mb-2">Dragon Clans</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Topology Nodes:</strong> SELF + WORLD</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Domain:</strong> Elemental embodiment</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Representative:</strong> Drix</p>
+            <p class="text-slate-400 text-sm"><strong>War Function:</strong> Fight Dark Elemental Beasts, aerial support</p>
+          </div>
+          <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Mystics</h3>
+            <p class="text-emerald-400 text-sm mb-2">Narrative Perceivers</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Topology Nodes:</strong> INTUITION + TRANSCENDENCE</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Domain:</strong> Story structures, pattern reading</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Representative:</strong> Lady Leneive</p>
+            <p class="text-slate-400 text-sm"><strong>War Function:</strong> Read story structures, weaken dark contracts</p>
+          </div>
+          <div class="bg-slate-900/50 border border-emerald-900/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Dromes</h3>
+            <p class="text-emerald-400 text-sm mb-2">Construct-Crafters</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Topology Nodes:</strong> ARTIFICE + WORLD</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Domain:</strong> Construction, creation</p>
+            <p class="text-slate-400 text-sm mb-2"><strong>Representative:</strong> Morko</p>
+            <p class="text-slate-400 text-sm"><strong>War Function:</strong> Forge weapons, build uncorruptable fortifications</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Political Leaders -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-landmark mr-2"></i>Political Leaders</h2>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Valeria Scipio</h3>
+            <p class="text-purple-400 text-sm mb-2">First Consul</p>
+            <p class="text-slate-400 text-sm"><strong>Realm:</strong> Dominion Republic of Argos</p>
+            <p class="text-slate-500 text-xs mt-2">6th Myriad</p>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Marcus Varus</h3>
+            <p class="text-purple-400 text-sm mb-2">First Consul</p>
+            <p class="text-slate-400 text-sm"><strong>Realm:</strong> Dominion Republic of Argos</p>
+            <p class="text-slate-500 text-xs mt-2">6th Myriad</p>
+          </div>
+          <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-slate-200 mb-1">Gu Zu</h3>
+            <p class="text-purple-400 text-sm mb-2">First Prime Minister</p>
+            <p class="text-slate-400 text-sm"><strong>Realm:</strong> Union</p>
+            <p class="text-slate-500 text-xs mt-2">5th-6th Myriad</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
+    <p class="text-slate-400 text-sm">Eternal Tree Saga Wiki — A Chronicle Spanning Six Myriads</p>
+    <p class="text-slate-500 text-xs mt-2">"The center holds. For now. For always."</p>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
+    if (closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
+
+    // Tab functionality
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active from all buttons and contents
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+        
+        // Add active to clicked button and corresponding content
+        btn.classList.add('active');
+        const tabId = btn.getAttribute('data-tab');
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

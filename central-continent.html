@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central Continent - Eternal Trees Saga Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'cinzel': ['Cinzel', 'serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'eternal-gold': '#d4af37',
+                        'eternal-amber': '#f59e0b',
+                        'eternal-purple': '#8b5cf6',
+                        'eternal-emerald': '#10b981',
+                        'eternal-slate': '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; }
+        h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+        .framework-card { transition: all 0.3s ease; }
+        .framework-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-slate-900/90 backdrop-blur-md border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <i class="fas fa-tree text-eternal-emerald text-2xl"></i>
+                        <span class="fantasy-font text-xl font-bold text-eternal-gold">Eternal Trees Saga</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="flex items-baseline space-x-4">
+                        <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Home</a>
+                        <a href="key-figures.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Key Figures</a>
+                        <a href="places.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Places</a>
+                        <a href="timeline.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Timeline</a>
+                        <a href="plots.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Plots</a>
+                        <a href="eastern-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-amber hover:bg-slate-800 transition">Eastern</a>
+                        <a href="western-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-purple hover:bg-slate-800 transition">Western</a>
+                        <a href="other-realms.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-emerald hover:bg-slate-800 transition">Realms</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Home</a>
+                <a href="key-figures.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Key Figures</a>
+                <a href="places.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Places</a>
+                <a href="timeline.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Timeline</a>
+                <a href="plots.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Plots</a>
+                <a href="eastern-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-amber hover:bg-slate-800">Eastern Factions</a>
+                <a href="western-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-purple hover:bg-slate-800">Western Factions</a>
+                <a href="other-realms.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-emerald hover:bg-slate-800">Other Realms</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-b from-purple-900/40 to-slate-950 py-16">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.2) 0%, transparent 70%);"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center space-x-2 mb-4">
+                <span class="px-3 py-1 bg-purple-900/50 border border-purple-600/30 rounded-full text-purple-400 text-sm">Western Plane</span>
+                <span class="px-3 py-1 bg-slate-800 border border-slate-600 rounded-full text-slate-400 text-sm">Five Powers</span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold text-purple-400 mb-4">Central Continent</h1>
+            <p class="text-xl text-slate-400 max-w-3xl mx-auto">A continent divided among five major powers, each vying for dominance and survival</p>
+            <div class="mt-6 flex justify-center space-x-4 text-sm text-slate-500">
+                <span><i class="fas fa-chess-king text-purple-400 mr-2"></i>Aurelius Empire</span>
+                <span><i class="fas fa-flag text-purple-400 mr-2"></i>Legion</span>
+                <span><i class="fas fa-landmark text-purple-400 mr-2"></i>Republic</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                <h2 class="text-2xl font-bold text-eternal-gold mb-4">Overview</h2>
+                <p class="text-slate-300 leading-relaxed mb-4">The Central Continent of the Western Plane is home to five major powers that have shaped the history and politics of the region for centuries. These nations—the Aurelius Empire, the Legion, the Republic, the Neo-Imperium, and the Dominion Republic—represent diverse approaches to governance, from absolute monarchy to military dictatorship to democratic republicanism.</p>
+                <p class="text-slate-300 leading-relaxed mb-4">Constant tension and periodic warfare between these powers have defined Central Continent politics. Alliances shift with the wind, and today's friend may become tomorrow's enemy. The presence of Abyssal threats has occasionally forced cooperation, but old rivalries die hard.</p>
+                <p class="text-slate-300 leading-relaxed">Despite their conflicts, the Central Continent powers share a common cultural heritage rooted in the ancient civilization that once unified the region. Latin remains a lingua franca among the educated classes, and philosophical and artistic traditions cross political boundaries.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Five Powers -->
+    <section class="py-12 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-12">The Five Powers</h2>
+            
+            <div class="space-y-12">
+                <!-- Aurelius Empire -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-crown text-purple-400 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-purple-400">Aurelius Empire</h3>
+                            <p class="text-slate-500">The Imperial Tradition</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 mb-6">The oldest and largest of the Central Continent powers, the Aurelius Empire claims descent from the ancient civilization that once ruled the entire continent. Governed by the Aurelius dynasty, the Empire maintains traditions of imperial governance, patronage of the arts, and military expansion.</p>
+                    
+                    <h4 class="text-lg font-bold text-eternal-gold mb-4">11-Framework Analysis</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">1. Historical</h5>
+                            <p class="text-slate-400 text-sm">Founded over a thousand years ago by Aurelius the Great, who unified the warring tribes of the continent. The Empire claims direct descent from the ancient civilization, preserving its laws, customs, and traditions through the centuries.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">2. Political</h5>
+                            <p class="text-slate-400 text-sm">Absolute monarchy with the Emperor holding supreme authority. The Senate advises on policy but holds no binding power. Provincial governors administer regions on behalf of the throne. Succession follows primogeniture with occasional civil wars.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">3. Mental</h5>
+                            <p class="text-slate-400 text-sm">Education emphasizes classical learning, rhetoric, and philosophy. The elite are trained to think strategically and administratively. Commoners receive basic education focused on practical skills and loyalty to the Empire.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">4. Spiritual</h5>
+                            <p class="text-slate-400 text-sm">The Imperial Cult venerates the Emperor as the divine representative of the gods. Traditional pantheon worship remains strong, with temples receiving state support. Religious tolerance is practiced, but the Imperial Cult holds privileged status.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">5. Social</h5>
+                            <p class="text-slate-400 text-sm">Rigid class hierarchy with the imperial family at the apex, followed by patricians, plebeians, and slaves. Social mobility is limited but possible through military service or imperial favor. Family connections and patronage networks determine advancement.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">6. Cultural</h5>
+                            <p class="text-slate-400 text-sm">Rich tradition of art, literature, and architecture that draws from ancient models. The Empire patronizes artists and scholars to glorify its history. Gladiatorial games and public spectacles entertain the masses and demonstrate imperial power.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">7. Economical</h5>
+                            <p class="text-slate-400 text-sm">Agricultural foundation with extensive trade networks. The Empire mints the most widely accepted currency in the Western Plane. Taxation is heavy but funds public works, military campaigns, and the imperial court.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">8. Physiological</h5>
+                            <p class="text-slate-400 text-sm">Advanced medical knowledge preserved from ancient times. Public baths and sanitation systems promote health. The elite enjoy the best care, while commoners rely on traditional remedies. Military training emphasizes physical fitness.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">9. Territorial</h5>
+                            <p class="text-slate-400 text-sm">The largest territory on the Central Continent, encompassing diverse climates and resources. The capital city is one of the world's greatest metropolises. Extensive road networks connect provincial centers to the heartland.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">10. Technological</h5>
+                            <p class="text-slate-400 text-sm">Preserves and maintains ancient technologies, including aqueducts, roads, and siege engines. Engineering corps are highly skilled. Magical research is conducted under imperial supervision, with breakthroughs reserved for state use.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">11. Military</h5>
+                            <p class="text-slate-400 text-sm">Professional legions form the backbone of imperial power. Each legion is a self-contained fighting force with infantry, cavalry, and support units. The Praetorian Guard protects the Emperor and serves as an elite reserve.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Legion -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-shield-alt text-purple-400 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-purple-400">The Legion</h3>
+                            <p class="text-slate-500">Military Meritocracy</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 mb-6">A nation built around its military, where citizenship is earned through service and social status derives from military achievement. The Legion's disciplined armies are feared throughout the Western Plane, and its commanders are among the finest strategists in existence.</p>
+                    
+                    <h4 class="text-lg font-bold text-eternal-gold mb-4">11-Framework Analysis</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">1. Historical</h5>
+                            <p class="text-slate-400 text-sm">Originated as a mercenary company that carved out its own territory during the collapse of the previous empire. Over generations, the Legion transformed from a band of soldiers into a nation-state governed by military principles.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">2. Political</h5>
+                            <p class="text-slate-400 text-sm">Military oligarchy led by the High Command, composed of the most senior and accomplished officers. Citizenship is earned through military service. Non-citizens are subject to military law but cannot vote or hold office.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">3. Mental</h5>
+                            <p class="text-slate-400 text-sm">Education is entirely focused on military training and discipline from early childhood. Critical thinking is encouraged within tactical and strategic contexts. Loyalty, duty, and sacrifice are the highest virtues instilled in all citizens.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">4. Spiritual</h5>
+                            <p class="text-slate-400 text-sm">The Legion honors the spirits of fallen comrades and worships war deities. Religious services are conducted as military ceremonies. Chaplains serve alongside combat units, providing spiritual guidance and maintaining morale.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">5. Social</h5>
+                            <p class="text-slate-400 text-sm">Social hierarchy is determined entirely by military rank and accomplishment. Family lineage means nothing compared to personal achievement. Veterans are highly respected and often become community leaders after retirement.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">6. Cultural</h5>
+                            <p class="text-slate-400 text-sm">Culture revolves around military traditions—drill, ceremony, and commemoration of battles. Music consists of marching songs and martial anthems. Art typically depicts heroic military scenes and honors fallen heroes.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">7. Economical</h5>
+                            <p class="text-slate-400 text-sm">War economy with state-controlled production of weapons, armor, and supplies. Mercenary contracts provide significant income. Agriculture and basic industries support the population, but military spending dominates the budget.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">8. Physiological</h5>
+                            <p class="text-slate-400 text-sm">Physical fitness is mandatory for all citizens. Military training begins in childhood and continues throughout life. Medical care is excellent for active service members but limited for non-citizens and the elderly.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">9. Territorial</h5>
+                            <p class="text-slate-400 text-sm">Compact territory organized as a fortified camp on a continental scale. The capital is essentially a massive military base. Border regions are heavily fortified with walls, watchtowers, and garrison towns.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">10. Technological</h5>
+                            <p class="text-slate-400 text-sm">Military technology is highly advanced, including siege engines, armored vehicles, and communication systems. Innovation is encouraged but must serve military purposes. Engineers are valued members of society.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">11. Military</h5>
+                            <p class="text-slate-400 text-sm">The entire society is organized for war. Every citizen is a soldier. The Legion's forces are renowned for discipline, tactical flexibility, and endurance. Specialized units include heavy infantry, cavalry, engineers, and battle-mages.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Republic -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-landmark text-purple-400 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-purple-400">The Republic</h3>
+                            <p class="text-slate-500">Democratic Governance</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 mb-6">A democratic republic where citizens elect representatives to govern on their behalf. The Republic prides itself on its freedoms, its legal system, and its commercial success. While not the largest or most powerful of the five, it is often the most prosperous and innovative.</p>
+                    
+                    <h4 class="text-lg font-bold text-eternal-gold mb-4">11-Framework Analysis</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">1. Historical</h5>
+                            <p class="text-slate-400 text-sm">Founded by revolutionaries who overthrew a tyrannical king two centuries ago. The Republic's constitution enshrines principles of liberty, equality, and rule of law. Its history is marked by struggles to expand citizenship and protect freedoms.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">2. Political</h5>
+                            <p class="text-slate-400 text-sm">Representative democracy with a bicameral legislature elected by citizens. The Consul serves as head of state and government, elected for limited terms. An independent judiciary interprets the constitution. Local governments have significant autonomy.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">3. Mental</h5>
+                            <p class="text-slate-400 text-sm">Education emphasizes critical thinking, civic responsibility, and practical skills. Public schools are available to all citizens. Universities encourage innovation and debate. The press is free and plays a vital role in public discourse.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">4. Spiritual</h5>
+                            <p class="text-slate-400 text-sm">Complete separation of church and state. All faiths are tolerated, and none receive state support. Many citizens follow traditional religions, while others embrace philosophical schools or secular humanism.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">5. Social</h5>
+                            <p class="text-slate-400 text-sm">Social mobility is high compared to neighboring states. Birth matters less than talent and effort. A growing middle class dominates commerce and professions. Debates over expanding citizenship to non-humans and former slaves continue.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">6. Cultural</h5>
+                            <p class="text-slate-400 text-sm">Vibrant cultural scene with theater, music, and literature flourishing. Artists enjoy patronage from wealthy merchants and public support. The Republic's culture emphasizes individual expression and challenges to tradition.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">7. Economical</h5>
+                            <p class="text-slate-400 text-sm">Market economy with strong commercial traditions. Banking and trade are major industries. Guilds regulate crafts and professions. The Republic's currency is trusted throughout the Western Plane, and its merchants are found everywhere.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">8. Physiological</h5>
+                            <p class="text-slate-400 text-sm">Medical care is widely available, with both public clinics and private practitioners. Sanitation and public health measures are advanced. Physical fitness is encouraged but not mandatory. Life expectancy is higher than in neighboring states.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">9. Territorial</h5>
+                            <p class="text-slate-400 text-sm">Moderate territory with excellent ports and trade routes. The capital is a bustling commercial center. Towns and cities enjoy self-governance under republican principles. Border regions are defended by citizen militias and professional forces.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">10. Technological</h5>
+                            <p class="text-slate-400 text-sm">Innovation is encouraged and rewarded. Inventors can patent their creations and profit from them. The Republic leads in areas like navigation, printing, and manufacturing. Magical research is conducted by private academies.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">11. Military</h5>
+                            <p class="text-slate-400 text-sm">Citizen militia forms the backbone of defense, supplemented by professional units. Military service is voluntary but highly respected. The Republic's forces excel in naval warfare and defensive operations rather than aggressive campaigns.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Neo-Imperium -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-star text-purple-400 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-purple-400">Neo-Imperium</h3>
+                            <p class="text-slate-500">Revived Imperial Ambition</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 mb-6">A relatively new power founded by a charismatic leader who claimed to restore the ancient empire's glory. The Neo-Imperium combines elements of imperial tradition with revolutionary ideology, creating a dynamic and expansionist state that threatens its neighbors.</p>
+                    
+                    <h4 class="text-lg font-bold text-eternal-gold mb-4">11-Framework Analysis</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">1. Historical</h5>
+                            <p class="text-slate-400 text-sm">Founded fifty years ago by the Supreme Leader, who united warring factions under a vision of restored glory. The Neo-Imperium has rapidly expanded through conquest and subversion, claiming to be the true heir of ancient civilization.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">2. Political</h5>
+                            <p class="text-slate-400 text-sm">Authoritarian state with the Supreme Leader holding absolute power. A cult of personality surrounds the Leader, whose word is law. The Party apparatus manages day-to-day governance and ensures ideological conformity.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">3. Mental</h5>
+                            <p class="text-slate-400 text-sm">Education is strictly controlled and serves state propaganda. Critical thinking is discouraged outside approved channels. Citizens are taught to venerate the Supreme Leader and the state's ideology. Independent thought is dangerous.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">4. Spiritual</h5>
+                            <p class="text-slate-400 text-sm">The Supreme Leader is venerated as a semi-divine figure. Traditional religions are suppressed or co-opted. State ideology functions as a secular religion, with rituals, symbols, and sacred texts glorifying the Leader and the state.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">5. Social</h5>
+                            <p class="text-slate-400 text-sm">Social hierarchy is based on loyalty to the regime and service to the state. Party members enjoy privileges denied to ordinary citizens. Dissidents are sent to re-education camps or labor colonies. Fear and surveillance maintain control.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">6. Cultural</h5>
+                            <p class="text-slate-400 text-sm">State-controlled culture glorifies the Supreme Leader and the Neo-Imperium's achievements. Art, music, and literature must serve ideological purposes. Historical revisionism reconstructs the past to justify present policies.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">7. Economical</h5>
+                            <p class="text-slate-400 text-sm">Command economy directed by the state. Private enterprise is limited and closely regulated. Resources are directed toward military expansion and monumental projects. Shortages are common, but propaganda maintains morale.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">8. Physiological</h5>
+                            <p class="text-slate-400 text-sm">Medical care is adequate for Party members and the military but limited for others. Physical fitness is promoted as preparation for national service. Eugenic programs aim to improve the population according to state ideology.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">9. Territorial</h5>
+                            <p class="text-slate-400 text-sm">Rapidly expanding territory through conquest and annexation. The capital features monumental architecture glorifying the regime. Newly conquered regions are integrated through colonization and cultural assimilation programs.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">10. Technological</h5>
+                            <p class="text-slate-400 text-sm">Technology is prioritized for military applications. Espionage and theft of foreign innovations are common. The state invests heavily in weapons research, including dangerous magical experiments forbidden elsewhere.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">11. Military</h5>
+                            <p class="text-slate-400 text-sm">Massive military fueled by conscription and ideological fervor. The Neo-Imperium's forces are numerous if not always well-equipped. Fanatical loyalty to the Supreme Leader makes them dangerous opponents. Special units include battle-mages and terror troops.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dominion Republic -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-hands-helping text-purple-400 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-purple-400">Dominion Republic</h3>
+                            <p class="text-slate-500">Federal Alliance</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 mb-6">A federal union of smaller states that banded together for mutual protection and prosperity. The Dominion Republic operates on principles of shared sovereignty, with member states retaining significant autonomy while cooperating on matters of defense, trade, and foreign policy.</p>
+                    
+                    <h4 class="text-lg font-bold text-eternal-gold mb-4">11-Framework Analysis</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">1. Historical</h5>
+                            <p class="text-slate-400 text-sm">Formed a century ago when seven small states united to resist absorption by larger neighbors. The federal compact has been expanded twice to include additional states. The Dominion Republic's history demonstrates the viability of cooperative governance.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">2. Political</h5>
+                            <p class="text-slate-400 text-sm">Federal system with power divided between central government and member states. The Federal Assembly represents the people, while the Council of States ensures member state interests. The Chancellor serves as head of government.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">3. Mental</h5>
+                            <p class="text-slate-400 text-sm">Education varies by member state but emphasizes civic responsibility and critical thinking. The federal government supports universities and research institutions. Citizens are expected to participate in both state and federal governance.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">4. Spiritual</h5>
+                            <p class="text-slate-400 text-sm">Religious freedom is guaranteed, and member states have diverse spiritual traditions. No federal religious establishment exists. Interfaith dialogue is encouraged as part of building federal unity.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">5. Social</h5>
+                            <p class="text-slate-400 text-sm">Social structures vary between member states, creating a diverse tapestry. Federal citizenship coexists with state identities. Free movement between states allows social mixing and prevents isolation.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">6. Cultural</h5>
+                            <p class="text-slate-400 text-sm">Rich cultural diversity is celebrated as a strength. Federal programs support cultural exchange between states. A shared identity as Dominion citizens coexists with state and local loyalties.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">7. Economical</h5>
+                            <p class="text-slate-400 text-sm">Common market allows free trade between member states. Federal currency supplements state currencies. Economic development programs assist less prosperous regions. Combined, the Dominion Republic has significant economic weight.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">8. Physiological</h5>
+                            <p class="text-slate-400 text-sm">Health standards are coordinated at the federal level. Medical research is shared between states. Public health emergencies are addressed through federal coordination. Life expectancy varies but is generally improving.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">9. Territorial</h5>
+                            <p class="text-slate-400 text-sm">Member states retain their traditional territories. Federal districts house central institutions. Border disputes are resolved through federal arbitration. Infrastructure projects connect member states and promote integration.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">10. Technological</h5>
+                            <p class="text-slate-400 text-sm">Research collaboration between states accelerates innovation. Federal standards ensure compatibility of systems. Member states specialize in different technological areas and share expertise.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">11. Military</h5>
+                            <p class="text-slate-400 text-sm">Federal Defense Force combines units from all member states. Each state maintains its own militia for internal security. Coordination through federal command structure ensures unified response to external threats.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <i class="fas fa-tree text-eternal-emerald text-xl"></i>
+                    <span class="fantasy-font text-lg font-bold text-eternal-gold">Eternal Trees Saga</span>
+                </div>
+                <div class="text-slate-500 text-sm">
+                    <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="index.html" class="text-slate-400 hover:text-eternal-gold transition">Home</a>
+                    <a href="eastern-factions.html" class="text-slate-400 hover:text-eternal-amber transition">Eastern</a>
+                    <a href="western-factions.html" class="text-slate-400 hover:text-eternal-purple transition">Western</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

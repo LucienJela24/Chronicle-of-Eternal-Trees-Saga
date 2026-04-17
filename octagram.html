@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Octagram - Eternal Trees Saga Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'cinzel': ['Cinzel', 'serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'eternal-gold': '#d4af37',
+                        'eternal-amber': '#f59e0b',
+                        'eternal-purple': '#8b5cf6',
+                        'eternal-emerald': '#10b981',
+                        'eternal-slate': '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; }
+        h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+        .framework-card { transition: all 0.3s ease; }
+        .framework-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-slate-900/90 backdrop-blur-md border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <i class="fas fa-tree text-eternal-emerald text-2xl"></i>
+                        <span class="fantasy-font text-xl font-bold text-eternal-gold">Eternal Trees Saga</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="flex items-baseline space-x-4">
+                        <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Home</a>
+                        <a href="key-figures.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Key Figures</a>
+                        <a href="places.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Places</a>
+                        <a href="timeline.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Timeline</a>
+                        <a href="plots.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Plots</a>
+                        <a href="eastern-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-amber hover:bg-slate-800 transition">Eastern</a>
+                        <a href="western-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-purple hover:bg-slate-800 transition">Western</a>
+                        <a href="other-realms.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-emerald hover:bg-slate-800 transition">Realms</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Home</a>
+                <a href="key-figures.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Key Figures</a>
+                <a href="places.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Places</a>
+                <a href="timeline.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Timeline</a>
+                <a href="plots.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Plots</a>
+                <a href="eastern-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-amber hover:bg-slate-800">Eastern Factions</a>
+                <a href="western-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-purple hover:bg-slate-800">Western Factions</a>
+                <a href="other-realms.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-emerald hover:bg-slate-800">Other Realms</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-b from-emerald-900/40 to-slate-950 py-16">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 70%);"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center space-x-2 mb-4">
+                <span class="px-3 py-1 bg-emerald-900/50 border border-emerald-600/30 rounded-full text-emerald-400 text-sm">Guardian Domain</span>
+                <span class="px-3 py-1 bg-slate-800 border border-slate-600 rounded-full text-slate-400 text-sm">Elite Council</span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold text-emerald-400 mb-4">The Octagram</h1>
+            <p class="text-xl text-slate-400 max-w-3xl mx-auto">The eight most powerful Guardians who serve as the ultimate authority within the Guardian Domain</p>
+            <div class="mt-6 flex justify-center space-x-4 text-sm text-slate-500">
+                <span><i class="fas fa-star text-emerald-400 mr-2"></i>8 Members</span>
+                <span><i class="fas fa-crown text-emerald-400 mr-2"></i>Supreme Authority</span>
+                <span><i class="fas fa-shield-alt text-emerald-400 mr-2"></i>Elite Guardians</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                <h2 class="text-2xl font-bold text-eternal-gold mb-4">Overview</h2>
+                <p class="text-slate-300 leading-relaxed mb-4">The Octagram represents the pinnacle of Guardian power and authority within the Guardian Domain. Composed of the eight most powerful Guardians, this elite council serves as the ultimate decision-making body for all matters concerning the defense against Abyssal threats. Each member of the Octagram represents a different aspect of Guardian power and specializes in a unique combat discipline.</p>
+                <p class="text-slate-300 leading-relaxed mb-4">The Octagram's authority extends across all divisions of the Guardian Domain, and their word is law in matters of strategy, resource allocation, and disciplinary action. They are second only to the Captain-Commander in the chain of command, and in the Captain-Commander's absence, the Octagram speaks with their voice.</p>
+                <p class="text-slate-300 leading-relaxed">Selection to the Octagram is the highest honor a Guardian can achieve. Members are chosen based on a combination of combat prowess, tactical brilliance, leadership ability, and unwavering dedication to the Guardian cause. Once appointed, they serve for life unless they choose to step down or are removed for misconduct.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Eight Seats -->
+    <section class="py-12 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-8">The Eight Seats</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 text-center">
+                    <i class="fas fa-sword text-emerald-400 text-2xl mb-3"></i>
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">The Sword</h3>
+                    <p class="text-slate-400 text-sm">Master of offensive combat and battlefield tactics</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 text-center">
+                    <i class="fas fa-shield text-emerald-400 text-2xl mb-3"></i>
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">The Shield</h3>
+                    <p class="text-slate-400 text-sm">Defensive specialist and protector of the innocent</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 text-center">
+                    <i class="fas fa-eye text-emerald-400 text-2xl mb-3"></i>
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">The Eye</h3>
+                    <p class="text-slate-400 text-sm">Intelligence master and strategic analyst</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 text-center">
+                    <i class="fas fa-fire text-emerald-400 text-2xl mb-3"></i>
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">The Flame</h3>
+                    <p class="text-slate-400 text-sm">Battle-mage and wielder of destructive power</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 text-center">
+                    <i class="fas fa-bolt text-emerald-400 text-2xl mb-3"></i>
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">The Storm</h3>
+                    <p class="text-slate-400 text-sm">Mobile warfare and rapid response specialist</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 text-center">
+                    <i class="fas fa-mountain text-emerald-400 text-2xl mb-3"></i>
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">The Stone</h3>
+                    <p class="text-slate-400 text-sm">Unbreakable defender and siege warfare expert</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 text-center">
+                    <i class="fas fa-moon text-emerald-400 text-2xl mb-3"></i>
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">The Shadow</h3>
+                    <p class="text-slate-400 text-sm">Covert operations and special missions</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 text-center">
+                    <i class="fas fa-sun text-emerald-400 text-2xl mb-3"></i>
+                    <h3 class="text-lg font-bold text-emerald-400 mb-2">The Light</h3>
+                    <p class="text-slate-400 text-sm">Spiritual leader and healer of the wounded</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11 Frameworks Analysis -->
+    <section class="py-12 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-12">11-Framework Analysis</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Historical Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-landmark text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">1. Historical Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The Octagram was established following the First Abyssal Incursion, when the need for a unified command structure became apparent. The original eight members were legendary heroes who had proven themselves in the darkest hours of that conflict. Over the centuries, the Octagram has guided the Guardian Domain through countless crises, with each generation of members adding to its legacy. The current Octagram includes descendants of the original founders alongside newly appointed members who have earned their place through exceptional service. Their history is recorded in the Hall of Stars, where each member's contributions are immortalized.</p>
+                </div>
+
+                <!-- Political Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-balance-scale text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">2. Political Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The Octagram operates as a council of equals, with each member having one vote on matters before them. Decisions typically require a simple majority, though certain critical matters demand unanimous consent. The First Seat, rotated annually among members, speaks for the Octagram in formal settings and breaks tie votes. The Octagram's authority extends to all aspects of Guardian Domain governance, though they typically defer to the Captain-Commander on strategic matters and to division captains on operational details. Their political influence extends beyond the Domain through diplomatic relationships with allied nations.</p>
+                </div>
+
+                <!-- Mental Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-brain text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">3. Mental Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Octagram members possess exceptional mental fortitude and strategic acumen. They undergo continuous training in tactics, leadership, and psychological warfare. Mental conditioning helps them resist Abyssal corruption and maintain clarity under extreme pressure. Each member specializes in different aspects of warfare—some excel at grand strategy, others at tactical improvisation, and still others at intelligence analysis. Together, they form a comprehensive strategic mind that can address any challenge. Regular mental assessments ensure they remain fit for command.</p>
+                </div>
+
+                <!-- Spiritual Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-praying-hands text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">4. Spiritual Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Each Octagram member maintains a profound spiritual connection to the Light and the Eternal Trees. They serve as spiritual leaders for the Guardian Domain, conducting ceremonies and offering guidance to Guardians struggling with the psychological toll of fighting the Abyss. The Octagram believes that spiritual strength is as important as physical power in the eternal struggle against darkness. They meditate daily and perform rituals to maintain their connection to divine power sources. The Seat of Light serves as the Domain's primary spiritual advisor, coordinating religious observances across all divisions.</p>
+                </div>
+
+                <!-- Social Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-users text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">5. Social Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Octagram members occupy the highest social tier within the Guardian Domain, below only the Captain-Commander. They are treated with reverence and respect by all Guardians, and their presence at social functions is considered a great honor. Despite their exalted status, Octagram members are expected to remain accessible to ordinary Guardians and maintain connections with those they lead. They often mentor promising young Guardians and take personal interest in the development of future leaders. Social obligations include attending ceremonies, hosting diplomatic guests, and representing the Domain at allied functions.</p>
+                </div>
+
+                <!-- Cultural Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-palette text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">6. Cultural Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The Octagram is central to Guardian culture, featuring prominently in art, literature, and legend. Epic poems recount their deeds, and songs celebrate their victories. Each member has a symbolic representation—the Sword, the Shield, the Eye, the Flame, the Storm, the Stone, the Shadow, and the Light—that appears in iconography throughout the Domain. The Octagram Hall, where they convene, is decorated with masterpieces depicting their legendary battles and serves as a shrine to Guardian heroism. Cultural festivals honor their service and celebrate their continued protection of the Eastern Plane.</p>
+                </div>
+
+                <!-- Economical Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-coins text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">7. Economical Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The Octagram controls significant resources allocated from the Guardian Domain's budget. They determine funding priorities for equipment, research, and facilities. Each member maintains a personal estate funded by the Domain, with staff and resources appropriate to their station. The Octagram also oversees the distribution of spoils from successful campaigns, ensuring that rewards are allocated fairly among Guardians who distinguished themselves in battle. Economic decisions balance immediate operational needs with long-term investments in the Domain's capabilities.</p>
+                </div>
+
+                <!-- Physiological Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-heartbeat text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">8. Physiological Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Octagram members represent the peak of Guardian physical capability. Their hybrid nature grants them enhanced strength, speed, endurance, and regenerative abilities far beyond ordinary Guardians. They maintain rigorous training regimens to keep their bodies in optimal condition. The Domain's best medical staff attend to their health, and they have access to experimental treatments and enhancements not available to others. Despite their power, the physical toll of their duties is immense, and members often bear scars from countless battles. Regular physical assessments ensure they remain combat-ready.</p>
+                </div>
+
+                <!-- Territorial Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-map-marked-alt text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">9. Territorial Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The Octagram maintains the Octagram Hall within the central fortress of the Guardian Domain—a sacred space where they convene to make decisions and receive audiences. The Hall features eight thrones arranged in an octagonal pattern, each decorated according to its seat's symbolic representation. Each member has a private wing within the Hall, decorated according to their personal tastes and containing their accumulated treasures and trophies. Beyond the Hall, Octagram members have authority throughout Guardian Domain territories and may commandeer resources as needed for their missions.</p>
+                </div>
+
+                <!-- Technological Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-cogs text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">10. Technological Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">Each Octagram member wields legendary weapons and armor crafted by the Domain's master artisans and enhanced by powerful magic. These artifacts are passed down through generations or created specifically for new members. The Octagram also has access to the Domain's most advanced equipment—communication devices, detection equipment, and transportation methods. They oversee research into new technologies that might give Guardians an advantage against the Abyss. The Seat of the Flame coordinates magical research, while the Seat of the Stone oversees engineering projects.</p>
+                </div>
+
+                <!-- Military Framework -->
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                            <i class="fas fa-shield-alt text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400">11. Military Framework</h3>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed">The Octagram serves as the ultimate military authority within the Guardian Domain. Each member can command any Guardian force and override any order in emergency situations. They personally lead the most dangerous missions and serve as the Domain's weapons of last resort. When all eight members fight together, they are said to be unstoppable—a force capable of turning the tide of any battle. Their combat formations are studied by all Guardians, and their tactics are incorporated into standard training. The Seat of the Sword develops offensive doctrines, while the Seat of the Shield creates defensive strategies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Selection Process -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-8">Selection Process</h2>
+            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                <p class="text-slate-300 leading-relaxed mb-6">Selection to the Octagram is the highest honor a Guardian can achieve. The process is rigorous and ensures that only the most exceptional individuals join this elite council.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-emerald-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-trophy text-emerald-400 text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400 mb-2">Nomination</h3>
+                        <p class="text-slate-400 text-sm">Candidates are nominated by existing Octagram members or the Captain-Commander based on exceptional service and demonstrated capability.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-emerald-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-tasks text-emerald-400 text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400 mb-2">Trials</h3>
+                        <p class="text-slate-400 text-sm">Nominees undergo a series of grueling trials testing combat ability, strategic thinking, leadership, and moral character.</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-emerald-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-handshake text-emerald-400 text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-emerald-400 mb-2">Confirmation</h3>
+                        <p class="text-slate-400 text-sm">Successful candidates are confirmed by majority vote of the Octagram and formally invested in a sacred ceremony.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <i class="fas fa-tree text-eternal-emerald text-xl"></i>
+                    <span class="fantasy-font text-lg font-bold text-eternal-gold">Eternal Trees Saga</span>
+                </div>
+                <div class="text-slate-500 text-sm">
+                    <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="index.html" class="text-slate-400 hover:text-eternal-gold transition">Home</a>
+                    <a href="eastern-factions.html" class="text-slate-400 hover:text-eternal-amber transition">Eastern</a>
+                    <a href="western-factions.html" class="text-slate-400 hover:text-eternal-purple transition">Western</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

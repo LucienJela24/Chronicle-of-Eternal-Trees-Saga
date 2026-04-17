@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seventeen Archipelago - Detailed | Eternal Trees Saga Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#1e293b',
+                        accent: '#0d9488',
+                        'accent-light': '#14b8a6',
+                        gold: '#fbbf24',
+                        'gold-light': '#fcd34d',
+                        dark: '#020617',
+                        'dark-light': '#1e293b'
+                    },
+                    fontFamily: {
+                        'heading': ['Cinzel', 'serif'],
+                        'body': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            min-height: 100vh;
+        }
+        .fantasy-heading {
+            font-family: 'Cinzel', serif;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .framework-card {
+            background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid rgba(13, 148, 136, 0.2);
+        }
+        .framework-card:hover {
+            border-color: rgba(13, 148, 136, 0.5);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #0d9488;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .subfaction-tab {
+            transition: all 0.3s ease;
+        }
+        .subfaction-tab.active {
+            background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+            color: white;
+        }
+        .subfaction-content {
+            display: none;
+        }
+        .subfaction-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="text-gray-100">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-primary/95 backdrop-blur-md border-b border-accent/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-tree text-accent text-2xl"></i>
+                    <span class="fantasy-heading text-xl font-bold gradient-text">Eternal Trees Saga</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-accent transition">Home</a>
+                    <a href="key-figures.html" class="nav-link text-gray-300 hover:text-accent transition">Key Figures</a>
+                    <a href="places.html" class="nav-link text-gray-300 hover:text-accent transition">Places</a>
+                    <a href="eastern-factions.html" class="nav-link text-gray-300 hover:text-accent transition">Eastern Factions</a>
+                    <a href="western-factions.html" class="nav-link text-accent-light transition">Western Plane</a>
+                    <a href="timeline.html" class="nav-link text-gray-300 hover:text-accent transition">Timelines</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-accent">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-secondary border-t border-accent/20">
+            <div class="px-4 py-3 space-y-2">
+                <a href="index.html" class="block py-2 text-gray-300 hover:text-accent">Home</a>
+                <a href="key-figures.html" class="block py-2 text-gray-300 hover:text-accent">Key Figures</a>
+                <a href="places.html" class="block py-2 text-gray-300 hover:text-accent">Places</a>
+                <a href="eastern-factions.html" class="block py-2 text-gray-300 hover:text-accent">Eastern Factions</a>
+                <a href="western-factions.html" class="block py-2 text-accent-light">Western Plane</a>
+                <a href="timeline.html" class="block py-2 text-gray-300 hover:text-accent">Timelines</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-12">
+        <div class="absolute inset-0 bg-gradient-to-b from-cyan-900/20 via-primary to-primary"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-cyan-900/30 border-2 border-cyan-500/50 mb-6">
+                    <i class="fas fa-water text-cyan-500 text-4xl"></i>
+                </div>
+                <h1 class="fantasy-heading text-5xl md:text-6xl font-bold text-white mb-4">The Seventeen Archipelago</h1>
+                <p class="text-xl text-cyan-400 mb-2">The Institutional Triad: Science, Magic, and Synthesis</p>
+                <p class="text-gray-400 max-w-3xl mx-auto">A vast network of islands in the Western Archipelago where the great institutions of knowledge—The Association, The Council, and The Institute—have shaped civilization through their eternal dance of conflict and reconciliation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sub-Faction Navigation -->
+    <section class="py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button onclick="showSubfaction('association')" id="tab-association" class="subfaction-tab active px-6 py-3 rounded-lg bg-secondary border border-accent/30 text-gray-300 font-semibold hover:border-accent">
+                    <i class="fas fa-flask mr-2"></i>The Association
+                </button>
+                <button onclick="showSubfaction('council')" id="tab-council" class="subfaction-tab px-6 py-3 rounded-lg bg-secondary border border-accent/30 text-gray-300 font-semibold hover:border-accent">
+                    <i class="fas fa-hat-wizard mr-2"></i>The Council
+                </button>
+                <button onclick="showSubfaction('old-institute')" id="tab-old-institute" class="subfaction-tab px-6 py-3 rounded-lg bg-secondary border border-accent/30 text-gray-300 font-semibold hover:border-accent">
+                    <i class="fas fa-brain mr-2"></i>Old Institute
+                </button>
+                <button onclick="showSubfaction('tellerium')" id="tab-tellerium" class="subfaction-tab px-6 py-3 rounded-lg bg-secondary border border-accent/30 text-gray-300 font-semibold hover:border-accent">
+                    <i class="fas fa-crown mr-2"></i>Tellerium High Society
+                </button>
+                <button onclick="showSubfaction('new-institute')" id="tab-new-institute" class="subfaction-tab px-6 py-3 rounded-lg bg-secondary border border-accent/30 text-gray-300 font-semibold hover:border-accent">
+                    <i class="fas fa-balance-scale mr-2"></i>Neo-Magic Institute
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Association Content -->
+    <section id="content-association" class="subfaction-content active py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-secondary/50 rounded-xl p-8 border border-cyan-500/20 mb-8">
+                <h2 class="fantasy-heading text-3xl font-bold text-white mb-4">
+                    <i class="fas fa-flask text-cyan-500 mr-3"></i>The Association of Scientific Studies
+                </h2>
+                <p class="text-gray-300 leading-relaxed">Founded by renegade Magister Valerius the Defector and eastern exile Scholar Wei, the Association emerged as The Seventeen Archipelagos—independent laboratories scattered across the Southern Reaches, connected only by the Round Table Protocol, which granted equal speaking rights to every scholar regardless of rank. The Association rejected the hierarchical mystery of the Council in favor of transparent, reproducible methodology.</p>
+            </div>
+
+            <h3 class="fantasy-heading text-2xl font-bold text-white mb-6">
+                <i class="fas fa-cube text-cyan-500 mr-3"></i>11 Frameworks Analysis
+            </h3>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Historical -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-history text-cyan-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Historical</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Association emerged during the Scattered Fellowship era (Absolute 24,320–28,500) as independent laboratories across the Southern Reaches. Founded by Valerius the Defector and Scholar Wei, it rejected Council hierarchy for transparent methodology. The Great Divide (Abs. 28,223) forced survival-driven collaboration, leading to the Interim Concordat of Year 9660 (Abs. 29,660) and the birth of Synthesis Colleges. The Topology Wars (Abs. 31,200–31,800) saw the Extreme Rationalist Faction attempt to eliminate the Intuition node entirely, culminating in the Compromise of the Seven Seals (Abs. 32,400).</p>
+                </div>
+
+                <!-- Political -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-sitemap text-cyan-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Political</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Association operates through the Round Table Council (Seventeen Archipelago Coordinators) with expertise-weighted voting for resource allocation. The "Elders of the Failed"—scholars who survived catastrophic experimental failure—hold advisory veto power. Key factions include The Quantifiers (mathematical modelers), The Implementers (Artifice and engineering), and The Intuitionists (minority faction preserving mystery studies). The Five Founding Laboratories (Argent Spire, Hollow Hall, Vitruvian Athenaeum, Ocularium, Unbound Scriptorium) form the core, supported by Twelve Secondary Archipelagos.</p>
+                </div>
+
+                <!-- Mental -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-brain text-cyan-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Mental</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Association's epistemology holds that "the universe is a mechanism awaiting operators." They practice aggressive secularism, treating Ethereals as "emergent properties of complex nodal interaction." Their pathological weakness is hubris of certainty—the "Ignorance of Certainty" where experimental failures are proportional to researcher arrogance. Their virtue lies in systematic humility through falsification, institutionalized through the "Elders of the Failed" who teach learning from error.</p>
+                </div>
+
+                <!-- Spiritual -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-atom text-cyan-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Spiritual</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Association maintains affiliations with Logos (Wisdom/System—patron of indexing), Archelaus (Force/Magic—viewed as "energy pattern" to be quantified), and Artemis (Light/Revelation—prismatic analysis as spiritual practice). Early Association was aggressively secular; by Tellerium era, The Doctrine of Cosmic Mechanism treats the universe as machine without operator. Practices include The Calculus of Change (mathematical meditation), Trial of Failure (ritualized destruction of perfect experiments), and Oneiric Extraction (dream-mining from Morpheus's domain).</p>
+                </div>
+
+                <!-- Social -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-users text-cyan-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Social</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Association's social structure emphasizes equality through the Round Table Convocation, where all scholars possess equal voice. The Calibration Festival celebrates successful paraformer alignment, while the Festival of Failed Hypotheses ritualizes destruction of disproven theories to prevent dogma. Wei Harmonics Recitals demonstrate Qi-wave patterns through sound. Social mobility is based on demonstrated expertise rather than birth, with scholars encouraged to challenge superiors during Round Table sessions.</p>
+                </div>
+
+                <!-- Cultural -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-palette text-cyan-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Cultural</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Core symbols include The Silver Compass (precision and direction), The Open Eye (transparency, no veils), and The Resonance Catcher (prototype device symbolizing the First Synthesis). Colors are Argent (silver-white) and Azure (clear sky). Customs include The Oath of Metric (swearing truth based on measurable evidence), Trial of Decay (restoring documents in entropy-acceleration fields), and Public Dissent (scholars challenging superiors during Round Table sessions).</p>
+                </div>
+
+                <!-- Economical -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-coins text-cyan-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Economical</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Association uses Knowledge Credits backed by verified research contributions, with Resource Allocation Vouchers distributed via Round Table expertise-weighted voting. Paraformer Components serve as high-value technological currency. Production centers include Argent Spire (precision instruments), Hollow Hall (mechanical automata), Vitruvian Athenaeum (bio-mana medical technologies), Ocularium (optical sciences), and Unbound Scriptorium (intuition-recording devices). Trade involves scientific instruments, paraformer alloys, and systematic methodologies.</p>
+                </div>
+
+                <!-- Physiological -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-dna text-cyan-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Physiological</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Association peoples include Cellular Stasis Adepts who used paraformer-maintained biological suspension, with the "Ancient Five of the Round Table" living 800+ years. Populations near the Argent Spire developed efficient energy processing due to high cognitive demands. Lifespans range from 70–120 for common scholars, 200–400 for enhanced elders, and 60–80 for peasantry. Special traits include Pattern Recognition (innate mathematical intuition in Marcellus heirs) and Technological Immunity (resistance to "The Silence Working" effects).</p>
+                </div>
+
+                <!-- Territorial -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-map-marked-alt text-cyan-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Territorial</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Five Founding Laboratories form the core territory: The Argent Spire (Isle of Metrics—Qi-Resonance Codices), The Hollow Hall (Isle of Implement—mechanical theorems), The Vitruvian Athenaeum (Isle of Form—living architecture), The Ocularium (Isle of Perception—crystal observatories), and The Unbound Scriptorium (Isle of Memory—responsive ink archives). Twelve Secondary Archipelagos include specialized facilities like Marrowdeep (alchemical synthesis) and The Ziggurat of Calculation (mathematical cultivation).</p>
+                </div>
+
+                <!-- Technological -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-cogs text-cyan-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Technological</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Major advancements include Mechanical Theorems (clockwork automata), Wei Harmonics (mathematical models of Qi), Prismatic Analysis (breaking down magical effects), and Cellular Harmonization Theory. The First Resonance Catcher (Abs. 30,500) captured and redirected magical energy using scientific principles—the prototype of all paraformer technology. The Four Alchemists of Marrowdeep achieved The First Synthesis (Abs. 26,400)—combining chemical science with transmutation magic.</p>
+                </div>
+
+                <!-- Military -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-shield-alt text-cyan-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Military</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Association practices defensive rationalism—"knowledge defends itself." Forces include The Calculating Cohorts (paraformer-enhanced infantry), The Argent Guard (elite precision marksmen), Sapper-Engineers (vibration-based tunnel detectors), and Archive Custodian Detachments (record vault defenders). Weapons include Resonance Blades (molecular bond disruption), Probability Daggers (paraformer-assisted targeting), and Harmonic Pikes (sonic disruption). Siege equipment includes Resonance-Stabilized Wall Cutters and Probability Shields.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Council Content -->
+    <section id="content-council" class="subfaction-content py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-secondary/50 rounded-xl p-8 border border-purple-500/20 mb-8">
+                <h2 class="fantasy-heading text-3xl font-bold text-white mb-4">
+                    <i class="fas fa-hat-wizard text-purple-500 mr-3"></i>The Council of the Arcane
+                </h2>
+                <p class="text-gray-300 leading-relaxed">The Council maintains its Stratified Spheres—the Inner Sanctum of Twelve Pillars governing through the Veil Protocols, which criminalized the "mechanization of mystery." While the Association quantified Qi pathways, the Council preserved the School of Will through oral tradition alone under Matriarch Oubliette. The Council recognizes The Twenty-Five Lines of Mystery—hereditary magister families including the Silent Sisterhood of Will, the Seal-Keepers, and the Chronomancers of the Thirteenth Hour.</p>
+            </div>
+
+            <h3 class="fantasy-heading text-2xl font-bold text-white mb-6">
+                <i class="fas fa-cube text-purple-500 mr-3"></i>11 Frameworks Analysis
+            </h3>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Historical -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-history text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Historical</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Council emerged alongside the Association during the Scattered Fellowship era, maintaining the Stratified Spheres and Veil Protocols. Under Matriarch Oubliette, they preserved the School of Will through oral tradition alone. During the Synthesis Wars, the Council responded to Association rationalism with The Silence Working—a massive ritual rendering scientific instruments non-functional within 100 leagues, proving that will could override matter. The Council has maintained its traditions through the Invisible College during periods of Institute dominance.</p>
+                </div>
+
+                <!-- Political -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-crown text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Political</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Inner Sanctum (Council of Twelve) represents Twelve Pillars: Word, Gesture, Hand, Implement, Will, Summoning, Binding, Divination, Transmutation, Warding, Illusion, and the Forbidden Thirteenth—Chronomancy (seat left empty). Regional Convocations govern territories via Charter of Preservation. The Keeper of the Seal determines "too dangerous" knowledge. The Council recognizes The Twenty-Five Lines of Mystery—hereditary magister families including the Silent Sisterhood of Will, the Seal-Keepers, and the Chronomancers of the Thirteenth Hour.</p>
+                </div>
+
+                <!-- Mental -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-brain text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Mental</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Council's epistemology holds that "mystery preserved is power preserved." Knowledge comes through experiential intuition; oral tradition is superior to written documentation. Their pathological weakness is hoarding and gatekeeping—"The Silence Working" represents withdrawal from engagement to preserve purity. Their virtue is structured revelation—using scientific documentation to preserve intuitive knowledge without killing its mystery. The Method of Structured Revelation provides technical manuals for the soul.</p>
+                </div>
+
+                <!-- Spiritual -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-moon text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Spiritual</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Council views The Five Ethereals as experiential realities rather than deities. Morpheus (Stories) is honored through Memory Gardens and oral tradition. Nyx (Night/Mystery) is served through the Veil Protocols as sacred duty. The Thirteenth Seat remains empty for Chronomancy—respecting limits by not occupying divine temporal power. Practices include The Book of Will (responsive ink readings that change based on reader readiness), Silent Sisterhood (preservation through oral tradition only), and Memory Gardening (harvesting knowledge as literal plants requiring intuition).</p>
+                </div>
+
+                <!-- Social -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-users text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Social</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Veil-Ceremony initiates new magisters into mystery traditions. The Silent Vigil involves oral recitation of the Book of Will with responsive ink readings that shift based on observer readiness. The Convocation of Seals is a hierarchical conclave determining which knowledge to suppress. The Thirteenth Hour Observance involves secret Chronomancer gatherings where time moves differently within. Social status is determined by mastery of mystery and position within the Stratified Spheres.</p>
+                </div>
+
+                <!-- Cultural -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-palette text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Cultural</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Core symbols include The Sealed Eye (mystery preserved), The Thirteen-Point Star (twelve pillars plus the empty seat), and Responsive Ink (shifting text representing living knowledge). Colors are Deep Purple and Black (Veil Protocols). Customs include The Long Vigil (Will-based temporal anchoring preserving practitioners in "time pockets"), True-Name Secrecy (magisters never speak their full names aloud), and The Ignorance of Certainty (deliberate cultivation of doubt to prevent experimental failure).</p>
+                </div>
+
+                <!-- Economical -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-coins text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Economical</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Council uses Chartered Favor—obligations and services traded through Pact-magic binding. Memory Tithes are payments in unique experiences or secret knowledge. Responsive Ink Contracts are self-updating legal documents. Production includes The Living Archives (bio-magical knowledge cultivation), Seal-Crafting (wards and protective artifacts), Temporal Anchors (Chronomancer-produced stasis fields), and True-Name Research (dangerous metaphysical identification). Trade involves protective wards, healing, and temporal services for tribute and fealty.</p>
+                </div>
+
+                <!-- Physiological -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-dna text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Physiological</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Long-Lived can achieve 40,000+ years through Will-based temporal anchoring (e.g., Undying Magister Oros lived Abs. 25,000–47,000), though they age one year per fifty in stasis. Intuitive Sensitives possess higher natural attunement to the Intuition node; eidetic memory is common among Perfect Recollectors. Lifespans range from 70–100 for commoners, 150–300 for active magisters, with anchored elders effectively immortal but dormant. Special traits include Will-Resonance (ability to disable paraformer devices) and Temporal Sensitivity (perceiving probability currents).</p>
+                </div>
+
+                <!-- Territorial -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-map-marked-alt text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Territorial</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Invisible College maintains mobile/secret locations—the Council in exile during Institute dominance. Regional Convocations are fortified temple-academies across the Western Kingdoms, each centered on a Pillar of magic. The Sanctuary of the Thirteenth Hour is a hidden Chronomancer stronghold where time flows non-linearly. Memory Gardens serve as bio-magical repositories where knowledge grows as plants. The Council's territory is defined by ley-lines and places of power rather than conventional borders.</p>
+                </div>
+
+                <!-- Technological -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-cogs text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Technological</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Council advancements include Responsive Ink (changes based on reader readiness), Memory Gardens (bio-magical repositories where knowledge grows as plants), Wards of Silence (reality-manipulation fields rendering technology non-functional), and The Silence Working (mass ritual proving will overrides matter). Chronomancer technology allows temporal manipulation and stasis fields. The Council's "technology" is fundamentally different from Association paraformer devices—it operates through will and intuition rather than mechanical principles.</p>
+                </div>
+
+                <!-- Military -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-shield-alt text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Military</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Council practices mystical defense—"will overrides matter." Forces include Will-Wielder Strike Teams (disabling paraformer devices through reality-manipulation), The Wardens of Silence (maintaining anti-technology fields), The Chronomancer Circles (temporal strategists), and The Silent Sisterhood (covert operatives using intuition-based stealth). Weapons include Ward-Bound Swords, True-Name Weapons (striking at nominal essence), and Chronomancer Staves (temporal displacement). Defenses include Temporal Stasis Bubbles and Anti-Paraformer Grounding Spears.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+    <!-- Old Institute Content -->
+    <section id="content-old-institute" class="subfaction-content py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-secondary/50 rounded-xl p-8 border border-amber-500/20 mb-8">
+                <h2 class="fantasy-heading text-3xl font-bold text-white mb-4">
+                    <i class="fas fa-brain text-amber-500 mr-3"></i>The Institute of Psionic Studies (Old Institute)
+                </h2>
+                <p class="text-gray-300 leading-relaxed">The Institute began as scattered, democratic research stations across the Southern Reaches, studying the mind-magic interface without the Association's material focus or the Council's mysticism. Operating under Round Table Protocols inherited from Association influence with rotating directorships, these isolated research stations laid the groundwork for what would eventually become the paraformer revolution.</p>
+            </div>
+
+            <h3 class="fantasy-heading text-2xl font-bold text-white mb-6">
+                <i class="fas fa-cube text-amber-500 mr-3"></i>11 Frameworks Analysis
+            </h3>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Historical -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-history text-amber-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Historical</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Scattered Phase (Abs. 24,320–47,345) saw the Institute as democratic research stations with rotating directorships. The Institute emerged from the need to study the mind-magic interface—neither purely scientific like the Association nor purely mystical like the Council. During the Synthesis Wars, the Institute served as a bridge between Science and Intuition, contributing to the Paraformer Genesis and the Marcellus-Varus Collaboration that developed the First Resonance Catcher (Abs. 30,500).</p>
+                </div>
+
+                <!-- Political -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-sitemap text-amber-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Political</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Old Institute operated through democratic Round Table Protocols inherited from Association influence, with rotating directorships across isolated research stations. This decentralized structure allowed for experimental freedom but limited coordinated political power. The Institute maintained neutrality between the Association and Council during the Topology Wars, eventually contributing to the Compromise of the Seven Seals that preserved the Intuition node as "The Preserve of the Ineffable."</p>
+                </div>
+
+                <!-- Mental -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-brain text-amber-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Mental</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Old Institute's epistemology focused on the mind-magic interface—understanding how consciousness interacts with reality. They studied psionic phenomena, mental projection, and the observer effect on magical processes. This positioned them between Association mechanism and Council mysticism. Their approach valued experimental verification of mental phenomena while acknowledging the subjective nature of consciousness. This balanced perspective would later be lost during the Tellerium era.</p>
+                </div>
+
+                <!-- Spiritual -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-atom text-amber-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Spiritual</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Old Institute maintained a unique spiritual position, studying consciousness as a bridge between material and mystical reality. They explored meditation techniques, mental disciplines, and the spiritual dimensions of psionic power. Their work suggested that consciousness itself might be a fundamental force in the universe—a precursor to the later Observer Principle. They respected both scientific methodology and contemplative practice without fully committing to either.</p>
+                </div>
+
+                <!-- Social -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-users text-amber-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Social</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The scattered research stations fostered a collegial, collaborative atmosphere where researchers shared findings freely. The rotating directorship prevented the accumulation of personal power. Social gatherings focused on research presentations, collaborative experiments, and the exchange of ideas. The Institute attracted those interested in the frontiers of consciousness—neither pure scientists nor pure mystics, but explorers of the mind's potential.</p>
+                </div>
+
+                <!-- Cultural -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-palette text-amber-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Cultural</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Old Institute's culture valued open inquiry and experimental courage. Symbols included the Open Mind (receptivity to new phenomena) and the Bridging Wave (connecting science and spirit). Researchers were encouraged to document findings meticulously while remaining open to the mysterious. The culture celebrated successful experiments that advanced understanding of consciousness, regardless of whether they supported scientific or mystical frameworks.</p>
+                </div>
+
+                <!-- Economical -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-coins text-amber-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Economical</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The scattered stations operated on limited budgets, often dependent on grants from both Association and Council sources. This dual funding created political vulnerabilities but also demonstrated the Institute's bridging function. Research focused on low-cost, high-insight experiments rather than expensive paraformer arrays. The Institute traded knowledge of consciousness phenomena for resources, serving as consultants to both scientific and mystical institutions.</p>
+                </div>
+
+                <!-- Physiological -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-dna text-amber-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Physiological</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Institute researchers often displayed enhanced mental capabilities through disciplined practice—improved memory, focus, and occasional psionic sensitivity. Unlike later Tellerium enhancement, these developments came through natural training rather than cybernetic modification. Researchers maintained healthy lifespans (70–100 years) without the extreme longevity of Association stasis or Council temporal anchoring. The Institute valued mental health and work-life balance.</p>
+                </div>
+
+                <!-- Territorial -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-map-marked-alt text-amber-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Territorial</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The scattered research stations were located across the Southern Reaches, often in remote locations conducive to contemplative research. Each station was small and self-sufficient, without the grand architecture of Association laboratories or Council temples. The decentralized territory reflected the Institute's democratic ethos—no central headquarters, no single seat of power, just a network of equals sharing knowledge.</p>
+                </div>
+
+                <!-- Technological -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-cogs text-amber-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Technological</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Old Institute developed early psionic detection equipment, consciousness-mapping devices, and mental training protocols. Their technology was less advanced than later paraformer arrays but more balanced—designed to enhance natural mental abilities rather than replace them. Key innovations included the First Resonance Catcher (developed in collaboration with Association researchers), early neural interface prototypes, and meditation enhancement devices.</p>
+                </div>
+
+                <!-- Military -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-shield-alt text-amber-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Military</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Old Institute maintained no formal military, relying on neutrality and the protection of host realms. Individual researchers might possess psionic defensive capabilities, but these were never organized into military forces. The Institute's "defense" was its value to both Association and Council—neither side wished to destroy the bridge between them. This vulnerability would later drive the centralization and militarization of the Tellerium era.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tellerium High Society Content -->
+    <section id="content-tellerium" class="subfaction-content py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-secondary/50 rounded-xl p-8 border border-red-500/20 mb-8">
+                <h2 class="fantasy-heading text-3xl font-bold text-white mb-4">
+                    <i class="fas fa-crown text-red-500 mr-3"></i>Tellerium High Society
+                </h2>
+                <p class="text-gray-300 leading-relaxed">The Association secured Federation sponsorship to found Tellerium (Abs. 47,326), creating a nodal singularity designed to force transcendence through technology. The Tellerium High Society (established Abs. 47,345) abandoned democratic Round Table Protocols for the Guild-Caste System based on Cognitive Load Capacity—meritocratic hierarchy measured by paraformer interface aptitude. The Seven Grand Architects seized control, instituting the Doctrine of Efficient Grace and the Purge of Redundancy (Abs. 47,400), which eliminated "non-functional" art and mystery.</p>
+            </div>
+
+            <h3 class="fantasy-heading text-2xl font-bold text-white mb-6">
+                <i class="fas fa-cube text-red-500 mr-3"></i>11 Frameworks Analysis
+            </h3>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Historical -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-history text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Historical</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Tellerium High Society (Abs. 47,345–49,672) represented the dark apex of rationalist extremism. The Seven Grand Architects instituted the Doctrine of Efficient Grace and the Purge of Redundancy, eliminating art and mystery as "non-functional." This centralization enabled the Two-Millennia War (Abs. 47,502–49,634) as the High Society attempted to impose unified scientific governance over the Western Plane. The Burning of Xeria (Abs. 47,430)—a topological collapse caused by forcing pure SCIENCE-ARTIFICE synthesis without INTUITION—demonstrated the catastrophic limits of rationalist monoculture.</p>
+                </div>
+
+                <!-- Political -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-sitemap text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Political</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Seven Grand Architects formed a supreme technocratic council. The Guild-Caste System established three tiers: Luminary Caste (High Society Proper, Cognitive Load elite), Synthesis Caste (bridge figures—dual-trained magister-scientists), and Applied Caste (workers and "cybernetic armies"). The War Council of Efficiency (wartime transformation) included a Supreme Director of Optimization, Seven Efficiency Ministers, and the Biological Enhancement Corps. Algorithmic Governance made political decisions based on probability engines.</p>
+                </div>
+
+                <!-- Mental -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-brain text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Mental</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The High Society's epistemology was "Efficient Grace"—optimization of all existence; the "Cult of the Measurable Self." Their pathological weakness was the "Monoculture Error"—eliminating Intuition creates topological collapse; dehumanization through quantification. The fatal risk was technological tyranny through pure SCIENCE-ARTIFICE without INTUITION. This mental framework led directly to the Burning of Xeria and the Two-Millennia War, as the High Society could not comprehend the necessity of mystery.</p>
+                </div>
+
+                <!-- Spiritual -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-atom text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Spiritual</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The High Society rejected all spiritual frameworks as "non-functional." The Doctrine of Cosmic Mechanism treated the universe as machine without operator. Efficiency Sabbaths replaced religious observances with mandatory "rest" periods calculated for maximum productivity restoration. The Purge of Redundancy eliminated art, music, and contemplative practice as wastes of resources. This spiritual void contributed to the society's inability to perceive the catastrophic consequences of their actions.</p>
+                </div>
+
+                <!-- Social -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-users text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Social</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Cognitive Load Trials publicly tested paraformer interface capacity, with social ranking determined by measurable neural bandwidth. Quantification Bands displayed real-time metrics of biological and productive output. Algorithmic Aesthetics created art through paraformer systems to optimize dopamine response. Social status was purely meritocratic based on measured cognitive capacity—birth, wealth, and tradition held no value. This created a ruthlessly competitive society where human worth was reduced to processing power.</p>
+                </div>
+
+                <!-- Cultural -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-palette text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Cultural</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Purge of Redundancy eliminated "non-functional" art and mystery. What remained was Algorithmic Aesthetics—art created by paraformer systems to optimize dopamine response. The Ziggurats of Calculation dominated the skyline as symbols of computational supremacy. Colors were cold and metallic—steel grey, electric blue, warning orange. The culture celebrated efficiency, optimization, and measurable achievement. Failure was not tolerated; those who could not meet cognitive thresholds were relegated to the Applied Caste or worse.</p>
+                </div>
+
+                <!-- Economical -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-coins text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Economical</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Cognitive Load Units served as currency based on measured processing capacity. Ration Script represented state-controlled distribution under High Society centralization. Technarch Credit was restricted currency for prototype technology access. Production focused on Resonance Infrastructure (city-scale paraformer networks), Biological Enhancement (genetic modification, cybernetic integration), and Weapons Development (paraformer arrays, reality-disruption devices). The economy was entirely state-controlled with no private enterprise.</p>
+                </div>
+
+                <!-- Physiological -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-dna text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Physiological</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Cognitive Load Elites displayed genetic and cybernetic enhancement for complex paraformer interfaces—larger cranial capacity, visible neural ports, bio-luminescent synaptic displays. The Enhanced included Biological Enhancement Corps soldiers with modified musculature, accelerated reflexes, and paraformer-integrated nervous systems. Living Computers were post-human organic processors grown from modified neural tissue (controversial, led to Marrow Riots). Lifespans were polarized—elites lived 200–300 years; common workers were shortened to 40–60 years by pollution and extraction.</p>
+                </div>
+
+                <!-- Territorial -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-map-marked-alt text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Territorial</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Tellerium City-State was a Nodal Singularity—a zone of extreme Science-Artifice density designed to force transcendence through technology. The Ziggurats of Calculation were massive computing towers dominating the skyline. The Xeria Cluster was a test bed for dangerous paraformer-magical integration; destroyed in the Burning (Abs. 47,430). The Cathedral of Doubt was an underground sanctuary for "intentional uncertainty"—ironically, the only place where doubt was permitted. Project Meridian Gate Site created the "Stutter-Zone" where time moved in discrete jumps.</p>
+                </div>
+
+                <!-- Technological -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-cogs text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Technological</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Biological Resonance Initiative (Abs. 47,200–47,800) developed Dr. Marcus Chen's Living Computers—organic processors from modified neural tissue capable of intuitive leaps. Cellular Cadence taught human cells to perform calculations via paraformer induction. Project Meridian Gate attempted paraformer-based Firmament crossing without "surrender" method, creating The Stutter-Zone. Resonance Infrastructure provided city-scale paraformer networks. Quantification Bands displayed real-time biological/productive metrics. The technology was advanced but dangerously unbalanced.</p>
+                </div>
+
+                <!-- Military -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-shield-alt text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Military</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The High Society practiced total warfare through technology—"efficiency annihilates opposition." Forces included The Biological Enhancement Corps (post-human soldiers with modified musculature, accelerated reflexes), Cybernetic Armies (Tellerium's "Applied Caste" warriors with neural ports), and The Seven Grand Architects' Guard (elite technocratic protectors with advanced paraformer armor). The War Council of Efficiency directed the Two-Millennia War against the United Realms. Weapons included paraformer arrays, reality-disruption devices, and biological warfare systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Neo-Magic Institute Content -->
+    <section id="content-new-institute" class="subfaction-content py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-secondary/50 rounded-xl p-8 border border-emerald-500/20 mb-8">
+                <h2 class="fantasy-heading text-3xl font-bold text-white mb-4">
+                    <i class="fas fa-balance-scale text-emerald-500 mr-3"></i>Neo-Magic Research Institute
+                </h2>
+                <p class="text-gray-300 leading-relaxed">Following defeat by the United Realms alliance, the Neo-Magic Research Institute emerged (Abs. 49,672), adopting the Five-Fold Synthesis: SCIENCE (method) + INTUITION (mystery) + ARTIFICE (application), governed by a Council of Twelve Seats (six scientists, six magisters). The Institute represents the healing necessity of the marriage between Science and Intuition—the balanced reconciliation that the High Society's tyranny made necessary.</p>
+            </div>
+
+            <h3 class="fantasy-heading text-2xl font-bold text-white mb-6">
+                <i class="fas fa-cube text-emerald-500 mr-3"></i>11 Frameworks Analysis
+            </h3>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Historical -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-emerald-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-history text-emerald-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Historical</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Neo-Magic Research Institute (Abs. 49,672–Present) emerged from the ashes of Tellerium's defeat. The Trials of Tellerium brought post-war justice, with leaders executed for crimes against peace. The Institute embraced the Five-Fold Synthesis: Science (method) + Intuition (mystery) + Artifice (application). This represented the healing necessity of marriage between Science and Intuition—the balanced reconciliation that High Society tyranny made necessary. The Institute demonstrates that mystery can survive measurement and tradition can accommodate innovation.</p>
+                </div>
+
+                <!-- Political -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-emerald-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-sitemap text-emerald-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Political</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Council of Twelve Seats maintains balanced governance—six scientists, six magisters, with rotating leadership. The Guild of Reconciliation heals the science-magic divide. The College of Mysteries teaches "The Limits of Knowledge." The Reunited Sisterhood (Order of the Verdant Spindle) combines Silent Sisterhood and Association female engineers. This balanced structure prevents the tyranny of either pure rationalism or pure mysticism, requiring consensus between different ways of knowing.</p>
+                </div>
+
+                <!-- Mental -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-emerald-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-brain text-emerald-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Mental</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Institute's epistemology is Synthesis Philosophy—acknowledging that consciousness (the observer) alters reality; "The Observer Principle." The fatal risk is synthesis instability—balancing Science, Intuition, and Artifice requires constant maintenance. The virtue is acknowledging that multiple ways of knowing are necessary for complete understanding. The Institute teaches Dual-Path Pedagogy—every student studies both systematic method and contemplative mystery, developing both analytical and intuitive capabilities.</p>
+                </div>
+
+                <!-- Spiritual -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-emerald-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-atom text-emerald-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Spiritual</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Synthesis Theology reinterprets Ethereals as emergent properties of nodal interaction. The Observer Principle holds that consciousness is creative force—"the gods exist because they are believed in, and are believed in because they exist." The Reunited Sisterhood weaves science and spirit through craft. Practices include Intentional Uncertainty (practicing "not-knowing" to preserve cognitive humility at the Cathedral of Doubt), The Restoration Protocols (genetic reconstruction of ecosystems as penance/renewal), and Dual-Path Meditation (simultaneous systematic analysis and contemplative void-gazing).</p>
+                </div>
+
+                <!-- Social -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-emerald-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-users text-emerald-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Social</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Sacrament of Failure from the Cathedral of Doubt involves deliberate destruction of perfect experiments to maintain humility. The Restoration Protocols are post-war ceremonies where Institute scholars genetically reconstruct war-torn ecosystems. Social status is based on demonstrated synthesis capability—ability to work with both scientific and mystical frameworks. The Institute celebrates reconciliation and healing, valuing those who can bridge divides rather than those who dominate them.</p>
+                </div>
+
+                <!-- Cultural -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-emerald-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-palette text-emerald-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Cultural</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Core symbols include The Seven-Seal System (balanced nodes), The Verdant Spindle (weaving science and spirit), and The Shield-Smith's Anvil (defensive technology requiring magical attunement). Colors are Synthesis Grey (neither silver nor purple) and Living Green (post-war bio-integrated technology). Dual-Path Pedagogy requires every student to study both systematic method and contemplative mystery. The culture celebrates balance, reconciliation, and the wisdom of learning from catastrophe.</p>
+                </div>
+
+                <!-- Economical -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-emerald-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-coins text-emerald-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Economical</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Synthesis Standards provide balanced metallic currency backed by both material and mystical reserves. Reconciliation Credits serve as post-war reconstruction currency. The Knowledge Commons provides open-access resources preventing hoarding. Production focuses on The Shield-Smiths (defensive technologies requiring magical attunement), Restoration Protocols (genetic reconstruction), and Dual-Plane Instruments (functioning on both scientific and mystical principles). Trade involves synthesis expertise for reconciliation with former enemies.</p>
+                </div>
+
+                <!-- Physiological -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-emerald-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-dna text-emerald-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Physiological</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Dual-Node Perception allows post-war Institute scholars trained in both Science and Intuition to perceive "ghost frequencies"—unbecoming manifestations before they fully form. Cellular Cadence (Dr. Marcus Chen's descendants) enables cells to perform calculations via paraformer induction. Lifespans stabilize at 70–90 for workers and 150–250 for scholars—more equitable than Tellerium's polarization. The Institute rejects forced enhancement, focusing on natural development of dual capabilities.</p>
+                </div>
+
+                <!-- Territorial -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-emerald-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-map-marked-alt text-emerald-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Territorial</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Synthesis Districts blend laboratory and living space in post-war reconstruction. The College of Bounded Artifice tests safety limits of hybrid devices. The Shield-Smith Yards produce defensive technology requiring magical attunement. The Ziggurats of Calculation were converted to Libraries of Contemplation. The Xeria Gap serves as a memorial site of the Burning—a permanent topological scar where possibility without boundary consumed definition itself, reminding all of the dangers of monoculture.</p>
+                </div>
+
+                <!-- Technological -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-emerald-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-cogs text-emerald-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Technological</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Shield-Smiths create defensive technologies requiring magical attunement—forcing scientists to learn intuition and magisters to learn engineering. Restoration Protocols enable genetic reconstruction of war-torn ecosystems. Dual-Plane Instruments function on both scientific and mystical principles. The technology is deliberately balanced—never purely scientific or purely mystical, always requiring both perspectives. This prevents the dangerous extremes that led to the Burning of Xeria.</p>
+                </div>
+
+                <!-- Military -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-emerald-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-shield-alt text-emerald-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Military</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Post-war, the Institute maintains defensive focus through The Shield-Smiths—defensive specialists requiring magical attunement to operate technology. The Enhanced Legionaries are standard troops with basic paraformer integration. The military doctrine emphasizes defense, reconciliation, and preventing future catastrophes rather than conquest. The Institute's greatest military contribution is its technology that requires hybrid training—forcing collaboration between scientific and mystical practitioners.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark border-t border-accent/20 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <i class="fas fa-tree text-accent text-xl"></i>
+                    <span class="fantasy-heading text-lg font-bold gradient-text">Eternal Trees Saga</span>
+                </div>
+                <div class="flex space-x-6 text-sm text-gray-400">
+                    <a href="index.html" class="hover:text-accent transition">Home</a>
+                    <a href="key-figures.html" class="hover:text-accent transition">Key Figures</a>
+                    <a href="places.html" class="hover:text-accent transition">Places</a>
+                    <a href="factions.html" class="hover:text-accent transition">Factions</a>
+                </div>
+            </div>
+            <div class="mt-6 pt-6 border-t border-gray-800 text-center text-sm text-gray-500">
+                <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Subfaction tab switching
+        function showSubfaction(faction) {
+            // Hide all content
+            document.querySelectorAll('.subfaction-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.subfaction-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected content
+            document.getElementById('content-' + faction).classList.add('active');
+            
+            // Activate selected tab
+            document.getElementById('tab-' + faction).classList.add('active');
+        }
+    </script>
+</body>
+</html>

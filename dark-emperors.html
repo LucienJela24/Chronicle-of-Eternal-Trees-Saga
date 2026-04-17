@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Emperors | Eternal Trees Saga Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#1e293b',
+                        accent: '#0d9488',
+                        'accent-light': '#14b8a6',
+                        gold: '#fbbf24',
+                        'gold-light': '#fcd34d',
+                        dark: '#020617',
+                        'dark-light': '#1e293b'
+                    },
+                    fontFamily: {
+                        'heading': ['Cinzel', 'serif'],
+                        'body': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            min-height: 100vh;
+        }
+        .fantasy-heading {
+            font-family: 'Cinzel', serif;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .framework-card {
+            background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid rgba(13, 148, 136, 0.2);
+        }
+        .framework-card:hover {
+            border-color: rgba(13, 148, 136, 0.5);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #0d9488;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.8) 0%, rgba(15, 23, 42, 0.95) 100%);
+        }
+        .threat-glow {
+            box-shadow: 0 0 30px rgba(147, 51, 234, 0.3);
+        }
+    </style>
+</head>
+<body class="text-gray-100">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-primary/95 backdrop-blur-md border-b border-accent/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-tree text-accent text-2xl"></i>
+                    <span class="fantasy-heading text-xl font-bold gradient-text">Eternal Trees Saga</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-accent transition">Home</a>
+                    <a href="key-figures.html" class="nav-link text-gray-300 hover:text-accent transition">Key Figures</a>
+                    <a href="places.html" class="nav-link text-gray-300 hover:text-accent transition">Places</a>
+                    <a href="factions.html" class="nav-link text-gray-300 hover:text-accent transition">Factions</a>
+                    <a href="threats-enemies.html" class="nav-link text-accent-light transition">Threats</a>
+                    <a href="timelines.html" class="nav-link text-gray-300 hover:text-accent transition">Timelines</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-accent">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-secondary border-t border-accent/20">
+            <div class="px-4 py-3 space-y-2">
+                <a href="index.html" class="block py-2 text-gray-300 hover:text-accent">Home</a>
+                <a href="key-figures.html" class="block py-2 text-gray-300 hover:text-accent">Key Figures</a>
+                <a href="places.html" class="block py-2 text-gray-300 hover:text-accent">Places</a>
+                <a href="factions.html" class="block py-2 text-gray-300 hover:text-accent">Factions</a>
+                <a href="threats-enemies.html" class="block py-2 text-accent-light">Threats</a>
+                <a href="timelines.html" class="block py-2 text-gray-300 hover:text-accent">Timelines</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-12">
+        <div class="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-primary to-primary"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-purple-900/30 border-2 border-purple-500/50 mb-6">
+                    <i class="fas fa-crown text-purple-500 text-4xl"></i>
+                </div>
+                <h1 class="fantasy-heading text-5xl md:text-6xl font-bold text-white mb-4">Dark Emperors</h1>
+                <p class="text-xl text-purple-400 mb-2">Masters of the Void Between Worlds</p>
+                <p class="text-gray-400 max-w-3xl mx-auto">Ancient entities of unimaginable power who exist beyond the boundaries of mortal comprehension. The Dark Emperors are the true architects of destruction, manipulating events from the shadows.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-secondary/50 rounded-xl p-8 border border-purple-500/20">
+                <h2 class="fantasy-heading text-3xl font-bold text-white mb-6">
+                    <i class="fas fa-info-circle text-purple-500 mr-3"></i>Overview
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <p class="text-gray-300 leading-relaxed mb-4">The Dark Emperors are not primordial entities but corrupted Guardians—once-great protectors who chose absolute inversion over relational balance. They represent the catastrophic consequences of isolated absolutes: Tomoyama's mastery became tyrannical consumption; Kross's mystery became binding erasure; Marcus's measurement became consuming artifice.</p>
+                        <p class="text-gray-300 leading-relaxed">Each Dark Emperor embodies an inverted essence of their former guardianship, wielding "cold fire," "silver chains," and "pest consciousness" as weapons of unmaking. They command the Dread Horde as singularities of corruption, ruling not as kings but as manifestations of the void's hunger pressing against existence.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                            <span class="text-gray-400">Threat Level</span>
+                            <span class="text-purple-500 font-bold">Apocalyptic</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                            <span class="text-gray-400">Nature</span>
+                            <span class="text-gray-200">Corrupted Guardians</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                            <span class="text-gray-400">Numbers</span>
+                            <span class="text-gray-200">Three</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                            <span class="text-gray-400">Current Status</span>
+                            <span class="text-gray-200">Sealed in Tartarus</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11 Frameworks Analysis -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="fantasy-heading text-4xl font-bold text-center text-white mb-12">
+                <i class="fas fa-cube text-purple-500 mr-3"></i>11 Frameworks Analysis
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Historical Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-history text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Historical</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Dark Emperors have existed since before recorded history, their influence woven into the fabric of the world's darkest moments. Ancient texts speak of the "Seven Shadows" that existed before the First Dawn. Throughout history, they have been known by many names—the Old Gods, the Void Lords, the Unseen Ones. Each age has seen their influence wax and wane, but they have always been present, waiting in the spaces between realities for opportunities to extend their reach into the mortal realm.</p>
+                </div>
+
+                <!-- Political Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-chess text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Political</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Among themselves, the Dark Emperors maintain a complex web of alliances and rivalries that transcend mortal understanding. Each Emperor rules a distinct domain within the void and competes with the others for influence in the mortal world. They operate through layers of proxies—cults, corrupted leaders, and dark champions who serve their interests. The political landscape of the Dark Emperors is one of eternal scheming, with each seeking to outmaneuver the others while maintaining the balance that keeps them all in power.</p>
+                </div>
+
+                <!-- Mental Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-brain text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Mental</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The mental processes of the Dark Emperors are utterly alien to mortal minds. They perceive time differently, experiencing past, present, and future simultaneously. Their thoughts span dimensions and their consciousness extends across countless realities. What mortals perceive as patience is simply their different perception of time. What seems like complex scheming may be instinctual to them. To understand a Dark Emperor's mind is impossible—the best mortal scholars can hope for is to recognize patterns in their influence.</p>
+                </div>
+
+                <!-- Spiritual Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-infinity text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Spiritual</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Spiritually, the Dark Emperors represent the antithesis of creation and order. They are beings of entropy and chaos, existing to unmake what has been made. Their spiritual influence corrupts everything it touches, twisting the soul and perverting the spirit. Cults that worship the Dark Emperors engage in the most profane rituals, offering souls and sanity in exchange for power. The spiritual presence of a Dark Emperor is like a wound in reality—a place where the natural order breaks down and the void seeps through.</p>
+                </div>
+
+                <!-- Social Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-network-wired text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Social</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The social structure surrounding the Dark Emperors is a hierarchy of corruption and devotion. At the top are the Emperors themselves, followed by their direct servants—entities of significant power who have pledged their souls. Below them are mortal cult leaders, dark champions, and corrupted rulers who serve as proxies. The vast network of cultists, madmen, and desperate souls who worship the Dark Emperors form the base of this dark society. Each level serves the one above while exploiting those below.</p>
+                </div>
+
+                <!-- Cultural Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-moon text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Cultural</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The culture that has grown around the Dark Emperors is one of nihilism, madness, and dark transcendence. Their cults produce disturbing art—sculptures of impossible geometry, paintings that drive viewers mad, music that opens the mind to the void. Rituals often involve self-mutilation, sacrifice, and the consumption of forbidden substances. The highest goal in Dark Emperor culture is to transcend mortal limitations and become something more—though this transformation inevitably leads to becoming a monster in service to darkness.</p>
+                </div>
+
+                <!-- Economical Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-gem text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Economical</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Dark Emperors operate on an economy of souls, sanity, and reality itself. Their cults traffic in forbidden knowledge, cursed artifacts, and dark services. Souls are the primary currency—promised, stolen, or sacrificed to gain favor. The Dark Emperors also manipulate mortal economies through their proxies, funding wars, corrupting markets, and destabilizing nations to create chaos that serves their ends. Ancient treasures and artifacts of power are hoarded by their servants, forming dark treasuries that fuel further corruption.</p>
+                </div>
+
+                <!-- Physiological Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-eye text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Physiological</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The physiology of the Dark Emperors defies mortal comprehension. They exist partially in multiple dimensions simultaneously, their true forms extending beyond what can be perceived. When they manifest in the mortal world, they must wear "masks"—forms that mortal minds can process without breaking. These manifestations are still terrifying, often appearing as amalgamations of eyes, tentacles, and impossible geometries. Even their servants undergo physiological changes, developing mutations and abilities that mark them as touched by the void.</p>
+                </div>
+
+                <!-- Territorial Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-dungeon text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Territorial</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Dark Emperors claim dominion over the spaces between realities—the Void Between, the Shadow Dimensions, and the places where the fabric of existence grows thin. In the mortal world, they establish territories through corruption, creating zones where reality breaks down and the void seeps through. These areas become extensions of their domains, places where their power is absolute and mortal laws of physics do not apply. Ancient ruins, cursed lands, and sites of great tragedy often serve as anchors for their influence.</p>
+                </div>
+
+                <!-- Technological Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-scroll text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Technological</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The technology of the Dark Emperors is indistinguishable from magic—advanced applications of reality-bending principles that mortal minds can barely comprehend. They create artifacts that can manipulate time, space, and consciousness. Their servants use dark alchemy, necromantic engineering, and void-touched craftsmanship to create weapons and tools of terrifying power. The most dangerous Dark Emperor technology are the "Keys"—artifacts that can open portals between dimensions or unlock the seals that keep the void at bay.</p>
+                </div>
+
+                <!-- Military Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-mask text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Military</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Dark Emperors do not maintain conventional militaries. Instead, they command through influence and corruption. Their direct servants—void-touched entities, corrupted champions, and manifested nightmares—serve as their elite forces. The cults and organizations they control provide mortal agents and cannon fodder. When the Dark Emperors need to project true military force, they can manifest avatars of devastating power or open rifts that unleash horrors from the void. Their greatest military asset is terror itself—the knowledge that they exist drives many to madness or service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Three Dark Emperors Section -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="fantasy-heading text-3xl font-bold text-white mb-8">
+                <i class="fas fa-users text-purple-500 mr-3"></i>The Three Dark Emperors
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-secondary/50 rounded-xl p-6 border border-red-500/30">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-red-900/30 flex items-center justify-center mr-3">
+                            <i class="fas fa-fire text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-lg font-bold text-red-400">Tomoyama</h3>
+                    </div>
+                    <p class="text-red-400 text-sm mb-2">Demon Emperor</p>
+                    <p class="text-gray-400 text-sm mb-3"><span class="text-slate-500">Original:</span> Guardian of the East, Homura-ke fire mastery</p>
+                    <p class="text-gray-400 text-sm mb-3"><span class="text-slate-500">Corruption:</span> INVERTED SELF + WORLD (inverted fire/mastery)</p>
+                    <p class="text-gray-400 text-sm mb-3">Wields "cold fire" (unmaking flame) and "hollow earth." Commands the Obsidian Forge and the Legion of Cold Fire—Ash-Knights who were former Homura-ke fire masters corrupted to cold fire.</p>
+                    <p class="text-gray-400 text-sm"><span class="text-slate-500">Fate:</span> Defeated at Nexus by Lucius; sealed in Tartarus; corruption burned out; eventually reformed</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-6 border border-purple-500/30">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-purple-900/30 flex items-center justify-center mr-3">
+                            <i class="fas fa-link text-purple-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-lg font-bold text-purple-400">Kross</h3>
+                    </div>
+                    <p class="text-purple-400 text-sm mb-2">Shadow Emperor</p>
+                    <p class="text-gray-400 text-sm mb-3"><span class="text-slate-500">Original:</span> Guardian of the West, Avalon archmage</p>
+                    <p class="text-gray-400 text-sm mb-3"><span class="text-slate-500">Corruption:</span> INVERTED INTUITION + PACT (inverted mystery/pact)</p>
+                    <p class="text-gray-400 text-sm mb-3">Wields "silver chains" (contracts of erasure) and "void-binding." Commands the Library of Binding and the Legion of Silver Chains—void-binders who were former Arcane practitioners now enforcing contracts of erasure.</p>
+                    <p class="text-gray-400 text-sm"><span class="text-slate-500">Fate:</span> Defeated at Nexus by Lucius; sealed in Tartarus; corruption burned out; eventually reformed</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-6 border border-green-500/30">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-green-900/30 flex items-center justify-center mr-3">
+                            <i class="fas fa-bug text-green-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-lg font-bold text-green-400">Marcus</h3>
+                    </div>
+                    <p class="text-green-400 text-sm mb-2">Spawn Emperor</p>
+                    <p class="text-gray-400 text-sm mb-3"><span class="text-slate-500">Original:</span> Guardian Associate, Filwind scientist</p>
+                    <p class="text-gray-400 text-sm mb-3"><span class="text-slate-500">Corruption:</span> INVERTED SCIENCE + ARTIFICE (inverted science/artifice)</p>
+                    <p class="text-gray-400 text-sm mb-3">Wields "pest consciousness" (swarm-intelligence) and "unmaking artifice." Commands the Hive of Consumption and the Legion of Pest—organic-mechanical hybrids that consume knowledge.</p>
+                    <p class="text-gray-400 text-sm"><span class="text-slate-500">Fate:</span> Defeated at Nexus by Lucius; sealed in Tartarus; corruption burned out; eventually reformed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark border-t border-accent/20 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <i class="fas fa-tree text-accent text-xl"></i>
+                    <span class="fantasy-heading text-lg font-bold gradient-text">Eternal Trees Saga</span>
+                </div>
+                <div class="flex space-x-6 text-sm text-gray-400">
+                    <a href="index.html" class="hover:text-accent transition">Home</a>
+                    <a href="key-figures.html" class="hover:text-accent transition">Key Figures</a>
+                    <a href="places.html" class="hover:text-accent transition">Places</a>
+                    <a href="factions.html" class="hover:text-accent transition">Factions</a>
+                </div>
+            </div>
+            <div class="mt-6 pt-6 border-t border-gray-800 text-center text-sm text-gray-500">
+                <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

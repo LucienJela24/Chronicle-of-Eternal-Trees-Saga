@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zhonggou Continent - Eternal Trees Saga Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'cinzel': ['Cinzel', 'serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'eternal-gold': '#d4af37',
+                        'eternal-amber': '#f59e0b',
+                        'eternal-purple': '#8b5cf6',
+                        'eternal-emerald': '#10b981',
+                        'eternal-slate': '#1e293b',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; }
+        h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+        .framework-card { transition: all 0.3s ease; }
+        .framework-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-200 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-slate-900/90 backdrop-blur-md border-b border-slate-700 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <i class="fas fa-tree text-eternal-emerald text-2xl"></i>
+                        <span class="fantasy-font text-xl font-bold text-eternal-gold">Eternal Trees Saga</span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="flex items-baseline space-x-4">
+                        <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Home</a>
+                        <a href="key-figures.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Key Figures</a>
+                        <a href="places.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Places</a>
+                        <a href="timeline.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Timeline</a>
+                        <a href="plots.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Plots</a>
+                        <a href="eastern-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-amber hover:bg-slate-800 transition">Eastern</a>
+                        <a href="western-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-purple hover:bg-slate-800 transition">Western</a>
+                        <a href="other-realms.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-emerald hover:bg-slate-800 transition">Realms</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Home</a>
+                <a href="key-figures.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Key Figures</a>
+                <a href="places.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Places</a>
+                <a href="timeline.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Timeline</a>
+                <a href="plots.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Plots</a>
+                <a href="eastern-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-amber hover:bg-slate-800">Eastern Factions</a>
+                <a href="western-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-purple hover:bg-slate-800">Western Factions</a>
+                <a href="other-realms.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-emerald hover:bg-slate-800">Other Realms</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-b from-purple-900/40 to-slate-950 py-16">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.2) 0%, transparent 70%);"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center space-x-2 mb-4">
+                <span class="px-3 py-1 bg-purple-900/50 border border-purple-600/30 rounded-full text-purple-400 text-sm">Western Plane</span>
+                <span class="px-3 py-1 bg-slate-800 border border-slate-600 rounded-full text-slate-400 text-sm">Eastern Influences</span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-bold text-purple-400 mb-4">Zhonggou Continent</h1>
+            <p class="text-xl text-slate-400 max-w-3xl mx-auto">A continent where Eastern and Western cultures merge, creating unique political and social systems</p>
+            <div class="mt-6 flex justify-center space-x-4 text-sm text-slate-500">
+                <span><i class="fas fa-dragon text-purple-400 mr-2"></i>Xi Dynasty</span>
+                <span><i class="fas fa-chess text-purple-400 mr-2"></i>Five Kingdoms</span>
+                <span><i class="fas fa-handshake text-purple-400 mr-2"></i>Union</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                <h2 class="text-2xl font-bold text-eternal-gold mb-4">Overview</h2>
+                <p class="text-slate-300 leading-relaxed mb-4">The Zhonggou Continent represents a fascinating cultural fusion zone in the Western Plane, where Eastern traditions brought by migrants and traders have merged with indigenous Western practices to create unique political and social systems. The continent's name itself reflects this blending—"Zhonggou" being a Western adaptation of Eastern linguistic elements.</p>
+                <p class="text-slate-300 leading-relaxed mb-4">Four major powers dominate the continent: the Xi Dynasty, which maintains Eastern-style imperial governance; the Five Kingdoms, a confederation of smaller states with mixed cultural traditions; the Ming Dynasty, a rival imperial power with distinct cultural characteristics; and the Union, a federation that represents the most successful blending of Eastern and Western political traditions.</p>
+                <p class="text-slate-300 leading-relaxed">The continent's strategic location makes it a crossroads of trade and cultural exchange between the Eastern and Western Planes. This position has brought prosperity but also conflict, as external powers have repeatedly sought to control its resources and influence its politics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Four Powers -->
+    <section class="py-12 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-12">The Four Powers</h2>
+            
+            <div class="space-y-12">
+                <!-- Xi Dynasty -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-dragon text-purple-400 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-purple-400">Xi Dynasty</h3>
+                            <p class="text-slate-500">Eastern Imperial Tradition</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 mb-6">The Xi Dynasty maintains the most purely Eastern-style governance on the continent, having been founded by migrants from the Eastern Plane who sought to preserve their traditions in a new land. The Dynasty emphasizes imperial authority, bureaucratic governance, and Confucian social values.</p>
+                    
+                    <h4 class="text-lg font-bold text-eternal-gold mb-4">11-Framework Analysis</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">1. Historical</h5>
+                            <p class="text-slate-400 text-sm">Founded six centuries ago by refugees from the Eastern Plane who fled political upheaval. The Xi Dynasty has maintained unbroken succession through careful management of imperial bloodlines. Historical records are meticulously preserved.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">2. Political</h5>
+                            <p class="text-slate-400 text-sm">Absolute monarchy with the Emperor as Son of Heaven. The Imperial Court includes six ministries handling administration, revenue, rites, war, justice, and public works. The Censorate monitors officials for corruption.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">3. Mental</h5>
+                            <p class="text-slate-400 text-sm">Education emphasizes classical texts, calligraphy, and civil service examination preparation. The imperial examination system selects officials based on merit rather than birth. Strategic thinking is valued in both civil and military contexts.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">4. Spiritual</h5>
+                            <p class="text-slate-400 text-sm">Ancestor worship is central to spiritual life, with every household maintaining family altars. The Emperor performs rituals to maintain cosmic harmony. Buddhism and Taoism coexist with traditional practices, each with state patronage.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">5. Social</h5>
+                            <p class="text-slate-400 text-sm">Strict social hierarchy with scholars at the top, followed by farmers, artisans, and merchants. Family is the foundation of society, with filial piety as the highest virtue. Women occupy subordinate positions but can wield influence behind the scenes.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">6. Cultural</h5>
+                            <p class="text-slate-400 text-sm">Rich traditions of poetry, painting, and music that emphasize harmony and restraint. Tea ceremonies and seasonal festivals mark the cultural calendar. Imperial patronage supports the arts and preserves ancient traditions.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">7. Economical</h5>
+                            <p class="text-slate-400 text-sm">Agricultural foundation with rice cultivation as the primary crop. State monopolies on salt, iron, and other essentials provide revenue. Trade is regulated but flourishes along rivers and the coast. The imperial treasury is substantial.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">8. Physiological</h5>
+                            <p class="text-slate-400 text-sm">Traditional medicine combining herbal remedies, acupuncture, and energy cultivation. Imperial physicians serve the court and train practitioners. Physical fitness is encouraged through martial arts and calisthenics.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">9. Territorial</h5>
+                            <p class="text-slate-400 text-sm">The largest territory on the continent, encompassing fertile river valleys and mountain ranges. The capital city features the Forbidden Palace and extensive government complexes. Regional capitals administer provinces.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">10. Technological</h5>
+                            <p class="text-slate-400 text-sm">Advanced agricultural techniques support a large population. Engineering projects include canals, dams, and irrigation systems. Gunpowder weapons are manufactured but reserved for military use. Paper, printing, and the compass originated here.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">11. Military</h5>
+                            <p class="text-slate-400 text-sm">Large standing army organized into regional commands. The Imperial Guard protects the capital and the Emperor. Military examinations parallel civil service exams. Naval forces patrol rivers and coastal waters.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Five Kingdoms -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-chess text-purple-400 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-purple-400">Five Kingdoms</h3>
+                            <p class="text-slate-500">Mixed Heritage Confederation</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 mb-6">A confederation of five smaller kingdoms, each with its own blend of Eastern and Western cultural elements. The Five Kingdoms cooperate on matters of defense and trade while maintaining distinct identities and internal autonomy.</p>
+                    
+                    <h4 class="text-lg font-bold text-eternal-gold mb-4">11-Framework Analysis</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">1. Historical</h5>
+                            <p class="text-slate-400 text-sm">The five kingdoms emerged from the fragmentation of a larger state three centuries ago. Rather than continuing warfare, they formed a confederation for mutual benefit. Each kingdom maintains its own history and founding myths.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">2. Political</h5>
+                            <p class="text-slate-400 text-sm">Each kingdom is governed by its own monarch with varying systems—some hereditary, some elective. The Council of Kings coordinates confederation policy. Decisions require consensus, which can slow action but prevents domination by any single kingdom.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">3. Mental</h5>
+                            <p class="text-slate-400 text-sm">Education systems vary by kingdom but generally blend Eastern and Western approaches. Some emphasize classical learning, others practical skills. Cross-border study is encouraged to foster understanding between kingdoms.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">4. Spiritual</h5>
+                            <p class="text-slate-400 text-sm">Religious diversity is the norm, with each kingdom having its own spiritual traditions. Some follow Eastern practices, others Western faiths, and many blend elements of both. Religious tolerance is a confederation principle.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">5. Social</h5>
+                            <p class="text-slate-400 text-sm">Social structures vary between kingdoms, creating interesting contrasts. Intermarriage between kingdoms has created a blended aristocracy. Common people identify with their kingdom first but share a broader confederation identity.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">6. Cultural</h5>
+                            <p class="text-slate-400 text-sm">Each kingdom maintains distinct cultural traditions while participating in confederation-wide festivals. Art, music, and cuisine show both Eastern and Western influences. Cultural exchange is celebrated as a strength.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">7. Economical</h5>
+                            <p class="text-slate-400 text-sm">Free trade between kingdoms is guaranteed by confederation treaty. Each kingdom specializes in different goods—grain, textiles, metals, crafts, and trade goods. Combined, they form a significant economic power.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">8. Physiological</h5>
+                            <p class="text-slate-400 text-sm">Medical practices vary, with some kingdoms favoring Eastern traditional medicine and others Western approaches. Cross-border medical knowledge sharing has improved healthcare throughout the confederation.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">9. Territorial</h5>
+                            <p class="text-slate-400 text-sm">Each kingdom maintains its traditional territory, with clearly defined borders. The central city, neutral ground, hosts confederation institutions. Transportation networks connect all five kingdoms.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">10. Technological</h5>
+                            <p class="text-slate-400 text-sm">Technology sharing between kingdoms accelerates innovation. Some excel in metallurgy, others in textiles or agriculture. Combined expertise makes the confederation technologically competitive with larger states.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">11. Military</h5>
+                            <p class="text-slate-400 text-sm">Each kingdom maintains its own forces but trains to coordinate with allies. The Confederation Guard serves as a rapid reaction force. Combined military strength deters aggression from larger neighbors.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ming Dynasty -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-sun text-purple-400 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-purple-400">Ming Dynasty</h3>
+                            <p class="text-slate-500">Rival Imperial Power</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 mb-6">A rival imperial power that broke away from the Xi Dynasty centuries ago, the Ming Dynasty has developed its own distinct cultural and political identity. While maintaining Eastern-style governance, the Ming have incorporated more Western elements into their society.</p>
+                    
+                    <h4 class="text-lg font-bold text-eternal-gold mb-4">11-Framework Analysis</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">1. Historical</h5>
+                            <p class="text-slate-400 text-sm">Founded four centuries ago by a rebellious general who established his own imperial line. The Ming have fought several wars with the Xi Dynasty, most ending in stalemate. Each dynasty claims to be the legitimate ruler of all Zhonggou.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">2. Political</h5>
+                            <p class="text-slate-400 text-sm">Imperial system similar to the Xi but with Western-influenced legal reforms. The Emperor shares some power with a Grand Council of advisors. Provincial governors have more autonomy than in the Xi Dynasty.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">3. Mental</h5>
+                            <p class="text-slate-400 text-sm">Education combines Eastern classics with Western sciences and philosophy. The civil service examination includes practical subjects alongside traditional learning. Critical thinking is more encouraged than in the Xi Dynasty.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">4. Spiritual</h5>
+                            <p class="text-slate-400 text-sm">Officially promotes a reformed version of traditional religion that incorporates Western philosophical elements. Religious tolerance is greater than in the Xi Dynasty. The state maintains temples but does not control doctrine.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">5. Social</h5>
+                            <p class="text-slate-400 text-sm">Social hierarchy exists but is less rigid than in the Xi Dynasty. Merchants enjoy higher status due to their economic importance. Women have somewhat more opportunities, including education and property ownership.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">6. Cultural</h5>
+                            <p class="text-slate-400 text-sm">Distinct artistic tradition that blends Eastern aesthetics with Western techniques. Porcelain, silk, and jade work are highly valued. Theater and literature explore themes of individualism and social change.</p>
+                        </div>
+                        <div class="bg-serald-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">7. Economical</h5>
+                            <p class="text-slate-400 text-sm">Commercial economy with active trade both domestically and internationally. Banking and credit systems are well-developed. The Ming actively seek trade relationships with Western Plane powers.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">8. Physiological</h5>
+                            <p class="text-slate-400 text-sm">Combines traditional medicine with Western surgical techniques. Public health measures include sanitation and quarantine protocols. Physical fitness is promoted through both martial arts and Western sports.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">9. Territorial</h5>
+                            <p class="text-slate-400 text-sm">Controls the southern portion of the continent with access to major trade routes. The capital is a cosmopolitan city with significant Western influence. Border fortifications face the Xi Dynasty.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">10. Technological</h5>
+                            <p class="text-slate-400 text-sm">Actively adopts and adapts Western technologies while preserving Eastern innovations. Shipbuilding is particularly advanced. The Ming maintain research institutions that study both Eastern and Western knowledge.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">11. Military</h5>
+                            <p class="text-slate-400 text-sm">Modernized forces combining Eastern and Western military techniques. The navy is particularly strong, protecting trade routes. Firearms and artillery are integrated with traditional forces.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Union -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-14 h-14 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fas fa-handshake text-purple-400 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-purple-400">The Union</h3>
+                            <p class="text-slate-500">Federated Republic</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-300 mb-6">The most successful example of East-West political fusion on the continent, the Union combines Eastern-style meritocratic bureaucracy with Western democratic institutions. This hybrid system has created a prosperous and stable state that serves as a model for others.</p>
+                    
+                    <h4 class="text-lg font-bold text-eternal-gold mb-4">11-Framework Analysis</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">1. Historical</h5>
+                            <p class="text-slate-400 text-sm">Founded two centuries ago by reformers who sought to combine the best of Eastern and Western governance. The Union's constitution is considered a masterpiece of political philosophy. Its success has inspired similar experiments elsewhere.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">2. Political</h5>
+                            <p class="text-slate-400 text-sm">Federal republic with elected legislature and meritocratic civil service. The Chancellor is elected by the Assembly. The Examination Board selects civil servants based on competitive exams. Local governments have significant autonomy.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">3. Mental</h5>
+                            <p class="text-slate-400 text-sm">Education is universal and emphasizes both Eastern and Western knowledge. Critical thinking and civic responsibility are core values. Universities are centers of innovation and debate. Lifelong learning is encouraged.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">4. Spiritual</h5>
+                            <p class="text-slate-400 text-sm">Complete religious freedom with no state religion. All faiths are treated equally under law. Interfaith dialogue is actively promoted. Many citizens follow syncretic beliefs combining Eastern and Western elements.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">5. Social</h5>
+                            <p class="text-slate-400 text-sm">Social mobility is high, with advancement based on merit rather than birth. Equality before the law is guaranteed. Traditional family values coexist with progressive social policies. Community organizations play important roles.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">6. Cultural</h5>
+                            <p class="text-slate-400 text-sm">Vibrant fusion culture celebrated as a unique achievement. Art, music, and literature blend Eastern and Western forms. Cultural institutions receive state support. The Union's cultural exports are popular across the planes.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">7. Economical</h5>
+                            <p class="text-slate-400 text-sm">Mixed economy with both state enterprises and private business. Banking and finance are well-developed. Trade policy is open, with free trade agreements with many partners. Innovation is encouraged and rewarded.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">8. Physiological</h5>
+                            <p class="text-slate-400 text-sm">Universal healthcare combines Eastern and Western medicine. Public health infrastructure is advanced. Physical fitness is promoted through public facilities and programs. Life expectancy is among the highest on the continent.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">9. Territorial</h5>
+                            <p class="text-slate-400 text-sm">Western coastal territory with excellent ports and trade access. The capital is a planned city designed to embody Union principles. Regional centers balance urban and rural development. Infrastructure is well-maintained.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">10. Technological</h5>
+                            <p class="text-slate-400 text-sm">Leader in technological innovation, combining Eastern and Western approaches. Research institutions are well-funded. Patents protect inventors while allowing society to benefit. Magical and mundane technologies are integrated.</p>
+                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-4">
+                            <h5 class="font-bold text-purple-400 mb-2">11. Military</h5>
+                            <p class="text-slate-400 text-sm">Professional forces with combined arms and advanced tactics. Military service is voluntary but respected. Defense policy emphasizes deterrence and alliance. The Union prefers diplomacy but maintains credible military strength.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <i class="fas fa-tree text-eternal-emerald text-xl"></i>
+                    <span class="fantasy-font text-lg font-bold text-eternal-gold">Eternal Trees Saga</span>
+                </div>
+                <div class="text-slate-500 text-sm">
+                    <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="index.html" class="text-slate-400 hover:text-eternal-gold transition">Home</a>
+                    <a href="eastern-factions.html" class="text-slate-400 hover:text-eternal-amber transition">Eastern</a>
+                    <a href="western-factions.html" class="text-slate-400 hover:text-eternal-purple transition">Western</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

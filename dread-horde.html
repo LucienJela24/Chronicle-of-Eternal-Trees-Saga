@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dread Horde | Eternal Trees Saga Wiki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#1e293b',
+                        accent: '#0d9488',
+                        'accent-light': '#14b8a6',
+                        gold: '#fbbf24',
+                        'gold-light': '#fcd34d',
+                        dark: '#020617',
+                        'dark-light': '#1e293b'
+                    },
+                    fontFamily: {
+                        'heading': ['Cinzel', 'serif'],
+                        'body': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            min-height: 100vh;
+        }
+        .fantasy-heading {
+            font-family: 'Cinzel', serif;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .framework-card {
+            background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid rgba(13, 148, 136, 0.2);
+        }
+        .framework-card:hover {
+            border-color: rgba(13, 148, 136, 0.5);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #0d9488;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.8) 0%, rgba(15, 23, 42, 0.95) 100%);
+        }
+        .threat-glow {
+            box-shadow: 0 0 30px rgba(220, 38, 38, 0.3);
+        }
+    </style>
+</head>
+<body class="text-gray-100">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-primary/95 backdrop-blur-md border-b border-accent/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-tree text-accent text-2xl"></i>
+                    <span class="fantasy-heading text-xl font-bold gradient-text">Eternal Trees Saga</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="nav-link text-gray-300 hover:text-accent transition">Home</a>
+                    <a href="key-figures.html" class="nav-link text-gray-300 hover:text-accent transition">Key Figures</a>
+                    <a href="places.html" class="nav-link text-gray-300 hover:text-accent transition">Places</a>
+                    <a href="factions.html" class="nav-link text-gray-300 hover:text-accent transition">Factions</a>
+                    <a href="threats-enemies.html" class="nav-link text-accent-light transition">Threats</a>
+                    <a href="timelines.html" class="nav-link text-gray-300 hover:text-accent transition">Timelines</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-accent">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-secondary border-t border-accent/20">
+            <div class="px-4 py-3 space-y-2">
+                <a href="index.html" class="block py-2 text-gray-300 hover:text-accent">Home</a>
+                <a href="key-figures.html" class="block py-2 text-gray-300 hover:text-accent">Key Figures</a>
+                <a href="places.html" class="block py-2 text-gray-300 hover:text-accent">Places</a>
+                <a href="factions.html" class="block py-2 text-gray-300 hover:text-accent">Factions</a>
+                <a href="threats-enemies.html" class="block py-2 text-accent-light">Threats</a>
+                <a href="timelines.html" class="block py-2 text-gray-300 hover:text-accent">Timelines</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-12">
+        <div class="absolute inset-0 bg-gradient-to-b from-red-900/20 via-primary to-primary"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-red-900/30 border-2 border-red-500/50 mb-6">
+                    <i class="fas fa-skull text-red-500 text-4xl"></i>
+                </div>
+                <h1 class="fantasy-heading text-5xl md:text-6xl font-bold text-white mb-4">Dread Horde</h1>
+                <p class="text-xl text-red-400 mb-2">The Unending Tide of Darkness</p>
+                <p class="text-gray-400 max-w-3xl mx-auto">A vast conglomeration of corrupted beings, fallen warriors, and nightmarish entities united under the banner of destruction. The Dread Horde represents the greatest military threat to all civilized realms.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-secondary/50 rounded-xl p-8 border border-red-500/20">
+                <h2 class="fantasy-heading text-3xl font-bold text-white mb-6">
+                    <i class="fas fa-info-circle text-red-500 mr-3"></i>Overview
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <p class="text-gray-300 leading-relaxed mb-4">The Dread Ones represent the inversion of all creative order, emerging not from the Endless Seed of Light but from the Great Void—that which Book 0 cosmology identifies as anti-creation, the hunger of non-being pressing against existence. Unlike the Four Realms that crystallized around the Two Trees, the Dread Horde constitutes a third, parasitic tree: the Tree of Unmaking.</p>
+                        <p class="text-gray-300 leading-relaxed">Their doctrine is simple and terrible: "Unmaking is the only making that lasts. The Void finishes what creation forgets." They are not a civilization but an infection of reality itself, born when the sealed Fifth Persona leaks through cracks in the Firmament, and when corrupted guardians chose absolute inversion over relational balance.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                            <span class="text-gray-400">Threat Level</span>
+                            <span class="text-red-500 font-bold">Apocalyptic</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                            <span class="text-gray-400">Leadership</span>
+                            <span class="text-gray-200">Three Dark Emperors</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                            <span class="text-gray-400">Origin</span>
+                            <span class="text-gray-200">The Great Void</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                            <span class="text-gray-400">Territory</span>
+                            <span class="text-gray-200">Dark Realm / Void Edge</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11 Frameworks Analysis -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="fantasy-heading text-4xl font-bold text-center text-white mb-12">
+                <i class="fas fa-cube text-red-500 mr-3"></i>11 Frameworks Analysis
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Historical Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-history text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Historical</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Dread Horde's origins trace back to the First Cataclysm when the veil between worlds tore open, allowing dark entities to flood into the material plane. Over centuries, various dark factions, necromantic cults, and corrupted armies have gradually coalesced into the Horde under the influence of powerful dark lords. Each major incursion has added new constituents to their ranks—fallen kingdoms, destroyed civilizations, and corrupted beings all serve the Horde's endless hunger for conquest.</p>
+                </div>
+
+                <!-- Political Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-crown text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Political</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Horde operates on a brutal meritocracy where strength determines rank. The Warlord Council consists of the most powerful entities, each commanding vast armies. Below them are the Legion Commanders, Dark Champions, and Corrupted Lords who control various segments of the Horde. Political maneuvering is constant, with warlords vying for position and resources. The only unifying factor is their shared hatred of the living world and the influence of the Dark Emperors who ultimately pull the strings.</p>
+                </div>
+
+                <!-- Mental Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-brain text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Mental</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The collective mentality of the Dread Horde is one of absolute nihilism and destructive purpose. Most constituents have been stripped of their former identities through corruption, necromantic binding, or demonic possession. What remains is a singular focus on destruction and domination. Higher-ranking members retain more individuality but are driven by dark ambitions, ancient grudges, or promises of power. The Horde's mental unity comes from dark influence that connects all members in a web of malevolent intent.</p>
+                </div>
+
+                <!-- Spiritual Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-ghost text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Spiritual</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Spiritually, the Horde represents the antithesis of life and creation. Many of its members are soul-bound to dark entities, their spirits trapped in eternal servitude. The Horde draws power from death, decay, and negative emotions—fear, hatred, and despair fuel their dark magic. Various dark deities and primordial evils are worshipped within the Horde, with blood sacrifices and dark rituals being common practices. The spiritual corruption of the Horde spreads like a disease, tainting everything it touches.</p>
+                </div>
+
+                <!-- Social Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-users text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Social</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Social structure within the Horde is predatory and hierarchical. The strong dominate the weak without mercy. Various factions within the Horde maintain uneasy alliances based on shared goals and mutual benefit. Undead legions, demonic hordes, corrupted mortals, and dark beasts each occupy different niches in the social order. Conflict is common but kept in check by the Warlord Council and the overarching influence of the Dark Emperors who ensure the Horde remains focused on external conquest.</p>
+                </div>
+
+                <!-- Cultural Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-music text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Cultural</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">Dread Horde culture glorifies strength, cruelty, and domination. Their art consists of grotesque trophies, dark monuments built from the bones of their enemies, and twisted representations of their dark gods. War chants and dark hymns echo through their camps. Ritual combat and gladiatorial games serve as both entertainment and method of determining rank. The Horde has no concept of mercy or honor as understood by civilized peoples—the only value is power, and the only currency is fear.</p>
+                </div>
+
+                <!-- Economical Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-coins text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Economical</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Horde's economy is based entirely on plunder and conquest. They take what they want from those they destroy, consuming resources without thought for sustainability. Dark magic allows them to extract value from things civilized nations would discard—corpses become soldiers, cursed lands provide dark resources, and captured souls serve as currency among the more powerful entities. Trade exists only in the form of tribute and the exchange of slaves and dark artifacts.</p>
+                </div>
+
+                <!-- Physiological Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-heartbeat text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Physiological</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Horde encompasses a vast range of physiological types. Undead soldiers require no sustenance and feel no pain. Demons possess supernatural resilience and regenerative abilities. Corrupted mortals often display twisted mutations that grant enhanced strength or dark abilities. The common factor is their unnatural nature—most Horde constituents exist in violation of natural law, sustained by dark magic and malevolent will. This makes them terrifying opponents who cannot be defeated through conventional means.</p>
+                </div>
+
+                <!-- Territorial Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-map-marked-alt text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Territorial</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Dread Horde controls the Blighted Lands, a vast region corrupted by centuries of dark influence. This territory expands with each conquest, as the Horde's presence itself corrupts the land. Temporary camps and fortresses dot the landscape wherever the Horde marches. Unlike civilized nations, the Horde does not develop or maintain territory—it consumes and moves on, leaving only blight and desolation behind. Their true strength lies not in holding ground but in their mobility and endless numbers.</p>
+                </div>
+
+                <!-- Technological Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-cogs text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Technological</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Horde's technology is a dark fusion of conventional warfare and malevolent magic. Necromantic engines animate legions of undead. Demonic forges produce cursed weapons and armor. Siege engines powered by trapped souls can breach even the strongest fortifications. Dark alchemy creates plagues and corrosive substances. While lacking the refined technology of civilized nations, the Horde compensates with magical innovation that bends the laws of nature to create weapons of terrifying effectiveness.</p>
+                </div>
+
+                <!-- Military Framework -->
+                <div class="framework-card rounded-xl p-6 card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
+                            <i class="fas fa-shield-alt text-red-500 text-xl"></i>
+                        </div>
+                        <h3 class="fantasy-heading text-xl font-bold text-white">Military</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Dread Horde's military is its defining feature—a vast, diverse force that overwhelms through numbers and terror. Undead legions form the backbone, endless ranks of skeletons and zombies that know no fear. Demonic shock troops break enemy lines with supernatural fury. Dark champions and death knights lead from the front, their power inspiring terror. Siege beasts and corrupted monsters serve as living weapons. The Horde's tactics are simple but effective: endless waves of attackers wearing down defenses until they break.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hierarchy Section -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="fantasy-heading text-3xl font-bold text-white mb-8">
+                <i class="fas fa-layer-group text-red-500 mr-3"></i>Corruption Hierarchy
+            </h2>
+            <div class="bg-secondary/50 rounded-xl p-6 border border-red-500/20 mb-8">
+                <p class="text-gray-400 text-sm mb-4">The Dread Horde operates through a nine-tier hierarchy of consumption and erosion. Higher tiers are simply more "concentrated" void—advancement occurs through absorption of void-energy and successful unmaking of creation.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="bg-secondary/50 rounded-xl p-4 border border-red-500/30">
+                    <div class="flex items-center mb-2">
+                        <span class="text-red-500 font-bold mr-2">1st</span>
+                        <h3 class="fantasy-heading text-sm font-bold text-red-400">Dark Emperor</h3>
+                    </div>
+                    <p class="text-gray-400 text-xs">Singularity of corruption; absolute command through consumption. Tomoyama, Kross, and Marcus.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-4 border border-red-500/20">
+                    <div class="flex items-center mb-2">
+                        <span class="text-red-400 font-bold mr-2">2nd</span>
+                        <h3 class="fantasy-heading text-sm font-bold text-gray-300">Void Herald</h3>
+                    </div>
+                    <p class="text-gray-400 text-xs">Prophecy of unmaking; theological/ideological enforcement. Null-Herald Vex.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-4 border border-red-500/20">
+                    <div class="flex items-center mb-2">
+                        <span class="text-red-400 font-bold mr-2">3rd</span>
+                        <h3 class="fantasy-heading text-sm font-bold text-gray-300">Dread Lord</h3>
+                    </div>
+                    <p class="text-gray-400 text-xs">Regional corruption command; tactical unmaking operations. Erasure, Null.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-4 border border-red-500/20">
+                    <div class="flex items-center mb-2">
+                        <span class="text-red-400 font-bold mr-2">4th</span>
+                        <h3 class="fantasy-heading text-sm font-bold text-gray-300">Unmaker</h3>
+                    </div>
+                    <p class="text-gray-400 text-xs">Elite void-assassins; targeted erasure of key figures. Unmaker-Nihil.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-4 border border-red-500/20">
+                    <div class="flex items-center mb-2">
+                        <span class="text-red-400 font-bold mr-2">5th</span>
+                        <h3 class="fantasy-heading text-sm font-bold text-gray-300">Hollow General</h3>
+                    </div>
+                    <p class="text-gray-400 text-xs">Command of unmade legions; mass erosion tactics. Hollow General Ash.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-4 border border-red-500/20">
+                    <div class="flex items-center mb-2">
+                        <span class="text-red-400 font-bold mr-2">6th</span>
+                        <h3 class="fantasy-heading text-sm font-bold text-gray-300">Dread Warrior</h3>
+                    </div>
+                    <p class="text-gray-400 text-xs">Organized unmaking infantry; shock troops. The Ash-Knights, Silver Chains.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-4 border border-red-500/20">
+                    <div class="flex items-center mb-2">
+                        <span class="text-red-400 font-bold mr-2">7th</span>
+                        <h3 class="fantasy-heading text-sm font-bold text-gray-300">Dread One</h3>
+                    </div>
+                    <p class="text-gray-400 text-xs">Command cadre; corruption spreaders. Scout-grade unmaking infantry.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-4 border border-red-500/20">
+                    <div class="flex items-center mb-2">
+                        <span class="text-red-400 font-bold mr-2">8th</span>
+                        <h3 class="fantasy-heading text-sm font-bold text-gray-300">Hollow</h3>
+                    </div>
+                    <p class="text-gray-400 text-xs">Void-touched scouts; reality eroders. Still semi-autonomous.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-4 border border-red-500/20">
+                    <div class="flex items-center mb-2">
+                        <span class="text-red-400 font-bold mr-2">9th</span>
+                        <h3 class="fantasy-heading text-sm font-bold text-gray-300">Unmade</h3>
+                    </div>
+                    <p class="text-gray-400 text-xs">Mindless erosion; consumption drones. Fully consumed; no will, only hunger.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Five Corruption Legions Section -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="fantasy-heading text-3xl font-bold text-white mb-8">
+                <i class="fas fa-fire-alt text-red-500 mr-3"></i>Five Corruption Legions
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-secondary/50 rounded-xl p-6 border border-orange-500/30">
+                    <i class="fas fa-fire text-orange-500 text-3xl mb-4"></i>
+                    <h3 class="fantasy-heading text-lg font-bold text-orange-400 mb-2">Legion of Cold Fire</h3>
+                    <p class="text-gray-400 text-sm mb-2">Tomoyama's elite forces</p>
+                    <p class="text-gray-400 text-sm">The Ash-Knights—former Homura-ke fire masters corrupted to cold fire. Wield unmaking flame that consumes rather than burns.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-6 border border-purple-500/30">
+                    <i class="fas fa-link text-purple-500 text-3xl mb-4"></i>
+                    <h3 class="fantasy-heading text-lg font-bold text-purple-400 mb-2">Legion of Silver Chains</h3>
+                    <p class="text-gray-400 text-sm mb-2">Kross's void-binders</p>
+                    <p class="text-gray-400 text-sm">Former Arcane practitioners now enforcing contracts of erasure. Wield silver chains that bind and unmake simultaneously.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-6 border border-green-500/30">
+                    <i class="fas fa-bug text-green-500 text-3xl mb-4"></i>
+                    <h3 class="fantasy-heading text-lg font-bold text-green-400 mb-2">Legion of Pest</h3>
+                    <p class="text-gray-400 text-sm mb-2">Marcus's swarm-intelligence</p>
+                    <p class="text-gray-400 text-sm">Organic-mechanical hybrids that consume knowledge. The Pest Choir spreads as a thinking plague.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-6 border border-gray-500/30">
+                    <i class="fas fa-circle text-gray-500 text-3xl mb-4"></i>
+                    <h3 class="fantasy-heading text-lg font-bold text-gray-400 mb-2">Legion of Hollow</h3>
+                    <p class="text-gray-400 text-sm mb-2">Reality-eroders</p>
+                    <p class="text-gray-400 text-sm">The Hollow Ones—former Grenlians fully unmade. They erase existence simply by passing through it.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-6 border border-slate-500/30">
+                    <i class="fas fa-volume-mute text-slate-500 text-3xl mb-4"></i>
+                    <h3 class="fantasy-heading text-lg font-bold text-slate-400 mb-2">Legion of Silence</h3>
+                    <p class="text-gray-400 text-sm mb-2">Absence manifest</p>
+                    <p class="text-gray-400 text-sm">Warriors who have embraced the void so completely they erase sound, light, and meaning in their presence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Characters Section -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="fantasy-heading text-3xl font-bold text-white mb-8">
+                <i class="fas fa-user-secret text-red-500 mr-3"></i>Key Figures
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-secondary/50 rounded-xl p-6 border border-red-500/20">
+                    <h3 class="fantasy-heading text-lg font-bold text-red-400 mb-2">Void Herald Null-Herald Vex</h3>
+                    <p class="text-gray-400 text-sm mb-2">The Absent Voice, prophet of the Great Void</p>
+                    <p class="text-gray-400 text-sm">Coordinator of theological unmaking; speaks only in future-perfect tense ("what will have been erased"). The voice of anti-creation itself.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-6 border border-red-500/20">
+                    <h3 class="fantasy-heading text-lg font-bold text-red-400 mb-2">Dread Lord Erasure</h3>
+                    <p class="text-gray-400 text-sm mb-2">Commander of eastern corruption zones</p>
+                    <p class="text-gray-400 text-sm">Former Eastern general converted during the Iron Pass battle (7583). Now leads systematic unmaking of the Four Realms' eastern territories.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-6 border border-red-500/20">
+                    <h3 class="fantasy-heading text-lg font-bold text-red-400 mb-2">Unmaker-Nihil</h3>
+                    <p class="text-gray-400 text-sm mb-2">Elite assassin</p>
+                    <p class="text-gray-400 text-sm">Responsible for the targeted unmaking of three Guardian Order Captains during the Nexus siege. Exists partially outside the Firmament.</p>
+                </div>
+                <div class="bg-secondary/50 rounded-xl p-6 border border-red-500/20">
+                    <h3 class="fantasy-heading text-lg font-bold text-red-400 mb-2">Hollow General Ash</h3>
+                    <p class="text-gray-400 text-sm mb-2">Commander of the Unmade legions</p>
+                    <p class="text-gray-400 text-sm">Former Lux Imperio Paladin fully hollowed. Leads the Consumption Wave formations—mass Unmade advances that erode all structures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark border-t border-accent/20 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <i class="fas fa-tree text-accent text-xl"></i>
+                    <span class="fantasy-heading text-lg font-bold gradient-text">Eternal Trees Saga</span>
+                </div>
+                <div class="flex space-x-6 text-sm text-gray-400">
+                    <a href="index.html" class="hover:text-accent transition">Home</a>
+                    <a href="key-figures.html" class="hover:text-accent transition">Key Figures</a>
+                    <a href="places.html" class="hover:text-accent transition">Places</a>
+                    <a href="factions.html" class="hover:text-accent transition">Factions</a>
+                </div>
+            </div>
+            <div class="mt-6 pt-6 border-t border-gray-800 text-center text-sm text-gray-500">
+                <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
