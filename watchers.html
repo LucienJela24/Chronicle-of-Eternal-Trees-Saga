@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Watchers - Eternal Trees Saga Wiki</title>
+    <title>The Twelve Watchers · Eternal Trees Saga Wiki</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -29,12 +29,14 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #0f172a; }
         h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
-        .framework-card { transition: all 0.3s ease; }
-        .framework-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .framework-card { transition: all 0.25s ease; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px); }
+        .framework-card:hover { transform: translateY(-3px); box-shadow: 0 20px 30px -10px rgba(0,0,0,0.6); border-color: #2dd4bf50; }
+        .section-glow { box-shadow: 0 0 20px rgba(16, 185, 129, 0.1); }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-200 min-h-screen">
-    <!-- Navigation -->
+
+    <!-- Navigation (wiki style) -->
     <nav class="bg-slate-900/90 backdrop-blur-md border-b border-slate-700 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
@@ -77,208 +79,190 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative bg-gradient-to-b from-emerald-900/40 to-slate-950 py-16">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 70%);"></div>
+    <!-- Hero Section (aligned with lore) -->
+    <section class="relative bg-gradient-to-b from-emerald-900/30 to-slate-950 py-20">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 30% 40%, rgba(16, 185, 129, 0.3) 0%, transparent 60%);"></div>
         </div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="inline-flex items-center space-x-2 mb-4">
-                <span class="px-3 py-1 bg-emerald-900/50 border border-emerald-600/30 rounded-full text-emerald-400 text-sm">Guardian Domain</span>
-                <span class="px-3 py-1 bg-slate-800 border border-slate-600 rounded-full text-slate-400 text-sm">Surveillance</span>
+                <span class="px-3 py-1 bg-emerald-900/60 border border-emerald-600/40 rounded-full text-emerald-300 text-sm font-medium"><i class="fas fa-eye mr-1"></i>Autonomous Witness Institution</span>
+                <span class="px-3 py-1 bg-slate-800/80 border border-slate-600 rounded-full text-slate-400 text-sm">Founded 33,819 AY</span>
             </div>
-            <h1 class="text-5xl md:text-6xl font-bold text-emerald-400 mb-4">The Watchers</h1>
-            <p class="text-xl text-slate-400 max-w-3xl mx-auto">Elite scouts and observers who monitor Abyssal activities across the Eastern Plane</p>
-            <div class="mt-6 flex justify-center space-x-4 text-sm text-slate-500">
-                <span><i class="fas fa-eye text-emerald-400 mr-2"></i>Surveillance</span>
-                <span><i class="fas fa-network-wired text-emerald-400 mr-2"></i>Intelligence</span>
-                <span><i class="fas fa-exclamation-triangle text-emerald-400 mr-2"></i>Early Warning</span>
+            <h1 class="text-5xl md:text-6xl font-bold text-emerald-300 mb-4 tracking-tight">THE TWELVE WATCHERS</h1>
+            <p class="text-2xl text-slate-300 max-w-3xl mx-auto italic font-light">"We do not judge. We witness. And in witnessing, we preserve the possibility of relation."</p>
+            <div class="mt-8 flex flex-wrap justify-center gap-4 text-sm text-slate-400">
+                <span class="flex items-center"><i class="fas fa-balance-scale text-emerald-400 mr-2"></i>No coercive power</span>
+                <span class="flex items-center"><i class="fas fa-clock text-emerald-400 mr-2"></i>100‑year terms</span>
+                <span class="flex items-center"><i class="fas fa-chair text-emerald-400 mr-2"></i>The Twelfth Chair</span>
+                <span class="flex items-center"><i class="fas fa-scroll text-emerald-400 mr-2"></i>Accord of Arcadia, Art. VII</span>
             </div>
         </div>
     </section>
 
-    <!-- Overview -->
+    <!-- Overview (accurate to doc) -->
     <section class="py-12 bg-slate-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
-                <h2 class="text-2xl font-bold text-eternal-gold mb-4">Overview</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">The Watchers are the eyes and ears of the Guardian Domain, an elite corps of scouts, spies, and observers who maintain constant vigilance against Abyssal threats. Operating in the shadows and across vast territories, they gather intelligence, monitor enemy movements, and provide early warning of impending attacks. Their work is often thankless and always dangerous, but without them, the Guardian Domain would be blind to the threats that surround it.</p>
-                <p class="text-slate-300 leading-relaxed mb-4">Watcher training emphasizes stealth, observation, and survival skills. They learn to move unseen through hostile territory, to read signs that others would miss, and to report their findings accurately and quickly. Many Watchers operate alone for months at a time, embedded in enemy territory or patrolling remote border regions. Their dedication to duty is legendary, and their sacrifices are honored by all Guardians.</p>
-                <p class="text-slate-300 leading-relaxed">The Watchers maintain an extensive network of informants, safe houses, and communication routes across the Eastern Plane. They work closely with the Ethereals for spiritual surveillance and with the 5-Star Battalion for rapid response to threats. The information they provide shapes Guardian strategy and has saved countless lives through timely warnings.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Watcher Specializations -->
-    <section class="py-12 bg-slate-900/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-8">Watcher Specializations</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="w-14 h-14 bg-emerald-900/50 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-user-secret text-emerald-400 text-2xl"></i>
+            <div class="bg-slate-900/70 border border-slate-700 rounded-2xl p-8 section-glow">
+                <div class="flex items-start gap-4">
+                    <div class="hidden sm:block"><i class="fas fa-archway text-4xl text-emerald-500/70"></i></div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-eternal-gold mb-4">Witness without judgment · Perception without punishment</h2>
+                        <p class="text-slate-300 leading-relaxed mb-4">The Twelve Watchers emerged from the ashes of the Council‑Tribunic Wars and the Inquisitor’s terror. Founded by <span class="text-emerald-300 font-medium">Lucius Arogzan</span> (25th Guardian of Arcadia) in Eastern 4th Myriad, Year 8,234 (Absolute Year 33,819), the Watchers are an institution unique in the Eastern Plane: a body with <strong class="text-white">authority to see, document, and report, but no authority to command, punish, or rule</strong>. Their charter, ratified under Article VII of the Accord of Arcadia, fixes their number at twelve—one seat perpetually empty—and demands absolute renunciation of realm citizenship, noble titles, and Order allegiance.</p>
+                        <p class="text-slate-300 leading-relaxed mb-4">They possess no military command, no territory, and wield only the power of credible witness. Their neutrality is guarded by rigorous Eye‑training, derived from Overseer perception techniques, and a poverty oath that ensures they cannot be bought. All reports are sealed for 100 years; they offer findings only, never recommendations.</p>
+                        <p class="text-slate-300 leading-relaxed">The Watchers’ strength is their powerlessness: because they cannot act, all factions trust their word. Their weakness is dependence—they can only watch, even as atrocities unfold. Yet in watching, they preserve the truth that may one day guide action.</p>
                     </div>
-                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Shadow Watchers</h3>
-                    <p class="text-slate-300 text-sm">Deep cover operatives who infiltrate enemy organizations and gather intelligence from within. They may spend years establishing cover identities.</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="w-14 h-14 bg-emerald-900/50 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-compass text-emerald-400 text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Pathfinders</h3>
-                    <p class="text-slate-300 text-sm">Expert trackers who patrol border regions and wilderness areas, watching for signs of Abyssal incursion.</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="w-14 h-14 bg-emerald-900/50 rounded-lg flex items-center justify-center mb-4">
-                        <i class="fas fa-dove text-emerald-400 text-2xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Sky Watchers</h3>
-                    <p class="text-slate-300 text-sm">Observers who monitor from elevated positions or through magical scrying, providing broad surveillance coverage.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 11 Frameworks Analysis -->
-    <section class="py-12 bg-slate-900/30">
+    <!-- The Twelve (Original Complement) highlight -->
+    <section class="py-10 bg-slate-900/40 border-y border-slate-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <h3 class="text-xl font-bold text-emerald-300"><i class="fas fa-users mr-2"></i>ORIGINAL TWELVE (8234) · First Watcher: Gael · Empty Chair</h3>
+                <span class="text-sm text-slate-400 bg-slate-800 px-4 py-1 rounded-full">Ren · Morwen · Kaelen · Sister Amara · Brother Tetsu · Elena · Viktor · Lady Miralys · Brother Cord · Sister Thorne · The Twelfth Chair (vacant)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11 FRAMEWORKS – detailed expansion from DOCX -->
+    <section class="py-14 bg-slate-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-12">11-Framework Analysis</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-eternal-gold mb-4">The Eleven Frameworks</h2>
+            <p class="text-center text-slate-400 mb-12 max-w-2xl mx-auto">In‑depth analysis derived from the Watcher Archives, Arcadia. Each framework defines the institution's limits and purpose.</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Historical Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+                
+                <!-- 1. Historical -->
+                <div class="framework-card border border-slate-700 rounded-xl p-6">
                     <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-landmark text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">1. Historical Framework</h3>
+                        <div class="w-10 h-10 bg-emerald-900/60 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-landmark text-emerald-300"></i></div>
+                        <h3 class="text-lg font-bold text-emerald-300">1. Historical Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">The Watchers were established shortly after the founding of the Guardian Domain, when the need for systematic intelligence gathering became apparent. Early Watchers were often hunters, trackers, and rangers who had learned to survive in the wilderness and read the signs of nature. Over centuries, the organization evolved into a professional corps with standardized training, established protocols, and a proud tradition of service. Many legendary Guardians began their careers as Watchers, and the corps has produced more than its share of heroes. Their history is marked by acts of extraordinary bravery and sacrifice.</p>
+                    <p class="text-slate-300 text-sm leading-relaxed"><span class="font-semibold text-white">Founded Absolute Year 33,819</span> (Eastern 4th Myriad 8,234) by Lucius Arogzan. The Inquisitor’s reign proved that any institution granted coercive power would abuse it. The Watchers were designed with <strong>no sword, no judgment—only the Eye</strong>. Charter ratified 8234, twelve seats, one empty. Evolution spans five phases: Foundation, Consolidation, the Dark Realm‑Inquisitor War (Gael’s transformation 8470), institutionalization, and Convergence Era. The empty Twelfth Chair reminds all: <em>“There is always something you cannot see.”</em></p>
                 </div>
 
-                <!-- Political Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                <!-- 2. Political -->
+                <div class="framework-card border border-slate-700 rounded-xl p-6">
                     <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-balance-scale text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">2. Political Framework</h3>
+                        <div class="w-10 h-10 bg-emerald-900/60 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-balance-scale text-emerald-300"></i></div>
+                        <h3 class="text-lg font-bold text-emerald-300">2. Political Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">The Watchers operate under the authority of the Octagram's Eye Seat, who serves as their direct commander. Day-to-day operations are managed by the Watcher Council, composed of senior veterans who have proven their judgment and reliability. Individual Watchers operate with significant autonomy in the field, making decisions without waiting for approval from headquarters. This decentralized structure allows for rapid response to changing situations but requires exceptional discipline and trust. The intelligence they gather often shapes political decisions within the Guardian Alliance.</p>
+                    <p class="text-slate-300 text-sm leading-relaxed">Autonomous witness institution, flat hierarchy. Twelve equal Watchers; <strong>First Among Equals rotates annually</strong>. Appointed by unanimous Tribunal of Three Legendary Guardians; minimum 100 years Guardian service, renunciation of all realm/Order ties. 100‑year terms renewable. Immunity from prosecution, but no command authority. Watchers may investigate any Accord member—royalty included. Political neutrality enforced by oath, recusal periods (200 years for former realm), and poverty.</p>
                 </div>
 
-                <!-- Mental Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                <!-- 3. Mental -->
+                <div class="framework-card border border-slate-700 rounded-xl p-6">
                     <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-brain text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">3. Mental Framework</h3>
+                        <div class="w-10 h-10 bg-emerald-900/60 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-brain text-emerald-300"></i></div>
+                        <h3 class="text-lg font-bold text-emerald-300">3. Mental Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Watcher training develops exceptional observational skills and memory. Trainees learn to notice details others miss, to remember what they see with perfect accuracy, and to distinguish important information from noise. They also receive training in resisting interrogation and maintaining cover under pressure. The psychological toll of Watcher service is significant—operating alone in hostile territory for extended periods requires exceptional mental resilience. Watchers receive ongoing psychological support to help them cope with the stress of their duties. Mental conditioning includes techniques for maintaining focus during long periods of inactivity.</p>
+                    <p class="text-slate-300 text-sm leading-relaxed">The Eye methodology: relational perception. <strong>Five stages</strong>—Self‑Emptying, Perspective‑Adoption, Multi‑Perspective Integration, Finding the Relation, Witness Without Judgment. Core practices: perspective‑shifting, topology cognition, pattern recognition, Edge‑cognition. Psychological risks: Void‑psychosis, neutrality paralysis, witness trauma. Support via Witness Pool meditation and Chamber of First Sorrow. Training: 10‑year curriculum plus continuing Edge‑deepening.</p>
                 </div>
 
-                <!-- Spiritual Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                <!-- 4. Spiritual -->
+                <div class="framework-card border border-slate-700 rounded-xl p-6">
                     <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-praying-hands text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">4. Spiritual Framework</h3>
+                        <div class="w-10 h-10 bg-emerald-900/60 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-praying-hands text-emerald-300"></i></div>
+                        <h3 class="text-lg font-bold text-emerald-300">4. Spiritual Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Watchers maintain their spiritual connection to the Light even when operating deep in enemy territory. They carry portable shrines and perform abbreviated rituals to maintain their spiritual defenses. Many Watchers develop a deeply personal relationship with their faith, finding strength in prayer during lonely vigils. The Ethereals sometimes accompany Watchers on critical missions, providing spiritual support and enhanced perception of Abyssal corruption. Spiritual purity is essential for Watchers, as Abyssal forces often target the spirit as well as the body. Regular spiritual assessments ensure Watchers remain uncorrupted.</p>
+                    <p class="text-slate-300 text-sm leading-relaxed">Witness as sacred function; affinity with Second Persona (Keepers) and Fourth Persona (Overseers). The Eye derives from Overseer perception. Agnostic toward the Fourth Lord; they observe, not worship. Practices: Vigil of Twelve at Meridian Threshold, Witness Pool meditation, Empty Chair acknowledgment. Gael’s Firmament‑consciousness offers resonance guidance. Gallian’s anchor is honored but not worshipped.</p>
                 </div>
 
-                <!-- Social Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                <!-- 5. Social -->
+                <div class="framework-card border border-slate-700 rounded-xl p-6">
                     <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-users text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">5. Social Framework</h3>
+                        <div class="w-10 h-10 bg-emerald-900/60 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-users text-emerald-300"></i></div>
+                        <h3 class="text-lg font-bold text-emerald-300">5. Social Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Watchers form a tight-knit brotherhood bound by shared experience and mutual dependence. They recognize each other through subtle signs and maintain networks of support across the Eastern Plane. Social interactions with non-Watchers can be challenging—Watchers often know secrets that others don't, and their habit of observing everything can make them seem distant or suspicious. Romantic relationships are difficult to maintain given the demands of Watcher service, and many Watchers remain unmarried. Those who do marry often choose partners who understand the unique challenges of intelligence work.</p>
+                    <p class="text-slate-300 text-sm leading-relaxed">Liminal position: respected, feared, isolated, essential. The silver Watcher’s cloak marks their status. Gatherings: Watchers’ Council (quarterly), Vigil of Twelve (annual), Empty Chair Ceremony. Facilities: Watchers’ Hall (dodecagon chamber, Twelfth Chair, Witness Pool), plus five Outposts (Northwatch, Eastwatch, Westwatch, Southwatch, Darkwatch). Apprentice system: 50‑year minimum before candidacy.</p>
                 </div>
 
-                <!-- Cultural Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                <!-- 6. Cultural -->
+                <div class="framework-card border border-slate-700 rounded-xl p-6">
                     <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-palette text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">6. Cultural Framework</h3>
+                        <div class="w-10 h-10 bg-emerald-900/60 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-palette text-emerald-300"></i></div>
+                        <h3 class="text-lg font-bold text-emerald-300">6. Cultural Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Watcher culture emphasizes silence, patience, and attention to detail. They have developed a rich tradition of coded communication, using symbols, gestures, and seemingly innocuous phrases to convey complex information. Watcher songs are often melancholy, reflecting the loneliness of their service, but also celebrate the beauty of the natural world they observe. The Watcher's Oath, sworn by all who join the corps, is one of the most sacred commitments in the Guardian Domain. Cultural traditions include the Vigil of Silence, where Watchers meditate in complete silence for extended periods.</p>
+                    <p class="text-slate-300 text-sm leading-relaxed">Symbols: grey eye sigil, silver cloak (undyed threshold‑wool), staff optional. Customs: Silence Before Speaking, Empty Chair Acknowledgment, Report Without Recommendation. Three‑Source Rule, Right of Response. Sealed records for 100 years. Language: “Watcher [Name]” only; no “Lord/Lady”. Austere aesthetics: topological drawing, journals sealed for 500 years.</p>
                 </div>
 
-                <!-- Economical Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                <!-- 7. Economical -->
+                <div class="framework-card border border-slate-700 rounded-xl p-6">
                     <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-coins text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">7. Economical Framework</h3>
+                        <div class="w-10 h-10 bg-emerald-900/60 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-coins text-emerald-300"></i></div>
+                        <h3 class="text-lg font-bold text-emerald-300">7. Economical Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">The Watchers operate on a budget that funds their extensive network of safe houses, informants, and equipment. Individual Watchers receive modest salaries but have access to expense accounts for mission-related costs. They often handle significant sums when paying informants or purchasing supplies in the field, requiring strict accountability. The value of the intelligence they provide far exceeds the cost of maintaining the corps, making them one of the Domain's most cost-effective investments. Economic planning includes contingencies for emergency extractions and equipment replacement.</p>
+                    <p class="text-slate-300 text-sm leading-relaxed">Funded by Accord treasury (equal tithes from Four Realms). Watchers receive <strong>subsistence stipends only</strong>; no salary, no wealth accumulation. Apprentices receive modest pay. Prohibited: gifts, consulting fees, royalties. Budget public, audited. Economic neutrality ensures they cannot be bought or pressured. The poverty oath is tradition, not charter mandate.</p>
                 </div>
 
-                <!-- Physiological Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                <!-- 8. Physiological -->
+                <div class="framework-card border border-slate-700 rounded-xl p-6">
                     <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-heartbeat text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">8. Physiological Framework</h3>
+                        <div class="w-10 h-10 bg-emerald-900/60 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-heartbeat text-emerald-300"></i></div>
+                        <h3 class="text-lg font-bold text-emerald-300">8. Physiological Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Watcher training develops exceptional physical capabilities—stamina for long patrols, agility for silent movement, and strength for when combat becomes necessary. They learn to survive on minimal resources, to endure harsh conditions, and to recover quickly from injuries. Many Watchers have enhanced senses from their hybrid nature, which they train to peak performance. The physical demands of Watcher service take a toll over time, and veterans often bear chronic injuries from their years in the field. Medical staff specialize in treating injuries that Watchers cannot report publicly.</p>
+                    <p class="text-slate-300 text-sm leading-relaxed">Baseline humans (or Aneian‑adapted). Lifespan: 80‑150 years (realms), 300‑500 (Aneian). Eye‑training effects: pupillary control, Firmament sensitivity, photosensitivity. Aneian heritage (Gael, Ren) grants grey skin, Void resistance, echo‑sensitivity. Eye stages: Watcher → Seer → Bridge → Synthesizer → Harmonizer → Open Eye. Gael’s Firmament‑consciousness is non‑biological.</p>
                 </div>
 
-                <!-- Territorial Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                <!-- 9. Territorial -->
+                <div class="framework-card border border-slate-700 rounded-xl p-6">
                     <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-map-marked-alt text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">9. Territorial Framework</h3>
+                        <div class="w-10 h-10 bg-emerald-900/60 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-map-marked-alt text-emerald-300"></i></div>
+                        <h3 class="text-lg font-bold text-emerald-300">9. Territorial Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">The Watchers maintain a network of safe houses, observation posts, and communication stations across the Eastern Plane. These range from hidden caves in remote mountains to ordinary-looking buildings in major cities. Each Watcher is assigned a territory to monitor, with boundaries carefully arranged to ensure complete coverage. The Watcher headquarters in the Guardian Domain serves as a central hub for information collection and analysis, with maps covering every wall showing the status of operations across the Eastern Plane. Territorial assignments are rotated to prevent Watchers from becoming too attached to any one location.</p>
+                    <p class="text-slate-300 text-sm leading-relaxed"><strong>No territory owned.</strong> Facilities held in trust by Guardian Domain. Watchers’ Hall (Arcadia) + five Outposts (Northwatch, Eastwatch, Westwatch, Southwatch, Darkwatch). Stateless by design. Important places: Meridian Threshold (Gael’s transformation), Chamber of First Sorrow, Witness Pool, Darkwatch Edge‑Chamber. All located at boundaries—liminal spaces.</p>
                 </div>
 
-                <!-- Technological Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                <!-- 10. Technological -->
+                <div class="framework-card border border-slate-700 rounded-xl p-6">
                     <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-cogs text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">10. Technological Framework</h3>
+                        <div class="w-10 h-10 bg-emerald-900/60 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-cogs text-emerald-300"></i></div>
+                        <h3 class="text-lg font-bold text-emerald-300">10. Technological Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Watchers employ a variety of specialized equipment for surveillance and communication. Long-range viewing devices allow observation from safe distances. Signal mirrors, coded fires, and magical communication devices enable reporting without revealing position. Disguise kits, forged documents, and concealment gear support undercover operations. The Watchers also develop their own tools, with veteran members contributing innovations that are shared throughout the corps. Technological research focuses on improving detection capabilities and communication security.</p>
+                    <p class="text-slate-300 text-sm leading-relaxed">Research only for perception/preservation: Firmament topology, Dread patterns, corruption vectors. Key discoveries: Firmament Resonance Mapping (Gael/Ren), Edge Protocol (Miralys/Rika), Cross‑Realm Perception Translation. Tools: Resonance Stylus, Perspective Lenses (training), Null‑Shielded Containers. No weapons development. Archives sealed 100 years (reports), 500 years (journals).</p>
                 </div>
 
-                <!-- Military Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                <!-- 11. Military / Defense -->
+                <div class="framework-card border border-slate-700 rounded-xl p-6 lg:col-span-1 md:col-span-2 lg:col-span-1">
                     <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-shield-alt text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">11. Military Framework</h3>
+                        <div class="w-10 h-10 bg-emerald-900/60 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-shield-alt text-emerald-300"></i></div>
+                        <h3 class="text-lg font-bold text-emerald-300">11. Defense Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">While primarily an intelligence organization, the Watchers are trained combatants capable of defending themselves when discovered. They specialize in hit-and-run tactics, ambushes, and escape maneuvers rather than stand-up fights. In times of crisis, Watchers can serve as guides and scouts for larger Guardian forces, using their intimate knowledge of terrain to give their side an advantage. The Watcher corps maintains a rapid response team that can extract compromised operatives from dangerous situations. Military training emphasizes survival and evasion over direct combat.</p>
+                    <p class="text-slate-300 text-sm leading-relaxed"><strong>No military capability.</strong> Permitted: warding stones, resonance alarms, null‑shields, concealment cloaks, escape talismans. Personal weapons: warding dagger (ceremonial), null‑cuffs. Prohibited: swords, ranged weapons, war‑beasts, armed vehicles. Facilities defended by non‑lethal wards only. Their safety relies on political neutrality; attacking a Watcher unites the Accord.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Watcher's Oath -->
-    <section class="py-12 bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gradient-to-r from-emerald-900/30 to-slate-900/50 border border-emerald-700/30 rounded-2xl p-8">
-                <h2 class="text-2xl font-bold text-eternal-gold mb-6 text-center">The Watcher's Oath</h2>
-                <blockquote class="text-xl text-center text-slate-300 italic mb-4">
-                    "I am the eyes that see what others cannot. I am the ears that hear what others miss. I stand watch while others sleep, and I shall not falter. My vigilance is my shield, my silence is my sword. I swear to watch, to warn, and to protect, even at the cost of my life."
+    <!-- Watcher's Oath (from DOCX) -->
+    <section class="py-12 bg-slate-900/50 border-y border-slate-800">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="bg-gradient-to-r from-emerald-950/40 via-slate-900/80 to-emerald-950/40 border border-emerald-700/30 rounded-3xl p-8 md:p-10">
+                <h2 class="text-2xl font-bold text-eternal-gold mb-6 text-center flex items-center justify-center gap-2"><i class="fas fa-scroll"></i> THE OATH OF THE WATCHER <i class="fas fa-scroll"></i></h2>
+                <blockquote class="text-lg md:text-xl text-slate-200 italic text-center leading-relaxed font-light">
+                    “I swear by the Meridian Threshold and the blood of the Earlier Gods:<br/>
+                    I hold no realm above another.<br/>
+                    I serve no Order against another.<br/>
+                    I seek no throne, accept no crown, command no army.<br/>
+                    I witness. I record. I report.<br/>
+                    My eye sees; my voice speaks; my hand judges not.<br/>
+                    Should I break this oath, let the Void take my sight, and let my name be forgotten.<br/>
+                    I am a Watcher. Nothing more. Nothing less.”
                 </blockquote>
-                <p class="text-center text-slate-500 text-sm">— Traditional Watcher's Oath, spoken upon induction into the corps</p>
+                <p class="text-center text-slate-500 text-sm mt-6">— Sworn at investiture before the Meridian Threshold</p>
             </div>
+        </div>
+    </section>
+
+    <!-- Quote & footer epilogue -->
+    <section class="py-10 bg-slate-950">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <p class="text-slate-400 text-sm uppercase tracking-wider mb-3">EPILOGUE · THE WITNESS CONTINUES</p>
+            <p class="text-slate-300 text-lg italic">“The center holds. For now. For always. As long as we hold it.” — Lucius Arogzan</p>
+            <p class="text-slate-500 mt-2 text-sm">“We do not hold the center. We watch it. And in watching, we help it hold itself.” — Ren of the Violet Eye, 6th Myriad</p>
         </div>
     </section>
 
@@ -291,7 +275,7 @@
                     <span class="fantasy-font text-lg font-bold text-eternal-gold">Eternal Trees Saga</span>
                 </div>
                 <div class="text-slate-500 text-sm">
-                    <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
+                    <p>Compiled from Watcher Archives · Arcadia, Eastern Plane · 6th Myriad, Year 1,240 (Abs. 51,235)</p>
                 </div>
                 <div class="flex space-x-4 mt-4 md:mt-0">
                     <a href="index.html" class="text-slate-400 hover:text-eternal-gold transition">Home</a>
@@ -303,11 +287,9 @@
     </footer>
 
     <script>
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
     </script>
 </body>
 </html>

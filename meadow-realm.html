@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meadow Realm – Eternal Tree Saga Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #e2e8f0; }
+    h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+    .gold-gradient { background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .lime-gradient { background: linear-gradient(135deg, #84cc16 0%, #a3e635 50%, #84cc16 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(132, 204, 22, 0.2); }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
+    <div class="flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <i class="fas fa-tree text-amber-400 text-2xl"></i>
+        <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
+        <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
+        <a href="timeline.html" class="text-slate-300 hover:text-amber-400 transition">Timeline</a>
+        <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
+        <a href="eastern-factions.html" class="text-slate-300 hover:text-amber-400 transition">Eastern</a>
+        <a href="western-factions.html" class="text-slate-300 hover:text-amber-400 transition">Western</a>
+        <a href="other-realms.html" class="text-emerald-400 font-medium">Realms</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400"><i class="fas fa-bars text-xl"></i></button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
+    <div class="p-4">
+      <div class="flex justify-between items-center mb-6">
+        <span class="font-bold text-lg">Navigation</span>
+        <button id="closeMenu" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+      </div>
+      <nav class="space-y-2">
+        <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
+        <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
+        <a href="timeline.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
+        <a href="plots.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
+        <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
+        <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
+        <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-emerald-400 bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto p-4 md:p-8">
+    <!-- Hero -->
+    <div class="text-center py-8 mb-10">
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-lime-900/40 border border-lime-500/50 mb-4">
+        <i class="fas fa-leaf text-3xl text-lime-400"></i>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-3 fantasy-font"><span class="lime-gradient">Meadow Realm</span></h1>
+      <p class="text-xl text-slate-400">The Sacred Remnant · Space Between the Two Trees</p>
+      <div class="flex items-center justify-center gap-4 mt-4 text-sm">
+        <span class="flex items-center"><i class="fas fa-eye text-lime-400 mr-1"></i>Last Observer's Vigil</span>
+        <span class="w-1 h-1 rounded-full bg-slate-600"></span>
+        <span class="flex items-center"><i class="fas fa-tint text-lime-400 mr-1"></i>The Blood-River</span>
+        <span class="w-1 h-1 rounded-full bg-slate-600"></span>
+        <span class="flex items-center"><i class="fas fa-handshake text-lime-400 mr-1"></i>Site of the Convergence</span>
+      </div>
+    </div>
+
+    <!-- Overview -->
+    <section class="mb-12">
+      <div class="bg-slate-900/50 border border-lime-500/30 rounded-xl p-6 md:p-8">
+        <h2 class="text-2xl font-bold mb-4 fantasy-font text-lime-400">The Sacred Remnant of the Observers</h2>
+        <p class="text-slate-300 leading-relaxed mb-4">
+          The Meadow Realm is not a paradise of eternal spring, but the <strong class="text-lime-300">transformed remnant of the Wild of Aletheia</strong> — 
+          the last refuge of the Observers after their genocide in the Civil War of the Gods. When Aletheia performed her final working at the moment of annihilation, 
+          the bodies of the dead gods became the endless meadow, and their blood became the <strong>Blood-River</strong> that flows between the Two Trees. 
+          It is a place of witness, memory, and sacrifice — not of rest or reward.
+        </p>
+        <p class="text-slate-300 leading-relaxed">
+          Here, in the space <strong>between the Tree of Order and the Tree of Chaos</strong>, the <strong>Last Observer</strong> maintains eternal vigil. 
+          The Meadow Realm is the liminal ground where the planes touch, where the blood of the Earlier Gods nourishes both Trees, and where the 
+          <strong>Convergence</strong> — the meeting of East and West, Order and Chaos, Librarian and Wanderer — will occur.
+        </p>
+      </div>
+    </section>
+
+    <!-- The Last Observer & The Blood-River -->
+    <section class="grid md:grid-cols-2 gap-6 mb-12">
+      <div class="bg-slate-900/50 border border-lime-500/30 rounded-xl p-6">
+        <h3 class="text-xl font-bold text-lime-400 mb-4 fantasy-font"><i class="fas fa-eye mr-2"></i>The Last Observer</h3>
+        <p class="text-slate-300 text-sm mb-3">
+          The Last Observer is the final witness of the Earlier Gods — the surviving consciousness of <strong>Aletheia</strong>, leader of the Observers, 
+          transformed through her own sacrifice. She guards the Meadow Realm and the Two Trees, ensuring that neither Order nor Chaos consumes the other 
+          before the appointed time. She is not a judge or a guide to the afterlife; she is a <strong>witness</strong>, holding the memory of all that has passed.
+        </p>
+        <p class="text-slate-300 text-sm">
+          In Book 6, the Last Observer appears to Lucius Arogzan as he walks the Meadow Realm, and she speaks the words that echo through the saga: 
+          <em class="text-lime-300">"The 14th Eon nears its end. The Convergence prepares."</em>
+        </p>
+      </div>
+      <div class="bg-slate-900/50 border border-lime-500/30 rounded-xl p-6">
+        <h3 class="text-xl font-bold text-lime-400 mb-4 fantasy-font"><i class="fas fa-water mr-2"></i>The Blood-River</h3>
+        <p class="text-slate-300 text-sm mb-3">
+          Flowing through the Meadow Realm, the <strong>Blood-River</strong> carries the sacrificial essence of the dead Earlier Gods — particularly the 
+          Intervenor essence of <strong>Symphion</strong>, tempered by Aletheia's detachment. It separates the Two Trees so they do not consume each other 
+          prematurely, preserves the memory of divine sacrifice, and nourishes the growth of both planes.
+        </p>
+        <p class="text-slate-300 text-sm">
+          The river is the medium of exchange between the Eastern and Western Planes. All cross-planar travel ultimately traces back to its flow. 
+          It is the blood of relation, the fluid boundary that allows distinction without isolation.
+        </p>
+      </div>
+    </section>
+
+    <!-- The Two Trees in the Meadow -->
+    <section class="mb-12">
+      <div class="bg-slate-900/50 border border-lime-500/30 rounded-xl p-6">
+        <h3 class="text-xl font-bold text-lime-400 mb-4 fantasy-font"><i class="fas fa-tree mr-2"></i>The Two Trees</h3>
+        <p class="text-slate-300 mb-4">
+          Within the Meadow Realm stand the <strong>Two Trees</strong>, grown from the seeds planted by the Last Observer at Absolute Year 1:
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="bg-slate-800/50 rounded-lg p-4">
+            <div class="flex items-center gap-2 mb-2">
+              <i class="fas fa-tree text-amber-400"></i>
+              <h4 class="font-bold text-amber-400">Tree of Order</h4>
+            </div>
+            <p class="text-sm text-slate-300">Straight, symmetrical, golden leaves. Rooted in Dominator essence (Cosmarchos). Source of the Eastern Plane's structured, hierarchical reality.</p>
+          </div>
+          <div class="bg-slate-800/50 rounded-lg p-4">
+            <div class="flex items-center gap-2 mb-2">
+              <i class="fas fa-tree text-purple-400"></i>
+              <h4 class="font-bold text-purple-400">Tree of Chaos</h4>
+            </div>
+            <p class="text-sm text-slate-300">Twisted, organic, silver leaves. Rooted in Intervenor (Symphion) and Observer (Aletheia) essence. Source of the Western Plane's fluid, experimental reality.</p>
+          </div>
+        </div>
+        <p class="text-slate-300 mt-4 text-sm">
+          The <strong>Old Tree</strong> — last remnant of the Wild of Aletheia — also grows here in the Meridian Domain, tended by Lucien Jela. 
+          It is the boundary-wood, the witness that remembers what the Two Trees have forgotten.
+        </p>
+      </div>
+    </section>
+
+    <!-- The Reunion: Lucius & Lucien -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-r from-slate-900/80 to-lime-950/30 border border-lime-500/40 rounded-xl p-6 md:p-8">
+        <div class="flex flex-col md:flex-row gap-6 items-center">
+          <div class="md:w-2/3">
+            <h2 class="text-2xl font-bold mb-3 fantasy-font text-lime-400"><i class="fas fa-handshake mr-2"></i>The Reunion: Librarian & Wanderer</h2>
+            <p class="text-slate-300 mb-4">
+              In the deep Meadow Realm, during the events of Book 6 and the Convergence (Absolute Year 51,235), <strong>Lucius Arogzan</strong> (25th Guardian, the Wanderer) 
+              and <strong>Lucien Jela</strong> (Fourth Librarian, the Elder of the Old Tree) meet for the first time since Lucius's death and rebirth across planes. 
+              It is the culmination of five thousand years of dreams, parallel paths, and the quiet tending of relation.
+            </p>
+            <p class="text-slate-300 mb-4">
+              Lucien gives Lucius a <strong>crystallized seed</strong> containing the memory of fifty thousand years — of the Library, the Academia, the Old Tree, 
+              and the world they both came from. Lucius, in turn, carries the <strong>Essence of WILL</strong>, the synthesis of all eight Nodes. 
+              Their meeting is not an ending but a beginning: the bridge between planes, the catalog and the story, finally united.
+            </p>
+            <div class="mt-4 flex gap-3">
+              <a href="key-figures.html#lucius" class="inline-flex items-center gap-2 px-4 py-2 bg-amber-900/40 border border-amber-500/30 rounded-lg text-amber-300 hover:bg-amber-900/60 transition text-sm">
+                <i class="fas fa-user"></i> Lucius Arogzan
+              </a>
+              <a href="key-figures.html#lucien" class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-900/40 border border-emerald-500/30 rounded-lg text-emerald-300 hover:bg-emerald-900/60 transition text-sm">
+                <i class="fas fa-user"></i> Lucien Jela
+              </a>
+            </div>
+          </div>
+          <div class="md:w-1/3 flex justify-center">
+            <div class="w-32 h-32 rounded-full bg-slate-800 border-2 border-lime-500/50 flex items-center justify-center">
+              <i class="fas fa-infinity text-5xl text-lime-400"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Convergence -->
+    <section class="mb-12">
+      <div class="bg-slate-900/50 border border-lime-500/30 rounded-xl p-6">
+        <h3 class="text-xl font-bold text-lime-400 mb-4 fantasy-font"><i class="fas fa-merge mr-2"></i>The Convergence</h3>
+        <p class="text-slate-300 mb-4">
+          The Meadow Realm is the destined site of the <strong>Convergence</strong> — the moment when the Three Trees (Order, Chaos, and the Old Tree) meet, 
+          the boundary between planes dissolves, and the Eastern and Western Planes know each other fully. The Last Observer has watched for this moment 
+          since the seeding of the Trees. Lucius and Lucien, as the bridge figures, are the catalysts.
+        </p>
+        <p class="text-slate-300">
+          The Convergence is not a cataclysm but a <strong>reunion</strong>. The blood-river will flow between the roots of all three Trees, and the 
+          Firmament — the boundary against the Void — will be strengthened by the relation between Order and Chaos, not weakened by their collision.
+        </p>
+        <blockquote class="text-xl italic text-lime-400 fantasy-font text-center my-6">
+          "The Elder returns to the Elder. The Wood remembers the Wood."
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- Connections -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-lime-400"><i class="fas fa-link mr-2"></i>Connections</h2>
+      <div class="grid md:grid-cols-4 gap-4">
+        <a href="other-realms.html#sanctuary" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-archway text-emerald-400"></i>
+            <h3 class="font-bold text-emerald-400">Sanctuary (Trunk)</h3>
+          </div>
+          <p class="text-sm text-slate-400">Fourth Lord's domain · The Old Tree</p>
+        </a>
+        <a href="other-realms.html#celestial" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-sun text-emerald-400"></i>
+            <h3 class="font-bold text-emerald-400">Celestial Realm</h3>
+          </div>
+          <p class="text-sm text-slate-400">Apex · Protectors · Sixth Clue</p>
+        </a>
+        <a href="other-realms.html#great-forest" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-tree text-amber-400"></i>
+            <h3 class="font-bold text-amber-400">Great Forest</h3>
+          </div>
+          <p class="text-sm text-slate-400">Branches · Keepers · Nexus of Ways</p>
+        </a>
+        <a href="other-realms.html#mist" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-cloud text-purple-400"></i>
+            <h3 class="font-bold text-purple-400">The Mist</h3>
+          </div>
+          <p class="text-sm text-slate-400">Roots · Life Bringers · Tartarus</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
+    <p class="text-slate-400 text-sm">Eternal Tree Saga Wiki — A Chronicle Spanning Six Myriads</p>
+    <p class="text-slate-500 text-xs mt-2">"The center holds. For now. For always."</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
+    if (closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
+  </script>
+</body>
+</html>

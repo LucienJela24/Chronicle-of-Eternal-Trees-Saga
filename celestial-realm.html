@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celestial Realm (Apex) – Eternal Tree Saga Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #e2e8f0; }
+    h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+    .gold-gradient { background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .emerald-gradient { background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #10b981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(16, 185, 129, 0.2); }
+    .protector-card { background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
+    <div class="flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <i class="fas fa-tree text-amber-400 text-2xl"></i>
+        <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
+        <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
+        <a href="timeline.html" class="text-slate-300 hover:text-amber-400 transition">Timeline</a>
+        <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
+        <a href="eastern-factions.html" class="text-slate-300 hover:text-amber-400 transition">Eastern</a>
+        <a href="western-factions.html" class="text-slate-300 hover:text-amber-400 transition">Western</a>
+        <a href="other-realms.html" class="text-emerald-400 font-medium">Realms</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400"><i class="fas fa-bars text-xl"></i></button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
+    <div class="p-4">
+      <div class="flex justify-between items-center mb-6">
+        <span class="font-bold text-lg">Navigation</span>
+        <button id="closeMenu" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+      </div>
+      <nav class="space-y-2">
+        <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
+        <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
+        <a href="timeline.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
+        <a href="plots.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
+        <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
+        <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
+        <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-emerald-400 bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto p-4 md:p-8">
+    <!-- Hero -->
+    <div class="text-center py-8 mb-10">
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-900/40 border border-emerald-500/50 mb-4">
+        <i class="fas fa-sun text-3xl text-emerald-400"></i>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-3 fantasy-font"><span class="emerald-gradient">Celestial Realm</span></h1>
+      <p class="text-xl text-slate-400">The Apex of the Tree of Order · Domain of the First Persona</p>
+      <div class="flex items-center justify-center gap-4 mt-4 text-sm">
+        <span class="flex items-center"><i class="fas fa-crown text-emerald-400 mr-1"></i>First Persona (Reality, Energy, Essence)</span>
+        <span class="w-1 h-1 rounded-full bg-slate-600"></span>
+        <span class="flex items-center"><i class="fas fa-shield-alt text-emerald-400 mr-1"></i>Protectors</span>
+        <span class="w-1 h-1 rounded-full bg-slate-600"></span>
+        <span class="flex items-center"><i class="fas fa-compass text-emerald-400 mr-1"></i>Sixth Clue: Absence</span>
+      </div>
+    </div>
+
+    <!-- Overview -->
+    <section class="mb-12">
+      <div class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6 md:p-8">
+        <h2 class="text-2xl font-bold mb-4 fantasy-font text-emerald-400">The Apex of the Tree</h2>
+        <p class="text-slate-300 leading-relaxed mb-4">
+          The Celestial Realm is the highest domain of the Eastern Plane, the <strong class="text-emerald-300">Apex</strong> of the Tree of Order. 
+          It is the seat of the <strong>First Persona</strong> — the cosmic principle of Reality, Energy, and Essence — and the dwelling place of the 
+          <strong>Protectors</strong>, the divine sentinels who guard the elemental foundations of the world. 
+          Unlike the mortal realms below (the Leaves), the Apex exists as a lattice of pure being, a realm of crystalline light and primal forces 
+          where the boundaries between matter, energy, and consciousness blur.
+        </p>
+        <p class="text-slate-300 leading-relaxed">
+          In the cosmology of the Eternal Tree Saga, the Celestial Realm is not a place of rest or reward for mortal souls — that function belongs 
+          to the Mist (Roots). Instead, the Apex is the source-code of reality: the place where the elemental pillars that sustain the Four Realms 
+          are anchored, and where the Protectors maintain the cosmic order against the encroachment of the Void and the leakage of the Fifth Lord.
+        </p>
+      </div>
+    </section>
+
+    <!-- The Protectors -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400"><i class="fas fa-shield-halved mr-2"></i>The Protectors</h2>
+      <p class="text-slate-300 mb-6">
+        The Protectors are the servants of the First Persona, each bound to a fundamental aspect of the Eastern Plane's geography and elemental balance. 
+        They are not gods in the sense of the Earlier Gods, but divine functionaries — living anchors that ensure the realm does not drift into chaos 
+        or succumb to the unmaking of the Grenlian Void. The most active Protectors in the saga are the four Realm Protectors, each watching over 
+        one of the great nations.
+      </p>
+      
+      <!-- Realm Protectors Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+        <div class="protector-card rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <i class="fas fa-sun text-amber-300 text-xl"></i>
+            <h3 class="text-xl font-bold text-amber-300 fantasy-font">Luminara</h3>
+          </div>
+          <p class="text-slate-400 text-sm mb-2">Realm Protector of Lux Imperio (North)</p>
+          <p class="text-slate-300 text-sm">A being of living radiance, gold and white, robed in dawn-fire. She speaks through the Eternal Flame and warned Pope Celestine IV of the coming wars. Her essence is woven into the light that blesses the Paladins.</p>
+        </div>
+        <div class="protector-card rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <i class="fas fa-dragon text-blue-300 text-xl"></i>
+            <h3 class="text-xl font-bold text-blue-300 fantasy-font">Ryūjin</h3>
+          </div>
+          <p class="text-slate-400 text-sm mb-2">Realm Protector of Chuugoku (East)</p>
+          <p class="text-slate-300 text-sm">The Dragon Protector, manifesting as a great celestial dragon whose coils hold the elemental ley-lines of the Five Peaks. Speaks through the Great Lama and embodies the balance of Fire, Water, Earth, Air, and Aether.</p>
+        </div>
+        <div class="protector-card rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <i class="fas fa-water text-purple-300 text-xl"></i>
+            <h3 class="text-xl font-bold text-purple-300 fantasy-font">Morvoren</h3>
+          </div>
+          <p class="text-slate-400 text-sm mb-2">Realm Protector of Avalon (West)</p>
+          <p class="text-slate-300 text-sm">A being of mist and deep water, guardian of the ley lines and standing stones. Morvoren manifested at the Standing Stones before their destruction, mourning the loss of ancient magic. She embodies the fluid, adaptive mystery of the West.</p>
+        </div>
+        <div class="protector-card rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <i class="fas fa-cogs text-slate-300 text-xl"></i>
+            <h3 class="text-xl font-bold text-slate-300 fantasy-font">Mechanus</h3>
+          </div>
+          <p class="text-slate-400 text-sm mb-2">Realm Protector of Helron (South)</p>
+          <p class="text-slate-300 text-sm">A hybrid of organic intelligence and cosmic machinery. Mechanus is observed through paraformer anomalies and governs the underlying calculations of reality. He represents the ordered knowledge and uncertainty of the South.</p>
+        </div>
+      </div>
+
+      <!-- Grand Protectors -->
+      <div class="bg-slate-900/60 border border-emerald-900/40 rounded-xl p-5">
+        <h3 class="text-lg font-bold text-emerald-300 mb-3 fantasy-font">Grand Protectors (Higher Sentinel Order)</h3>
+        <p class="text-slate-300 text-sm mb-3">
+          Above the Realm Protectors exist the <strong>Grand Protectors</strong> — ancient beings who oversee entire elemental domains across the whole Eastern Plane. 
+          While they are referenced in the earliest cosmological records (Book 0.1), they rarely intervene directly in mortal affairs. 
+          Their names are known to scholars of the Arcane and the Octagram: <strong>Argos</strong> (Foundation), <strong>Aethera</strong> (Upper Air), 
+          <strong>Mareia</strong> (Deep Waters), <strong>Terragon</strong> (Living Stone), and <strong>Chen-Shei</strong> (Aetheric Balance).
+        </p>
+        <p class="text-slate-400 text-xs italic">"The Grand Protectors are the firstborn of the First Persona's will. They slumber now, but their vigilance never truly ends."</p>
+      </div>
+    </section>
+
+    <!-- Hierarchy & Role -->
+    <section class="grid md:grid-cols-2 gap-6 mb-12">
+      <div class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+        <h3 class="text-xl font-bold text-emerald-400 mb-4 fantasy-font"><i class="fas fa-sitemap mr-2"></i>Hierarchy of the Protectors</h3>
+        <ul class="space-y-3 text-slate-300">
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold w-6">1.</span>
+            <span><strong class="text-white">Grand Protectors</strong> — Oversee entire elemental domains across the Eastern Plane (e.g., Argos, Chen-Shei).</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold w-6">2.</span>
+            <span><strong class="text-white">Realm Protectors</strong> — One per Great Realm (Luminara, Ryūjin, Morvoren, Mechanus).</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold w-6">3.</span>
+            <span><strong class="text-white">Regional Protectors</strong> — Guardians of provinces, mountain ranges, or great forests.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold w-6">4.</span>
+            <span><strong class="text-white">City Protectors</strong> — Patrons of major urban centers.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold w-6">5.</span>
+            <span><strong class="text-white">Domain Protectors</strong> — Guardians of sacred sites, rivers, passes, and thresholds.</span>
+          </li>
+        </ul>
+      </div>
+      <div class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+        <h3 class="text-xl font-bold text-emerald-400 mb-4 fantasy-font"><i class="fas fa-scroll mr-2"></i>Role in the Saga</h3>
+        <p class="text-slate-300 mb-4">The Protectors serve as the <strong>early warning system</strong> of the Eastern Plane. In Book 1, they were the first to detect the Firmament cracks that heralded the Grenlian incursions. In Book 5, they counseled the leaders of the Dual Council, warning them that the "purity without relation" of their politics would lead to ruin.</p>
+        <p class="text-slate-300">Luminara's warning to Pope Celestine IV, Ryūjin's whispers to the Great Lama, Morvoren's grief at the Standing Stones, and Mechanus's anomalous calculations all pointed toward the same truth: <em class="text-emerald-300">"The center cannot hold if the leaves forget the root."</em></p>
+      </div>
+    </section>
+
+    <!-- The Sixth Clue & Wanderer's Path -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-r from-slate-900/80 to-purple-950/30 border border-emerald-500/40 rounded-xl p-6 md:p-8">
+        <div class="flex flex-col md:flex-row gap-6 items-center">
+          <div class="md:w-2/3">
+            <h2 class="text-2xl font-bold mb-3 fantasy-font text-emerald-400">The Sixth Clue: Absence (INTUITION)</h2>
+            <p class="text-slate-300 mb-4">
+              In Book 4 (<em>The Wanderer's Path</em>), Lucius Arogzan ascended to the Celestial Realm seeking the sixth of the eight clues. 
+              Here, in the crystalline plain at the Apex, he met the Protectors and received the <strong>Black Feather</strong> — a void-touched feather 
+              that was paradoxically present. The clue represented <strong>INTUITION</strong>, the node of direct knowing and pattern recognition.
+            </p>
+            <p class="text-slate-300 mb-4">
+              The lesson of the Celestial Realm was: <em>"Intuition is seeing what is not there."</em> The Protectors taught Lucius that to perceive the 
+              cracks in the Firmament, one must learn to see the <em>absence</em> where reality should be — a skill that would become crucial for the Watchers 
+              and the Eye Practice.
+            </p>
+            <a href="key-figures.html#lucius" class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-900/40 border border-emerald-500/30 rounded-lg text-emerald-300 hover:bg-emerald-900/60 transition text-sm">
+              <i class="fas fa-user"></i> Read about Lucius Arogzan (25th Guardian)
+            </a>
+          </div>
+          <div class="md:w-1/3 flex justify-center">
+            <div class="w-32 h-32 rounded-full bg-slate-800 border-2 border-emerald-500/50 flex items-center justify-center">
+              <i class="fas fa-feather-alt text-5xl text-emerald-400"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Connections to Other Realms -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400"><i class="fas fa-link mr-2"></i>Connections</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <a href="other-realms.html#great-forest" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-tree text-amber-400"></i>
+            <h3 class="font-bold text-amber-400">Great Forest (Branches)</h3>
+          </div>
+          <p class="text-sm text-slate-400">Domain of the Keepers (Second Persona). The threshold between Apex and Leaves.</p>
+        </a>
+        <a href="other-realms.html#mist" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-cloud text-purple-400"></i>
+            <h3 class="font-bold text-purple-400">The Mist (Roots)</h3>
+          </div>
+          <p class="text-sm text-slate-400">Domain of Life Bringers & Death Reapers (Third Persona). Where souls journey.</p>
+        </a>
+        <a href="other-realms.html#sanctuary" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-archway text-emerald-400"></i>
+            <h3 class="font-bold text-emerald-400">Sanctuary (Trunk)</h3>
+          </div>
+          <p class="text-sm text-slate-400">Domain of the Fourth Lord (Mystery). The space between the Two Trees.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
+    <p class="text-slate-400 text-sm">Eternal Tree Saga Wiki — A Chronicle Spanning Six Myriads</p>
+    <p class="text-slate-500 text-xs mt-2">"The center holds. For now. For always."</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
+    if (closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
+  </script>
+</body>
+</html>

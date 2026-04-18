@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Old Tree – Eternal Tree Saga Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #e2e8f0; }
+    h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+    .gold-gradient { background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .emerald-gradient { background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #10b981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(16, 185, 129, 0.2); }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
+    <div class="flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <i class="fas fa-tree text-amber-400 text-2xl"></i>
+        <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
+        <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
+        <a href="timeline.html" class="text-slate-300 hover:text-amber-400 transition">Timeline</a>
+        <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
+        <a href="eastern-factions.html" class="text-slate-300 hover:text-amber-400 transition">Eastern</a>
+        <a href="western-factions.html" class="text-slate-300 hover:text-amber-400 transition">Western</a>
+        <a href="other-realms.html" class="text-emerald-400 font-medium">Realms</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400"><i class="fas fa-bars text-xl"></i></button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
+    <div class="p-4">
+      <div class="flex justify-between items-center mb-6">
+        <span class="font-bold text-lg">Navigation</span>
+        <button id="closeMenu" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+      </div>
+      <nav class="space-y-2">
+        <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
+        <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
+        <a href="timeline.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
+        <a href="plots.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
+        <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
+        <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
+        <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-emerald-400 bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto p-4 md:p-8">
+    <!-- Hero -->
+    <div class="text-center py-8 mb-10">
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-900/40 border border-emerald-500/50 mb-4">
+        <i class="fas fa-tree text-3xl text-emerald-400"></i>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-3 fantasy-font"><span class="emerald-gradient">The Old Tree</span></h1>
+      <p class="text-xl text-slate-400">The Boundary-Wood · Last Remnant of the Wild of Aletheia · The Real Earth</p>
+      <div class="flex items-center justify-center gap-4 mt-4 text-sm">
+        <span class="flex items-center"><i class="fas fa-leaf text-emerald-400 mr-1"></i>Liminal Space</span>
+        <span class="w-1 h-1 rounded-full bg-slate-600"></span>
+        <span class="flex items-center"><i class="fas fa-tree text-emerald-400 mr-1"></i>Elder Wood</span>
+        <span class="w-1 h-1 rounded-full bg-slate-600"></span>
+        <span class="flex items-center"><i class="fas fa-globe text-emerald-400 mr-1"></i>Cosmic Archetype of Earth</span>
+      </div>
+    </div>
+
+    <!-- Overview -->
+    <section class="mb-12">
+      <div class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6 md:p-8">
+        <h2 class="text-2xl font-bold mb-4 fantasy-font text-emerald-400">The Last Witness of the Wild</h2>
+        <p class="text-slate-300 leading-relaxed mb-4">
+          The <strong class="text-emerald-300">Old Tree</strong> is not a primordial source of all life, but the <strong>last remnant of the Wild of Aletheia</strong> — the Observer faction's sacred forest that was destroyed realm by realm during the Civil War of the Gods. Preserved in the <strong>Meridian Domain</strong> (the space between the Tree of Order and the Tree of Chaos), it stands as the boundary-wood, the eternal witness, and the cosmic archetype of <strong>Earth</strong> — specifically, the ancient elder groves and yew forests of Oxfordshire, England.
+        </p>
+        <p class="text-slate-300 leading-relaxed">
+          Unlike the Two Trees that seed the Eastern and Western Planes, the Old Tree does not create new realities. It <em>remembers</em>. Its roots hold the memory of the Earlier Gods' sacrifice, its bark carries the echoes of the Observers' genocide, and its leaves whisper the true history that the "Noble Withdrawal" myth was designed to bury. It is the liminal space that prevents Order and Chaos from consuming each other prematurely.
+        </p>
+      </div>
+    </section>
+
+    <!-- The Elder Wood & Earth Connection -->
+    <section class="grid md:grid-cols-2 gap-6 mb-12">
+      <div class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+        <h3 class="text-xl font-bold text-emerald-400 mb-4 fantasy-font"><i class="fas fa-tree mr-2"></i>The Elder Wood of Oxfordshire</h3>
+        <p class="text-slate-300 text-sm mb-3">
+          The Old Tree is the <strong>cosmic archetype</strong> of the real Earth — not a metaphor, but a harmonic resonance. The elder groves, ancient yews, and boundary-woods of Oxfordshire are its "microcosmic reflections." The surname <strong>Elder</strong> (from Old English <em>ældre wudu</em>, "elder wood") marks a lineage of boundary-tree tenders who, unwittingly, maintained the connection between Earth and the Meridian Domain for generations.
+        </p>
+        <p class="text-slate-300 text-sm">
+          This is why <strong>Dr. Lucien George Elder</strong> was summoned to become the Fourth Librarian: his family's centuries of tending boundary-trees made him uniquely resonant with the Old Tree. His middle name, <strong>George</strong> (Greek <em>geōrgos</em>, "earth-worker," "tender of trees"), was a prophecy fulfilled when he became the permanent custodian of the Old Tree in the Meridian Domain.
+        </p>
+      </div>
+      <div class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+        <h3 class="text-xl font-bold text-emerald-400 mb-4 fantasy-font"><i class="fas fa-user mr-2"></i>The Keeper: Lucien Jela (Elder)</h3>
+        <p class="text-slate-300 text-sm mb-3">
+          In Absolute Year 49,663 (5th Myriad), after nearly 30,000 years as Fourth Librarian, <strong>Lucien Jela</strong> retired to the Meridian Domain for permanent custodianship of the Old Tree. Accompanied by Eida Jada Copy XII, he tends the boundary-wood, ensuring that the Two Trees do not consume each other before the Convergence.
+        </p>
+        <p class="text-slate-300 text-sm">
+          It was here, in the space between the Trees, that Lucien finally met his former student — <strong>Lucius Arogzan</strong>, the 25th Guardian, who had been reborn in the Eastern Plane after dying in the same Oxford traffic accident that preceded Lucien's summoning. Their reunion is the emotional core of the Convergence: the Librarian and the Wanderer, two souls from the Elder Wood, finally together.
+        </p>
+        <div class="mt-4">
+          <a href="key-figures.html#lucien" class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-900/40 border border-emerald-500/30 rounded-lg text-emerald-300 hover:bg-emerald-900/60 transition text-sm">
+            <i class="fas fa-user"></i> Lucien Jela (Fourth Librarian)
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Old Tree's Role in Cosmology -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400"><i class="fas fa-sitemap mr-2"></i>Place in the Cosmic Order</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <i class="fas fa-balance-scale text-emerald-400"></i>
+            <h4 class="font-bold text-emerald-400">The Boundary</h4>
+          </div>
+          <p class="text-sm text-slate-300">The Old Tree stands between the Tree of Order (Eastern Plane) and the Tree of Chaos (Western Plane), maintaining the distinction that allows relationship without merger. Without it, the Two Trees would collapse into each other, ending both planes.</p>
+        </div>
+        <div class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <i class="fas fa-memory text-emerald-400"></i>
+            <h4 class="font-bold text-emerald-400">The Witness</h4>
+          </div>
+          <p class="text-sm text-slate-300">The Old Tree remembers what the Two Trees have forgotten: the sacrifice of the Earlier Gods, the genocide of the Observers, and the true history of the Primordial Era that the "Covenant of Lies" was designed to conceal.</p>
+        </div>
+        <div class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <i class="fas fa-globe text-emerald-400"></i>
+            <h4 class="font-bold text-emerald-400">The Earth Connection</h4>
+          </div>
+          <p class="text-sm text-slate-300">The Old Tree is the cosmic archetype of Earth. The elder groves of Oxfordshire are its reflections. When Lucien Elder returned to Earth in the 6th Myriad, he carried a crystallized seed from the Old Tree, bringing the boundary-wood home.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Reunion: Two Souls from the Elder Wood -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-r from-slate-900/80 to-emerald-950/30 border border-emerald-500/40 rounded-xl p-6 md:p-8">
+        <div class="flex flex-col md:flex-row gap-6 items-center">
+          <div class="md:w-2/3">
+            <h2 class="text-2xl font-bold mb-3 fantasy-font text-emerald-400"><i class="fas fa-handshake mr-2"></i>Two Souls from the Elder Wood</h2>
+            <p class="text-slate-300 mb-4">
+              The Old Tree is the silent witness to the most profound reunion in the saga: the meeting of <strong>Lucien Jela</strong> (the Fourth Librarian) and <strong>Lucius Arogzan</strong> (the 25th Guardian) in the Meadow Realm during the Convergence. Two men from Oxford, both connected to the Elder Wood — one summoned as a Librarian, one reborn as a Guardian — finally meet after fifty thousand years of parallel paths.
+            </p>
+            <p class="text-slate-300 mb-4">
+              Lucien gives Lucius a crystallized seed from the Old Tree, containing the memory of Earth and of the teacher he couldn't save. Lucius carries it back to the Eastern Plane, where it becomes the foundation of the <strong>Eye Practice</strong> and the Watchers' training — the cataloging, organizing impulse of a digital archivist, preserved across death and rebirth.
+            </p>
+            <blockquote class="text-lg italic text-emerald-300 fantasy-font my-4">
+              "Two seeds from the Elder Wood. One became the Librarian. One became the Guardian. And the center holds."
+            </blockquote>
+            <div class="flex gap-3">
+              <a href="key-figures.html#lucien" class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-900/40 border border-emerald-500/30 rounded-lg text-emerald-300 hover:bg-emerald-900/60 transition text-sm">
+                <i class="fas fa-user"></i> Lucien Jela
+              </a>
+              <a href="key-figures.html#lucius" class="inline-flex items-center gap-2 px-4 py-2 bg-amber-900/40 border border-amber-500/30 rounded-lg text-amber-300 hover:bg-amber-900/60 transition text-sm">
+                <i class="fas fa-user"></i> Lucius Arogzan
+              </a>
+            </div>
+          </div>
+          <div class="md:w-1/3 flex justify-center">
+            <div class="w-32 h-32 rounded-full bg-slate-800 border-2 border-emerald-500/50 flex items-center justify-center">
+              <i class="fas fa-seedling text-5xl text-emerald-400"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Connections -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400"><i class="fas fa-link mr-2"></i>Connections</h2>
+      <div class="grid md:grid-cols-4 gap-4">
+        <a href="other-realms.html#meridian" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-archway text-teal-400"></i>
+            <h3 class="font-bold text-teal-400">Meridian Domain</h3>
+          </div>
+          <p class="text-sm text-slate-400">The Old Tree grows here, between the Two Trees.</p>
+        </a>
+        <a href="other-realms.html#sanctuary" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-archway text-emerald-400"></i>
+            <h3 class="font-bold text-emerald-400">Sanctuary</h3>
+          </div>
+          <p class="text-sm text-slate-400">Fourth Lord's domain; the Old Tree's home.</p>
+        </a>
+        <a href="other-realms.html#meadow" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-leaf text-lime-400"></i>
+            <h3 class="font-bold text-lime-400">Meadow Realm</h3>
+          </div>
+          <p class="text-sm text-slate-400">Site of the reunion; Blood-River flows.</p>
+        </a>
+        <a href="western-factions.html#library" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-book text-purple-400"></i>
+            <h3 class="font-bold text-purple-400">Library of Lumeria</h3>
+          </div>
+          <p class="text-sm text-slate-400">Lucien's home for 30,000 years.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
+    <p class="text-slate-400 text-sm">Eternal Tree Saga Wiki — A Chronicle Spanning Six Myriads</p>
+    <p class="text-slate-500 text-xs mt-2">"The Elder returns to the Elder. The Wood remembers the Wood."</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
+    if (closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
+  </script>
+</body>
+</html>

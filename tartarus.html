@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tartarus – Eternal Tree Saga Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #e2e8f0; }
+    h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+    .gold-gradient { background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .slate-gradient { background: linear-gradient(135deg, #64748b 0%, #94a3b8 50%, #64748b 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(100, 116, 139, 0.2); }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
+    <div class="flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <i class="fas fa-tree text-amber-400 text-2xl"></i>
+        <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
+        <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
+        <a href="timeline.html" class="text-slate-300 hover:text-amber-400 transition">Timeline</a>
+        <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
+        <a href="eastern-factions.html" class="text-slate-300 hover:text-amber-400 transition">Eastern</a>
+        <a href="western-factions.html" class="text-slate-300 hover:text-amber-400 transition">Western</a>
+        <a href="other-realms.html" class="text-emerald-400 font-medium">Realms</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400"><i class="fas fa-bars text-xl"></i></button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
+    <div class="p-4">
+      <div class="flex justify-between items-center mb-6">
+        <span class="font-bold text-lg">Navigation</span>
+        <button id="closeMenu" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+      </div>
+      <nav class="space-y-2">
+        <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
+        <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
+        <a href="timeline.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
+        <a href="plots.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
+        <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
+        <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
+        <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-emerald-400 bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto p-4 md:p-8">
+    <!-- Hero -->
+    <div class="text-center py-8 mb-10">
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-slate-800/80 border border-slate-600 mb-4">
+        <i class="fas fa-lock text-3xl text-slate-400"></i>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-3 fantasy-font"><span class="slate-gradient">Tartarus</span></h1>
+      <p class="text-xl text-slate-400">The Deep Prison · Abyss of Eternal Stillness</p>
+      <div class="flex items-center justify-center gap-4 mt-4 text-sm">
+        <span class="flex items-center"><i class="fas fa-cloud text-purple-400 mr-1"></i>Within The Mist (Roots)</span>
+        <span class="w-1 h-1 rounded-full bg-slate-600"></span>
+        <span class="flex items-center"><i class="fas fa-skull text-slate-400 mr-1"></i>Death Reapers' Domain</span>
+        <span class="w-1 h-1 rounded-full bg-slate-600"></span>
+        <span class="flex items-center"><i class="fas fa-hourglass-end text-slate-400 mr-1"></i>Prison of the Unkillable</span>
+      </div>
+    </div>
+
+    <!-- Overview -->
+    <section class="mb-12">
+      <div class="bg-slate-900/50 border border-slate-600 rounded-xl p-6 md:p-8">
+        <h2 class="text-2xl font-bold mb-4 fantasy-font text-slate-300">The Abyss of Stillness</h2>
+        <p class="text-slate-300 leading-relaxed mb-4">
+          Tartarus is not a plane of fire and torment, but the deepest, stillest part of <strong>The Mist</strong> — a prison dimension of eternal silence where beings who cannot be killed are sealed. It is neither life nor death, but a state of suspended consequence: a place where the weight of memory is the only sentence, and the absence of time is the only warden.
+        </p>
+        <p class="text-slate-300 leading-relaxed">
+          Maintained by the <strong>Keepers</strong> and <strong>Death Reapers</strong>, Tartarus holds those whose corruption was so profound that even death could not contain them. Here, in absolute stillness, the reformed <strong>Dark Emperors</strong> serve their sentences in peaceful meditation, their Void-corruption burned out centuries ago. The Inquisitor <strong>Redford Heinsforth</strong> was also cast here after his trial.
+        </p>
+      </div>
+    </section>
+
+    <!-- The Prisoners -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-slate-300"><i class="fas fa-user-lock mr-2"></i>The Prisoners of Tartarus</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Dark Emperors -->
+        <div class="bg-slate-900/50 border border-slate-600 rounded-xl p-6">
+          <h3 class="text-xl font-bold text-purple-300 mb-3 fantasy-font">The Dark Emperors (Reformed)</h3>
+          <div class="space-y-4">
+            <div>
+              <p class="text-slate-400 text-sm"><span class="text-amber-300 font-bold">Tomoyama</span> — Former Demon Emperor (Homura-ke, East)</p>
+              <p class="text-slate-300 text-sm">Bronze skin faded to grey; white-hot eyes dimmed to embers. Meditates in silence. Chi barely flows — by choice. Speaks rarely: <em>"The silence breaks those who cannot let go."</em></p>
+            </div>
+            <div>
+              <p class="text-slate-400 text-sm"><span class="text-purple-300 font-bold">Kross</span> — Former Shadow Emperor (Avalon, West)</p>
+              <p class="text-slate-300 text-sm">Void-black eyes now grey; silver tears dried. Observes the stillness. Speaks of the Eye: <em>"It sees what we could not."</em></p>
+            </div>
+            <div>
+              <p class="text-slate-400 text-sm"><span class="text-emerald-300 font-bold">Marcus</span> — Former Spawn Emperor (Helron, South)</p>
+              <p class="text-slate-300 text-sm">Pale skin; organic eyes regrown; mechanical voice softened. Reflects on Guardian intervention: <em>"You intervened. That is what matters."</em></p>
+            </div>
+          </div>
+        </div>
+        <!-- Inquisitor -->
+        <div class="bg-slate-900/50 border border-slate-600 rounded-xl p-6">
+          <h3 class="text-xl font-bold text-red-300 mb-3 fantasy-font">The Inquisitor</h3>
+          <p class="text-slate-400 text-sm mb-3"><span class="text-red-300 font-bold">Grand Marshal Redford Heinsforth</span></p>
+          <p class="text-slate-300 text-sm mb-3">
+            Once the supreme authority of the Inquisitorial Office, Heinsforth abused his mandate to persecute the Tribune, conducted illegal experiments in the Depths of Abyss, and declared the Three Legendary Guardians "irrelevant." Arrested in Year 8018 (4th Myriad), he was tried for over two centuries and sentenced to eternal imprisonment in Tartarus.
+          </p>
+          <p class="text-slate-300 text-sm">
+            Unlike the Emperors, Heinsforth's corruption was not Void-borne but systemic — a purity of purpose that consumed all relation. In Tartarus, he serves as a cautionary tale: the tyrant who believed efficiency excused atrocity.
+          </p>
+          <div class="mt-4">
+            <a href="key-figures.html#heinsforth" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-800 border border-slate-600 rounded-lg text-slate-300 hover:bg-slate-700 transition text-sm">
+              <i class="fas fa-gavel"></i> Read about the Inquisitor's Trial
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nature of Imprisonment -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-r from-slate-900/80 to-purple-950/30 border border-slate-600 rounded-xl p-6 md:p-8">
+        <div class="flex flex-col md:flex-row gap-6 items-center">
+          <div class="md:w-2/3">
+            <h2 class="text-2xl font-bold mb-3 fantasy-font text-slate-300"><i class="fas fa-hourglass mr-2"></i>Stillness, Not Torment</h2>
+            <p class="text-slate-300 mb-4">
+              Tartarus is not a place of active punishment. There are no Jailers inflicting pain, no Pits of Fire or Ice. The sentence is <strong>stillness</strong> — the complete absence of change, sound, or interaction. Prisoners are sealed in individual chambers where time does not pass and no voice reaches them except their own memories.
+            </p>
+            <p class="text-slate-300">
+              This is the only way to contain beings whose essence cannot be destroyed. The Void-corruption that once empowered the Dark Emperors has long since burned out; they remain not because they are still dangerous, but because the consequences of their actions are eternal. Their peaceful meditation is both penance and witness.
+            </p>
+            <p class="text-slate-400 text-xs italic mt-4">"The silence breaks those who cannot let go." — Tomoyama</p>
+          </div>
+          <div class="md:w-1/3 flex justify-center">
+            <div class="w-32 h-32 rounded-full bg-slate-800 border-2 border-slate-600 flex items-center justify-center">
+              <i class="fas fa-volume-mute text-5xl text-slate-400"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lucius's Visit -->
+    <section class="mb-12">
+      <div class="bg-slate-900/50 border border-slate-600 rounded-xl p-6">
+        <h3 class="text-xl font-bold text-slate-300 mb-4 fantasy-font"><i class="fas fa-eye mr-2"></i>Lucius Arogzan's Visit (Year 8223, 4th Myriad)</h3>
+        <p class="text-slate-300 mb-4">
+          After the sentencing of the Inquisitor, <strong>Lucius Arogzan</strong> (25th Guardian, the Wanderer) visited Tartarus briefly. He spoke with the reformed Dark Emperors, who confirmed that their corruption had burned out, leaving only the weight of memory. Kross spoke of the Eye: <em>"It sees what we could not."</em> Marcus reflected on the Guardian Domain's intervention: <em>"You intervened. That is what matters."</em>
+        </p>
+        <p class="text-slate-300">
+          Lucius left Tartarus with a deeper understanding of consequence: even those who have been forgiven by the cosmos must still bear the stillness of their choices. The Emperors' peaceful acceptance stood in stark contrast to Heinsforth's defiant silence.
+        </p>
+        <div class="mt-4 flex gap-3">
+          <a href="key-figures.html#lucius" class="inline-flex items-center gap-2 px-4 py-2 bg-amber-900/40 border border-amber-500/30 rounded-lg text-amber-300 hover:bg-amber-900/60 transition text-sm">
+            <i class="fas fa-user"></i> Lucius Arogzan (25th Guardian)
+          </a>
+          <a href="plots.html#book5" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-800 border border-slate-600 rounded-lg text-slate-300 hover:bg-slate-700 transition text-sm">
+            <i class="fas fa-book"></i> Council-Tribunic Wars
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Connections -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-slate-300"><i class="fas fa-link mr-2"></i>Connections</h2>
+      <div class="grid md:grid-cols-4 gap-4">
+        <a href="other-realms.html#mist" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-cloud text-purple-400"></i>
+            <h3 class="font-bold text-purple-400">The Mist (Roots)</h3>
+          </div>
+          <p class="text-sm text-slate-400">Tartarus lies in the deepest part of The Mist.</p>
+        </a>
+        <a href="eastern-factions.html#dread-horde" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-dragon text-red-400"></i>
+            <h3 class="font-bold text-red-400">Dark Emperors</h3>
+          </div>
+          <p class="text-sm text-slate-400">Tomoyama, Kross, Marcus — reformed and sealed.</p>
+        </a>
+        <a href="key-figures.html#gallian" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-user text-teal-400"></i>
+            <h3 class="font-bold text-teal-400">Gallian (First Guardian)</h3>
+          </div>
+          <p class="text-sm text-slate-400">Anchor of the Meridian Threshold; his covenant echoes here.</p>
+        </a>
+        <a href="other-realms.html#meridian" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-archway text-teal-400"></i>
+            <h3 class="font-bold text-teal-400">Meridian Domain</h3>
+          </div>
+          <p class="text-sm text-slate-400">The threshold between planes; seal maintained by Keepers.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
+    <p class="text-slate-400 text-sm">Eternal Tree Saga Wiki — A Chronicle Spanning Six Myriads</p>
+    <p class="text-slate-500 text-xs mt-2">"The center holds. For now. For always."</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
+    if (closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
+  </script>
+</body>
+</html>

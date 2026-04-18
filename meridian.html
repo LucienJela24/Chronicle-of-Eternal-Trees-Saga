@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meridian Domain – Eternal Tree Saga Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #e2e8f0; }
+    h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+    .gold-gradient { background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .teal-gradient { background: linear-gradient(135deg, #14b8a6 0%, #2dd4bf 50%, #14b8a6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(20, 184, 166, 0.2); }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
+    <div class="flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <i class="fas fa-tree text-amber-400 text-2xl"></i>
+        <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
+        <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
+        <a href="timeline.html" class="text-slate-300 hover:text-amber-400 transition">Timeline</a>
+        <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
+        <a href="eastern-factions.html" class="text-slate-300 hover:text-amber-400 transition">Eastern</a>
+        <a href="western-factions.html" class="text-slate-300 hover:text-amber-400 transition">Western</a>
+        <a href="other-realms.html" class="text-emerald-400 font-medium">Realms</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400"><i class="fas fa-bars text-xl"></i></button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
+    <div class="p-4">
+      <div class="flex justify-between items-center mb-6">
+        <span class="font-bold text-lg">Navigation</span>
+        <button id="closeMenu" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+      </div>
+      <nav class="space-y-2">
+        <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
+        <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
+        <a href="timeline.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
+        <a href="plots.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
+        <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
+        <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
+        <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-emerald-400 bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto p-4 md:p-8">
+    <!-- Hero -->
+    <div class="text-center py-8 mb-10">
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-teal-900/40 border border-teal-500/50 mb-4">
+        <i class="fas fa-arrows-alt-h text-3xl text-teal-400"></i>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-3 fantasy-font"><span class="teal-gradient">Meridian Domain</span></h1>
+      <p class="text-xl text-slate-400">The Threshold Between Planes · Seat of the Fourth Lord</p>
+      <div class="flex items-center justify-center gap-4 mt-4 text-sm">
+        <span class="flex items-center"><i class="fas fa-door-open text-teal-400 mr-1"></i>Primary Sealing Point</span>
+        <span class="w-1 h-1 rounded-full bg-slate-600"></span>
+        <span class="flex items-center"><i class="fas fa-key text-teal-400 mr-1"></i>Gallian's Anchor</span>
+        <span class="w-1 h-1 rounded-full bg-slate-600"></span>
+        <span class="flex items-center"><i class="fas fa-tree text-teal-400 mr-1"></i>The Old Tree</span>
+      </div>
+    </div>
+
+    <!-- Overview: Threshold vs. Domain -->
+    <section class="mb-12">
+      <div class="bg-slate-900/50 border border-teal-500/30 rounded-xl p-6 md:p-8">
+        <h2 class="text-2xl font-bold mb-4 fantasy-font text-teal-400">The Passage and the Dwelling</h2>
+        <p class="text-slate-300 leading-relaxed mb-4">
+          The term "Meridian" encompasses two distinct but connected aspects of the cosmology: the <strong class="text-teal-300">Meridian Threshold</strong> — the primary sealing point between the Eastern and Western Planes, anchored by <strong>Gallian</strong>, the First Guardian — and the <strong class="text-teal-300">Meridian Domain</strong>, the hidden space between the Two Trees where the <strong>Fourth Lord</strong> and the <strong>Overseers</strong> dwell. The Threshold is the <em>passage</em>; the Domain is the <em>dwelling</em>.
+        </p>
+        <p class="text-slate-300 leading-relaxed">
+          Together, they form the axis of relation between the planes — the liminal space that prevents the Tree of Order and the Tree of Chaos from consuming each other prematurely. It is here that the <strong>Old Tree</strong>, last remnant of the Wild of Aletheia, stands as eternal witness.
+        </p>
+      </div>
+    </section>
+
+    <!-- The Meridian Threshold & Gallian -->
+    <section class="mb-12">
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-slate-900/50 border border-teal-500/30 rounded-xl p-6">
+          <h3 class="text-xl font-bold text-teal-400 mb-4 fantasy-font"><i class="fas fa-door-open mr-2"></i>The Meridian Threshold</h3>
+          <p class="text-slate-300 text-sm mb-3">
+            Located at the exact boundary between the Eastern and Western Planes, the Meridian Threshold is the <strong>primary sealing point</strong> against the Void and the Grenlian incursions. During the War of the Grenlians (Book 1.5), <strong>Gallian</strong>, the First Guardian and threshold-keeper, sacrificed his physical form to become the living anchor of the seal. His essence now maintains the barrier, whispering across the ages: <em>"The center holds."</em>
+          </p>
+          <p class="text-slate-300 text-sm">
+            The Threshold is also the site of the final sealing of the Dark Emperors (Year 7003, 2nd Myriad) and the location where the <strong>Essence of WILL</strong> was later distributed to the Twelve Watchers. It is the most heavily guarded liminal point in the known cosmos.
+          </p>
+          <div class="mt-4">
+            <a href="key-figures.html#gallian" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-900/40 border border-teal-500/30 rounded-lg text-teal-300 hover:bg-teal-900/60 transition text-sm">
+              <i class="fas fa-user"></i> Gallian (First Guardian)
+            </a>
+          </div>
+        </div>
+        <div class="bg-slate-900/50 border border-teal-500/30 rounded-xl p-6">
+          <h3 class="text-xl font-bold text-teal-400 mb-4 fantasy-font"><i class="fas fa-home mr-2"></i>The Meridian Domain</h3>
+          <p class="text-slate-300 text-sm mb-3">
+            Beyond the Threshold lies the Meridian Domain — the <strong>Sanctuary</strong> of the Fourth Lord. This is the space <em>between</em> the Two Trees, where the <strong>Blood-River</strong> flows and the <strong>Old Tree</strong> grows. It is not a place of judgment or transit, but of <em>preservation</em>: the Fourth Lord and the Overseers guard the knowledge that must remain hidden until the Convergence.
+          </p>
+          <p class="text-slate-300 text-sm">
+            The Domain is accessible only through the <strong>Nexus of Ways</strong> in the Great Forest, and only to those who have completed the Wanderer's Path. It was here that <strong>Lucius Arogzan</strong> met the Fourth Lord and received the revelation of the Eight Nodes.
+          </p>
+          <div class="mt-4">
+            <a href="other-realms.html#sanctuary" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-900/40 border border-teal-500/30 rounded-lg text-teal-300 hover:bg-teal-900/60 transition text-sm">
+              <i class="fas fa-archway"></i> The Sanctuary
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Fourth Lord & The Overseers -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-teal-400"><i class="fas fa-crown mr-2"></i>The Fourth Lord & The Overseers</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-slate-900/50 border border-teal-500/30 rounded-xl p-6">
+          <h3 class="text-lg font-bold text-teal-300 mb-3">The Fourth Persona</h3>
+          <p class="text-slate-300 text-sm mb-3">
+            The Fourth Lord is the Persona of <strong>Mystery, Magic, and Possibility</strong>. Hidden since the First Myriad, she revealed herself only to those who have walked the Wanderer's Path. Her function is to preserve the unknown — the capacity for wonder that makes knowledge meaningful. She appears as a shifting form of light and shadow, casting no shadow of her own.
+          </p>
+          <p class="text-slate-400 text-xs italic">"The Fourth Lord does not rule. She waits."</p>
+        </div>
+        <div class="bg-slate-900/50 border border-teal-500/30 rounded-xl p-6">
+          <h3 class="text-lg font-bold text-teal-300 mb-3">The Overseers</h3>
+          <p class="text-slate-300 text-sm mb-3">
+            Servants of the Fourth Persona, the Overseers are witness-preservers — consciousness-aspects that record all knowledge across the planes while keeping dangerous secrets hidden. Key figures include <strong>Elder Overseer Myrddin</strong> (Keeper of the Sanctuary's secrets) and <strong>Overseer Seren</strong> (advocate for measured revelation). They stepped further out of concealment after Lucius completed the Wanderer's Path.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Old Tree & The Blood-River -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-r from-slate-900/80 to-teal-950/30 border border-teal-500/40 rounded-xl p-6 md:p-8">
+        <div class="flex flex-col md:flex-row gap-6 items-center">
+          <div class="md:w-2/3">
+            <h2 class="text-2xl font-bold mb-3 fantasy-font text-teal-400"><i class="fas fa-tree mr-2"></i>The Old Tree & The Blood-River</h2>
+            <p class="text-slate-300 mb-4">
+              Within the Meridian Domain stands the <strong>Old Tree</strong> — the last remnant of the Wild of Aletheia, preserved from the genocide of the Observers. It is the boundary-wood, the witness that remembers what the Two Trees have forgotten. Tended by <strong>Lucien Jela</strong> (Fourth Librarian) in his eternal retirement, it serves as the living bridge between Order and Chaos.
+            </p>
+            <p class="text-slate-300">
+              Flowing between the roots of the Two Trees is the <strong>Blood-River</strong>, formed from the sacrificial essence of the Earlier Gods. It separates the Trees so they do not consume each other, nourishes both planes, and carries the memory of divine sacrifice. The river is the medium of all cross-planar travel.
+            </p>
+            <div class="mt-4 flex gap-3">
+              <a href="key-figures.html#lucien" class="inline-flex items-center gap-2 px-4 py-2 bg-teal-900/40 border border-teal-500/30 rounded-lg text-teal-300 hover:bg-teal-900/60 transition text-sm">
+                <i class="fas fa-user"></i> Lucien Jela (Fourth Librarian)
+              </a>
+              <a href="other-realms.html#meadow" class="inline-flex items-center gap-2 px-4 py-2 bg-lime-900/40 border border-lime-500/30 rounded-lg text-lime-300 hover:bg-lime-900/60 transition text-sm">
+                <i class="fas fa-leaf"></i> Meadow Realm
+              </a>
+            </div>
+          </div>
+          <div class="md:w-1/3 flex justify-center">
+            <div class="w-32 h-32 rounded-full bg-slate-800 border-2 border-teal-500/50 flex items-center justify-center">
+              <i class="fas fa-water text-5xl text-teal-400"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Wanderer's Path: Eighth Clue & The Gate -->
+    <section class="mb-12">
+      <div class="bg-slate-900/50 border border-teal-500/30 rounded-xl p-6">
+        <h3 class="text-xl font-bold text-teal-400 mb-4 fantasy-font"><i class="fas fa-key mr-2"></i>The Eighth Clue & The Gate</h3>
+        <p class="text-slate-300 mb-4">
+          In Book 4, <strong>Lucius Arogzan</strong> reached the <strong>Nexus of Ways</strong> in the Great Forest after collecting seven clues across the planes. The eighth clue was not an object but <strong>the gate itself</strong> — requiring the seven collected clues to open. When placed, the gate revealed the path to the Meridian Domain and the Sanctuary of the Fourth Lord.
+        </p>
+        <p class="text-slate-300">
+          This moment marked the culmination of the Wanderer's Path: Lucius had become the center, the space between, the relation that fills vacuums. The Fourth Lord then revealed to him the true nature of his journey and the coming Convergence.
+        </p>
+        <div class="mt-4">
+          <a href="great-forest.html" class="inline-flex items-center gap-2 px-4 py-2 bg-amber-900/40 border border-amber-500/30 rounded-lg text-amber-300 hover:bg-amber-900/60 transition text-sm">
+            <i class="fas fa-tree"></i> The Great Forest (Nexus of Ways)
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Connections -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-teal-400"><i class="fas fa-link mr-2"></i>Connections</h2>
+      <div class="grid md:grid-cols-4 gap-4">
+        <a href="other-realms.html#sanctuary" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-archway text-emerald-400"></i>
+            <h3 class="font-bold text-emerald-400">The Sanctuary</h3>
+          </div>
+          <p class="text-sm text-slate-400">Fourth Lord's dwelling within Meridian Domain</p>
+        </a>
+        <a href="other-realms.html#meadow" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-leaf text-lime-400"></i>
+            <h3 class="font-bold text-lime-400">Meadow Realm</h3>
+          </div>
+          <p class="text-sm text-slate-400">Space between the Two Trees; Last Observer's vigil</p>
+        </a>
+        <a href="great-forest.html" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-tree text-amber-400"></i>
+            <h3 class="font-bold text-amber-400">Great Forest</h3>
+          </div>
+          <p class="text-sm text-slate-400">Branches · Keepers · Nexus of Ways leads here</p>
+        </a>
+        <a href="key-figures.html#gallian" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-user text-teal-400"></i>
+            <h3 class="font-bold text-teal-400">Gallian</h3>
+          </div>
+          <p class="text-sm text-slate-400">First Guardian · Anchor of the Meridian Threshold</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
+    <p class="text-slate-400 text-sm">Eternal Tree Saga Wiki — A Chronicle Spanning Six Myriads</p>
+    <p class="text-slate-500 text-xs mt-2">"The center holds. For now. For always."</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
+    if (closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
+  </script>
+</body>
+</html>

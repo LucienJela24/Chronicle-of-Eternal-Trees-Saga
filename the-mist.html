@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Mist (Roots) – Eternal Tree Saga Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #e2e8f0; }
+    h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+    .gold-gradient { background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .purple-gradient { background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 50%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(124, 58, 237, 0.2); }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
+    <div class="flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <i class="fas fa-tree text-amber-400 text-2xl"></i>
+        <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
+        <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
+        <a href="timeline.html" class="text-slate-300 hover:text-amber-400 transition">Timeline</a>
+        <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
+        <a href="eastern-factions.html" class="text-slate-300 hover:text-amber-400 transition">Eastern</a>
+        <a href="western-factions.html" class="text-slate-300 hover:text-amber-400 transition">Western</a>
+        <a href="other-realms.html" class="text-emerald-400 font-medium">Realms</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400"><i class="fas fa-bars text-xl"></i></button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
+    <div class="p-4">
+      <div class="flex justify-between items-center mb-6">
+        <span class="font-bold text-lg">Navigation</span>
+        <button id="closeMenu" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+      </div>
+      <nav class="space-y-2">
+        <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
+        <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
+        <a href="timeline.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
+        <a href="plots.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
+        <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
+        <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
+        <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-emerald-400 bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto p-4 md:p-8">
+    <!-- Hero -->
+    <div class="text-center py-8 mb-10">
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-purple-900/40 border border-purple-500/50 mb-4">
+        <i class="fas fa-cloud text-3xl text-purple-400"></i>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-3 fantasy-font"><span class="purple-gradient">The Mist</span></h1>
+      <p class="text-xl text-slate-400">The Roots of the Tree of Order · Domain of the Third Persona</p>
+      <div class="flex items-center justify-center gap-4 mt-4 text-sm">
+        <span class="flex items-center"><i class="fas fa-skull text-purple-400 mr-1"></i>Third Persona (Life and Death)</span>
+        <span class="w-1 h-1 rounded-full bg-slate-600"></span>
+        <span class="flex items-center"><i class="fas fa-heart text-purple-400 mr-1"></i>Life Bringers & Death Reapers</span>
+        <span class="w-1 h-1 rounded-full bg-slate-600"></span>
+        <span class="flex items-center"><i class="fas fa-compass text-purple-400 mr-1"></i>Seventh Clue: Transcendence</span>
+      </div>
+    </div>
+
+    <!-- Overview -->
+    <section class="mb-12">
+      <div class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6 md:p-8">
+        <h2 class="text-2xl font-bold mb-4 fantasy-font text-purple-400">The Roots of the Tree</h2>
+        <p class="text-slate-300 leading-relaxed mb-4">
+          The Mist is the deepest domain of the Eastern Plane, the <strong class="text-purple-300">Roots</strong> of the Tree of Order. 
+          It is the realm of the <strong>Third Persona</strong> — the cosmic principle of Life and Death — and the sacred boundary 
+          where souls journey between incarnations. Here dwell the <strong>Life Bringers</strong> and <strong>Death Reapers</strong>, 
+          the adjudicators who record births, guide the dying, and maintain the balance of mortality.
+        </p>
+        <p class="text-slate-300 leading-relaxed">
+          Unlike the mortal fear of death, the Mist is not a place of punishment but of <em>consequence</em>. It gives meaning to 
+          finitude. Deep within its silver fog lies <strong>Tartarus</strong>, the prison of eternal stillness where beings who 
+          cannot be killed — such as the reformed Dark Emperors and the Inquisitor — are held in silent meditation. The Mist 
+          remembers every soul that has passed through it, and the echoes of their lives whisper in the fog.
+        </p>
+      </div>
+    </section>
+
+    <!-- Life Bringers & Death Reapers -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-heartbeat mr-2"></i>Life Bringers & Death Reapers</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Auriel -->
+        <div class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-4">
+            <i class="fas fa-feather-alt text-amber-300 text-xl"></i>
+            <h3 class="text-xl font-bold text-amber-300 fantasy-font">Auriel</h3>
+          </div>
+          <p class="text-slate-400 text-sm mb-3">Realm Life Bringer of Lux Imperio</p>
+          <p class="text-slate-300 text-sm mb-3">
+            A figure of alternating light and shadow, robed in gold and silver threads. One hand holds a blossom that blooms 
+            and withers endlessly — the cycle of life made visible. Auriel is present at every birth in the Northern realm, 
+            recording the soul's entry into the world. She counseled Pope Celestine IV at his death and guided him into the Mist.
+          </p>
+          <p class="text-slate-400 text-xs"><i class="fas fa-quote-left mr-1"></i>"Life is not a gift to be hoarded, but a breath to be returned."</p>
+        </div>
+        <!-- Umbra -->
+        <div class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6 card-hover">
+          <div class="flex items-center gap-3 mb-4">
+            <i class="fas fa-moon text-slate-300 text-xl"></i>
+            <h3 class="text-xl font-bold text-slate-300 fantasy-font">Umbra</h3>
+          </div>
+          <p class="text-slate-400 text-sm mb-3">Realm Death Reaper of the East (Chuugoku)</p>
+          <p class="text-slate-300 text-sm mb-3">
+            An old man in grey robes, face hidden, who counts the dead. During the Council-Tribunic Wars, Umbra walked the 
+            battlefields of the East, noting every fallen soldier with silent precision. He reports to Auriel and ensures 
+            that no soul is lost to the Void — every death is witnessed, every life accounted for.
+          </p>
+          <p class="text-slate-400 text-xs"><i class="fas fa-quote-left mr-1"></i>"I do not judge. I count. The judgment belongs to the living."</p>
+        </div>
+      </div>
+      
+      <!-- Hierarchy -->
+      <div class="mt-6 bg-slate-900/60 border border-purple-900/40 rounded-xl p-5">
+        <h3 class="text-lg font-bold text-purple-300 mb-3 fantasy-font">Hierarchy of Life Bringers & Death Reapers</h3>
+        <div class="grid md:grid-cols-2 gap-4 text-sm">
+          <div>
+            <p class="text-slate-400 mb-2"><span class="text-purple-400 font-bold">Life Bringers:</span></p>
+            <ul class="space-y-1 text-slate-300">
+              <li><i class="fas fa-star text-xs mr-2"></i>Grand Life Bringer (oversees all births)</li>
+              <li><i class="fas fa-globe text-xs mr-2"></i>Realm Life Bringers (Auriel, Ryūsei, Morwen, Memoria)</li>
+              <li><i class="fas fa-map text-xs mr-2"></i>Regional Adjudicators</li>
+              <li><i class="fas fa-city text-xs mr-2"></i>City Scribes</li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-slate-400 mb-2"><span class="text-purple-400 font-bold">Death Reapers:</span></p>
+            <ul class="space-y-1 text-slate-300">
+              <li><i class="fas fa-skull text-xs mr-2"></i>Grand Reaper (oversees all deaths)</li>
+              <li><i class="fas fa-globe text-xs mr-2"></i>Realm Reapers (Umbra, Yami, Morrigan, Machina)</li>
+              <li><i class="fas fa-map text-xs mr-2"></i>Regional Wardens</li>
+              <li><i class="fas fa-city text-xs mr-2"></i>City Reapers</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tartarus & Dark Emperors -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-r from-slate-900/80 to-purple-950/30 border border-purple-500/40 rounded-xl p-6 md:p-8">
+        <div class="flex flex-col md:flex-row gap-6 items-center">
+          <div class="md:w-2/3">
+            <h2 class="text-2xl font-bold mb-3 fantasy-font text-purple-400"><i class="fas fa-dungeon mr-2"></i>Tartarus: The Deep Prison</h2>
+            <p class="text-slate-300 mb-4">
+              In the deepest, stillest part of the Mist lies <strong>Tartarus</strong> — a dimension of eternal silence where beings who cannot 
+              be killed are sealed. It is neither life nor death, but a state of suspended consequence. Here reside the reformed 
+              <strong>Dark Emperors</strong> (Tomoyama, Kross, Marcus), who lost their corruption centuries ago and now serve their sentences 
+              in peaceful meditation. The Inquisitor <strong>Redford Heinsforth</strong> was also cast here after his trial.
+            </p>
+            <p class="text-slate-300">
+              Tartarus is not a place of torture; it is a place of <em>stillness</em>. The Keepers and Death Reapers maintain the seals. 
+              Lucius Arogzan visited Tartarus briefly in Year 8223 and spoke with the reformed Emperors, who confirmed that their 
+              corruption had burned out, leaving only the weight of memory.
+            </p>
+          </div>
+          <div class="md:w-1/3 flex justify-center">
+            <div class="w-32 h-32 rounded-full bg-slate-800 border-2 border-purple-500/50 flex items-center justify-center">
+              <i class="fas fa-lock text-5xl text-purple-400"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Seventh Clue: Transcendence -->
+    <section class="mb-12">
+      <div class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
+        <h2 class="text-2xl font-bold mb-4 fantasy-font text-purple-400"><i class="fas fa-feather mr-2"></i>The Seventh Clue: Transcendence</h2>
+        <p class="text-slate-300 mb-4">
+          In Book 4 (<em>The Wanderer's Path</em>), after receiving the sixth clue (Absence) in the Celestial Realm, Lucius descended 
+          into the Mist. Here he met Auriel and the 10th Guardian, <strong>Ada</strong>, who had placed the eight clues five thousand 
+          years earlier. Ada revealed that the seventh clue was not an object but a <strong>direction</strong> — pointing to the 
+          Great Forest (Branches). The clue represented <strong>TRANSCENDENCE</strong>, the node of going beyond, service, and sacrifice.
+        </p>
+        <p class="text-slate-300">
+          The lesson of the Mist: <em>"Transcendence is not rising above but going through."</em> To reach the center, Lucius had to 
+          pass through the roots of existence — the place where life ends and begins again. Ada could not complete the path herself, 
+          but she ensured that the Wanderer would find the way.
+        </p>
+        <div class="mt-4 flex justify-center">
+          <a href="key-figures.html#ada" class="inline-flex items-center gap-2 px-4 py-2 bg-purple-900/40 border border-purple-500/30 rounded-lg text-purple-300 hover:bg-purple-900/60 transition text-sm">
+            <i class="fas fa-user"></i> Read about Ada (10th Guardian)
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Connections -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-link mr-2"></i>Connections</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <a href="other-realms.html#celestial" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-sun text-emerald-400"></i>
+            <h3 class="font-bold text-emerald-400">Celestial Realm (Apex)</h3>
+          </div>
+          <p class="text-sm text-slate-400">Domain of Protectors. Lucius received the sixth clue (Absence) here.</p>
+        </a>
+        <a href="other-realms.html#great-forest" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-tree text-amber-400"></i>
+            <h3 class="font-bold text-amber-400">Great Forest (Branches)</h3>
+          </div>
+          <p class="text-sm text-slate-400">Domain of Keepers. The seventh clue pointed here.</p>
+        </a>
+        <a href="eastern-factions.html#dread-horde" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-dragon text-red-400"></i>
+            <h3 class="font-bold text-red-400">Dark Emperors (Reformed)</h3>
+          </div>
+          <p class="text-sm text-slate-400">Tomoyama, Kross, Marcus — serving sentences in Tartarus.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
+    <p class="text-slate-400 text-sm">Eternal Tree Saga Wiki — A Chronicle Spanning Six Myriads</p>
+    <p class="text-slate-500 text-xs mt-2">"The center holds. For now. For always."</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
+    if (closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
+  </script>
+</body>
+</html>

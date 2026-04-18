@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanctuary (Trunk) – Eternal Tree Saga Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #e2e8f0; }
+    h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+    .gold-gradient { background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .emerald-gradient { background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #10b981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(16, 185, 129, 0.2); }
+    .overseer-card { background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
+    <div class="flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <i class="fas fa-tree text-amber-400 text-2xl"></i>
+        <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
+        <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
+        <a href="timeline.html" class="text-slate-300 hover:text-amber-400 transition">Timeline</a>
+        <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
+        <a href="eastern-factions.html" class="text-slate-300 hover:text-amber-400 transition">Eastern</a>
+        <a href="western-factions.html" class="text-slate-300 hover:text-amber-400 transition">Western</a>
+        <a href="other-realms.html" class="text-emerald-400 font-medium">Realms</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400"><i class="fas fa-bars text-xl"></i></button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
+    <div class="p-4">
+      <div class="flex justify-between items-center mb-6">
+        <span class="font-bold text-lg">Navigation</span>
+        <button id="closeMenu" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+      </div>
+      <nav class="space-y-2">
+        <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
+        <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
+        <a href="timeline.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
+        <a href="plots.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
+        <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
+        <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
+        <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-emerald-400 bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto p-4 md:p-8">
+    <!-- Hero -->
+    <div class="text-center py-8 mb-10">
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-900/40 border border-emerald-500/50 mb-4">
+        <i class="fas fa-archway text-3xl text-emerald-400"></i>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-3 fantasy-font"><span class="emerald-gradient">The Sanctuary</span></h1>
+      <p class="text-xl text-slate-400">The Trunk of the Tree of Order · Domain of the Fourth Persona</p>
+      <div class="flex items-center justify-center gap-4 mt-4 text-sm">
+        <span class="flex items-center"><i class="fas fa-magic text-emerald-400 mr-1"></i>Fourth Persona (Mystery, Magic, Possibility)</span>
+        <span class="w-1 h-1 rounded-full bg-slate-600"></span>
+        <span class="flex items-center"><i class="fas fa-eye text-emerald-400 mr-1"></i>Overseers</span>
+        <span class="w-1 h-1 rounded-full bg-slate-600"></span>
+        <span class="flex items-center"><i class="fas fa-tree text-emerald-400 mr-1"></i>The Old Tree</span>
+      </div>
+    </div>
+
+    <!-- Overview -->
+    <section class="mb-12">
+      <div class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6 md:p-8">
+        <h2 class="text-2xl font-bold mb-4 fantasy-font text-emerald-400">The Trunk of the Tree</h2>
+        <p class="text-slate-300 leading-relaxed mb-4">
+          The Sanctuary — also called the <strong class="text-emerald-300">Meridian Domain</strong> — is the hidden heart of the Tree of Order, 
+          the <strong>Trunk</strong> that connects Apex, Branches, and Roots. It is the domain of the <strong>Fourth Persona</strong>, the cosmic 
+          principle of Mystery, Magic, and Possibility. Unlike the other divine domains, the Sanctuary remained concealed throughout the First Myriad, 
+          revealing itself only to those who have walked the full Wanderer's Path.
+        </p>
+        <p class="text-slate-300 leading-relaxed">
+          Here, in the space <strong>between the Two Trees</strong> — the Tree of Order and the Tree of Chaos — flows the <strong>Blood-River</strong>, 
+          carrying the sacrificial memory of the Earlier Gods. The Sanctuary is not a place of worship but of preservation: the Fourth Lord and the 
+          <strong>Overseers</strong> guard the knowledge that must remain hidden until the appointed time, maintaining the boundary that prevents the 
+          Two Trees from consuming each other prematurely.
+        </p>
+      </div>
+    </section>
+
+    <!-- The Fourth Lord & The Two Trees -->
+    <section class="grid md:grid-cols-2 gap-6 mb-12">
+      <div class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+        <h3 class="text-xl font-bold text-emerald-400 mb-4 fantasy-font"><i class="fas fa-crown mr-2"></i>The Fourth Lord</h3>
+        <p class="text-slate-300 text-sm mb-3">
+          The Fourth Lord is the Persona of Mystery, Magic, and Possibility. Unlike the First, Second, and Third Lords, the Fourth Lord remained hidden 
+          since the First Myriad, revealing herself only to Lucius Arogzan when he opened the gate at the Nexus of Ways. She is not a being in the ordinary 
+          sense but a <strong>function</strong>: the preservation of the unknown, the capacity for wonder, the mystery that makes knowledge meaningful.
+        </p>
+        <p class="text-slate-300 text-sm">
+          She appears as a shape of light and shadow, mystery and magic — not a human form, but a function made visible. She casts no shadow. 
+          It was the Fourth Lord who revealed to Lucius the true nature of the Wanderer's Path and commanded the Overseers to step out of concealment.
+        </p>
+      </div>
+      <div class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+        <h3 class="text-xl font-bold text-emerald-400 mb-4 fantasy-font"><i class="fas fa-tree mr-2"></i>The Two Trees & The Blood-River</h3>
+        <p class="text-slate-300 text-sm mb-3">
+          Within the Sanctuary stand the <strong>Two Trees</strong>: the Tree of Order (Eastern Plane) — straight, symmetrical, golden leaves — and the 
+          Tree of Chaos (Western Plane) — twisted, organic, silver leaves. Between them flows the <strong>Blood-River</strong>, formed from the essence of 
+          the dead Earlier Gods. The river separates the Trees so they do not consume each other, preserves the memory of sacrifice, and nourishes growth.
+        </p>
+        <p class="text-slate-300 text-sm">
+          The <strong>Old Tree</strong>, last remnant of the Wild of Aletheia, also grows here — tended by Lucien Jela, the Fourth Librarian, in his eternal 
+          retirement. It is the boundary-wood, the witness, the liminal space that remembers what the Two Trees have forgotten.
+        </p>
+      </div>
+    </section>
+
+    <!-- The Overseers -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400"><i class="fas fa-users mr-2"></i>The Overseers</h2>
+      <p class="text-slate-300 mb-6">
+        The Overseers are the servants of the Fourth Persona, bound to preserve knowledge and keep secrets until the right moment. For eons they remained 
+        hidden, recording all that occurred across the planes but never intervening. After Lucius completed the Wanderer's Path, the Fourth Lord commanded 
+        them to step further out of concealment.
+      </p>
+      
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="overseer-card rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <i class="fas fa-scroll text-emerald-300 text-xl"></i>
+            <h3 class="text-xl font-bold text-emerald-300 fantasy-font">Elder Overseer Myrddin</h3>
+          </div>
+          <p class="text-slate-400 text-sm mb-2">The Last Observer's Successor · Elder of the Sanctuary</p>
+          <p class="text-slate-300 text-sm">Ancient being robed in grey, face weathered by eons. He stepped out of the shadows during the Council-Tribunic Wars to reveal the Sanctuary to the living. He explained the Overseers' purpose and warned Lucius of the Destroyer's stirring.</p>
+        </div>
+        <div class="overseer-card rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-3">
+            <i class="fas fa-book-open text-emerald-300 text-xl"></i>
+            <h3 class="text-xl font-bold text-emerald-300 fantasy-font">Overseer Seren</h3>
+          </div>
+          <p class="text-slate-400 text-sm mb-2">Preserver of Knowledge · Advocate of Revelation</p>
+          <p class="text-slate-300 text-sm">Face hidden behind shifting light, Seren argued within the Overseer council that the time had come to reveal themselves to the living. She advocates for measured disclosure, believing that some mysteries must be shared to prevent greater catastrophe.</p>
+        </div>
+      </div>
+
+      <!-- Hierarchy -->
+      <div class="mt-6 bg-slate-900/60 border border-emerald-900/40 rounded-xl p-5">
+        <h3 class="text-lg font-bold text-emerald-300 mb-3 fantasy-font">Hierarchy of the Overseers</h3>
+        <div class="grid md:grid-cols-3 gap-4 text-sm">
+          <div>
+            <p class="text-slate-400 mb-2"><span class="text-emerald-400 font-bold">Grand Overseers</span></p>
+            <ul class="space-y-1 text-slate-300">
+              <li>Elder Overseer Myrddin</li>
+              <li>Overseer Seren</li>
+              <li>Arcanus (Sanctuary designation)</li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-slate-400 mb-2"><span class="text-emerald-400 font-bold">Realm Overseers</span></p>
+            <ul class="space-y-1 text-slate-300">
+              <li>Overseers assigned to each Great Realm</li>
+              <li>Record all significant events</li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-slate-400 mb-2"><span class="text-emerald-400 font-bold">Threshold Witnesses</span></p>
+            <ul class="space-y-1 text-slate-300">
+              <li>Silent Watchers at liminal spaces</li>
+              <li>Document transitions between realms</li>
+            </ul>
+          </div>
+        </div>
+        <p class="text-slate-400 text-xs mt-4 italic">"The Overseers do not judge. They remember. And when the time comes, they reveal."</p>
+      </div>
+    </section>
+
+    <!-- The Wanderer's Path: The Gate Opens -->
+    <section class="mb-12">
+      <div class="bg-gradient-to-r from-slate-900/80 to-emerald-950/30 border border-emerald-500/40 rounded-xl p-6 md:p-8">
+        <div class="flex flex-col md:flex-row gap-6 items-center">
+          <div class="md:w-2/3">
+            <h2 class="text-2xl font-bold mb-3 fantasy-font text-emerald-400"><i class="fas fa-door-open mr-2"></i>The Gate Opens: The Eighth Clue Fulfilled</h2>
+            <p class="text-slate-300 mb-4">
+              In Book 4 (<em>The Wanderer's Path</em>), Lucius Arogzan placed the seven collected clues into the gate at the Nexus of Ways. 
+              The gate opened, and he stepped into the Sanctuary — the Meridian Domain, the space between the Two Trees. Here he met the Fourth Lord, 
+              who revealed the meaning of his journey: the eight clues corresponded to the eight nodes of topology, and the path was not about reaching 
+              a destination but about <strong>becoming the center</strong> — the space between, the relation that fills vacuums.
+            </p>
+            <p class="text-slate-300">
+              The Fourth Lord showed Lucius a vision of a vast hall of endless shelves — the Library of Lumeria — and a robed figure tending it. 
+              This was the first hint of the bridge between planes, the connection between the Wanderer and the Librarian that would culminate in 
+              their reunion in the Meadow Realm during the Convergence.
+            </p>
+            <div class="mt-4 flex gap-3">
+              <a href="great-forest.html" class="inline-flex items-center gap-2 px-4 py-2 bg-amber-900/40 border border-amber-500/30 rounded-lg text-amber-300 hover:bg-amber-900/60 transition text-sm">
+                <i class="fas fa-tree"></i> The Great Forest (Nexus)
+              </a>
+              <a href="key-figures.html#lucius" class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-900/40 border border-emerald-500/30 rounded-lg text-emerald-300 hover:bg-emerald-900/60 transition text-sm">
+                <i class="fas fa-user"></i> Lucius Arogzan
+              </a>
+            </div>
+          </div>
+          <div class="md:w-1/3 flex justify-center">
+            <div class="w-32 h-32 rounded-full bg-slate-800 border-2 border-emerald-500/50 flex items-center justify-center">
+              <i class="fas fa-key text-5xl text-emerald-400"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Elder & The Destroyer -->
+    <section class="mb-12">
+      <div class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+        <h3 class="text-xl font-bold text-emerald-400 mb-4 fantasy-font"><i class="fas fa-skull mr-2"></i>The Elder & The Destroyer's Stirring</h3>
+        <p class="text-slate-300 mb-4">
+          Within the Sanctuary, Lucius also met <strong>The Elder</strong> — the Last Observer, the final witness of the Earlier Gods, who guards the 
+          Meadow Realm and the Two Trees. The Elder explained the nature of the <strong>Destroyer</strong>: not a being but a phenomenon, the leakage of 
+          the sealed Fifth Persona's power (Order and Chaos) through cracks in the Firmament. The Destroyer consumed the Aneian homeworld and now stirs 
+          in its seals, threatening both planes.
+        </p>
+        <p class="text-slate-300">
+          The Elder warned Lucius: <em>"When the seals break, you must mediate."</em> This charge would define Lucius's role in the coming Convergence — 
+          not to fight the Destroyer, but to hold the relation between Order and Chaos, preventing either from consuming the other.
+        </p>
+      </div>
+    </section>
+
+    <!-- Lucien Jela & The Old Tree -->
+    <section class="mb-12">
+      <div class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+        <h3 class="text-xl font-bold text-emerald-400 mb-4 fantasy-font"><i class="fas fa-book mr-2"></i>Lucien Jela: The Elder of the Old Tree</h3>
+        <p class="text-slate-300 mb-4">
+          In Absolute Year 49,663, after nearly 30,000 years as Fourth Librarian, <strong>Lucien Jela</strong> retired to the Meridian Domain to tend the 
+          Old Tree. Accompanied by Eida Jada Copy XII, he became the permanent custodian of the boundary-wood. It is here, in the space between the Two Trees, 
+          that Lucien would eventually meet Lucius Arogzan during the Convergence — the reunion of teacher and student, Librarian and Wanderer, two souls shaped 
+          by the same Elder Wood across the gulf of death and rebirth.
+        </p>
+        <div class="flex justify-center">
+          <a href="key-figures.html#lucien" class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-900/40 border border-emerald-500/30 rounded-lg text-emerald-300 hover:bg-emerald-900/60 transition text-sm">
+            <i class="fas fa-user"></i> Read about Lucien Jela (Fourth Librarian)
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Connections -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400"><i class="fas fa-link mr-2"></i>Connections</h2>
+      <div class="grid md:grid-cols-4 gap-4">
+        <a href="other-realms.html#celestial" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-sun text-emerald-400"></i>
+            <h3 class="font-bold text-emerald-400">Celestial Realm</h3>
+          </div>
+          <p class="text-sm text-slate-400">Apex · Protectors · Sixth Clue</p>
+        </a>
+        <a href="other-realms.html#great-forest" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-tree text-amber-400"></i>
+            <h3 class="font-bold text-amber-400">Great Forest</h3>
+          </div>
+          <p class="text-sm text-slate-400">Branches · Keepers · Nexus of Ways</p>
+        </a>
+        <a href="other-realms.html#mist" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-cloud text-purple-400"></i>
+            <h3 class="font-bold text-purple-400">The Mist</h3>
+          </div>
+          <p class="text-sm text-slate-400">Roots · Life Bringers · Seventh Clue</p>
+        </a>
+        <a href="other-realms.html#meadow" class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 card-hover">
+          <div class="flex items-center gap-3 mb-2">
+            <i class="fas fa-leaf text-emerald-400"></i>
+            <h3 class="font-bold text-emerald-400">Meadow Realm</h3>
+          </div>
+          <p class="text-sm text-slate-400">Space between · Last Observer · Convergence</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
+    <p class="text-slate-400 text-sm">Eternal Tree Saga Wiki — A Chronicle Spanning Six Myriads</p>
+    <p class="text-slate-500 text-xs mt-2">"The center holds. For now. For always."</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
+    if (closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
+  </script>
+</body>
+</html>

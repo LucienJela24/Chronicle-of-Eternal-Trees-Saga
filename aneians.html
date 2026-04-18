@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aneians - Eternal Trees Saga Wiki</title>
+    <title>Aneians · Eternal Trees Saga Wiki</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -29,411 +29,420 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #0f172a; }
         h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
-        .framework-card { transition: all 0.3s ease; }
-        .framework-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .house-card { transition: all 0.3s ease; }
-        .house-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .framework-card, .house-card { transition: all 0.25s ease; }
+        .framework-card:hover, .house-card:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,0.4); }
+        .prose-custom p { margin-bottom: 1rem; line-height: 1.6; }
+        .prose-custom ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+        .prose-custom li { margin-bottom: 0.25rem; }
+        .glossary-term { font-weight: 600; color: #d4af37; }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-200 min-h-screen">
-    <!-- Navigation -->
-    <nav class="bg-slate-900/90 backdrop-blur-md border-b border-slate-700 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <a href="index.html" class="flex items-center space-x-2">
-                        <i class="fas fa-tree text-eternal-emerald text-2xl"></i>
-                        <span class="fantasy-font text-xl font-bold text-eternal-gold">Eternal Trees Saga</span>
-                    </a>
-                </div>
-                <div class="hidden md:block">
-                    <div class="flex items-baseline space-x-4">
-                        <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Home</a>
-                        <a href="key-figures.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Key Figures</a>
-                        <a href="places.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Places</a>
-                        <a href="timeline.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Timeline</a>
-                        <a href="plots.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Plots</a>
-                        <a href="eastern-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-amber hover:bg-slate-800 transition">Eastern</a>
-                        <a href="western-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-purple hover:bg-slate-800 transition">Western</a>
-                        <a href="other-realms.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-emerald hover:bg-slate-800 transition">Realms</a>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-700">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Home</a>
-                <a href="key-figures.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Key Figures</a>
-                <a href="places.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Places</a>
-                <a href="timeline.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Timeline</a>
-                <a href="plots.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Plots</a>
-                <a href="eastern-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-amber hover:bg-slate-800">Eastern Factions</a>
-                <a href="western-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-purple hover:bg-slate-800">Western Factions</a>
-                <a href="other-realms.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-emerald hover:bg-slate-800">Other Realms</a>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="relative bg-gradient-to-b from-gray-900/60 to-slate-950 py-16">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 50% 50%, rgba(100, 116, 139, 0.3) 0%, transparent 70%);"></div>
-        </div>
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="inline-flex items-center space-x-2 mb-4">
-                <span class="px-3 py-1 bg-gray-800 border border-gray-600 rounded-full text-gray-400 text-sm">Dark Realm</span>
-                <span class="px-3 py-1 bg-slate-800 border border-slate-600 rounded-full text-slate-400 text-sm">Eight Great Families</span>
+<!-- Navigation (unchanged structure, enhanced slightly) -->
+<nav class="bg-slate-900/90 backdrop-blur-md border-b border-slate-700 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <i class="fas fa-tree text-eternal-emerald text-2xl"></i>
+                    <span class="fantasy-font text-xl font-bold text-eternal-gold">Eternal Trees Saga</span>
+                </a>
             </div>
-            <h1 class="text-5xl md:text-6xl font-bold text-gray-300 mb-4">Aneians</h1>
-            <p class="text-xl text-slate-400 max-w-3xl mx-auto">The Void-Touched survivors of the Destroyer's cataclysm, bound by oath and prophecy</p>
-            <div class="mt-6 flex justify-center space-x-4 text-sm text-slate-500">
-                <span><i class="fas fa-star text-gray-400 mr-2"></i>Void-Adapted</span>
-                <span><i class="fas fa-users text-gray-400 mr-2"></i>Eight Houses</span>
-                <span><i class="fas fa-scroll text-gray-400 mr-2"></i>Prophecy of the 25th</span>
+            <div class="hidden md:block">
+                <div class="flex items-baseline space-x-2">
+                    <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Home</a>
+                    <a href="key-figures.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Key Figures</a>
+                    <a href="places.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Places</a>
+                    <a href="timeline.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Timeline</a>
+                    <a href="plots.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Plots</a>
+                    <a href="eastern-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-amber hover:bg-slate-800 transition">Eastern</a>
+                    <a href="western-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-purple hover:bg-slate-800 transition">Western</a>
+                    <a href="other-realms.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-emerald hover:bg-slate-800 transition">Realms</a>
+                </div>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="text-slate-300 hover:text-white"><i class="fas fa-bars text-xl"></i></button>
             </div>
         </div>
-    </section>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-700">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Home</a>
+            <a href="key-figures.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Key Figures</a>
+            <a href="places.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Places</a>
+            <a href="timeline.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Timeline</a>
+            <a href="plots.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Plots</a>
+            <a href="eastern-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-amber hover:bg-slate-800">Eastern Factions</a>
+            <a href="western-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-purple hover:bg-slate-800">Western Factions</a>
+            <a href="other-realms.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-emerald hover:bg-slate-800">Other Realms</a>
+        </div>
+    </div>
+</nav>
 
-    <!-- Overview -->
-    <section class="py-12 bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
-                <h2 class="text-2xl font-bold text-eternal-gold mb-4">Overview</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">The Aneians are a race of Void-Touched beings who survived the Destroyer's cataclysm that consumed their homeworld. Originally the most severely mutated of the First People—grey-skinned, golden-eyed, and immune to Void-corruption—they were exiled to a pocket dimension (the Dark Realm) during the Primordial Era. There, they developed the Eight Great Families and a unique culture built around survival, adaptation, and the Prophecy of the 25th Guardian.</p>
-                <p class="text-slate-300 leading-relaxed mb-4">Aneian physiology has been fundamentally altered by Void exposure. Their cells maintain coherence in Void-touched zones, they can perceive psychic residue (echoes), and their biology resonates with Void-Crystals that serve as their primary power source. These adaptations allow them to survive where other beings would perish, but they come with significant costs—slower healing in normal reality, crystal dependency, and reduced fertility.</p>
-                <p class="text-slate-300 leading-relaxed">In Book 5, the Aneians hold observer status under the Accord of Arcadia (ratified Year 8234). They are rebuilding after the Scattering and play a key role in the Dark Realm-Inquisitor War (Years 8430–8500). Their society is bound together by the Oath-Bond system—magical contracts enforced by Void-Crystal resonance—and their unwavering belief in the Prophecy of the 25th, which foretells that Lucius Arogzan will show them the way to restore their people.</p>
+<!-- Hero (refined) -->
+<section class="relative bg-gradient-to-b from-gray-900/60 to-slate-950 py-16 border-b border-slate-800">
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 50% 50%, rgba(100, 116, 139, 0.3) 0%, transparent 70%);"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex flex-wrap items-center justify-center gap-2 mb-4">
+            <span class="px-3 py-1 bg-gray-800 border border-gray-600 rounded-full text-gray-400 text-sm"><i class="fas fa-moon mr-1"></i>Dark Realm</span>
+            <span class="px-3 py-1 bg-slate-800 border border-slate-600 rounded-full text-slate-400 text-sm"><i class="fas fa-users mr-1"></i>Eight Great Families</span>
+            <span class="px-3 py-1 bg-slate-800 border border-eternal-gold/40 rounded-full text-eternal-gold text-sm"><i class="fas fa-star mr-1"></i>Prophecy of the 25th</span>
+        </div>
+        <h1 class="text-5xl md:text-6xl font-bold text-gray-200 mb-4">Aneians</h1>
+        <p class="text-xl text-slate-400 max-w-3xl mx-auto">Children of the Edge — Void-Touched exiles, bound by oath and prophecy, survivors of the Destroyer's cataclysm.</p>
+        <div class="mt-6 flex justify-center space-x-6 text-sm text-slate-400">
+            <span><i class="fas fa-skull mr-2 text-gray-500"></i>Void-Adapted</span>
+            <span><i class="fas fa-hand-fist mr-2 text-gray-500"></i>Dark Horde</span>
+            <span><i class="fas fa-scroll mr-2 text-gray-500"></i>“Survival is transcendence.”</span>
+        </div>
+    </div>
+</section>
+
+<!-- Overview (expanded from DOCX) -->
+<section class="py-12 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-slate-900/40 border border-slate-700 rounded-2xl p-8 backdrop-blur-sm">
+            <h2 class="text-2xl font-bold text-eternal-gold mb-4 flex items-center"><i class="fas fa-info-circle mr-3 text-eternal-emerald"></i>Overview</h2>
+            <div class="prose-custom text-slate-300 space-y-4">
+                <p>The <strong class="text-gray-200">Aneians</strong> are a race of Void‑Touched beings who survived the Destroyer’s cataclysm that consumed their homeworld. Originally the most severely mutated of the First People—grey‑skinned, golden‑eyed, and immune to Void‑corruption—they were exiled to a pocket dimension (the Dark Realm) during the Primordial Era (Absolute Year 2,200). There, they developed the Eight Great Families and a unique culture built around survival, adaptation, and the <strong class="text-eternal-gold">Prophecy of the 25th Guardian</strong>.</p>
+                <p>Aneian physiology has been fundamentally altered by Void exposure. Their cells maintain coherence in Void‑touched zones, they perceive psychic residue (echoes), and their biology resonates with Void‑Crystals that serve as their primary power source. These adaptations allow them to survive where other beings would perish—but they come with significant costs: slower healing in normal reality, crystal dependency, and reduced fertility.</p>
+                <p>In Book 5 (post‑Accord of Arcadia, Year 8234), the Aneians hold observer status and are rebuilding after the Scattering. They play a key role in the Dark Realm–Inquisitor War (Years 8430–8500). Their society is bound by the Oath‑Bond system—magical contracts enforced by Void‑Crystal resonance—and their unwavering belief that Lucius Arogzan, the 25th Guardian, will show them the way to restoration.</p>
+                <p class="text-sm text-slate-400 italic border-l-4 border-eternal-gold pl-4 mt-4">Population (Book 5): ~12–15 million · Governance: Council of Eight Great Families · Thematic Core: “Survival is transcendence. The Edge teaches what the center cannot know.”</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- The Eight Great Families -->
-    <section class="py-12 bg-slate-900/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-8">The Eight Great Families</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="house-card bg-slate-900/50 border border-slate-700 rounded-xl p-5">
-                    <div class="flex items-center mb-3">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-star text-gray-400"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-300">House Arogzan</h3>
-                            <p class="text-xs text-slate-500">Void-Crystal, Prophecy</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-400 text-sm">The ruling house associated with the Prophecy of the 25th. Grey star on black sigil. Diminished but continues through Lucius's teaching.</p>
-                </div>
-                <div class="house-card bg-slate-900/50 border border-slate-700 rounded-xl p-5">
-                    <div class="flex items-center mb-3">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-compass text-gray-400"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-300">House Vaelor</h3>
-                            <p class="text-xs text-slate-500">Void-Navigation</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-400 text-sm">Masters of Void-navigation. Silver compass on grey sigil. Destroyed in 3M Y 3446; awaiting rebirth as Vaelor Academy in 5M Y 8250.</p>
-                </div>
-                <div class="house-card bg-slate-900/50 border border-slate-700 rounded-xl p-5">
-                    <div class="flex items-center mb-3">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-fire text-gray-400"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-300">House Emberfall</h3>
-                            <p class="text-xs text-slate-500">Fire-Keepers</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-400 text-sm">Keepers of flame in the darkness. Crimson flame on black sigil. Extinct in 3M Y 4922; reborn as Emberfall Sanctuary in 5M Y 8280.</p>
-                </div>
-                <div class="house-card bg-slate-900/50 border border-slate-700 rounded-xl p-5">
-                    <div class="flex items-center mb-3">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-hammer text-gray-400"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-300">House Stoneheart</h3>
-                            <p class="text-xs text-slate-500">Earth-Binders</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-400 text-sm">Builders and earth-binders. Bronze hammer on grey sigil. Led by Lady Greta Stoneheart. Active and diminished but enduring.</p>
-                </div>
-                <div class="house-card bg-slate-900/50 border border-slate-700 rounded-xl p-5">
-                    <div class="flex items-center mb-3">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-wind text-gray-400"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-300">House Whisperwind</h3>
-                            <p class="text-xs text-slate-500">Void-Whisperers</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-400 text-sm">Messengers and whisperers. Silver wind on black sigil. Scattered but active. Their whispers carry through the Void itself.</p>
-                </div>
-                <div class="house-card bg-slate-900/50 border border-slate-700 rounded-xl p-5">
-                    <div class="flex items-center mb-3">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-moon text-gray-400"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-300">House Nightshade</h3>
-                            <p class="text-xs text-slate-500">Shadow-Walkers</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-400 text-sm">Walkers of shadow and stealth. Black dagger on silver sigil. Led by Lady Mira Nightshade. Corruption begins in Book 5 era.</p>
-                </div>
-                <div class="house-card bg-slate-900/50 border border-slate-700 rounded-xl p-5">
-                    <div class="flex items-center mb-3">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-mirror text-gray-400"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-300">House Thornwood</h3>
-                            <p class="text-xs text-slate-500">Elemental Wardens</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-400 text-sm">Wardens of elemental balance. Obsidian mirror on ash sigil. Absorbed in 4M Y 2103; merged with Mytrilla line.</p>
-                </div>
-                <div class="house-card bg-slate-900/50 border border-slate-700 rounded-xl p-5">
-                    <div class="flex items-center mb-3">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-sun text-gray-400"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-300">House Dawnweaver</h3>
-                            <p class="text-xs text-slate-500">Light-Bearers</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-400 text-sm">Bearers of light in the darkness. Golden sun on grey sigil. Absorbed in 3M Y 4322; merged with Mytrilla line.</p>
-                </div>
+<!-- The Eight Great Families (expanded with founders, mottos, status) -->
+<section class="py-12 bg-slate-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-eternal-gold mb-3">The Eight Great Families</h2>
+        <p class="text-center text-slate-400 mb-8 text-sm">Lineages forged over four millennia in the Dark Realm — each with a sacred domain.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- House Arogzan -->
+            <div class="house-card bg-slate-900/60 border border-slate-700 rounded-xl p-5">
+                <div class="flex items-center mb-3"><div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-star text-gray-300"></i></div><div><h3 class="font-bold text-gray-200">House Arogzan</h3><p class="text-xs text-slate-400">Founder Lineage · Void-Crystal, Prophecy</p></div></div>
+                <p class="text-slate-300 text-sm"><span class="text-eternal-gold">Founder:</span> Drev Arogzan I (DE 1). <span class="text-eternal-gold">Sigil:</span> Grey star on black. <span class="text-eternal-gold">Motto:</span> “The Star shines in darkness.” Diminished after Scattering; continues through Lucius’s teaching.</p>
+            </div>
+            <!-- House Vaelor -->
+            <div class="house-card bg-slate-900/60 border border-slate-700 rounded-xl p-5">
+                <div class="flex items-center mb-3"><div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-compass text-gray-300"></i></div><div><h3 class="font-bold text-gray-200">House Vaelor</h3><p class="text-xs text-slate-400">Void-Navigation</p></div></div>
+                <p class="text-slate-300 text-sm"><span class="text-eternal-gold">Founder:</span> Sephra Vaelor (DE 800). Silver compass on grey. Destroyed 3M Y3446; reborn as Vaelor Academy (5M Y8250).</p>
+            </div>
+            <!-- House Emberfall -->
+            <div class="house-card bg-slate-900/60 border border-slate-700 rounded-xl p-5">
+                <div class="flex items-center mb-3"><div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-fire text-gray-300"></i></div><div><h3 class="font-bold text-gray-200">House Emberfall</h3><p class="text-xs text-slate-400">Fire-Keepers</p></div></div>
+                <p class="text-slate-300 text-sm"><span class="text-eternal-gold">Founder:</span> Torin Emberfall (DE 1200). Crimson flame on black. Extinct 3M Y4922; Emberfall Sanctuary relit 5M Y8280.</p>
+            </div>
+            <!-- House Stoneheart -->
+            <div class="house-card bg-slate-900/60 border border-slate-700 rounded-xl p-5">
+                <div class="flex items-center mb-3"><div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-hammer text-gray-300"></i></div><div><h3 class="font-bold text-gray-200">House Stoneheart</h3><p class="text-xs text-slate-400">Earth-Binders</p></div></div>
+                <p class="text-slate-300 text-sm"><span class="text-eternal-gold">Founder:</span> Borin Stoneheart (DE 1500). Bronze hammer on grey. Active; led by Lady Greta Stoneheart.</p>
+            </div>
+            <!-- House Whisperwind -->
+            <div class="house-card bg-slate-900/60 border border-slate-700 rounded-xl p-5">
+                <div class="flex items-center mb-3"><div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-wind text-gray-300"></i></div><div><h3 class="font-bold text-gray-200">House Whisperwind</h3><p class="text-xs text-slate-400">Void-Whisperers</p></div></div>
+                <p class="text-slate-300 text-sm"><span class="text-eternal-gold">Founder:</span> Kaelen Whisperwind (DE 1800). Silver wind on black. Scattered but active intelligence network.</p>
+            </div>
+            <!-- House Nightshade -->
+            <div class="house-card bg-slate-900/60 border border-slate-700 rounded-xl p-5">
+                <div class="flex items-center mb-3"><div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-moon text-gray-300"></i></div><div><h3 class="font-bold text-gray-200">House Nightshade</h3><p class="text-xs text-slate-400">Shadow-Walkers</p></div></div>
+                <p class="text-slate-300 text-sm"><span class="text-eternal-gold">Founder:</span> Mira Nightshade I (DE 2200). Black dagger on silver. Active; Lady Mira Nightshade (corruption begins Book 5).</p>
+            </div>
+            <!-- House Thornwood (absorbed) -->
+            <div class="house-card bg-slate-900/60 border border-slate-700 rounded-xl p-5 opacity-90">
+                <div class="flex items-center mb-3"><div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-mirror text-gray-300"></i></div><div><h3 class="font-bold text-gray-200">House Thornwood</h3><p class="text-xs text-slate-400">Elemental Wardens</p></div></div>
+                <p class="text-slate-300 text-sm"><span class="text-eternal-gold">Founder:</span> Marduk Thornwood (DE 2800). Obsidian mirror on ash. Absorbed 4M Y2103; merged with Mytrilla line.</p>
+            </div>
+            <!-- House Dawnweaver -->
+            <div class="house-card bg-slate-900/60 border border-slate-700 rounded-xl p-5 opacity-90">
+                <div class="flex items-center mb-3"><div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-sun text-gray-300"></i></div><div><h3 class="font-bold text-gray-200">House Dawnweaver</h3><p class="text-xs text-slate-400">Light-Bearers</p></div></div>
+                <p class="text-slate-300 text-sm"><span class="text-eternal-gold">Founder:</span> Theron Dawnweaver (DE 3200). Golden sun on grey. Absorbed 3M Y4322; merged with Mytrilla line.</p>
             </div>
         </div>
-    </section>
+        <div class="mt-6 text-center text-sm text-slate-400"><span class="text-eternal-gold">Mytrilla Line:</span> Cadet branch preserving Thornwood & Dawnweaver legacies. Keeper Mytrilla Sorrel (Book 5).</div>
+    </div>
+</section>
 
-    <!-- 11 Frameworks Analysis -->
-    <section class="py-12 bg-slate-900/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-12">11-Framework Analysis</h2>
+<!-- 11 FRAMEWORKS – EXPANDED & DETAILED (replaces previous card grid) -->
+<section class="py-12 bg-slate-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-eternal-gold mb-6">Comprehensive Frameworks</h2>
+        <p class="text-center text-slate-400 mb-12 max-w-3xl mx-auto text-sm">An exhaustive analysis of Aneian civilization across eleven dimensions, drawn from canonical sources.</p>
+        
+        <div class="space-y-10">
+            <!-- 1. HISTORICAL -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-2xl p-6 md:p-8">
+                <div class="flex items-center mb-5"><div class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center mr-4"><i class="fas fa-landmark text-2xl text-eternal-gold"></i></div><h3 class="text-2xl font-bold text-gray-200">1. Historical Framework</h3></div>
+                <div class="prose-custom text-slate-300 grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-eternal-amber text-lg font-semibold mb-2">Origins & Exile</h4>
+                        <p><span class="glossary-term">Absolute Year 2,200:</span> The Threshold Tribe declared the most severely mutated First People “Unstable” and exiled them to a pocket dimension—the Dark Realm. Drev Arogzan I became the first Regent General, founding Periphery’s Edge.</p>
+                        <p><span class="glossary-term">The Destroyer’s First Whisper (Abs. 2,400):</span> Leakage of the Fifth Persona corrupted the Dark Realm, but the Aneians adapted. The Remembrance Circle received the Prophecy of the 25th Guardian through echo-communion.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-eternal-amber text-lg font-semibold mb-2">Genealogical Evolution</h4>
+                        <p>Over 4,000 years, the Eight Great Families emerged, each developing specialized Void-adaptations. Houses Vaelor (navigation), Emberfall (fire), Stoneheart (earth), Whisperwind (whispers), Nightshade (shadow), Thornwood (elemental), Dawnweaver (light) branched from the Arogzan root.</p>
+                        <p><span class="glossary-term">The Scattering (3M Y922):</span> The Aneian homeworld was consumed; population reduced by ~60%. The Prophecy became the central hope for restoration.</p>
+                    </div>
+                </div>
+            </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Historical Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-landmark text-gray-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-300">1. Historical</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">The Aneians trace their origins to the Void-Touched Purge of Absolute Year 2,200, when the most severely mutated First People—grey-skinned, golden-eyed, and immune to Void-corruption—were deemed "Unstable" by the Threshold Tribe. Exiled to a pocket dimension (the Dark Realm), they developed the Eight Great Families over millennia. The Destroyer's first whisper in Abs. 2,400 began corrupting their realm, but the Aneians adapted, developing Void-resistance as a survival trait. The Prophecy of the 25th Guardian became their guiding hope, foretelling that Lucius Arogzan would show them the way to restoration. In Book 5, they hold observer status under the Accord of Arcadia and play a key role in the Dark Realm-Inquisitor War.</p>
-                </div>
-
-                <!-- Political Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-balance-scale text-gray-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-300">2. Political</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Aneian politics center on the Council of Families, composed of the heads of the Eight Great Families. The Regent General (deceased by Book 5) historically held supreme authority. Below the Council, the Void-Touched Council (20 elite) handles military coordination, the Remembrance Circle (50 lore-keepers) preserves culture and interprets prophecy, and the Horde Assembly manages civil governance. Key political figures include Lady Greta Stoneheart (House Stoneheart) and Lady Mira Nightshade (House Nightshade). The Aneians operate under observer status in the Accord of Arcadia, with limited voting rights but full protection. Their political structure emphasizes survival and cultural preservation over expansion.</p>
-                </div>
-
-                <!-- Mental Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-brain text-gray-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-300">3. Mental</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Aneian cognition has evolved through Edge-cognition—thinking at the border of non-existence. This mental state allows them to perceive Firmament weaknesses, detect Void-touched entities invisible to others, and maintain reduced fear responses necessary for survival. Training involves probability-trauma conditioning—exposure to near-obliteration that strengthens mental resilience. Advanced practitioners learn echo-memory integration, absorbing psychic residue of the dead to preserve their knowledge. However, this same training carries the risk of Void-psychosis—losing distinction between self and non-existence. Those who fall to this condition are gently separated from the community and cared for until they recover or pass.</p>
-                </div>
-
-                <!-- Spiritual Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-praying-hands text-gray-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-300">4. Spiritual</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Aneian spirituality centers on survival as transcendence—the belief that enduring the edge of non-existence grants wisdom the untouched cannot possess. They view the Destroyer not as evil but as a test, and the Void as a teacher rather than an enemy. Core rituals include Edge-Touch (monthly communal Void exposure), Echo Communion (annual speaking with psychic residue of the dead), Crystal Meditation (daily Void-Crystal attunement), and the Remembrance Feast (seasonal honoring of pre-Destroyer culture). The Prophecy of the 25th is their central spiritual anchor: "When the star born of void and light walks between worlds, the scattered children shall be gathered. He shall not save them—they shall save themselves. But he shall show them the way."</p>
-                </div>
-
-                <!-- Social Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-users text-gray-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-300">5. Social</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Aneian society is organized into six tiers: the Regent General (historical, deceased), Great Family Heads (0.5%), Void-Touched Elite (5%), Border-Walkers (15%), Remembrance (10%), and the Horde (69.4%). Social mobility exists through dangerous adaptation rituals—Border-Walkers can be elevated to Void-Touched through rituals with 30% mortality. The Oath-Bond System maintains social cohesion through magical contracts enforced by Void-Crystal resonance. Breaking an oath causes physical pain and, for severe violations, Void-rejection (expulsion from adapted state, leading to death). This system ensures that Aneian society functions on trust and honor, even in the harshest conditions.</p>
-                </div>
-
-                <!-- Cultural Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-palette text-gray-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-300">6. Cultural</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Aneian culture is defined by the tension between what was lost and what must be preserved. The Remembrance Circle maintains extensive archives of pre-Destroyer culture, and every Aneian is expected to memorize their family's history back to the exodus. Storytelling is the highest art form, with Remembrance Bards traveling between settlements to share tales of the homeworld. Music tends toward the melancholy—songs of loss and hope sung in the dark. Visual art uses Void-Crystal to create luminescent works that glow with inner light. The greatest cultural achievement is the Archive of Echoes, a vast repository of psychic residue harvested from the destroyed homeworld, allowing Aneians to commune with the memories of their ancestors.</p>
-                </div>
-
-                <!-- Economical Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-coins text-gray-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-300">7. Economical</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">The Aneian economy operates through five sectors: agriculture (Void-resistant crops, fungal farming), trade (Void-Crystal trade, information brokering), industry (shadow-forges, Void-Crystal crafting), resource extraction (Void-Crystal mining, echo harvesting), and salvage (battlefield recovery, relic hunting). Their currency system uses Void Shards (base), Echo Vessels (medium), Crystal Credits (high, adopted from Eastern Plane), and Service Debts (variable, oath-based). The Service Debt economy is particularly important—honor-bound repayment of favors creates a complex web of obligations that binds Aneian society together. Trade with the Eastern Plane is limited but growing under the Accord of Arcadia.</p>
-                </div>
-
-                <!-- Physiological Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-heartbeat text-gray-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-300">8. Physiological</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Aneian physiology has been fundamentally altered by Void exposure. Key traits include: Void-Resistant Tissue (cells maintain coherence in Void-touched zones, but slower healing in normal reality), Echo-Sensitivity (can perceive psychic residue, but vulnerable to psychic attack), Crystal Attunement (Void-Crystals resonate with Aneian biology, but dependency causes withdrawal sickness), Extended Lifespan (300-500 years average), and Grey-Tinted Skin (melanin adaptation to Void radiation, creating visible distinction from other races). Compared to baseline humans, Aneians have enhanced neural plasticity for trauma adaptation, additional senses (Void perception, echo-sense), and lower fertility rates due to Void exposure effects.</p>
-                </div>
-
-                <!-- Territorial Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-map-marked-alt text-gray-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-300">9. Territorial</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">The Aneians inhabit four primary regions: the Dark Realm Periphery (70% of population, Void-touched but habitable settlements), the Depths of Abyss (10%, the crater where echoes dwell and Void-Crystals grow), Border Zones (15%, contested regions between Dark Realm and Eastern Plane), and Scattered Enclaves (5%, secret locations for Remembrance archives). The Depths of Abyss is their most sacred and dangerous location—the crater where the Destroyer first manifested, where psychic residue of the destroyed homeworld persists as "echoes," and where Void-Crystals grow naturally. Only Void-Touched elite can enter unprotected. In Book 5, this site becomes the location of the Inquisitor's illegal laboratory (discovered Year 8015).</p>
-                </div>
-
-                <!-- Technological Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-cogs text-gray-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-300">10. Technological</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Aneian technology is based on Void-Crystal manipulation. Core technologies include: Void-Crystals (power source, communication, weapon focus), Shadow-Forges (crafting with Void-Crystal infusion), Echo Vessels (capture and store psychic residue), Void-Sails (Dark Realm navigation), Crystal Lenses (detection of Firmament weaknesses), and Resonance Keys (authentication, oath-binding). Their weaponry includes Void-Blades (melee weapons with unmaking edges), Echo-Lances (ranged psychic disruption), Crystal Shard Bombs (area denial through Void-energy release), and Shadow-Cloaks (darkness invisibility armor). All Aneian technology requires Void-Crystal power sources and cannot be operated by non-Aneians without extensive adaptation.</p>
-                </div>
-
-                <!-- Military Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-shield-alt text-gray-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-gray-300">11. Military</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">The Aneian military (the Dark Horde) operates under a six-rank hierarchy: Regent General (historical), Void Marshal (strategic command, 10,000-50,000), Horde Lord (operational command, 1,000-10,000), Edge Captain (unit command, 100-1,000), Border-Sergeant (squad command, 10-100), and Horde Soldier (line infantry). Key units include Void-Guard (10k elite defense), Echo-Scouts (5k reconnaissance), Border-Walkers (15k border patrol), Crystal-Throwers (3k siege/area denial), Remembrance Guard (1k archive defense), and Horde Infantry (50k general combat). Defenses include Void-Walls (reality-anchored barriers), Crystal Beacons (warning systems), Echo-Shields (psychic defense), and Shadow-Ramps (concealed approaches). Vehicles include Void-Skiffs, Echo-Carriers, Shadow-Ships, and Crystal Barges.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- The Prophecy of the 25th -->
-    <section class="py-12 bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gradient-to-r from-gray-900/50 to-slate-900/50 border border-gray-700 rounded-2xl p-8">
-                <h2 class="text-2xl font-bold text-eternal-gold mb-6 text-center">The Prophecy of the 25th Guardian</h2>
-                <blockquote class="text-xl text-center text-slate-300 italic mb-4">
-                    "When the star born of void and light walks between worlds, the scattered children shall be gathered. He shall not save them—they shall save themselves. But he shall show them the way."
-                </blockquote>
-                <p class="text-center text-slate-500 text-sm mb-6">— Ancient Aneian Prophecy</p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-star text-gray-400 text-2xl"></i>
-                        </div>
-                        <h3 class="font-bold text-gray-300 mb-2">The Star Born of Void and Light</h3>
-                        <p class="text-slate-400 text-sm">Lucius Arogzan, descendant of House Arogzan, who carries both Void-touched heritage and Guardian light.</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-users text-gray-400 text-2xl"></i>
-                        </div>
-                        <h3 class="font-bold text-gray-300 mb-2">The Scattered Children</h3>
-                        <p class="text-slate-400 text-sm">The Aneian people, divided among Eight Great Families, waiting to be united and restored.</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-road text-gray-400 text-2xl"></i>
-                        </div>
-                        <h3 class="font-bold text-gray-300 mb-2">He Shall Show Them the Way</h3>
-                        <p class="text-slate-400 text-sm">Lucius will not save the Aneians—he will teach them to save themselves through his example and guidance.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Aneians in Book 5 -->
-    <section class="py-12 bg-slate-900/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
-                <h2 class="text-2xl font-bold text-eternal-gold mb-4">Aneians in Book 5</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- 2. POLITICAL -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-2xl p-6 md:p-8">
+                <div class="flex items-center mb-5"><div class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center mr-4"><i class="fas fa-balance-scale text-2xl text-eternal-gold"></i></div><h3 class="text-2xl font-bold text-gray-200">2. Political Framework</h3></div>
+                <div class="grid md:grid-cols-2 gap-6 text-slate-300">
                     <div>
-                        <h3 class="text-lg font-bold text-gray-300 mb-2">Observer Status (Year 8234)</h3>
-                        <p class="text-slate-400 text-sm mb-4">Under the Accord of Arcadia, the Aneians receive observer status—protection and limited participation without full voting rights. This represents significant progress from their previous isolation.</p>
-                        <h3 class="text-lg font-bold text-gray-300 mb-2">Dark Realm-Inquisitor War (Years 8430-8500)</h3>
-                        <p class="text-slate-400 text-sm">The Aneians play a key role in defeating Inquisitor remnants who flee to the Dark Realm. Their Void-adapted forces are essential in this hostile terrain.</p>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold text-gray-300 mb-2">Key Aneian Figures</h3>
-                        <ul class="space-y-2 text-slate-400 text-sm">
-                            <li><strong class="text-gray-300">Lady Greta Stoneheart</strong> — Head of House Stoneheart, advocate for Aneian integration</li>
-                            <li><strong class="text-gray-300">Lady Mira Nightshade</strong> — Head of House Nightshade, whose corruption begins in Book 5</li>
-                            <li><strong class="text-gray-300">Elder Remembrancer Vorn</strong> — Keeper of the Archive of Echoes</li>
-                            <li><strong class="text-gray-300">Border-Captain Rika</strong> — Commander of Border-Walker forces</li>
+                        <h4 class="text-eternal-amber font-semibold mb-2">Council of Families (Oligarchic Republic)</h4>
+                        <ul class="list-disc pl-5 space-y-1 text-sm">
+                            <li><strong>Regent General</strong> (vacant since 3M) – supreme command.</li>
+                            <li><strong>Council of Eight Families</strong> – strategic decisions, resource allocation.</li>
+                            <li><strong>Void-Touched Council</strong> (20 elite) – military coordination.</li>
+                            <li><strong>Remembrance Circle</strong> (50 lore-keepers) – prophecy interpretation, cultural veto.</li>
+                            <li><strong>Horde Assembly</strong> – civil governance, can propose legislation.</li>
                         </ul>
+                        <p class="mt-2 text-sm"><span class="text-eternal-gold">Oath-Bond System:</span> Magical contracts enforced by Void-Crystal resonance. Treason triggers Void-Rejection (fatal within days).</p>
+                    </div>
+                    <div>
+                        <h4 class="text-eternal-amber font-semibold mb-2">Key Figures (Book 5)</h4>
+                        <ul class="list-disc pl-5 text-sm">
+                            <li><strong>Lady Greta Stoneheart</strong> – pragmatic integrationist.</li>
+                            <li><strong>Lady Mira Nightshade</strong> – isolationist; early corruption.</li>
+                            <li><strong>Elder Remembrancer Vorn</strong> – prophecy interpreter.</li>
+                            <li><strong>Border-Captain Rika</strong> – influential military leader.</li>
+                        </ul>
+                        <p class="mt-2 text-sm">Observer status under Accord of Arcadia (8234). The Council governs collectively; the Regent General’s seat awaits Prophecy fulfillment.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3. MENTAL -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-2xl p-6 md:p-8">
+                <div class="flex items-center mb-5"><div class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center mr-4"><i class="fas fa-brain text-2xl text-eternal-gold"></i></div><h3 class="text-2xl font-bold text-gray-200">3. Mental Framework</h3></div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="text-slate-300">
+                        <h4 class="text-eternal-amber font-semibold mb-2">Edge-Cognition & Training</h4>
+                        <p>Thinking at the border of non-existence. Aneians perceive Firmament weaknesses, detect Void-touched entities, and maintain reduced fear. Training includes probability‑trauma conditioning and echo‑memory integration.</p>
+                        <p><span class="glossary-term">Five Paths of Thought:</span> Remembrance (preservation), Edge (warrior), Whisper (intelligence), Crystal (technology), Prophecy (spiritual).</p>
+                    </div>
+                    <div class="text-slate-300">
+                        <h4 class="text-eternal-amber font-semibold mb-2">Psychological Conditions</h4>
+                        <ul class="list-disc pl-5 text-sm">
+                            <li><strong>Void-Psychosis:</strong> Loss of self/non-existence boundary.</li>
+                            <li><strong>Echo-Overload:</strong> Identity confusion from too many echoes.</li>
+                            <li><strong>Exile Syndrome:</strong> Chronic grief; managed through hope‑maintenance therapy.</li>
+                        </ul>
+                        <p class="mt-2 text-sm">Hope‑maintenance transforms passive waiting into active preparation for the Prophecy.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 4. SPIRITUAL -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-2xl p-6 md:p-8">
+                <div class="flex items-center mb-5"><div class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center mr-4"><i class="fas fa-praying-hands text-2xl text-eternal-gold"></i></div><h3 class="text-2xl font-bold text-gray-200">4. Spiritual Framework</h3></div>
+                <div class="text-slate-300 space-y-3">
+                    <p><span class="glossary-term">The Void as Teacher:</span> “The Void does not hate us. The Void does not love us. The Void simply is.” Survival at the Edge grants wisdom.</p>
+                    <p><span class="glossary-term">Prophecy of the 25th:</span> “When the star born of void and light walks between worlds, the scattered children shall be gathered. He shall not save them—they shall save themselves. But he shall show them the way.” (Lucius Arogzan).</p>
+                    <p><span class="glossary-term">Echo-Immortality:</span> Harvested echoes persist 3–5 generations in Echo Chambers. Death is fading into the collective memory.</p>
+                    <p class="text-sm"><strong>Core rituals:</strong> Edge‑Touch (monthly), Echo Communion (annual), Crystal Meditation (daily), Remembrance Feast (seasonal).</p>
+                </div>
+            </div>
+            
+            <!-- 5. SOCIAL -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-2xl p-6 md:p-8">
+                <div class="flex items-center mb-5"><div class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center mr-4"><i class="fas fa-users text-2xl text-eternal-gold"></i></div><h3 class="text-2xl font-bold text-gray-200">5. Social Framework</h3></div>
+                <div class="grid md:grid-cols-2 gap-6 text-slate-300">
+                    <div>
+                        <h4 class="text-eternal-amber font-semibold">Hierarchy & Mobility</h4>
+                        <ul class="list-disc pl-5 text-sm">
+                            <li>Regent General (&lt;0.01%)</li>
+                            <li>Great Family Heads (~0.1%)</li>
+                            <li>Void-Touched Elite (5%) – Trial of Edge</li>
+                            <li>Border-Walkers (15%) – 2-year training</li>
+                            <li>Remembrance (10%) – lore-keepers</li>
+                            <li>Horde (69.4%) – general population</li>
+                        </ul>
+                        <p class="mt-2">Advancement through dangerous adaptation rituals (Ritual of Deep Adaptation, 30% mortality).</p>
+                    </div>
+                    <div>
+                        <h4 class="text-eternal-amber font-semibold">Gatherings & Kinship</h4>
+                        <p><strong>Remembrance Feast</strong> (seasonal), <strong>Edge-Touch</strong> (monthly), <strong>Echo Communion</strong> (annual). Matrilineal descent; Oath‑Bonded partnerships; orphans choose House at 16.</p>
+                        <p class="text-sm mt-2">Crystal Scar (left palm) marks Void-Touched status.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 6. CULTURAL -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-2xl p-6 md:p-8">
+                <div class="flex items-center mb-5"><div class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center mr-4"><i class="fas fa-palette text-2xl text-eternal-gold"></i></div><h3 class="text-2xl font-bold text-gray-200">6. Cultural Framework</h3></div>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div>
+                        <p><span class="glossary-term">Storytelling & Music:</span> The <em>Annals of the Lost</em> (12‑hour epic). Echo‑flutes, grey‑harps, stone‑drums. Luminescent Void‑Crystal art.</p>
+                        <p><span class="glossary-term">Grey Tongue:</span> Edge‑terms (“vael” – moment of choosing danger). Echo‑inflected tone carries emotional memory.</p>
+                    </div>
+                    <div>
+                        <p><span class="glossary-term">Cuisine:</span> Fungal bread, Echo‑bread (trace memories), Void‑moss, shadow‑fish, Crystal‑tea. Communal dining; offering “for the echoes.”</p>
+                        <p><span class="glossary-term">Symbols:</span> Grey star (Prophecy), eight‑pointed star (unity), Crystal Scar, Echo‑beads.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 7. ECONOMICAL -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-2xl p-6 md:p-8">
+                <div class="flex items-center mb-5"><div class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center mr-4"><i class="fas fa-coins text-2xl text-eternal-gold"></i></div><h3 class="text-2xl font-bold text-gray-200">7. Economical Framework</h3></div>
+                <div class="text-slate-300 grid md:grid-cols-2 gap-4">
+                    <div>
+                        <p><strong>Sectors:</strong> Agriculture (fungal farming), Mining (Void‑Crystals), Manufacturing (shadow‑forging), Trade, Salvage.</p>
+                        <p><strong>Currency:</strong> Void Shards (base), Echo Vessels (medium, contain memories), Crystal Credits (external), Service Debts (oath‑based).</p>
+                    </div>
+                    <div>
+                        <p><strong>Guilds:</strong> Shadow‑Smiths, Crystal‑Shapers, Echo‑Harvesters, Grey‑Weavers. Council tax 10%.</p>
+                        <p><strong>External trade:</strong> Low‑grade crystals to Helron/Chuugoku; high‑grade restricted. Accord Gate inspection.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 8. PHYSIOLOGICAL -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-2xl p-6 md:p-8">
+                <div class="flex items-center mb-5"><div class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center mr-4"><i class="fas fa-heartbeat text-2xl text-eternal-gold"></i></div><h3 class="text-2xl font-bold text-gray-200">8. Physiological Framework</h3></div>
+                <div class="grid md:grid-cols-2 gap-6 text-slate-300">
+                    <div>
+                        <p><span class="glossary-term">Void-Resistant Tissue:</span> Dense membranes, Crystal micro‑inclusions. Slower healing in normal reality.</p>
+                        <p><span class="glossary-term">Echo-Sensitivity:</span> Perceive psychic residue; vulnerable to psychic attack.</p>
+                        <p><span class="glossary-term">Crystal Attunement:</span> Draw power, store echoes. Withdrawal after 30 days separation.</p>
+                    </div>
+                    <div>
+                        <p><span class="glossary-term">Lifespan:</span> Horde 80–120 yrs; Border‑Walkers 150–250; Void‑Touched 300–500; House Heads up to 800.</p>
+                        <p><span class="glossary-term">Traits:</span> Grey skin, golden glowing eyes, lean build. Reduced fertility (20% baseline).</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 9. TERRITORIAL -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-2xl p-6 md:p-8">
+                <div class="flex items-center mb-5"><div class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center mr-4"><i class="fas fa-map-marked-alt text-2xl text-eternal-gold"></i></div><h3 class="text-2xl font-bold text-gray-200">9. Territorial Framework</h3></div>
+                <div class="text-slate-300 grid md:grid-cols-2 gap-4">
+                    <div>
+                        <p><strong>Dark Realm Periphery:</strong> 70% population; capital Periphery’s Edge (~2 million).</p>
+                        <p><strong>Border Zones:</strong> 15% pop.; Southern Wall (200 km) defends against Helron.</p>
+                        <p><strong>Depths of Abyss:</strong> Sacred crater; Void‑Crystals grow; Echo Chambers; site of Inquisitor’s lab.</p>
+                    </div>
+                    <div>
+                        <p><strong>Scattered Enclaves:</strong> Hidden Remembrance archives (5% pop.).</p>
+                        <p><strong>Adjacent Domains:</strong> Chuugoku (cautious trade), Helron (tension), Lux Imperio (complex), Celestial Realm (Ritual of Ascent).</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 10. TECHNOLOGICAL -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-2xl p-6 md:p-8">
+                <div class="flex items-center mb-5"><div class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center mr-4"><i class="fas fa-cogs text-2xl text-eternal-gold"></i></div><h3 class="text-2xl font-bold text-gray-200">10. Technological Framework</h3></div>
+                <div class="grid md:grid-cols-2 gap-6 text-sm">
+                    <div>
+                        <p><span class="glossary-term">Void-Crystals:</span> Crystallized Void-energy. Grades: Shard → Vessel → Pillar → Heart. Used for power, memory, oaths.</p>
+                        <p><span class="glossary-term">Applications:</span> Paired crystals (communication), Echo Vessels, Crystal Reactors, Shadow‑Forges, Void‑Nullifiers (limited area).</p>
+                    </div>
+                    <div>
+                        <p><span class="glossary-term">Weaponry:</span> Void‑Blades (unmaking edge), Echo‑Lances (psychic disruption), Crystal Shard Bombs, Shadow‑Cloaks.</p>
+                        <p><span class="glossary-term">Vehicles:</span> Void‑Skiffs, Echo‑Carriers, Shadow‑Ships, Crystal Barges.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 11. MILITARY -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-2xl p-6 md:p-8">
+                <div class="flex items-center mb-5"><div class="w-12 h-12 bg-gray-800 rounded-xl flex items-center justify-center mr-4"><i class="fas fa-shield-alt text-2xl text-eternal-gold"></i></div><h3 class="text-2xl font-bold text-gray-200">11. Military Framework</h3></div>
+                <div class="grid md:grid-cols-2 gap-6 text-slate-300 text-sm">
+                    <div>
+                        <p><strong>Dark Horde Ranks:</strong> Regent General → Void Marshal → Horde Lord → Edge Captain → Border‑Sergeant → Horde Soldier.</p>
+                        <p><strong>Units:</strong> Void‑Guard (10k elite), Echo‑Scouts (5k), Border‑Walkers (15k), Crystal‑Throwers (3k), Remembrance Guard (1k), Horde Infantry (50k).</p>
+                    </div>
+                    <div>
+                        <p><strong>Defenses:</strong> Void‑Walls, Crystal Beacons, Echo‑Shields, Shadow‑Ramps.</p>
+                        <p><strong>Special Units:</strong> Nightshade Shadow‑Walkers, Stoneheart Breakers, Whisperwind Listeners.</p>
+                        <p class="mt-2">Tamed beasts: Void‑Stags, Shadow‑Wolves, Echo‑Bats.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 border-t border-slate-800 py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="flex items-center space-x-2 mb-4 md:mb-0">
-                    <i class="fas fa-tree text-eternal-emerald text-xl"></i>
-                    <span class="fantasy-font text-lg font-bold text-eternal-gold">Eternal Trees Saga</span>
+<!-- Prophecy of the 25th (expanded) -->
+<section class="py-12 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-r from-gray-900/60 to-slate-900/60 border border-gray-700 rounded-2xl p-8">
+            <h2 class="text-2xl font-bold text-eternal-gold mb-6 text-center">✨ The Prophecy of the 25th Guardian ✨</h2>
+            <blockquote class="text-xl md:text-2xl text-center text-slate-200 italic mb-4 font-cinzel">“When the star born of void and light walks between worlds, the scattered children shall be gathered. He shall not save them—they shall save themselves. But he shall show them the way.”</blockquote>
+            <p class="text-center text-slate-400 text-sm mb-8">— Received through echo‑communion after the Destroyer’s First Whisper (Abs. 2,400)</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div><div class="w-14 h-14 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-3"><i class="fas fa-star text-eternal-gold text-xl"></i></div><h3 class="font-bold text-gray-200">Star born of void and light</h3><p class="text-slate-400 text-sm">Lucius Arogzan — Aneian father (Lothmar IV) & Lux Imperio mother (Aileen the Saintess).</p></div>
+                <div><div class="w-14 h-14 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-3"><i class="fas fa-users text-eternal-gold text-xl"></i></div><h3 class="font-bold text-gray-200">Scattered children</h3><p class="text-slate-400 text-sm">The Aneian diaspora after the Scattering; the Eight Families awaiting reunion.</p></div>
+                <div><div class="w-14 h-14 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-3"><i class="fas fa-road text-eternal-gold text-xl"></i></div><h3 class="font-bold text-gray-200">Show them the way</h3><p class="text-slate-400 text-sm">Through teaching the Eye and establishing the Watchers, Lucius provides the model for self‑restoration.</p></div>
+            </div>
+            <p class="text-center text-slate-500 text-xs mt-6">“The Star shines in darkness. The darkness has never overcome it.” — Aneian adaptation of Lux Imperio scripture.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Aneians in Book 5 (expanded) -->
+<section class="py-12 bg-slate-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+            <h2 class="text-2xl font-bold text-eternal-gold mb-6 flex items-center"><i class="fas fa-book-open mr-3"></i>Aneians in Book 5 – Era of the Accord</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold text-gray-200 mb-2">Observer Status (Year 8234)</h3>
+                    <p class="text-slate-300 text-sm mb-4">Under the Accord of Arcadia, Aneians gain protection and limited participation. Trade and diplomatic channels open, though full voting rights remain withheld.</p>
+                    <h3 class="text-lg font-bold text-gray-200 mb-2">Dark Realm–Inquisitor War (8430–8500)</h3>
+                    <p class="text-slate-300 text-sm">Aneian Void‑adapted forces are crucial in defeating Inquisitor remnants who fled to the Dark Realm. The Southern Wall becomes a major theater.</p>
+                    <h3 class="text-lg font-bold text-gray-200 mt-4 mb-2">The Watchers & Lucius</h3>
+                    <p class="text-slate-300 text-sm">Lucius’s teaching of the Eye and the Watcher model inspires Aneian self‑governance. Gael (First Watcher), an Aneian, embodies the Prophecy’s promise.</p>
                 </div>
-                <div class="text-slate-500 text-sm">
-                    <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
-                </div>
-                <div class="flex space-x-4 mt-4 md:mt-0">
-                    <a href="index.html" class="text-slate-400 hover:text-eternal-gold transition">Home</a>
-                    <a href="eastern-factions.html" class="text-slate-400 hover:text-eternal-amber transition">Eastern</a>
-                    <a href="western-factions.html" class="text-slate-400 hover:text-eternal-purple transition">Western</a>
+                <div>
+                    <h3 class="text-lg font-bold text-gray-200 mb-2">Key Aneian Figures (Book 5)</h3>
+                    <ul class="space-y-2 text-slate-300 text-sm">
+                        <li><strong class="text-eternal-gold">Lady Greta Stoneheart</strong> — Head of House Stoneheart; advocates integration.</li>
+                        <li><strong class="text-eternal-gold">Lady Mira Nightshade</strong> — Head of House Nightshade; her shadow‑walking touches the Destroyer’s whispers, seeding corruption.</li>
+                        <li><strong class="text-eternal-gold">Elder Remembrancer Vorn</strong> — Keeper of the Archive of Echoes; prophetic authority.</li>
+                        <li><strong class="text-eternal-gold">Border‑Captain Rika</strong> — Commands Border‑Walker forces; rising influence.</li>
+                        <li><strong class="text-eternal-gold">Keeper Mytrilla Sorrel</strong> — Preserves Thornwood/Dawnweaver arts.</li>
+                    </ul>
+                    <p class="mt-4 text-xs text-slate-400">Vaelor Academy (8250) and Emberfall Sanctuary (8280) symbolize rebirth of extinct houses as institutions.</p>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script>
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    </script>
+<!-- Footer -->
+<footer class="bg-slate-900 border-t border-slate-800 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                <i class="fas fa-tree text-eternal-emerald text-xl"></i>
+                <span class="fantasy-font text-lg font-bold text-eternal-gold">Eternal Trees Saga Wiki</span>
+            </div>
+            <div class="text-slate-500 text-sm">
+                <p>© 2024 · Compiled from canonical sources (Books 0–6, Ultimate Appendices)</p>
+            </div>
+            <div class="flex space-x-4 mt-4 md:mt-0">
+                <a href="index.html" class="text-slate-400 hover:text-eternal-gold transition">Home</a>
+                <a href="eastern-factions.html" class="text-slate-400 hover:text-eternal-amber transition">Eastern</a>
+                <a href="western-factions.html" class="text-slate-400 hover:text-eternal-purple transition">Western</a>
+            </div>
+        </div>
+        <div class="mt-4 text-center text-xs text-slate-600 border-t border-slate-800 pt-4">
+            <p>“Purity creates vacuums; relation fills them.” — The Aneians embody relation at the Edge.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+</script>
 </body>
 </html>

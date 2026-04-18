@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eight Nodes Topology | Eternal Tree Saga Wiki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #e2e8f0; }
+    h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
+    .gold-gradient { background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .purple-gradient { background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 50%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .emerald-gradient { background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #10b981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .card-hover { transition: all 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(16, 185, 129, 0.2); }
+    .node-card { border-left: 3px solid; transition: all 0.2s ease; }
+    .node-card:hover { border-left-width: 6px; }
+  </style>
+</head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
+    <div class="flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-3">
+        <i class="fas fa-tree text-amber-400 text-2xl"></i>
+        <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
+        <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
+        <a href="timeline.html" class="text-slate-300 hover:text-amber-400 transition">Timeline</a>
+        <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
+        <a href="eastern-factions.html" class="text-slate-300 hover:text-amber-400 transition">Eastern</a>
+        <a href="western-factions.html" class="text-slate-300 hover:text-amber-400 transition">Western</a>
+        <a href="other-realms.html" class="text-slate-300 hover:text-amber-400 transition">Realms</a>
+        <a href="eight-nodes.html" class="text-emerald-400 font-medium border-b border-emerald-400/50">Topology</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400"><i class="fas fa-bars text-xl"></i></button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
+    <div class="p-4">
+      <div class="flex justify-between items-center mb-6">
+        <span class="font-bold text-lg">Navigation</span>
+        <button id="closeMenu" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+      </div>
+      <nav class="space-y-2">
+        <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
+        <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
+        <a href="timeline.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
+        <a href="plots.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
+        <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
+        <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
+        <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
+        <a href="eight-nodes.html" class="block px-4 py-3 rounded-lg text-emerald-400 bg-slate-800/50 transition"><i class="fas fa-project-diagram w-6"></i>Eight Nodes</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="max-w-7xl mx-auto p-4 md:p-8">
+    <!-- Hero -->
+    <div class="text-center py-8 mb-10">
+      <h1 class="text-4xl font-bold mb-4 fantasy-font"><span class="emerald-gradient">The Eight Nodes of Topology</span></h1>
+      <p class="text-slate-400 max-w-3xl mx-auto">The invisible skeleton of the Eternal Tree Saga — axes of cosmic organization, ways of standing in relation to reality. Neither moral nor absolute, but topological positions that shape every realm, faction, and soul.</p>
+    </div>
+
+    <!-- Core distinction -->
+    <div class="bg-gradient-to-r from-emerald-950/30 to-slate-900/50 border border-emerald-500/30 rounded-xl p-6 mb-12">
+      <div class="flex flex-wrap gap-6 items-start">
+        <div class="flex-1">
+          <h2 class="text-xl font-bold text-emerald-400 mb-2"><i class="fas fa-brain mr-2"></i>Topological, Not Moral</h2>
+          <p class="text-slate-300 text-sm leading-relaxed">The Nodes are not ethical categories but <span class="text-emerald-300 font-medium">positions of relation</span>. When pursued alone — in purity — each Node inverts into its dark shadow: Science without Intuition becomes Madness, Pact without Transcendence becomes Binding. <span class="text-amber-300">“Purity creates vacuums; relation fills them.”</span></p>
+        </div>
+        <div class="bg-black/40 p-3 rounded-lg">
+          <span class="text-xs font-mono text-slate-400">CHAOS as Anti-Node</span>
+          <p class="text-xs text-slate-500 mt-1">The void between definitions, unstructured possibility.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- EIGHT NODES CARDS -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400 flex items-center gap-2"><i class="fas fa-star-of-life"></i> The Eight Pillars of Reality</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <!-- Transcendence -->
+        <div class="bg-slate-900/60 border-l-4 border-amber-500 rounded-xl p-5 node-card card-hover">
+          <div class="flex justify-between items-start"><i class="fas fa-feather-alt text-amber-400 text-2xl"></i><span class="text-xs bg-amber-900/30 px-2 py-0.5 rounded-full text-amber-300">Clue: Transcendence</span></div>
+          <h3 class="text-xl font-bold text-amber-400 mt-2">TRANSCENDENCE</h3>
+          <p class="text-sm text-slate-400 mb-2">Service · Sacrifice · Elevation</p>
+          <p class="text-sm text-slate-300"><span class="text-emerald-400">Dark Inversion:</span> TERROR — domination through shadowless light.</p>
+          <p class="text-sm text-slate-300 mt-1"><span class="text-emerald-400">Core Philosophy:</span> Neutrality through self-offering.</p>
+          <div class="mt-3 text-xs text-slate-500">Wanderer’s Path: Roots of the Tree</div>
+        </div>
+        <!-- Pact -->
+        <div class="bg-slate-900/60 border-l-4 border-purple-500 rounded-xl p-5 node-card card-hover">
+          <div class="flex justify-between items-start"><i class="fas fa-handshake text-purple-400 text-2xl"></i><span class="text-xs bg-purple-900/30 px-2 py-0.5 rounded-full text-purple-300">Clue: Shadow</span></div>
+          <h3 class="text-xl font-bold text-purple-400 mt-2">PACT</h3>
+          <p class="text-sm text-slate-400 mb-2">Mutual obligation · Oath · Covenant</p>
+          <p class="text-sm text-slate-300"><span class="text-emerald-400">Dark Inversion:</span> BINDING — chains without consent.</p>
+          <p class="text-sm text-slate-300 mt-1"><span class="text-emerald-400">Core Philosophy:</span> Relation through sworn bond.</p>
+          <div class="mt-3 text-xs text-slate-500">Catacombs of the Unnamed</div>
+        </div>
+        <!-- Self -->
+        <div class="bg-slate-900/60 border-l-4 border-emerald-500 rounded-xl p-5 node-card card-hover">
+          <div class="flex justify-between items-start"><i class="fas fa-user-circle text-emerald-400 text-2xl"></i><span class="text-xs bg-emerald-900/30 px-2 py-0.5 rounded-full text-emerald-300">Clue: Breath</span></div>
+          <h3 class="text-xl font-bold text-emerald-400 mt-2">SELF</h3>
+          <p class="text-sm text-slate-400 mb-2">Discipline · Mastery · Awakening</p>
+          <p class="text-sm text-slate-300"><span class="text-emerald-400">Dark Inversion:</span> FORCE — will without wisdom.</p>
+          <p class="text-sm text-slate-300 mt-1"><span class="text-emerald-400">Core Philosophy:</span> Internal cultivation and will.</p>
+          <div class="mt-3 text-xs text-slate-500">Temple of the Whispering Peak</div>
+        </div>
+        <!-- Inheritance -->
+        <div class="bg-slate-900/60 border-l-4 border-amber-600 rounded-xl p-5 node-card card-hover">
+          <div class="flex justify-between items-start"><i class="fas fa-dna text-amber-500 text-2xl"></i><span class="text-xs bg-amber-900/30 px-2 py-0.5 rounded-full text-amber-300">Clue: Depth</span></div>
+          <h3 class="text-xl font-bold text-amber-500 mt-2">INHERITANCE</h3>
+          <p class="text-sm text-slate-400 mb-2">Bloodline · Tradition · Memory</p>
+          <p class="text-sm text-slate-300"><span class="text-emerald-400">Dark Inversion:</span> CURSE — ancestral debt without grace.</p>
+          <p class="text-sm text-slate-300 mt-1"><span class="text-emerald-400">Core Philosophy:</span> Continuity through lineage.</p>
+          <div class="mt-3 text-xs text-slate-500">Null Chamber</div>
+        </div>
+        <!-- Science -->
+        <div class="bg-slate-900/60 border-l-4 border-sky-500 rounded-xl p-5 node-card card-hover">
+          <div class="flex justify-between items-start"><i class="fas fa-flask text-sky-400 text-2xl"></i><span class="text-xs bg-sky-900/30 px-2 py-0.5 rounded-full text-sky-300">Clue: Uncertainty</span></div>
+          <h3 class="text-xl font-bold text-sky-400 mt-2">SCIENCE</h3>
+          <p class="text-sm text-slate-400 mb-2">Categorization · Measurement · Truth</p>
+          <p class="text-sm text-slate-300"><span class="text-emerald-400">Dark Inversion:</span> MADNESS — certainty without doubt.</p>
+          <p class="text-sm text-slate-300 mt-1"><span class="text-emerald-400">Core Philosophy:</span> Systematic knowledge.</p>
+          <div class="mt-3 text-xs text-slate-500">Depths of Abyss</div>
+        </div>
+        <!-- Intuition -->
+        <div class="bg-slate-900/60 border-l-4 border-indigo-500 rounded-xl p-5 node-card card-hover">
+          <div class="flex justify-between items-start"><i class="fas fa-eye text-indigo-400 text-2xl"></i><span class="text-xs bg-indigo-900/30 px-2 py-0.5 rounded-full text-indigo-300">Clue: Absence</span></div>
+          <h3 class="text-xl font-bold text-indigo-400 mt-2">INTUITION</h3>
+          <p class="text-sm text-slate-400 mb-2">Pattern recognition · Mystery · Wonder</p>
+          <p class="text-sm text-slate-300"><span class="text-emerald-400">Dark Inversion:</span> DELUSION — pattern without ground.</p>
+          <p class="text-sm text-slate-300 mt-1"><span class="text-emerald-400">Core Philosophy:</span> Direct knowing beyond reason.</p>
+          <div class="mt-3 text-xs text-slate-500">Apex of the Tree of Order</div>
+        </div>
+        <!-- World -->
+        <div class="bg-slate-900/60 border-l-4 border-green-500 rounded-xl p-5 node-card card-hover">
+          <div class="flex justify-between items-start"><i class="fas fa-globe-asia text-green-400 text-2xl"></i><span class="text-xs bg-green-900/30 px-2 py-0.5 rounded-full text-green-300">Clue: Wind</span></div>
+          <h3 class="text-xl font-bold text-green-400 mt-2">WORLD</h3>
+          <p class="text-sm text-slate-400 mb-2">Adaptation · Elemental resonance</p>
+          <p class="text-sm text-slate-300"><span class="text-emerald-400">Dark Inversion:</span> CONSUMPTION — devouring without harmony.</p>
+          <p class="text-sm text-slate-300 mt-1"><span class="text-emerald-400">Core Philosophy:</span> Harmony with elemental reality.</p>
+          <div class="mt-3 text-xs text-slate-500">Tower of Drowning Light</div>
+        </div>
+        <!-- Artifice -->
+        <div class="bg-slate-900/60 border-l-4 border-rose-500 rounded-xl p-5 node-card card-hover">
+          <div class="flex justify-between items-start"><i class="fas fa-cogs text-rose-400 text-2xl"></i><span class="text-xs bg-rose-900/30 px-2 py-0.5 rounded-full text-rose-300">Clue: Center</span></div>
+          <h3 class="text-xl font-bold text-rose-400 mt-2">ARTIFICE</h3>
+          <p class="text-sm text-slate-400 mb-2">Tools · Technology · Creation</p>
+          <p class="text-sm text-slate-300"><span class="text-emerald-400">Dark Inversion:</span> CORRUPTION — craft without soul.</p>
+          <p class="text-sm text-slate-300 mt-1"><span class="text-emerald-400">Core Philosophy:</span> Shaping reality through craft.</p>
+          <div class="mt-3 text-xs text-slate-500">Nexus of Ways (The Gate)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EASTERN PLANE: TREE OF ORDER -->
+    <section class="mb-16">
+      <div class="flex items-center gap-3 border-b border-amber-500/30 pb-2 mb-6">
+        <i class="fas fa-tree text-amber-400 text-2xl"></i>
+        <h2 class="text-2xl font-bold fantasy-font text-amber-400">Eastern Plane — Tree of Order</h2>
+      </div>
+      <p class="text-slate-300 mb-6">Structured, hierarchical, crystalline. The Nodes manifest through the Four Realms, covert orders, and the Guardian Domain.</p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Four Realms -->
+        <div class="bg-slate-900/40 rounded-xl border border-amber-800/40 p-5">
+          <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-flag mr-2"></i>The Four Realms (Governmental Alignment)</h3>
+          <div class="space-y-3">
+            <div><span class="font-bold text-amber-300">Lux Imperio (North):</span> <span class="text-emerald-300">TRANSCENDENCE</span> <span class="text-slate-400">| Fatal Risk: Purity Fervor</span></div>
+            <div><span class="font-bold text-amber-300">Chuugoku (East):</span> <span class="text-emerald-300">SELF</span> <span class="text-slate-400">| Fatal Risk: House Rivalry</span></div>
+            <div><span class="font-bold text-amber-300">Avalon (West):</span> <span class="text-emerald-300">INTUITION</span> <span class="text-slate-400">| Fatal Risk: Category Fracture</span></div>
+            <div><span class="font-bold text-amber-300">Helron (South):</span> <span class="text-emerald-300">SCIENCE</span> <span class="text-slate-400">| Fatal Risk: Measurement Trauma</span></div>
+          </div>
+        </div>
+        <!-- Covert Orders -->
+        <div class="bg-slate-900/40 rounded-xl border border-amber-800/40 p-5">
+          <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-mask mr-2"></i>Covert Orders (Operational)</h3>
+          <ul class="space-y-2 text-sm">
+            <li><span class="text-amber-300">Order of the Star</span> — TRANSCENDENCE + PACT <span class="text-slate-400">“Shadow supports Light”</span></li>
+            <li><span class="text-amber-300">Root Sanctuary</span> — SELF + WORLD <span class="text-slate-400">“Archive preserves Life”</span></li>
+            <li><span class="text-amber-300">Havenfire Guild</span> — INTUITION + SCIENCE <span class="text-slate-400">“Adaptive Categories”</span></li>
+            <li><span class="text-amber-300">Filwind Institute</span> — SCIENCE + ARTIFICE <span class="text-slate-400">“Adaptive Uncertainty”</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Guardian Domain: Eight Divisions -->
+      <div class="mt-6 bg-gradient-to-r from-slate-800/40 to-slate-900/40 rounded-xl p-5 border border-emerald-800/30">
+        <h3 class="text-lg font-bold text-emerald-400 flex items-center gap-2"><i class="fas fa-shield-alt"></i>Guardian Domain — The Eight Divisions (Arcadia)</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3 text-sm">
+          <div class="bg-black/30 p-2 rounded"><span class="text-amber-300">Transcendence</span><br><span class="text-slate-400 text-xs">Northern Eclipse magic</span></div>
+          <div class="bg-black/30 p-2 rounded"><span class="text-purple-300">Pact</span><br><span class="text-slate-400 text-xs">Covenants & diplomacy</span></div>
+          <div class="bg-black/30 p-2 rounded"><span class="text-emerald-300">Self</span><br><span class="text-slate-400 text-xs">Chi cultivation</span></div>
+          <div class="bg-black/30 p-2 rounded"><span class="text-amber-300">Inheritance</span><br><span class="text-slate-400 text-xs">Technique preservation</span></div>
+          <div class="bg-black/30 p-2 rounded"><span class="text-sky-300">Science</span><br><span class="text-slate-400 text-xs">Uncertainty projection</span></div>
+          <div class="bg-black/30 p-2 rounded"><span class="text-indigo-300">Intuition</span><br><span class="text-slate-400 text-xs">Arcane magic, topology</span></div>
+          <div class="bg-black/30 p-2 rounded"><span class="text-green-300">World</span><br><span class="text-slate-400 text-xs">Defense & Watchers</span></div>
+          <div class="bg-black/30 p-2 rounded"><span class="text-rose-300">Artifice</span><br><span class="text-slate-400 text-xs">Weapons, fortifications</span></div>
+        </div>
+      </div>
+
+      <!-- Wanderer's Path -->
+      <div class="mt-6 bg-slate-900/50 rounded-xl p-5 border border-amber-500/20">
+        <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2"><i class="fas fa-route"></i> The Wanderer’s Path — Lucius Arogzan (25th Guardian)</h3>
+        <div class="grid md:grid-cols-2 gap-x-8 gap-y-2 text-sm mt-3">
+          <div>1. <span class="text-purple-300">Shadow</span> → PACT <span class="text-slate-500">(Catacombs)</span></div>
+          <div>2. <span class="text-emerald-300">Breath</span> → SELF <span class="text-slate-500">(Whispering Peak)</span></div>
+          <div>3. <span class="text-green-300">Wind</span> → WORLD <span class="text-slate-500">(Tower of Drowning Light)</span></div>
+          <div>4. <span class="text-amber-300">Depth</span> → INHERITANCE <span class="text-slate-500">(Null Chamber)</span></div>
+          <div>5. <span class="text-sky-300">Uncertainty</span> → SCIENCE <span class="text-slate-500">(Depths of Abyss)</span></div>
+          <div>6. <span class="text-indigo-300">Absence</span> → INTUITION <span class="text-slate-500">(Apex of the Tree)</span></div>
+          <div>7. <span class="text-amber-300">Transcendence</span> → TRANSCENDENCE <span class="text-slate-500">(Roots)</span></div>
+          <div>8. <span class="text-rose-300">Center</span> → ARTIFICE <span class="text-slate-500">(Nexus of Ways)</span></div>
+        </div>
+        <p class="text-xs text-slate-400 mt-3 italic">The Eye Practice: perceiving all Eight Nodes simultaneously without corruption — six stages from Watcher to Open Eye.</p>
+      </div>
+    </section>
+
+    <!-- WESTERN PLANE: TREE OF CHAOS -->
+    <section class="mb-16">
+      <div class="flex items-center gap-3 border-b border-purple-500/30 pb-2 mb-6">
+        <i class="fas fa-tree text-purple-400 text-2xl"></i>
+        <h2 class="text-2xl font-bold fantasy-font text-purple-400">Western Plane — Tree of Chaos</h2>
+      </div>
+      <p class="text-slate-300 mb-6">Fluid, experimental, adaptive. The Nodes manifest through the Library of Lumeria, the Academia, and the spectral warning of the Unbecoming.</p>
+
+      <div class="grid lg:grid-cols-2 gap-6">
+        <!-- Twelve Councils -->
+        <div class="bg-slate-900/40 rounded-xl border border-purple-800/40 p-5">
+          <h3 class="text-lg font-bold text-purple-400 mb-3"><i class="fas fa-landmark"></i> Library's Twelve Functional Councils</h3>
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <div><span class="text-purple-300">Scribes</span> — INHERITANCE</div><div><span class="text-purple-300">Researchers</span> — SCIENCE</div>
+            <div><span class="text-purple-300">Custodians</span> — PACT</div><div><span class="text-purple-300">Metallurgy</span> — ARTIFICE</div>
+            <div><span class="text-purple-300">Artifacts</span> — INTUITION</div><div><span class="text-purple-300">Medical</span> — SELF/WORLD</div>
+            <div><span class="text-purple-300">Sociological</span> — PACT/INHERITANCE</div><div><span class="text-purple-300">Jurisprudence</span> — PACT/SCIENCE</div>
+            <div><span class="text-purple-300">Chronomancy</span> — TRANSCENDENCE/INTUITION</div><div><span class="text-purple-300">Agricultural</span> — WORLD</div>
+            <div><span class="text-purple-300">Technological</span> — ARTIFICE/SCIENCE</div><div><span class="text-purple-300">External Libraries</span> — TRANSCENDENCE</div>
+          </div>
+        </div>
+        <!-- Academia Colleges -->
+        <div class="bg-slate-900/40 rounded-xl border border-purple-800/40 p-5">
+          <h3 class="text-lg font-bold text-purple-400 mb-3"><i class="fas fa-university"></i> Academia of Lumeria — Seven Grand Colleges</h3>
+          <ul class="space-y-1 text-sm">
+            <li><span class="text-purple-300">Preservation</span> — INHERITANCE (Trial of Decay)</li>
+            <li><span class="text-purple-300">Interpretation</span> — SCIENCE/PACT (Prismatic Reading)</li>
+            <li><span class="text-purple-300">Acquisition</span> — ARTIFICE/SELF (Risk Curriculum)</li>
+            <li><span class="text-purple-300">Medical Synthesis</span> — SELF/WORLD (Trauma Integration)</li>
+            <li><span class="text-purple-300">Sociological Studies</span> — PACT/INHERITANCE (Simulation of Collapse)</li>
+            <li><span class="text-purple-300">Technological Synthesis</span> — ARTIFICE/INTUITION (Sacrament of Failure)</li>
+            <li><span class="text-purple-300">Chronomancy</span> — TRANSCENDENCE (Stutter-Zone Semester)</li>
+          </ul>
+          <div class="mt-4 p-2 bg-red-950/30 border-l-2 border-red-500 text-xs"><span class="text-red-300">⚠ The Institute Evolution:</span> SCIENCE + ARTIFICE without INTUITION leads to the <span class="font-bold text-red-400">Unbecoming</span> — chaotic Plenitude without boundary.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CROSS-PLANAR SYNTHESIS -->
+    <section class="mb-16">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400 flex items-center gap-2"><i class="fas fa-link"></i> Cross-Planar Synthesis</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-slate-900/50 rounded-xl p-5 border border-emerald-800/40">
+          <i class="fas fa-dragon text-2xl text-amber-400 mb-2"></i>
+          <h3 class="font-bold text-amber-400">Four Allied Races</h3>
+          <ul class="text-sm space-y-1 mt-2">
+            <li><span class="text-emerald-300">Ethereals:</span> INTUITION + WORLD</li>
+            <li><span class="text-emerald-300">Drakes:</span> SELF + WORLD</li>
+            <li><span class="text-emerald-300">Mystics:</span> INTUITION + TRANSCENDENCE</li>
+            <li><span class="text-emerald-300">Dromes:</span> ARTIFICE + WORLD</li>
+          </ul>
+        </div>
+        <div class="bg-slate-900/50 rounded-xl p-5 border border-emerald-800/40">
+          <i class="fas fa-user-astronaut text-2xl text-purple-400 mb-2"></i>
+          <h3 class="font-bold text-purple-400">5-Star Battalion</h3>
+          <p class="text-sm text-slate-300">Void-adapted warriors utilizing all Eight Nodes in “Void-adapted” form to resist Grenlians (Ordered Void) and the Destroyer (Chaos leakage).</p>
+        </div>
+        <div class="bg-slate-900/50 rounded-xl p-5 border border-emerald-800/40">
+          <i class="fas fa-octagon-half text-2xl text-emerald-400 mb-2"></i>
+          <h3 class="font-bold text-emerald-400">The Octagram</h3>
+          <p class="text-sm text-slate-300">Secret society teaching the <span class="text-amber-300">Eye Practice</span> — six stages from Watcher to Open Eye, synthesizing all Nodes in balance. Keepers of the Eight-Pointed Star.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- THEMATIC SIGNIFICANCE -->
+    <section class="mb-12">
+      <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 via-emerald-950/20 to-slate-900 p-8 text-center border border-emerald-500/40">
+        <i class="fas fa-quote-left text-4xl text-emerald-500/30 absolute left-4 top-4"></i>
+        <h2 class="text-2xl font-bold fantasy-font text-emerald-300 mb-4">Thematic Heart of the Saga</h2>
+        <blockquote class="text-2xl md:text-3xl italic text-amber-300 fantasy-font max-w-3xl mx-auto">
+          “Purity creates vacuums; relation fills them.”
+        </blockquote>
+        <p class="text-slate-300 max-w-2xl mx-auto mt-6">This truth derives directly from Node theory. When any single Node is pursued in isolation — purity without synthesis — it inverts into darkness. Health, power, and meaning require <span class="text-emerald-400">relation between nodes</span>: Science with Intuition, Pact with Transcendence, Self with World. The topology is the invisible scripture upon which the Two Trees and the Old Tree stand.</p>
+        <div class="mt-6 flex flex-wrap justify-center gap-2">
+          <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-amber-300">Transcendence ↔ Pact</span>
+          <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-emerald-300">Self ↔ World</span>
+          <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-purple-300">Science ↔ Intuition</span>
+          <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-rose-300">Artifice ↔ Inheritance</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
+    <p class="text-slate-400 text-sm">Eternal Tree Saga Wiki — A Chronicle Spanning Six Myriads</p>
+    <p class="text-slate-500 text-xs mt-2">“The center holds. For now. For always.” — The Nodes endure, in relation.</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
+    if (closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
+  </script>
+</body>
+</html>

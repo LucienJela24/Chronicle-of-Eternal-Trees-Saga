@@ -207,9 +207,9 @@
           <p class="text-slate-300 mb-4">Meridian Domain</p>
           <p class="text-sm text-slate-400 mb-4">Last remnant of the Wild of Aletheia. The boundary-wood, witness, liminal space between the Two Trees.</p>
           <div class="flex flex-wrap gap-2">
-            <a href="other-realms.html" class="px-2 py-1 bg-emerald-900/30 text-emerald-300 text-xs rounded hover:bg-emerald-900/50 transition">Sanctuary</a>
-            <a href="other-realms.html" class="px-2 py-1 bg-emerald-900/30 text-emerald-300 text-xs rounded hover:bg-emerald-900/50 transition">Fourth Lord</a>
-            <a href="other-realms.html" class="px-2 py-1 bg-emerald-900/30 text-emerald-300 text-xs rounded hover:bg-emerald-900/50 transition">Overseers</a>
+            <a href="the-sanctuary.html" class="px-2 py-1 bg-emerald-900/30 text-emerald-300 text-xs rounded hover:bg-emerald-900/50 transition">Sanctuary</a>
+            <a href="meridian.html" class="px-2 py-1 bg-emerald-900/30 text-emerald-300 text-xs rounded hover:bg-emerald-900/50 transition">Fourth Lord</a>
+            <a href="old-tree.html" class="px-2 py-1 bg-emerald-900/30 text-emerald-300 text-xs rounded hover:bg-emerald-900/50 transition">Overseers</a>
           </div>
         </div>
       </div>
@@ -375,23 +375,23 @@
       </div>
     </section>
 
-    <!-- Other Realms Quick Links -->
+    <!-- Other Realms Quick Links (UPDATED LINKS) -->
     <section class="mb-12">
       <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400">Other Realms</h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <a href="other-realms.html#meridian" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-4 card-hover">
-          <h3 class="font-bold text-emerald-400">Meridian Threshold</h3>
-          <p class="text-sm text-slate-400">Primary sealing point</p>
+        <a href="tartarus.html" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-4 card-hover">
+          <h3 class="font-bold text-emerald-400">Tartarus</h3>
+          <p class="text-sm text-slate-400">Deep Prison of The Mist</p>
         </a>
-        <a href="other-realms.html#domain" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-4 card-hover">
+        <a href="meridian.html" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-4 card-hover">
           <h3 class="font-bold text-emerald-400">Meridian Domain</h3>
           <p class="text-sm text-slate-400">Fourth Lord's Sanctuary</p>
         </a>
-        <a href="other-realms.html#sanctuary" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-4 card-hover">
+        <a href="the-sanctuary.html" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-4 card-hover">
           <h3 class="font-bold text-emerald-400">Sanctuary</h3>
           <p class="text-sm text-slate-400">Between the Two Trees</p>
         </a>
-        <a href="other-realms.html#meadow" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-4 card-hover">
+        <a href="meadow-realm.html" class="bg-slate-900/50 border border-emerald-500/30 rounded-xl p-4 card-hover">
           <h3 class="font-bold text-emerald-400">Meadow Realm</h3>
           <p class="text-sm text-slate-400">Space between Planes</p>
         </a>
@@ -409,3 +409,13 @@
       "The center holds. For now. For always."
     </p>
   </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
+    if (closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
+  </script>
+</body>
+</html>

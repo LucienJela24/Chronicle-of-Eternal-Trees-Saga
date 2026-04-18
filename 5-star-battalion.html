@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>5-Star Battalion - Eternal Trees Saga Wiki</title>
+    <title>5-Star Battalion · Eternal Trees Saga Wiki</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -29,12 +29,15 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #0f172a; }
         h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
-        .framework-card { transition: all 0.3s ease; }
-        .framework-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .framework-card { transition: all 0.25s ease; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(4px); }
+        .framework-card:hover { transform: translateY(-4px); box-shadow: 0 20px 30px -10px rgba(0,0,0,0.6); border-color: #d4af37; }
+        .stat-panel { background: rgba(30, 41, 59, 0.6); border: 1px solid #334155; }
+        .gold-glow { text-shadow: 0 0 8px rgba(212, 175, 55, 0.5); }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-200 min-h-screen">
-    <!-- Navigation -->
+
+    <!-- Navigation (same style) -->
     <nav class="bg-slate-900/90 backdrop-blur-md border-b border-slate-700 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
@@ -57,9 +60,7 @@
                     </div>
                 </div>
                 <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white"><i class="fas fa-bars text-xl"></i></button>
                 </div>
             </div>
         </div>
@@ -77,238 +78,293 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative bg-gradient-to-b from-emerald-900/40 to-slate-950 py-16">
+    <!-- Hero Section (updated with canonical data) -->
+    <section class="relative bg-gradient-to-b from-emerald-900/40 to-slate-950 py-16 border-b border-slate-800">
         <div class="absolute inset-0 opacity-10">
             <div class="absolute inset-0" style="background-image: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 70%);"></div>
         </div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="inline-flex items-center space-x-2 mb-4">
-                <span class="px-3 py-1 bg-emerald-900/50 border border-emerald-600/30 rounded-full text-emerald-400 text-sm">Guardian Domain</span>
-                <span class="px-3 py-1 bg-slate-800 border border-slate-600 rounded-full text-slate-400 text-sm">Elite Forces</span>
+                <span class="px-3 py-1 bg-emerald-900/50 border border-emerald-600/30 rounded-full text-emerald-400 text-sm">Eastern Plane · 1st Myriad</span>
+                <span class="px-3 py-1 bg-slate-800 border border-slate-600 rounded-full text-slate-400 text-sm">First Unified Force</span>
+                <span class="px-3 py-1 bg-amber-900/30 border border-amber-600/30 rounded-full text-amber-400 text-sm">Sealed 26,500 yrs</span>
             </div>
-            <h1 class="text-5xl md:text-6xl font-bold text-emerald-400 mb-4">5-Star Battalion</h1>
-            <p class="text-xl text-slate-400 max-w-3xl mx-auto">An elite unit of five legendary Guardians who undertake the most dangerous missions</p>
-            <div class="mt-6 flex justify-center space-x-4 text-sm text-slate-500">
-                <span><i class="fas fa-star text-emerald-400 mr-2"></i>5 Members</span>
-                <span><i class="fas fa-medal text-emerald-400 mr-2"></i>Legendary</span>
-                <span><i class="fas fa-bolt text-emerald-400 mr-2"></i>Strike Force</span>
+            <h1 class="text-5xl md:text-6xl font-bold text-emerald-400 mb-4 gold-glow">5-Star Battalion</h1>
+            <p class="text-xl text-slate-300 max-w-3xl mx-auto font-light">The Vigil that outlasted the Myriads — first synthesis of the Four Realms, bound by the Oath of Five Points and the golden eyes of Nimorak.</p>
+            <div class="mt-6 flex justify-center space-x-6 text-sm">
+                <span><i class="fas fa-calendar-alt text-emerald-400 mr-2"></i>Founded ~4,500 E1M</span>
+                <span><i class="fas fa-hourglass-half text-emerald-400 mr-2"></i>Sealed 5,000 E1M · Unsealed 8,500 E4M</span>
+                <span><i class="fas fa-eye text-emerald-400 mr-2"></i>Nimorak-bonded</span>
             </div>
         </div>
     </section>
 
-    <!-- Overview -->
-    <section class="py-12 bg-slate-950">
+    <!-- Overview (canonical correction) -->
+    <section class="py-10 bg-slate-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
-                <h2 class="text-2xl font-bold text-eternal-gold mb-4">Overview</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">The 5-Star Battalion represents the absolute elite of Guardian military capability—a handpicked unit of five legendary warriors who undertake missions too dangerous for any other force. When the Guardian Domain faces a threat that requires decisive action, when enemy strongholds must be destroyed, or when critical objectives must be secured at any cost, the 5-Star Battalion receives the call.</p>
-                <p class="text-slate-300 leading-relaxed mb-4">Each member of the Battalion has earned their place through exceptional combat prowess, tactical brilliance, and unwavering dedication to the Guardian cause. They are not merely soldiers but living legends whose names are spoken with reverence throughout the Eastern Plane. Their exploits are celebrated in songs and stories, and their presence on a battlefield can turn the tide of entire campaigns.</p>
-                <p class="text-slate-300 leading-relaxed">The 5-Star Battalion operates under the direct command of the Captain-Commander, receiving orders only from the highest authority. They have the authority to requisition any resources they need and to command any Guardian forces in support of their missions. Their autonomy reflects the trust placed in their judgment and the unique nature of their duties.</p>
+            <div class="bg-slate-900/60 border border-slate-700 rounded-2xl p-8 backdrop-blur-sm">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-shield-halved text-eternal-gold text-3xl mr-3"></i>
+                    <h2 class="text-2xl font-bold text-eternal-gold">The First Unified Force of the Eastern Plane</h2>
+                </div>
+                <p class="text-slate-300 leading-relaxed mb-4">The 5-Star Battalion is <span class="text-emerald-300 font-semibold">not</span> a later Guardian creation. It is the <span class="text-eternal-gold">first unified military force in Eastern Plane history</span>, founded in the 1st Myriad (Absolute Year ~7,085) by General Primus Kaelen First-Star in response to the Grenlian Incursions. Where the Four Realms failed separately, the Battalion succeeded through synthesis—melding Light, Chi, Magic, and Paraformer science into a single, Void-resistant doctrine.</p>
+                <p class="text-slate-300 leading-relaxed mb-4">To preserve this knowledge against the coming Destroyer, the Ancients, through the bridge entity Nimorak, sealed the Battalion near the Firmament for over <span class="text-emerald-300">26,500 objective years (500 subjective years of Vigil)</span>. Unsealed in the 4th Myriad (Year 8,500), they now serve as the ultimate anti-incursion strike force, their grey skin and golden eyes marking centuries of Void-adaptation.</p>
+                <p class="text-slate-300 leading-relaxed">The Battalion answers only to the Supreme Commander and the Star-Council, guided by Nimorak's visions. Their compound in the Dark Realm, Nimorak's Vigil, houses the Great Chronicle and the souls of the Remembranced.</p>
             </div>
         </div>
     </section>
 
-    <!-- The Five Stars -->
+    <!-- The Five Points / Star-Council overview (replaces simple stars) -->
     <section class="py-12 bg-slate-900/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-8">The Five Stars</h2>
+            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-4">The Five Points · The Star-Council</h2>
+            <p class="text-center text-slate-400 mb-10 max-w-3xl mx-auto">Each star represents a point of the Oath, a realm's tradition, and a command position. The Center binds them all.</p>
             <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 text-center">
-                    <div class="w-16 h-16 bg-emerald-900/50 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <i class="fas fa-star text-eternal-gold text-2xl"></i>
+                <div class="bg-slate-900/70 border border-slate-700 rounded-xl p-5 text-center">
+                    <div class="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-3 border border-white/20">
+                        <i class="fas fa-star text-white text-xl"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-emerald-400 mb-2">First Star</h3>
-                    <p class="text-slate-400 text-sm">Battalion Leader</p>
-                    <p class="text-slate-500 text-xs mt-2">Commands the unit and speaks with the Captain-Commander's voice</p>
+                    <h3 class="text-lg font-bold text-white mb-1">North-Star</h3>
+                    <p class="text-slate-400 text-xs uppercase tracking-wider">Lux Imperio · Light</p>
+                    <p class="text-slate-300 text-sm mt-2">Valeria North-Star commands the Light-adapted Vanguard. Radiance that persists in Void-presence.</p>
                 </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 text-center">
-                    <div class="w-16 h-16 bg-emerald-900/50 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <i class="fas fa-star text-slate-400 text-2xl"></i>
+                <div class="bg-slate-900/70 border border-slate-700 rounded-xl p-5 text-center">
+                    <div class="w-14 h-14 bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-3 border border-red-700/30">
+                        <i class="fas fa-star text-red-400 text-xl"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Second Star</h3>
-                    <p class="text-slate-400 text-sm">Tactical Expert</p>
-                    <p class="text-slate-500 text-xs mt-2">Master of battlefield strategy and mission planning</p>
+                    <h3 class="text-lg font-bold text-red-300 mb-1">East-Star</h3>
+                    <p class="text-slate-400 text-xs uppercase tracking-wider">Chuugoku · Chi</p>
+                    <p class="text-slate-300 text-sm mt-2">Kaelen East-Star leads the Chi-adapted Legion. Form that holds when substance fails.</p>
                 </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 text-center">
-                    <div class="w-16 h-16 bg-emerald-900/50 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <i class="fas fa-star text-slate-400 text-2xl"></i>
+                <div class="bg-slate-900/70 border border-slate-700 rounded-xl p-5 text-center ring-2 ring-eternal-gold/40">
+                    <div class="w-14 h-14 bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-3 border border-amber-600/30">
+                        <i class="fas fa-star text-eternal-gold text-xl"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Third Star</h3>
-                    <p class="text-slate-400 text-sm">Combat Specialist</p>
-                    <p class="text-slate-500 text-xs mt-2">Unmatched prowess in direct combat engagements</p>
+                    <h3 class="text-lg font-bold text-eternal-gold mb-1">Center Point</h3>
+                    <p class="text-slate-400 text-xs uppercase tracking-wider">Supreme Commander</p>
+                    <p class="text-slate-300 text-sm mt-2">General Darren Worthstar binds the Oath. Relation over purity.</p>
                 </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 text-center">
-                    <div class="w-16 h-16 bg-emerald-900/50 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <i class="fas fa-star text-slate-400 text-2xl"></i>
+                <div class="bg-slate-900/70 border border-slate-700 rounded-xl p-5 text-center">
+                    <div class="w-14 h-14 bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3 border border-blue-700/30">
+                        <i class="fas fa-star text-blue-300 text-xl"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Fourth Star</h3>
-                    <p class="text-slate-400 text-sm">Support Expert</p>
-                    <p class="text-slate-500 text-xs mt-2">Specializes in magical support and healing</p>
+                    <h3 class="text-lg font-bold text-blue-300 mb-1">West-Star</h3>
+                    <p class="text-slate-400 text-xs uppercase tracking-wider">Avalon · Magic</p>
+                    <p class="text-slate-300 text-sm mt-2">Morvain West-Star commands the Rune-warded Cohort. Will that persists when meaning unravels.</p>
                 </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 text-center">
-                    <div class="w-16 h-16 bg-emerald-900/50 rounded-full flex items-center justify-center mx-auto mb-3">
-                        <i class="fas fa-star text-slate-400 text-2xl"></i>
+                <div class="bg-slate-900/70 border border-slate-700 rounded-xl p-5 text-center">
+                    <div class="w-14 h-14 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-3 border border-slate-600">
+                        <i class="fas fa-star text-slate-400 text-xl"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Fifth Star</h3>
-                    <p class="text-slate-400 text-sm">Intelligence</p>
-                    <p class="text-slate-500 text-xs mt-2">Master of reconnaissance and information gathering</p>
+                    <h3 class="text-lg font-bold text-slate-300 mb-1">South-Star</h3>
+                    <p class="text-slate-400 text-xs uppercase tracking-wider">Helron · Tech</p>
+                    <p class="text-slate-300 text-sm mt-2">Tesla South-Star leads the Paraformer Phalanx. Memory that keeps what measurement loses.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 11 Frameworks Analysis -->
+    <!-- EXPANDED 11 FRAMEWORKS (detailed from docx) -->
     <section class="py-12 bg-slate-900/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-12">11-Framework Analysis</h2>
+            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-2">11‑Framework Analysis · Expanded</h2>
+            <p class="text-center text-slate-400 mb-10 text-sm">Based on the Battalion's sealed archives and post‑unsealing observations</p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Historical Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-landmark text-emerald-400"></i>
-                        </div>
+                
+                <!-- 1. HISTORICAL -->
+                <div class="framework-card bg-slate-900/70 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4 border-b border-slate-700 pb-2">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-landmark text-emerald-400"></i></div>
                         <h3 class="text-lg font-bold text-emerald-400">1. Historical Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">The 5-Star Battalion was founded during the darkest days of the Second Abyssal Incursion, when five extraordinary Guardians came together to turn the tide of a seemingly hopeless battle. Their victory that day became legend, and they formalized their alliance as a permanent unit. Since then, the Battalion has been reformed many times as members fall in battle or retire, but the tradition of excellence continues. Each generation of the 5-Star Battalion has added to its glorious history, and their combined achievements fill volumes in the Guardian archives. The current roster represents the finest Guardians of their generation.</p>
+                    <div class="space-y-2 text-sm text-slate-300">
+                        <p><span class="text-eternal-gold font-medium">Founded:</span> Eastern 1st Myriad, Year ~4,500 (Absolute ~7,085) by General Primus Kaelen First-Star after the Threshold Crisis.</p>
+                        <p><span class="text-eternal-gold">The Grenlian Incursions:</span> Four Realms failed separately; Kaelen received vision at the Stone Table and recruited 500 volunteers, swearing the Oath of Five Points.</p>
+                        <p><span class="text-eternal-gold">Sealing:</span> Year 5,000 E1M, to preserve knowledge against the Destroyer. Subjective 500 years passed within; unsealed 8,500 E4M (Absolute ~34,085).</p>
+                        <p><span class="text-eternal-gold">Legacy:</span> First Four-Realm synthesis; predates Guardian Order by ~2,500 years.</p>
+                    </div>
                 </div>
-
-                <!-- Political Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-balance-scale text-emerald-400"></i>
-                        </div>
+                
+                <!-- 2. POLITICAL -->
+                <div class="framework-card bg-slate-900/70 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4 border-b border-slate-700 pb-2">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-balance-scale text-emerald-400"></i></div>
                         <h3 class="text-lg font-bold text-emerald-400">2. Political Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">The 5-Star Battalion operates with unique political authority within the Guardian Domain. They report directly to the Captain-Commander and can bypass normal chains of command when necessary. The Battalion Leader, designated as First Star, speaks with the Captain-Commander's voice in emergency situations. This extraordinary authority is balanced by strict accountability—each mission is reviewed afterward, and misuse of power results in immediate dismissal. The Battalion's political influence extends beyond the Domain, as their actions can shape relations with allied nations. Their presence at diplomatic events carries significant weight.</p>
+                    <div class="text-sm text-slate-300 space-y-2">
+                        <p><span class="text-eternal-gold">Theocratic Military Republic:</span> Three Pillars — Spiritual (Ancients/Nimorak), Strategic (Supreme Commander + Star-Council), Historical (Chronicle-Keepers).</p>
+                        <p><span class="text-eternal-gold">Star-Council:</span> 7 voting members (Supreme Commander 2 votes, four Star-Commanders, High Seer & Chief Chronicle-Keeper advisory). Decisions require supermajority.</p>
+                        <p><span class="text-eternal-gold">No Hereditary Rule:</span> Merit-based succession; Supreme Commander must complete Trial of the Void-Walk. Seven founding bloodlines hold honor, not authority.</p>
+                        <p><span class="text-eternal-gold">Post-Unsealing:</span> Embassy-Stars established; extra-territorial status under Accord of Arcadia.</p>
+                    </div>
                 </div>
-
-                <!-- Mental Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-brain text-emerald-400"></i>
-                        </div>
+                
+                <!-- 3. MENTAL -->
+                <div class="framework-card bg-slate-900/70 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4 border-b border-slate-700 pb-2">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-brain text-emerald-400"></i></div>
                         <h3 class="text-lg font-bold text-emerald-400">3. Mental Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Members of the 5-Star Battalion possess exceptional mental capabilities that match their physical prowess. They are strategic thinkers who can analyze complex situations quickly and make sound decisions under extreme pressure. Their training includes advanced tactics, leadership, and crisis management. The psychological demands of their position are immense—they regularly face situations where their choices determine the fate of thousands. Mental conditioning helps them maintain focus and clarity even in the chaos of battle. Regular psychological assessments ensure they remain fit for duty.</p>
+                    <div class="text-sm text-slate-300 space-y-2">
+                        <p><span class="text-eternal-gold">Vigil Philosophy:</span> "Memory is Resistance." Core paradoxes: fight the Void but accept its necessity; preserve memory but accept fading.</p>
+                        <p><span class="text-eternal-gold">Psychological Profile:</span> High isolation tolerance, delayed emotional response, pattern-seeking cognition, resistance to realm-purism.</p>
+                        <p><span class="text-eternal-gold">Risks:</span> Star-Sickness (reality displacement), The Silence (emotional numbing), Anchor-Loss (phasing fixation). Treated via Nimorak communion and Chronicle readings.</p>
+                    </div>
                 </div>
-
-                <!-- Spiritual Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-praying-hands text-emerald-400"></i>
-                        </div>
+                
+                <!-- 4. SPIRITUAL -->
+                <div class="framework-card bg-slate-900/70 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4 border-b border-slate-700 pb-2">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-praying-hands text-emerald-400"></i></div>
                         <h3 class="text-lg font-bold text-emerald-400">4. Spiritual Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">The 5-Star Battalion maintains profound spiritual connections that sustain them in their duties. Each member has a unique relationship with the Light, developed through years of service and sacrifice. They perform rituals together before major missions, binding their spirits in common purpose. The spiritual bond between Battalion members is said to be visible in battle—they fight as one entity, anticipating each other's movements with supernatural precision. Their faith is tested constantly by the horrors they face, but their devotion remains unshakable. Spiritual advisors work with them to maintain their connection to the divine.</p>
+                    <div class="text-sm text-slate-300 space-y-2">
+                        <p><span class="text-eternal-gold">The Vigil Faith:</span> The Ancients guide through Nimorak, the bridge entity. The Oath is prayer; memory is immortality.</p>
+                        <p><span class="text-eternal-gold">Nimorak-Bond:</span> Every member bonded; grants golden eyes, Void-perception, immunity to Grenlian corruption. High Seer speaks Nimorak's voice.</p>
+                        <p><span class="text-eternal-gold">Sacred Sites:</span> Communion Chamber (Nimorak's Vigil), Stone Table (Arcadia), Hall of the Remembranced (Soul-Crystals).</p>
+                        <p><span class="text-eternal-gold">Rituals:</span> Daily Remembering, Vigil of Nimorak (weekly), Star-Communion before battle.</p>
+                    </div>
                 </div>
-
-                <!-- Social Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-users text-emerald-400"></i>
-                        </div>
+                
+                <!-- 5. SOCIAL -->
+                <div class="framework-card bg-slate-900/70 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4 border-b border-slate-700 pb-2">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-users text-emerald-400"></i></div>
                         <h3 class="text-lg font-bold text-emerald-400">5. Social Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">The five members of the Battalion form an extraordinarily close bond, closer than family, forged through shared trials and mutual dependence. They live together, train together, and fight together, developing an intimacy of understanding that transcends words. Outside the Battalion, they are treated with awe and respect by other Guardians, which can create social distance. Romantic relationships are difficult to maintain given the demands of their service, and most Battalion members remain devoted solely to their duty and their comrades. Their social isolation is considered a necessary sacrifice for their role.</p>
+                    <div class="text-sm text-slate-300 space-y-2">
+                        <p><span class="text-eternal-gold">Meritocratic Vigil Society:</span> Six strata — Star-Returned (500+ yrs), Anchored (active), Stasis-Dwellers (support), Initiates, Remembranced (fallen), Unnamed (exiled).</p>
+                        <p><span class="text-eternal-gold">Crèche-System:</span> Children raised communally; bloodlines recorded but confer no privilege.</p>
+                        <p><span class="text-eternal-gold">Greetings:</span> "The star shines." / "The center holds." Fist over heart (five fingers).</p>
+                        <p><span class="text-eternal-gold">Taboos:</span> Oath-breaking (Unnaming), Void-worship, forgetting the fallen, realm-purism.</p>
+                    </div>
                 </div>
-
-                <!-- Cultural Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-palette text-emerald-400"></i>
-                        </div>
+                
+                <!-- 6. CULTURAL -->
+                <div class="framework-card bg-slate-900/70 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4 border-b border-slate-700 pb-2">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-palette text-emerald-400"></i></div>
                         <h3 class="text-lg font-bold text-emerald-400">6. Cultural Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">The 5-Star Battalion occupies a central place in Guardian culture, representing the ideal of heroic service. Epic poems recount their battles, and artists compete to create the most stirring depictions of their deeds. Each member has a symbolic identity—the First Star, the Second Star, and so on—that carries cultural meaning. The Battalion's colors, five stars on a field of emerald, appear on banners throughout the Domain. Their motto, "Through Darkness, Light," is spoken by Guardians facing impossible odds. Cultural celebrations mark their victories and memorials honor their fallen.</p>
+                    <div class="text-sm text-slate-300 space-y-2">
+                        <p><span class="text-eternal-gold">Symbols:</span> Five-pointed golden star on grey field (Void), unbroken circle (seal), golden eye tattoo. Colors: gold (Nimorak), grey (endurance), realm accents.</p>
+                        <p><span class="text-eternal-gold">Customs:</span> The Silence Before Battle, Chronicle-Knotting (tactile records), Star-Weaving (light sculptures).</p>
+                        <p><span class="text-eternal-gold">Festivals:</span> The Return (unsealing anniversary), The Sealing Remembrance (silent day), Convergence of Stars (centennial).</p>
+                    </div>
                 </div>
-
-                <!-- Economical Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-coins text-emerald-400"></i>
-                        </div>
+                
+                <!-- 7. ECONOMICAL -->
+                <div class="framework-card bg-slate-900/70 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4 border-b border-slate-700 pb-2">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-coins text-emerald-400"></i></div>
                         <h3 class="text-lg font-bold text-emerald-400">7. Economical Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">The 5-Star Battalion receives substantial funding that reflects their importance to the Guardian Domain. Each member has a generous stipend, though most donate much of it to support fallen comrades' families or Guardian charitable causes. The Battalion has unlimited access to equipment, weapons, and supplies—whatever they need for their missions. They also control discretionary funds for supporting allies, bribing informants, or purchasing intelligence. The economic cost of maintaining the Battalion is high, but the value of their accomplishments far exceeds the expense. Their missions often recover valuable resources from enemy territory.</p>
+                    <div class="text-sm text-slate-300 space-y-2">
+                        <p><span class="text-eternal-gold">Command-Requisition Economy:</span> No internal currency; resources allocated by Star-Council. Hoarding prohibited.</p>
+                        <p><span class="text-eternal-gold">Post-Unsealing Currency:</span> Star-Tokens (crystallized time), refined Void-Matter (priceless), Soul-Debt (honor-bound).</p>
+                        <p><span class="text-eternal-gold">Production:</span> Star-Forge Complex produces Void-Blades, Star-Plate, Resonance Lances; food from hydroponics.</p>
+                        <p><span class="text-eternal-gold">Trade:</span> Exports Void-Matter and training; imports raw materials from Four Realms.</p>
+                    </div>
                 </div>
-
-                <!-- Physiological Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-heartbeat text-emerald-400"></i>
-                        </div>
+                
+                <!-- 8. PHYSIOLOGICAL -->
+                <div class="framework-card bg-slate-900/70 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4 border-b border-slate-700 pb-2">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-heartbeat text-emerald-400"></i></div>
                         <h3 class="text-lg font-bold text-emerald-400">8. Physiological Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Members of the 5-Star Battalion represent the peak of Guardian physical capability. Their hybrid nature has been honed through years of intensive training to achieve superhuman strength, speed, and endurance. They can fight for days without rest, survive wounds that would kill ordinary beings, and recover from injuries at remarkable rates. The Domain's best medical staff attend to their health, and they have access to experimental treatments and enhancements. Despite these advantages, the physical toll of their service is immense—most members retire within a decade due to accumulated injuries. Their bodies bear the marks of countless battles.</p>
+                    <div class="text-sm text-slate-300 space-y-2">
+                        <p><span class="text-eternal-gold">Void-Adapted Humanoids:</span> Grey-tinted skin (dense cellular structure), golden bio-luminescent eyes (Nimorak-bond), lifespan 2,000–5,000 subjective years.</p>
+                        <p><span class="text-eternal-gold">Phasing Capacity:</span> Limited ability to exist partially out-of-phase; requires concentration, causes Star-Sickness if prolonged.</p>
+                        <p><span class="text-eternal-gold">Comparison:</span> More durable than baseline humans; immune to corruption; dimensional perception high.</p>
+                        <p><span class="text-eternal-gold">Remembranced:</span> Souls of fallen recovered and stored in Soul-Crystals; can be consulted.</p>
+                    </div>
                 </div>
-
-                <!-- Territorial Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-map-marked-alt text-emerald-400"></i>
-                        </div>
+                
+                <!-- 9. TERRITORIAL -->
+                <div class="framework-card bg-slate-900/70 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4 border-b border-slate-700 pb-2">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-map-marked-alt text-emerald-400"></i></div>
                         <h3 class="text-lg font-bold text-emerald-400">9. Territorial Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">The 5-Star Battalion maintains a headquarters within the Guardian Domain's central fortress—a compound that includes training facilities, armories, and living quarters. The compound is both a home and a shrine, with walls covered in trophies from past victories and memorials to fallen members. Beyond this base, the Battalion operates across the entire Eastern Plane and beyond, wherever their missions take them. They have priority access to all Guardian facilities and can commandeer resources as needed. Their operational territory extends to any location where the Captain-Commander requires their presence.</p>
+                    <div class="text-sm text-slate-300 space-y-2">
+                        <p><span class="text-eternal-gold">Dark Realm Fortresses:</span> Entire civilization exists at the Firmament edge. Primary: Nimorak's Vigil (HQ, 30k pop). Four Star-Anchor fortresses at directional Firmament cracks.</p>
+                        <p><span class="text-eternal-gold">Adjacent Domains:</span> Firmament (above), Void (beyond), Meridian Threshold (passage), Aneian settlements (kin).</p>
+                        <p><span class="text-eternal-gold">Post-Unsealing:</span> Five Embassy-Stars (floating citadels) in neutral space near Arcadia and realm borders.</p>
+                        <p><span class="text-eternal-gold">Bodies of Water:</span> The Deep Mirror (Void-Baptism), Stasis Springs (chi-filtered).</p>
+                    </div>
                 </div>
-
-                <!-- Technological Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-cogs text-emerald-400"></i>
-                        </div>
+                
+                <!-- 10. TECHNOLOGICAL -->
+                <div class="framework-card bg-slate-900/70 border border-slate-700 rounded-xl p-6">
+                    <div class="flex items-center mb-4 border-b border-slate-700 pb-2">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-cogs text-emerald-400"></i></div>
                         <h3 class="text-lg font-bold text-emerald-400">10. Technological Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Each member of the 5-Star Battalion wields legendary equipment crafted specifically for them by the Domain's master artisans. Their weapons are works of art, imbued with powerful enchantments and blessed by the Light. Their armor provides protection without sacrificing mobility, allowing them to fight at peak effectiveness. The Battalion also has access to experimental technologies not yet available to other Guardians—devices for communication, transportation, and combat that can provide decisive advantages in critical situations. Their equipment is maintained by dedicated support staff who ensure everything functions perfectly.</p>
+                    <div class="text-sm text-slate-300 space-y-2">
+                        <p><span class="text-eternal-gold">Star-Forging:</span> Four-Realm synthesis (Light, Chi, Runes, Paraformers) + Void-Matter. Produces reality-anchored gear.</p>
+                        <p><span class="text-eternal-gold">Key Artifacts:</span> Void-Blade (cuts concepts), Resonance Lance, Stasis-Projector, Soul-Catcher, Dimensional Anchor.</p>
+                        <p><span class="text-eternal-gold">Vehicles:</span> Star-Barque (dimensional transport), Resonance Tank, Void-Sled, Phase-Cutter.</p>
+                        <p><span class="text-eternal-gold">Constructs:</span> Void-Steed, Star-Beetle, Unmaking-Hound, Void-Drake (aerial bombardment).</p>
+                    </div>
                 </div>
-
-                <!-- Military Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-shield-alt text-emerald-400"></i>
-                        </div>
+                
+                <!-- 11. MILITARY -->
+                <div class="framework-card bg-slate-900/70 border border-slate-700 rounded-xl p-6 md:col-span-2 lg:col-span-1">
+                    <div class="flex items-center mb-4 border-b border-slate-700 pb-2">
+                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-shield-alt text-emerald-400"></i></div>
                         <h3 class="text-lg font-bold text-emerald-400">11. Military Framework</h3>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">The 5-Star Battalion operates as a self-contained strike force capable of undertaking any mission. Their tactics emphasize speed, precision, and overwhelming force applied at decisive points. They can function as shock troops, assassins, saboteurs, or commanders as the situation requires. When they fight together, their coordination is supernatural—each member anticipates the others' actions, creating a combat effectiveness far exceeding their numbers. The Battalion can be reinforced by other Guardian forces for larger operations, but they are most deadly when operating as a pure five-person unit. Their military doctrine is studied by all Guardian officers.</p>
+                    <div class="text-sm text-slate-300 space-y-2">
+                        <p><span class="text-eternal-gold">Doctrine:</span> Offensive anti-incursion. Speed, precision, overwhelming force at decisive points. Star-Communion enables perfect coordination.</p>
+                        <p><span class="text-eternal-gold">Branches:</span> Void-Dragoons (mounted), Stasis-Engineers (reality anchors), Phantom Corps (recon/Void-Cloaks), Resonance Artillery.</p>
+                        <p><span class="text-eternal-gold">Defenses:</span> Void-Shield generators, Resonance Turrets, Anchor-Point networks, Watch-Station sensors.</p>
+                        <p><span class="text-eternal-gold">Notable Engagements:</span> Defense of Lumeria (held against Abyssal forces), Recovery of the Eternal Seed, Battle of the Thousand Shadows.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Notable Missions -->
+    <!-- The Sealing and the Vigil (new section) -->
     <section class="py-12 bg-slate-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-8">Notable Missions</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Defense of Lumeria</h3>
-                    <p class="text-slate-300 text-sm">The Battalion held the line against overwhelming Abyssal forces during the siege of Lumeria, buying time for civilian evacuation and reinforcements to arrive.</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-7">
+                    <h3 class="text-2xl font-bold text-eternal-gold mb-4 flex items-center"><i class="fas fa-hourglass-end mr-3 text-emerald-400"></i>The Sealing & The Vigil</h3>
+                    <p class="text-slate-300 text-sm mb-3">In Year 5,000 of the 1st Myriad, the Ancients warned through Nimorak that the Destroyer would annihilate the Battalion if they remained. General Kaelen chose sealing over dispersion. The Battalion and their fortresses entered temporal stasis: 10 years active, 50 years frozen, repeated for 500 subjective years (≈26,500 objective).</p>
+                    <p class="text-slate-300 text-sm mb-3">Within the seal, they trained, maintained equipment, raised new generations, and updated the Chronicle. Population declined from 100,000 to 85,000. When Nimorak commanded unsealing in Year 8,500 of the 4th Myriad, General Darren Worthstar led the awakened force to Arcadia, warning of the Destroyer's stirring.</p>
+                    <div class="mt-4 p-3 bg-slate-800/50 rounded-lg italic text-slate-400 text-xs">"We are the wall between what is and what hungers. The five points hold the seal. The center remembers." — General Worthstar</div>
                 </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Assassination of the Dark Emperor</h3>
-                    <p class="text-slate-300 text-sm">A covert operation that eliminated a major threat to the Eastern Plane, demonstrating the Battalion's ability to strike at the heart of enemy power.</p>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-7">
+                    <h3 class="text-2xl font-bold text-eternal-gold mb-4 flex items-center"><i class="fas fa-handshake mr-3 text-emerald-400"></i>Relations & Factions</h3>
+                    <ul class="space-y-3 text-sm text-slate-300">
+                        <li><span class="text-emerald-300 font-medium">Guardian Domain:</span> Training partnership; complementary perception (Eye + Nimorak). Worthstar respects Lucius Arogzan.</li>
+                        <li><span class="text-emerald-300 font-medium">Aneians (Dark Horde):</span> Kin alliance; shared Void-adaptation. Worthstar's heritage eases ties.</li>
+                        <li><span class="text-emerald-300 font-medium">Four Covert Orders:</span> Cautious alliance; intelligence sharing against Grenlian resurgence.</li>
+                        <li><span class="text-emerald-300 font-medium">Dual Council:</span> Tense necessity. Battalion provides Destroyer warning; Council grants basing rights.</li>
+                    </ul>
+                    <div class="mt-6 grid grid-cols-2 gap-2 text-xs text-slate-400">
+                        <div><i class="fas fa-check-circle text-emerald-500 mr-1"></i>Extra-territorial</div>
+                        <div><i class="fas fa-check-circle text-emerald-500 mr-1"></i>Embassy-Star Alpha (Arcadia)</div>
+                        <div><i class="fas fa-check-circle text-emerald-500 mr-1"></i>Joint Void-combat drills</div>
+                        <div><i class="fas fa-check-circle text-emerald-500 mr-1"></i>Void-Crystal exchange</div>
+                    </div>
                 </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <h3 class="text-lg font-bold text-emerald-400 mb-2">Recovery of the Eternal Seed</h3>
-                    <p class="text-slate-300 text-sm">A desperate mission into Abyssal territory to recover a sacred artifact essential to the Guardian Alliance's spiritual defenses.</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <h3 class="text-lg font-bold text-emerald-400 mb-2">The Battle of the Thousand Shadows</h3>
-                    <p class="text-slate-300 text-sm">The Battalion turned the tide of a massive engagement, their coordinated assault breaking the enemy's formation and securing victory.</p>
-                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notable events / quick reference -->
+    <section class="py-10 bg-slate-900/30 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold text-eternal-gold mb-6 text-center">Chronicle Excerpts · Key Events</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="stat-panel rounded-xl p-5"><span class="block text-xs text-emerald-400 uppercase tracking-wider">Threshold Crisis</span><span class="text-lg font-semibold">Year 4,487 E1M</span><p class="text-slate-400 text-sm mt-1">Three Grenlian Generals breach; twelve thousand unmade. Catalyst for unity.</p></div>
+                <div class="stat-panel rounded-xl p-5"><span class="block text-xs text-emerald-400 uppercase tracking-wider">Oath Sworn</span><span class="text-lg font-semibold">Year 4,500 E1M</span><p class="text-slate-400 text-sm mt-1">At the Stone Table, 500 volunteers pledge the Five Points.</p></div>
+                <div class="stat-panel rounded-xl p-5"><span class="block text-xs text-emerald-400 uppercase tracking-wider">Sealing</span><span class="text-lg font-semibold">Year 5,000 E1M</span><p class="text-slate-400 text-sm mt-1">Battalion enters stasis; Vigil begins.</p></div>
+                <div class="stat-panel rounded-xl p-5"><span class="block text-xs text-emerald-400 uppercase tracking-wider">Unsealing</span><span class="text-lg font-semibold">Year 8,500 E4M</span><p class="text-slate-400 text-sm mt-1">Return to Eastern Plane; Worthstar addresses Arcadia.</p></div>
             </div>
         </div>
     </section>
@@ -322,7 +378,7 @@
                     <span class="fantasy-font text-lg font-bold text-eternal-gold">Eternal Trees Saga</span>
                 </div>
                 <div class="text-slate-500 text-sm">
-                    <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
+                    <p>&copy; 2024 Eternal Trees Saga Wiki · 5-Star Battalion Canonical Reference</p>
                 </div>
                 <div class="flex space-x-4 mt-4 md:mt-0">
                     <a href="index.html" class="text-slate-400 hover:text-eternal-gold transition">Home</a>
@@ -330,15 +386,16 @@
                     <a href="western-factions.html" class="text-slate-400 hover:text-eternal-purple transition">Western</a>
                 </div>
             </div>
+            <div class="mt-6 text-center text-slate-600 text-xs border-t border-slate-800 pt-4">
+                <p>"The star shines. The center holds." — Oath of Five Points · Nimorak-Vigil archives</p>
+            </div>
         </div>
     </footer>
 
     <script>
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
     </script>
 </body>
 </html>
