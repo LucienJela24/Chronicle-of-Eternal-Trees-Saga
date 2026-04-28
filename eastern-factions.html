@@ -13,12 +13,15 @@
     .gold-gradient { background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .card-hover { transition: all 0.3s ease; }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(201, 162, 39, 0.2); }
+    .map-container { position: relative; overflow: hidden; border-radius: 0.75rem; }
+    .map-container img { transition: transform 0.5s ease; }
+    .map-container:hover img { transform: scale(1.03); }
   </style>
 </head>
 <body class="min-h-screen">
   <!-- Header -->
   <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
-    <div class="flex items-center justify-between p-4">
+    <div class="flex items-center justify-between p-4 max-w-7xl mx-auto">
       <a href="index.html" class="flex items-center gap-3">
         <i class="fas fa-tree text-amber-400 text-2xl"></i>
         <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
@@ -75,6 +78,28 @@
           <div>
             <p class="text-slate-400 text-sm mb-2"><span class="text-amber-400">Covert Orders:</span> Order of the Star, Root Sanctuary, Havenfire Guild, Filwind Institute</p>
             <p class="text-slate-400 text-sm"><span class="text-amber-400">Allied Races:</span> Ethereals, Drakes, Mystics, Dromes</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Geography / Map Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-map mr-2"></i>Geography of the Eastern Plane</h2>
+      <div class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-4 md:p-6">
+        <div class="map-container border border-slate-700 rounded-lg cursor-pointer" onclick="window.open('Eastern Plane.png', '_blank')">
+          <img src="Eastern Plane.png" alt="Map of the Eastern Plane" class="w-full h-auto rounded-lg block" loading="lazy">
+        </div>
+        <div class="mt-4 flex flex-wrap items-center justify-between gap-4">
+          <p class="text-slate-400 text-sm">
+            <i class="fas fa-info-circle text-amber-400 mr-2"></i>
+            Click the map to view full resolution. Shows the Four Realms, Arcadia Isle, the Mist boundaries, and ley-line networks.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-full border border-slate-700">Lux Imperio (North)</span>
+            <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-full border border-slate-700">Chuugoku (East)</span>
+            <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-full border border-slate-700">Avalon (West)</span>
+            <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs rounded-full border border-slate-700">Helron (South)</span>
           </div>
         </div>
       </div>

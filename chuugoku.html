@@ -4,58 +4,170 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empire of Chuugoku - Eternal Trees Saga Wiki</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'cinzel': ['Cinzel', serif],
-                        'inter': ['Inter', sans-serif],
-                    },
-                    colors: {
-                        'eternal-gold': '#d4af37',
-                        'eternal-amber': '#f59e0b',
-                        'eternal-purple': '#8b5cf6',
-                        'eternal-emerald': '#10b981',
-                        'eternal-slate': '#1e293b',
-                        'crimson': '#dc2626',
-                    }
-                }
-            }
-        }
+    <script src="https://cdn.tailwindcss.com">
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; }
-        h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
-        .framework-card { transition: all 0.3s ease; }
-        .framework-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .gold-gradient { background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+        }
+        h1,
+        h2,
+        h3,
+        .fantasy-font {
+            font-family: 'Cinzel', serif;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .framework-card {
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .framework-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(220, 38, 38, 0.2);
+        }
+
+        /* Lightbox */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+            cursor: zoom-out;
+        }
+        .lightbox-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .lightbox-overlay img {
+            max-width: 94vw;
+            max-height: 94vh;
+            border-radius: 12px;
+            box-shadow: 0 0 80px rgba(220, 38, 38, 0.35);
+            object-fit: contain;
+            transform: scale(0.9);
+            transition: transform 0.35s ease;
+            cursor: default;
+        }
+        .lightbox-overlay.active img {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            font-size: 2.4rem;
+            color: #f87171;
+            cursor: pointer;
+            z-index: 101;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        .lightbox-close:hover {
+            color: #fca5a5;
+        }
+
+        /* Image container */
+        .img-container {
+            position: relative;
+            cursor: zoom-in;
+            overflow: hidden;
+            border-radius: 16px;
+            display: inline-block;
+            width: 100%;
+        }
+        .img-container img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .img-container:hover img {
+            transform: scale(1.04);
+        }
+        .img-zoom-hint {
+            position: absolute;
+            bottom: 16px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #f87171;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            opacity: 0;
+            letter-spacing: 0.5px;
+        }
+        .img-container:hover .img-zoom-hint {
+            opacity: 1;
+        }
+
+        /* Glow border */
+        .glow-border {
+            position: relative;
+        }
+        .glow-border::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 18px;
+            padding: 2px;
+            background: linear-gradient(135deg, #dc262633, #f8717166, #dc262633);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            transition: opacity 0.4s;
+            opacity: 0.5;
+        }
+        .img-container:hover .glow-border::after {
+            opacity: 1;
+        }
+        .img-fallback {
+            display: none;
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-200 min-h-screen">
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox-overlay">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img src="" alt="Enlarged view" id="lightboxImg">
+    </div>
+
     <!-- Navigation -->
     <nav class="bg-slate-900/90 backdrop-blur-md border-b border-slate-700 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
                     <a href="index.html" class="flex items-center space-x-2">
-                        <i class="fas fa-tree text-eternal-emerald text-2xl"></i>
-                        <span class="fantasy-font text-xl font-bold text-eternal-gold">Eternal Trees Saga</span>
+                        <i class="fas fa-tree text-emerald-400 text-2xl"></i>
+                        <span class="fantasy-font text-xl font-bold gold-gradient">Eternal Trees Saga</span>
                     </a>
                 </div>
                 <div class="hidden md:block">
                     <div class="flex items-baseline space-x-4">
-                        <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Home</a>
-                        <a href="key-figures.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Key Figures</a>
-                        <a href="places.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Places</a>
-                        <a href="timeline.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Timeline</a>
-                        <a href="plots.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Plots</a>
-                        <a href="eastern-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-amber hover:bg-slate-800 transition">Eastern</a>
-                        <a href="western-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-purple hover:bg-slate-800 transition">Western</a>
-                        <a href="other-realms.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-emerald hover:bg-slate-800 transition">Realms</a>
+                        <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Home</a>
+                        <a href="key-figures.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Key Figures</a>
+                        <a href="places.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Places</a>
+                        <a href="timeline.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Timeline</a>
+                        <a href="plots.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Plots</a>
+                        <a href="eastern-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-red-400 hover:bg-slate-800 transition">Eastern</a>
+                        <a href="western-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Western</a>
+                        <a href="other-realms.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Realms</a>
                     </div>
                 </div>
                 <div class="md:hidden">
@@ -67,19 +179,19 @@
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-700">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Home</a>
-                <a href="key-figures.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Key Figures</a>
-                <a href="places.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Places</a>
-                <a href="timeline.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Timeline</a>
-                <a href="plots.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Plots</a>
-                <a href="eastern-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-amber hover:bg-slate-800">Eastern Factions</a>
-                <a href="western-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-purple hover:bg-slate-800">Western Factions</a>
-                <a href="other-realms.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-emerald hover:bg-slate-800">Other Realms</a>
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Home</a>
+                <a href="key-figures.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Key Figures</a>
+                <a href="places.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Places</a>
+                <a href="timeline.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Timeline</a>
+                <a href="plots.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Plots</a>
+                <a href="eastern-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-red-400 hover:bg-slate-800">Eastern Factions</a>
+                <a href="western-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Western Factions</a>
+                <a href="other-realms.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Other Realms</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Realm Map -->
     <section class="relative bg-gradient-to-b from-red-900/40 to-slate-950 py-16">
         <div class="absolute inset-0 opacity-10">
             <div class="absolute inset-0" style="background-image: radial-gradient(circle at 50% 50%, rgba(220, 38, 38, 0.2) 0%, transparent 70%);"></div>
@@ -96,333 +208,412 @@
                 <span><i class="fas fa-mountain text-red-400 mr-2"></i>Elemental Legions</span>
                 <span><i class="fas fa-yin-yang text-red-400 mr-2"></i>Spiritual Balance</span>
             </div>
-        </div>
-    </section>
 
-    <!-- Quick Stats -->
-    <section class="py-8 bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-4">
-                <div class="bg-slate-900/50 border border-red-500/30 rounded-xl p-4 text-center">
-                    <div class="text-2xl font-bold text-red-400">80 Million</div>
-                    <div class="text-sm text-slate-400">Population</div>
-                </div>
-                <div class="bg-slate-900/50 border border-red-500/30 rounded-xl p-4 text-center">
-                    <div class="text-2xl font-bold text-red-400">500,000</div>
-                    <div class="text-sm text-slate-400">Elemental Legions</div>
-                </div>
-                <div class="bg-slate-900/50 border border-red-500/30 rounded-xl p-4 text-center">
-                    <div class="text-2xl font-bold text-red-400">Kigen</div>
-                    <div class="text-sm text-slate-400">Protector</div>
-                </div>
-                <div class="bg-slate-900/50 border border-red-500/30 rounded-xl p-4 text-center">
-                    <div class="text-2xl font-bold text-red-400">Serenity</div>
-                    <div class="text-sm text-slate-400">Primary Node</div>
-                </div>
+            <!-- Realm Map Image -->
+            <div class="mt-10 max-w-3xl mx-auto">
+                <div class="img-container glow-border rounded-2xl border border-red-500/25 shadow-2xl"
+                onclick="openLightbox('./Chuugoku.png')" title="Click to enlarge — Realm of Chuugoku">
+                <img
+                src="./Chuugoku.png"
+                alt="Map of Chuugoku — Realm of Elements"
+                class="w-full h-auto rounded-2xl"
+                loading="lazy"
+                onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                <div class="img-fallback flex-col items-center justify-center p-16 bg-slate-900/80 rounded-2xl text-center"
+                style="display:none;">
+                <i class="fas fa-image text-6xl text-red-400/50 mb-4"></i>
+                <p class="text-slate-400 text-sm">Realm Map: Chuugoku</p>
+                <p class="text-slate-500 text-xs mt-1">Place "<strong>Chuugoku.png</strong>" in the same folder</p>
+            </div>
+            <div class="img-zoom-hint">
+                <i class="fas fa-search-plus mr-1"></i>Click to enlarge
             </div>
         </div>
-    </section>
+        <p class="text-slate-500 text-xs mt-3 italic">The Realm of Elements — spanning ley lines, sacred springs, and the five elemental territories</p>
+    </div>
+</div>
+</section>
 
-    <!-- Overview -->
-    <section class="py-12 bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
-                <h2 class="text-2xl font-bold text-red-400 mb-4 fantasy-font"><i class="fas fa-crown mr-2"></i>Overview</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">The Empire of Chuugoku stands as the largest and most populous nation in the Eastern Plane, a vast realm built upon ancient traditions, elemental mastery, and the divine mandate of the Dragon Throne. Governed by a unique dual authority—the Celestial Emperor and the High Lama—Chuugoku represents the harmonious union of temporal power and spiritual wisdom.</p>
-                <p class="text-slate-300 leading-relaxed mb-4">The empire's origins trace back to the Primordial Era, when the Five Primal Shapers—beings of pure elemental energy—taught early humans to harness fire, water, earth, air, and spirit. These teachings evolved into the Five Great Houses that form the foundation of Chuugoku society: Homura (Fire), Seisui (Water), Iwayama (Earth), Hayate (Wind), and Tamashii (Spirit).</p>
-                <p class="text-slate-300 leading-relaxed">The Dragon Throne itself emerged from the Covenant of Lies (Abs. 2,584), when the ancestors of modern Chuugoku negotiated for the eastern territories rich in elemental ley lines. Over millennia, the empire developed its sophisticated system of Elemental Legions, where warriors train from childhood to master specific elements, creating military forces of unparalleled specialization and power.</p>
+<!-- Quick Stats -->
+<section class="py-8 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-slate-900/50 border border-red-500/30 rounded-xl p-4 text-center framework-card">
+                <div class="text-2xl font-bold text-red-400">80 Million</div>
+                <div class="text-sm text-slate-400">Population</div>
+            </div>
+            <div class="bg-slate-900/50 border border-red-500/30 rounded-xl p-4 text-center framework-card">
+                <div class="text-2xl font-bold text-red-400">500,000</div>
+                <div class="text-sm text-slate-400">Elemental Legions</div>
+            </div>
+            <div class="bg-slate-900/50 border border-red-500/30 rounded-xl p-4 text-center framework-card">
+                <div class="text-2xl font-bold text-red-400">Kigen</div>
+                <div class="text-sm text-slate-400">Protector</div>
+            </div>
+            <div class="bg-slate-900/50 border border-red-500/30 rounded-xl p-4 text-center framework-card">
+                <div class="text-2xl font-bold text-red-400">Serenity</div>
+                <div class="text-sm text-slate-400">Primary Node</div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- 11 Frameworks Analysis -->
-    <section class="py-12 bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center text-red-400 mb-12 fantasy-font"><i class="fas fa-layer-group mr-2"></i>11 Frameworks Analysis</h2>
-            
-            <!-- Historical Framework -->
-            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
-                <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-landmark mr-2"></i>1. Historical Framework</h3>
-                <p class="text-slate-300 text-sm mb-3"><strong>Primordial Origins (Abs. 1,200-2,584):</strong> The foundations of Chuugoku were laid when the Five Primal Shapers descended from the elemental planes to teach humanity. These beings—Ignis (Fire), Aqua (Water), Terra (Earth), Ventus (Wind), and Anima (Spirit)—established the first elemental academies in what is now the Imperial Heartland. The Shapers' teachings formed the basis of all Chuugoku culture, from martial arts to governance philosophy.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>The Covenant of Lies (Abs. 2,584):</strong> Chuugoku's ancestors were the most skeptical of the Covenant's signatories, insisting on clauses preserving their elemental traditions. They secured the eastern territories specifically because of their dense elemental ley lines, correctly predicting that these energies would be essential for their descendants' survival.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>First Unification (Year 800 / Abs. 3,385):</strong> The First Emperor united the warring elemental clans under a single banner, establishing the principle that "the Dragon Throne rises above all elements." This unification created the template for imperial authority that persists to this day.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>The Lama Integration (Year 1,500 / Abs. 4,085):</strong> The High Lama was formally recognized as co-ruler, establishing the dual governance system. This occurred after a century of spiritual unrest, when the people demanded that their spiritual traditions receive equal recognition with imperial authority.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>Five Houses Formalization (Year 2,200 / Abs. 4,785):</strong> The Great Houses were officially codified with hereditary leadership, territorial domains, and representation in the Imperial Council. Each House was assigned responsibility for maintaining one of the elemental academies.</p>
-                <p class="text-slate-300 text-sm"><strong>Modern Era:</strong> The empire has maintained relative stability for over 7,000 years, weathering Abyssal incursions, internal rebellions, and external conflicts. The current tension with the Root Sanctuary represents the most significant spiritual challenge since the Lama Integration.</p>
+<!-- Overview -->
+<section class="py-12 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8 framework-card">
+            <h2 class="text-2xl font-bold text-red-400 mb-4 fantasy-font"><i class="fas fa-crown mr-2"></i>Overview</h2>
+            <p class="text-slate-300 leading-relaxed mb-4">The Empire of Chuugoku stands as the largest and most populous nation in the Eastern Plane, a vast realm built upon ancient traditions, elemental mastery, and the divine mandate of the Dragon Throne. Governed by a unique dual authority—the Celestial Emperor and the High Lama—Chuugoku represents the harmonious union of temporal power and spiritual wisdom.</p>
+            <p class="text-slate-300 leading-relaxed mb-4">The empire's origins trace back to the Primordial Era, when the Five Primal Shapers—beings of pure elemental energy—taught early humans to harness fire, water, earth, air, and spirit. These teachings evolved into the Five Great Houses that form the foundation of Chuugoku society: Homura (Fire), Seisui (Water), Iwayama (Earth), Hayate (Wind), and Tamashii (Spirit).</p>
+            <p class="text-slate-300 leading-relaxed">The Dragon Throne itself emerged from the Covenant of Lies (Abs. 2,584), when the ancestors of modern Chuugoku negotiated for the eastern territories rich in elemental ley lines. Over millennia, the empire developed its sophisticated system of Elemental Legions, where warriors train from childhood to master specific elements, creating military forces of unparalleled specialization and power.</p>
+        </div>
+    </div>
+</section>
+
+<!-- 11 Frameworks Analysis -->
+<section class="py-12 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-red-400 mb-12 fantasy-font"><i class="fas fa-layer-group mr-2"></i>11 Frameworks Analysis</h2>
+
+        <!-- Historical Framework -->
+        <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6 framework-card">
+            <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-landmark mr-2"></i>1. Historical Framework</h3>
+            <p class="text-slate-300 text-sm mb-3"><strong>Primordial Origins (Abs. 1,200-2,584):</strong> The foundations of Chuugoku were laid when the Five Primal Shapers descended from the elemental planes to teach humanity. These beings—Ignis (Fire), Aqua (Water), Terra (Earth), Ventus (Wind), and Anima (Spirit)—established the first elemental academies in what is now the Imperial Heartland.</p>
+            <p class="text-slate-300 text-sm mb-3"><strong>The Covenant of Lies (Abs. 2,584):</strong> Chuugoku's ancestors were the most skeptical of the Covenant's signatories, insisting on clauses preserving their elemental traditions. They secured the eastern territories specifically because of their dense elemental ley lines.</p>
+            <p class="text-slate-300 text-sm mb-3"><strong>First Unification (Year 800 / Abs. 3,385):</strong> The First Emperor united the warring elemental clans under a single banner, establishing the principle that "the Dragon Throne rises above all elements."</p>
+            <p class="text-slate-300 text-sm mb-3"><strong>The Lama Integration (Year 1,500 / Abs. 4,085):</strong> The High Lama was formally recognized as co-ruler, establishing the dual governance system after a century of spiritual unrest.</p>
+            <p class="text-slate-300 text-sm"><strong>Modern Era:</strong> The empire has maintained relative stability for over 7,000 years, weathering Abyssal incursions, internal rebellions, and external conflicts. The current tension with the Root Sanctuary represents the most significant spiritual challenge since the Lama Integration.</p>
+        </div>
+
+        <!-- Political Framework -->
+        <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6 framework-card">
+            <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-balance-scale mr-2"></i>2. Political Framework</h3>
+            <p class="text-slate-300 text-sm mb-3"><strong>The Dragon Throne (Dual Authority):</strong></p>
+            <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                <li>• <strong>The Celestial Emperor:</strong> Temporal ruler claiming divine mandate through descent from the First Emperor. Commands all military forces and administers civil law.</li>
+                <li>• <strong>The High Lama:</strong> Spiritual leader selected through reincarnation recognition rituals. Oversees religious doctrine and can veto imperial decisions on spiritual grounds.</li>
+            </ul>
+            <p class="text-slate-300 text-sm mb-3"><strong>The Five Great Houses:</strong></p>
+            <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                <li>• <strong>House Homura (Fire):</strong> Control southern volcanic territories. Masters of flame manipulation and forge-craft. Current Head: Lord Kagutsuchi.</li>
+                <li>• <strong>House Seisui (Water):</strong> Control eastern coastal and river regions. Masters of healing, navigation, and fluid combat. Current Head: Lady Mizuki.</li>
+                <li>• <strong>House Iwayama (Earth):</strong> Control central mountain territories. Masters of defense, construction, and endurance. Current Head: Lord Tsuchi.</li>
+                <li>• <strong>House Hayate (Wind):</strong> Control northern plains and sky territories. Masters of speed, communication, and aerial combat. Current Head: Lord Fujin.</li>
+                <li>• <strong>House Tamashii (Spirit):</strong> Control sacred sites and ancestral grounds. Masters of spiritual matters and divination. Current Head: Lady Reikon.</li>
+            </ul>
+            <p class="text-slate-300 text-sm"><strong>Elemental Hierarchy:</strong> Social structure partially determined by elemental affinity. Those showing strong attunement to any element receive training and status regardless of birth, creating social mobility unavailable in more rigid caste systems.</p>
+        </div>
+
+        <!-- Mental Framework -->
+        <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6 framework-card">
+            <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-brain mr-2"></i>3. Mental Framework</h3>
+            <p class="text-slate-300 text-sm mb-3"><strong>Elemental Balance Philosophy:</strong> The core mental framework teaches that all five elements must exist in harmony. Imbalance—whether personal or societal—leads to catastrophe. Citizens are taught to recognize their dominant element and cultivate its opposite to achieve inner balance.</p>
+            <p class="text-slate-300 text-sm mb-3"><strong>Fivefold Meditation:</strong> Daily practice cycling through elemental visualizations—flame, water, stone, wind, and spirit. This is believed to maintain mental equilibrium and prepare the practitioner for any challenge.</p>
+            <p class="text-slate-300 text-sm mb-3"><strong>Pathology: Elemental Obsession:</strong> The primary psychological risk is fixation on a single element to the exclusion of others. This manifests as extreme personality traits: Fire-Obsession (uncontrolled rage), Water-Obsession (emotional instability), Earth-Obsession (paralysis), Wind-Obsession (inability to commit), Spirit-Obsession (disconnection from reality).</p>
+            <p class="text-slate-300 text-sm"><strong>Ancestor Veneration:</strong> Mental health includes maintaining connection to ancestral wisdom. Those who lose this connection are considered spiritually ill and receive treatment from House Tamashii specialists.</p>
+        </div>
+
+        <!-- Spiritual Framework -->
+        <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6 framework-card">
+            <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-praying-hands mr-2"></i>4. Spiritual Framework</h3>
+            <p class="text-slate-300 text-sm mb-3"><strong>Elemental Worship:</strong> The Five Primal Shapers are venerated as divine teachers rather than gods. Temples to each Shaper exist throughout the empire, with the Great Temples at the elemental academies serving as major pilgrimage sites.</p>
+            <p class="text-slate-300 text-sm mb-3"><strong>The Dragon Spirit:</strong> The Emperor is believed to house the Dragon Spirit, a divine essence passed down through the imperial line. The High Lama confirms each Emperor's possession of the Dragon Spirit during coronation rituals.</p>
+            <p class="text-slate-300 text-sm mb-3"><strong>Root Sanctuary Conflict:</strong> The current spiritual crisis involves the Root Sanctuary, a reclusive order claiming direct connection to the World Tree's roots. They challenge the High Lama's authority, arguing that true spiritual wisdom comes from the earth itself rather than celestial teachings.</p>
+            <p class="text-slate-300 text-sm"><strong>Primary Ethereals:</strong> While the Primal Shapers are venerated, active worship focuses on Ethereals aligned with elemental principles. Kigen (the World Tree's eastern aspect) receives particular devotion as the empire's protector.</p>
+        </div>
+
+        <!-- Social Framework -->
+        <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6 framework-card">
+            <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-users mr-2"></i>5. Social Framework</h3>
+            <p class="text-slate-300 text-sm mb-3"><strong>Elemental Affinity System:</strong> Social status is partially determined by elemental attunement:</p>
+            <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                <li>• <strong>Dual-Affinity:</strong> Those attuned to two elements (rare, ~2%) occupy highest social positions</li>
+                <li>• <strong>Single-Affinity:</strong> Those attuned to one element (~30%) form the warrior-scholar class</li>
+                <li>• <strong>Balanced:</strong> Those with equal affinity for all elements (~8%) serve as mediators and judges</li>
+                <li>• <strong>Unawakened:</strong> Those showing no elemental affinity (~60%) form the common citizenry</li>
+            </ul>
+            <p class="text-slate-300 text-sm mb-3"><strong>Family Structure:</strong> Extended families often share elemental affinity, creating elemental "clans" within the larger Houses. Inter-elemental marriages are encouraged to promote social harmony.</p>
+            <p class="text-slate-300 text-sm"><strong>Gender Dynamics:</strong> Elemental affinity transcends gender, allowing women to rise to any position including House Head and Imperial Council member. However, the Emperor has always been male, while the High Lama's gender varies by reincarnation.</p>
+        </div>
+
+        <!-- Cultural Framework -->
+        <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6 framework-card">
+            <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-palette mr-2"></i>6. Cultural Framework</h3>
+            <p class="text-slate-300 text-sm mb-3"><strong>Elemental Arts:</strong> Each House has developed distinct artistic traditions:</p>
+            <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                <li>• <strong>Homura:</strong> Metalwork, glass-blowing, and flame-dancing</li>
+                <li>• <strong>Seisui:</strong> Watercolor painting, poetry, and fluid sculpture</li>
+                <li>• <strong>Iwayama:</strong> Stone carving, architecture, and pottery</li>
+                <li>• <strong>Hayate:</strong> Music, calligraphy, and aerial performance</li>
+                <li>• <strong>Tamashii:</strong> Mask-making, ritual theater, and spirit-art</li>
+            </ul>
+            <p class="text-slate-300 text-sm mb-3"><strong>Martial Traditions:</strong> Each House maintains distinct martial arts styles based on their element. The annual Elemental Tournament brings champions from all Houses to compete in non-lethal combat.</p>
+            <p class="text-slate-300 text-sm"><strong>Cuisine:</strong> Regional cuisines reflect elemental associations—spicy southern dishes (Fire), delicate eastern seafood (Water), hearty central stews (Earth), light northern fare (Wind), and ceremonial foods (Spirit).</p>
+        </div>
+
+        <!-- Economical Framework -->
+        <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6 framework-card">
+            <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-coins mr-2"></i>7. Economical Framework</h3>
+            <p class="text-slate-300 text-sm mb-3"><strong>Currency System:</strong></p>
+            <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                <li>• <strong>Dragon Coins (Gold):</strong> High-value currency bearing the imperial seal</li>
+                <li>• <strong>Elemental Marks (Silver):</strong> Standard currency marked with House symbols</li>
+                <li>• <strong>Spirit Tokens (Bronze):</strong> Small transactions, often used as offerings</li>
+            </ul>
+            <p class="text-slate-300 text-sm mb-3"><strong>House-Based Economy:</strong> Each Great House controls specific economic sectors aligned with their element—Homura (metallurgy, glasswork), Seisui (fishing, shipping, healing), Iwayama (mining, construction, agriculture), Hayate (transportation, communication), Tamashii (spiritual services, divination).</p>
+            <p class="text-slate-300 text-sm"><strong>Imperial Taxation:</strong> Citizens contribute 8% to imperial treasury, 4% to their House, and 2% to spiritual maintenance—relatively light taxation reflecting the empire's economic strength.</p>
+        </div>
+
+        <!-- Physiological Framework -->
+        <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6 framework-card">
+            <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-heartbeat mr-2"></i>8. Physiological Framework</h3>
+            <p class="text-slate-300 text-sm mb-3"><strong>Elemental Adaptation:</strong> Citizens living in elemental territories show physiological adaptations over generations—heat tolerance (Fire), breath-holding (Water), bone density (Earth), lung capacity (Wind).</p>
+            <p class="text-slate-300 text-sm mb-3"><strong>Elemental Affinity Manifestation:</strong> Physical markers include warm skin and red-tinged eyes (Fire), cool touch and fluid movements (Water), solid build and grounded stance (Earth), light step and quick reflexes (Wind), unusual eye color and distant gaze (Spirit).</p>
+            <p class="text-slate-300 text-sm mb-3"><strong>Lifespan:</strong> Average 120 years, with elemental practitioners often living longer. Spirit-affinity individuals sometimes live 200+ years.</p>
+            <p class="text-slate-300 text-sm"><strong>Elemental Sickness:</strong> Imbalance can cause physical illness—Fire-sickness (fever), Water-sickness (edema), Earth-sickness (paralysis), Wind-sickness (tremors), Spirit-sickness (disconnection).</p>
+        </div>
+
+        <!-- Territorial Framework with Dragon Capital Map -->
+        <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6 framework-card">
+            <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-map-marked-alt mr-2"></i>9. Territorial Framework</h3>
+            <p class="text-slate-300 text-sm mb-3"><strong>Imperial Heartland:</strong> Central territory containing the capital, Imperial Palace, and the Dragon Throne itself. Governed directly by the Emperor and High Lama. Population 15 million.</p>
+            <p class="text-slate-300 text-sm mb-3"><strong>House Territories:</strong></p>
+            <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                <li>• <strong>Homura Territory:</strong> Southern volcanic regions, fire ley lines, forges</li>
+                <li>• <strong>Seisui Territory:</strong> Eastern coast and river systems, water ley lines, ports</li>
+                <li>• <strong>Iwayama Territory:</strong> Central mountains, earth ley lines, mines</li>
+                <li>• <strong>Hayate Territory:</strong> Northern plains, wind ley lines, sky-temples</li>
+                <li>• <strong>Tamashii Territory:</strong> Sacred sites throughout empire, spirit ley lines</li>
+            </ul>
+            <p class="text-slate-300 text-sm mb-4"><strong>Dragon Capital:</strong> The imperial seat housing the Dragon Throne Complex, five elemental quarters, and the Great Ley Nexus. Built at the convergence of all five elemental ley lines, making it the most spiritually charged location in the Eastern Plane.</p>
+
+            <!-- Dragon Capital City Map -->
+            <div class="mt-6 mb-4">
+                <p class="text-red-400 text-sm font-semibold mb-3"><i class="fas fa-city mr-1"></i>City Map — Dragon Capital</p>
+                <div class="img-container glow-border rounded-2xl border border-red-500/25 shadow-2xl max-w-3xl"
+                onclick="openLightbox('./Chuugoku_Dragon Capital.png')" title="Click to enlarge — Detailed Dragon Capital map">
+                <img
+                src="./Chuugoku_Dragon%20Capital.png"
+                alt="Detailed map of the Dragon Capital — Seat of the Dragon Throne"
+                class="w-full h-auto rounded-2xl"
+                loading="lazy"
+                onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                <div class="img-fallback flex-col items-center justify-center p-16 bg-slate-900/80 rounded-2xl text-center"
+                style="display:none;">
+                <i class="fas fa-map text-6xl text-red-400/50 mb-4"></i>
+                <p class="text-slate-400 text-sm">City Map: Dragon Capital</p>
+                <p class="text-slate-500 text-xs mt-1">Place "<strong>Chuugoku_Dragon Capital.png</strong>" in the same folder</p>
             </div>
-
-            <!-- Political Framework -->
-            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
-                <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-balance-scale mr-2"></i>2. Political Framework</h3>
-                <p class="text-slate-300 text-sm mb-3"><strong>The Dragon Throne (Dual Authority):</strong></p>
-                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
-                    <li>• <strong>The Celestial Emperor:</strong> Temporal ruler claiming divine mandate through descent from the First Emperor. Commands all military forces, administers civil law, and represents the empire in foreign affairs. The Emperor's word is law in all temporal matters.</li>
-                    <li>• <strong>The High Lama:</strong> Spiritual leader selected through reincarnation recognition rituals. Oversees religious doctrine, maintains harmony between elements, and provides spiritual guidance to the Emperor and people. Can veto imperial decisions on spiritual grounds.</li>
-                </ul>
-                <p class="text-slate-300 text-sm mb-3"><strong>The Five Great Houses:</strong> Hereditary houses controlling elemental domains:</p>
-                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
-                    <li>• <strong>House Homura (Fire):</strong> Control southern volcanic territories. Masters of flame manipulation and forge-craft. Current Head: Lord Kagutsuchi. Known for temper and passion.</li>
-                    <li>• <strong>House Seisui (Water):</strong> Control eastern coastal and river regions. Masters of healing, navigation, and fluid combat. Current Head: Lady Mizuki. Known for adaptability and wisdom.</li>
-                    <li>• <strong>House Iwayama (Earth):</strong> Control central mountain territories. Masters of defense, construction, and endurance. Current Head: Lord Tsuchi. Known for stubbornness and reliability.</li>
-                    <li>• <strong>House Hayate (Wind):</strong> Control northern plains and sky territories. Masters of speed, communication, and aerial combat. Current Head: Lord Fujin. Known for changeability and freedom.</li>
-                    <li>• <strong>House Tamashii (Spirit):</strong> Control sacred sites and ancestral grounds. Masters of spiritual matters, divination, and communion with the dead. Current Head: Lady Reikon. Known for mystery and depth.</li>
-                </ul>
-                <p class="text-slate-300 text-sm mb-3"><strong>Imperial Council:</strong> Governing body comprising representatives from each Great House, appointed ministers, and spiritual advisors. Advises the Emperor and Lama on major decisions. Can propose legislation but cannot override imperial decrees.</p>
-                <p class="text-slate-300 text-sm"><strong>Elemental Hierarchy:</strong> Social structure partially determined by elemental affinity. Those showing strong attunement to any element receive training and status regardless of birth. This creates social mobility unavailable in more rigid caste systems.</p>
-            </div>
-
-            <!-- Mental Framework -->
-            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
-                <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-brain mr-2"></i>3. Mental Framework</h3>
-                <p class="text-slate-300 text-sm mb-3"><strong>Elemental Balance Philosophy:</strong> The core mental framework teaches that all five elements must exist in harmony. Imbalance—whether personal or societal—leads to catastrophe. Citizens are taught to recognize their dominant element and cultivate its opposite to achieve inner balance.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>Fivefold Meditation:</strong> Daily practice cycling through elemental visualizations—flame, water, stone, wind, and spirit. This is believed to maintain mental equilibrium and prepare the practitioner for any challenge.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>Pathology: Elemental Obsession:</strong> The primary psychological risk is fixation on a single element to the exclusion of others. This manifests as extreme personality traits: Fire-Obsession (uncontrolled rage), Water-Obsession (emotional instability), Earth-Obsession (paralysis), Wind-Obsession (inability to commit), Spirit-Obsession (disconnection from reality).</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>Educational System:</strong> All children receive basic elemental training, with those showing exceptional aptitude advancing to specialized academies. Education emphasizes strategic thinking, philosophical contemplation, and practical application of elemental principles.</p>
-                <p class="text-slate-300 text-sm"><strong>Ancestor Veneration:</strong> Mental health includes maintaining connection to ancestral wisdom. Those who lose this connection are considered spiritually ill and receive treatment from House Tamashii specialists.</p>
-            </div>
-
-            <!-- Spiritual Framework -->
-            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
-                <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-praying-hands mr-2"></i>4. Spiritual Framework</h3>
-                <p class="text-slate-300 text-sm mb-3"><strong>Elemental Worship:</strong> The Five Primal Shapers are venerated as divine teachers rather than gods. Temples to each Shaper exist throughout the empire, with the Great Temples at the elemental academies serving as major pilgrimage sites.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>The Dragon Spirit:</strong> The Emperor is believed to house the Dragon Spirit, a divine essence passed down through the imperial line. This spirit provides wisdom, strength, and legitimacy. The High Lama confirms each Emperor's possession of the Dragon Spirit during coronation rituals.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>Root Sanctuary Conflict:</strong> The current spiritual crisis involves the Root Sanctuary, a reclusive order claiming direct connection to the World Tree's roots. They challenge the High Lama's authority, arguing that true spiritual wisdom comes from the earth itself rather than celestial teachings. This conflict threatens to destabilize the empire's spiritual foundations.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>Ancestral Communion:</strong> House Tamashii maintains the practice of communicating with ancestors through meditation, ritual, and spirit-channeling. Every household maintains an ancestral shrine, and major decisions often involve seeking ancestral guidance.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>Seasonal Festivals:</strong> Five major festivals honor each element, with the Grand Convergence (celebrating all five) occurring once per decade. These festivals involve elaborate rituals, elemental displays, and community bonding.</p>
-                <p class="text-slate-300 text-sm"><strong>Primary Ethereals:</strong> While the Primal Shapers are venerated, active worship focuses on Ethereals aligned with elemental principles. Kigen (the World Tree's eastern aspect) receives particular devotion as the empire's protector.</p>
-            </div>
-
-            <!-- Social Framework -->
-            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
-                <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-users mr-2"></i>5. Social Framework</h3>
-                <p class="text-slate-300 text-sm mb-3"><strong>Elemental Affinity System:</strong> Social status is partially determined by elemental attunement, creating a complex hierarchy:</p>
-                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
-                    <li>• <strong>Dual-Affinity:</strong> Those attuned to two elements (rare, ~2%) occupy highest social positions</li>
-                    <li>• <strong>Single-Affinity:</strong> Those attuned to one element (~30%) form the warrior-scholar class</li>
-                    <li>• <strong>Balanced:</strong> Those with equal affinity for all elements (~8%) serve as mediators and judges</li>
-                    <li>• <strong>Unawakened:</strong> Those showing no elemental affinity (~60%) form the common citizenry</li>
-                </ul>
-                <p class="text-slate-300 text-sm mb-3"><strong>Family Structure:</strong> Extended families often share elemental affinity, creating elemental "clans" within the larger Houses. Inter-elemental marriages are encouraged to promote social harmony, though they sometimes create tension when children show affinity for only one parent's element.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>House Loyalty:</strong> Citizens typically owe primary loyalty to their House, secondary loyalty to the Empire, and tertiary loyalty to their elemental affinity (if different from their House). This layered loyalty system creates complex social obligations.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>Gender Dynamics:</strong> Elemental affinity transcends gender, allowing women to rise to any position including House Head and Imperial Council member. However, the Emperor has always been male, while the High Lama's gender varies by reincarnation.</p>
-                <p class="text-slate-300 text-sm"><strong>Outsider Integration:</strong> Non-Chuugoku citizens who develop elemental affinity may petition for adoption into a House, creating a path to full citizenship. This policy has integrated many refugees and immigrants over the centuries.</p>
-            </div>
-
-            <!-- Cultural Framework -->
-            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
-                <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-palette mr-2"></i>6. Cultural Framework</h3>
-                <p class="text-slate-300 text-sm mb-3"><strong>Elemental Arts:</strong> Each House has developed distinct artistic traditions reflecting their element:</p>
-                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
-                    <li>• <strong>Homura:</strong> Metalwork, glass-blowing, and flame-dancing</li>
-                    <li>• <strong>Seisui:</strong> Watercolor painting, poetry, and fluid sculpture</li>
-                    <li>• <strong>Iwayama:</strong> Stone carving, architecture, and pottery</li>
-                    <li>• <strong>Hayate:</strong> Music, calligraphy, and aerial performance</li>
-                    <li>• <strong>Tamashii:</strong> Mask-making, ritual theater, and spirit-art</li>
-                </ul>
-                <p class="text-slate-300 text-sm mb-3"><strong>Martial Traditions:</strong> Each House maintains distinct martial arts styles based on their element. The annual Elemental Tournament brings champions from all Houses to compete in non-lethal combat, with the Emperor and High Lama presiding.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>Cuisine:</strong> Regional cuisines reflect elemental associations—spicy southern dishes (Fire), delicate eastern seafood (Water), hearty central stews (Earth), light northern fare (Wind), and ceremonial foods (Spirit). Imperial banquets carefully balance all five elements.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>Architecture:</strong> Buildings incorporate elemental symbolism and often functional elemental features—fire-heating, water-cooling, earth-insulation, wind-ventilation, and spirit-wards. The Imperial Palace perfectly balances all five.</p>
-                <p class="text-slate-300 text-sm"><strong>Clothing:</strong> Traditional dress includes elemental color-coding: red (Fire), blue (Water), brown/green (Earth), white/grey (Wind), and purple/black (Spirit). Formal occasions require wearing one's House colors.</p>
-            </div>
-
-            <!-- Economical Framework -->
-            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
-                <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-coins mr-2"></i>7. Economical Framework</h3>
-                <p class="text-slate-300 text-sm mb-3"><strong>Currency System:</strong></p>
-                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
-                    <li>• <strong>Dragon Coins (Gold):</strong> High-value currency bearing the imperial seal</li>
-                    <li>• <strong>Elemental Marks (Silver):</strong> Standard currency marked with House symbols</li>
-                    <li>• <strong>Spirit Tokens (Bronze):</strong> Small transactions, often used as offerings</li>
-                </ul>
-                <p class="text-slate-300 text-sm mb-3"><strong>House-Based Economy:</strong> Each Great House controls specific economic sectors aligned with their element:</p>
-                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
-                    <li>• <strong>Homura:</strong> Metallurgy, glasswork, fuel production</li>
-                    <li>• <strong>Seisui:</strong> Fishing, shipping, healing services</li>
-                    <li>• <strong>Iwayama:</strong> Mining, construction, agriculture</li>
-                    <li>• <strong>Hayate:</strong> Transportation, communication, courier services</li>
-                    <li>• <strong>Tamashii:</strong> Spiritual services, divination, ancestral rites</li>
-                </ul>
-                <p class="text-slate-300 text-sm mb-3"><strong>Imperial Taxation:</strong> Citizens contribute 8% to imperial treasury, 4% to their House, and 2% to spiritual maintenance. This relatively light taxation reflects the empire's economic strength.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>Trade Networks:</strong> Chuugoku exports elemental goods, crafted items, and spiritual services. Imports include luxury goods, rare materials, and technologies from other realms. The empire's size makes it largely self-sufficient.</p>
-                <p class="text-slate-300 text-sm"><strong>Elemental Resource Management:</strong> Ley line energy is carefully regulated. Over-extraction can damage the land, so the High Lama oversees sustainable use of elemental resources.</p>
-            </div>
-
-            <!-- Physiological Framework -->
-            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
-                <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-heartbeat mr-2"></i>8. Physiological Framework</h3>
-                <p class="text-slate-300 text-sm mb-3"><strong>Elemental Adaptation:</strong> Citizens living in elemental territories show physiological adaptations over generations. Fire-territory residents tolerate heat better; Water-territory residents can hold breath longer; Earth-territory residents have greater bone density; Wind-territory residents have enhanced lung capacity.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>Elemental Affinity Manifestation:</strong> Those with strong elemental affinity display physical markers: Fire-affinity (warm skin, red-tinged eyes), Water-affinity (cool touch, fluid movements), Earth-affinity (solid build, grounded stance), Wind-affinity (light step, quick reflexes), Spirit-affinity (unusual eye color, distant gaze).</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>Lifespan:</strong> Average lifespan is 120 years, with elemental practitioners often living longer due to energy manipulation slowing cellular decay. Spirit-affinity individuals sometimes live 200+ years, though they often appear detached from physical reality in old age.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>Healing Practices:</strong> House Seisui maintains the finest healing traditions, combining water-magic, herbal medicine, and acupuncture. Each House has developed healing techniques aligned with their element.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>Elemental Sickness:</strong> Imbalance can cause physical illness—Fire-sickness (fever, inflammation), Water-sickness (edema, emotional flooding), Earth-sickness (paralysis, stagnation), Wind-sickness (tremors, instability), Spirit-sickness (disconnection, possession-risk).</p>
-                <p class="text-slate-300 text-sm"><strong>Dietary Customs:</strong> Traditional medicine emphasizes elemental balance in diet. Foods are categorized by element, and meals are constructed to maintain personal equilibrium. Imperial physicians prescribe elemental diets for various conditions.</p>
-            </div>
-
-            <!-- Territorial Framework -->
-            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
-                <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-map-marked-alt mr-2"></i>9. Territorial Framework</h3>
-                <p class="text-slate-300 text-sm mb-3"><strong>Imperial Heartland:</strong> Central territory containing the capital, Imperial Palace, and the Dragon Throne itself. Governed directly by the Emperor and High Lama. Population 15 million.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>House Territories:</strong></p>
-                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
-                    <li>• <strong>Homura Territory:</strong> Southern volcanic regions, fire ley lines, forges</li>
-                    <li>• <strong>Seisui Territory:</strong> Eastern coast and river systems, water ley lines, ports</li>
-                    <li>• <strong>Iwayama Territory:</strong> Central mountains, earth ley lines, mines</li>
-                    <li>• <strong>Hayate Territory:</strong> Northern plains, wind ley lines, sky-temples</li>
-                    <li>• <strong>Tamashii Territory:</strong> Sacred sites throughout empire, spirit ley lines</li>
-                </ul>
-                <p class="text-slate-300 text-sm mb-3"><strong>Border Marches:</strong> Fortified regions protecting against the Western Wastes and other external threats. Garrisoned by mixed-elemental legions and commanded by imperial appointees rather than House forces.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>Elemental Academies:</strong> Five major academies (one per element) train the next generation of elemental practitioners. Admission is highly competitive, with graduates guaranteed positions in House or imperial service.</p>
-                <p class="text-slate-300 text-sm"><strong>Root Sanctuary:</strong> Located in a remote mountain valley, this reclusive order controls access to deep ley line confluences. Their growing independence threatens imperial authority over spiritual matters.</p>
-            </div>
-
-            <!-- Technological Framework -->
-            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
-                <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-cogs mr-2"></i>10. Technological Framework</h3>
-                <p class="text-slate-300 text-sm mb-3"><strong>Elemental Engineering:</strong> Technology in Chuugoku is primarily elemental-based rather than mechanical:</p>
-                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
-                    <li>• <strong>Fire-Technology:</strong> Forge-craft, glasswork, heating systems</li>
-                    <li>• <strong>Water-Technology:</strong> Irrigation, purification, hydraulic systems</li>
-                    <li>• <strong>Earth-Technology:</strong> Construction, mining, structural engineering</li>
-                    <li>• <strong>Wind-Technology:</strong> Communication, transportation, ventilation</li>
-                    <li>• <strong>Spirit-Technology:</strong> Wards, divination, ancestral communication</li>
-                </ul>
-                <p class="text-slate-300 text-sm mb-3"><strong>Ley Line Harnessing:</strong> The empire has developed sophisticated methods for tapping elemental ley lines for power, healing, and communication. The Great Ley Nexus in the Imperial Heartland powers the capital's elemental systems.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>Elemental Weapons:</strong> Military technology focuses on channeling elemental energy—flame-swords, water-whips, earth-hammers, wind-blades, and spirit-staves. Master craftsmen can create weapons that amplify a wielder's elemental affinity.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>Communication Network:</strong> Wind-mages maintain a rapid communication system using elemental carriers—wind-messages can cross the empire in hours rather than days.</p>
-                <p class="text-slate-300 text-sm"><strong>Transportation:</strong> Elemental-assisted travel includes wind-gliders, water-current boats, and earth-tunneling. The elite use spirit-stepping for near-instantaneous short-range travel.</p>
-            </div>
-
-            <!-- Military Framework -->
-            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6">
-                <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-shield-alt mr-2"></i>11. Military Framework</h3>
-                <p class="text-slate-300 text-sm mb-3"><strong>The Elemental Legions:</strong> Chuugoku's military is organized into specialized legions based on elemental affinity:</p>
-                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
-                    <li>• <strong>Legion of Flame (Homura):</strong> Shock troops and siege specialists. Masters of fire-magic and destructive assault. 100,000 active personnel.</li>
-                    <li>• <strong>Legion of Tides (Seisui):</strong> Naval forces and healers. Control waterways, provide medical support, conduct amphibious operations. 80,000 active personnel.</li>
-                    <li>• <strong>Legion of Stone (Iwayama):</strong> Defensive specialists and engineers. Maintain fortifications, conduct sieges, provide heavy infantry. 120,000 active personnel.</li>
-                    <li>• <strong>Legion of Storms (Hayate):</strong> Scouts, skirmishers, and rapid response. Aerial combat specialists, messengers, reconnaissance. 60,000 active personnel.</li>
-                    <li>• <strong>Legion of Spirits (Tamashii):</strong> Special operations and spiritual warfare. Counter dark magic, communicate with ancestral warriors, conduct divination. 40,000 active personnel.</li>
-                </ul>
-                <p class="text-slate-300 text-sm mb-3"><strong>Imperial Guard:</strong> Elite force protecting the Emperor and High Lama. Composed of dual-affinity soldiers capable of wielding two elements simultaneously. Only 5,000 members, but each equals ten ordinary soldiers.</li>
-                <p class="text-slate-300 text-sm mb-3"><strong>Command Structure:</strong> The Grand Marshal commands all legions, reporting directly to the Emperor. Each Legion has a Lord Commander appointed by their House Head with imperial confirmation.</p>
-                <p class="text-slate-300 text-sm mb-3"><strong>Military Training:</strong> Training begins at age 8 for those showing elemental affinity. The most promising advance to the Academies, while others enter direct service. Veterans often become instructors or elemental craftsmen.</p>
-                <p class="text-slate-300 text-sm"><strong>Current Tensions:</strong> The Root Sanctuary conflict has split loyalties within the Legion of Spirits, with some units refusing to act against their spiritual brethren. This internal division represents the greatest military threat the empire has faced in millennia.</p>
+            <div class="img-zoom-hint">
+                <i class="fas fa-search-plus mr-1"></i>Click to enlarge
             </div>
         </div>
-    </section>
+        <p class="text-slate-500 text-xs mt-2 italic">Detailed cartography showing the five elemental quarters — Homura (Fire), Seisui (Water), Iwayama (Earth), Hayate (Wind), and Tamashii (Aether) — along with the Dragon Throne Complex, Imperial Gardens, Jade Market, Chi-Barrier Wall, Temple of the Whispering Peak, Dragon Gate Tower, Serpent's Canal, Crimson Caldera Forges, Phoenix Barracks, and the Confluence Academy.</p>
+    </div>
 
-    <!-- Fatal Risk -->
-    <section class="py-12 bg-slate-900/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-red-900/20 border border-red-900/30 rounded-xl p-6">
-                <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-exclamation-triangle mr-2"></i>Fatal Risk: Root Sanctuary Schism</h3>
-                <p class="text-slate-300 text-sm mb-3">The Root Sanctuary's challenge to the High Lama's authority threatens to split Chuugoku along spiritual lines. If the conflict escalates, it could:</p>
-                <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
-                    <li>• Divide the Legion of Spirits, crippling the empire's spiritual warfare capabilities</li>
-                    <li>• Cause House Tamashii to fracture between loyalists and sanctuary supporters</li>
-                    <li>• Undermine the Dragon Throne's legitimacy if the High Lama's authority is successfully challenged</li>
-                    <li>• Trigger intervention by other Eastern Plane powers seeking advantage from Chuugoku's weakness</li>
+    <p class="text-slate-300 text-sm mb-3"><strong>Key Districts (from map):</strong></p>
+    <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+        <li>• <strong>Homura Quarter (Fire):</strong> Crimson Caldera Forges, Phoenix Barracks, Fire Temple of the Whispering Peak</li>
+        <li>• <strong>Seisui Quarter (Water):</strong> Serpent's Canal, Naval Command House, Healing Commands House</li>
+        <li>• <strong>Iwayama Quarter (Earth):</strong> Stonehaven Granaries, Jade Market, Earth Legion barracks</li>
+        <li>• <strong>Hayate Quarter (Wind):</strong> Sky Peak Aerie, Cloud-Ship Terminus, Wind Annes</li>
+        <li>• <strong>Tamashii Quarter (Aether):</strong> Confluence Academy, Aether Spring Sanctuary, Dragon Vein Nexus</li>
+    </ul>
+    <p class="text-slate-300 text-sm"><strong>Notable Landmarks:</strong> Dragon Throne Chamber (coiled dragon spire), Chi-Barrier Wall, Temple of the Whispering Peak, Dragon Gate Tower, Imperial Gardens, Grand Imperial Gardens, Rift Valley Watchtower, Pilgrim's Way to Arcadia, Iron Pass to Dark Realm, and the Dragon Path (chi-current road) connecting all quarters.</p>
+</div>
+
+<!-- Technological Framework -->
+<div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6 framework-card">
+    <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-cogs mr-2"></i>10. Technological Framework</h3>
+    <p class="text-slate-300 text-sm mb-3"><strong>Elemental Engineering:</strong> Technology in Chuugoku is primarily elemental-based: Fire-Technology (forge-craft, glasswork), Water-Technology (irrigation, hydraulic systems), Earth-Technology (construction, mining), Wind-Technology (communication, transportation), Spirit-Technology (wards, divination).</p>
+    <p class="text-slate-300 text-sm mb-3"><strong>Ley Line Harnessing:</strong> Sophisticated methods for tapping elemental ley lines for power, healing, and communication. The Great Ley Nexus in the Imperial Heartland powers the capital's elemental systems.</p>
+    <p class="text-slate-300 text-sm mb-3"><strong>Elemental Weapons:</strong> Military technology focuses on channeling elemental energy—flame-swords, water-whips, earth-hammers, wind-blades, and spirit-staves.</p>
+    <p class="text-slate-300 text-sm"><strong>Transportation:</strong> Elemental-assisted travel includes wind-gliders, water-current boats, and earth-tunneling. The elite use spirit-stepping for near-instantaneous short-range travel.</p>
+</div>
+
+<!-- Military Framework -->
+<div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-6 framework-card">
+    <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-shield-alt mr-2"></i>11. Military Framework</h3>
+    <p class="text-slate-300 text-sm mb-3"><strong>The Elemental Legions:</strong> Chuugoku's military is organized into specialized legions:</p>
+    <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+        <li>• <strong>Legion of Flame (Homura):</strong> Shock troops and siege specialists. 100,000 active.</li>
+        <li>• <strong>Legion of Tides (Seisui):</strong> Naval forces and healers. 80,000 active.</li>
+        <li>• <strong>Legion of Stone (Iwayama):</strong> Defensive specialists and engineers. 120,000 active.</li>
+        <li>• <strong>Legion of Storms (Hayate):</strong> Scouts, skirmishers, rapid response. 60,000 active.</li>
+        <li>• <strong>Legion of Spirits (Tamashii):</strong> Special operations and spiritual warfare. 40,000 active.</li>
+    </ul>
+    <p class="text-slate-300 text-sm mb-3"><strong>Imperial Guard:</strong> Elite force of dual-affinity soldiers capable of wielding two elements simultaneously. Only 5,000 members, but each equals ten ordinary soldiers.</p>
+    <p class="text-slate-300 text-sm"><strong>Current Tensions:</strong> The Root Sanctuary conflict has split loyalties within the Legion of Spirits, with some units refusing to act against their spiritual brethren. This internal division represents the greatest military threat the empire has faced in millennia.</p>
+</div>
+</div>
+</section>
+
+<!-- Fatal Risk -->
+<section class="py-12 bg-slate-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-red-900/20 border border-red-900/30 rounded-xl p-6" style="animation: flamePulse 2.5s ease-in-out infinite;">
+            <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-exclamation-triangle mr-2"></i>Fatal Risk: Root Sanctuary Schism</h3>
+            <p class="text-slate-300 text-sm mb-3">The Root Sanctuary's challenge to the High Lama's authority threatens to split Chuugoku along spiritual lines. If the conflict escalates, it could:</p>
+            <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+                <li>• Divide the Legion of Spirits, crippling the empire's spiritual warfare capabilities</li>
+                <li>• Cause House Tamashii to fracture between loyalists and sanctuary supporters</li>
+                <li>• Undermine the Dragon Throne's legitimacy if the High Lama's authority is successfully challenged</li>
+                <li>• Trigger intervention by other Eastern Plane powers seeking advantage from Chuugoku's weakness</li>
+            </ul>
+            <p class="text-slate-300 text-sm">The empire's stability depends on maintaining the balance between temporal and spiritual authority—a balance the Root Sanctuary explicitly rejects. Resolution requires either reconciliation or decisive action, neither of which appears imminent.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Key Locations -->
+<section class="py-12 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-red-400"><i class="fas fa-map-marker-alt mr-2"></i>Key Locations</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 framework-card">
+                <h3 class="text-lg font-bold text-slate-200 mb-2">Imperial Capital</h3>
+                <p class="text-slate-400 text-sm">Seat of the Dragon Throne, housing both Imperial Palace and High Lama's Temple. Population 15 million. Contains the Great Ley Nexus. <span class="text-red-400 text-xs">— See detailed city map above</span></p>
+            </div>
+            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 framework-card">
+                <h3 class="text-lg font-bold text-slate-200 mb-2">Five Elemental Academies</h3>
+                <p class="text-slate-400 text-sm">Prestigious institutions training elemental practitioners. Each Academy is located at a major ley line nexus aligned with its element.</p>
+            </div>
+            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 framework-card">
+                <h3 class="text-lg font-bold text-slate-200 mb-2">Root Sanctuary</h3>
+                <p class="text-slate-400 text-sm">Remote mountain complex housing the reclusive order challenging High Lama's authority. Controls access to deep ley line confluences.</p>
+            </div>
+            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 framework-card">
+                <h3 class="text-lg font-bold text-slate-200 mb-2">Border Marches</h3>
+                <p class="text-slate-400 text-sm">Fortified regions protecting against external threats. Garrisoned by mixed-elemental legions under imperial command.</p>
+            </div>
+            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 framework-card">
+                <h3 class="text-lg font-bold text-slate-200 mb-2">Ancestral Grounds</h3>
+                <p class="text-slate-400 text-sm">Sacred sites maintained by House Tamashii where citizens commune with ancestors. Major pilgrimage destinations.</p>
+            </div>
+            <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 framework-card">
+                <h3 class="text-lg font-bold text-slate-200 mb-2">House Strongholds</h3>
+                <p class="text-slate-400 text-sm">Each Great House maintains a fortified stronghold in their territory—administrative centers, military bases, and cultural repositories.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Government Structure -->
+<section class="py-12 bg-slate-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-red-400"><i class="fas fa-sitemap mr-2"></i>Government Structure</h2>
+        <div class="grid md:grid-cols-3 gap-4">
+            <div class="bg-slate-900/50 border border-red-500/30 rounded-xl p-6 framework-card">
+                <h3 class="text-lg font-bold text-red-400 mb-4"><i class="fas fa-crown mr-2"></i>Imperial Authority</h3>
+                <ul class="space-y-2 text-slate-300 text-sm">
+                    <li><strong>Celestial Emperor:</strong> Temporal ruler, divine mandate</li>
+                    <li><strong>Imperial Council:</strong> Advisory body with House representatives</li>
+                    <li><strong>Grand Marshal:</strong> Supreme military commander</li>
+                    <li><strong>Regional Governors:</strong> Administer non-House territories</li>
                 </ul>
-                <p class="text-slate-300 text-sm">The empire's stability depends on maintaining the balance between temporal and spiritual authority—a balance the Root Sanctuary explicitly rejects. Resolution requires either reconciliation or decisive action, neither of which appears imminent.</p>
+            </div>
+            <div class="bg-slate-900/50 border border-red-500/30 rounded-xl p-6 framework-card">
+                <h3 class="text-lg font-bold text-red-400 mb-4"><i class="fas fa-praying-hands mr-2"></i>Spiritual Authority</h3>
+                <ul class="space-y-2 text-slate-300 text-sm">
+                    <li><strong>High Lama:</strong> Spiritual leader, reincarnation-based</li>
+                    <li><strong>Elemental Abbots:</strong> Head each elemental tradition</li>
+                    <li><strong>Spiritual Advisors:</strong> Council to Emperor and Houses</li>
+                    <li><strong>Temple Network:</strong> Maintain religious practice</li>
+                </ul>
+            </div>
+            <div class="bg-slate-900/50 border border-red-500/30 rounded-xl p-6 framework-card">
+                <h3 class="text-lg font-bold text-red-400 mb-4"><i class="fas fa-home mr-2"></i>House Authority</h3>
+                <ul class="space-y-2 text-slate-300 text-sm">
+                    <li><strong>House Heads:</strong> Lead each Great House</li>
+                    <li><strong>Elemental Masters:</strong> Head Academies</li>
+                    <li><strong>House Councils:</strong> Internal governance</li>
+                    <li><strong>Territorial Lords:</strong> Administer House lands</li>
+                </ul>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Key Locations -->
-    <section class="py-12 bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-2xl font-bold mb-6 fantasy-font text-red-400"><i class="fas fa-map-marker-alt mr-2"></i>Key Locations</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 framework-card">
-                    <h3 class="text-lg font-bold text-slate-200 mb-2">Imperial Capital</h3>
-                    <p class="text-slate-400 text-sm">Seat of the Dragon Throne, housing both Imperial Palace and High Lama's Temple. Population 15 million. Contains the Great Ley Nexus powering the empire's elemental systems.</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 framework-card">
-                    <h3 class="text-lg font-bold text-slate-200 mb-2">Five Elemental Academies</h3>
-                    <p class="text-slate-400 text-sm">Prestigious institutions training elemental practitioners. Each Academy is located at a major ley line nexus aligned with its element. Graduates form the empire's elite.</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 framework-card">
-                    <h3 class="text-lg font-bold text-slate-200 mb-2">Root Sanctuary</h3>
-                    <p class="text-slate-400 text-sm">Remote mountain complex housing the reclusive order challenging High Lama's authority. Controls access to deep ley line confluences. Source of current spiritual crisis.</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 framework-card">
-                    <h3 class="text-lg font-bold text-slate-200 mb-2">Border Marches</h3>
-                    <p class="text-slate-400 text-sm">Fortified regions protecting against external threats. Garrisoned by mixed-elemental legions under imperial command rather than House authority.</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 framework-card">
-                    <h3 class="text-lg font-bold text-slate-200 mb-2">Ancestral Grounds</h3>
-                    <p class="text-slate-400 text-sm">Sacred sites maintained by House Tamashii where citizens commune with ancestors. Major pilgrimage destinations and spiritual power centers.</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 framework-card">
-                    <h3 class="text-lg font-bold text-slate-200 mb-2">House Strongholds</h3>
-                    <p class="text-slate-400 text-sm">Each Great House maintains a fortified stronghold in their territory—these serve as administrative centers, military bases, and cultural repositories.</p>
-                </div>
+<!-- Image Gallery Summary -->
+<section class="py-12 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-red-400"><i class="fas fa-images mr-2"></i>Cartographic Archives</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-slate-900/60 border border-slate-700 rounded-2xl p-5 text-center framework-card"
+            onclick="openLightbox('./Chuugoku.png')" style="cursor:zoom-in;">
+            <i class="fas fa-globe-americas text-4xl text-red-400 mb-3"></i>
+            <h3 class="font-bold text-slate-200 mb-1">Realm Map</h3>
+            <p class="text-slate-400 text-xs">Chuugoku — Full territorial extent with ley lines</p>
+            <span class="text-red-400 text-xs mt-2 inline-block"><i class="fas fa-search-plus mr-1"></i>View full size</span>
+        </div>
+        <div class="bg-slate-900/60 border border-slate-700 rounded-2xl p-5 text-center framework-card"
+        onclick="openLightbox('./Chuugoku_Dragon Capital.png')" style="cursor:zoom-in;">
+        <i class="fas fa-city text-4xl text-red-400 mb-3"></i>
+        <h3 class="font-bold text-slate-200 mb-1">Dragon Capital Map</h3>
+        <p class="text-slate-400 text-xs">Dragon Capital — Five elemental quarters & imperial landmarks</p>
+        <span class="text-red-400 text-xs mt-2 inline-block"><i class="fas fa-search-plus mr-1"></i>View full size</span>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-900 border-t border-slate-800 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                <i class="fas fa-tree text-emerald-400 text-xl"></i>
+                <span class="fantasy-font text-lg font-bold gold-gradient">Eternal Trees Saga</span>
+            </div>
+            <div class="text-slate-500 text-sm">
+                <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
+            </div>
+            <div class="flex space-x-4 mt-4 md:mt-0">
+                <a href="index.html" class="text-slate-400 hover:text-amber-400 transition">Home</a>
+                <a href="eastern-factions.html" class="text-slate-400 hover:text-red-400 transition">Eastern</a>
+                <a href="western-factions.html" class="text-slate-400 hover:text-amber-400 transition">Western</a>
             </div>
         </div>
-    </section>
+    </div>
+</footer>
 
-    <!-- Government Structure -->
-    <section class="py-12 bg-slate-900/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-2xl font-bold mb-6 fantasy-font text-red-400"><i class="fas fa-sitemap mr-2"></i>Government Structure</h2>
-            <div class="grid md:grid-cols-3 gap-4">
-                <div class="bg-slate-900/50 border border-red-500/30 rounded-xl p-6">
-                    <h3 class="text-lg font-bold text-red-400 mb-4"><i class="fas fa-crown mr-2"></i>Imperial Authority</h3>
-                    <ul class="space-y-2 text-slate-300 text-sm">
-                        <li><strong>Celestial Emperor:</strong> Temporal ruler, divine mandate</li>
-                        <li><strong>Imperial Council:</strong> Advisory body with House representatives</li>
-                        <li><strong>Grand Marshal:</strong> Supreme military commander</li>
-                        <li><strong>Regional Governors:</strong> Administer non-House territories</li>
-                    </ul>
-                </div>
-                <div class="bg-slate-900/50 border border-red-500/30 rounded-xl p-6">
-                    <h3 class="text-lg font-bold text-red-400 mb-4"><i class="fas fa-praying-hands mr-2"></i>Spiritual Authority</h3>
-                    <ul class="space-y-2 text-slate-300 text-sm">
-                        <li><strong>High Lama:</strong> Spiritual leader, reincarnation-based</li>
-                        <li><strong>Elemental Abbots:</strong> Head each elemental tradition</li>
-                        <li><strong>Spiritual Advisors:</strong> Council to Emperor and Houses</li>
-                        <li><strong>Temple Network:</strong> Maintain religious practice</li>
-                    </ul>
-                </div>
-                <div class="bg-slate-900/50 border border-red-500/30 rounded-xl p-6">
-                    <h3 class="text-lg font-bold text-red-400 mb-4"><i class="fas fa-home mr-2"></i>House Authority</h3>
-                    <ul class="space-y-2 text-slate-300 text-sm">
-                        <li><strong>House Heads:</strong> Lead each Great House</li>
-                        <li><strong>Elemental Masters:</strong> Head Academies</li>
-                        <li><strong>House Councils:</strong> Internal governance</li>
-                        <li><strong>Territorial Lords:</strong> Administer House lands</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+<script>
+    // Mobile menu
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 border-t border-slate-800 py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="flex items-center space-x-2 mb-4 md:mb-0">
-                    <i class="fas fa-tree text-eternal-emerald text-xl"></i>
-                    <span class="fantasy-font text-lg font-bold text-eternal-gold">Eternal Trees Saga</span>
-                </div>
-                <div class="text-slate-500 text-sm">
-                    <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
-                </div>
-                <div class="flex space-x-4 mt-4 md:mt-0">
-                    <a href="index.html" class="text-slate-400 hover:text-eternal-gold transition">Home</a>
-                    <a href="eastern-factions.html" class="text-slate-400 hover:text-eternal-amber transition">Eastern</a>
-                    <a href="western-factions.html" class="text-slate-400 hover:text-eternal-purple transition">Western</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
 
-    <script>
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    </script>
+    function openLightbox(src) {
+        lightboxImg.src = src;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+</script>
 </body>
 </html>

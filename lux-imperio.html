@@ -1,361 +1,562 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lux Imperio - Eternal Trees Saga Wiki</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
-    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #e2e8f0; }
-    h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
-    .gold-gradient { background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .card-hover { transition: all 0.3s ease; }
-    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(201, 162, 39, 0.2); }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lux Imperio - Eternal Trees Saga Wiki</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0f;
+            color: #e2e8f0;
+        }
+        h1,
+        h2,
+        h3,
+        .fantasy-font {
+            font-family: 'Cinzel', serif;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .card-hover {
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(201, 162, 39, 0.25);
+        }
+        /* Lightbox */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+            cursor: zoom-out;
+        }
+        .lightbox-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .lightbox-overlay img {
+            max-width: 94vw;
+            max-height: 94vh;
+            border-radius: 12px;
+            box-shadow: 0 0 80px rgba(201, 162, 39, 0.35);
+            object-fit: contain;
+            transform: scale(0.9);
+            transition: transform 0.35s ease;
+            cursor: default;
+        }
+        .lightbox-overlay.active img {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            font-size: 2.4rem;
+            color: #c9a227;
+            cursor: pointer;
+            z-index: 101;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        .lightbox-close:hover {
+            color: #f4d03f;
+        }
+        .img-zoom-hint {
+            position: absolute;
+            bottom: 16px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #c9a227;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            opacity: 0;
+            letter-spacing: 0.5px;
+        }
+        .img-container:hover .img-zoom-hint {
+            opacity: 1;
+        }
+        .img-container {
+            position: relative;
+            cursor: zoom-in;
+            overflow: hidden;
+            border-radius: 16px;
+            display: inline-block;
+            width: 100%;
+        }
+        .img-container img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .img-container:hover img {
+            transform: scale(1.04);
+        }
+        /* Glow border */
+        .glow-border {
+            position: relative;
+        }
+        .glow-border::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 18px;
+            padding: 2px;
+            background: linear-gradient(135deg, #c9a22733, #f4d03f66, #c9a22733);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            transition: opacity 0.4s;
+            opacity: 0.5;
+        }
+        .img-container:hover .glow-border::after {
+            opacity: 1;
+        }
+        /* Section divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #c9a22744, #f4d03f88, #c9a22744, transparent);
+            margin: 2rem 0;
+        }
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c9a22755;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c9a22788;
+        }
+        /* Pulse animation for flame indicator */
+        @keyframes flamePulse {
+            0%,
+            100% {
+                box-shadow: 0 0 12px #f4d03f44;
+            }
+            50% {
+                box-shadow: 0 0 28px #f4d03f99;
+            }
+        }
+        .flame-indicator {
+            animation: flamePulse 2.5s ease-in-out infinite;
+        }
+        /* Responsive image caption */
+        .img-caption {
+            background: linear-gradient(180deg, transparent 0%, #0a0a0fcc 60%, #0a0a0f 100%);
+        }
+    </style>
 </head>
 <body class="min-h-screen">
-  <!-- Header -->
-  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
-    <div class="flex items-center justify-between p-4">
-      <a href="index.html" class="flex items-center gap-3">
-        <i class="fas fa-tree text-amber-400 text-2xl"></i>
-        <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
-      </a>
-      <nav class="hidden md:flex items-center gap-6">
-        <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
-        <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
-        <a href="timeline.html" class="text-slate-300 hover:text-amber-400 transition">Timeline</a>
-        <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
-        <a href="eastern-factions.html" class="text-amber-400 font-medium">Eastern</a>
-        <a href="western-factions.html" class="text-slate-300 hover:text-amber-400 transition">Western</a>
-        <a href="other-realms.html" class="text-slate-300 hover:text-amber-400 transition">Realms</a>
-      </nav>
-      <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400"><i class="fas fa-bars text-xl"></i></button>
-    </div>
-  </header>
-
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
-    <div class="p-4">
-      <div class="flex justify-between items-center mb-6">
-        <span class="font-bold text-lg">Navigation</span>
-        <button id="closeMenu" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
-      </div>
-      <nav class="space-y-2">
-        <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
-        <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
-        <a href="timeline.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
-        <a href="plots.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
-        <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-amber-400 bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
-        <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
-        <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
-      </nav>
-    </div>
-  </div>
-
-  <!-- Main Content -->
-  <main class="max-w-7xl mx-auto p-4 md:p-8">
-    <!-- Breadcrumb -->
-    <div class="mb-6">
-      <a href="eastern-factions.html" class="text-slate-400 hover:text-amber-400 text-sm"><i class="fas fa-arrow-left mr-1"></i>Back to Eastern Factions</a>
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox-overlay">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img src="" alt="Enlarged view" id="lightboxImg">
     </div>
 
-    <div class="text-center py-8 mb-10">
-      <h1 class="text-4xl font-bold mb-4 fantasy-font"><span class="gold-gradient">Lux Imperio</span></h1>
-      <p class="text-amber-400 text-lg">The Radiant Theocracy — Northern Realm</p>
-      <p class="text-slate-400 mt-2">"In Light We Trust, In Shadow We Endure"</p>
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
+        <div class="flex items-center justify-between p-4">
+            <a href="index.html" class="flex items-center gap-3">
+                <i class="fas fa-tree text-amber-400 text-2xl"></i>
+                <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
+            </a>
+            <nav class="hidden md:flex items-center gap-6">
+                <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
+                <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
+                <a href="timeline.html" class="text-slate-300 hover:text-amber-400 transition">Timeline</a>
+                <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
+                <a href="eastern-factions.html" class="text-amber-400 font-medium">Eastern</a>
+                <a href="western-factions.html" class="text-slate-300 hover:text-amber-400 transition">Western</a>
+                <a href="other-realms.html" class="text-slate-300 hover:text-amber-400 transition">Realms</a>
+            </nav>
+            <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400"><i class="fas fa-bars text-xl"></i></button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
+        <div class="p-4">
+            <div class="flex justify-between items-center mb-6">
+                <span class="font-bold text-lg">Navigation</span>
+                <button id="closeMenu" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <nav class="space-y-2">
+                <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
+                <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
+                <a href="timeline.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
+                <a href="plots.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
+                <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-amber-400 bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
+                <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
+                <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
+            </nav>
+        </div>
     </div>
 
-    <!-- Quick Stats -->
-    <section class="mb-12">
-      <div class="grid md:grid-cols-4 gap-4">
-        <div class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-4 text-center">
-          <div class="text-2xl font-bold text-amber-400">50 Million</div>
-          <div class="text-sm text-slate-400">Population</div>
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto p-4 md:p-8">
+        <!-- Breadcrumb -->
+        <div class="mb-6">
+            <a href="eastern-factions.html" class="text-slate-400 hover:text-amber-400 text-sm"><i class="fas fa-arrow-left mr-1"></i>Back to Eastern Factions</a>
         </div>
-        <div class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-4 text-center">
-          <div class="text-2xl font-bold text-amber-400">250,000</div>
-          <div class="text-sm text-slate-400">Military (50k Active)</div>
-        </div>
-        <div class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-4 text-center">
-          <div class="text-2xl font-bold text-amber-400">Luminara</div>
-          <div class="text-sm text-slate-400">Protector</div>
-        </div>
-        <div class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-4 text-center">
-          <div class="text-2xl font-bold text-amber-400">Transcendence</div>
-          <div class="text-sm text-slate-400">Primary Node</div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Overview -->
-    <section class="mb-12">
-      <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+        <!-- Hero Section with Lux Imperio Image -->
+        <div class="text-center py-8 mb-10">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 fantasy-font"><span class="gold-gradient">Lux Imperio</span></h1>
+            <p class="text-amber-400 text-lg md:text-xl">The Radiant Theocracy — Northern Realm</p>
+            <p class="text-slate-400 mt-2 italic">"In Light We Trust, In Shadow We Endure"</p>
+
+            <!-- Lux Imperio Realm Image -->
+            <div class="mt-8 max-w-2xl mx-auto">
+                <div class="img-container glow-border rounded-2xl border border-amber-500/25 shadow-2xl"
+                onclick="openLightbox('./Lux Imperio.png')" title="Click to enlarge — Map of Lux Imperio">
+                <img
+                src="./Lux Imperio.png"
+                alt="Map of Lux Imperio — The Radiant Theocracy"
+                class="w-full h-auto rounded-2xl"
+                loading="lazy"
+                onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                <div class="img-fallback hidden flex-col items-center justify-center p-16 bg-slate-900/80 rounded-2xl text-center"
+                style="display:none;">
+                <i class="fas fa-image text-6xl text-amber-400/50 mb-4"></i>
+                <p class="text-slate-400 text-sm">Realm Map: Lux Imperio</p>
+                <p class="text-slate-500 text-xs mt-1">Place "<strong>Lux Imperio.png</strong>" in the same folder</p>
+            </div>
+            <div class="img-zoom-hint">
+                <i class="fas fa-search-plus mr-1"></i>Click to enlarge
+            </div>
+        </div>
+        <p class="text-slate-500 text-xs mt-3 italic">The Radiant Theocracy — spanning the northern reaches of the Eastern Plane</p>
+    </div>
+</div>
+
+<!-- Quick Stats -->
+<section class="mb-12">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-4 text-center card-hover">
+            <div class="text-2xl font-bold text-amber-400">50 Million</div>
+            <div class="text-sm text-slate-400">Population</div>
+        </div>
+        <div class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-4 text-center card-hover">
+            <div class="text-2xl font-bold text-amber-400">250,000</div>
+            <div class="text-sm text-slate-400">Military (50k Active)</div>
+        </div>
+        <div class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-4 text-center card-hover">
+            <div class="text-2xl font-bold text-amber-400">Luminara</div>
+            <div class="text-sm text-slate-400">Protector</div>
+        </div>
+        <div class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-4 text-center card-hover">
+            <div class="text-2xl font-bold text-amber-400">Transcendence</div>
+            <div class="text-sm text-slate-400">Primary Node</div>
+        </div>
+    </div>
+</section>
+
+<!-- Overview -->
+<section class="mb-12">
+    <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8 card-hover">
         <h2 class="text-2xl font-bold text-amber-400 mb-4"><i class="fas fa-crown mr-2"></i>Overview</h2>
         <p class="text-slate-300 leading-relaxed mb-4">Lux Imperio stands as a radiant theocracy in the northern reaches of the Eastern Plane, governed by the unique Dual Crown system where spiritual and temporal power intertwine. The realm is built upon the worship of Luminara, the Light-Bringer, whose divine radiance is said to have guided the first settlers to these blessed lands during the Primordial Era.</p>
         <p class="text-slate-300 leading-relaxed mb-4">The nation's history stretches back to the aftermath of the Covenant of Lies (Abs. 2,584), when the Cult of the Flame—one of the five original survival cults—evolved into a structured religious hierarchy. Over millennia, this flame-worshipping community developed into the sophisticated theocracy that exists today, with the Eternal Flame at its capital serving as both religious symbol and the literal prison of Solara, the Light-Bringer.</p>
         <p class="text-slate-300 leading-relaxed">The realm's defining characteristic is its Dual Hierarchy: the Pope (Supreme Pontiff) oversees all spiritual matters, while the Emperor commands military and administrative affairs. A third pillar, the Grand Matriarch, manages social welfare and the integration of the Eclipse caste—those who embrace shadow as complementary to light. This three-fold governance structure emerged from the First Concordat of Year 1,150 (Abs. 3,735), which formalized the separation and cooperation of divine and temporal authority.</p>
-      </div>
-    </section>
+    </div>
+</section>
 
-    <!-- 11 Frameworks -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-layer-group mr-2"></i>11 Frameworks Analysis</h2>
-      
-      <!-- Historical Framework -->
-      <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4">
+<!-- 11 Frameworks -->
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-layer-group mr-2"></i>11 Frameworks Analysis</h2>
+
+    <!-- Historical Framework -->
+    <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4 card-hover">
         <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-landmark mr-2"></i>1. Historical Framework</h3>
         <p class="text-slate-300 text-sm mb-3"><strong>Primordial Origins (Abs. 1,500-2,584):</strong> The roots of Lux Imperio trace back to the Cult of the Flame, one of five survival cults that emerged during the Primordial Era's "emergency institutionalization" period. Led by the Fire-Touched prophet Ignis, this group discovered that concentrated flame could temporarily repel the Void's encroachment. They established the first sacred fires in the northern highlands, around which permanent settlements gradually formed.</p>
         <p class="text-slate-300 text-sm mb-3"><strong>The Covenant of Lies (Abs. 2,584):</strong> When the five cults gathered to forge the Covenant that would establish the Four Realms, the Flame Cult's representatives negotiated for the northern territories, claiming that "where fire burns, darkness flees." This theological justification secured their territorial claim and began the transition from survival cult to proto-state.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Dual Crown Establishment (Year 1,150 / Abs. 3,735):</strong> The First Concordat formally established the dual governance structure. Pope Celestine I and Emperor Radiant I agreed to share power, creating the template that has governed Lux Imperio for over 8,500 years. The Concordat specified that spiritual matters fall under papal authority while military and administrative affairs belong to the Emperor.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Grand Matriarch Innovation (Year 2,500 / Abs. 5,085):</strong> The position of Grand Matriarch was created to oversee social welfare and manage the growing complexity of Light Tier integration. This three-pillar system provided stability during the turbulent centuries following the Eclipse Heresy.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Eclipse Heresy and Exile (Year 2,000 / Abs. 4,585):</strong> The Eclipse Doctrine—teaching that "shadow supports light"—was declared heresy. Followers were driven underground into what became known as the Catacombs of the Unnamed, where they maintained their faith in secret for 5,000 years.</p>
-        <p class="text-slate-300 text-sm"><strong>Integration and Conclave of Shadows (Year 7,000 / Abs. 9,585):</strong> After millennia of separation, the Conclave of Shadows formally recognized the Eclipse caste, acknowledging that shadow is not evil but merely the absence of light—necessary for contrast and definition. The Catacombs became a heritage site, and Eclipse practitioners were integrated into mainstream society.</p>
-      </div>
+        <p class="text-slate-300 text-sm mb-3"><strong>Dual Crown Establishment (Year 1,150 / Abs. 3,735):</strong> The First Concordat formally established the dual governance structure. Pope Celestine I and Emperor Radiant I agreed to share power, creating the template that has governed Lux Imperio for over 8,500 years.</p>
+        <p class="text-slate-300 text-sm mb-3"><strong>Eclipse Heresy and Exile (Year 2,000 / Abs. 4,585):</strong> The Eclipse Doctrine—teaching that "shadow supports light"—was declared heresy. Followers were driven underground into what became known as the Catacombs of the Unnamed.</p>
+        <p class="text-slate-300 text-sm"><strong>Integration and Conclave of Shadows (Year 7,000 / Abs. 9,585):</strong> After millennia of separation, the Conclave of Shadows formally recognized the Eclipse caste, acknowledging that shadow is not evil but merely the absence of light—necessary for contrast and definition.</p>
+    </div>
 
-      <!-- Political Framework -->
-      <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4">
+    <!-- Political Framework -->
+    <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4 card-hover">
         <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-balance-scale mr-2"></i>2. Political Framework</h3>
         <p class="text-slate-300 text-sm mb-3"><strong>The Dual Crown System:</strong> Lux Imperio operates under a unique theocratic diarchy where two sovereign rulers share governance:</p>
         <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
-          <li>• <strong>The Pope (Supreme Pontiff):</strong> Spiritual leader elected by the College of Cardinals for life. Oversees religious doctrine, canonization of saints, and interpretation of divine law. Maintains the Eternal Flame and conducts the highest sacred rites.</li>
-          <li>• <strong>The Emperor:</strong> Temporal ruler, typically inherited through the Radiant Dynasty though occasionally elected by the Imperial Diet during succession crises. Commands all military forces, administers civil law, and manages territorial affairs.</li>
-          <li>• <strong>The Grand Matriarch:</strong> Third pillar added later, appointed by joint papal-imperial agreement. Manages social welfare, Light Tier integration, and Eclipse caste affairs. Oversees the Ministry of Harmony.</li>
+            <li>• <strong>The Pope (Supreme Pontiff):</strong> Spiritual leader elected by the College of Cardinals for life. Oversees religious doctrine, canonization of saints, and interpretation of divine law.</li>
+            <li>• <strong>The Emperor:</strong> Temporal ruler, typically inherited through the Radiant Dynasty. Commands all military forces, administers civil law, and manages territorial affairs.</li>
+            <li>• <strong>The Grand Matriarch:</strong> Third pillar, appointed by joint papal-imperial agreement. Manages social welfare, Light Tier integration, and Eclipse caste affairs.</li>
         </ul>
-        <p class="text-slate-300 text-sm mb-3"><strong>The Light Tiers:</strong> Society is organized into three spiritual-social castes:</p>
+        <p class="text-slate-300 text-sm mb-3"><strong>The Light Tiers:</strong> Society is organized into spiritual-social castes:</p>
         <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
-          <li>• <strong>The Gifted (80%):</strong> Ordinary citizens who live in the light but possess no special attunement. They form the backbone of agriculture, commerce, and craft.</li>
-          <li>• <strong>The Blessed (15%):</strong> Individuals naturally attuned to light, often displaying luminescent auras during spiritual intensity. Eligible for positions in the clergy, military orders, and magical academies.</li>
-          <li>• <strong>The Tribulation (5%):</strong> Those who have faced divine trials and emerged transformed. Often bear visible marks of their ordeals. Highly respected and frequently sought as advisors.</li>
-          <li>• <strong>The Eclipse (Integrated):</strong> Formerly outcasts, now a recognized caste practicing shadow-complementary spirituality. Essential for maintaining balance in the realm's spiritual ecosystem.</li>
+            <li>• <strong>The Gifted (80%):</strong> Ordinary citizens who live in the light but possess no special attunement.</li>
+            <li>• <strong>The Blessed (15%):</strong> Individuals naturally attuned to light, eligible for positions in clergy, military orders, and magical academies.</li>
+            <li>• <strong>The Tribulation (5%):</strong> Those who have faced divine trials and emerged transformed.</li>
+            <li>• <strong>The Eclipse (Integrated):</strong> Formerly outcasts, now a recognized caste practicing shadow-complementary spirituality.</li>
         </ul>
-        <p class="text-slate-300 text-sm"><strong>Covenant-Keepers:</strong> Citizens who have sworn binding oaths to the realm are recognized by blue finger-cords. These oaths are magically binding and cannot be broken without severe spiritual and social consequences.</p>
-      </div>
+    </div>
 
-      <!-- Mental Framework -->
-      <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4">
-        <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-brain mr-2"></i>3. Mental Framework</h3>
-        <p class="text-slate-300 text-sm mb-3"><strong>Optimism as Civic Duty:</strong> Citizens are expected to maintain hope regardless of circumstances. This is not merely encouraged but considered a moral obligation. Those who despair publicly may face social censure or mandatory counseling from Light-Keepers.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Word-Fasting:</strong> During times of crisis, citizens practice Word-Fasting—refraining from negative speech for prescribed periods. This practice is believed to prevent the manifestation of despair into reality, a concept rooted in the Primordial Era belief that words shape existence.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Pathology: Purity Fervor:</strong> The nation's greatest psychological risk occurs when the pursuit of light becomes absolute. Purity Fervor manifests as blinding fanaticism, False Hope, and denial of reality. Historical heresy purges (Year 2,000) demonstrate this danger. Treatment involves guided shadow-meditation and Eclipse counseling.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Rite of Radiance:</strong> Regular meditation before the Eternal Flame to cleanse doubt and reaffirm faith. Citizens typically perform this weekly, while clergy and military officers may do so daily.</p>
-        <p class="text-slate-300 text-sm"><strong>Light-Reading:</strong> Educational practice where texts are studied through reflected light rather than direct viewing, believed to enhance comprehension and spiritual retention. The Silent Script—sacred texts written without phonetic components—can only be read through this method.</p>
-      </div>
-
-      <!-- Spiritual Framework -->
-      <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4">
-        <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-praying-hands mr-2"></i>4. Spiritual Framework</h3>
-        <p class="text-slate-300 text-sm mb-3"><strong>Basilica Rites:</strong> The Central Basilica in the City of Eternal Radiance houses the Eternal Flame—the prison of Solara, the Light-Bringer. Regional Basilicas throughout the realm maintain subsidiary flames, all ritually connected to the central fire. Major ceremonies include:</p>
-        <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
-          <li>• <strong>Dawn Vigil:</strong> Daily ceremony at sunrise where clergy tend the Eternal Flame</li>
-          <li>• <strong>Luminara's Feast:</strong> Annual celebration commemorating the Light-Bringer's sacrifice</li>
-          <li>• <strong>Tier Ascension:</strong> Ritual marking advancement between Light Tiers</li>
-          <li>• <strong>Shadow-Recognition:</strong> Ceremony acknowledging the necessity of darkness</li>
-        </ul>
-        <p class="text-slate-300 text-sm mb-3"><strong>Eclipse Shadow-Rites:</strong> For outcasts and those who walk in darkness, these rites acknowledge shadow as necessary counterpart to light. Practices include:</p>
-        <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
-          <li>• <strong>Dark Meditation:</strong> Contemplation in total darkness to appreciate light</li>
-          <li>• <strong>Contrast Prayer:</strong> Acknowledgment that definition requires both illumination and shadow</li>
-          <li>• <strong>Twilight Communion:</strong> Ceremony at dusk/dawn when light and shadow meet</li>
-        </ul>
-        <p class="text-slate-300 text-sm mb-3"><strong>Primary Ethereal:</strong> Vertus (Hope) is the most widely worshipped Ethereal in Lux Imperio. Temples to Vertus outnumber all others combined, and the Pontiff is considered Vertus's mortal representative.</p>
-        <p class="text-slate-300 text-sm"><strong>Secondary Veneration:</strong> Solara (the imprisoned Light-Bringer) is not worshipped directly but honored as the source of all light. Prayers are offered "through" Solara rather than "to" Solara, maintaining theological distinction between creator and creation.</p>
-      </div>
-
-      <!-- Social Framework -->
-      <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4">
-        <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-users mr-2"></i>5. Social Framework</h3>
-        <p class="text-slate-300 text-sm mb-3"><strong>Light Tier Mobility:</strong> Unlike rigid caste systems, Lux Imperio permits movement between Tiers through service to the realm. Exceptional deeds, spiritual awakening, or divine intervention can elevate a Gifted to Blessed status. The Grand Matriarch's office processes approximately 10,000 Tier changes annually.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Family Structure:</strong> Extended lineages are tracked through Light-Registers maintained by the Basilica. Adoption is common, particularly for Blessed children who show exceptional potential. Lineage records stretch back to the Primordial Era for the oldest families.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Covenant-Keepers Network:</strong> Those bearing blue finger-cords form a parallel social network of trusted individuals. Breaking a Covenant oath results in cord-severing, a public ceremony of social death. Covenant-Keepers receive preferential treatment in commerce, housing, and legal proceedings.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Eclipse Integration:</strong> Since Year 7,000, Eclipse practitioners have been fully integrated into society. They serve essential functions: shadow-counselors for Purity Fervor, twilight mediators, and specialists in darkness-operations for the military. However, they remain a distinct social category with their own neighborhoods and gathering places.</p>
-        <p class="text-slate-300 text-sm"><strong>Gender Dynamics:</strong> The Grand Matriarch position ensures female representation at the highest level. Women serve in all military orders, hold clergy positions up to Cardinal, and may inherit noble titles. However, the Pope and Emperor have always been male—a tradition some reformers challenge.</p>
-      </div>
-
-      <!-- Cultural Framework -->
-      <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4">
-        <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-palette mr-2"></i>6. Cultural Framework</h3>
-        <p class="text-slate-300 text-sm mb-3"><strong>Echo-Chambers:</strong> Architectural marvels where whispers travel for miles through carefully designed acoustics. Used for sacred communication during emergencies and for transmitting the Pope's voice to distant Basilicas. The largest Echo-Chamber can project sound across 200 miles.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>The Silent Script:</strong> Sacred texts written using light-reflective materials on dark backgrounds, without phonetic components. Readers must interpret meaning through light patterns, making literacy a spiritual discipline. The most sacred texts exist only in Silent Script.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Ash-Marking:</strong> During remembrance days (monthly), citizens mark foreheads with ash from the Eternal Flame. This practice commemorates those who have passed and acknowledges mortality even in a realm devoted to light.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Light-Craft:</strong> Artistic tradition of creating images and sculptures that only reveal their full beauty under specific lighting conditions. Master Light-Crafters are among the most celebrated artists in the realm.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Music and Performance:</strong> Choral music dominates, with the largest choirs numbering thousands of voices. The Hymn of Eternal Radiance, performed annually at the Central Basilica, requires over 10,000 singers.</p>
-        <p class="text-slate-300 text-sm"><strong>Cuisine:</strong> Light-influenced cooking techniques include solar ovens, flame-cured preservation, and luminescent ingredients from the Radiant Marches. Traditional dishes often incorporate edible flowers and light-reactive spices.</p>
-      </div>
-
-      <!-- Economical Framework -->
-      <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4">
-        <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-coins mr-2"></i>7. Economical Framework</h3>
-        <p class="text-slate-300 text-sm mb-3"><strong>Currency System:</strong></p>
-        <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
-          <li>• <strong>Gold Aurei:</strong> High-value currency bearing the dual profiles of Pope and Emperor</li>
-          <li>• <strong>Silver Tithe Marks:</strong> Standard currency, minted with Basilica approval marks</li>
-          <li>• <strong>Copper Pilgrim Bits:</strong> Small transactions, often blessed by clergy before circulation</li>
-        </ul>
-        <p class="text-slate-300 text-sm mb-3"><strong>Tithing Structure:</strong> All citizens contribute:</p>
-        <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
-          <li>• 10% of production to the Basilica (spiritual maintenance)</li>
-          <li>• 5% to military defense (administered by Imperial Treasury)</li>
-          <li>• 3% to social welfare (Grand Matriarch's Ministry of Harmony)</li>
-        </ul>
-        <p class="text-slate-300 text-sm mb-3"><strong>Agricultural Surplus:</strong> The Radiant Marches produce grain for all Four Realms. Light-enhanced growing seasons, achieved through blessing rituals and magical augmentation, allow three harvests per year in some regions.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Trade Networks:</strong> Lux Imperio exports light-crystals, blessed textiles, and agricultural surplus. Imports include rare metals, magical components, and luxury goods from distant planes.</p>
-        <p class="text-slate-300 text-sm"><strong>Guild System:</strong> Craft guilds operate under Basilica oversight, with master craftsmen requiring spiritual endorsement. The most prestigious guilds (Light-Crafters, Flame-Smiths, Echo-Builders) have hereditary memberships stretching back millennia.</p>
-      </div>
-
-      <!-- Physiological Framework -->
-      <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4">
-        <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-heartbeat mr-2"></i>8. Physiological Framework</h3>
-        <p class="text-slate-300 text-sm mb-3"><strong>Light-Infused Vitality:</strong> The average citizen of Lux Imperio enjoys a lifespan of 150 years, significantly longer than many other realms. Blessed individuals may live 200+ years, with their light-attunement slowing cellular degradation.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Shadow Fatigue Resistance:</strong> Eclipse-trained individuals possess the unique ability to function in darkness without the psychological and physiological impairment that affects others. This makes them invaluable for underground operations and night missions.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Luminescent Aura:</strong> Blessed individuals emit visible light-auras during moments of spiritual intensity, prayer, or emotional peak. These auras range from faint glows to brilliant radiance depending on the individual's attunement level.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Light-Sickness:</strong> Rare condition where individuals become dangerously oversaturated with light-energy. Symptoms include inability to tolerate darkness, compulsive truth-telling, and eventual combustion. Treated through guided Eclipse therapy.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Medical Practices:</strong> Healing combines light-magic, herbal remedies, and surgical techniques. The Order of the Radiant Heart operates hospitals throughout the realm, providing care regardless of Tier status.</p>
-        <p class="text-slate-300 text-sm"><strong>Dietary Customs:</strong> Light-enhanced foods form the dietary foundation. Citizens consume luminescent grains, sun-blessed vegetables, and flame-cured proteins. Fasting before major religious observances is common.</p>
-      </div>
-
-      <!-- Territorial Framework -->
-      <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4">
+    <!-- Territorial Framework with City Map -->
+    <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4 card-hover">
         <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-map-marked-alt mr-2"></i>9. Territorial Framework</h3>
-        <p class="text-slate-300 text-sm mb-3"><strong>Northern Realm Geography:</strong> Temperate to cold climate with distinct seasons. The realm encompasses:</p>
-        <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
-          <li>• <strong>The Radiant Marches:</strong> 500-mile agricultural heartland producing surplus grain</li>
-          <li>• <strong>Echo-Chamber Mountains:</strong> Natural formations enhanced for sacred communication</li>
-          <li>• <strong>The Shining Coast:</strong> Northern coastline with ice-free ports maintained by light-magic</li>
-          <li>• <strong>Border Wards:</strong> Fortified boundaries with the Western Wastes and other realms</li>
-        </ul>
-        <p class="text-slate-300 text-sm mb-3"><strong>City of Eternal Radiance:</strong> Capital city housing 5 million inhabitants. Contains the Central Basilica, Imperial Palace, and the Eternal Flame. Built in concentric circles radiating from the flame, with the most sacred structures at the center.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Catacombs of the Unnamed:</strong> Underground city where Eclipse outcasts lived for 5,000 years. Now a heritage site and museum, preserving the history of religious persecution and eventual reconciliation.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Radiant Bastion:</strong> Order of the Star headquarters, serving as both military fortress and spiritual retreat. Located at the northernmost point of the realm, defending against Wastes incursions.</p>
-        <p class="text-slate-300 text-sm"><strong>Basilica Network:</strong> Over 10,000 regional Basilicas maintain subsidiary flames and serve as local spiritual, administrative, and emergency communication centers.</p>
-      </div>
+        <p class="text-slate-300 text-sm mb-3"><strong>Northern Realm Geography:</strong> Temperate to cold climate with distinct seasons. The realm encompasses the Radiant Marches, Echo-Chamber Mountains, the Shining Coast, and fortified Border Wards.</p>
+        <p class="text-slate-300 text-sm mb-4"><strong>City of Eternal Radiance:</strong> Capital city housing 5 million inhabitants. Contains the Central Basilica, Imperial Palace, and the Eternal Flame. Built in concentric circles radiating from the flame, with the most sacred structures at the center.</p>
 
-      <!-- Technological Framework -->
-      <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4">
-        <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-cogs mr-2"></i>10. Technological Framework</h3>
-        <p class="text-slate-300 text-sm mb-3"><strong>Radiance Lances:</strong> Weapons channeling concentrated light-beams capable of burning through most materials. Highly effective against Void-touched entities and undead. Require regular charging at Basilica flames.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Beacon Towers:</strong> Network of light-signal towers enabling rapid communication across the realm. Messages can travel from the capital to the farthest border in under an hour. Each tower is staffed by Blessed operators trained in light-code.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Radiant Walls:</strong> Fortifications infused with light-wards that repel dark creatures and Void manifestations. The walls surrounding the capital are said to have held against every assault in recorded history.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Seraph Gliders:</strong> Light-powered flying vessels for reconnaissance and rapid deployment. Propelled by captured light-energy, they can remain aloft indefinitely during daylight hours. The Order of the Star maintains the largest glider fleet.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Echo-Chamber Technology:</strong> Architectural acoustics allowing voice transmission across hundreds of miles. The principles behind this technology remain partially mysterious, suggesting Primordial Era origins.</p>
-        <p class="text-slate-300 text-sm"><strong>Light-Crystal Production:</strong> Manufactured crystals that store and release light-energy. Used for illumination, weapon charging, and medical treatments. The production process is a closely guarded secret of the Flame-Smiths Guild.</p>
-      </div>
+        <!-- City Map Image -->
+        <div class="mt-6 mb-4">
+            <p class="text-amber-400 text-sm font-semibold mb-3"><i class="fas fa-city mr-1"></i>City Map — City of Eternal Radiance (Aurora Radiance)</p>
+            <div class="img-container glow-border rounded-2xl border border-amber-500/25 shadow-2xl max-w-3xl"
+            onclick="openLightbox('./Lux_City of Eternal Radiance.png')" title="Click to enlarge — Detailed city map">
+            <img
+            src="./Lux_City of Eternal Radiance.png"
+            alt="Detailed map of the City of Eternal Radiance — Capital of Lux Imperio"
+            class="w-full h-auto rounded-2xl"
+            loading="lazy"
+            onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+            <div class="img-fallback hidden flex-col items-center justify-center p-16 bg-slate-900/80 rounded-2xl text-center"
+            style="display:none;">
+            <i class="fas fa-map text-6xl text-amber-400/50 mb-4"></i>
+            <p class="text-slate-400 text-sm">City Map: City of Eternal Radiance</p>
+            <p class="text-slate-500 text-xs mt-1">Place "<strong>Lux_City of Eternal Radiance.png</strong>" in the same folder</p>
+        </div>
+        <div class="img-zoom-hint">
+            <i class="fas fa-search-plus mr-1"></i>Click to enlarge
+        </div>
+    </div>
+    <p class="text-slate-500 text-xs mt-2 italic">Detailed cartography showing districts, gates, the Basilica of Eternal Radiance, the Crown Palace, The Seven Dials, and the River Radiance canal system. Includes the Northern Gate, Eastern Gate, Pilgrim's Gate, and Radiant Gate.</p>
+</div>
 
-      <!-- Military Framework -->
-      <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4">
-        <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-shield-alt mr-2"></i>11. Military Framework</h3>
-        <p class="text-slate-300 text-sm mb-3"><strong>The Five Military Orders:</strong> Lux Imperio's military is organized into five specialized orders, each with distinct roles and traditions:</p>
-        <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
-          <li>• <strong>Order of the Star:</strong> Elite heavy cavalry and shock troops. Headquartered at Radiant Bastion. Led by Grand Master Alaric. Primary role: breaking enemy lines and decisive engagements.</li>
-          <li>• <strong>Order of the Shield:</strong> Defensive specialists and fortress garrisons. Maintain the Radiant Walls and border fortifications. Known for unbreakable defensive stands.</li>
-          <li>• <strong>Order of the Flame:</strong> Battle-mages and religious warriors. Combine martial prowess with light-magic. Responsible for maintaining military blessings and wards.</li>
-          <li>• <strong>Order of the Dawn:</strong> Scouts, skirmishers, and rapid response forces. Operate Seraph Gliders and light cavalry. First to engage, last to retreat.</li>
-          <li>• <strong>Order of the Eclipse:</strong> Shadow operatives and special forces. Since integration, provide infiltration, assassination, and dark-terrain operations. Only Eclipse members may serve.</li>
-        </ul>
-        <p class="text-slate-300 text-sm mb-3"><strong>Eclipse Legions:</strong> Doctrine—"Shadow supports Light." 50,000 active personnel with 200,000 reserves. Unique among Eastern Plane militaries for integrating shadow-operations with conventional warfare.</p>
-        <p class="text-slate-300 text-sm mb-3"><strong>Unique Military Assets:</strong></p>
-        <ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
-          <li>• <strong>Radiance Stags:</strong> Light-attuned mounts capable of bursts of supernatural speed</li>
-          <li>• <strong>Eclipse Cloaks:</strong> Shadow-infiltrators trained in undetectable movement</li>
-          <li>• <strong>Shadow Wolves:</strong> Tracker units specializing in hunting dark creatures</li>
-          <li>• <strong>Dawn Eagles:</strong> Aerial scouts riding trained giant eagles</li>
-        </ul>
-        <p class="text-slate-300 text-sm mb-3"><strong>Command Structure:</strong> The Eclipse High Command (7 members) reports directly to the Emperor. Current leader: High Commander Alaric, who also serves as Grand Master of the Order of the Star.</p>
-        <p class="text-slate-300 text-sm"><strong>Internal Tensions:</strong> The Order of the Star has recently challenged the Eclipse Legions' doctrine, arguing that shadow-operations compromise the realm's purity. This theological-military dispute threatens to destabilize the carefully maintained balance between light and shadow.</p>
-      </div>
-    </section>
+<p class="text-slate-300 text-sm mb-3"><strong>Key Districts (from map):</strong></p>
+<ul class="text-slate-300 text-sm mb-3 ml-4 space-y-1">
+    <li>• <strong>The Noble Quarters:</strong> Home to the Great Temporal Houses</li>
+    <li>• <strong>The Basilica Districts:</strong> Inner Sanctum, Basilica of Eternal Radiance, Papal Palace, Cathedrals</li>
+    <li>• <strong>The Seven Dials:</strong> Guild district with Weavers, Forges, and Guardian headquarters</li>
+    <li>• <strong>The Imperial Heart:</strong> Aurelius Palace (Sunburst), Imperial Mint, High Court</li>
+    <li>• <strong>The Administrative Ward:</strong> Canal system, Church lands, Order of the Star</li>
+    <li>• <strong>The Merchant & Guild Ward:</strong> Tribulation tier, Great Temporal Houses, garrison</li>
+    <li>• <strong>The Outer Marches:</strong> Outer slums, pilgrim encampments, Hospitallers' hidden headquarters</li>
+</ul>
+<p class="text-slate-300 text-sm"><strong>Notable Landmarks:</strong> Luminara's Tears Memorial, Solara's Prison (Eternal Flame burning perpetually between thrones), Grand Matriarch's Sanctum, the Seven Sundials, Beacon Tower, Corvinus Tower, Easton Gate, and the River Radiance with its canal system fed by hot springs.</p>
+</div>
 
-    <!-- Fatal Risk -->
-    <section class="mb-12">
-      <div class="bg-red-900/20 border border-red-900/30 rounded-xl p-6">
+<!-- Remaining frameworks kept concise for readability -->
+<div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4 card-hover">
+    <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-brain mr-2"></i>3. Mental Framework</h3>
+    <p class="text-slate-300 text-sm mb-3"><strong>Optimism as Civic Duty:</strong> Citizens are expected to maintain hope regardless of circumstances. Those who despair publicly may face social censure or mandatory counseling from Light-Keepers.</p>
+    <p class="text-slate-300 text-sm mb-3"><strong>Word-Fasting:</strong> During crises, citizens refrain from negative speech for prescribed periods, believing words shape existence.</p>
+    <p class="text-slate-300 text-sm"><strong>Pathology — Purity Fervor:</strong> The nation's greatest psychological risk—blinding fanaticism, False Hope, and denial of reality. Treatment involves guided shadow-meditation and Eclipse counseling.</p>
+</div>
+
+<div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4 card-hover">
+    <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-praying-hands mr-2"></i>4. Spiritual Framework</h3>
+    <p class="text-slate-300 text-sm mb-3"><strong>Basilica Rites:</strong> The Central Basilica houses the Eternal Flame—prison of Solara. Major ceremonies include Dawn Vigil, Luminara's Feast, Tier Ascension, and Shadow-Recognition.</p>
+    <p class="text-slate-300 text-sm mb-3"><strong>Eclipse Shadow-Rites:</strong> Dark Meditation, Contrast Prayer, and Twilight Communion acknowledge shadow as necessary counterpart to light.</p>
+    <p class="text-slate-300 text-sm"><strong>Primary Ethereal:</strong> Vertus (Hope) is most widely worshipped. Solara is honored as source of all light but not worshipped directly.</p>
+</div>
+
+<div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4 card-hover">
+    <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-users mr-2"></i>5. Social Framework</h3>
+    <p class="text-slate-300 text-sm mb-3"><strong>Light Tier Mobility:</strong> Movement between Tiers is possible through exceptional deeds or spiritual awakening. ~10,000 Tier changes processed annually.</p>
+    <p class="text-slate-300 text-sm mb-3"><strong>Covenant-Keepers:</strong> Citizens bearing blue finger-cords from binding oaths form a trusted parallel social network.</p>
+    <p class="text-slate-300 text-sm"><strong>Eclipse Integration:</strong> Since Year 7,000, Eclipse practitioners serve as shadow-counselors, twilight mediators, and darkness-operations specialists.</p>
+</div>
+
+<div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4 card-hover">
+    <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-palette mr-2"></i>6. Cultural Framework</h3>
+    <p class="text-slate-300 text-sm mb-3"><strong>Echo-Chambers:</strong> Architectural marvels projecting sound across 200 miles. <strong>The Silent Script:</strong> Sacred texts read through light-reflection without phonetic components.</p>
+    <p class="text-slate-300 text-sm"><strong>Ash-Marking, Light-Craft,</strong> and massive choral performances (Hymn of Eternal Radiance: 10,000+ voices) define the cultural landscape.</p>
+</div>
+
+<div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4 card-hover">
+    <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-coins mr-2"></i>7. Economical Framework</h3>
+    <p class="text-slate-300 text-sm mb-3"><strong>Currency:</strong> Gold Aurei, Silver Tithe Marks, Copper Pilgrim Bits. Tithing: 10% to Basilica, 5% to defense, 3% to social welfare.</p>
+    <p class="text-slate-300 text-sm"><strong>Agricultural Surplus:</strong> Radiant Marches produce grain for all Four Realms with light-enhanced triple harvests. Exports include light-crystals, blessed textiles, and agricultural surplus.</p>
+</div>
+
+<div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4 card-hover">
+    <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-heartbeat mr-2"></i>8. Physiological Framework</h3>
+    <p class="text-slate-300 text-sm mb-3"><strong>Light-Infused Vitality:</strong> Average lifespan 150 years; Blessed individuals may live 200+. Eclipse-trained possess unique shadow-fatigue resistance.</p>
+    <p class="text-slate-300 text-sm"><strong>Light-Sickness:</strong> Rare dangerous oversaturation of light-energy. Treated through guided Eclipse therapy.</p>
+</div>
+
+<div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4 card-hover">
+    <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-cogs mr-2"></i>10. Technological Framework</h3>
+    <p class="text-slate-300 text-sm mb-3"><strong>Radiance Lances:</strong> Concentrated light-beam weapons. <strong>Beacon Towers:</strong> Light-signal network for rapid realm-wide communication.</p>
+    <p class="text-slate-300 text-sm"><strong>Seraph Gliders, Radiant Walls, Echo-Chamber Technology,</strong> and <strong>Light-Crystal Production</strong> define the realm's magi-technological edge.</p>
+</div>
+
+<div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 mb-4 card-hover">
+    <h3 class="text-lg font-bold text-amber-400 mb-3"><i class="fas fa-shield-alt mr-2"></i>11. Military Framework</h3>
+    <p class="text-slate-300 text-sm mb-3"><strong>The Five Military Orders:</strong> Order of the Star (elite cavalry), Order of the Shield (defense), Order of the Flame (battle-mages), Order of the Dawn (scouts), Order of the Eclipse (shadow operatives).</p>
+    <p class="text-slate-300 text-sm"><strong>Eclipse Legions:</strong> 50,000 active / 200,000 reserves. Unique for integrating shadow-operations with conventional warfare. Current tension: Order of the Star challenges Eclipse doctrine, threatening the light-shadow balance.</p>
+</div>
+</section>
+
+<!-- Fatal Risk -->
+<section class="mb-12">
+    <div class="bg-red-900/20 border border-red-900/30 rounded-xl p-6 flame-indicator">
         <h3 class="text-lg font-bold text-red-400 mb-3"><i class="fas fa-exclamation-triangle mr-2"></i>Fatal Risk: Purity Fervor</h3>
-        <p class="text-slate-300 text-sm mb-3">When the pursuit of light becomes absolute, Lux Imperio risks blinding itself to necessary shadows. Historical heresy purges (Year 2,000) demonstrate this danger, when thousands were driven underground for acknowledging shadow's necessity.</p>
-        <p class="text-slate-300 text-sm mb-3">The current tension between the Order of the Star and the Eclipse Legions represents a recurrence of this ancient conflict. If the Star faction gains dominance, they may push for renewed persecution of Eclipse practitioners, potentially triggering civil unrest or even schism.</p>
+        <p class="text-slate-300 text-sm mb-3">When the pursuit of light becomes absolute, Lux Imperio risks blinding itself to necessary shadows. The current tension between the Order of the Star and the Eclipse Legions represents a recurrence of the ancient heresy-purge conflict.</p>
         <p class="text-slate-300 text-sm">The Eclipse integration was only possible after acknowledging that shadow is not evil—merely the absence of light, necessary for contrast and definition. Forgetting this lesson would undo 3,000 years of hard-won reconciliation.</p>
-      </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Key Locations -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-map-marker-alt mr-2"></i>Key Locations</h2>
-      <div class="grid md:grid-cols-2 gap-4">
+<!-- Key Locations -->
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-map-marker-alt mr-2"></i>Key Locations</h2>
+    <div class="grid md:grid-cols-2 gap-4">
         <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
-          <h3 class="text-lg font-bold text-slate-200 mb-2">City of Eternal Radiance</h3>
-          <p class="text-slate-400 text-sm">Capital city housing the Central Basilica and Eternal Flame. Population 5 million. Seat of Dual Council. Built in concentric circles radiating from the sacred flame at its heart.</p>
+            <h3 class="text-lg font-bold text-slate-200 mb-2">City of Eternal Radiance</h3>
+            <p class="text-slate-400 text-sm">Capital city housing the Central Basilica and Eternal Flame. Population 5 million. Seat of Dual Council. Built in concentric circles radiating from the sacred flame at its heart. <span class="text-amber-400 text-xs">— See detailed city map above</span></p>
         </div>
         <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
-          <h3 class="text-lg font-bold text-slate-200 mb-2">Radiant Bastion</h3>
-          <p class="text-slate-400 text-sm">Order of the Star headquarters. Military-spiritual fortress defending the northern approaches. Contains the largest collection of military relics and battle standards in the realm.</p>
+            <h3 class="text-lg font-bold text-slate-200 mb-2">Radiant Bastion</h3>
+            <p class="text-slate-400 text-sm">Order of the Star headquarters. Military-spiritual fortress defending the northern approaches. Contains the largest collection of military relics and battle standards in the realm.</p>
         </div>
         <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
-          <h3 class="text-lg font-bold text-slate-200 mb-2">Catacombs of the Unnamed</h3>
-          <p class="text-slate-400 text-sm">Underground city where Eclipse outcasts lived for 5,000 years. Now heritage site and museum. Preserves the history of religious persecution and eventual reconciliation.</p>
+            <h3 class="text-lg font-bold text-slate-200 mb-2">Catacombs of the Unnamed</h3>
+            <p class="text-slate-400 text-sm">Underground city where Eclipse outcasts lived for 5,000 years. Now a heritage site and museum preserving the history of religious persecution and eventual reconciliation.</p>
         </div>
         <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
-          <h3 class="text-lg font-bold text-slate-200 mb-2">Radiant Marches</h3>
-          <p class="text-slate-400 text-sm">Agricultural heartland stretching 500 miles. Light-enhanced growing seasons produce surplus grain for all Four Realms. The realm's economic foundation and primary export.</p>
+            <h3 class="text-lg font-bold text-slate-200 mb-2">Radiant Marches</h3>
+            <p class="text-slate-400 text-sm">Agricultural heartland stretching 500 miles. Light-enhanced growing seasons produce surplus grain for all Four Realms. The realm's economic foundation.</p>
         </div>
         <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
-          <h3 class="text-lg font-bold text-slate-200 mb-2">Echo-Chamber Mountains</h3>
-          <p class="text-slate-400 text-sm">Natural formations enhanced by ancient architects for sacred communication. The largest chamber can project sound across 200 miles, connecting distant Basilicas to the capital.</p>
+            <h3 class="text-lg font-bold text-slate-200 mb-2">Echo-Chamber Mountains</h3>
+            <p class="text-slate-400 text-sm">Natural formations enhanced by ancient architects for sacred communication. The largest chamber can project sound across 200 miles.</p>
         </div>
         <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6 card-hover">
-          <h3 class="text-lg font-bold text-slate-200 mb-2">The Shining Coast</h3>
-          <p class="text-slate-400 text-sm">Northern coastline with ice-free ports maintained by light-magic. Primary trade gateway connecting Lux Imperio to maritime commerce routes across the planes.</p>
+            <h3 class="text-lg font-bold text-slate-200 mb-2">The Shining Coast</h3>
+            <p class="text-slate-400 text-sm">Northern coastline with ice-free ports maintained by light-magic. Primary trade gateway connecting Lux Imperio to maritime commerce routes.</p>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Government Structure -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-sitemap mr-2"></i>Government Structure</h2>
-      <div class="grid md:grid-cols-3 gap-4">
-        <div class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-6">
-          <h3 class="text-lg font-bold text-amber-400 mb-4"><i class="fas fa-cross mr-2"></i>Spiritual Authority</h3>
-          <ul class="space-y-2 text-slate-300 text-sm">
-            <li><strong>Pope (Supreme Pontiff):</strong> Spiritual leader, elected for life by College of Cardinals</li>
-            <li><strong>College of Cardinals:</strong> 108 senior clergy who elect the Pope and advise on doctrine</li>
-            <li><strong>Regional Bishops:</strong> Oversee spiritual affairs in territorial divisions</li>
-            <li><strong>Basilica Keepers:</strong> Maintain local flames and conduct rites</li>
-          </ul>
+<!-- Government Structure -->
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-sitemap mr-2"></i>Government Structure</h2>
+    <div class="grid md:grid-cols-3 gap-4">
+        <div class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-amber-400 mb-4"><i class="fas fa-cross mr-2"></i>Spiritual Authority</h3>
+            <ul class="space-y-2 text-slate-300 text-sm">
+                <li><strong>Pope (Supreme Pontiff):</strong> Spiritual leader, elected for life</li>
+                <li><strong>College of Cardinals:</strong> 108 senior clergy</li>
+                <li><strong>Regional Bishops:</strong> Oversee territorial spiritual affairs</li>
+                <li><strong>Basilica Keepers:</strong> Maintain local flames</li>
+            </ul>
         </div>
-        <div class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-6">
-          <h3 class="text-lg font-bold text-amber-400 mb-4"><i class="fas fa-crown mr-2"></i>Temporal Authority</h3>
-          <ul class="space-y-2 text-slate-300 text-sm">
-            <li><strong>Emperor:</strong> Temporal ruler, commands military and civil administration</li>
-            <li><strong>Imperial Diet:</strong> Advisory council of nobles and officials</li>
-            <li><strong>Regional Governors:</strong> Administer territorial divisions</li>
-            <li><strong>Eclipse High Command:</strong> Military leadership (7 members)</li>
-          </ul>
+        <div class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-amber-400 mb-4"><i class="fas fa-crown mr-2"></i>Temporal Authority</h3>
+            <ul class="space-y-2 text-slate-300 text-sm">
+                <li><strong>Emperor:</strong> Temporal ruler, commands military</li>
+                <li><strong>Imperial Diet:</strong> Advisory council of nobles</li>
+                <li><strong>Regional Governors:</strong> Administer territories</li>
+                <li><strong>Eclipse High Command:</strong> 7-member military leadership</li>
+            </ul>
         </div>
-        <div class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-6">
-          <h3 class="text-lg font-bold text-amber-400 mb-4"><i class="fas fa-hands-helping mr-2"></i>Social Authority</h3>
-          <ul class="space-y-2 text-slate-300 text-sm">
-            <li><strong>Grand Matriarch:</strong> Oversees social welfare and Tier integration</li>
-            <li><strong>Ministry of Harmony:</strong> Manages social programs and Eclipse affairs</li>
-            <li><strong>Tier Councils:</strong> Representative bodies for each Light Tier</li>
-            <li><strong>Covenant Registry:</strong> Maintains records of sworn oaths</li>
-          </ul>
+        <div class="bg-slate-900/50 border border-amber-500/30 rounded-xl p-6 card-hover">
+            <h3 class="text-lg font-bold text-amber-400 mb-4"><i class="fas fa-hands-helping mr-2"></i>Social Authority</h3>
+            <ul class="space-y-2 text-slate-300 text-sm">
+                <li><strong>Grand Matriarch:</strong> Oversees welfare & Tier integration</li>
+                <li><strong>Ministry of Harmony:</strong> Social programs & Eclipse affairs</li>
+                <li><strong>Tier Councils:</strong> Representative bodies per Tier</li>
+                <li><strong>Covenant Registry:</strong> Maintains oath records</li>
+            </ul>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 
-  </main>
+<div class="section-divider"></div>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
+<!-- Image Gallery Summary -->
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-images mr-2"></i>Cartographic Archives</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-slate-900/60 border border-slate-700 rounded-2xl p-5 text-center card-hover"
+        onclick="openLightbox('./Lux Imperio.png')" style="cursor:zoom-in;">
+        <i class="fas fa-globe-americas text-4xl text-amber-400 mb-3"></i>
+        <h3 class="font-bold text-slate-200 mb-1">Realm Map</h3>
+        <p class="text-slate-400 text-xs">Lux Imperio — Full territorial extent</p>
+        <span class="text-amber-400 text-xs mt-2 inline-block"><i class="fas fa-search-plus mr-1"></i>View full size</span>
+    </div>
+    <div class="bg-slate-900/60 border border-slate-700 rounded-2xl p-5 text-center card-hover"
+    onclick="openLightbox('./Lux_City of Eternal Radiance.png')" style="cursor:zoom-in;">
+    <i class="fas fa-city text-4xl text-amber-400 mb-3"></i>
+    <h3 class="font-bold text-slate-200 mb-1">Capital City Map</h3>
+    <p class="text-slate-400 text-xs">City of Eternal Radiance — Detailed district plan</p>
+    <span class="text-amber-400 text-xs mt-2 inline-block"><i class="fas fa-search-plus mr-1"></i>View full size</span>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
     <p class="text-slate-400 text-sm">Eternal Tree Saga Wiki — A Chronicle Spanning Six Myriads</p>
     <p class="text-slate-500 text-xs mt-2">"The center holds. For now. For always."</p>
-  </footer>
+</footer>
 
-  <script>
+<script>
+    // Mobile menu
     const menuBtn = document.getElementById('menuBtn');
     const closeMenu = document.getElementById('closeMenu');
     const mobileMenu = document.getElementById('mobileMenu');
     if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
     if (closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
-  </script>
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    function openLightbox(src) {
+        lightboxImg.src = src;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+</script>
 </body>
 </html>

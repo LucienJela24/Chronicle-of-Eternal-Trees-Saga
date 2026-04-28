@@ -4,56 +4,179 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guardian Domain · Eternal Trees Saga Wiki</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'cinzel': ['Cinzel', 'serif'],
-                        'inter': ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        'eternal-gold': '#d4af37',
-                        'eternal-amber': '#f59e0b',
-                        'eternal-purple': '#8b5cf6',
-                        'eternal-emerald': '#10b981',
-                        'eternal-slate': '#1e293b',
-                    }
-                }
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+        }
+        h1,
+        h2,
+        h3,
+        .fantasy-font {
+            font-family: 'Cinzel', serif;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .framework-card {
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .framework-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(16, 185, 129, 0.2);
+        }
+
+        /* Lightbox */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+            cursor: zoom-out;
+        }
+        .lightbox-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .lightbox-overlay img {
+            max-width: 94vw;
+            max-height: 94vh;
+            border-radius: 12px;
+            box-shadow: 0 0 80px rgba(16, 185, 129, 0.4);
+            object-fit: contain;
+            transform: scale(0.9);
+            transition: transform 0.35s ease;
+            cursor: default;
+        }
+        .lightbox-overlay.active img {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            font-size: 2.4rem;
+            color: #34d399;
+            cursor: pointer;
+            z-index: 101;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        .lightbox-close:hover {
+            color: #6ee7b7;
+        }
+
+        /* Image container */
+        .img-container {
+            position: relative;
+            cursor: zoom-in;
+            overflow: hidden;
+            border-radius: 16px;
+            display: inline-block;
+            width: 100%;
+        }
+        .img-container img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .img-container:hover img {
+            transform: scale(1.04);
+        }
+        .img-zoom-hint {
+            position: absolute;
+            bottom: 16px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #34d399;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            opacity: 0;
+            letter-spacing: 0.5px;
+        }
+        .img-container:hover .img-zoom-hint {
+            opacity: 1;
+        }
+
+        /* Glow border */
+        .glow-border {
+            position: relative;
+        }
+        .glow-border::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 18px;
+            padding: 2px;
+            background: linear-gradient(135deg, #05966933, #34d39966, #05966933);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            transition: opacity 0.4s;
+            opacity: 0.5;
+        }
+        .img-container:hover .glow-border::after {
+            opacity: 1;
+        }
+        .img-fallback {
+            display: none;
+        }
+        @keyframes flamePulse {
+            0%,
+            100% {
+                box-shadow: 0 0 12px #ef444444;
+            }
+            50% {
+                box-shadow: 0 0 28px #ef444499;
             }
         }
-    </script>
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; }
-        h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
-        .framework-card { transition: all 0.3s ease; }
-        .framework-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-200 min-h-screen">
-    <!-- Navigation (unchanged) -->
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox-overlay">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img src="" alt="Enlarged view" id="lightboxImg">
+    </div>
+
+    <!-- Navigation -->
     <nav class="bg-slate-900/90 backdrop-blur-md border-b border-slate-700 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
                     <a href="index.html" class="flex items-center space-x-2">
-                        <i class="fas fa-tree text-eternal-emerald text-2xl"></i>
-                        <span class="fantasy-font text-xl font-bold text-eternal-gold">Eternal Trees Saga</span>
+                        <i class="fas fa-tree text-emerald-400 text-2xl"></i>
+                        <span class="fantasy-font text-xl font-bold gold-gradient">Eternal Trees Saga</span>
                     </a>
                 </div>
                 <div class="hidden md:block">
                     <div class="flex items-baseline space-x-4">
-                        <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Home</a>
-                        <a href="key-figures.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Key Figures</a>
-                        <a href="places.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Places</a>
-                        <a href="timeline.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Timeline</a>
-                        <a href="plots.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Plots</a>
-                        <a href="eastern-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-amber hover:bg-slate-800 transition">Eastern</a>
-                        <a href="western-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-purple hover:bg-slate-800 transition">Western</a>
-                        <a href="other-realms.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-emerald hover:bg-slate-800 transition">Realms</a>
+                        <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Home</a>
+                        <a href="key-figures.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Key Figures</a>
+                        <a href="places.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Places</a>
+                        <a href="timeline.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Timeline</a>
+                        <a href="plots.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Plots</a>
+                        <a href="eastern-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-amber-400 hover:bg-slate-800 transition">Eastern</a>
+                        <a href="western-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Western</a>
+                        <a href="other-realms.html" class="px-3 py-2 rounded-md text-sm font-medium text-emerald-400 hover:bg-slate-800 transition">Realms</a>
                     </div>
                 </div>
                 <div class="md:hidden">
@@ -65,19 +188,19 @@
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-700">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Home</a>
-                <a href="key-figures.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Key Figures</a>
-                <a href="places.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Places</a>
-                <a href="timeline.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Timeline</a>
-                <a href="plots.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Plots</a>
-                <a href="eastern-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-amber hover:bg-slate-800">Eastern Factions</a>
-                <a href="western-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-purple hover:bg-slate-800">Western Factions</a>
-                <a href="other-realms.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-emerald hover:bg-slate-800">Other Realms</a>
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Home</a>
+                <a href="key-figures.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Key Figures</a>
+                <a href="places.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Places</a>
+                <a href="timeline.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Timeline</a>
+                <a href="plots.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Plots</a>
+                <a href="eastern-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-amber-400 hover:bg-slate-800">Eastern Factions</a>
+                <a href="western-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Western Factions</a>
+                <a href="other-realms.html" class="block px-3 py-2 rounded-md text-base font-medium text-emerald-400 hover:bg-slate-800">Other Realms</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section (updated stats to match lore) -->
+    <!-- Hero Section with Modern Arcadia Map -->
     <section class="relative bg-gradient-to-b from-emerald-900/40 to-slate-950 py-16">
         <div class="absolute inset-0 opacity-10">
             <div class="absolute inset-0" style="background-image: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 70%);"></div>
@@ -87,7 +210,7 @@
                 <span class="px-3 py-1 bg-emerald-900/50 border border-emerald-600/30 rounded-full text-emerald-400 text-sm">Eastern Plane · Neutral Threshold</span>
                 <span class="px-3 py-1 bg-slate-800 border border-slate-600 rounded-full text-slate-400 text-sm">Fifth Power (Accord of Arcadia)</span>
             </div>
-            <h1 class="text-5xl md:text-6xl font-bold text-emerald-400 mb-4">Guardian Domain</h1>
+            <h1 class="text-5xl md:text-6xl font-bold text-emerald-400 mb-4 fantasy-font">Guardian Domain</h1>
             <p class="text-xl text-slate-400 max-w-3xl mx-auto">"The center that refuses to become a throne. Relation fills the vacuum between absolutes."</p>
             <div class="mt-6 flex justify-center space-x-4 text-sm text-slate-500">
                 <span><i class="fas fa-shield-alt text-emerald-400 mr-2"></i>~500 Guardians</span>
@@ -95,348 +218,447 @@
                 <span><i class="fas fa-graduation-cap text-emerald-400 mr-2"></i>5,000 Cadets</span>
                 <span><i class="fas fa-star text-emerald-400 mr-2"></i>8 Divisions</span>
             </div>
-        </div>
-    </section>
 
-    <!-- Overview (refined with canon) -->
-    <section class="py-12 bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
-                <h2 class="text-2xl font-bold text-eternal-gold mb-4">Arcadia & the Guardian Domain</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">The Guardian Domain is the institutional expression of <strong>Arcadia, the Threshold Isle</strong> — the space between the Four Realms, where the Tree of Order's trunk rises through the Firmament. It is not a government in the conventional sense; it claims no territory beyond Arcadia Isle, commands no armies of conquest, and acknowledges no sovereign. Its purpose is to <strong>hold the center</strong>: to maintain relation between realms, to seal the Firmament against Grenlian incursion, and to preserve the possibility of synthesis in a cosmos that rewards purity.</p>
-                <p class="text-slate-300 leading-relaxed mb-4">Founded by <strong>Gallian the Threshold-Keeper</strong> through the First Covenant (Absolute 3,712) and formalized as the Guardian Order in 3rd Myriad 1,128, the Domain weathered the Council-Tribunic Wars and now stands as the <strong>Fifth Power</strong> under the Accord of Arcadia (8234, 4th Myriad). Its military core, the Guardian Order, comprises eight specialized divisions and the elite Tribunal of Three.</p>
-                <p class="text-slate-300 leading-relaxed">The sacred Meridian Domain — where Gallian sacrificed his form to anchor the original seal — remains the metaphysical heart of the institution, tended by the Seal Master and protected by the Watchers' witness.</p>
+            <!-- Modern Arcadia Map -->
+            <div class="mt-10 max-w-3xl mx-auto">
+                <div class="img-container glow-border rounded-2xl border border-emerald-500/25 shadow-2xl"
+                onclick="openLightbox('./Arcadia_new.png')" title="Click to enlarge — Modern Arcadia: The Threshold Isle">
+                <img
+                src="./Arcadia_new.png"
+                alt="Map of Arcadia — The Threshold Isle, Guardian Domain headquarters"
+                class="w-full h-auto rounded-2xl"
+                loading="lazy"
+                onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                <div class="img-fallback flex-col items-center justify-center p-16 bg-slate-900/80 rounded-2xl text-center"
+                style="display:none;">
+                <i class="fas fa-image text-6xl text-emerald-400/50 mb-4"></i>
+                <p class="text-slate-400 text-sm">Realm Map: Arcadia (Modern)</p>
+                <p class="text-slate-500 text-xs mt-1">Place "<strong>Arcadia_new.png</strong>" in the same folder</p>
+            </div>
+            <div class="img-zoom-hint">
+                <i class="fas fa-search-plus mr-1"></i>Click to enlarge
             </div>
         </div>
-    </section>
+        <p class="text-slate-500 text-xs mt-3 italic">The Threshold Isle — School of Arcadia (North Campus), Hall of Records, Covenant Plaza, Stone Table (Primus's hand), Keeper Shrines, Threshold Barrier, and the sacred Meridian Domain sealing point to the east</p>
+    </div>
+</div>
+</section>
 
-    <!-- 11 Frameworks Analysis (fully replaced with canon from Guardian Order doc) -->
-    <section class="py-12 bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-12">11 Frameworks · Comprehensive Analysis</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- 1. Historical Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-landmark text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">1. Historical Framework</h3>
+<!-- Overview -->
+<section class="py-12 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8 framework-card">
+            <h2 class="text-2xl font-bold text-emerald-400 mb-4 fantasy-font"><i class="fas fa-shield-alt mr-2"></i>Arcadia & the Guardian Domain</h2>
+            <p class="text-slate-300 leading-relaxed mb-4">The Guardian Domain is the institutional expression of <strong>Arcadia, the Threshold Isle</strong> — the space between the Four Realms, where the Tree of Order's trunk rises through the Firmament. It is not a government in the conventional sense; it claims no territory beyond Arcadia Isle, commands no armies of conquest, and acknowledges no sovereign. Its purpose is to <strong>hold the center</strong>: to maintain relation between realms, to seal the Firmament against Grenlian incursion, and to preserve the possibility of synthesis in a cosmos that rewards purity.</p>
+            <p class="text-slate-300 leading-relaxed mb-4">Founded by <strong>Gallian the Threshold-Keeper</strong> through the First Covenant (Absolute 3,712) and formalized as the Guardian Order in 3rd Myriad 1,128, the Domain weathered the Council-Tribunic Wars and now stands as the <strong>Fifth Power</strong> under the Accord of Arcadia (8234, 4th Myriad). Its military core, the Guardian Order, comprises eight specialized divisions and the elite Tribunal of Three.</p>
+            <p class="text-slate-300 leading-relaxed">The sacred Meridian Domain — where Gallian sacrificed his form to anchor the original seal — remains the metaphysical heart of the institution, tended by the Seal Master and protected by the Watchers' witness.</p>
+        </div>
+    </div>
+</section>
+
+<!-- 11 Frameworks Analysis -->
+<section class="py-12 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-emerald-400 mb-12 fantasy-font"><i class="fas fa-layer-group mr-2"></i>11 Frameworks · Comprehensive Analysis</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- 1. Historical Framework -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-landmark text-emerald-400"></i>
                     </div>
-                    <div class="text-slate-300 text-sm leading-relaxed space-y-2">
-                        <p><span class="text-eternal-gold font-medium">First Covenant (Absolute 3,712):</span> Gallian gathered eight guardians at the Stone Table — Tomoyama, Marcus, Kross, Celestine, the Twins, the Bearer, and the Silent One. This was a personal covenant, not yet an institution.</p>
-                        <p><span class="text-eternal-gold font-medium">The Hidden Fall (Absolute 3,713):</span> The first Hollow breach unmade the Twins and the Bearer. Gallian renewed the covenant and seeded the Four Covert Orders.</p>
-                        <p><span class="text-eternal-gold font-medium">Formal Founding (3rd Myriad 1,128 / Absolute 23,713):</span> After the Dark Emperors' rampage, Gallian returned to establish the Guardian Order with the Captain system and Eight Divisions.</p>
-                        <p><span class="text-eternal-gold font-medium">Accord of Arcadia (4th Myriad 8,234):</span> The Domain became the neutral Fifth Power, and the Watchers' Charter was ratified.</p>
-                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">1. Historical Framework</h3>
                 </div>
-
-                <!-- 2. Political Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-balance-scale text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">2. Political Framework</h3>
-                    </div>
-                    <div class="text-slate-300 text-sm leading-relaxed space-y-2">
-                        <p><span class="text-eternal-gold font-medium">Governance:</span> Grand Captain (supreme command) · Tribunal of Three (Seraph, Kael, Mordecai) · Guardian Council (4 Wardens, Seal Master, Headmaster). Rule by consensus, not fiat.</p>
-                        <p><span class="text-eternal-gold font-medium">Neutrality Doctrine:</span> The Domain refuses extradition, military alliances, and territorial claims. It mediates Accord disputes and may intervene only against absolute cosmic threats (Hollow breaches, Dread incursions).</p>
-                        <p><span class="text-eternal-gold font-medium">Relation to Realms:</span> All four realms contribute equally to Arcadia's maintenance; no realm may station forces on the Isle.</p>
-                    </div>
-                </div>
-
-                <!-- 3. Mental Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-brain text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">3. Mental Framework</h3>
-                    </div>
-                    <div class="text-slate-300 text-sm leading-relaxed space-y-2">
-                        <p><span class="text-eternal-gold font-medium">Relational Cognition:</span> Perceiving relationships as primary reality. Topology cognition trains Guardians to navigate by connection rather than distance.</p>
-                        <p><span class="text-eternal-gold font-medium">The Eye (Six Stages):</span> Seeing from the perspective of the observed. Stages: Watcher → Seer → Bridge → Synthesizer → Harmonizer → The Open Eye. Trains resistance to Void-psychosis.</p>
-                        <p><span class="text-eternal-gold font-medium">Edge-Cognition:</span> Aneian-influenced thinking at the border of non-existence; enhances Firmament perception but requires rigorous grounding.</p>
-                    </div>
-                </div>
-
-                <!-- 4. Spiritual Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-praying-hands text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">4. Spiritual Framework</h3>
-                    </div>
-                    <div class="text-slate-300 text-sm leading-relaxed space-y-2">
-                        <p><span class="text-eternal-gold font-medium">Sacred Hierarchy (Trunk):</span> The Domain occupies the Trunk — connective tissue between Apex (Protectors), Branches (Keepers), and Roots (Life/Death). Primary affinity: Second Persona (Keepers) and Fourth Persona (Overseers).</p>
-                        <p><span class="text-eternal-gold font-medium">Core Doctrine:</span> "The center refuses the throne." "Relation fills vacuums." "Hybridity as sacred." Truth exists in the relational space between absolutes.</p>
-                        <p><span class="text-eternal-gold font-medium">Practices:</span> Threshold Vigil (annual), Covenant Renewal (decennial), Unity Meditation, and the Eye practice. Gallian is venerated as exemplar, not worshipped.</p>
-                    </div>
-                </div>
-
-                <!-- 5. Social Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-users text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">5. Social Framework</h3>
-                    </div>
-                    <div class="text-slate-300 text-sm leading-relaxed space-y-2">
-                        <p><span class="text-eternal-gold font-medium">Meritocratic Hierarchy:</span> 13 tiers from Grand Captain to Junior Cadet. Advancement based on trials and service, never heredity. Cadres of five (one from each realm + hybrid specialist) build cross-realm trust.</p>
-                        <p><span class="text-eternal-gold font-medium">Social Customs:</span> Neutrality Oath (renouncing realm citizenship), Relation Handshake, Silence Between Words. Festivals: Covenant Feast, Accord Day, Watcher's Vigil.</p>
-                        <p><span class="text-eternal-gold font-medium">Support System:</span> Covenant Hospice provides all four healing traditions; Unity therapy mandatory for trauma resilience.</p>
-                    </div>
-                </div>
-
-                <!-- 6. Cultural Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-palette text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">6. Cultural Framework</h3>
-                    </div>
-                    <div class="text-slate-300 text-sm leading-relaxed space-y-2">
-                        <p><span class="text-eternal-gold font-medium">Five Virtues:</span> Relation, Neutrality, Hybridity, Sealing, Vigilance. "Disciplined relation" — holding connection without absorption.</p>
-                        <p><span class="text-eternal-gold font-medium">Symbols & Dress:</span> Covenant Sigil (four interlocking circles), Eight-Pointed Star, grey robes (shade indicates rank). Watcher's Cloak: silver with grey eye.</p>
-                        <p><span class="text-eternal-gold font-medium">Arts:</span> Hybrid architecture, Threshold music (four tonal systems), Eye painting (multiple perspectives), Covenant poetry. Recurring phrase: "The center must hold."</p>
-                    </div>
-                </div>
-
-                <!-- 7. Economical Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-coins text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">7. Economical Framework</h3>
-                    </div>
-                    <div class="text-slate-300 text-sm leading-relaxed space-y-2">
-                        <p><span class="text-eternal-gold font-medium">Currency:</span> Covenant Mark (backed by threshold resonance). Topology Credit for research exchange.</p>
-                        <p><span class="text-eternal-gold font-medium">Revenue:</span> Voluntary tithes from Four Realms (25% each under Accord), hybrid technology licensing, training fees. Sealing equipment remains a Guardian monopoly.</p>
-                        <p><span class="text-eternal-gold font-medium">Trade:</span> Exports light-chi blades, rune-para walkers; imports raw materials and food. Vulnerable to collective embargo but protected by Accord obligations.</p>
-                    </div>
-                </div>
-
-                <!-- 8. Physiological Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-heartbeat text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">8. Physiological Framework</h3>
-                    </div>
-                    <div class="text-slate-300 text-sm leading-relaxed space-y-2">
-                        <p><span class="text-eternal-gold font-medium">Hybrid Adaptation:</span> Threshold resonance grants Grenlian detection (10 km), Void-resistance, and seal-sickness beyond 1,000 km from Arcadia. Lifespan 150–300 years (Grand Captains up to 500).</p>
-                        <p><span class="text-eternal-gold font-medium">Covenant Forge Attunement:</span> Cellular integration of light-chi and rune-para. Requires annual renewal. Eye training develops Edge-cognition but risks Void-psychosis.</p>
-                        <p><span class="text-eternal-gold font-medium">Diet:</span> Omnivorous with elemental supplementation (light-infused grains, chi-vegetables, mana-berries, nano-proteins).</p>
-                    </div>
-                </div>
-
-                <!-- 9. Territorial Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-map-marked-alt text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">9. Territorial Framework</h3>
-                    </div>
-                    <div class="text-slate-300 text-sm leading-relaxed space-y-2">
-                        <p><span class="text-eternal-gold font-medium">Arcadia Isle:</span> Mist-shielded convergence point; Stone Table (Primus's exposed hand), School of Arcadia, Covenant Forge, Hall of Records. Cannot be conquered by conventional means.</p>
-                        <p><span class="text-eternal-gold font-medium">Meridian Domain (restricted):</span> Sacred sealing point where Gallian anchored the threshold. Site of Gael's transformation. Access requires Seal Master approval.</p>
-                        <p><span class="text-eternal-gold font-medium">Beacon Network:</span> Extraterritorial stations across Four Realms for Firmament monitoring and early warning.</p>
-                    </div>
-                </div>
-
-                <!-- 10. Technological Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-cogs text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">10. Technological Framework</h3>
-                    </div>
-                    <div class="text-slate-300 text-sm leading-relaxed space-y-2">
-                        <p><span class="text-eternal-gold font-medium">Hybrid Synthesis:</span> Combining Lux light-crystals, Chuugoku chi-channeling, Avalon rune-binding, and Helron paraformer systems. Only the Covenant Forge can produce hybrid tech.</p>
-                        <p><span class="text-eternal-gold font-medium">Key Advancements:</span> Light-Chi blades, Rune-Para walkers, Threshold stabilization, Firmament weaving, Eye methodology. Covenant Phantoms (stealth skiffs) use Eclipse shadow + Arcane phasing.</p>
-                        <p><span class="text-eternal-gold font-medium">Production:</span> ~500 light-chi blades/year, 100 rune-para walkers, specialized sealing tools.</p>
-                    </div>
-                </div>
-
-                <!-- 11. Military Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-shield-alt text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">11. Military Framework</h3>
-                    </div>
-                    <div class="text-slate-300 text-sm leading-relaxed space-y-2">
-                        <p><span class="text-eternal-gold font-medium">Eight Divisions (by Node):</span> Transcendence, Pact, Self, Inheritance, Science, Intuition, World, Artifice. Each Captain commands specialized forces; total ~500 full Guardians.</p>
-                        <p><span class="text-eternal-gold font-medium">Tribunal of Three:</span> Seraph (World), Kael (Inheritance), Mordecai (Transcendence) — final authority on Watcher discipline and sealing emergencies.</p>
-                        <p><span class="text-eternal-gold font-medium">Doctrine:</span> Combined arms leveraging hybrid synthesis. "We do not hold ground. We hold the space between." Threshold Keepers (1,500) guard specific crossings; 5,000 cadets train at the School of Arcadia.</p>
-                    </div>
+                <div class="text-slate-300 text-sm leading-relaxed space-y-2">
+                    <p><span class="text-amber-400 font-medium">First Covenant (Absolute 3,712):</span> Gallian gathered eight guardians at the Stone Table — Tomoyama, Marcus, Kross, Celestine, the Twins, the Bearer, and the Silent One. This was a personal covenant, not yet an institution.</p>
+                    <p><span class="text-amber-400 font-medium">The Hidden Fall (Absolute 3,713):</span> The first Hollow breach unmade the Twins and the Bearer. Gallian renewed the covenant and seeded the Four Covert Orders.</p>
+                    <p><span class="text-amber-400 font-medium">Formal Founding (3rd Myriad 1,128 / Absolute 23,713):</span> After the Dark Emperors' rampage, Gallian returned to establish the Guardian Order with the Captain system and Eight Divisions.</p>
+                    <p><span class="text-amber-400 font-medium">Accord of Arcadia (4th Myriad 8,234):</span> The Domain became the neutral Fifth Power, and the Watchers' Charter was ratified.</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Captain System (updated per Guardian Order doc) -->
-    <section class="py-12 bg-slate-900/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-8">Captain System · Eight Divisions</h2>
-            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
-                <p class="text-slate-300 mb-6">Each division aligns with one of the Eight Nodes of Topology and is led by a Captain who reports to the Guardian Council. The current Captains (Book 5 era) uphold the legacy of the founding Captains who served during the Crusade Era.</p>
-                
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-left">
-                        <thead class="text-xs text-slate-400 uppercase bg-slate-800/50">
-                            <tr>
-                                <th class="px-4 py-3 rounded-tl-lg">Division</th>
-                                <th class="px-4 py-3">Node</th>
-                                <th class="px-4 py-3">Specialization</th>
-                                <th class="px-4 py-3">Approx. Guardians</th>
-                                <th class="px-4 py-3 rounded-tr-lg">Primary Role</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-700">
-                            <tr class="hover:bg-slate-800/30"><td class="px-4 py-3 font-medium text-emerald-400">Transcendence</td><td class="px-4 py-3 text-slate-300">TRANSCENDENCE</td><td class="px-4 py-3 text-slate-300">Eclipse magic, shadow-casting</td><td class="px-4 py-3 text-slate-300">~60</td><td class="px-4 py-3 text-slate-300">Celestial operations, anti-Dread</td></tr>
-                            <tr class="hover:bg-slate-800/30"><td class="px-4 py-3 font-medium text-emerald-400">Pact</td><td class="px-4 py-3 text-slate-300">PACT</td><td class="px-4 py-3 text-slate-300">Covenants, diplomacy</td><td class="px-4 py-3 text-slate-300">~40</td><td class="px-4 py-3 text-slate-300">Accord maintenance, treaties</td></tr>
-                            <tr class="hover:bg-slate-800/30"><td class="px-4 py-3 font-medium text-emerald-400">Self</td><td class="px-4 py-3 text-slate-300">SELF</td><td class="px-4 py-3 text-slate-300">Chi cultivation, elemental harmony</td><td class="px-4 py-3 text-slate-300">~70</td><td class="px-4 py-3 text-slate-300">Eastern Plane liaison, internal balance</td></tr>
-                            <tr class="hover:bg-slate-800/30"><td class="px-4 py-3 font-medium text-emerald-400">Inheritance</td><td class="px-4 py-3 text-slate-300">INHERITANCE</td><td class="px-4 py-3 text-slate-300">Preserving old techniques, archives</td><td class="px-4 py-3 text-slate-300">~50</td><td class="px-4 py-3 text-slate-300">Continuity, legacy defense</td></tr>
-                            <tr class="hover:bg-slate-800/30"><td class="px-4 py-3 font-medium text-emerald-400">Science</td><td class="px-4 py-3 text-slate-300">SCIENCE</td><td class="px-4 py-3 text-slate-300">Uncertainty projection, paraformer tech</td><td class="px-4 py-3 text-slate-300">~55</td><td class="px-4 py-3 text-slate-300">Helron liaison, experimental warfare</td></tr>
-                            <tr class="hover:bg-slate-800/30"><td class="px-4 py-3 font-medium text-emerald-400">Intuition</td><td class="px-4 py-3 text-slate-300">INTUITION</td><td class="px-4 py-3 text-slate-300">Arcane magic, topology perception</td><td class="px-4 py-3 text-slate-300">~45</td><td class="px-4 py-3 text-slate-300">The Lost, probability navigation</td></tr>
-                            <tr class="hover:bg-slate-800/30"><td class="px-4 py-3 font-medium text-emerald-400">World</td><td class="px-4 py-3 text-slate-300">WORLD</td><td class="px-4 py-3 text-slate-300">Defense, Watcher coordination</td><td class="px-4 py-3 text-slate-300">~80</td><td class="px-4 py-3 text-slate-300">Mapping Dread movements, stronghold defense</td></tr>
-                            <tr class="hover:bg-slate-800/30"><td class="px-4 py-3 font-medium text-emerald-400">Artifice</td><td class="px-4 py-3 text-slate-300">ARTIFICE</td><td class="px-4 py-3 text-slate-300">Weapons, armor, Covenant Forge</td><td class="px-4 py-3 text-slate-300">~100</td><td class="px-4 py-3 text-slate-300">Fortification, hybrid production</td></tr>
-                        </tbody>
-                    </table>
+            <!-- 2. Political Framework -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-balance-scale text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">2. Political Framework</h3>
                 </div>
-                <p class="text-slate-400 text-xs mt-4 text-right">* Approximate full Guardians; Threshold Keepers and cadets add to operational strength.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sub-Organizations (expanded with canon details) -->
-    <section class="py-12 bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-12">Sub-Organizations & Allies</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Octagram -->
-                <a href="octagram.html" class="group bg-slate-900/50 border border-slate-700 rounded-xl p-6 hover:border-emerald-500/50 transition-all">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-emerald-800/50 transition">
-                            <i class="fas fa-star text-emerald-400 text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-emerald-400">The Octagram</h3>
-                            <p class="text-xs text-slate-500">Elite Council</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-300 text-sm">The secret current of synthesis — eight topology nodes, one center. Witness, not faction. Mortal hands holding the space between.</p>
-                </a>
-
-                <!-- Watchers -->
-                <a href="watchers.html" class="group bg-slate-900/50 border border-slate-700 rounded-xl p-6 hover:border-emerald-500/50 transition-all">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-emerald-800/50 transition">
-                            <i class="fas fa-eye text-emerald-400 text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-emerald-400">The Watchers</h3>
-                            <p class="text-xs text-slate-500">Investigative Subsidiary</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-300 text-sm">Twelve Watchers, established by Lucius Arogzan under the Accord. They investigate any Accord member, document findings, and recommend sanctions — but cannot command forces. Their authority derives from powerlessness and Eye-trained neutrality.</p>
-                </a>
-
-                <!-- Guardian Order (core) -->
-                <a href="#" class="group bg-slate-900/50 border border-slate-700 rounded-xl p-6 hover:border-emerald-500/50 transition-all">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-emerald-800/50 transition">
-                            <i class="fas fa-shield-alt text-emerald-400 text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-emerald-400">Guardian Order</h3>
-                            <p class="text-xs text-slate-500">Military-Operational Arm</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-300 text-sm">The formal military hierarchy of the Domain: Eight Divisions, Captain system, ~500 full Guardians, 1,500 Threshold Keepers. Trains at the School of Arcadia and operates under the Grand Captain.</p>
-                </a>
-
-                <!-- 5-Star Battalion -->
-                <a href="5-star-battalion.html" class="group bg-slate-900/50 border border-slate-700 rounded-xl p-6 hover:border-emerald-500/50 transition-all">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-emerald-800/50 transition">
-                            <i class="fas fa-medal text-emerald-400 text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-emerald-400">5-Star Battalion</h3>
-                            <p class="text-xs text-slate-500">Ancient Kin · Allied Force</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-300 text-sm">Founded 1,500 years before the Guardian Order, sealed for millennia, unsealed in 4th Myriad 8,500. General Darren Worthstar coordinates training with Arcadia — Void-combat expertise and Nimorak-bonded warriors.</p>
-                </a>
-
-                <!-- Allied Races -->
-                <a href="aneians.html" class="group bg-slate-900/50 border border-slate-700 rounded-xl p-6 hover:border-emerald-500/50 transition-all">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-emerald-800/50 transition">
-                            <i class="fas fa-dragon text-emerald-400 text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-emerald-400">Allied Races</h3>
-                            <p class="text-xs text-slate-500">Ethereals · Drakes · Mystics · Dromes</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-300 text-sm">Withdrew from the IUR during the schism but maintain voluntary cooperation with Arcadia. Ethereals teach probability navigation; Dromes maintain the Covenant Forge. They stand on Arcadia as neutral ground.</p>
-                </a>
-
-                <!-- Aneians (Dark Horde) & Dark Empires -->
-                <a href="aneians.html" class="group bg-slate-900/50 border border-slate-700 rounded-xl p-6 hover:border-red-500/50 transition-all">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-red-900/50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-red-800/50 transition">
-                            <i class="fas fa-skull text-red-400 text-xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-bold text-red-400">Aneians & Dark Empires</h3>
-                            <p class="text-xs text-slate-500">Kin Alliance · Fallen Threat</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-300 text-sm">Aneians share Void-Touched origin with the Domain. Post-Accord alliance: Border-Captain Rika trains Watchers in Edge-cognition. The reformed Dark Emperors (Tomoyama, Kross, Marcus) slumber in Tartarus under vigil.</p>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer (unchanged) -->
-    <footer class="bg-slate-900 border-t border-slate-800 py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="flex items-center space-x-2 mb-4 md:mb-0">
-                    <i class="fas fa-tree text-eternal-emerald text-xl"></i>
-                    <span class="fantasy-font text-lg font-bold text-eternal-gold">Eternal Trees Saga</span>
-                </div>
-                <div class="text-slate-500 text-sm">
-                    <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
-                </div>
-                <div class="flex space-x-4 mt-4 md:mt-0">
-                    <a href="index.html" class="text-slate-400 hover:text-eternal-gold transition">Home</a>
-                    <a href="eastern-factions.html" class="text-slate-400 hover:text-eternal-amber transition">Eastern</a>
-                    <a href="western-factions.html" class="text-slate-400 hover:text-eternal-purple transition">Western</a>
+                <div class="text-slate-300 text-sm leading-relaxed space-y-2">
+                    <p><span class="text-amber-400 font-medium">Governance:</span> Grand Captain (supreme command) · Tribunal of Three (Seraph, Kael, Mordecai) · Guardian Council (4 Wardens, Seal Master, Headmaster). Rule by consensus, not fiat.</p>
+                    <p><span class="text-amber-400 font-medium">Neutrality Doctrine:</span> The Domain refuses extradition, military alliances, and territorial claims. It mediates Accord disputes and may intervene only against absolute cosmic threats.</p>
+                    <p><span class="text-amber-400 font-medium">Relation to Realms:</span> All four realms contribute equally to Arcadia's maintenance; no realm may station forces on the Isle.</p>
                 </div>
             </div>
-        </div>
-    </footer>
 
-    <script>
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
-    </script>
+            <!-- 3. Mental Framework -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-brain text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">3. Mental Framework</h3>
+                </div>
+                <div class="text-slate-300 text-sm leading-relaxed space-y-2">
+                    <p><span class="text-amber-400 font-medium">Relational Cognition:</span> Perceiving relationships as primary reality. Topology cognition trains Guardians to navigate by connection rather than distance.</p>
+                    <p><span class="text-amber-400 font-medium">The Eye (Six Stages):</span> Seeing from the perspective of the observed. Stages: Watcher → Seer → Bridge → Synthesizer → Harmonizer → The Open Eye.</p>
+                    <p><span class="text-amber-400 font-medium">Edge-Cognition:</span> Aneian-influenced thinking at the border of non-existence; enhances Firmament perception but requires rigorous grounding.</p>
+                </div>
+            </div>
+
+            <!-- 4. Spiritual Framework -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-praying-hands text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">4. Spiritual Framework</h3>
+                </div>
+                <div class="text-slate-300 text-sm leading-relaxed space-y-2">
+                    <p><span class="text-amber-400 font-medium">Sacred Hierarchy (Trunk):</span> The Domain occupies the Trunk — connective tissue between Apex (Protectors), Branches (Keepers), and Roots (Life/Death). Primary affinity: Second Persona (Keepers) and Fourth Persona (Overseers).</p>
+                    <p><span class="text-amber-400 font-medium">Core Doctrine:</span> "The center refuses the throne." "Relation fills vacuums." "Hybridity as sacred." Truth exists in the relational space between absolutes.</p>
+                    <p><span class="text-amber-400 font-medium">Practices:</span> Threshold Vigil (annual), Covenant Renewal (decennial), Unity Meditation, and the Eye practice. Gallian is venerated as exemplar, not worshipped.</p>
+                </div>
+            </div>
+
+            <!-- 5. Social Framework -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-users text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">5. Social Framework</h3>
+                </div>
+                <div class="text-slate-300 text-sm leading-relaxed space-y-2">
+                    <p><span class="text-amber-400 font-medium">Meritocratic Hierarchy:</span> 13 tiers from Grand Captain to Junior Cadet. Advancement based on trials and service, never heredity. Cadres of five (one from each realm + hybrid specialist) build cross-realm trust.</p>
+                    <p><span class="text-amber-400 font-medium">Social Customs:</span> Neutrality Oath (renouncing realm citizenship), Relation Handshake, Silence Between Words. Festivals: Covenant Feast, Accord Day, Watcher's Vigil.</p>
+                    <p><span class="text-amber-400 font-medium">Support System:</span> Covenant Hospice provides all four healing traditions; Unity therapy mandatory for trauma resilience.</p>
+                </div>
+            </div>
+
+            <!-- 6. Cultural Framework -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-palette text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">6. Cultural Framework</h3>
+                </div>
+                <div class="text-slate-300 text-sm leading-relaxed space-y-2">
+                    <p><span class="text-amber-400 font-medium">Five Virtues:</span> Relation, Neutrality, Hybridity, Sealing, Vigilance. "Disciplined relation" — holding connection without absorption.</p>
+                    <p><span class="text-amber-400 font-medium">Symbols & Dress:</span> Covenant Sigil (four interlocking circles), Eight-Pointed Star, grey robes (shade indicates rank). Watcher's Cloak: silver with grey eye.</p>
+                    <p><span class="text-amber-400 font-medium">Arts:</span> Hybrid architecture, Threshold music (four tonal systems), Eye painting (multiple perspectives), Covenant poetry. Recurring phrase: "The center must hold."</p>
+                </div>
+            </div>
+
+            <!-- 7. Economical Framework -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-coins text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">7. Economical Framework</h3>
+                </div>
+                <div class="text-slate-300 text-sm leading-relaxed space-y-2">
+                    <p><span class="text-amber-400 font-medium">Currency:</span> Covenant Mark (backed by threshold resonance). Topology Credit for research exchange.</p>
+                    <p><span class="text-amber-400 font-medium">Revenue:</span> Voluntary tithes from Four Realms (25% each under Accord), hybrid technology licensing, training fees. Sealing equipment remains a Guardian monopoly.</p>
+                    <p><span class="text-amber-400 font-medium">Trade:</span> Exports light-chi blades, rune-para walkers; imports raw materials and food. Vulnerable to collective embargo but protected by Accord obligations.</p>
+                </div>
+            </div>
+
+            <!-- 8. Physiological Framework -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-heartbeat text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">8. Physiological Framework</h3>
+                </div>
+                <div class="text-slate-300 text-sm leading-relaxed space-y-2">
+                    <p><span class="text-amber-400 font-medium">Hybrid Adaptation:</span> Threshold resonance grants Grenlian detection (10 km), Void-resistance, and seal-sickness beyond 1,000 km from Arcadia. Lifespan 150–300 years (Grand Captains up to 500).</p>
+                    <p><span class="text-amber-400 font-medium">Covenant Forge Attunement:</span> Cellular integration of light-chi and rune-para. Requires annual renewal. Eye training develops Edge-cognition but risks Void-psychosis.</p>
+                    <p><span class="text-amber-400 font-medium">Diet:</span> Omnivorous with elemental supplementation (light-infused grains, chi-vegetables, mana-berries, nano-proteins).</p>
+                </div>
+            </div>
+
+            <!-- 9. Territorial Framework with Ancient Arcadia Map -->
+            <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6 md:col-span-2 lg:col-span-3">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-map-marked-alt text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">9. Territorial Framework</h3>
+                </div>
+                <div class="text-slate-300 text-sm leading-relaxed space-y-2 mb-4">
+                    <p><span class="text-amber-400 font-medium">Arcadia Isle:</span> Mist-shielded convergence point; Stone Table (Primus's exposed hand), School of Arcadia, Covenant Forge, Hall of Records. Cannot be conquered by conventional means.</p>
+                    <p><span class="text-amber-400 font-medium">Meridian Domain (restricted):</span> Sacred sealing point where Gallian anchored the threshold. Site of Gael's transformation. Access requires Seal Master approval.</p>
+                    <p><span class="text-amber-400 font-medium">Beacon Network:</span> Extraterritorial stations across Four Realms for Firmament monitoring and early warning.</p>
+                </div>
+
+                <!-- Ancient Arcadia Map -->
+                <div class="mt-4 mb-4">
+                    <p class="text-emerald-400 text-sm font-semibold mb-3"><i class="fas fa-history mr-1"></i>Historical Map — Pre-Gallian Arcadia (The Wild Threshold)</p>
+                    <div class="img-container glow-border rounded-2xl border border-emerald-500/25 shadow-2xl max-w-3xl"
+                    onclick="openLightbox('./Arcadia_old.png')" title="Click to enlarge — Ancient Arcadia before the Guardian Order">
+                    <img
+                    src="./Arcadia_old.png"
+                    alt="Historical map of Arcadia — Pre-Gallian Era, before the Guardian Order"
+                    class="w-full h-auto rounded-2xl"
+                    loading="lazy"
+                    onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                    <div class="img-fallback flex-col items-center justify-center p-16 bg-slate-900/80 rounded-2xl text-center"
+                    style="display:none;">
+                    <i class="fas fa-map text-6xl text-emerald-400/50 mb-4"></i>
+                    <p class="text-slate-400 text-sm">Historical Map: Pre-Gallian Arcadia</p>
+                    <p class="text-slate-500 text-xs mt-1">Place "<strong>Arcadia_old.png</strong>" in the same folder</p>
+                </div>
+                <div class="img-zoom-hint">
+                    <i class="fas fa-search-plus mr-1"></i>Click to enlarge
+                </div>
+            </div>
+            <p class="text-slate-500 text-xs mt-2 italic">Pre-Gallian Era wilderness: The Old Pavilion (teaching grounds), Stone Table (Primus's petrified hand), Echo Grove, the Three Preceptors' Huts, Shore of Voices (proto-Echo phenomena), Dreaming Pool, Old Altar, Mist-Walker Cairn, Burial Mound, and the Gate of Bones. Perpetual mist shrouds the isle with psychic echoes carrying through the still air — the sacred wild that Gallian would later transform into the Guardian Domain.</p>
+        </div>
+
+        <p class="text-slate-300 text-sm"><strong>Sacred Sites:</strong> The Stone Table remains the oldest continuous structure on Arcadia — Primus's exposed hand where the First Covenant was sworn. The Echo Grove and Shore of Voices preserve the pre-Gallian meditation traditions used for early Edge-cognition training.</p>
+    </div>
+
+    <!-- 10. Technological Framework -->
+    <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+        <div class="flex items-center mb-4">
+            <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                <i class="fas fa-cogs text-emerald-400"></i>
+            </div>
+            <h3 class="text-lg font-bold text-emerald-400">10. Technological Framework</h3>
+        </div>
+        <div class="text-slate-300 text-sm leading-relaxed space-y-2">
+            <p><span class="text-amber-400 font-medium">Hybrid Synthesis:</span> Combining Lux light-crystals, Chuugoku chi-channeling, Avalon rune-binding, and Helron paraformer systems. Only the Covenant Forge can produce hybrid tech.</p>
+            <p><span class="text-amber-400 font-medium">Key Advancements:</span> Light-Chi blades, Rune-Para walkers, Threshold stabilization, Firmament weaving, Eye methodology. Covenant Phantoms (stealth skiffs) use Eclipse shadow + Arcane phasing.</p>
+            <p><span class="text-amber-400 font-medium">Production:</span> ~500 light-chi blades/year, 100 rune-para walkers, specialized sealing tools.</p>
+        </div>
+    </div>
+
+    <!-- 11. Military Framework -->
+    <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
+        <div class="flex items-center mb-4">
+            <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                <i class="fas fa-shield-alt text-emerald-400"></i>
+            </div>
+            <h3 class="text-lg font-bold text-emerald-400">11. Military Framework</h3>
+        </div>
+        <div class="text-slate-300 text-sm leading-relaxed space-y-2">
+            <p><span class="text-amber-400 font-medium">Eight Divisions (by Node):</span> Transcendence, Pact, Self, Inheritance, Science, Intuition, World, Artifice. Each Captain commands specialized forces; total ~500 full Guardians.</p>
+            <p><span class="text-amber-400 font-medium">Tribunal of Three:</span> Seraph (World), Kael (Inheritance), Mordecai (Transcendence) — final authority on Watcher discipline and sealing emergencies.</p>
+            <p><span class="text-amber-400 font-medium">Doctrine:</span> Combined arms leveraging hybrid synthesis. "We do not hold ground. We hold the space between." Threshold Keepers (1,500) guard specific crossings; 5,000 cadets train at the School of Arcadia.</p>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- Captain System -->
+<section class="py-12 bg-slate-900/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-emerald-400 mb-8 fantasy-font">Captain System · Eight Divisions</h2>
+        <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8 framework-card">
+            <p class="text-slate-300 mb-6">Each division aligns with one of the Eight Nodes of Topology and is led by a Captain who reports to the Guardian Council. The current Captains (Book 5 era) uphold the legacy of the founding Captains who served during the Crusade Era.</p>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left">
+                    <thead class="text-xs text-slate-400 uppercase bg-slate-800/50">
+                        <tr>
+                            <th class="px-4 py-3 rounded-tl-lg">Division</th>
+                            <th class="px-4 py-3">Node</th>
+                            <th class="px-4 py-3">Specialization</th>
+                            <th class="px-4 py-3">Approx. Guardians</th>
+                            <th class="px-4 py-3 rounded-tr-lg">Primary Role</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-700">
+                        <tr class="hover:bg-slate-800/30"><td class="px-4 py-3 font-medium text-emerald-400">Transcendence</td><td class="px-4 py-3 text-slate-300">TRANSCENDENCE</td><td class="px-4 py-3 text-slate-300">Eclipse magic, shadow-casting</td><td class="px-4 py-3 text-slate-300">~60</td><td class="px-4 py-3 text-slate-300">Celestial operations, anti-Dread</td></tr>
+                        <tr class="hover:bg-slate-800/30"><td class="px-4 py-3 font-medium text-emerald-400">Pact</td><td class="px-4 py-3 text-slate-300">PACT</td><td class="px-4 py-3 text-slate-300">Covenants, diplomacy</td><td class="px-4 py-3 text-slate-300">~40</td><td class="px-4 py-3 text-slate-300">Accord maintenance, treaties</td></tr>
+                        <tr class="hover:bg-slate-800/30"><td class="px-4 py-3 font-medium text-emerald-400">Self</td><td class="px-4 py-3 text-slate-300">SELF</td><td class="px-4 py-3 text-slate-300">Chi cultivation, elemental harmony</td><td class="px-4 py-3 text-slate-300">~70</td><td class="px-4 py-3 text-slate-300">Eastern Plane liaison, internal balance</td></tr>
+                        <tr class="hover:bg-slate-800/30"><td class="px-4 py-3 font-medium text-emerald-400">Inheritance</td><td class="px-4 py-3 text-slate-300">INHERITANCE</td><td class="px-4 py-3 text-slate-300">Preserving old techniques, archives</td><td class="px-4 py-3 text-slate-300">~50</td><td class="px-4 py-3 text-slate-300">Continuity, legacy defense</td></tr>
+                        <tr class="hover:bg-slate-800/30"><td class="px-4 py-3 font-medium text-emerald-400">Science</td><td class="px-4 py-3 text-slate-300">SCIENCE</td><td class="px-4 py-3 text-slate-300">Uncertainty projection, paraformer tech</td><td class="px-4 py-3 text-slate-300">~55</td><td class="px-4 py-3 text-slate-300">Helron liaison, experimental warfare</td></tr>
+                        <tr class="hover:bg-slate-800/30"><td class="px-4 py-3 font-medium text-emerald-400">Intuition</td><td class="px-4 py-3 text-slate-300">INTUITION</td><td class="px-4 py-3 text-slate-300">Arcane magic, topology perception</td><td class="px-4 py-3 text-slate-300">~45</td><td class="px-4 py-3 text-slate-300">The Lost, probability navigation</td></tr>
+                        <tr class="hover:bg-slate-800/30"><td class="px-4 py-3 font-medium text-emerald-400">World</td><td class="px-4 py-3 text-slate-300">WORLD</td><td class="px-4 py-3 text-slate-300">Defense, Watcher coordination</td><td class="px-4 py-3 text-slate-300">~80</td><td class="px-4 py-3 text-slate-300">Mapping Dread movements, stronghold defense</td></tr>
+                        <tr class="hover:bg-slate-800/30"><td class="px-4 py-3 font-medium text-emerald-400">Artifice</td><td class="px-4 py-3 text-slate-300">ARTIFICE</td><td class="px-4 py-3 text-slate-300">Weapons, armor, Covenant Forge</td><td class="px-4 py-3 text-slate-300">~100</td><td class="px-4 py-3 text-slate-300">Fortification, hybrid production</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-slate-400 text-xs mt-4 text-right">* Approximate full Guardians; Threshold Keepers and cadets add to operational strength.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Sub-Organizations -->
+<section class="py-12 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-emerald-400 mb-12 fantasy-font">Sub-Organizations & Allies</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <a href="octagram.html" class="group bg-slate-900/50 border border-slate-700 rounded-xl p-6 hover:border-emerald-500/50 transition-all framework-card">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-emerald-800/50 transition">
+                        <i class="fas fa-star text-emerald-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-emerald-400">The Octagram</h3>
+                        <p class="text-xs text-slate-500">Elite Council</p>
+                    </div>
+                </div>
+                <p class="text-slate-300 text-sm">The secret current of synthesis — eight topology nodes, one center. Witness, not faction. Mortal hands holding the space between.</p>
+            </a>
+
+            <a href="watchers.html" class="group bg-slate-900/50 border border-slate-700 rounded-xl p-6 hover:border-emerald-500/50 transition-all framework-card">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-emerald-800/50 transition">
+                        <i class="fas fa-eye text-emerald-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-emerald-400">The Watchers</h3>
+                        <p class="text-xs text-slate-500">Investigative Subsidiary</p>
+                    </div>
+                </div>
+                <p class="text-slate-300 text-sm">Twelve Watchers, established by Lucius Arogzan under the Accord. They investigate any Accord member, document findings, and recommend sanctions — but cannot command forces.</p>
+            </a>
+
+            <a href="#" class="group bg-slate-900/50 border border-slate-700 rounded-xl p-6 hover:border-emerald-500/50 transition-all framework-card">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-emerald-800/50 transition">
+                        <i class="fas fa-shield-alt text-emerald-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-emerald-400">Guardian Order</h3>
+                        <p class="text-xs text-slate-500">Military-Operational Arm</p>
+                    </div>
+                </div>
+                <p class="text-slate-300 text-sm">The formal military hierarchy of the Domain: Eight Divisions, Captain system, ~500 full Guardians, 1,500 Threshold Keepers. Trains at the School of Arcadia and operates under the Grand Captain.</p>
+            </a>
+
+            <a href="5-star-battalion.html" class="group bg-slate-900/50 border border-slate-700 rounded-xl p-6 hover:border-emerald-500/50 transition-all framework-card">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-emerald-800/50 transition">
+                        <i class="fas fa-medal text-emerald-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-emerald-400">5-Star Battalion</h3>
+                        <p class="text-xs text-slate-500">Ancient Kin · Allied Force</p>
+                    </div>
+                </div>
+                <p class="text-slate-300 text-sm">Founded 1,500 years before the Guardian Order, sealed for millennia, unsealed in 4th Myriad 8,500. General Darren Worthstar coordinates training with Arcadia — Void-combat expertise and Nimorak-bonded warriors.</p>
+            </a>
+
+            <a href="aneians.html" class="group bg-slate-900/50 border border-slate-700 rounded-xl p-6 hover:border-emerald-500/50 transition-all framework-card">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-emerald-800/50 transition">
+                        <i class="fas fa-dragon text-emerald-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-emerald-400">Allied Races</h3>
+                        <p class="text-xs text-slate-500">Ethereals · Drakes · Mystics · Dromes</p>
+                    </div>
+                </div>
+                <p class="text-slate-300 text-sm">Withdrew from the IUR during the schism but maintain voluntary cooperation with Arcadia. Ethereals teach probability navigation; Dromes maintain the Covenant Forge.</p>
+            </a>
+
+            <a href="aneians.html" class="group bg-slate-900/50 border border-slate-700 rounded-xl p-6 hover:border-red-500/50 transition-all framework-card">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-red-900/50 rounded-lg flex items-center justify-center mr-4 group-hover:bg-red-800/50 transition">
+                        <i class="fas fa-skull text-red-400 text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-red-400">Aneians & Dark Empires</h3>
+                        <p class="text-xs text-slate-500">Kin Alliance · Fallen Threat</p>
+                    </div>
+                </div>
+                <p class="text-slate-300 text-sm">Aneians share Void-Touched origin with the Domain. Post-Accord alliance: Border-Captain Rika trains Watchers in Edge-cognition. The reformed Dark Emperors slumber in Tartarus under vigil.</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Image Gallery Summary -->
+<section class="py-12 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400"><i class="fas fa-images mr-2"></i>Cartographic Archives</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-slate-900/60 border border-slate-700 rounded-2xl p-5 text-center framework-card"
+            onclick="openLightbox('./Arcadia_new.png')" style="cursor:zoom-in;">
+            <i class="fas fa-globe-americas text-4xl text-emerald-400 mb-3"></i>
+            <h3 class="font-bold text-slate-200 mb-1">Modern Arcadia</h3>
+            <p class="text-slate-400 text-xs">The Threshold Isle — School of Arcadia, Covenant Plaza & Hall of Records</p>
+            <span class="text-emerald-400 text-xs mt-2 inline-block"><i class="fas fa-search-plus mr-1"></i>View full size</span>
+        </div>
+        <div class="bg-slate-900/60 border border-slate-700 rounded-2xl p-5 text-center framework-card"
+        onclick="openLightbox('./Arcadia_old.png')" style="cursor:zoom-in;">
+        <i class="fas fa-history text-4xl text-emerald-400 mb-3"></i>
+        <h3 class="font-bold text-slate-200 mb-1">Pre-Gallian Arcadia</h3>
+        <p class="text-slate-400 text-xs">The Wild Threshold — Echo Grove, Stone Table & the Three Preceptors</p>
+        <span class="text-emerald-400 text-xs mt-2 inline-block"><i class="fas fa-search-plus mr-1"></i>View full size</span>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-900 border-t border-slate-800 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                <i class="fas fa-tree text-emerald-400 text-xl"></i>
+                <span class="fantasy-font text-lg font-bold gold-gradient">Eternal Trees Saga</span>
+            </div>
+            <div class="text-slate-500 text-sm">
+                <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
+            </div>
+            <div class="flex space-x-4 mt-4 md:mt-0">
+                <a href="index.html" class="text-slate-400 hover:text-amber-400 transition">Home</a>
+                <a href="eastern-factions.html" class="text-slate-400 hover:text-emerald-400 transition">Eastern</a>
+                <a href="western-factions.html" class="text-slate-400 hover:text-amber-400 transition">Western</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    function openLightbox(src) {
+        lightboxImg.src = src;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+</script>
 </body>
 </html>
