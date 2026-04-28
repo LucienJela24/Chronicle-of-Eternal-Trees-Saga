@@ -4,49 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filwind Institute | Eternal Trees Saga Wiki</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0f172a',
-                        secondary: '#1e293b',
-                        accent: '#0d9488',
-                        'accent-light': '#14b8a6',
-                        gold: '#fbbf24',
-                        'gold-light': '#fcd34d',
-                        dark: '#020617',
-                        'dark-light': '#1e293b',
-                        empirical: '#06b6d4',
-                        cybernetic: '#8b5cf6',
-                        null: '#64748b'
-                    },
-                    fontFamily: {
-                        'heading': ['Cinzel', 'serif'],
-                        'body': ['Inter', 'sans-serif']
-                    }
-                }
-            }
-        }
+    <script src="https://cdn.tailwindcss.com">
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            background: #0f172a;
             min-height: 100vh;
         }
         .fantasy-heading {
             font-family: 'Cinzel', serif;
         }
         .card-hover {
-            transition: all 0.3s ease;
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .card-hover:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.2);
         }
         .framework-card {
             background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
@@ -61,69 +37,183 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .nav-link {
-            position: relative;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #0d9488;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
         .division-card {
             background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .div-empirical { border-color: rgba(6, 182, 212, 0.4); }
-        .div-cybernetic { border-color: rgba(139, 92, 246, 0.4); }
-        .div-null { border-color: rgba(100, 116, 139, 0.4); }
-        .div-integration { border-color: rgba(245, 158, 11, 0.4); }
+        .div-empirical {
+            border-color: rgba(6, 182, 212, 0.4);
+        }
+        .div-cybernetic {
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+        .div-null {
+            border-color: rgba(100, 116, 139, 0.4);
+        }
+        .div-integration {
+            border-color: rgba(245, 158, 11, 0.4);
+        }
+
+        /* Lightbox */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+            cursor: zoom-out;
+        }
+        .lightbox-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .lightbox-overlay img {
+            max-width: 94vw;
+            max-height: 94vh;
+            border-radius: 12px;
+            box-shadow: 0 0 80px rgba(6, 182, 212, 0.4);
+            object-fit: contain;
+            transform: scale(0.9);
+            transition: transform 0.35s ease;
+            cursor: default;
+        }
+        .lightbox-overlay.active img {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            font-size: 2.4rem;
+            color: #06b6d4;
+            cursor: pointer;
+            z-index: 101;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        .lightbox-close:hover {
+            color: #22d3ee;
+        }
+
+        /* Image container */
+        .img-container {
+            position: relative;
+            cursor: zoom-in;
+            overflow: hidden;
+            border-radius: 16px;
+            display: inline-block;
+            width: 100%;
+        }
+        .img-container img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .img-container:hover img {
+            transform: scale(1.04);
+        }
+        .img-zoom-hint {
+            position: absolute;
+            bottom: 16px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #06b6d4;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            opacity: 0;
+            letter-spacing: 0.5px;
+        }
+        .img-container:hover .img-zoom-hint {
+            opacity: 1;
+        }
+
+        /* Glow border */
+        .glow-border {
+            position: relative;
+        }
+        .glow-border::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 18px;
+            padding: 2px;
+            background: linear-gradient(135deg, #06b6d433, #8b5cf666, #06b6d433);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            transition: opacity 0.4s;
+            opacity: 0.5;
+        }
+        .img-container:hover .glow-border::after {
+            opacity: 1;
+        }
+        .img-fallback {
+            display: none;
+        }
+        @keyframes flamePulse {
+            0%,
+            100% {
+                box-shadow: 0 0 12px #06b6d444;
+            }
+            50% {
+                box-shadow: 0 0 28px #06b6d499;
+            }
+        }
     </style>
 </head>
 <body class="text-gray-100">
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox-overlay">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img src="" alt="Enlarged view" id="lightboxImg">
+    </div>
+
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-primary/95 backdrop-blur-md border-b border-accent/20">
+    <nav class="fixed w-full z-50 bg-slate-900/95 backdrop-blur-md border-b border-cyan-500/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center space-x-3">
-                    <i class="fas fa-tree text-accent text-2xl"></i>
+                    <i class="fas fa-tree text-emerald-400 text-2xl"></i>
                     <span class="fantasy-heading text-xl font-bold gradient-text">Eternal Trees Saga</span>
                 </div>
                 <div class="hidden md:flex items-center space-x-6">
-                    <a href="index.html" class="nav-link text-gray-300 hover:text-accent transition">Home</a>
-                    <a href="key-figures.html" class="nav-link text-gray-300 hover:text-accent transition">Key Figures</a>
-                    <a href="places.html" class="nav-link text-gray-300 hover:text-accent transition">Places</a>
-                    <a href="factions.html" class="nav-link text-gray-300 hover:text-accent transition">Factions</a>
-                    <a href="covert-orders.html" class="nav-link text-accent-light transition">Covert Orders</a>
-                    <a href="timelines.html" class="nav-link text-gray-300 hover:text-accent transition">Timelines</a>
+                    <a href="index.html" class="text-gray-300 hover:text-cyan-400 transition">Home</a>
+                    <a href="key-figures.html" class="text-gray-300 hover:text-cyan-400 transition">Key Figures</a>
+                    <a href="places.html" class="text-gray-300 hover:text-cyan-400 transition">Places</a>
+                    <a href="eastern-factions.html" class="text-gray-300 hover:text-cyan-400 transition">Eastern Factions</a>
+                    <a href="eastern-factions.html" class="text-cyan-400 transition">Covert Orders</a>
+                    <a href="timeline.html" class="text-gray-300 hover:text-cyan-400 transition">Timelines</a>
                 </div>
-                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-accent">
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-cyan-400">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-secondary border-t border-accent/20">
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-t border-cyan-500/20">
             <div class="px-4 py-3 space-y-2">
-                <a href="index.html" class="block py-2 text-gray-300 hover:text-accent">Home</a>
-                <a href="key-figures.html" class="block py-2 text-gray-300 hover:text-accent">Key Figures</a>
-                <a href="places.html" class="block py-2 text-gray-300 hover:text-accent">Places</a>
-                <a href="factions.html" class="block py-2 text-gray-300 hover:text-accent">Factions</a>
-                <a href="covert-orders.html" class="block py-2 text-accent-light">Covert Orders</a>
-                <a href="timelines.html" class="block py-2 text-gray-300 hover:text-accent">Timelines</a>
+                <a href="index.html" class="block py-2 text-gray-300 hover:text-cyan-400">Home</a>
+                <a href="key-figures.html" class="block py-2 text-gray-300 hover:text-cyan-400">Key Figures</a>
+                <a href="places.html" class="block py-2 text-gray-300 hover:text-cyan-400">Places</a>
+                <a href="eastern-factions.html" class="block py-2 text-gray-300 hover:text-cyan-400">Eastern Factions</a>
+                <a href="eastern-factions.html" class="block py-2 text-cyan-400">Covert Orders</a>
+                <a href="timeline.html" class="block py-2 text-gray-300 hover:text-cyan-400">Timelines</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="relative pt-24 pb-12">
-        <div class="absolute inset-0 bg-gradient-to-b from-cyan-900/30 via-primary to-primary"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-cyan-900/30 via-slate-900 to-slate-900"></div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-cyan-600/30 to-purple-600/30 border-2 border-cyan-400/50 mb-6">
@@ -139,7 +229,7 @@
     <!-- Overview Section -->
     <section class="py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-secondary/50 rounded-xl p-8 border border-cyan-500/20">
+            <div class="bg-slate-800/50 rounded-xl p-8 border border-cyan-500/20">
                 <h2 class="fantasy-heading text-3xl font-bold text-white mb-6">
                     <i class="fas fa-info-circle text-cyan-500 mr-3"></i>Overview
                 </h2>
@@ -149,23 +239,23 @@
                         <p class="text-gray-300 leading-relaxed">Unlike conventional institutions that seek certainty through established doctrine, the Filwind Institute embraces uncertainty as a fundamental principle. Their methodology involves systematic experimentation, data collection, and iterative improvement—applying scientific rigor to both magical and military endeavors. The Institute's cybernetic warfare division represents their most controversial work: enhancing soldiers through magical-technological fusion to create augmented warriors capable of operating in Null Fields where traditional magic fails.</p>
                     </div>
                     <div class="space-y-4">
-                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                        <div class="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg">
                             <span class="text-gray-400">Founded</span>
                             <span class="text-cyan-500 font-bold">Year 1800</span>
                         </div>
-                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                        <div class="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg">
                             <span class="text-gray-400">Founding Location</span>
                             <span class="text-gray-200">Helron Vein District</span>
                         </div>
-                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                        <div class="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg">
                             <span class="text-gray-400">Headquarters</span>
                             <span class="text-gray-200">Vein Bunkers, Helron</span>
                         </div>
-                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                        <div class="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg">
                             <span class="text-gray-400">Doctrine</span>
                             <span class="text-purple-400 font-bold">Empirical Uncertainty</span>
                         </div>
-                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                        <div class="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg">
                             <span class="text-gray-400">Core Focus</span>
                             <span class="text-gray-200">Cybernetic Warfare</span>
                         </div>
@@ -181,13 +271,13 @@
             <h2 class="fantasy-heading text-3xl font-bold text-white mb-8">
                 <i class="fas fa-scroll text-cyan-500 mr-3"></i>Historical Roots: The Filwind Split
             </h2>
-            <div class="bg-secondary/50 rounded-xl p-8 border border-cyan-500/20">
+            <div class="bg-slate-800/50 rounded-xl p-8 border border-cyan-500/20">
                 <div class="grid md:grid-cols-2 gap-8">
                     <div>
                         <h3 class="fantasy-heading text-xl font-bold text-cyan-400 mb-4">Primordial Origins (Abs. 2,400-2,700)</h3>
                         <p class="text-gray-300 leading-relaxed mb-4">The Filwind Institute's spiritual ancestors were the original Seekers of Truth, a loose coalition of researchers and experimenters who emerged during the Primordial Era's institutional crystallization. Unlike other survival cults that focused on immediate protection or knowledge preservation, the Seekers believed that survival required constant adaptation through systematic investigation of reality.</p>
                         <p class="text-gray-300 leading-relaxed mb-4">During the Covenant of Lies (Abs. 2,584), the Seekers were among the most severely persecuted groups because their methodology threatened the Four Realms' systematic deceptions. Their insistence on empirical verification contradicted the official narratives that the Realms sought to establish. Many Seekers were executed, their research destroyed, and their traditions driven underground.</p>
-                        <p class="text-gray-300 leading-relaxed">The survivors adapted by developing "uncertainty doctrine"—the principle that certainty itself was dangerous because it made one predictable and controllable. By embracing uncertainty and systematic doubt, they created a philosophical framework that was both resistant to ideological manipulation and conducive to genuine discovery. This doctrine would become the foundation of the modern Institute.</p>
+                        <p class="text-gray-300 leading-relaxed">The survivors adapted by developing "uncertainty doctrine"—the principle that certainty itself was dangerous because it made one predictable and controllable. By embracing uncertainty and systematic doubt, they created a philosophical framework that was both resistant to ideological manipulation and conducive to genuine discovery.</p>
                     </div>
                     <div>
                         <h3 class="fantasy-heading text-xl font-bold text-cyan-400 mb-4">From Systematization to Institute</h3>
@@ -207,80 +297,25 @@
                 <i class="fas fa-sitemap text-cyan-500 mr-3"></i>The Four Divisions
             </h2>
             <div class="grid md:grid-cols-2 gap-6">
-                <!-- Empirical Research Division -->
                 <div class="division-card div-empirical rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-14 h-14 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-flask text-cyan-500 text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="fantasy-heading text-xl font-bold text-cyan-400">Empirical Research</h3>
-                            <p class="text-gray-500 text-sm">Systematic Investigation</p>
-                        </div>
-                    </div>
+                    <div class="flex items-center mb-4"><div class="w-14 h-14 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4"><i class="fas fa-flask text-cyan-500 text-2xl"></i></div><div><h3 class="fantasy-heading text-xl font-bold text-cyan-400">Empirical Research</h3><p class="text-gray-500 text-sm">Systematic Investigation</p></div></div>
                     <p class="text-gray-300 text-sm leading-relaxed mb-4">The Institute's scientific core, conducting systematic experiments to expand knowledge across all fields. They reject established doctrine in favor of data-driven conclusions, constantly testing and refining theories through observation and experimentation.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-cyan-900/30 rounded-full text-xs text-cyan-400">Experimentation</span>
-                        <span class="px-3 py-1 bg-cyan-900/30 rounded-full text-xs text-cyan-400">Data Analysis</span>
-                        <span class="px-3 py-1 bg-cyan-900/30 rounded-full text-xs text-cyan-400">Theory Testing</span>
-                    </div>
+                    <div class="flex flex-wrap gap-2"><span class="px-3 py-1 bg-cyan-900/30 rounded-full text-xs text-cyan-400">Experimentation</span><span class="px-3 py-1 bg-cyan-900/30 rounded-full text-xs text-cyan-400">Data Analysis</span><span class="px-3 py-1 bg-cyan-900/30 rounded-full text-xs text-cyan-400">Theory Testing</span></div>
                 </div>
-
-                <!-- Cybernetic Warfare Division -->
                 <div class="division-card div-cybernetic rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-14 h-14 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-robot text-purple-400 text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="fantasy-heading text-xl font-bold text-purple-400">Cybernetic Warfare</h3>
-                            <p class="text-gray-500 text-sm">Augmented Soldiers</p>
-                        </div>
-                    </div>
+                    <div class="flex items-center mb-4"><div class="w-14 h-14 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4"><i class="fas fa-robot text-purple-400 text-2xl"></i></div><div><h3 class="fantasy-heading text-xl font-bold text-purple-400">Cybernetic Warfare</h3><p class="text-gray-500 text-sm">Augmented Soldiers</p></div></div>
                     <p class="text-gray-300 text-sm leading-relaxed mb-4">The Institute's military arm, developing and deploying augmented soldiers through magical-technological fusion. Their paraformer technology enhances physical and magical capabilities beyond natural limits, creating warriors capable of operating in any environment.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-400">Augmentation</span>
-                        <span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-400">Paraformer Tech</span>
-                        <span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-400">Combat Enhancement</span>
-                    </div>
+                    <div class="flex flex-wrap gap-2"><span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-400">Augmentation</span><span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-400">Paraformer Tech</span><span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-400">Combat Enhancement</span></div>
                 </div>
-
-                <!-- Null Field Operations -->
                 <div class="division-card div-null rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-14 h-14 rounded-lg bg-slate-800 flex items-center justify-center mr-4">
-                            <i class="fas fa-ban text-slate-400 text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="fantasy-heading text-xl font-bold text-slate-400">Null Field Ops</h3>
-                            <p class="text-gray-500 text-sm">Anti-Magic Warfare</p>
-                        </div>
-                    </div>
+                    <div class="flex items-center mb-4"><div class="w-14 h-14 rounded-lg bg-slate-800 flex items-center justify-center mr-4"><i class="fas fa-ban text-slate-400 text-2xl"></i></div><div><h3 class="fantasy-heading text-xl font-bold text-slate-400">Null Field Ops</h3><p class="text-gray-500 text-sm">Anti-Magic Warfare</p></div></div>
                     <p class="text-gray-300 text-sm leading-relaxed mb-4">Specialists in creating and operating within Null Fields—areas where conventional magic is suppressed or eliminated. They develop techniques and technologies that function independently of magical energy, providing capabilities that pure magical forces cannot match.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">Null Generation</span>
-                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">Anti-Magic</span>
-                        <span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">Tech-Reliance</span>
-                    </div>
+                    <div class="flex flex-wrap gap-2"><span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">Null Generation</span><span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">Anti-Magic</span><span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-400">Tech-Reliance</span></div>
                 </div>
-
-                <!-- Integration Division -->
                 <div class="division-card div-integration rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-14 h-14 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-project-diagram text-amber-400 text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="fantasy-heading text-xl font-bold text-amber-400">Integration</h3>
-                            <p class="text-gray-500 text-sm">Synthesis & Application</p>
-                        </div>
-                    </div>
+                    <div class="flex items-center mb-4"><div class="w-14 h-14 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4"><i class="fas fa-project-diagram text-amber-400 text-2xl"></i></div><div><h3 class="fantasy-heading text-xl font-bold text-amber-400">Integration</h3><p class="text-gray-500 text-sm">Synthesis & Application</p></div></div>
                     <p class="text-gray-300 text-sm leading-relaxed mb-4">The elite division that combines all Institute capabilities into unified operations. They coordinate research, cybernetic enhancement, and Null Field deployment to achieve objectives impossible for any single division. Integration officers are the Institute's ultimate operatives.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-amber-900/30 rounded-full text-xs text-amber-400">Multi-Division</span>
-                        <span class="px-3 py-1 bg-amber-900/30 rounded-full text-xs text-amber-400">Coordination</span>
-                        <span class="px-3 py-1 bg-amber-900/30 rounded-full text-xs text-amber-400">Strategic Ops</span>
-                    </div>
+                    <div class="flex flex-wrap gap-2"><span class="px-3 py-1 bg-amber-900/30 rounded-full text-xs text-amber-400">Multi-Division</span><span class="px-3 py-1 bg-amber-900/30 rounded-full text-xs text-amber-400">Coordination</span><span class="px-3 py-1 bg-amber-900/30 rounded-full text-xs text-amber-400">Strategic Ops</span></div>
                 </div>
             </div>
         </div>
@@ -292,241 +327,157 @@
             <h2 class="fantasy-heading text-4xl font-bold text-center text-white mb-4">
                 <i class="fas fa-cube text-cyan-500 mr-3"></i>11 Frameworks Analysis
             </h2>
-            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">Comprehensive analysis of the Filwind Institute through eleven interconnected frameworks, revealing the intricate structure of Helron's most revolutionary research organization.</p>
-            
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">Comprehensive analysis of the Filwind Institute through eleven interconnected frameworks.</p>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Historical Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-history text-cyan-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Historical</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Filwind Institute's formal establishment in Year 1800 represents the culmination of over two thousand years of underground Seeker tradition combined with Helron's industrial revolution. Filwind, a former Systematization researcher who rejected doctrinal conformity, gathered like-minded scientists and military innovators to create an organization dedicated to empirical methodology. The Institute has since operated for 300 years, constantly evolving through its own iterative improvement philosophy. Their history is marked by conflict with Helron's establishment, who view the Institute's rejection of certainty as dangerous heresy, and by remarkable innovations that have repeatedly proven the value of their approach.</p>
-                </div>
-
-                <!-- Political Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-chess-king text-cyan-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Political</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">Politically, the Filwind Institute maintains an ambiguous position. Officially, they are considered outlaws by Helron's Systematization establishment, who have declared empirical methodology "intellectual anarchy." Unofficially, the Institute provides capabilities that even their enemies cannot replicate—cybernetic soldiers, Null Field technology, and data-driven strategic analysis. The Institute's political structure is flat and meritocratic, with leadership determined by demonstrated results rather than seniority or ideology. The Research Council oversees overall direction, but individual projects maintain significant autonomy. The Institute maintains secret relationships with various power brokers, offering technological and military services in exchange for resources and protection from Systematization persecution.</p>
-                </div>
-
-                <!-- Mental Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-brain text-cyan-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Mental</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Institute's mental conditioning emphasizes critical thinking, comfort with ambiguity, and resistance to ideological capture. Recruits undergo "Uncertainty Training" that systematically challenges their assumptions and teaches them to hold conclusions provisionally. They are taught that certainty is a cognitive trap that limits adaptation and creates vulnerability. This creates a distinctive psychological profile: Institute members tend to be skeptical, innovative, and comfortable with incomplete information. However, this same training can lead to analysis paralysis—members may struggle to commit to decisions when data is incomplete. The highest-ranked Integration officers undergo "Paraformer Conditioning," a process that enhances cognitive processing speed and multitasking capability through magical-technological fusion.</p>
-                </div>
-
-                <!-- Spiritual Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-atom text-cyan-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Spiritual</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Institute's spirituality centers on "Empirical Transcendence"—the belief that understanding reality through systematic investigation is itself a spiritual practice. Their philosophy holds that the universe is infinitely complex and that any claim to complete understanding is hubris. Rituals involve data review sessions, experimental design ceremonies, and meditation on uncertainty. Members maintain personal "Hypothesis Journals" where they record predictions and track their accuracy, using this practice to develop humility and improve their predictive capabilities. The highest spiritual achievement is the "Breakthrough Moment"—a mystical experience of insight that emerges from prolonged engagement with complex problems. The Institute venerates the original Seekers as martyrs who preserved empirical truth against the Covenant's deceptions.</p>
-                </div>
-
-                <!-- Social Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-users text-cyan-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Social</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">Socially, the Institute operates as a community of researchers united by shared methodology rather than shared beliefs. Members address each other by function rather than rank—"Researcher," "Technician," "Subject"—reflecting their meritocratic ideals. The Division system creates sub-communities with distinct cultures: Empirical researchers tend to be analytical and precise, Cybernetic specialists are practical and results-oriented, Null Field operators are stoic and resilient, and Integration officers are versatile and strategic. Cross-Division collaboration is encouraged through joint projects, and members often develop deep bonds through shared experiments. The Institute maintains strict secrecy protocols—members may not reveal research data or operational capabilities to outsiders, creating a hidden society within Helron's industrial landscape.</p>
-                </div>
-
-                <!-- Cultural Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-chart-line text-cyan-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Cultural</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">Institute culture is defined by celebration of discovery and iterative improvement. Their art features data visualizations, experimental apparatus, and representations of uncertainty. Music incorporates statistical patterns and probabilistic variations. Literature focuses on research papers, experimental logs, and theoretical treatises on methodology. The Institute maintains the most extensive database in existence, containing records of countless experiments across all fields of inquiry. Dance and martial arts are combined in the "Adaptive Forms"—movements that emphasize flexibility, unpredictability, and rapid response to changing conditions. Cultural festivals occur at the completion of major research projects, featuring presentations of findings and ceremonies honoring significant discoveries.</p>
-                </div>
-
-                <!-- Economical Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-coins text-cyan-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Economical</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Institute's economy operates through a model of "innovation exchange." They offer research services, technological development, and military capabilities to clients who can provide funding and protection. The Empirical Division maintains consulting operations for organizations seeking data-driven solutions. The Cybernetic Division offers augmentation services to wealthy clients willing to undergo experimental procedures. The Null Field Division provides security services for situations where magical threats must be neutralized. The Integration Division handles complex operations requiring multiple capabilities. The Institute also patents and licenses their innovations, though they carefully control distribution to prevent their technology from being used against them. Their total wealth is substantial but distributed across multiple hidden accounts to prevent seizure by hostile authorities.</p>
-                </div>
-
-                <!-- Physiological Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-dna text-cyan-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Physiological</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">Institute training produces distinctive physiological adaptations, particularly among cybernetically augmented personnel. Paraformer enhancement increases strength, speed, sensory acuity, and cognitive processing beyond natural limits. However, augmentation carries risks—rejection, instability, and psychological side effects are common among experimental subjects. The Institute maintains extensive knowledge of biological modification, though they apply it cautiously due to ethical concerns and practical limitations. Physical training emphasizes adaptability and endurance over specialized combat skills, preparing members for unpredictable operational environments. The highest-ranked augmented soldiers, called "Nulls," have been modified to function independently of magical energy, making them effective even in complete Null Fields where pure magical beings would be helpless.</p>
-                </div>
-
-                <!-- Territorial Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-map-marked-alt text-cyan-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Territorial</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Institute's primary territory is the Vein Bunkers, a vast underground complex beneath Helron's industrial district. The Bunkers are organized into four sectors corresponding to the Divisions, with a central Integration Hub where coordinated operations are planned. Surface-level facilities include hidden laboratories, safe houses, and observation posts scattered throughout Helron territory. The Institute also maintains mobile research facilities that can be deployed to field locations, allowing experiments to be conducted in various environmental conditions. All territories are protected by layered technological defenses, Null Field generators, and the Institute's reputation for dangerous capability. The Vein Bunkers are particularly well-defended—their location beneath Helron's industrial infrastructure makes direct assault virtually impossible without catastrophic collateral damage.</p>
-                </div>
-
-                <!-- Technological Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-cogs text-cyan-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Technological</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Institute's technology represents the cutting edge of magical-technological fusion. Their most prized creations are the Paraformer Implants—devices that enhance physical and magical capabilities through direct nervous system interface. They also develop Null Field Generators that create zones of magical suppression, Communication Arrays that function independently of magical networks, and Analytical Engines that process vast amounts of data to identify patterns and predict outcomes. The Institute maintains extensive manufacturing capabilities for producing their specialized equipment, though they rely on external sources for raw materials. Their most advanced technology, developed only in recent decades, allows temporary creation of "Selective Null Fields" that suppress specific types of magic while leaving others functional—a capability that provides enormous tactical advantage.</p>
-                </div>
-
-                <!-- Military Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-user-astronaut text-cyan-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Military</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Institute's military arm, the Augmented Cohorts, represents one of the most technologically advanced fighting forces in existence. Organized into Division-based units with specialized capabilities, they emphasize adaptability and technological superiority over traditional military doctrine. Empirical Cohorts provide intelligence and strategic analysis. Cybernetic Cohorts form the front-line combat core, enhanced soldiers capable of matching or exceeding magical warriors. Null Cohorts specialize in anti-magic operations, creating and exploiting Null Fields to neutralize magical threats. Integration Cohorts serve as elite units combining all capabilities. The Augmented Cohorts train in adaptive tactics that leverage their technological advantages. Their signature formation, the "Uncertainty Pattern," uses unpredictable movements and shifting Null Fields to create chaos in enemy ranks. Despite their power, the Cohorts are primarily defensive—protecting Institute territory and personnel from hostile forces.</p>
-                </div>
+                <div class="framework-card rounded-xl p-6 card-hover"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4"><i class="fas fa-history text-cyan-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Historical</h3></div><p class="text-gray-400 text-sm leading-relaxed">The Filwind Institute's formal establishment in Year 1800 represents the culmination of over two thousand years of underground Seeker tradition combined with Helron's industrial revolution. Filwind, a former Systematization researcher who rejected doctrinal conformity, gathered like-minded scientists and military innovators to create an organization dedicated to empirical methodology. The Institute has since operated for 300 years, constantly evolving through its own iterative improvement philosophy.</p></div>
+                <div class="framework-card rounded-xl p-6 card-hover"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4"><i class="fas fa-chess-king text-cyan-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Political</h3></div><p class="text-gray-400 text-sm leading-relaxed">Politically, the Filwind Institute maintains an ambiguous position. Officially, they are considered outlaws by Helron's Systematization establishment, who have declared empirical methodology "intellectual anarchy." Unofficially, the Institute provides capabilities that even their enemies cannot replicate—cybernetic soldiers, Null Field technology, and data-driven strategic analysis. The Institute's political structure is flat and meritocratic, with leadership determined by demonstrated results.</p></div>
+                <div class="framework-card rounded-xl p-6 card-hover"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4"><i class="fas fa-brain text-cyan-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Mental</h3></div><p class="text-gray-400 text-sm leading-relaxed">The Institute's mental conditioning emphasizes critical thinking, comfort with ambiguity, and resistance to ideological capture. Recruits undergo "Uncertainty Training" that systematically challenges their assumptions and teaches them to hold conclusions provisionally. They are taught that certainty is a cognitive trap that limits adaptation and creates vulnerability. The highest-ranked Integration officers undergo "Paraformer Conditioning," enhancing cognitive processing speed through magical-technological fusion.</p></div>
+                <div class="framework-card rounded-xl p-6 card-hover"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4"><i class="fas fa-atom text-cyan-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Spiritual</h3></div><p class="text-gray-400 text-sm leading-relaxed">The Institute's spirituality centers on "Empirical Transcendence"—the belief that understanding reality through systematic investigation is itself a spiritual practice. Their philosophy holds that the universe is infinitely complex and that any claim to complete understanding is hubris. Rituals involve data review sessions, experimental design ceremonies, and meditation on uncertainty. Members maintain personal "Hypothesis Journals" to track predictions and develop humility.</p></div>
+                <div class="framework-card rounded-xl p-6 card-hover"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4"><i class="fas fa-users text-cyan-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Social</h3></div><p class="text-gray-400 text-sm leading-relaxed">Socially, the Institute operates as a community of researchers united by shared methodology rather than shared beliefs. Members address each other by function rather than rank—"Researcher," "Technician," "Subject"—reflecting their meritocratic ideals. The Division system creates sub-communities: Empirical researchers tend to be analytical and precise, Cybernetic specialists are practical and results-oriented, Null Field operators are stoic and resilient, and Integration officers are versatile and strategic.</p></div>
+                <div class="framework-card rounded-xl p-6 card-hover"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4"><i class="fas fa-chart-line text-cyan-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Cultural</h3></div><p class="text-gray-400 text-sm leading-relaxed">Institute culture is defined by celebration of discovery and iterative improvement. Their art features data visualizations, experimental apparatus, and representations of uncertainty. Music incorporates statistical patterns and probabilistic variations. Literature focuses on research papers, experimental logs, and theoretical treatises on methodology. The Institute maintains the most extensive database in existence, containing records of countless experiments across all fields of inquiry.</p></div>
+                <div class="framework-card rounded-xl p-6 card-hover"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4"><i class="fas fa-coins text-cyan-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Economical</h3></div><p class="text-gray-400 text-sm leading-relaxed">The Institute's economy operates through a model of "innovation exchange." They offer research services, technological development, and military capabilities to clients who can provide funding and protection. The Empirical Division maintains consulting operations. The Cybernetic Division offers augmentation services. The Null Field Division provides security services for situations where magical threats must be neutralized. The Integration Division handles complex operations requiring multiple capabilities.</p></div>
+                <div class="framework-card rounded-xl p-6 card-hover"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4"><i class="fas fa-dna text-cyan-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Physiological</h3></div><p class="text-gray-400 text-sm leading-relaxed">Institute training produces distinctive physiological adaptations, particularly among cybernetically augmented personnel. Paraformer enhancement increases strength, speed, sensory acuity, and cognitive processing beyond natural limits. However, augmentation carries risks—rejection, instability, and psychological side effects are common. The highest-ranked augmented soldiers, called "Nulls," have been modified to function independently of magical energy, making them effective even in complete Null Fields where pure magical beings would be helpless.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- Empirical Uncertainty Doctrine -->
+    <!-- Territorial Framework with Vein Bunkers Map -->
     <section class="py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gradient-to-r from-cyan-900/30 via-purple-900/30 to-slate-800/50 rounded-xl p-8 border border-cyan-500/30">
-                <h2 class="fantasy-heading text-3xl font-bold text-white mb-6 text-center">
-                    <i class="fas fa-question-circle text-cyan-400 mr-3"></i>The Empirical Uncertainty Doctrine
-                </h2>
-                <div class="max-w-3xl mx-auto">
-                    <blockquote class="text-xl text-center text-gray-300 italic mb-6">
-                        "Certainty is the enemy of adaptation. Only through embracing uncertainty can we remain flexible enough to meet any challenge. The data never lies, but our interpretations are always provisional."
-                    </blockquote>
-                    <p class="text-gray-400 leading-relaxed text-center mb-4">— Filwind, Founding Principles</p>
-                    <div class="grid md:grid-cols-3 gap-6 mt-8">
-                        <div class="text-center">
-                            <div class="w-16 h-16 rounded-full bg-cyan-900/30 flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-flask text-cyan-500 text-2xl"></i>
-                            </div>
-                            <h4 class="fantasy-heading text-lg font-bold text-cyan-400 mb-2">Experiment</h4>
-                            <p class="text-gray-400 text-sm">Test hypotheses through systematic observation. Gather data without preconceptions about outcomes.</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-16 h-16 rounded-full bg-purple-900/30 flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-chart-bar text-purple-400 text-2xl"></i>
-                            </div>
-                            <h4 class="fantasy-heading text-lg font-bold text-purple-400 mb-2">Analyze</h4>
-                            <p class="text-gray-400 text-sm">Process data to identify patterns. Draw conclusions based on evidence rather than ideology.</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-sync-alt text-slate-400 text-2xl"></i>
-                            </div>
-                            <h4 class="fantasy-heading text-lg font-bold text-slate-400 mb-2">Iterate</h4>
-                            <p class="text-gray-400 text-sm">Refine understanding based on results. Accept that all conclusions are provisional and subject to revision.</p>
-                        </div>
+            <div class="framework-card rounded-xl p-8 card-hover">
+                <div class="flex items-center mb-5">
+                    <div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4">
+                        <i class="fas fa-map-marked-alt text-cyan-500 text-xl"></i>
                     </div>
+                    <h3 class="fantasy-heading text-2xl font-bold text-white">Territorial Framework</h3>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">The Institute's primary territory is the <strong>Vein Bunkers</strong>, a vast underground complex built within the abandoned labyrinthine null-crystal mines of Helron's Vein District. The Bunkers are organized into four sectors corresponding to the Divisions, with a central Integration Hub where coordinated operations are planned. The location beneath Helron's industrial infrastructure makes direct assault virtually impossible without catastrophic collateral damage—a deliberate strategic choice by the Institute's founders.</p>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">The Bunkers incorporate repurposed mine works, warding stones with static defensive symbols, and specialized facilities for the Institute's unique operations. The <strong>Null Chamber</strong>—considered Filwind holy ground—is where certainty collapses and experimental subjects confront the void of absolute uncertainty. The <strong>Paraformer Array Labs</strong> conduct research and calibration for cybernetic enhancements, while the <strong>Augmentation Bays</strong> serve as surgical theaters for implant procedures.</p>
+
+                <!-- Vein Bunkers Map -->
+                <div class="mt-6 mb-4">
+                    <p class="text-cyan-400 text-sm font-semibold mb-3"><i class="fas fa-dungeon mr-1"></i>Fortress Map — Vein Bunkers (Filwind Institute Headquarters)</p>
+                    <div class="img-container glow-border rounded-2xl border border-cyan-500/25 shadow-2xl max-w-3xl"
+                    onclick="openLightbox('./Vein%20Bunkers.jpeg')" title="Click to enlarge — Detailed Vein Bunkers map">
+                    <img
+                    src="./Vein%20Bunkers.jpeg"
+                    alt="Detailed map of the Vein Bunkers — Filwind Institute headquarters"
+                    class="w-full h-auto rounded-2xl"
+                    loading="lazy"
+                    onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                    <div class="img-fallback flex-col items-center justify-center p-16 bg-slate-900/80 rounded-2xl text-center"
+                    style="display:none;">
+                    <i class="fas fa-map text-6xl text-cyan-400/50 mb-4"></i>
+                    <p class="text-slate-400 text-sm">Fortress Map: Vein Bunkers</p>
+                    <p class="text-slate-500 text-xs mt-1">Place "<strong>Vein Bunkers.jpeg</strong>" in the same folder</p>
+                </div>
+                <div class="img-zoom-hint">
+                    <i class="fas fa-search-plus mr-1"></i>Click to enlarge
+                </div>
+            </div>
+            <p class="text-slate-500 text-xs mt-2 italic">Detailed cartography of the Institute's underground fortress within Helron's abandoned null-crystal mines: Uncertainty High Command, Augmentation Bays, Cyber-Handler Stamm (Leest corps), Drone-Bat roost, East Wing, West Wing, South Wing, Port-Beette stable, Null Chamber (Filwind holy ground — certainty collapse), Paraformer Array Labs (research & calibration), Unnecessary Tool (meditation — uncertainty training), Warding stones (static symbols), abandoned mine works, and Null Gate Crossing to surface (Deep Veins).</p>
+        </div>
+
+        <p class="text-gray-300 text-sm"><strong>Key Features (from map):</strong></p>
+        <ul class="text-gray-300 text-sm mb-3 ml-4 space-y-1">
+            <li>• <strong>Uncertainty High Command:</strong> The Institute's strategic nerve center where the Research Council directs operations</li>
+            <li>• <strong>Null Chamber:</strong> Filwind holy ground — where certainty collapses and experimental subjects confront absolute uncertainty</li>
+            <li>• <strong>Paraformer Array Labs:</strong> Research and calibration facilities for cybernetic enhancement technology</li>
+            <li>• <strong>Augmentation Bays:</strong> Surgical theaters for implant procedures and paraformer integration</li>
+            <li>• <strong>Cyber-Handler Stamm:</strong> Leest corps training facility for augmented soldier deployment</li>
+            <li>• <strong>Unnecessary Tool:</strong> Meditation chamber dedicated to uncertainty training — teaching operatives to function without certainty</li>
+            <li>• <strong>Drone-Bat Roost & Port-Beette Stable:</strong> Housing for the Institute's surveillance and transport creatures</li>
+            <li>• <strong>Null Gate Crossing:</strong> Surface access point connecting to the Deep Veins of Helron's industrial district</li>
+        </ul>
+        <p class="text-gray-300 text-sm"><strong>Defenses:</strong> Warding stones with static defensive symbols, abandoned mine works creating a labyrinthine approach, the Bunkers' location beneath Helron's industrial infrastructure, and the Null Gate Crossing providing controlled surface access. The surrounding null-crystal mines naturally suppress magical detection, making the Bunkers virtually invisible to conventional magical surveillance.</p>
+    </div>
+</div>
+</section>
+
+<!-- Technological & Military Frameworks -->
+<section class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="framework-card rounded-xl p-6 card-hover">
+                <div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4"><i class="fas fa-cogs text-cyan-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Technological</h3></div>
+                <p class="text-gray-400 text-sm leading-relaxed">The Institute's technology represents the cutting edge of magical-technological fusion. Their most prized creations are the Paraformer Implants—devices that enhance physical and magical capabilities through direct nervous system interface. They also develop Null Field Generators, Communication Arrays that function independently of magical networks, and Analytical Engines that process vast amounts of data. Their most advanced technology allows temporary creation of "Selective Null Fields" that suppress specific types of magic while leaving others functional.</p>
+            </div>
+            <div class="framework-card rounded-xl p-6 card-hover">
+                <div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-cyan-900/30 flex items-center justify-center mr-4"><i class="fas fa-user-astronaut text-cyan-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Military</h3></div>
+                <p class="text-gray-400 text-sm leading-relaxed">The Institute's military arm, the Augmented Cohorts, represents one of the most technologically advanced fighting forces in existence. Organized into Division-based units with specialized capabilities, they emphasize adaptability and technological superiority. Empirical Cohorts provide intelligence and strategic analysis. Cybernetic Cohorts form the front-line combat core. Null Cohorts specialize in anti-magic operations. Integration Cohorts serve as elite units combining all capabilities. Their signature formation, the "Uncertainty Pattern," uses unpredictable movements and shifting Null Fields to create chaos in enemy ranks.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Empirical Uncertainty Doctrine -->
+<section class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-r from-cyan-900/30 via-purple-900/30 to-slate-800/50 rounded-xl p-8 border border-cyan-500/30">
+            <h2 class="fantasy-heading text-3xl font-bold text-white mb-6 text-center"><i class="fas fa-question-circle text-cyan-400 mr-3"></i>The Empirical Uncertainty Doctrine</h2>
+            <div class="max-w-3xl mx-auto">
+                <blockquote class="text-xl text-center text-gray-300 italic mb-6">"Certainty is the enemy of adaptation. Only through embracing uncertainty can we remain flexible enough to meet any challenge. The data never lies, but our interpretations are always provisional."</blockquote>
+                <p class="text-gray-400 leading-relaxed text-center mb-4">— Filwind, Founding Principles</p>
+                <div class="grid md:grid-cols-3 gap-6 mt-8">
+                    <div class="text-center"><div class="w-16 h-16 rounded-full bg-cyan-900/30 flex items-center justify-center mx-auto mb-4"><i class="fas fa-flask text-cyan-500 text-2xl"></i></div><h4 class="fantasy-heading text-lg font-bold text-cyan-400 mb-2">Experiment</h4><p class="text-gray-400 text-sm">Test hypotheses through systematic observation. Gather data without preconceptions about outcomes.</p></div>
+                    <div class="text-center"><div class="w-16 h-16 rounded-full bg-purple-900/30 flex items-center justify-center mx-auto mb-4"><i class="fas fa-chart-bar text-purple-400 text-2xl"></i></div><h4 class="fantasy-heading text-lg font-bold text-purple-400 mb-2">Analyze</h4><p class="text-gray-400 text-sm">Process data to identify patterns. Draw conclusions based on evidence rather than ideology.</p></div>
+                    <div class="text-center"><div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mx-auto mb-4"><i class="fas fa-sync-alt text-slate-400 text-2xl"></i></div><h4 class="fantasy-heading text-lg font-bold text-slate-400 mb-2">Iterate</h4><p class="text-gray-400 text-sm">Refine understanding based on results. Accept that all conclusions are provisional and subject to revision.</p></div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Military Structure -->
-    <section class="py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="fantasy-heading text-3xl font-bold text-white mb-8">
-                <i class="fas fa-shield-alt text-cyan-500 mr-3"></i>Augmented Cohorts Structure
-            </h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-secondary/50 rounded-xl p-6 border border-cyan-500/20">
-                    <div class="text-center mb-4">
-                        <i class="fas fa-crown text-cyan-500 text-4xl"></i>
-                    </div>
-                    <h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Research Council</h3>
-                    <p class="text-gray-400 text-sm text-center">Supreme command composed of Division heads and senior researchers, making decisions based on data analysis.</p>
-                </div>
-                <div class="bg-secondary/50 rounded-xl p-6 border border-cyan-500/20">
-                    <div class="text-center mb-4">
-                        <i class="fas fa-user-md text-purple-500 text-4xl"></i>
-                    </div>
-                    <h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Division Directors</h3>
-                    <p class="text-gray-400 text-sm text-center">Each Division is led by a Director appointed based on demonstrated research and operational excellence.</p>
-                </div>
-                <div class="bg-secondary/50 rounded-xl p-6 border border-cyan-500/20">
-                    <div class="text-center mb-4">
-                        <i class="fas fa-user-cog text-blue-500 text-4xl"></i>
-                    </div>
-                    <h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Cohort Leaders</h3>
-                    <p class="text-gray-400 text-sm text-center">Field commanders leading augmented units, selected for tactical adaptability and technical expertise.</p>
-                </div>
-                <div class="bg-secondary/50 rounded-xl p-6 border border-cyan-500/20">
-                    <div class="text-center mb-4">
-                        <i class="fas fa-robot text-green-500 text-4xl"></i>
-                    </div>
-                    <h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Augmented Soldiers</h3>
-                    <p class="text-gray-400 text-sm text-center">The enhanced warriors who have undergone paraformer implantation and proven combat effectiveness.</p>
-                </div>
-            </div>
+<!-- Military Structure -->
+<section class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="fantasy-heading text-3xl font-bold text-white mb-8"><i class="fas fa-shield-alt text-cyan-500 mr-3"></i>Augmented Cohorts Structure</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-slate-800/50 rounded-xl p-6 border border-cyan-500/20 card-hover"><div class="text-center mb-4"><i class="fas fa-crown text-cyan-500 text-4xl"></i></div><h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Research Council</h3><p class="text-gray-400 text-sm text-center">Supreme command composed of Division heads and senior researchers, making decisions based on data analysis.</p></div>
+            <div class="bg-slate-800/50 rounded-xl p-6 border border-cyan-500/20 card-hover"><div class="text-center mb-4"><i class="fas fa-user-md text-purple-500 text-4xl"></i></div><h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Division Directors</h3><p class="text-gray-400 text-sm text-center">Each Division is led by a Director appointed based on demonstrated research and operational excellence.</p></div>
+            <div class="bg-slate-800/50 rounded-xl p-6 border border-cyan-500/20 card-hover"><div class="text-center mb-4"><i class="fas fa-user-cog text-blue-500 text-4xl"></i></div><h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Cohort Leaders</h3><p class="text-gray-400 text-sm text-center">Field commanders leading augmented units, selected for tactical adaptability and technical expertise.</p></div>
+            <div class="bg-slate-800/50 rounded-xl p-6 border border-cyan-500/20 card-hover"><div class="text-center mb-4"><i class="fas fa-robot text-green-500 text-4xl"></i></div><h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Augmented Soldiers</h3><p class="text-gray-400 text-sm text-center">The enhanced warriors who have undergone paraformer implantation and proven combat effectiveness.</p></div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="bg-dark border-t border-accent/20 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="flex items-center space-x-3 mb-4 md:mb-0">
-                    <i class="fas fa-tree text-accent text-xl"></i>
-                    <span class="fantasy-heading text-lg font-bold gradient-text">Eternal Trees Saga</span>
-                </div>
-                <div class="flex space-x-6 text-sm text-gray-400">
-                    <a href="index.html" class="hover:text-accent transition">Home</a>
-                    <a href="key-figures.html" class="hover:text-accent transition">Key Figures</a>
-                    <a href="places.html" class="hover:text-accent transition">Places</a>
-                    <a href="factions.html" class="hover:text-accent transition">Factions</a>
-                </div>
-            </div>
-            <div class="mt-6 pt-6 border-t border-gray-800 text-center text-sm text-gray-500">
-                <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
-            </div>
+<!-- Image Gallery Summary -->
+<section class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="fantasy-heading text-2xl font-bold text-white mb-6"><i class="fas fa-images text-cyan-500 mr-2"></i>Cartographic Archives</h2>
+        <div class="bg-slate-900/60 border border-slate-700 rounded-2xl p-5 text-center card-hover max-w-md"
+        onclick="openLightbox('./Vein%20Bunkers.jpeg')" style="cursor:zoom-in;">
+        <i class="fas fa-dungeon text-4xl text-cyan-400 mb-3"></i>
+        <h3 class="font-bold text-slate-200 mb-1">Vein Bunkers Map</h3>
+        <p class="text-slate-400 text-xs">Filwind Institute headquarters — Null Chamber, Paraformer Labs & Augmentation Bays</p>
+        <span class="text-cyan-400 text-xs mt-2 inline-block"><i class="fas fa-search-plus mr-1"></i>View full size</span>
+    </div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-950 border-t border-cyan-500/20 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-4 md:mb-0"><i class="fas fa-tree text-emerald-400 text-xl"></i><span class="fantasy-heading text-lg font-bold gradient-text">Eternal Trees Saga</span></div>
+            <div class="flex space-x-6 text-sm text-gray-400"><a href="index.html" class="hover:text-cyan-400 transition">Home</a><a href="key-figures.html" class="hover:text-cyan-400 transition">Key Figures</a><a href="places.html" class="hover:text-cyan-400 transition">Places</a><a href="eastern-factions.html" class="hover:text-cyan-400 transition">Eastern Factions</a></div>
         </div>
-    </footer>
+        <div class="mt-6 pt-6 border-t border-gray-800 text-center text-sm text-gray-500"><p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p></div>
+    </div>
+</footer>
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    </script>
+<script>
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    function openLightbox(src) { lightboxImg.src = src; lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+    lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
+    lightboxClose.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox(); });
+</script>
 </body>
 </html>

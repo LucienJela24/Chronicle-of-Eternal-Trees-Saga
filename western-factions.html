@@ -1,253 +1,570 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Western Plane Factions - Eternal Trees Saga Wiki</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
-    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #e2e8f0; }
-    h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
-    .purple-gradient { background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 50%, #7c3aed 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .card-hover { transition: all 0.3s ease; }
-    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(124, 58, 237, 0.2); }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Western Plane Factions - Eternal Trees Saga Wiki</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0f;
+            color: #e2e8f0;
+        }
+        h1,
+        h2,
+        h3,
+        .fantasy-font {
+            font-family: 'Cinzel', serif;
+        }
+        .purple-gradient {
+            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 50%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(124, 58, 237, 0.2);
+        }
+
+        /* Map card image styles */
+        .map-card-img {
+            transition: transform 0.4s ease, filter 0.4s ease;
+            cursor: pointer;
+            filter: brightness(0.85) saturate(1.1);
+        }
+        .map-card:hover .map-card-img {
+            transform: scale(1.03);
+            filter: brightness(1) saturate(1.2);
+        }
+        .map-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .map-card .zoom-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(124, 58, 237, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            pointer-events: none;
+            border-radius: 0.75rem;
+        }
+        .map-card:hover .zoom-overlay {
+            background: rgba(124, 58, 237, 0.15);
+        }
+        .zoom-icon {
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(124, 58, 237, 0.8);
+        }
+        .map-card:hover .zoom-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Lightbox / Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.92);
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            cursor: pointer;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 95vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            cursor: default;
+            box-shadow: 0 0 60px rgba(124, 58, 237, 0.3);
+            animation: fadeInScale 0.3s ease;
+        }
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-size: 2.5rem;
+            color: #fff;
+            cursor: pointer;
+            z-index: 101;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        .lightbox-close:hover {
+            color: #a78bfa;
+        }
+        .lightbox-caption {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            text-align: center;
+            background: rgba(15, 15, 25, 0.8);
+            padding: 0.5rem 1.25rem;
+            border-radius: 999px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+
+        /* Tab switcher for maps */
+        .map-tab {
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+        .map-tab.active {
+            background: rgba(124, 58, 237, 0.2);
+            border-color: #a78bfa;
+            color: #c4b5fd;
+        }
+        .map-tab:hover:not(.active) {
+            background: rgba(124, 58, 237, 0.08);
+            border-color: rgba(124, 58, 237, 0.4);
+        }
+
+        /* Gold gradient for header */
+        .gold-gradient {
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
 </head>
 <body class="min-h-screen">
-  <!-- Header -->
-  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
-    <div class="flex items-center justify-between p-4">
-      <a href="index.html" class="flex items-center gap-3">
-        <i class="fas fa-tree text-amber-400 text-2xl"></i>
-        <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
-      </a>
-      <nav class="hidden md:flex items-center gap-6">
-        <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
-        <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
-        <a href="timeline.html" class="text-slate-300 hover:text-amber-400 transition">Timeline</a>
-        <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
-        <a href="eastern-factions.html" class="text-slate-300 hover:text-amber-400 transition">Eastern</a>
-        <a href="western-factions.html" class="text-purple-400 font-medium">Western</a>
-        <a href="other-realms.html" class="text-slate-300 hover:text-amber-400 transition">Realms</a>
-      </nav>
-      <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400"><i class="fas fa-bars text-xl"></i></button>
-    </div>
-  </header>
-
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
-    <div class="p-4">
-      <div class="flex justify-between items-center mb-6">
-        <span class="font-bold text-lg">Navigation</span>
-        <button id="closeMenu" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
-      </div>
-      <nav class="space-y-2">
-        <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
-        <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
-        <a href="timeline.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
-        <a href="plots.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
-        <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
-        <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-purple-400 bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
-        <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
-      </nav>
-    </div>
-  </div>
-
-  <!-- Main Content -->
-  <main class="max-w-7xl mx-auto p-4 md:p-8">
-    <div class="text-center py-8 mb-10">
-      <h1 class="text-4xl font-bold mb-4 fantasy-font"><span class="purple-gradient">Western Plane Factions</span></h1>
-      <p class="text-slate-400">Tree of Chaos — Fluid, Experimental, Adaptive</p>
-    </div>
-
-    <!-- Overview -->
-    <section class="mb-12">
-      <div class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
-        <h2 class="text-xl font-bold text-purple-400 mb-4">Overview</h2>
-        <p class="text-slate-300 mb-4">The Western Plane is governed by the Tree of Chaos, born from Intervenor (Symphion) and Observer (Aletheia) essence. It is a realm of constant change, experimentation, and adaptation—where order emerges from chaos rather than being imposed upon it.</p>
-        <div class="grid md:grid-cols-2 gap-4">
-          <div>
-            <p class="text-slate-400 text-sm mb-2"><span class="text-purple-400">Divine Pantheon:</span> Primordial Eight (Kronos, Logos, Freya, Kairos, Archelaus, Nyx, Eres, Artemis)</p>
-            <p class="text-slate-400 text-sm mb-2"><span class="text-purple-400">Ethereal Five:</span> Vertus, Minerva, Serena, Dionysus, Morpheus</p>
-          </div>
-          <div>
-            <p class="text-slate-400 text-sm mb-2"><span class="text-purple-400">Key Institutions:</span> Library of Lumeria, Academia, Serene Fleet</p>
-            <p class="text-slate-400 text-sm"><span class="text-purple-400">Great Divide:</span> Abs. 28,223 — severed Eastern/Western contact for 26,000 years</p>
-          </div>
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
+        <div class="flex items-center justify-between p-4">
+            <a href="index.html" class="flex items-center gap-3">
+                <i class="fas fa-tree text-amber-400 text-2xl"></i>
+                <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
+            </a>
+            <nav class="hidden md:flex items-center gap-6">
+                <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
+                <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
+                <a href="timeline.html" class="text-slate-300 hover:text-amber-400 transition">Timeline</a>
+                <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
+                <a href="eastern-factions.html" class="text-slate-300 hover:text-amber-400 transition">Eastern</a>
+                <a href="western-factions.html" class="text-purple-400 font-medium">Western</a>
+                <a href="other-realms.html" class="text-slate-300 hover:text-amber-400 transition">Realms</a>
+            </nav>
+            <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400"><i class="fas fa-bars text-xl"></i></button>
         </div>
-      </div>
-    </section>
+    </header>
 
-    <!-- Major Factions -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-chess-rook mr-2"></i>Major Factions</h2>
-      <div class="grid md:grid-cols-2 gap-4">
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
+        <div class="p-4">
+            <div class="flex justify-between items-center mb-6">
+                <span class="font-bold text-lg">Navigation</span>
+                <button id="closeMenu" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <nav class="space-y-2">
+                <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
+                <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
+                <a href="timeline.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
+                <a href="plots.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
+                <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
+                <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-purple-400 bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
+                <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img id="lightboxImg" src="" alt="">
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto p-4 md:p-8">
+        <div class="text-center py-8 mb-10">
+            <h1 class="text-4xl font-bold mb-4 fantasy-font"><span class="purple-gradient">Western Plane Factions</span></h1>
+            <p class="text-slate-400">Tree of Chaos — Fluid, Experimental, Adaptive</p>
+        </div>
+
+        <!-- Overview -->
+        <section class="mb-12">
+            <div class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
+                <h2 class="text-xl font-bold text-purple-400 mb-4">Overview</h2>
+                <p class="text-slate-300 mb-4">The Western Plane is governed by the Tree of Chaos, born from Intervenor (Symphion) and Observer (Aletheia) essence. It is a realm of constant change, experimentation, and adaptation—where order emerges from chaos rather than being imposed upon it.</p>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-slate-400 text-sm mb-2"><span class="text-purple-400">Divine Pantheon:</span> Primordial Eight (Kronos, Logos, Freya, Kairos, Archelaus, Nyx, Eres, Artemis)</p>
+                        <p class="text-slate-400 text-sm mb-2"><span class="text-purple-400">Ethereal Five:</span> Vertus, Minerva, Serena, Dionysus, Morpheus</p>
+                    </div>
+                    <div>
+                        <p class="text-slate-400 text-sm mb-2"><span class="text-purple-400">Key Institutions:</span> Library of Lumeria, Academia, Serene Fleet</p>
+                        <p class="text-slate-400 text-sm"><span class="text-purple-400">Great Divide:</span> Abs. 28,223 — severed Eastern/Western contact for 26,000 years</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Maps Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-map mr-2"></i>Maps of the Western Plane</h2>
+
+            <!-- Map Tab Switcher -->
+            <div class="flex flex-wrap gap-3 mb-5" role="tablist">
+                <button class="map-tab active px-5 py-2.5 rounded-lg border border-purple-500/40 text-sm font-medium text-purple-300 bg-purple-900/20 transition"
+                data-map="post-divide" role="tab" aria-selected="true" id="tabPostDivide">
+                <i class="fas fa-globe-americas mr-2"></i>Post-Divide Era
+            </button>
+            <button class="map-tab px-5 py-2.5 rounded-lg border border-slate-600/50 text-sm font-medium text-slate-400 transition"
+            data-map="pre-lucien" role="tab" aria-selected="false" id="tabPreLucien">
+            <i class="fas fa-history mr-2"></i>Pre-Lucien — Age of Silence
+        </button>
+    </div>
+
+    <!-- Map Display Area -->
+    <div id="mapContainer">
+        <!-- Post-Divide Map -->
+        <div class="map-panel" data-panel="post-divide">
+            <div class="map-card bg-slate-900/50 border border-purple-500/30 rounded-xl overflow-hidden">
+                <div class="relative">
+                    <img
+                    src="Western%20Plane%20-%20Post-Divide.png"
+                    alt="Western Plane - Post-Divide Era map showing Central Continent, Zhongguo, Federation Archipelago, Seventeen Archipelagoes, Lumeria, the Great Divide rift, Blood-River, Unbecoming Zones, and major cities"
+                    class="w-full map-card-img"
+                    loading="eager"
+                    onclick="openLightbox(this.src, 'Western Plane — Post-Divide Era: Central Continent, Zhongguo, Federation, Seventeen Archipelagoes, Lumeria, Great Divide, Blood-River & Unbecoming Zones')"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    >
+                    <div class="zoom-overlay">
+                        <i class="fas fa-search-plus zoom-icon"></i>
+                    </div>
+                    <!-- Fallback if image not found -->
+                    <div class="hidden absolute inset-0 bg-slate-800 flex items-center justify-center text-slate-500 text-sm" style="display:none;">
+                        <div class="text-center">
+                            <i class="fas fa-image text-4xl mb-2 block"></i>
+                            <p>Map image not found</p>
+                            <p class="text-xs mt-1">Place "Western Plane - Post-Divide.png" in the same directory</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 border-t border-purple-500/20">
+                    <p class="text-purple-300 text-sm font-medium"><i class="fas fa-info-circle mr-1"></i> Post-Divide Era</p>
+                    <p class="text-slate-400 text-xs mt-1">Full geographic layout of the Western Plane after the Great Divide (Abs. 28,223). Shows all major continents, the Great Divide rift, Blood-River, Unbecoming Zones, Thin Places, cloud-ship routes, and key cities including Aethelgard, Argos City, Castelmar, Portus Mare, Xiajing, and Chengdu.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pre-Lucien Map -->
+        <div class="map-panel hidden" data-panel="pre-lucien">
+            <div class="map-card bg-slate-900/50 border border-purple-500/30 rounded-xl overflow-hidden">
+                <div class="relative">
+                    <img
+                    src="Western%20Plane_Pre-Lucien.png"
+                    alt="Western Plane - Pre-Lucien Age of Silence map showing tribal territories, sparse settlements, the Dragon Vein Network, and uncharted southern waters"
+                    class="w-full map-card-img"
+                    loading="lazy"
+                    onclick="openLightbox(this.src, 'Western Plane — Pre-Lucien Age of Silence (c. Abs. 4,000): Tribal territories, sparse settlements & uncharted waters')"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    >
+                    <div class="zoom-overlay">
+                        <i class="fas fa-search-plus zoom-icon"></i>
+                    </div>
+                    <!-- Fallback if image not found -->
+                    <div class="hidden absolute inset-0 bg-slate-800 flex items-center justify-center text-slate-500 text-sm" style="display:none;">
+                        <div class="text-center">
+                            <i class="fas fa-image text-4xl mb-2 block"></i>
+                            <p>Map image not found</p>
+                            <p class="text-xs mt-1">Place "Western Plane_Pre-Lucien.png" in the same directory</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 border-t border-purple-500/20">
+                    <p class="text-purple-300 text-sm font-medium"><i class="fas fa-info-circle mr-1"></i> Pre-Lucien — Age of Silence</p>
+                    <p class="text-slate-400 text-xs mt-1">Circa Absolute Year 4,000, before the founding of the Library of Lumeria. Shows the Northern Continent (Lumeria) with sparse nomadic tribes and Varus wolf-clans, the Central Continent with no central government, small isolated farming communities, the Dragon Vein Network, and largely uncharted southern seas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Major Factions -->
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-chess-rook mr-2"></i>Major Factions</h2>
+    <div class="grid md:grid-cols-2 gap-4">
         <a href="central-continent.html" class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6 card-hover">
-          <div class="flex items-center gap-3 mb-3">
-            <i class="fas fa-landmark text-purple-400 text-2xl"></i>
-            <h3 class="text-xl font-bold text-purple-400">Central Continent</h3>
-          </div>
-          <p class="text-slate-300 text-sm mb-3">Aurelius Empire, The Legion, Republic of Argos, Neo-Imperium, Dominion Republic</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">5 Great Houses</span>
-            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">Military Meritocracy</span>
-          </div>
+            <div class="flex items-center gap-3 mb-3">
+                <i class="fas fa-landmark text-purple-400 text-2xl"></i>
+                <h3 class="text-xl font-bold text-purple-400">Central Continent</h3>
+            </div>
+            <p class="text-slate-300 text-sm mb-3">Aurelius Empire, The Legion, Republic of Argos, Neo-Imperium, Dominion Republic</p>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">5 Great Houses</span>
+                <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">Military Meritocracy</span>
+            </div>
         </a>
         <a href="zhonggou-continent.html" class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6 card-hover">
-          <div class="flex items-center gap-3 mb-3">
-            <i class="fas fa-dragon text-purple-400 text-2xl"></i>
-            <h3 class="text-xl font-bold text-purple-400">Zhonggou Continent</h3>
-          </div>
-          <p class="text-slate-300 text-sm mb-3">Xi Dynasty, Five Kingdoms Period, Ming Dynasty, The Union</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">7 Great Sects</span>
-            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">4 Schools</span>
-          </div>
+            <div class="flex items-center gap-3 mb-3">
+                <i class="fas fa-dragon text-purple-400 text-2xl"></i>
+                <h3 class="text-xl font-bold text-purple-400">Zhonggou Continent</h3>
+            </div>
+            <p class="text-slate-300 text-sm mb-3">Xi Dynasty, Five Kingdoms Period, Ming Dynasty, The Union</p>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">7 Great Sects</span>
+                <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">4 Schools</span>
+            </div>
         </a>
         <a href="seventeen-archipelago.html" class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6 card-hover">
-          <div class="flex items-center gap-3 mb-3">
-            <i class="fas fa-water text-purple-400 text-2xl"></i>
-            <h3 class="text-xl font-bold text-purple-400">Seventeen Archipelago</h3>
-          </div>
-          <p class="text-slate-300 text-sm mb-3">Old Institute, Association of Scientific Studies, Council of the Arcane, Tellerium High Society, Neo-Magic Institute</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">Paraformer Tech</span>
-            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">Two-Millennia War</span>
-          </div>
+            <div class="flex items-center gap-3 mb-3">
+                <i class="fas fa-water text-purple-400 text-2xl"></i>
+                <h3 class="text-xl font-bold text-purple-400">Seventeen Archipelago</h3>
+            </div>
+            <p class="text-slate-300 text-sm mb-3">Old Institute, Association of Scientific Studies, Council of the Arcane, Tellerium High Society, Neo-Magic Institute</p>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">Paraformer Tech</span>
+                <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">Two-Millennia War</span>
+            </div>
         </a>
         <a href="federation.html" class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6 card-hover">
-          <div class="flex items-center gap-3 mb-3">
-            <i class="fas fa-ship text-purple-400 text-2xl"></i>
-            <h3 class="text-xl font-bold text-purple-400">Federation of Sixteen Nations</h3>
-          </div>
-          <p class="text-slate-300 text-sm mb-3">Maritime covenant of the Western Archipelago. Three capitals: Aethelgard, Castelmar, Portus Mare</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">Serene Fleet</span>
-            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">5 Ethereals</span>
-          </div>
+            <div class="flex items-center gap-3 mb-3">
+                <i class="fas fa-ship text-purple-400 text-2xl"></i>
+                <h3 class="text-xl font-bold text-purple-400">Federation of Sixteen Nations</h3>
+            </div>
+            <p class="text-slate-300 text-sm mb-3">Maritime covenant of the Western Archipelago. Three capitals: Aethelgard, Castelmar, Portus Mare</p>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">Serene Fleet</span>
+                <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">5 Ethereals</span>
+            </div>
         </a>
         <a href="lumeria.html" class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6 card-hover">
-          <div class="flex items-center gap-3 mb-3">
-            <i class="fas fa-book text-purple-400 text-2xl"></i>
-            <h3 class="text-xl font-bold text-purple-400">Lumeria</h3>
-          </div>
-          <p class="text-slate-300 text-sm mb-3">Library of Lumeria and Academia. Repository of all knowledge; cultivator of what will be</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">5 Librarians</span>
-            <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">7 Colleges</span>
-          </div>
+            <div class="flex items-center gap-3 mb-3">
+                <i class="fas fa-book text-purple-400 text-2xl"></i>
+                <h3 class="text-xl font-bold text-purple-400">Lumeria</h3>
+            </div>
+            <p class="text-slate-300 text-sm mb-3">Library of Lumeria and Academia. Repository of all knowledge; cultivator of what will be</p>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">5 Librarians</span>
+                <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">7 Colleges</span>
+            </div>
         </a>
         <a href="unbecoming.html" class="bg-slate-900/50 border border-red-500/30 rounded-xl p-6 card-hover">
-          <div class="flex items-center gap-3 mb-3">
-            <i class="fas fa-exclamation-triangle text-red-400 text-2xl"></i>
-            <h3 class="text-xl font-bold text-red-400">The Unbecoming</h3>
-          </div>
-          <p class="text-slate-300 text-sm mb-3">Chaotic Plenitude manifestation. Anti-definition; unmaking through chaotic plenitude</p>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-2 py-1 bg-red-900/30 text-red-300 text-xs rounded">Xeria Gap</span>
-            <span class="px-2 py-1 bg-red-900/30 text-red-300 text-xs rounded">Stutter-Zones</span>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <!-- Library of Lumeria -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-book-open mr-2"></i>Library of Lumeria</h2>
-      <div class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
-        <div class="grid md:grid-cols-2 gap-6">
-          <div>
-            <h3 class="text-lg font-bold text-purple-400 mb-3">Overview</h3>
-            <p class="text-slate-300 text-sm mb-3">Founded Abs. 5,000 by Kronos (First Librarian). Neutral archival institution; repository of all knowledge across both Planes.</p>
-            <p class="text-slate-400 text-sm mb-2"><span class="text-purple-400">Governance:</span> Triadic Governance — Prime Librarian, Vice-Chair Internal, Chairman External</p>
-            <p class="text-slate-400 text-sm mb-2"><span class="text-purple-400">12 Councils:</span> Scribes, Researchers, Custodians, Metallurgy, Artifacts, Medical, Sociological, Jurisprudence, Chronomancy, Agricultural, Technological, External Libraries</p>
-          </div>
-          <div>
-            <h3 class="text-lg font-bold text-purple-400 mb-3">Branch Network</h3>
-            <div class="space-y-2 text-sm">
-              <p class="text-slate-300"><span class="text-purple-400">Tier I:</span> Central Nexus — Lumeria (1)</p>
-              <p class="text-slate-300"><span class="text-purple-400">Tier II:</span> Grand Archives — Alexandria, Argos Prime, Linzi, Portus, Chengdu, Castra Ferrum, Havenfire, Xeria Memorial (8)</p>
-              <p class="text-slate-300"><span class="text-purple-400">Tier III:</span> Provincial Libraries (24)</p>
-              <p class="text-slate-300"><span class="text-purple-400">Tier IV:</span> Satellite Stations (100+)</p>
+            <div class="flex items-center gap-3 mb-3">
+                <i class="fas fa-exclamation-triangle text-red-400 text-2xl"></i>
+                <h3 class="text-xl font-bold text-red-400">The Unbecoming</h3>
             </div>
-          </div>
+            <p class="text-slate-300 text-sm mb-3">Chaotic Plenitude manifestation. Anti-definition; unmaking through chaotic plenitude</p>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-red-900/30 text-red-300 text-xs rounded">Xeria Gap</span>
+                <span class="px-2 py-1 bg-red-900/30 text-red-300 text-xs rounded">Stutter-Zones</span>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- Library of Lumeria -->
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-book-open mr-2"></i>Library of Lumeria</h2>
+    <div class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
+        <div class="grid md:grid-cols-2 gap-6">
+            <div>
+                <h3 class="text-lg font-bold text-purple-400 mb-3">Overview</h3>
+                <p class="text-slate-300 text-sm mb-3">Founded Abs. 5,000 by Kronos (First Librarian). Neutral archival institution; repository of all knowledge across both Planes.</p>
+                <p class="text-slate-400 text-sm mb-2"><span class="text-purple-400">Governance:</span> Triadic Governance — Prime Librarian, Vice-Chair Internal, Chairman External</p>
+                <p class="text-slate-400 text-sm mb-2"><span class="text-purple-400">12 Councils:</span> Scribes, Researchers, Custodians, Metallurgy, Artifacts, Medical, Sociological, Jurisprudence, Chronomancy, Agricultural, Technological, External Libraries</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold text-purple-400 mb-3">Branch Network</h3>
+                <div class="space-y-2 text-sm">
+                    <p class="text-slate-300"><span class="text-purple-400">Tier I:</span> Central Nexus — Lumeria (1)</p>
+                    <p class="text-slate-300"><span class="text-purple-400">Tier II:</span> Grand Archives — Alexandria, Argos Prime, Linzi, Portus, Chengdu, Castra Ferrum, Havenfire, Xeria Memorial (8)</p>
+                    <p class="text-slate-300"><span class="text-purple-400">Tier III:</span> Provincial Libraries (24)</p>
+                    <p class="text-slate-300"><span class="text-purple-400">Tier IV:</span> Satellite Stations (100+)</p>
+                </div>
+            </div>
         </div>
         <div class="mt-6">
-          <h3 class="text-lg font-bold text-purple-400 mb-3">Metaphysical Embargo Stages</h3>
-          <div class="grid md:grid-cols-4 gap-2 text-sm">
-            <div class="bg-slate-800/50 rounded p-3">
-              <p class="text-amber-400 font-medium">I: Notice</p>
-              <p class="text-slate-400">CUSTODIA-AMBER</p>
-              <p class="text-slate-500 text-xs">30-90 days</p>
+            <h3 class="text-lg font-bold text-purple-400 mb-3">Metaphysical Embargo Stages</h3>
+            <div class="grid md:grid-cols-4 gap-2 text-sm">
+                <div class="bg-slate-800/50 rounded p-3">
+                    <p class="text-amber-400 font-medium">I: Notice</p>
+                    <p class="text-slate-400">CUSTODIA-AMBER</p>
+                    <p class="text-slate-500 text-xs">30-90 days</p>
+                </div>
+                <div class="bg-slate-800/50 rounded p-3">
+                    <p class="text-yellow-400 font-medium">II: Limitation</p>
+                    <p class="text-slate-400">PRAECIDIO-YELLOW</p>
+                    <p class="text-slate-500 text-xs">90 days-5 years</p>
+                </div>
+                <div class="bg-slate-800/50 rounded p-3">
+                    <p class="text-orange-400 font-medium">III: Restriction</p>
+                    <p class="text-slate-400">INTERDICT-ORANGE</p>
+                    <p class="text-slate-500 text-xs">5-500 years</p>
+                </div>
+                <div class="bg-slate-800/50 rounded p-3">
+                    <p class="text-red-400 font-medium">IV: Embargo</p>
+                    <p class="text-slate-400">SILENTIUM-RUBRUM</p>
+                    <p class="text-slate-500 text-xs">Indefinite</p>
+                </div>
             </div>
-            <div class="bg-slate-800/50 rounded p-3">
-              <p class="text-yellow-400 font-medium">II: Limitation</p>
-              <p class="text-slate-400">PRAECIDIO-YELLOW</p>
-              <p class="text-slate-500 text-xs">90 days-5 years</p>
-            </div>
-            <div class="bg-slate-800/50 rounded p-3">
-              <p class="text-orange-400 font-medium">III: Restriction</p>
-              <p class="text-slate-400">INTERDICT-ORANGE</p>
-              <p class="text-slate-500 text-xs">5-500 years</p>
-            </div>
-            <div class="bg-slate-800/50 rounded p-3">
-              <p class="text-red-400 font-medium">IV: Embargo</p>
-              <p class="text-slate-400">SILENTIUM-RUBRUM</p>
-              <p class="text-slate-500 text-xs">Indefinite</p>
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Academia -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-graduation-cap mr-2"></i>Academia of Lumeria</h2>
-      <div class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
+<!-- Academia -->
+<section class="mb-12">
+    <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-graduation-cap mr-2"></i>Academia of Lumeria</h2>
+    <div class="bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
         <p class="text-slate-300 text-sm mb-4">Founded Abs. 49,890 by Lucien Jela and Gaius. Philosophy: "While the Library preserves what WAS, the Academia cultivates what WILL BE."</p>
         <div class="grid md:grid-cols-2 gap-6">
-          <div>
-            <h3 class="text-lg font-bold text-purple-400 mb-3">Seven Grand Colleges</h3>
-            <div class="space-y-1 text-sm">
-              <p class="text-slate-300"><span class="text-purple-400">Preservation:</span> Conservation arts, crystallized memory</p>
-              <p class="text-slate-300"><span class="text-purple-400">Interpretation:</span> Translation, cross-cultural understanding</p>
-              <p class="text-slate-300"><span class="text-purple-400">Acquisition:</span> Field research, rescue of threatened knowledge</p>
-              <p class="text-slate-300"><span class="text-purple-400">Medical Synthesis:</span> Healing body/mind/node</p>
-              <p class="text-slate-300"><span class="text-purple-400">Sociological Studies:</span> Governance training</p>
-              <p class="text-slate-300"><span class="text-purple-400">Technological Synthesis:</span> Paraformer-Arcane integration</p>
-              <p class="text-slate-300"><span class="text-purple-400">Chronomancy & Mysteries:</span> Temporal navigation</p>
+            <div>
+                <h3 class="text-lg font-bold text-purple-400 mb-3">Seven Grand Colleges</h3>
+                <div class="space-y-1 text-sm">
+                    <p class="text-slate-300"><span class="text-purple-400">Preservation:</span> Conservation arts, crystallized memory</p>
+                    <p class="text-slate-300"><span class="text-purple-400">Interpretation:</span> Translation, cross-cultural understanding</p>
+                    <p class="text-slate-300"><span class="text-purple-400">Acquisition:</span> Field research, rescue of threatened knowledge</p>
+                    <p class="text-slate-300"><span class="text-purple-400">Medical Synthesis:</span> Healing body/mind/node</p>
+                    <p class="text-slate-300"><span class="text-purple-400">Sociological Studies:</span> Governance training</p>
+                    <p class="text-slate-300"><span class="text-purple-400">Technological Synthesis:</span> Paraformer-Arcane integration</p>
+                    <p class="text-slate-300"><span class="text-purple-400">Chronomancy & Mysteries:</span> Temporal navigation</p>
+                </div>
             </div>
-          </div>
-          <div>
-            <h3 class="text-lg font-bold text-purple-400 mb-3">Five Tiers (Dual Path)</h3>
-            <div class="space-y-1 text-sm">
-              <p class="text-slate-300"><span class="text-purple-400">I. Seekers:</span> Apprentice / Qi Gathering</p>
-              <p class="text-slate-300"><span class="text-purple-400">II. Adepts:</span> Journeyman / Foundation Establishment</p>
-              <p class="text-slate-300"><span class="text-purple-400">III. Luminaries:</span> Master / Core Formation</p>
-              <p class="text-slate-300"><span class="text-purple-400">IV. Rectors:</span> Professor / Spirit Refinement</p>
-              <p class="text-slate-300"><span class="text-purple-400">V. Archons:</span> The 12 / Chen Mastery</p>
+            <div>
+                <h3 class="text-lg font-bold text-purple-400 mb-3">Five Tiers (Dual Path)</h3>
+                <div class="space-y-1 text-sm">
+                    <p class="text-slate-300"><span class="text-purple-400">I. Seekers:</span> Apprentice / Qi Gathering</p>
+                    <p class="text-slate-300"><span class="text-purple-400">II. Adepts:</span> Journeyman / Foundation Establishment</p>
+                    <p class="text-slate-300"><span class="text-purple-400">III. Luminaries:</span> Master / Core Formation</p>
+                    <p class="text-slate-300"><span class="text-purple-400">IV. Rectors:</span> Professor / Spirit Refinement</p>
+                    <p class="text-slate-300"><span class="text-purple-400">V. Archons:</span> The 12 / Chen Mastery</p>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 
-  </main>
+</main>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
+<!-- Footer -->
+<footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
     <p class="text-slate-400 text-sm">Eternal Tree Saga Wiki — A Chronicle Spanning Six Myriads</p>
     <p class="text-slate-500 text-xs mt-2">"The center holds. For now. For always."</p>
-  </footer>
+</footer>
 
-  <script>
+<script>
+    // Mobile menu
     const menuBtn = document.getElementById('menuBtn');
     const closeMenu = document.getElementById('closeMenu');
     const mobileMenu = document.getElementById('mobileMenu');
     if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
     if (closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
-  </script>
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    function openLightbox(src, caption) {
+        lightboxImg.src = src;
+        lightboxCaption.textContent = caption;
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        // Clear src after transition to prevent flicker
+        setTimeout(() => { lightboxImg.src = ''; }, 300);
+    }
+
+    lightboxClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeLightbox();
+    });
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+
+    // Map tab switcher
+    const tabButtons = document.querySelectorAll('.map-tab');
+    const mapPanels = document.querySelectorAll('.map-panel');
+
+    tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetMap = btn.getAttribute('data-map');
+
+            // Deactivate all tabs
+            tabButtons.forEach(b => {
+                b.classList.remove('active', 'bg-purple-900/20', 'text-purple-300', 'border-purple-500/60');
+                b.classList.add('text-slate-400', 'border-slate-600/50');
+                b.setAttribute('aria-selected', 'false');
+            });
+
+            // Activate clicked tab
+            btn.classList.add('active', 'bg-purple-900/20', 'text-purple-300');
+            btn.classList.remove('text-slate-400', 'border-slate-600/50');
+            btn.classList.add('border-purple-500/60');
+            btn.setAttribute('aria-selected', 'true');
+
+            // Show/hide panels
+            mapPanels.forEach(panel => {
+                if (panel.getAttribute('data-panel') === targetMap) {
+                    panel.classList.remove('hidden');
+                } else {
+                    panel.classList.add('hidden');
+                }
+            });
+        });
+    });
+
+    // Also allow clicking the entire map card image area to open lightbox
+    document.querySelectorAll('.map-card-img').forEach(img => {
+        img.addEventListener('click', function(e) {
+            const caption = this.getAttribute('onclick')
+                ? this.getAttribute('onclick').match(/openLightbox\(this\.src,\s*'(.+)'\)/)
+                : null;
+            const captionText = caption ? caption[1] : 'Western Plane Map';
+            openLightbox(this.src, captionText);
+        });
+    });
+</script>
 </body>
 </html>

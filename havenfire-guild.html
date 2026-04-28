@@ -4,51 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Havenfire Guild | Eternal Trees Saga Wiki</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0f172a',
-                        secondary: '#1e293b',
-                        accent: '#0d9488',
-                        'accent-light': '#14b8a6',
-                        gold: '#fbbf24',
-                        'gold-light': '#fcd34d',
-                        dark: '#020617',
-                        'dark-light': '#1e293b',
-                        incantation: '#ef4444',
-                        sorcery: '#a855f7',
-                        ritual: '#22c55e',
-                        armament: '#3b82f6',
-                        arcane: '#f59e0b'
-                    },
-                    fontFamily: {
-                        'heading': ['Cinzel', 'serif'],
-                        'body': ['Inter', 'sans-serif']
-                    }
-                }
-            }
-        }
+    <script src="https://cdn.tailwindcss.com">
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            background: #0f172a;
             min-height: 100vh;
         }
         .fantasy-heading {
             font-family: 'Cinzel', serif;
         }
         .card-hover {
-            transition: all 0.3s ease;
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .card-hover:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.2);
         }
         .framework-card {
             background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
@@ -63,70 +37,186 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .nav-link {
-            position: relative;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #0d9488;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
         .category-card {
             background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .cat-incantation { border-color: rgba(239, 68, 68, 0.4); }
-        .cat-sorcery { border-color: rgba(168, 85, 247, 0.4); }
-        .cat-ritual { border-color: rgba(34, 197, 94, 0.4); }
-        .cat-armament { border-color: rgba(59, 130, 246, 0.4); }
-        .cat-arcane { border-color: rgba(245, 158, 11, 0.4); }
+        .cat-incantation {
+            border-color: rgba(239, 68, 68, 0.4);
+        }
+        .cat-sorcery {
+            border-color: rgba(168, 85, 247, 0.4);
+        }
+        .cat-ritual {
+            border-color: rgba(34, 197, 94, 0.4);
+        }
+        .cat-armament {
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        .cat-arcane {
+            border-color: rgba(245, 158, 11, 0.4);
+        }
+
+        /* Lightbox */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+            cursor: zoom-out;
+        }
+        .lightbox-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .lightbox-overlay img {
+            max-width: 94vw;
+            max-height: 94vh;
+            border-radius: 12px;
+            box-shadow: 0 0 80px rgba(245, 158, 11, 0.4);
+            object-fit: contain;
+            transform: scale(0.9);
+            transition: transform 0.35s ease;
+            cursor: default;
+        }
+        .lightbox-overlay.active img {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            font-size: 2.4rem;
+            color: #f59e0b;
+            cursor: pointer;
+            z-index: 101;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        .lightbox-close:hover {
+            color: #fbbf24;
+        }
+
+        /* Image container */
+        .img-container {
+            position: relative;
+            cursor: zoom-in;
+            overflow: hidden;
+            border-radius: 16px;
+            display: inline-block;
+            width: 100%;
+        }
+        .img-container img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .img-container:hover img {
+            transform: scale(1.04);
+        }
+        .img-zoom-hint {
+            position: absolute;
+            bottom: 16px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #f59e0b;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            opacity: 0;
+            letter-spacing: 0.5px;
+        }
+        .img-container:hover .img-zoom-hint {
+            opacity: 1;
+        }
+
+        /* Glow border */
+        .glow-border {
+            position: relative;
+        }
+        .glow-border::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 18px;
+            padding: 2px;
+            background: linear-gradient(135deg, #ef444433, #f59e0b66, #ef444433);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            transition: opacity 0.4s;
+            opacity: 0.5;
+        }
+        .img-container:hover .glow-border::after {
+            opacity: 1;
+        }
+        .img-fallback {
+            display: none;
+        }
+        @keyframes flamePulse {
+            0%,
+            100% {
+                box-shadow: 0 0 12px #f59e0b44;
+            }
+            50% {
+                box-shadow: 0 0 28px #f59e0b99;
+            }
+        }
     </style>
 </head>
 <body class="text-gray-100">
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox-overlay">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img src="" alt="Enlarged view" id="lightboxImg">
+    </div>
+
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-primary/95 backdrop-blur-md border-b border-accent/20">
+    <nav class="fixed w-full z-50 bg-slate-900/95 backdrop-blur-md border-b border-amber-500/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center space-x-3">
-                    <i class="fas fa-tree text-accent text-2xl"></i>
+                    <i class="fas fa-tree text-emerald-400 text-2xl"></i>
                     <span class="fantasy-heading text-xl font-bold gradient-text">Eternal Trees Saga</span>
                 </div>
                 <div class="hidden md:flex items-center space-x-6">
-                    <a href="index.html" class="nav-link text-gray-300 hover:text-accent transition">Home</a>
-                    <a href="key-figures.html" class="nav-link text-gray-300 hover:text-accent transition">Key Figures</a>
-                    <a href="places.html" class="nav-link text-gray-300 hover:text-accent transition">Places</a>
-                    <a href="factions.html" class="nav-link text-gray-300 hover:text-accent transition">Factions</a>
-                    <a href="covert-orders.html" class="nav-link text-accent-light transition">Covert Orders</a>
-                    <a href="timelines.html" class="nav-link text-gray-300 hover:text-accent transition">Timelines</a>
+                    <a href="index.html" class="text-gray-300 hover:text-amber-400 transition">Home</a>
+                    <a href="key-figures.html" class="text-gray-300 hover:text-amber-400 transition">Key Figures</a>
+                    <a href="places.html" class="text-gray-300 hover:text-amber-400 transition">Places</a>
+                    <a href="eastern-factions.html" class="text-gray-300 hover:text-amber-400 transition">Eastern Factions</a>
+                    <a href="eastern-factions.html" class="text-amber-400 transition">Covert Orders</a>
+                    <a href="timeline.html" class="text-gray-300 hover:text-amber-400 transition">Timelines</a>
                 </div>
-                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-accent">
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-amber-400">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-secondary border-t border-accent/20">
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-t border-amber-500/20">
             <div class="px-4 py-3 space-y-2">
-                <a href="index.html" class="block py-2 text-gray-300 hover:text-accent">Home</a>
-                <a href="key-figures.html" class="block py-2 text-gray-300 hover:text-accent">Key Figures</a>
-                <a href="places.html" class="block py-2 text-gray-300 hover:text-accent">Places</a>
-                <a href="factions.html" class="block py-2 text-gray-300 hover:text-accent">Factions</a>
-                <a href="covert-orders.html" class="block py-2 text-accent-light">Covert Orders</a>
-                <a href="timelines.html" class="block py-2 text-gray-300 hover:text-accent">Timelines</a>
+                <a href="index.html" class="block py-2 text-gray-300 hover:text-amber-400">Home</a>
+                <a href="key-figures.html" class="block py-2 text-gray-300 hover:text-amber-400">Key Figures</a>
+                <a href="places.html" class="block py-2 text-gray-300 hover:text-amber-400">Places</a>
+                <a href="eastern-factions.html" class="block py-2 text-gray-300 hover:text-amber-400">Eastern Factions</a>
+                <a href="eastern-factions.html" class="block py-2 text-amber-400">Covert Orders</a>
+                <a href="timeline.html" class="block py-2 text-gray-300 hover:text-amber-400">Timelines</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="relative pt-24 pb-12">
-        <div class="absolute inset-0 bg-gradient-to-b from-amber-900/30 via-primary to-primary"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-amber-900/30 via-slate-900 to-slate-900"></div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-red-600/30 via-purple-600/30 to-amber-600/30 border-2 border-amber-400/50 mb-6">
@@ -142,7 +232,7 @@
     <!-- Overview Section -->
     <section class="py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-secondary/50 rounded-xl p-8 border border-amber-500/20">
+            <div class="bg-slate-800/50 rounded-xl p-8 border border-amber-500/20">
                 <h2 class="fantasy-heading text-3xl font-bold text-white mb-6">
                     <i class="fas fa-info-circle text-amber-500 mr-3"></i>Overview
                 </h2>
@@ -152,23 +242,23 @@
                         <p class="text-gray-300 leading-relaxed">Unlike conventional magical academies that require students to choose a single path, the Havenfire Guild trains its members in all five categories, creating versatile battlemages capable of adapting to any situation. Their headquarters at the Ley Nexus—a convergence point of multiple magical ley lines—provides the ideal environment for this comprehensive training. The Guild's philosophy holds that specialization creates vulnerability, while adaptability ensures survival.</p>
                     </div>
                     <div class="space-y-4">
-                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                        <div class="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg">
                             <span class="text-gray-400">Founded</span>
                             <span class="text-amber-500 font-bold">Year 1500</span>
                         </div>
-                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                        <div class="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg">
                             <span class="text-gray-400">Founding Location</span>
                             <span class="text-gray-200">Avalon Stone Circle</span>
                         </div>
-                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                        <div class="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg">
                             <span class="text-gray-400">Headquarters</span>
                             <span class="text-gray-200">Ley Nexus, Avalon</span>
                         </div>
-                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                        <div class="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg">
                             <span class="text-gray-400">Doctrine</span>
                             <span class="text-purple-400 font-bold">Adaptive Mastery</span>
                         </div>
-                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                        <div class="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg">
                             <span class="text-gray-400">Core Magic</span>
                             <span class="text-gray-200">Five Categories</span>
                         </div>
@@ -184,7 +274,7 @@
             <h2 class="fantasy-heading text-3xl font-bold text-white mb-8">
                 <i class="fas fa-scroll text-amber-500 mr-3"></i>Historical Roots: The Enchantment Guild Exile
             </h2>
-            <div class="bg-secondary/50 rounded-xl p-8 border border-amber-500/20">
+            <div class="bg-slate-800/50 rounded-xl p-8 border border-amber-500/20">
                 <div class="grid md:grid-cols-2 gap-8">
                     <div>
                         <h3 class="fantasy-heading text-xl font-bold text-amber-400 mb-4">Primordial Origins (Abs. 2,300-2,600)</h3>
@@ -210,118 +300,35 @@
                 <i class="fas fa-layer-group text-amber-500 mr-3"></i>The Five Categories
             </h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Incantation -->
                 <div class="category-card cat-incantation rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-14 h-14 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-comment-dots text-red-500 text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="fantasy-heading text-xl font-bold text-red-400">Incantation</h3>
-                            <p class="text-gray-500 text-sm">Spoken Magic</p>
-                        </div>
-                    </div>
+                    <div class="flex items-center mb-4"><div class="w-14 h-14 rounded-lg bg-red-900/30 flex items-center justify-center mr-4"><i class="fas fa-comment-dots text-red-500 text-2xl"></i></div><div><h3 class="fantasy-heading text-xl font-bold text-red-400">Incantation</h3><p class="text-gray-500 text-sm">Spoken Magic</p></div></div>
                     <p class="text-gray-300 text-sm leading-relaxed mb-4">Magic channeled through spoken words, chants, and vocalizations. Incantation mages can cast spells quickly and adapt their effects through modifications to their vocal patterns. Masters can weave multiple incantations simultaneously.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-red-900/30 rounded-full text-xs text-red-400">Quick Casting</span>
-                        <span class="px-3 py-1 bg-red-900/30 rounded-full text-xs text-red-400">Adaptive Effects</span>
-                        <span class="px-3 py-1 bg-red-900/30 rounded-full text-xs text-red-400">Vocal Weaving</span>
-                    </div>
+                    <div class="flex flex-wrap gap-2"><span class="px-3 py-1 bg-red-900/30 rounded-full text-xs text-red-400">Quick Casting</span><span class="px-3 py-1 bg-red-900/30 rounded-full text-xs text-red-400">Adaptive Effects</span><span class="px-3 py-1 bg-red-900/30 rounded-full text-xs text-red-400">Vocal Weaving</span></div>
                 </div>
-
-                <!-- Sorcery -->
                 <div class="category-card cat-sorcery rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-14 h-14 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-hand-sparkles text-purple-400 text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="fantasy-heading text-xl font-bold text-purple-400">Sorcery</h3>
-                            <p class="text-gray-500 text-sm">Internal Magic</p>
-                        </div>
-                    </div>
+                    <div class="flex items-center mb-4"><div class="w-14 h-14 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4"><i class="fas fa-hand-sparkles text-purple-400 text-2xl"></i></div><div><h3 class="fantasy-heading text-xl font-bold text-purple-400">Sorcery</h3><p class="text-gray-500 text-sm">Internal Magic</p></div></div>
                     <p class="text-gray-300 text-sm leading-relaxed mb-4">Magic drawn from internal reserves of magical energy. Sorcerers can cast without external components and maintain spells for extended periods. Masters can tap into their life force for emergency power.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-400">Internal Power</span>
-                        <span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-400">Sustained Casting</span>
-                        <span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-400">Life Force Tap</span>
-                    </div>
+                    <div class="flex flex-wrap gap-2"><span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-400">Internal Power</span><span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-400">Sustained Casting</span><span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-400">Life Force Tap</span></div>
                 </div>
-
-                <!-- Ritual -->
                 <div class="category-card cat-ritual rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-14 h-14 rounded-lg bg-green-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-circle-notch text-green-400 text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="fantasy-heading text-xl font-bold text-green-400">Ritual</h3>
-                            <p class="text-gray-500 text-sm">Ceremonial Magic</p>
-                        </div>
-                    </div>
+                    <div class="flex items-center mb-4"><div class="w-14 h-14 rounded-lg bg-green-900/30 flex items-center justify-center mr-4"><i class="fas fa-circle-notch text-green-400 text-2xl"></i></div><div><h3 class="fantasy-heading text-xl font-bold text-green-400">Ritual</h3><p class="text-gray-500 text-sm">Ceremonial Magic</p></div></div>
                     <p class="text-gray-300 text-sm leading-relaxed mb-4">Magic performed through elaborate ceremonies, circles, and symbolic actions. Ritual mages can achieve effects beyond normal magical limits given sufficient preparation. Masters can perform complex rituals solo.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-green-900/30 rounded-full text-xs text-green-400">Greater Effects</span>
-                        <span class="px-3 py-1 bg-green-900/30 rounded-full text-xs text-green-400">Symbolic Power</span>
-                        <span class="px-3 py-1 bg-green-900/30 rounded-full text-xs text-green-400">Ceremonial Mastery</span>
-                    </div>
+                    <div class="flex flex-wrap gap-2"><span class="px-3 py-1 bg-green-900/30 rounded-full text-xs text-green-400">Greater Effects</span><span class="px-3 py-1 bg-green-900/30 rounded-full text-xs text-green-400">Symbolic Power</span><span class="px-3 py-1 bg-green-900/30 rounded-full text-xs text-green-400">Ceremonial Mastery</span></div>
                 </div>
-
-                <!-- Armament -->
                 <div class="category-card cat-armament rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-14 h-14 rounded-lg bg-blue-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-sword text-blue-400 text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="fantasy-heading text-xl font-bold text-blue-400">Armament</h3>
-                            <p class="text-gray-500 text-sm">Object-Bound Magic</p>
-                        </div>
-                    </div>
+                    <div class="flex items-center mb-4"><div class="w-14 h-14 rounded-lg bg-blue-900/30 flex items-center justify-center mr-4"><i class="fas fa-sword text-blue-400 text-2xl"></i></div><div><h3 class="fantasy-heading text-xl font-bold text-blue-400">Armament</h3><p class="text-gray-500 text-sm">Object-Bound Magic</p></div></div>
                     <p class="text-gray-300 text-sm leading-relaxed mb-4">Magic channeled through weapons, armor, and magical implements. Armament mages enhance their combat abilities and can store spells in objects for later use. Masters can create legendary artifacts.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-blue-900/30 rounded-full text-xs text-blue-400">Combat Enhancement</span>
-                        <span class="px-3 py-1 bg-blue-900/30 rounded-full text-xs text-blue-400">Spell Storage</span>
-                        <span class="px-3 py-1 bg-blue-900/30 rounded-full text-xs text-blue-400">Artifact Creation</span>
-                    </div>
+                    <div class="flex flex-wrap gap-2"><span class="px-3 py-1 bg-blue-900/30 rounded-full text-xs text-blue-400">Combat Enhancement</span><span class="px-3 py-1 bg-blue-900/30 rounded-full text-xs text-blue-400">Spell Storage</span><span class="px-3 py-1 bg-blue-900/30 rounded-full text-xs text-blue-400">Artifact Creation</span></div>
                 </div>
-
-                <!-- Arcane -->
                 <div class="category-card cat-arcane rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-14 h-14 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-star text-amber-400 text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="fantasy-heading text-xl font-bold text-amber-400">Arcane</h3>
-                            <p class="text-gray-500 text-sm">Pure Magic</p>
-                        </div>
-                    </div>
+                    <div class="flex items-center mb-4"><div class="w-14 h-14 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4"><i class="fas fa-star text-amber-400 text-2xl"></i></div><div><h3 class="fantasy-heading text-xl font-bold text-amber-400">Arcane</h3><p class="text-gray-500 text-sm">Pure Magic</p></div></div>
                     <p class="text-gray-300 text-sm leading-relaxed mb-4">Raw magical energy manipulated directly without medium or focus. Arcane mages can achieve effects impossible through other means but require exceptional talent. Masters reshape reality itself.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-amber-900/30 rounded-full text-xs text-amber-400">Raw Power</span>
-                        <span class="px-3 py-1 bg-amber-900/30 rounded-full text-xs text-amber-400">Reality Shaping</span>
-                        <span class="px-3 py-1 bg-amber-900/30 rounded-full text-xs text-amber-400">Impossible Effects</span>
-                    </div>
+                    <div class="flex flex-wrap gap-2"><span class="px-3 py-1 bg-amber-900/30 rounded-full text-xs text-amber-400">Raw Power</span><span class="px-3 py-1 bg-amber-900/30 rounded-full text-xs text-amber-400">Reality Shaping</span><span class="px-3 py-1 bg-amber-900/30 rounded-full text-xs text-amber-400">Impossible Effects</span></div>
                 </div>
-
-                <!-- Category Synthesis -->
                 <div class="category-card rounded-xl p-6 card-hover border-2 border-amber-500/50">
-                    <div class="flex items-center mb-4">
-                        <div class="w-14 h-14 rounded-lg bg-gradient-to-br from-red-900/30 via-purple-900/30 to-amber-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-infinity text-amber-400 text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="fantasy-heading text-xl font-bold text-amber-400">Category Synthesis</h3>
-                            <p class="text-gray-500 text-sm">The Havenfire Way</p>
-                        </div>
-                    </div>
+                    <div class="flex items-center mb-4"><div class="w-14 h-14 rounded-lg bg-gradient-to-br from-red-900/30 via-purple-900/30 to-amber-900/30 flex items-center justify-center mr-4"><i class="fas fa-infinity text-amber-400 text-2xl"></i></div><div><h3 class="fantasy-heading text-xl font-bold text-amber-400">Category Synthesis</h3><p class="text-gray-500 text-sm">The Havenfire Way</p></div></div>
                     <p class="text-gray-300 text-sm leading-relaxed mb-4">The ultimate achievement of Havenfire training—combining multiple categories simultaneously to create effects impossible for specialists. Synthesis mages are the Guild's elite, capable of adapting to any magical challenge.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-amber-900/30 rounded-full text-xs text-amber-400">Multi-Category</span>
-                        <span class="px-3 py-1 bg-amber-900/30 rounded-full text-xs text-amber-400">Adaptive Casting</span>
-                        <span class="px-3 py-1 bg-amber-900/30 rounded-full text-xs text-amber-400">Ultimate Mastery</span>
-                    </div>
+                    <div class="flex flex-wrap gap-2"><span class="px-3 py-1 bg-amber-900/30 rounded-full text-xs text-amber-400">Multi-Category</span><span class="px-3 py-1 bg-amber-900/30 rounded-full text-xs text-amber-400">Adaptive Casting</span><span class="px-3 py-1 bg-amber-900/30 rounded-full text-xs text-amber-400">Ultimate Mastery</span></div>
                 </div>
             </div>
         </div>
@@ -333,255 +340,160 @@
             <h2 class="fantasy-heading text-4xl font-bold text-center text-white mb-4">
                 <i class="fas fa-cube text-amber-500 mr-3"></i>11 Frameworks Analysis
             </h2>
-            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">Comprehensive analysis of the Havenfire Guild through eleven interconnected frameworks, revealing the intricate structure of Avalon's most adaptable magical organization.</p>
-            
+            <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">Comprehensive analysis of the Havenfire Guild through eleven interconnected frameworks.</p>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Historical Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-history text-amber-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Historical</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Havenfire Guild's formal establishment in Year 1500 at the Avalon Stone Circle represents the culmination of over two thousand years of underground tradition. The founding members were descendants of the original Enchantment Guild, scattered during the Covenant of Lies, who had preserved their comprehensive magical knowledge in secret. The discovery of the Stone Circle—a primordial site of immense power that had been forgotten—provided the catalyst for their reorganization. The Guild has since operated for 500 years, growing from a handful of exiles into a formidable magical institution. Their history is marked by constant tension with Avalon's established magical academies, who view the Guild's comprehensive approach as a threat to their specialized monopolies.</p>
-                </div>
-
-                <!-- Political Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-chess-king text-amber-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Political</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">Politically, the Havenfire Guild maintains a delicate position. Officially, they are considered outlaws by Avalon's magical establishment, who have branded their comprehensive approach "dangerous heresy." Unofficially, the Guild provides services that even their enemies cannot refuse—adaptive battlemages capable of handling threats that specialists cannot address. The Guild's political structure is decentralized, with each Category maintaining its own leadership under the overall guidance of the Nexus Council. This design reflects their exile origins—no single point of failure can destroy the organization. The Guild maintains secret relationships with various power brokers, offering magical services in exchange for protection and resources.</p>
-                </div>
-
-                <!-- Mental Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-brain text-amber-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Mental</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Guild's mental conditioning emphasizes flexibility, creativity, and resistance to rigid thinking. Recruits undergo "Category Training" that forces them to approach problems from multiple magical perspectives. They are taught that there is no single "correct" way to cast a spell—only approaches more or less suited to specific situations. This creates a distinctive psychological profile: Guild members tend to be innovative, resourceful, and comfortable with ambiguity. However, this same training can lead to overconfidence—members may attempt solutions that generalists should leave to specialists. The highest-ranked Synthesis Masters undergo "Nexus Meditation," a practice that seeks to dissolve mental barriers between categories. This meditation can achieve states of magical perception impossible for single-category practitioners.</p>
-                </div>
-
-                <!-- Spiritual Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-fire text-amber-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Spiritual</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Guild's spirituality centers on the concept of "Magical Unity"—the belief that all categories of magic are expressions of a single underlying force. Their theology holds that the division of magic into categories is a human construct that limits true understanding. Rituals involve communion with the Ley Nexus, meditation at the Stone Circle, and ceremonies that cycle through all five categories. Members maintain personal "Category Altars" featuring symbols and tools from each magical tradition. The highest spiritual achievement is the "Nexus Vision"—a mystical experience where the practitioner perceives the unity underlying all magical phenomena. The Guild also venerates the original Enchantment Guild as martyrs who preserved magical truth against the Covenant's deceptions.</p>
-                </div>
-
-                <!-- Social Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-users text-amber-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Social</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">Socially, the Guild operates as a fellowship of equals united by shared rejection of magical orthodoxy. Members address each other as "fellow" regardless of rank, reflecting their egalitarian ideals. The Category system creates sub-communities with distinct cultures: Incantation fellows tend to be expressive and dramatic, Sorcery fellows are introspective and disciplined, Ritual fellows are methodical and patient, Armament fellows are practical and combat-focused, and Arcane fellows are visionary and intense. Cross-Category cooperation is encouraged through joint training exercises, and members often develop deep bonds through shared magical experiments. The Guild maintains strict secrecy protocols—members may not reveal Guild locations or teachings to outsiders, creating a hidden society within Avalon's magical community.</p>
-                </div>
-
-                <!-- Cultural Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-magic text-amber-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Cultural</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">Guild culture is defined by celebration of magical diversity and innovation. Their art features all five categories represented in dynamic interplay. Music combines vocal incantations, instrumental harmonies, rhythmic patterns, and raw magical resonance. Literature focuses on grimoires that cover multiple categories, experimental records, and theoretical treatises on magical unity. The Guild maintains an extensive library at the Ley Nexus, containing works from the original Enchantment Guild that survived the Covenant's purges. Dance and martial arts are combined in the "Category Forms"—movements that flow between the distinct styles of each magical tradition. Cultural festivals occur at solstices and equinoxes, featuring ceremonies that honor each category and their ultimate unity.</p>
-                </div>
-
-                <!-- Economical Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-coins text-amber-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Economical</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Guild's economy operates through a model of "adaptive services." They offer magical solutions to problems that specialists cannot address, commanding premium prices for their versatility. The Incantation Category maintains performance and teaching operations. The Sorcery Category offers personal enhancement services. The Ritual Category performs ceremonies for wealthy clients. The Armament Category creates and sells magical weapons and armor. The Arcane Category provides consultation on impossible problems. The Guild also recovers and studies magical artifacts from ancient sites, some of which are sold to fund operations while others are kept for research. Their total wealth is substantial but distributed across multiple hidden caches to prevent seizure by hostile authorities.</p>
-                </div>
-
-                <!-- Physiological Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-bolt text-amber-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Physiological</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">Guild training produces distinctive physiological adaptations that vary by Category focus. Incantation practitioners develop enhanced vocal control and lung capacity. Sorcery users gain expanded magical channels and energy reserves. Ritual mages develop precise motor control and patience. Armament specialists build combat-ready physiques and reflexes. Arcane practitioners achieve heightened sensory perception and mental processing speed. Synthesis Masters exhibit adaptations from multiple categories, making them extraordinarily capable but also prone to magical exhaustion. The Guild maintains extensive knowledge of magical enhancement techniques, though these are used cautiously due to side effects. Physical training emphasizes versatility over specialization, preparing members for unpredictable challenges.</p>
-                </div>
-
-                <!-- Territorial Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-map-marked-alt text-amber-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Territorial</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Guild's primary territory is the Ley Nexus, a vast complex built around the Avalon Stone Circle. The Nexus is organized into five wings corresponding to the Categories, with a central Synthesis Chamber where comprehensive training occurs. The Stone Circle itself serves as the ultimate training ground, its primordial energies allowing practice of magic impossible elsewhere. Surface-level safe houses exist throughout Avalon territory, each disguised as ordinary establishments. The Guild also maintains hidden training grounds near locations of magical significance: the Elemental Confluence (where all elements meet), the Echo Caverns (where incantations resonate forever), and various ancient sites containing Enchantment Guild artifacts. All territories are protected by layered magical defenses and the Guild's reputation for dangerous capability.</p>
-                </div>
-
-                <!-- Technological Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-gem text-amber-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Technological</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Guild's technology focuses on tools that support multiple categories of magic. Their most prized creations are Nexus Crystals—artifacts that can channel any category of magic and assist in category transitions. They develop specialized equipment for each category: voice enhancers for Incantation, energy reservoirs for Sorcery, ritual components for Ritual, weapon and armor frames for Armament, and focus amplifiers for Arcane. Communication devices use ley line resonance that works across all magical traditions. The Guild also maintains extensive equipment for measuring and analyzing magical phenomena, supporting their research into category interactions. Their most advanced technology, developed only in recent decades, allows temporary creation of "Category Null Zones" where all magic except the user's is suppressed.</p>
-                </div>
-
-                <!-- Military Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-fist-raised text-amber-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Military</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Guild's military arm, the Category Battlemages, represents one of the most versatile fighting forces in existence. Organized into mixed units that include practitioners of all five categories, they emphasize adaptive tactics that leverage complementary strengths. Incantation Companies provide rapid spellcasting and communication. Sorcery Companies serve as sustained magical artillery. Ritual Companies prepare devastating ceremonial magic. Armament Companies form the front-line combat core. Arcane Companies handle impossible threats and strategic magic. The Battlemages train in combined-arms tactics that can shift between approaches mid-battle. Their signature formation, the "Category Wheel," rotates magical approaches so rapidly that enemies cannot adapt. Despite their power, the Battlemages are primarily defensive—protecting Guild territory and members from hostile forces.</p>
-                </div>
+                <div class="framework-card rounded-xl p-6 card-hover"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4"><i class="fas fa-history text-amber-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Historical</h3></div><p class="text-gray-400 text-sm leading-relaxed">The Havenfire Guild's formal establishment in Year 1500 at the Avalon Stone Circle represents the culmination of over two thousand years of underground tradition. The founding members were descendants of the original Enchantment Guild, scattered during the Covenant of Lies, who had preserved their comprehensive magical knowledge in secret. The discovery of the Stone Circle—a primordial site of immense power that had been forgotten—provided the catalyst for their reorganization. The Guild has since operated for 500 years.</p></div>
+                <div class="framework-card rounded-xl p-6 card-hover"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4"><i class="fas fa-chess-king text-amber-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Political</h3></div><p class="text-gray-400 text-sm leading-relaxed">Politically, the Havenfire Guild maintains a delicate position. Officially, they are considered outlaws by Avalon's magical establishment, who have branded their comprehensive approach "dangerous heresy." Unofficially, the Guild provides services that even their enemies cannot refuse—adaptive battlemages capable of handling threats that specialists cannot address. The Guild's political structure is decentralized, with each Category maintaining its own leadership under the overall guidance of the Nexus Council.</p></div>
+                <div class="framework-card rounded-xl p-6 card-hover"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4"><i class="fas fa-brain text-amber-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Mental</h3></div><p class="text-gray-400 text-sm leading-relaxed">The Guild's mental conditioning emphasizes flexibility, creativity, and resistance to rigid thinking. Recruits undergo "Category Training" that forces them to approach problems from multiple magical perspectives. They are taught that there is no single "correct" way to cast a spell—only approaches more or less suited to specific situations. The highest-ranked Synthesis Masters undergo "Nexus Meditation," a practice that dissolves mental barriers between categories.</p></div>
+                <div class="framework-card rounded-xl p-6 card-hover"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4"><i class="fas fa-fire text-amber-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Spiritual</h3></div><p class="text-gray-400 text-sm leading-relaxed">The Guild's spirituality centers on the concept of "Magical Unity"—the belief that all categories of magic are expressions of a single underlying force. Their theology holds that the division of magic into categories is a human construct that limits true understanding. Rituals involve communion with the Ley Nexus, meditation at the Stone Circle, and ceremonies that cycle through all five categories.</p></div>
+                <div class="framework-card rounded-xl p-6 card-hover"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4"><i class="fas fa-users text-amber-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Social</h3></div><p class="text-gray-400 text-sm leading-relaxed">Socially, the Guild operates as a fellowship of equals united by shared rejection of magical orthodoxy. Members address each other as "fellow" regardless of rank. The Category system creates sub-communities with distinct cultures: Incantation fellows tend to be expressive and dramatic, Sorcery fellows are introspective and disciplined, Ritual fellows are methodical and patient, Armament fellows are practical and combat-focused, and Arcane fellows are visionary and intense.</p></div>
+                <div class="framework-card rounded-xl p-6 card-hover"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4"><i class="fas fa-magic text-amber-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Cultural</h3></div><p class="text-gray-400 text-sm leading-relaxed">Guild culture is defined by celebration of magical diversity and innovation. Their art features all five categories represented in dynamic interplay. Music combines vocal incantations, instrumental harmonies, rhythmic patterns, and raw magical resonance. The Guild maintains an extensive library at the Ley Nexus, containing works from the original Enchantment Guild that survived the Covenant's purges.</p></div>
+                <div class="framework-card rounded-xl p-6 card-hover"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4"><i class="fas fa-coins text-amber-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Economical</h3></div><p class="text-gray-400 text-sm leading-relaxed">The Guild's economy operates through a model of "adaptive services." They offer magical solutions to problems that specialists cannot address, commanding premium prices for their versatility. The Incantation Category maintains performance and teaching operations. The Sorcery Category offers personal enhancement services. The Ritual Category performs ceremonies for wealthy clients. The Armament Category creates magical weapons and armor. The Arcane Category provides consultation on impossible problems.</p></div>
+                <div class="framework-card rounded-xl p-6 card-hover"><div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4"><i class="fas fa-bolt text-amber-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Physiological</h3></div><p class="text-gray-400 text-sm leading-relaxed">Guild training produces distinctive physiological adaptations that vary by Category focus. Incantation practitioners develop enhanced vocal control and lung capacity. Sorcery users gain expanded magical channels and energy reserves. Ritual mages develop precise motor control and patience. Armament specialists build combat-ready physiques and reflexes. Arcane practitioners achieve heightened sensory perception and mental processing speed.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- Adaptive Mastery Doctrine -->
+    <!-- Territorial Framework with Ley Nexus Map -->
     <section class="py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gradient-to-r from-red-900/30 via-purple-900/30 via-green-900/30 via-blue-900/30 to-amber-900/30 rounded-xl p-8 border border-amber-500/30">
-                <h2 class="fantasy-heading text-3xl font-bold text-white mb-6 text-center">
-                    <i class="fas fa-infinity text-amber-400 mr-3"></i>The Adaptive Mastery Doctrine
-                </h2>
-                <div class="max-w-3xl mx-auto">
-                    <blockquote class="text-xl text-center text-gray-300 italic mb-6">
-                        "Specialization creates vulnerability. The mage who knows only one path is helpless when that path is blocked. True mastery lies in adaptability—the ability to meet any challenge with the right approach."
-                    </blockquote>
-                    <p class="text-gray-400 leading-relaxed text-center mb-4">— First Nexus Council</p>
-                    <div class="grid md:grid-cols-5 gap-4 mt-8">
-                        <div class="text-center">
-                            <div class="w-12 h-12 rounded-full bg-red-900/30 flex items-center justify-center mx-auto mb-2">
-                                <i class="fas fa-comment-dots text-red-500 text-lg"></i>
-                            </div>
-                            <h4 class="fantasy-heading text-sm font-bold text-red-400">Incantation</h4>
-                            <p class="text-gray-500 text-xs">Quick & Flexible</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-12 h-12 rounded-full bg-purple-900/30 flex items-center justify-center mx-auto mb-2">
-                                <i class="fas fa-hand-sparkles text-purple-400 text-lg"></i>
-                            </div>
-                            <h4 class="fantasy-heading text-sm font-bold text-purple-400">Sorcery</h4>
-                            <p class="text-gray-500 text-xs">Sustained & Personal</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-12 h-12 rounded-full bg-green-900/30 flex items-center justify-center mx-auto mb-2">
-                                <i class="fas fa-circle-notch text-green-400 text-lg"></i>
-                            </div>
-                            <h4 class="fantasy-heading text-sm font-bold text-green-400">Ritual</h4>
-                            <p class="text-gray-500 text-xs">Powerful & Prepared</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-12 h-12 rounded-full bg-blue-900/30 flex items-center justify-center mx-auto mb-2">
-                                <i class="fas fa-sword text-blue-400 text-lg"></i>
-                            </div>
-                            <h4 class="fantasy-heading text-sm font-bold text-blue-400">Armament</h4>
-                            <p class="text-gray-500 text-xs">Practical & Combat</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-12 h-12 rounded-full bg-amber-900/30 flex items-center justify-center mx-auto mb-2">
-                                <i class="fas fa-star text-amber-400 text-lg"></i>
-                            </div>
-                            <h4 class="fantasy-heading text-sm font-bold text-amber-400">Arcane</h4>
-                            <p class="text-gray-500 text-xs">Pure & Limitless</p>
-                        </div>
+            <div class="framework-card rounded-xl p-8 card-hover">
+                <div class="flex items-center mb-5">
+                    <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
+                        <i class="fas fa-map-marked-alt text-amber-500 text-xl"></i>
                     </div>
+                    <h3 class="fantasy-heading text-2xl font-bold text-white">Territorial Framework</h3>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">The Guild's primary territory is the <strong>Ley Nexus</strong>, a vast 50 square-mile complex in central Avalon built around the ancient Avalon Stone Circle. The Nexus is organized into five wings corresponding to the Categories, with a central Synthesis Chamber where comprehensive training occurs. The Stone Circle itself—a primordial site of immense power—serves as the ultimate training ground, its energies allowing practice of magic impossible elsewhere.</p>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">The Ley Nexus incorporates dedicated halls for each magical category: <strong>Incantation Hall</strong> for spoken magic, <strong>Sorcery Hall</strong> for internal power cultivation, <strong>Ritual Hall</strong> featuring an ancient monolith circle for ceremonial magic, <strong>Armament Training Hall</strong> for combat magic, and <strong>Arcane Hall</strong> for pure magical manipulation. The <strong>Round Table Hall</strong> hosts Guild debates where fellows from all categories gather to discuss magical theory and strategy.</p>
+
+                <!-- Ley Nexus Map -->
+                <div class="mt-6 mb-4">
+                    <p class="text-amber-400 text-sm font-semibold mb-3"><i class="fas fa-bolt mr-1"></i>Fortress Map — Ley Nexus (Havenfire Guild Headquarters)</p>
+                    <div class="img-container glow-border rounded-2xl border border-amber-500/25 shadow-2xl max-w-3xl"
+                    onclick="openLightbox('./Ley%20Nexus.jpeg')" title="Click to enlarge — Detailed Ley Nexus map">
+                    <img
+                    src="./Ley%20Nexus.jpeg"
+                    alt="Detailed map of the Ley Nexus — Havenfire Guild headquarters"
+                    class="w-full h-auto rounded-2xl"
+                    loading="lazy"
+                    onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                    <div class="img-fallback flex-col items-center justify-center p-16 bg-slate-900/80 rounded-2xl text-center"
+                    style="display:none;">
+                    <i class="fas fa-map text-6xl text-amber-400/50 mb-4"></i>
+                    <p class="text-slate-400 text-sm">Fortress Map: Ley Nexus</p>
+                    <p class="text-slate-500 text-xs mt-1">Place "<strong>Ley Nexus.jpeg</strong>" in the same folder</p>
+                </div>
+                <div class="img-zoom-hint">
+                    <i class="fas fa-search-plus mr-1"></i>Click to enlarge
+                </div>
+            </div>
+            <p class="text-slate-500 text-xs mt-2 italic">Detailed cartography of the Guild's 50 square-mile headquarters in central Avalon: Incantation Hall, Sorcery Hall, Ritual Hall (ancient monolith circle), Armament Training Hall, Arcane Hall, Round Table Hall (Guild debates), Ley-Wards (perimeter defense), Golem Forge (automata construction), Mist Skiff Harbor, Rune-barriers, Ley-line Tapping Arrays, and the Arcanes Vault (The Lost — restricted). Connected to Camelot and Listenoise via ley-line corridors.</p>
+        </div>
+
+        <p class="text-gray-300 text-sm"><strong>Key Features (from map):</strong></p>
+        <ul class="text-gray-300 text-sm mb-3 ml-4 space-y-1">
+            <li>• <strong>Incantation Hall:</strong> Training facility for spoken magic, vocal weaving, and adaptive chanting techniques</li>
+            <li>• <strong>Sorcery Hall:</strong> Internal power cultivation chambers for sustained magical casting</li>
+            <li>• <strong>Ritual Hall:</strong> Ancient monolith circle used for ceremonial magic and symbolic spellcraft</li>
+            <li>• <strong>Armament Training Hall:</strong> Combat magic facility for weapon enhancement and artifact creation</li>
+            <li>• <strong>Arcane Hall:</strong> Pure magic manipulation chambers for reality-shaping practice</li>
+            <li>• <strong>Round Table Hall:</strong> Guild debate chambers where fellows from all categories discuss magical theory</li>
+            <li>• <strong>Golem Forge:</strong> Automata construction facility producing magical servants and guardians</li>
+            <li>• <strong>Mist Skiff Harbor:</strong> Docking station for magical transport vessels</li>
+            <li>• <strong>Arcanes Vault (The Lost):</strong> Restricted repository of forbidden knowledge and dangerous artifacts</li>
+        </ul>
+        <p class="text-gray-300 text-sm"><strong>Defenses:</strong> Ley-Wards (perimeter defense), Rune-barriers, Ley-line Tapping Arrays for power amplification, and the complex's hidden location within 50 square miles of central Avalon, connected via ley-line corridors to Camelot and Listenoise.</p>
+    </div>
+</div>
+</section>
+
+<!-- Technological & Military Frameworks -->
+<section class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="framework-card rounded-xl p-6 card-hover">
+                <div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4"><i class="fas fa-gem text-amber-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Technological</h3></div>
+                <p class="text-gray-400 text-sm leading-relaxed">The Guild's technology focuses on tools that support multiple categories of magic. Their most prized creations are Nexus Crystals—artifacts that can channel any category of magic and assist in category transitions. They develop specialized equipment for each category: voice enhancers for Incantation, energy reservoirs for Sorcery, ritual components for Ritual, weapon and armor frames for Armament, and focus amplifiers for Arcane. Their most advanced technology allows temporary creation of "Category Null Zones" where all magic except the user's is suppressed.</p>
+            </div>
+            <div class="framework-card rounded-xl p-6 card-hover">
+                <div class="flex items-center mb-4"><div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4"><i class="fas fa-fist-raised text-amber-500 text-xl"></i></div><h3 class="fantasy-heading text-xl font-bold text-white">Military</h3></div>
+                <p class="text-gray-400 text-sm leading-relaxed">The Guild's military arm, the Category Battlemages, represents one of the most versatile fighting forces in existence. Organized into mixed units that include practitioners of all five categories, they emphasize adaptive tactics that leverage complementary strengths. Incantation Companies provide rapid spellcasting and communication. Sorcery Companies serve as sustained magical artillery. Ritual Companies prepare devastating ceremonial magic. Armament Companies form the front-line combat core. Arcane Companies handle impossible threats. Their signature formation, the "Category Wheel," rotates magical approaches so rapidly that enemies cannot adapt.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Adaptive Mastery Doctrine -->
+<section class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-r from-red-900/30 via-purple-900/30 via-green-900/30 via-blue-900/30 to-amber-900/30 rounded-xl p-8 border border-amber-500/30">
+            <h2 class="fantasy-heading text-3xl font-bold text-white mb-6 text-center"><i class="fas fa-infinity text-amber-400 mr-3"></i>The Adaptive Mastery Doctrine</h2>
+            <div class="max-w-3xl mx-auto">
+                <blockquote class="text-xl text-center text-gray-300 italic mb-6">"Specialization creates vulnerability. The mage who knows only one path is helpless when that path is blocked. True mastery lies in adaptability—the ability to meet any challenge with the right approach."</blockquote>
+                <p class="text-gray-400 leading-relaxed text-center mb-4">— First Nexus Council</p>
+                <div class="grid grid-cols-5 gap-4 mt-8">
+                    <div class="text-center"><div class="w-12 h-12 rounded-full bg-red-900/30 flex items-center justify-center mx-auto mb-2"><i class="fas fa-comment-dots text-red-500 text-lg"></i></div><h4 class="fantasy-heading text-sm font-bold text-red-400">Incantation</h4><p class="text-gray-500 text-xs">Quick & Flexible</p></div>
+                    <div class="text-center"><div class="w-12 h-12 rounded-full bg-purple-900/30 flex items-center justify-center mx-auto mb-2"><i class="fas fa-hand-sparkles text-purple-400 text-lg"></i></div><h4 class="fantasy-heading text-sm font-bold text-purple-400">Sorcery</h4><p class="text-gray-500 text-xs">Sustained & Personal</p></div>
+                    <div class="text-center"><div class="w-12 h-12 rounded-full bg-green-900/30 flex items-center justify-center mx-auto mb-2"><i class="fas fa-circle-notch text-green-400 text-lg"></i></div><h4 class="fantasy-heading text-sm font-bold text-green-400">Ritual</h4><p class="text-gray-500 text-xs">Powerful & Prepared</p></div>
+                    <div class="text-center"><div class="w-12 h-12 rounded-full bg-blue-900/30 flex items-center justify-center mx-auto mb-2"><i class="fas fa-sword text-blue-400 text-lg"></i></div><h4 class="fantasy-heading text-sm font-bold text-blue-400">Armament</h4><p class="text-gray-500 text-xs">Practical & Combat</p></div>
+                    <div class="text-center"><div class="w-12 h-12 rounded-full bg-amber-900/30 flex items-center justify-center mx-auto mb-2"><i class="fas fa-star text-amber-400 text-lg"></i></div><h4 class="fantasy-heading text-sm font-bold text-amber-400">Arcane</h4><p class="text-gray-500 text-xs">Pure & Limitless</p></div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Military Structure -->
-    <section class="py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="fantasy-heading text-3xl font-bold text-white mb-8">
-                <i class="fas fa-shield-alt text-amber-500 mr-3"></i>Category Battlemages Structure
-            </h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-secondary/50 rounded-xl p-6 border border-amber-500/20">
-                    <div class="text-center mb-4">
-                        <i class="fas fa-crown text-amber-500 text-4xl"></i>
-                    </div>
-                    <h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Nexus Council</h3>
-                    <p class="text-gray-400 text-sm text-center">Supreme command composed of the five Category Masters and the Synthesis Speaker.</p>
-                </div>
-                <div class="bg-secondary/50 rounded-xl p-6 border border-amber-500/20">
-                    <div class="text-center mb-4">
-                        <i class="fas fa-user-graduate text-purple-500 text-4xl"></i>
-                    </div>
-                    <h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Category Masters</h3>
-                    <p class="text-gray-400 text-sm text-center">Each Category is led by a Master who has achieved complete mastery of their discipline.</p>
-                </div>
-                <div class="bg-secondary/50 rounded-xl p-6 border border-amber-500/20">
-                    <div class="text-center mb-4">
-                        <i class="fas fa-users-cog text-blue-500 text-4xl"></i>
-                    </div>
-                    <h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Battlemage Captains</h3>
-                    <p class="text-gray-400 text-sm text-center">Senior officers commanding mixed units, trained in multiple categories for coordination.</p>
-                </div>
-                <div class="bg-secondary/50 rounded-xl p-6 border border-amber-500/20">
-                    <div class="text-center mb-4">
-                        <i class="fas fa-hat-wizard text-green-500 text-4xl"></i>
-                    </div>
-                    <h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Category Mages</h3>
-                    <p class="text-gray-400 text-sm text-center">The versatile soldiers who have mastered their primary category and studied all others.</p>
-                </div>
-            </div>
+<!-- Military Structure -->
+<section class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="fantasy-heading text-3xl font-bold text-white mb-8"><i class="fas fa-shield-alt text-amber-500 mr-3"></i>Category Battlemages Structure</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-slate-800/50 rounded-xl p-6 border border-amber-500/20 card-hover"><div class="text-center mb-4"><i class="fas fa-crown text-amber-500 text-4xl"></i></div><h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Nexus Council</h3><p class="text-gray-400 text-sm text-center">Supreme command composed of the five Category Masters and the Synthesis Speaker.</p></div>
+            <div class="bg-slate-800/50 rounded-xl p-6 border border-amber-500/20 card-hover"><div class="text-center mb-4"><i class="fas fa-user-graduate text-purple-500 text-4xl"></i></div><h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Category Masters</h3><p class="text-gray-400 text-sm text-center">Each Category is led by a Master who has achieved complete mastery of their discipline.</p></div>
+            <div class="bg-slate-800/50 rounded-xl p-6 border border-amber-500/20 card-hover"><div class="text-center mb-4"><i class="fas fa-users-cog text-blue-500 text-4xl"></i></div><h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Battlemage Captains</h3><p class="text-gray-400 text-sm text-center">Senior officers commanding mixed units, trained in multiple categories for coordination.</p></div>
+            <div class="bg-slate-800/50 rounded-xl p-6 border border-amber-500/20 card-hover"><div class="text-center mb-4"><i class="fas fa-hat-wizard text-green-500 text-4xl"></i></div><h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Category Mages</h3><p class="text-gray-400 text-sm text-center">The versatile soldiers who have mastered their primary category and studied all others.</p></div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="bg-dark border-t border-accent/20 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="flex items-center space-x-3 mb-4 md:mb-0">
-                    <i class="fas fa-tree text-accent text-xl"></i>
-                    <span class="fantasy-heading text-lg font-bold gradient-text">Eternal Trees Saga</span>
-                </div>
-                <div class="flex space-x-6 text-sm text-gray-400">
-                    <a href="index.html" class="hover:text-accent transition">Home</a>
-                    <a href="key-figures.html" class="hover:text-accent transition">Key Figures</a>
-                    <a href="places.html" class="hover:text-accent transition">Places</a>
-                    <a href="factions.html" class="hover:text-accent transition">Factions</a>
-                </div>
-            </div>
-            <div class="mt-6 pt-6 border-t border-gray-800 text-center text-sm text-gray-500">
-                <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
-            </div>
+<!-- Image Gallery Summary -->
+<section class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="fantasy-heading text-2xl font-bold text-white mb-6"><i class="fas fa-images text-amber-500 mr-2"></i>Cartographic Archives</h2>
+        <div class="bg-slate-900/60 border border-slate-700 rounded-2xl p-5 text-center card-hover max-w-md"
+        onclick="openLightbox('./Ley%20Nexus.jpeg')" style="cursor:zoom-in;">
+        <i class="fas fa-bolt text-4xl text-amber-400 mb-3"></i>
+        <h3 class="font-bold text-slate-200 mb-1">Ley Nexus Map</h3>
+        <p class="text-slate-400 text-xs">Havenfire Guild headquarters — Category Halls, Golem Forge & Arcanes Vault</p>
+        <span class="text-amber-400 text-xs mt-2 inline-block"><i class="fas fa-search-plus mr-1"></i>View full size</span>
+    </div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-950 border-t border-amber-500/20 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-4 md:mb-0"><i class="fas fa-tree text-emerald-400 text-xl"></i><span class="fantasy-heading text-lg font-bold gradient-text">Eternal Trees Saga</span></div>
+            <div class="flex space-x-6 text-sm text-gray-400"><a href="index.html" class="hover:text-amber-400 transition">Home</a><a href="key-figures.html" class="hover:text-amber-400 transition">Key Figures</a><a href="places.html" class="hover:text-amber-400 transition">Places</a><a href="eastern-factions.html" class="hover:text-amber-400 transition">Eastern Factions</a></div>
         </div>
-    </footer>
+        <div class="mt-6 pt-6 border-t border-gray-800 text-center text-sm text-gray-500"><p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p></div>
+    </div>
+</footer>
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    </script>
+<script>
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    function openLightbox(src) { lightboxImg.src = src; lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+    lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
+    lightboxClose.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox(); });
+</script>
 </body>
 </html>

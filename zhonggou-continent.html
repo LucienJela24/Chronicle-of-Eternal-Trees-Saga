@@ -3,81 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zhonggou Continent - Eternal Trees Saga Wiki</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Zhongguo Continent - Eternal Trees Saga Wiki</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'cinzel': ['Cinzel', 'serif'],
-                        'inter': ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        'eternal-gold': '#d4af37',
-                        'eternal-amber': '#f59e0b',
-                        'eternal-purple': '#8b5cf6',
-                        'eternal-emerald': '#10b981',
-                        'eternal-slate': '#1e293b',
-                    }
-                }
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+        }
+        h1,
+        h2,
+        h3,
+        .fantasy-font {
+            font-family: 'Cinzel', serif;
+        }
+        .framework-card {
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .framework-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.2);
+        }
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+            cursor: zoom-out;
+        }
+        .lightbox-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .lightbox-overlay img {
+            max-width: 94vw;
+            max-height: 94vh;
+            border-radius: 12px;
+            box-shadow: 0 0 80px rgba(139, 92, 246, 0.4);
+            object-fit: contain;
+            transform: scale(0.9);
+            transition: transform 0.35s ease;
+            cursor: default;
+        }
+        .lightbox-overlay.active img {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            font-size: 2.4rem;
+            color: #a78bfa;
+            cursor: pointer;
+            z-index: 101;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        .lightbox-close:hover {
+            color: #c4b5fd;
+        }
+        .img-container {
+            position: relative;
+            cursor: zoom-in;
+            overflow: hidden;
+            border-radius: 16px;
+            display: inline-block;
+            width: 100%;
+        }
+        .img-container img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .img-container:hover img {
+            transform: scale(1.04);
+        }
+        .img-zoom-hint {
+            position: absolute;
+            bottom: 16px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #a78bfa;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            opacity: 0;
+            letter-spacing: 0.5px;
+        }
+        .img-container:hover .img-zoom-hint {
+            opacity: 1;
+        }
+        .glow-border {
+            position: relative;
+        }
+        .glow-border::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 18px;
+            padding: 2px;
+            background: linear-gradient(135deg, #8b5cf633, #a78bfa66, #8b5cf633);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            transition: opacity 0.4s;
+            opacity: 0.5;
+        }
+        .img-container:hover .glow-border::after {
+            opacity: 1;
+        }
+        .img-fallback {
+            display: none;
+        }
+        @keyframes flamePulse {
+            0%,
+            100% {
+                box-shadow: 0 0 12px #8b5cf644;
+            }
+            50% {
+                box-shadow: 0 0 28px #8b5cf699;
             }
         }
-    </script>
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; }
-        h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
-        .framework-card { transition: all 0.3s ease; }
-        .framework-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-200 min-h-screen">
-    <!-- Navigation -->
+    <div id="lightbox" class="lightbox-overlay">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img src="" alt="Enlarged view" id="lightboxImg">
+    </div>
+
     <nav class="bg-slate-900/90 backdrop-blur-md border-b border-slate-700 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
                     <a href="index.html" class="flex items-center space-x-2">
-                        <i class="fas fa-tree text-eternal-emerald text-2xl"></i>
-                        <span class="fantasy-font text-xl font-bold text-eternal-gold">Eternal Trees Saga</span>
+                        <i class="fas fa-tree text-emerald-400 text-2xl"></i>
+                        <span class="fantasy-font text-xl font-bold text-amber-400">Eternal Trees Saga</span>
                     </a>
                 </div>
-                <div class="hidden md:block">
-                    <div class="flex items-baseline space-x-4">
-                        <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Home</a>
-                        <a href="key-figures.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Key Figures</a>
-                        <a href="places.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Places</a>
-                        <a href="timeline.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Timeline</a>
-                        <a href="plots.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Plots</a>
-                        <a href="eastern-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-amber hover:bg-slate-800 transition">Eastern</a>
-                        <a href="western-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-purple hover:bg-slate-800 transition">Western</a>
-                        <a href="other-realms.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-emerald hover:bg-slate-800 transition">Realms</a>
-                    </div>
+                <div class="hidden md:flex items-baseline space-x-4">
+                    <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Home</a>
+                    <a href="key-figures.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Key Figures</a>
+                    <a href="places.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Places</a>
+                    <a href="timeline.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Timeline</a>
+                    <a href="plots.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Plots</a>
+                    <a href="eastern-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-purple-400 hover:bg-slate-800 transition">Western</a>
+                    <a href="western-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Eastern</a>
+                    <a href="other-realms.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Realms</a>
                 </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white"><i class="fas fa-bars text-xl"></i></button>
             </div>
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-700">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Home</a>
-                <a href="key-figures.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Key Figures</a>
-                <a href="places.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Places</a>
-                <a href="timeline.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Timeline</a>
-                <a href="plots.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Plots</a>
-                <a href="eastern-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-amber hover:bg-slate-800">Eastern Factions</a>
-                <a href="western-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-purple hover:bg-slate-800">Western Factions</a>
-                <a href="other-realms.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-emerald hover:bg-slate-800">Other Realms</a>
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Home</a>
+                <a href="key-figures.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Key Figures</a>
+                <a href="places.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Places</a>
+                <a href="timeline.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Timeline</a>
+                <a href="plots.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Plots</a>
+                <a href="eastern-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-purple-400 hover:bg-slate-800">Western Factions</a>
+                <a href="western-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Eastern Factions</a>
+                <a href="other-realms.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Other Realms</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Main Continent Map -->
     <section class="relative bg-gradient-to-b from-purple-900/40 to-slate-950 py-16">
         <div class="absolute inset-0 opacity-10">
             <div class="absolute inset-0" style="background-image: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.2) 0%, transparent 70%);"></div>
@@ -85,14 +188,24 @@
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="inline-flex items-center space-x-2 mb-4">
                 <span class="px-3 py-1 bg-purple-900/50 border border-purple-600/30 rounded-full text-purple-400 text-sm">Western Plane</span>
-                <span class="px-3 py-1 bg-slate-800 border border-slate-600 rounded-full text-slate-400 text-sm">Eastern Influences</span>
+                <span class="px-3 py-1 bg-slate-800 border border-slate-600 rounded-full text-slate-400 text-sm">Tree of Chaos</span>
             </div>
-            <h1 class="text-5xl md:text-6xl font-bold text-purple-400 mb-4">Zhonggou Continent</h1>
-            <p class="text-xl text-slate-400 max-w-3xl mx-auto">A continent where Eastern and Western cultures merge, creating unique political and social systems</p>
+            <h1 class="text-5xl md:text-6xl font-bold text-purple-400 mb-4 fantasy-font">Zhongguo Continent</h1>
+            <p class="text-xl text-slate-400 max-w-3xl mx-auto">The Eastern Continent — Democratic Cultivation under the Tree of Chaos, seat of the Great Divine Sense Library and the Ziggurat of Calculation</p>
             <div class="mt-6 flex justify-center space-x-4 text-sm text-slate-500">
                 <span><i class="fas fa-dragon text-purple-400 mr-2"></i>Xi Dynasty</span>
                 <span><i class="fas fa-chess text-purple-400 mr-2"></i>Five Kingdoms</span>
-                <span><i class="fas fa-handshake text-purple-400 mr-2"></i>Union</span>
+                <span><i class="fas fa-handshake text-purple-400 mr-2"></i>Union Era</span>
+            </div>
+
+            <!-- Main Continent Map -->
+            <div class="mt-10 max-w-3xl mx-auto">
+                <div class="img-container glow-border rounded-2xl border border-purple-500/25 shadow-2xl" onclick="openLightbox('./Zhungguo.png')" title="Click to enlarge — Zhongguo Continent overview">
+                    <img src="./Zhungguo.png" alt="Map of Zhongguo — The Eastern Continent (Union Era)" class="w-full h-auto rounded-2xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                    <div class="img-fallback flex-col items-center justify-center p-16 bg-slate-900/80 rounded-2xl text-center" style="display:none;"><i class="fas fa-image text-6xl text-purple-400/50 mb-4"></i><p class="text-slate-400 text-sm">Continent Map: Zhongguo</p><p class="text-slate-500 text-xs mt-1">Place "<strong>Zhungguo.png</strong>" in the same folder</p></div>
+                    <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
+                </div>
+                <p class="text-slate-500 text-xs mt-3 italic">Zhongguo — The Eastern Continent under the Union Era, showing all seven prefectures, Dragon Vein network, Great Northern Wall, Thousand-Li Highways, and the Great Ocean</p>
             </div>
         </div>
     </section>
@@ -101,10 +214,57 @@
     <section class="py-12 bg-slate-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
-                <h2 class="text-2xl font-bold text-eternal-gold mb-4">Overview</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">The Zhonggou Continent represents a fascinating cultural fusion zone in the Western Plane, where Eastern traditions brought by migrants and traders have merged with indigenous Western practices to create unique political and social systems. The continent's name itself reflects this blending—"Zhonggou" being a Western adaptation of Eastern linguistic elements.</p>
-                <p class="text-slate-300 leading-relaxed mb-4">Four major powers dominate the continent: the Xi Dynasty, which maintains Eastern-style imperial governance; the Five Kingdoms, a confederation of smaller states with mixed cultural traditions; the Ming Dynasty, a rival imperial power with distinct cultural characteristics; and the Union, a federation that represents the most successful blending of Eastern and Western political traditions.</p>
-                <p class="text-slate-300 leading-relaxed">The continent's strategic location makes it a crossroads of trade and cultural exchange between the Eastern and Western Planes. This position has brought prosperity but also conflict, as external powers have repeatedly sought to control its resources and influence its politics.</p>
+                <h2 class="text-2xl font-bold text-amber-400 mb-4 fantasy-font">Overview</h2>
+                <p class="text-slate-300 leading-relaxed mb-4">The Zhongguo Continent represents a fascinating cultural fusion zone in the Western Plane, where Eastern traditions brought by migrants and traders have merged with indigenous Western practices to create unique political and social systems. The continent's name reflects its identity as the "Central Kingdom" — Zhongguo — a land of democratic cultivation, elemental harmony, and scholarly pursuit.</p>
+                <p class="text-slate-300 leading-relaxed mb-4">Four major eras have shaped the continent: the <strong>Xi Dynasty</strong> (Absolute Years 20,001–20,212), the first unified empire; the <strong>Five Kingdoms Era</strong> (Absolute Years 20,212–21,706), a period of divided sovereignty; the <strong>Ming Dynasty</strong> (Absolute Years 21,706–49,636), the great synthesis empire; and the <strong>Union Era</strong>, representing the apex of democratic cultivation governance.</p>
+                <p class="text-slate-300 leading-relaxed">The continent's strategic location makes it a crossroads of trade and cultural exchange. Its seven prefectures — Central (Zhongzhou), Eastern (Donghai), Northeastern (Liaodong), Southeastern (Wuyue), Southern (Nanping), Southwestern (Bashu), and Western (Xiguan) — each maintain distinct industries and cultivation traditions while united under democratic governance.</p>
+
+                <!-- Capital City Map -->
+                <div class="mt-8 mb-4">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-city mr-1"></i>City Map — Xiajing, Capital of Zhongguo</p>
+                    <div class="img-container glow-border rounded-2xl border border-purple-500/25 shadow-2xl max-w-3xl" onclick="openLightbox('./Zhungguo_Xiajing.png')" title="Click to enlarge — Detailed Xiajing city map">
+                        <img src="./Zhungguo_Xiajing.png" alt="Detailed map of Xiajing — Capital of Zhongguo" class="w-full h-auto rounded-2xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-16 bg-slate-900/80 rounded-2xl text-center" style="display:none;"><i class="fas fa-map text-6xl text-purple-400/50 mb-4"></i><p class="text-slate-400 text-sm">City Map: Xiajing</p><p class="text-slate-500 text-xs mt-1">Place "<strong>Zhungguo_Xiajing.png</strong>" in the same folder</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-2 italic">Xiajing — The Forbidden City (museum & government complex), Dragon Vein Nexus, Examination Yards, Cloud-Hub, Great Divine Sense Library Annex, Alchemy Quarter, Sect District, Merit Badge Plaza, Jade Screen Avenue, Cultivation Park, Thousand-Li Highways, and the Grand Canal waterway to the Port of Donghai.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historical Eras -->
+    <section class="py-12 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-amber-400 mb-10 fantasy-font"><i class="fas fa-history mr-2"></i>Historical Eras</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-6 framework-card">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-dragon mr-1"></i>Xi Dynasty Era (Abs. 20,001–20,212)</p>
+                    <div class="img-container glow-border rounded-xl border border-purple-500/25 shadow-xl" onclick="openLightbox('./Zhungguo_Xi%20Dynasty%20Era.png')" title="Click to enlarge — Xi Dynasty Era map">
+                        <img src="./Zhungguo_Xi%20Dynasty%20Era.png" alt="Map of Zhongguo — Xi Dynasty Era" class="w-full h-auto rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-10 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-map text-4xl text-purple-400/50 mb-2"></i><p class="text-slate-400 text-xs">Era Map: Xi Dynasty</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-2 italic">The First Unified Empire — showing prefectural borders, imperial roads, the Great Northern Wall, Dragon Veins, sacred mountains, and the Method Archives at the Ziggurat of Calculation.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-6 framework-card">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-chess mr-1"></i>Five Kingdoms Era (Abs. 20,212–21,706)</p>
+                    <div class="img-container glow-border rounded-xl border border-purple-500/25 shadow-xl" onclick="openLightbox('./Zhungguo_Five%20Kingdoms%20Era.png')" title="Click to enlarge — Five Kingdoms Era map">
+                        <img src="./Zhungguo_Five%20Kingdoms%20Era.png" alt="Map of Zhongguo — Five Kingdoms Era" class="w-full h-auto rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-10 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-map text-4xl text-purple-400/50 mb-2"></i><p class="text-slate-400 text-xs">Era Map: Five Kingdoms</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-2 italic">Qi, Chu, Zhao, Han, Ming — the five rival kingdoms with borders, disputed zones, mountain ranges, and the Great Wall dividing the Northern Steppe.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-6 framework-card">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-sun mr-1"></i>Ming Dynasty Era (Abs. 21,706–49,636)</p>
+                    <div class="img-container glow-border rounded-xl border border-purple-500/25 shadow-xl" onclick="openLightbox('./Zhongguo%20_%20Ming%20Dynasty.jpeg')" title="Click to enlarge — Ming Dynasty Era map">
+                        <img src="./Zhongguo%20_%20Ming%20Dynasty.jpeg" alt="Map of Zhongguo — Ming Dynasty Era" class="w-full h-auto rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-10 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-map text-4xl text-purple-400/50 mb-2"></i><p class="text-slate-400 text-xs">Era Map: Ming Dynasty</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-2 italic">The Synthesis Empire — seat of the Chen Master's Pavilion and the Four Schools Academy, showing all prefectures, climate zones, and imperial infrastructure.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -112,256 +272,205 @@
     <!-- The Four Powers -->
     <section class="py-12 bg-slate-900/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-12">The Four Powers</h2>
-            
+            <h2 class="text-3xl font-bold text-center text-amber-400 mb-12 fantasy-font">The Four Powers</h2>
             <div class="space-y-12">
                 <!-- Xi Dynasty -->
                 <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
-                    <div class="flex items-center mb-6">
-                        <div class="w-14 h-14 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4">
-                            <i class="fas fa-dragon text-purple-400 text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-purple-400">Xi Dynasty</h3>
-                            <p class="text-slate-500">Eastern Imperial Tradition</p>
-                        </div>
-                    </div>
+                    <div class="flex items-center mb-6"><div class="w-14 h-14 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4"><i class="fas fa-dragon text-purple-400 text-2xl"></i></div><div><h3 class="text-2xl font-bold text-purple-400">Xi Dynasty</h3><p class="text-slate-500">Eastern Imperial Tradition</p></div></div>
                     <p class="text-slate-300 mb-6">The Xi Dynasty maintains the most purely Eastern-style governance on the continent, having been founded by migrants from the Eastern Plane who sought to preserve their traditions in a new land. The Dynasty emphasizes imperial authority, bureaucratic governance, and Confucian social values.</p>
-                    
-                    <h4 class="text-lg font-bold text-eternal-gold mb-4">11-Framework Analysis</h4>
+                    <h4 class="text-lg font-bold text-amber-400 mb-4">11-Framework Analysis</h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">1. Historical</h5>
-                            <p class="text-slate-400 text-sm">Founded six centuries ago by refugees from the Eastern Plane who fled political upheaval. The Xi Dynasty has maintained unbroken succession through careful management of imperial bloodlines. Historical records are meticulously preserved.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">2. Political</h5>
-                            <p class="text-slate-400 text-sm">Absolute monarchy with the Emperor as Son of Heaven. The Imperial Court includes six ministries handling administration, revenue, rites, war, justice, and public works. The Censorate monitors officials for corruption.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">3. Mental</h5>
-                            <p class="text-slate-400 text-sm">Education emphasizes classical texts, calligraphy, and civil service examination preparation. The imperial examination system selects officials based on merit rather than birth. Strategic thinking is valued in both civil and military contexts.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">4. Spiritual</h5>
-                            <p class="text-slate-400 text-sm">Ancestor worship is central to spiritual life, with every household maintaining family altars. The Emperor performs rituals to maintain cosmic harmony. Buddhism and Taoism coexist with traditional practices, each with state patronage.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">5. Social</h5>
-                            <p class="text-slate-400 text-sm">Strict social hierarchy with scholars at the top, followed by farmers, artisans, and merchants. Family is the foundation of society, with filial piety as the highest virtue. Women occupy subordinate positions but can wield influence behind the scenes.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">6. Cultural</h5>
-                            <p class="text-slate-400 text-sm">Rich traditions of poetry, painting, and music that emphasize harmony and restraint. Tea ceremonies and seasonal festivals mark the cultural calendar. Imperial patronage supports the arts and preserves ancient traditions.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">7. Economical</h5>
-                            <p class="text-slate-400 text-sm">Agricultural foundation with rice cultivation as the primary crop. State monopolies on salt, iron, and other essentials provide revenue. Trade is regulated but flourishes along rivers and the coast. The imperial treasury is substantial.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">8. Physiological</h5>
-                            <p class="text-slate-400 text-sm">Traditional medicine combining herbal remedies, acupuncture, and energy cultivation. Imperial physicians serve the court and train practitioners. Physical fitness is encouraged through martial arts and calisthenics.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">9. Territorial</h5>
-                            <p class="text-slate-400 text-sm">The largest territory on the continent, encompassing fertile river valleys and mountain ranges. The capital city features the Forbidden Palace and extensive government complexes. Regional capitals administer provinces.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">10. Technological</h5>
-                            <p class="text-slate-400 text-sm">Advanced agricultural techniques support a large population. Engineering projects include canals, dams, and irrigation systems. Gunpowder weapons are manufactured but reserved for military use. Paper, printing, and the compass originated here.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">11. Military</h5>
-                            <p class="text-slate-400 text-sm">Large standing army organized into regional commands. The Imperial Guard protects the capital and the Emperor. Military examinations parallel civil service exams. Naval forces patrol rivers and coastal waters.</p>
-                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">1. Historical</h5><p class="text-slate-400 text-xs">Founded six centuries ago by refugees from the Eastern Plane. Maintained unbroken succession through careful bloodline management.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">2. Political</h5><p class="text-slate-400 text-xs">Absolute monarchy with the Emperor as Son of Heaven. Six ministries handle administration, revenue, rites, war, justice, and public works.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">3. Mental</h5><p class="text-slate-400 text-xs">Education emphasizes classical texts and civil service examination preparation. Imperial exams select officials based on merit.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">4. Spiritual</h5><p class="text-slate-400 text-xs">Ancestor worship central to spiritual life. Emperor performs rituals to maintain cosmic harmony. Buddhism and Taoism coexist.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">5. Social</h5><p class="text-slate-400 text-xs">Strict hierarchy: scholars, farmers, artisans, merchants. Family foundation of society with filial piety as highest virtue.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">6. Cultural</h5><p class="text-slate-400 text-xs">Rich traditions of poetry, painting, music emphasizing harmony. Tea ceremonies and seasonal festivals mark the calendar.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">7. Economical</h5><p class="text-slate-400 text-xs">Agricultural foundation with rice cultivation. State monopolies on salt, iron, and essentials. Trade regulated but flourishes.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">8. Physiological</h5><p class="text-slate-400 text-xs">Traditional medicine combining herbal remedies, acupuncture, and energy cultivation. Martial arts encourage physical fitness.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">9. Territorial</h5><p class="text-slate-400 text-xs">Largest territory on continent. Capital features Forbidden Palace. Regional capitals administer provinces.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">10. Technological</h5><p class="text-slate-400 text-xs">Advanced agriculture, canals, dams, irrigation. Paper, printing, compass originated here. Gunpowder reserved for military.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">11. Military</h5><p class="text-slate-400 text-xs">Large standing army organized into regional commands. Imperial Guard protects capital. Military exams parallel civil exams.</p></div>
                     </div>
                 </div>
 
                 <!-- Five Kingdoms -->
                 <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
-                    <div class="flex items-center mb-6">
-                        <div class="w-14 h-14 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4">
-                            <i class="fas fa-chess text-purple-400 text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-purple-400">Five Kingdoms</h3>
-                            <p class="text-slate-500">Mixed Heritage Confederation</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-300 mb-6">A confederation of five smaller kingdoms, each with its own blend of Eastern and Western cultural elements. The Five Kingdoms cooperate on matters of defense and trade while maintaining distinct identities and internal autonomy.</p>
-                    
-                    <h4 class="text-lg font-bold text-eternal-gold mb-4">11-Framework Analysis</h4>
+                    <div class="flex items-center mb-6"><div class="w-14 h-14 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4"><i class="fas fa-chess text-purple-400 text-2xl"></i></div><div><h3 class="text-2xl font-bold text-purple-400">Five Kingdoms</h3><p class="text-slate-500">Mixed Heritage Confederation</p></div></div>
+                    <p class="text-slate-300 mb-6">A confederation of five smaller kingdoms — Qi, Chu, Zhao, Han, and Ming — each with its own blend of Eastern and Western cultural elements. The Five Kingdoms cooperate on defense and trade while maintaining distinct identities and internal autonomy.</p>
+                    <h4 class="text-lg font-bold text-amber-400 mb-4">11-Framework Analysis</h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">1. Historical</h5>
-                            <p class="text-slate-400 text-sm">The five kingdoms emerged from the fragmentation of a larger state three centuries ago. Rather than continuing warfare, they formed a confederation for mutual benefit. Each kingdom maintains its own history and founding myths.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">2. Political</h5>
-                            <p class="text-slate-400 text-sm">Each kingdom is governed by its own monarch with varying systems—some hereditary, some elective. The Council of Kings coordinates confederation policy. Decisions require consensus, which can slow action but prevents domination by any single kingdom.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">3. Mental</h5>
-                            <p class="text-slate-400 text-sm">Education systems vary by kingdom but generally blend Eastern and Western approaches. Some emphasize classical learning, others practical skills. Cross-border study is encouraged to foster understanding between kingdoms.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">4. Spiritual</h5>
-                            <p class="text-slate-400 text-sm">Religious diversity is the norm, with each kingdom having its own spiritual traditions. Some follow Eastern practices, others Western faiths, and many blend elements of both. Religious tolerance is a confederation principle.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">5. Social</h5>
-                            <p class="text-slate-400 text-sm">Social structures vary between kingdoms, creating interesting contrasts. Intermarriage between kingdoms has created a blended aristocracy. Common people identify with their kingdom first but share a broader confederation identity.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">6. Cultural</h5>
-                            <p class="text-slate-400 text-sm">Each kingdom maintains distinct cultural traditions while participating in confederation-wide festivals. Art, music, and cuisine show both Eastern and Western influences. Cultural exchange is celebrated as a strength.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">7. Economical</h5>
-                            <p class="text-slate-400 text-sm">Free trade between kingdoms is guaranteed by confederation treaty. Each kingdom specializes in different goods—grain, textiles, metals, crafts, and trade goods. Combined, they form a significant economic power.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">8. Physiological</h5>
-                            <p class="text-slate-400 text-sm">Medical practices vary, with some kingdoms favoring Eastern traditional medicine and others Western approaches. Cross-border medical knowledge sharing has improved healthcare throughout the confederation.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">9. Territorial</h5>
-                            <p class="text-slate-400 text-sm">Each kingdom maintains its traditional territory, with clearly defined borders. The central city, neutral ground, hosts confederation institutions. Transportation networks connect all five kingdoms.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">10. Technological</h5>
-                            <p class="text-slate-400 text-sm">Technology sharing between kingdoms accelerates innovation. Some excel in metallurgy, others in textiles or agriculture. Combined expertise makes the confederation technologically competitive with larger states.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">11. Military</h5>
-                            <p class="text-slate-400 text-sm">Each kingdom maintains its own forces but trains to coordinate with allies. The Confederation Guard serves as a rapid reaction force. Combined military strength deters aggression from larger neighbors.</p>
-                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">1. Historical</h5><p class="text-slate-400 text-xs">Emerged from fragmentation of a larger state three centuries ago. Formed confederation for mutual benefit rather than continued warfare.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">2. Political</h5><p class="text-slate-400 text-xs">Each kingdom governed by its own monarch. Council of Kings coordinates confederation policy. Consensus required for decisions.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">3. Mental</h5><p class="text-slate-400 text-xs">Education varies by kingdom, blending Eastern and Western approaches. Cross-border study encouraged to foster understanding.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">4. Spiritual</h5><p class="text-slate-400 text-xs">Religious diversity is the norm. Each kingdom has own spiritual traditions. Religious tolerance a confederation principle.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">5. Social</h5><p class="text-slate-400 text-xs">Social structures vary between kingdoms. Intermarriage created blended aristocracy. Common people identify with kingdom first.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">6. Cultural</h5><p class="text-slate-400 text-xs">Distinct traditions in each kingdom. Art, music, cuisine show both Eastern and Western influences. Cultural exchange celebrated.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">7. Economical</h5><p class="text-slate-400 text-xs">Free trade between kingdoms guaranteed. Each specializes in different goods. Combined economic weight is significant.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">8. Physiological</h5><p class="text-slate-400 text-xs">Medical practices vary. Cross-border knowledge sharing has improved healthcare throughout the confederation.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">9. Territorial</h5><p class="text-slate-400 text-xs">Each kingdom maintains traditional territory with clearly defined borders. Neutral central city hosts confederation institutions.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">10. Technological</h5><p class="text-slate-400 text-xs">Technology sharing accelerates innovation. Some excel in metallurgy, others in textiles or agriculture.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">11. Military</h5><p class="text-slate-400 text-xs">Each kingdom maintains own forces trained to coordinate. Confederation Guard serves as rapid reaction force.</p></div>
                     </div>
                 </div>
 
                 <!-- Ming Dynasty -->
                 <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
-                    <div class="flex items-center mb-6">
-                        <div class="w-14 h-14 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4">
-                            <i class="fas fa-sun text-purple-400 text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-purple-400">Ming Dynasty</h3>
-                            <p class="text-slate-500">Rival Imperial Power</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-300 mb-6">A rival imperial power that broke away from the Xi Dynasty centuries ago, the Ming Dynasty has developed its own distinct cultural and political identity. While maintaining Eastern-style governance, the Ming have incorporated more Western elements into their society.</p>
-                    
-                    <h4 class="text-lg font-bold text-eternal-gold mb-4">11-Framework Analysis</h4>
+                    <div class="flex items-center mb-6"><div class="w-14 h-14 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4"><i class="fas fa-sun text-purple-400 text-2xl"></i></div><div><h3 class="text-2xl font-bold text-purple-400">Ming Dynasty</h3><p class="text-slate-500">The Synthesis Empire</p></div></div>
+                    <p class="text-slate-300 mb-6">The Ming Dynasty represents the great synthesis — ruling for nearly 28,000 years from Absolute Year 21,706 to 49,636. As the seat of the Chen Master's Pavilion and the Four Schools Academy, the Ming Dynasty achieved the most complete integration of Eastern and Western cultivation traditions in the continent's history.</p>
+                    <h4 class="text-lg font-bold text-amber-400 mb-4">11-Framework Analysis</h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">1. Historical</h5>
-                            <p class="text-slate-400 text-sm">Founded four centuries ago by a rebellious general who established his own imperial line. The Ming have fought several wars with the Xi Dynasty, most ending in stalemate. Each dynasty claims to be the legitimate ruler of all Zhonggou.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">2. Political</h5>
-                            <p class="text-slate-400 text-sm">Imperial system similar to the Xi but with Western-influenced legal reforms. The Emperor shares some power with a Grand Council of advisors. Provincial governors have more autonomy than in the Xi Dynasty.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">3. Mental</h5>
-                            <p class="text-slate-400 text-sm">Education combines Eastern classics with Western sciences and philosophy. The civil service examination includes practical subjects alongside traditional learning. Critical thinking is more encouraged than in the Xi Dynasty.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">4. Spiritual</h5>
-                            <p class="text-slate-400 text-sm">Officially promotes a reformed version of traditional religion that incorporates Western philosophical elements. Religious tolerance is greater than in the Xi Dynasty. The state maintains temples but does not control doctrine.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">5. Social</h5>
-                            <p class="text-slate-400 text-sm">Social hierarchy exists but is less rigid than in the Xi Dynasty. Merchants enjoy higher status due to their economic importance. Women have somewhat more opportunities, including education and property ownership.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">6. Cultural</h5>
-                            <p class="text-slate-400 text-sm">Distinct artistic tradition that blends Eastern aesthetics with Western techniques. Porcelain, silk, and jade work are highly valued. Theater and literature explore themes of individualism and social change.</p>
-                        </div>
-                        <div class="bg-serald-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">7. Economical</h5>
-                            <p class="text-slate-400 text-sm">Commercial economy with active trade both domestically and internationally. Banking and credit systems are well-developed. The Ming actively seek trade relationships with Western Plane powers.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">8. Physiological</h5>
-                            <p class="text-slate-400 text-sm">Combines traditional medicine with Western surgical techniques. Public health measures include sanitation and quarantine protocols. Physical fitness is promoted through both martial arts and Western sports.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">9. Territorial</h5>
-                            <p class="text-slate-400 text-sm">Controls the southern portion of the continent with access to major trade routes. The capital is a cosmopolitan city with significant Western influence. Border fortifications face the Xi Dynasty.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">10. Technological</h5>
-                            <p class="text-slate-400 text-sm">Actively adopts and adapts Western technologies while preserving Eastern innovations. Shipbuilding is particularly advanced. The Ming maintain research institutions that study both Eastern and Western knowledge.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">11. Military</h5>
-                            <p class="text-slate-400 text-sm">Modernized forces combining Eastern and Western military techniques. The navy is particularly strong, protecting trade routes. Firearms and artillery are integrated with traditional forces.</p>
-                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">1. Historical</h5><p class="text-slate-400 text-xs">Founded four centuries ago by a rebellious general. Fought several wars with the Xi Dynasty. Each claims legitimacy over all Zhongguo.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">2. Political</h5><p class="text-slate-400 text-xs">Imperial system with Western-influenced legal reforms. Emperor shares power with Grand Council. Provincial governors have autonomy.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">3. Mental</h5><p class="text-slate-400 text-xs">Combines Eastern classics with Western sciences and philosophy. Civil service exam includes practical subjects. Critical thinking encouraged.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">4. Spiritual</h5><p class="text-slate-400 text-xs">Promotes reformed religion incorporating Western philosophy. Religious tolerance greater than Xi Dynasty. State maintains temples.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">5. Social</h5><p class="text-slate-400 text-xs">Less rigid hierarchy than Xi Dynasty. Merchants enjoy higher status. Women have more opportunities including education and property.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">6. Cultural</h5><p class="text-slate-400 text-xs">Distinct artistic tradition blending Eastern aesthetics with Western techniques. Porcelain, silk, and jade work highly valued.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">7. Economical</h5><p class="text-slate-400 text-xs">Commercial economy with active domestic and international trade. Banking and credit well-developed. Seeks Western Plane trade.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">8. Physiological</h5><p class="text-slate-400 text-xs">Combines traditional medicine with Western surgery. Public health measures include sanitation and quarantine. Martial arts and sports promoted.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">9. Territorial</h5><p class="text-slate-400 text-xs">Controls southern portion with major trade routes. Capital is cosmopolitan with Western influence. Border fortifications face Xi Dynasty.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">10. Technological</h5><p class="text-slate-400 text-xs">Adopts Western technologies while preserving Eastern innovations. Shipbuilding advanced. Research institutions study both traditions.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">11. Military</h5><p class="text-slate-400 text-xs">Modernized forces combining Eastern and Western techniques. Navy strong, protecting trade routes. Firearms integrated with traditional forces.</p></div>
                     </div>
                 </div>
 
                 <!-- The Union -->
                 <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
-                    <div class="flex items-center mb-6">
-                        <div class="w-14 h-14 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4">
-                            <i class="fas fa-handshake text-purple-400 text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-purple-400">The Union</h3>
-                            <p class="text-slate-500">Federated Republic</p>
-                        </div>
-                    </div>
-                    <p class="text-slate-300 mb-6">The most successful example of East-West political fusion on the continent, the Union combines Eastern-style meritocratic bureaucracy with Western democratic institutions. This hybrid system has created a prosperous and stable state that serves as a model for others.</p>
-                    
-                    <h4 class="text-lg font-bold text-eternal-gold mb-4">11-Framework Analysis</h4>
+                    <div class="flex items-center mb-6"><div class="w-14 h-14 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4"><i class="fas fa-handshake text-purple-400 text-2xl"></i></div><div><h3 class="text-2xl font-bold text-purple-400">The Union</h3><p class="text-slate-500">Democratic Cultivation Republic</p></div></div>
+                    <p class="text-slate-300 mb-6">The most successful example of East-West political fusion on the continent, the Union combines Eastern-style meritocratic bureaucracy with Western democratic institutions. This hybrid system — Democratic Cultivation — has created a prosperous and stable state that serves as a model for others.</p>
+                    <h4 class="text-lg font-bold text-amber-400 mb-4">11-Framework Analysis</h4>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">1. Historical</h5>
-                            <p class="text-slate-400 text-sm">Founded two centuries ago by reformers who sought to combine the best of Eastern and Western governance. The Union's constitution is considered a masterpiece of political philosophy. Its success has inspired similar experiments elsewhere.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">2. Political</h5>
-                            <p class="text-slate-400 text-sm">Federal republic with elected legislature and meritocratic civil service. The Chancellor is elected by the Assembly. The Examination Board selects civil servants based on competitive exams. Local governments have significant autonomy.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">3. Mental</h5>
-                            <p class="text-slate-400 text-sm">Education is universal and emphasizes both Eastern and Western knowledge. Critical thinking and civic responsibility are core values. Universities are centers of innovation and debate. Lifelong learning is encouraged.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">4. Spiritual</h5>
-                            <p class="text-slate-400 text-sm">Complete religious freedom with no state religion. All faiths are treated equally under law. Interfaith dialogue is actively promoted. Many citizens follow syncretic beliefs combining Eastern and Western elements.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">5. Social</h5>
-                            <p class="text-slate-400 text-sm">Social mobility is high, with advancement based on merit rather than birth. Equality before the law is guaranteed. Traditional family values coexist with progressive social policies. Community organizations play important roles.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">6. Cultural</h5>
-                            <p class="text-slate-400 text-sm">Vibrant fusion culture celebrated as a unique achievement. Art, music, and literature blend Eastern and Western forms. Cultural institutions receive state support. The Union's cultural exports are popular across the planes.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">7. Economical</h5>
-                            <p class="text-slate-400 text-sm">Mixed economy with both state enterprises and private business. Banking and finance are well-developed. Trade policy is open, with free trade agreements with many partners. Innovation is encouraged and rewarded.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">8. Physiological</h5>
-                            <p class="text-slate-400 text-sm">Universal healthcare combines Eastern and Western medicine. Public health infrastructure is advanced. Physical fitness is promoted through public facilities and programs. Life expectancy is among the highest on the continent.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">9. Territorial</h5>
-                            <p class="text-slate-400 text-sm">Western coastal territory with excellent ports and trade access. The capital is a planned city designed to embody Union principles. Regional centers balance urban and rural development. Infrastructure is well-maintained.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">10. Technological</h5>
-                            <p class="text-slate-400 text-sm">Leader in technological innovation, combining Eastern and Western approaches. Research institutions are well-funded. Patents protect inventors while allowing society to benefit. Magical and mundane technologies are integrated.</p>
-                        </div>
-                        <div class="bg-slate-800/50 rounded-lg p-4">
-                            <h5 class="font-bold text-purple-400 mb-2">11. Military</h5>
-                            <p class="text-slate-400 text-sm">Professional forces with combined arms and advanced tactics. Military service is voluntary but respected. Defense policy emphasizes deterrence and alliance. The Union prefers diplomacy but maintains credible military strength.</p>
-                        </div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">1. Historical</h5><p class="text-slate-400 text-xs">Founded two centuries ago by reformers combining Eastern and Western governance. Constitution considered a masterpiece of political philosophy.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">2. Political</h5><p class="text-slate-400 text-xs">Federal republic with elected legislature and meritocratic civil service. Chancellor elected by Assembly. Examination Board selects officials.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">3. Mental</h5><p class="text-slate-400 text-xs">Universal education emphasizing Eastern and Western knowledge. Critical thinking and civic responsibility are core values.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">4. Spiritual</h5><p class="text-slate-400 text-xs">Complete religious freedom with no state religion. All faiths equal under law. Interfaith dialogue actively promoted.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">5. Social</h5><p class="text-slate-400 text-xs">High social mobility based on merit. Equality before law guaranteed. Traditional family values coexist with progressive policies.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">6. Cultural</h5><p class="text-slate-400 text-xs">Vibrant fusion culture. Art, music, literature blend Eastern and Western forms. Cultural exports popular across the planes.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">7. Economical</h5><p class="text-slate-400 text-xs">Mixed economy with state enterprises and private business. Open trade policy. Innovation encouraged and rewarded.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">8. Physiological</h5><p class="text-slate-400 text-xs">Universal healthcare combining Eastern and Western medicine. Advanced public health. Life expectancy among highest on continent.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">9. Territorial</h5><p class="text-slate-400 text-xs">Western coastal territory with excellent ports. Planned capital city embodies Union principles. Infrastructure well-maintained.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">10. Technological</h5><p class="text-slate-400 text-xs">Leader in innovation combining Eastern and Western approaches. Patents protect inventors. Magical and mundane tech integrated.</p></div>
+                        <div class="bg-slate-800/50 rounded-lg p-3"><h5 class="font-bold text-purple-400 mb-1 text-sm">11. Military</h5><p class="text-slate-400 text-xs">Professional forces with combined arms. Voluntary but respected service. Defense policy emphasizes deterrence and alliance.</p></div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seven Prefectures -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-amber-400 mb-10 fantasy-font"><i class="fas fa-map-marked-alt mr-2"></i>The Seven Prefectures</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Central Prefecture -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-5 framework-card">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-map mr-1"></i>Central Prefecture (Zhongzhou)</p>
+                    <div class="img-container glow-border rounded-xl border border-purple-500/25 shadow-xl" onclick="openLightbox('./Central%20-Xiajing.png')" title="Click to enlarge — Central Prefecture map">
+                        <img src="./Central%20-Xiajing.png" alt="Map of Central Prefecture — Zhongzhou" class="w-full h-auto rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-10 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-map text-4xl text-purple-400/50 mb-2"></i><p class="text-slate-400 text-xs">Prefecture Map: Zhongzhou</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-2 italic">Heartland — Xiajing capital, Dragon Vein Nexus, Ziggurat, Library Annex, Ashen Canals, Examination Yards, Cloud-Hub, Jade Screen Avenue, Cultivation Gardens.</p>
+                </div>
+
+                <!-- Eastern Prefecture -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-5 framework-card">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-map mr-1"></i>Eastern Prefecture (Donghai)</p>
+                    <div class="img-container glow-border rounded-xl border border-purple-500/25 shadow-xl" onclick="openLightbox('./Eastern%20-%20Donghai.png')" title="Click to enlarge — Eastern Prefecture map">
+                        <img src="./Eastern%20-%20Donghai.png" alt="Map of Eastern Prefecture — Donghai" class="w-full h-auto rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-10 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-map text-4xl text-purple-400/50 mb-2"></i><p class="text-slate-400 text-xs">Prefecture Map: Donghai</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-2 italic">Heart of Water Chen — Port of Donghai, Naval Cultivation Academies, Shipyards, Pearl River Delta, Federation Canal, Cloud-Ship routes, Great Ocean access.</p>
+                </div>
+
+                <!-- Northeastern Prefecture -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-5 framework-card">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-map mr-1"></i>Northeastern Prefecture (Liaodong)</p>
+                    <div class="img-container glow-border rounded-xl border border-purple-500/25 shadow-xl" onclick="openLightbox('./Northeastern%20-%20Liaodong.png')" title="Click to enlarge — Northeastern Prefecture map">
+                        <img src="./Northeastern%20-%20Liaodong.png" alt="Map of Northeastern Prefecture — Liaodong" class="w-full h-auto rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-10 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-map text-4xl text-purple-400/50 mb-2"></i><p class="text-slate-400 text-xs">Prefecture Map: Liaodong</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-2 italic">Mixed Forests — Liaodong City, Liao River Valley, Ziggurat of Calculation, Great Divine Sense Library, lumber camps, fur trading posts, beast-taming grounds.</p>
+                </div>
+
+                <!-- Southeastern Prefecture -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-5 framework-card">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-map mr-1"></i>Southeastern Prefecture (Wuyue)</p>
+                    <div class="img-container glow-border rounded-xl border border-purple-500/25 shadow-xl" onclick="openLightbox('./Southeastern%20-%20Wuyue.png')" title="Click to enlarge — Southeastern Prefecture map">
+                        <img src="./Southeastern%20-%20Wuyue.png" alt="Map of Southeastern Prefecture — Wuyue" class="w-full h-auto rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-10 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-map text-4xl text-purple-400/50 mb-2"></i><p class="text-slate-400 text-xs">Prefecture Map: Wuyue</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-2 italic">Silk & Canals — Wuyue City, Mount Lu Lian, Divine Sense Library, Grand Canal network, Silk Workshops, West Lake, Thousand-Li Highway, Great Northern Wall.</p>
+                </div>
+
+                <!-- Southern Prefecture -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-5 framework-card">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-map mr-1"></i>Southern Prefecture (Nanping)</p>
+                    <div class="img-container glow-border rounded-xl border border-purple-500/25 shadow-xl" onclick="openLightbox('./Southern-Nanping.png')" title="Click to enlarge — Southern Prefecture map">
+                        <img src="./Southern-Nanping.png" alt="Map of Southern Prefecture — Nanping" class="w-full h-auto rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-10 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-map text-4xl text-purple-400/50 mb-2"></i><p class="text-slate-400 text-xs">Prefecture Map: Nanping</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-2 italic">Subtropical — Nanping City, Rice Terraces, Poisonous Forests, Tang Clan Compound, Medicinal Herb Gardens, tea cultivation, terraced farming.</p>
+                </div>
+
+                <!-- Southwestern Prefecture -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-5 framework-card">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-map mr-1"></i>Southwestern Prefecture (Bashu)</p>
+                    <div class="img-container glow-border rounded-xl border border-purple-500/25 shadow-xl" onclick="openLightbox('./Southwestern%20-%20Bashu.png')" title="Click to enlarge — Southwestern Prefecture map">
+                        <img src="./Southwestern%20-%20Bashu.png" alt="Map of Southwestern Prefecture — Bashu" class="w-full h-auto rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-10 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-map text-4xl text-purple-400/50 mb-2"></i><p class="text-slate-400 text-xs">Prefecture Map: Bashu</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-2 italic">Alchemy & Hidden Sects — Bashu City (Alembic Capital), Mount Qingcheng (Mystic Sect), Mount Wu (Wood Sect), Tang Clan Compound, Sichuan Basin, hidden valleys.</p>
+                </div>
+
+                <!-- Western Prefecture -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-5 framework-card">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-map mr-1"></i>Western Prefecture (Xiguan)</p>
+                    <div class="img-container glow-border rounded-xl border border-purple-500/25 shadow-xl" onclick="openLightbox('./Western-Xiguan.png')" title="Click to enlarge — Western Prefecture map">
+                        <img src="./Western-Xiguan.png" alt="Map of Western Prefecture — Xiguan" class="w-full h-auto rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-10 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-map text-4xl text-purple-400/50 mb-2"></i><p class="text-slate-400 text-xs">Prefecture Map: Xiguan</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-2 italic">Kunlun Range — Xiguan Fortress, Jade Mines, Mount Hua Sect, Forging Valley, Kunlun Springs, Yellow River source, arid plateaus, sword cultivation.</p>
+                </div>
+
+                <!-- Northern Prefecture -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-5 framework-card md:col-span-2 lg:col-span-3 max-w-lg mx-auto">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-map mr-1"></i>Northern Prefecture (Beiguan)</p>
+                    <div class="img-container glow-border rounded-xl border border-purple-500/25 shadow-xl" onclick="openLightbox('./Northern%20-%20Beiguan%20(2).jpeg')" title="Click to enlarge — Northern Prefecture map">
+                        <img src="./Northern%20-%20Beiguan%20(2).jpeg" alt="Map of Northern Prefecture — Beiguan" class="w-full h-auto rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-10 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-map text-4xl text-purple-400/50 mb-2"></i><p class="text-slate-400 text-xs">Prefecture Map: Beiguan</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-2 italic">Frozen North — Beiguan Fortress, Great Northern Wall, Mount Frostguard, Iron Mountains, Lake Qaltan, Frost Cultivation Grounds, Windhorse Pastures, Winter War Academy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cartographic Archives -->
+    <section class="py-12 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold mb-8 fantasy-font text-amber-400 text-center"><i class="fas fa-images mr-2"></i>Cartographic Archives</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Zhungguo.png')" style="cursor:zoom-in;"><i class="fas fa-globe-americas text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Zhongguo</h3><p class="text-slate-500 text-xs">Overview</p></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Zhungguo_Xiajing.png')" style="cursor:zoom-in;"><i class="fas fa-city text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Xiajing</h3><p class="text-slate-500 text-xs">Capital</p></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Zhungguo_Xi%20Dynasty%20Era.png')" style="cursor:zoom-in;"><i class="fas fa-dragon text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Xi Dynasty</h3><p class="text-slate-500 text-xs">Era</p></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Zhungguo_Five%20Kingdoms%20Era.png')" style="cursor:zoom-in;"><i class="fas fa-chess text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">5 Kingdoms</h3><p class="text-slate-500 text-xs">Era</p></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Zhongguo%20_%20Ming%20Dynasty.jpeg')" style="cursor:zoom-in;"><i class="fas fa-sun text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Ming Dyn.</h3><p class="text-slate-500 text-xs">Era</p></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Central%20-Xiajing.png')" style="cursor:zoom-in;"><i class="fas fa-map text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Zhongzhou</h3><p class="text-slate-500 text-xs">Central</p></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Eastern%20-%20Donghai.png')" style="cursor:zoom-in;"><i class="fas fa-map text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Donghai</h3><p class="text-slate-500 text-xs">Eastern</p></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Northeastern%20-%20Liaodong.png')" style="cursor:zoom-in;"><i class="fas fa-map text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Liaodong</h3><p class="text-slate-500 text-xs">NE</p></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Southeastern%20-%20Wuyue.png')" style="cursor:zoom-in;"><i class="fas fa-map text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Wuyue</h3><p class="text-slate-500 text-xs">SE</p></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Southern-Nanping.png')" style="cursor:zoom-in;"><i class="fas fa-map text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Nanping</h3><p class="text-slate-500 text-xs">Southern</p></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Southwestern%20-%20Bashu.png')" style="cursor:zoom-in;"><i class="fas fa-map text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Bashu</h3><p class="text-slate-500 text-xs">SW</p></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Western-Xiguan.png')" style="cursor:zoom-in;"><i class="fas fa-map text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Xiguan</h3><p class="text-slate-500 text-xs">Western</p></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Northern%20-%20Beiguan%20(2).jpeg')" style="cursor:zoom-in;"><i class="fas fa-map text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Beiguan</h3><p class="text-slate-500 text-xs">Northern</p></div>
             </div>
         </div>
     </section>
@@ -370,18 +479,9 @@
     <footer class="bg-slate-900 border-t border-slate-800 py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="flex items-center space-x-2 mb-4 md:mb-0">
-                    <i class="fas fa-tree text-eternal-emerald text-xl"></i>
-                    <span class="fantasy-font text-lg font-bold text-eternal-gold">Eternal Trees Saga</span>
-                </div>
-                <div class="text-slate-500 text-sm">
-                    <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
-                </div>
-                <div class="flex space-x-4 mt-4 md:mt-0">
-                    <a href="index.html" class="text-slate-400 hover:text-eternal-gold transition">Home</a>
-                    <a href="eastern-factions.html" class="text-slate-400 hover:text-eternal-amber transition">Eastern</a>
-                    <a href="western-factions.html" class="text-slate-400 hover:text-eternal-purple transition">Western</a>
-                </div>
+                <div class="flex items-center space-x-2 mb-4 md:mb-0"><i class="fas fa-tree text-emerald-400 text-xl"></i><span class="fantasy-font text-lg font-bold text-amber-400">Eternal Trees Saga</span></div>
+                <div class="text-slate-500 text-sm"><p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p></div>
+                <div class="flex space-x-4 mt-4 md:mt-0"><a href="index.html" class="text-slate-400 hover:text-amber-400 transition">Home</a><a href="eastern-factions.html" class="text-slate-400 hover:text-purple-400 transition">Western</a><a href="western-factions.html" class="text-slate-400 hover:text-amber-400 transition">Eastern</a></div>
             </div>
         </div>
     </footer>
@@ -389,9 +489,15 @@
     <script>
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+        function openLightbox(src) { lightboxImg.src = src; lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+        lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
+        lightboxClose.addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox(); });
     </script>
 </body>
 </html>

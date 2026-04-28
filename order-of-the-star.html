@@ -4,49 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order of the Star | Eternal Trees Saga Wiki</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#0f172a',
-                        secondary: '#1e293b',
-                        accent: '#0d9488',
-                        'accent-light': '#14b8a6',
-                        gold: '#fbbf24',
-                        'gold-light': '#fcd34d',
-                        dark: '#020617',
-                        'dark-light': '#1e293b',
-                        radiant: '#fbbf24',
-                        shadow: '#6366f1',
-                        eclipse: '#a855f7'
-                    },
-                    fontFamily: {
-                        'heading': ['Cinzel', 'serif'],
-                        'body': ['Inter', 'sans-serif']
-                    }
-                }
-            }
-        }
+    <script src="https://cdn.tailwindcss.com">
     </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            background: #0f172a;
             min-height: 100vh;
         }
         .fantasy-heading {
             font-family: 'Cinzel', serif;
         }
         .card-hover {
-            transition: all 0.3s ease;
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .card-hover:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(251, 191, 36, 0.2);
         }
         .framework-card {
             background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
@@ -61,76 +37,183 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .nav-link {
-            position: relative;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #0d9488;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        .tab-btn {
-            transition: all 0.3s ease;
-        }
-        .tab-btn.active {
-            background: linear-gradient(135deg, #fbbf24 0%, #a855f7 100%);
-            color: white;
-        }
         .house-card {
             background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
             border: 1px solid rgba(251, 191, 36, 0.2);
         }
-        .house-radiant { border-color: rgba(251, 191, 36, 0.4); }
-        .house-shadow { border-color: rgba(99, 102, 241, 0.4); }
-        .house-eclipse { border-color: rgba(168, 85, 247, 0.4); }
-        .house-beast { border-color: rgba(34, 197, 94, 0.4); }
+        .house-radiant {
+            border-color: rgba(251, 191, 36, 0.4);
+        }
+        .house-shadow {
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+        .house-eclipse {
+            border-color: rgba(168, 85, 247, 0.4);
+        }
+        .house-beast {
+            border-color: rgba(34, 197, 94, 0.4);
+        }
+
+        /* Lightbox */
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+            cursor: zoom-out;
+        }
+        .lightbox-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .lightbox-overlay img {
+            max-width: 94vw;
+            max-height: 94vh;
+            border-radius: 12px;
+            box-shadow: 0 0 80px rgba(251, 191, 36, 0.4);
+            object-fit: contain;
+            transform: scale(0.9);
+            transition: transform 0.35s ease;
+            cursor: default;
+        }
+        .lightbox-overlay.active img {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            font-size: 2.4rem;
+            color: #fbbf24;
+            cursor: pointer;
+            z-index: 101;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        .lightbox-close:hover {
+            color: #fcd34d;
+        }
+
+        /* Image container */
+        .img-container {
+            position: relative;
+            cursor: zoom-in;
+            overflow: hidden;
+            border-radius: 16px;
+            display: inline-block;
+            width: 100%;
+        }
+        .img-container img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .img-container:hover img {
+            transform: scale(1.04);
+        }
+        .img-zoom-hint {
+            position: absolute;
+            bottom: 16px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #fbbf24;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            opacity: 0;
+            letter-spacing: 0.5px;
+        }
+        .img-container:hover .img-zoom-hint {
+            opacity: 1;
+        }
+
+        /* Glow border */
+        .glow-border {
+            position: relative;
+        }
+        .glow-border::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 18px;
+            padding: 2px;
+            background: linear-gradient(135deg, #fbbf2433, #a855f766, #fbbf2433);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            transition: opacity 0.4s;
+            opacity: 0.5;
+        }
+        .img-container:hover .glow-border::after {
+            opacity: 1;
+        }
+        .img-fallback {
+            display: none;
+        }
+        @keyframes flamePulse {
+            0%,
+            100% {
+                box-shadow: 0 0 12px #fbbf2444;
+            }
+            50% {
+                box-shadow: 0 0 28px #fbbf2499;
+            }
+        }
     </style>
 </head>
 <body class="text-gray-100">
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox-overlay">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img src="" alt="Enlarged view" id="lightboxImg">
+    </div>
+
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-primary/95 backdrop-blur-md border-b border-accent/20">
+    <nav class="fixed w-full z-50 bg-slate-900/95 backdrop-blur-md border-b border-amber-500/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center space-x-3">
-                    <i class="fas fa-tree text-accent text-2xl"></i>
+                    <i class="fas fa-tree text-emerald-400 text-2xl"></i>
                     <span class="fantasy-heading text-xl font-bold gradient-text">Eternal Trees Saga</span>
                 </div>
                 <div class="hidden md:flex items-center space-x-6">
-                    <a href="index.html" class="nav-link text-gray-300 hover:text-accent transition">Home</a>
-                    <a href="key-figures.html" class="nav-link text-gray-300 hover:text-accent transition">Key Figures</a>
-                    <a href="places.html" class="nav-link text-gray-300 hover:text-accent transition">Places</a>
-                    <a href="factions.html" class="nav-link text-gray-300 hover:text-accent transition">Factions</a>
-                    <a href="covert-orders.html" class="nav-link text-accent-light transition">Covert Orders</a>
-                    <a href="timelines.html" class="nav-link text-gray-300 hover:text-accent transition">Timelines</a>
+                    <a href="index.html" class="text-gray-300 hover:text-amber-400 transition">Home</a>
+                    <a href="key-figures.html" class="text-gray-300 hover:text-amber-400 transition">Key Figures</a>
+                    <a href="places.html" class="text-gray-300 hover:text-amber-400 transition">Places</a>
+                    <a href="eastern-factions.html" class="text-gray-300 hover:text-amber-400 transition">Eastern Factions</a>
+                    <a href="eastern-factions.html" class="text-amber-400 transition">Covert Orders</a>
+                    <a href="timeline.html" class="text-gray-300 hover:text-amber-400 transition">Timelines</a>
                 </div>
-                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-accent">
+                <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-amber-400">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-secondary border-t border-accent/20">
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800 border-t border-amber-500/20">
             <div class="px-4 py-3 space-y-2">
-                <a href="index.html" class="block py-2 text-gray-300 hover:text-accent">Home</a>
-                <a href="key-figures.html" class="block py-2 text-gray-300 hover:text-accent">Key Figures</a>
-                <a href="places.html" class="block py-2 text-gray-300 hover:text-accent">Places</a>
-                <a href="factions.html" class="block py-2 text-gray-300 hover:text-accent">Factions</a>
-                <a href="covert-orders.html" class="block py-2 text-accent-light">Covert Orders</a>
-                <a href="timelines.html" class="block py-2 text-gray-300 hover:text-accent">Timelines</a>
+                <a href="index.html" class="block py-2 text-gray-300 hover:text-amber-400">Home</a>
+                <a href="key-figures.html" class="block py-2 text-gray-300 hover:text-amber-400">Key Figures</a>
+                <a href="places.html" class="block py-2 text-gray-300 hover:text-amber-400">Places</a>
+                <a href="eastern-factions.html" class="block py-2 text-gray-300 hover:text-amber-400">Eastern Factions</a>
+                <a href="eastern-factions.html" class="block py-2 text-amber-400">Covert Orders</a>
+                <a href="timeline.html" class="block py-2 text-gray-300 hover:text-amber-400">Timelines</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="relative pt-24 pb-12">
-        <div class="absolute inset-0 bg-gradient-to-b from-amber-900/30 via-primary to-primary"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-amber-900/30 via-slate-900 to-slate-900"></div>
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-amber-600/30 to-purple-600/30 border-2 border-amber-400/50 mb-6">
@@ -146,7 +229,7 @@
     <!-- Overview Section -->
     <section class="py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-secondary/50 rounded-xl p-8 border border-amber-500/20">
+            <div class="bg-slate-800/50 rounded-xl p-8 border border-amber-500/20">
                 <h2 class="fantasy-heading text-3xl font-bold text-white mb-6">
                     <i class="fas fa-info-circle text-amber-500 mr-3"></i>Overview
                 </h2>
@@ -156,23 +239,23 @@
                         <p class="text-gray-300 leading-relaxed">Unlike conventional military orders, the Order of the Star trains its members in both Light and Shadow magics simultaneously, creating warriors capable of wielding what they call "Eclipse Power"—the seamless synthesis of illumination and darkness. Their motto "Shadow supports Light" reflects their operational philosophy: they work in darkness so that the light may shine brighter.</p>
                     </div>
                     <div class="space-y-4">
-                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                        <div class="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg">
                             <span class="text-gray-400">Founded</span>
                             <span class="text-amber-500 font-bold">Year 1150</span>
                         </div>
-                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                        <div class="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg">
                             <span class="text-gray-400">Founder</span>
                             <span class="text-gray-200">Celestine (Martyr-Saint)</span>
                         </div>
-                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                        <div class="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg">
                             <span class="text-gray-400">Headquarters</span>
                             <span class="text-gray-200">Radiant Bastion, Lux Aeterna</span>
                         </div>
-                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                        <div class="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg">
                             <span class="text-gray-400">Doctrine</span>
                             <span class="text-purple-400 font-bold">Eclipse Doctrine</span>
                         </div>
-                        <div class="flex items-center justify-between p-4 bg-primary/50 rounded-lg">
+                        <div class="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg">
                             <span class="text-gray-400">Core Magic</span>
                             <span class="text-gray-200">Light/Shadow Synthesis</span>
                         </div>
@@ -188,7 +271,7 @@
             <h2 class="fantasy-heading text-3xl font-bold text-white mb-8">
                 <i class="fas fa-scroll text-amber-500 mr-3"></i>Historical Roots: From Order of Templars
             </h2>
-            <div class="bg-secondary/50 rounded-xl p-8 border border-amber-500/20">
+            <div class="bg-slate-800/50 rounded-xl p-8 border border-amber-500/20">
                 <div class="grid md:grid-cols-2 gap-8">
                     <div>
                         <h3 class="fantasy-heading text-xl font-bold text-amber-400 mb-4">Primordial Origins (Abs. 1,900-2,000)</h3>
@@ -214,7 +297,6 @@
                 <i class="fas fa-chess-rook text-amber-500 mr-3"></i>The Four Houses
             </h2>
             <div class="grid md:grid-cols-2 gap-6">
-                <!-- Radiant House -->
                 <div class="house-card house-radiant rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
                         <div class="w-14 h-14 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
@@ -232,8 +314,6 @@
                         <span class="px-3 py-1 bg-amber-900/30 rounded-full text-xs text-amber-400">Protection</span>
                     </div>
                 </div>
-
-                <!-- Shadow House -->
                 <div class="house-card house-shadow rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
                         <div class="w-14 h-14 rounded-lg bg-indigo-900/30 flex items-center justify-center mr-4">
@@ -251,8 +331,6 @@
                         <span class="px-3 py-1 bg-indigo-900/30 rounded-full text-xs text-indigo-400">Assassination</span>
                     </div>
                 </div>
-
-                <!-- Eclipse House -->
                 <div class="house-card house-eclipse rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
                         <div class="w-14 h-14 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
@@ -270,15 +348,13 @@
                         <span class="px-3 py-1 bg-purple-900/30 rounded-full text-xs text-purple-400">Strategy</span>
                     </div>
                 </div>
-
-                <!-- Beast House -->
                 <div class="house-card house-beast rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
                         <div class="w-14 h-14 rounded-lg bg-green-900/30 flex items-center justify-center mr-4">
                             <i class="fas fa-dragon text-green-400 text-2xl"></i>
                         </div>
                         <div>
-                            <h3="fantasy-heading text-xl font-bold text-green-400">House of Beasts</h3>
+                            <h3 class="fantasy-heading text-xl font-bold text-green-400">House of Beasts</h3>
                             <p class="text-gray-500 text-sm">Creature Bond</p>
                         </div>
                     </div>
@@ -300,7 +376,7 @@
                 <i class="fas fa-cube text-amber-500 mr-3"></i>11 Frameworks Analysis
             </h2>
             <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">Comprehensive analysis of the Order of the Star through eleven interconnected frameworks, revealing the intricate structure of Lux Imperio's most secretive military order.</p>
-            
+
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Historical Framework -->
                 <div class="framework-card rounded-xl p-6 card-hover">
@@ -310,9 +386,8 @@
                         </div>
                         <h3 class="fantasy-heading text-xl font-bold text-white">Historical</h3>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Order's formal founding in Year 1150 by Celestine represents the culmination of over a thousand years of secret preparation. Celestine, a former Lux Imperio paladin, discovered ancient texts in the Catacombs of the Unnamed that revealed Luminara's heretical teachings. To prove the Eclipse Doctrine's validity, she publicly demonstrated Light-Shadow synthesis before the Lux Council, knowing they would execute her for heresy. Her martyrdom created the catalyst for the Order's formation, as her followers retreated to the pre-prepared Radiant Bastion. The Order has since operated for 850 years, serving as Lux Imperio's hidden guardians while maintaining absolute secrecy about their true nature.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Order's formal founding in Year 1150 by Celestine represents the culmination of over a thousand years of secret preparation. Celestine, a former Lux Imperio paladin, discovered ancient texts in the Catacombs of the Unnamed that revealed Luminara's heretical teachings. To prove the Eclipse Doctrine's validity, she publicly demonstrated Light-Shadow synthesis before the Lux Council, knowing they would execute her for heresy. Her martyrdom created the catalyst for the Order's formation, as her followers retreated to the pre-prepared Radiant Bastion. The Order has since operated for 850 years, serving as Lux Imperio's hidden guardians.</p>
                 </div>
-
                 <!-- Political Framework -->
                 <div class="framework-card rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
@@ -321,9 +396,8 @@
                         </div>
                         <h3 class="fantasy-heading text-xl font-bold text-white">Political</h3>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">Politically, the Order maintains a dual existence: publicly, they are honored as a religious-military order dedicated to Lux Aeterna's protection; secretly, they answer only to the Eclipse Council and their own interpretation of Celestine's will. The Order has infiltrated every level of Lux Imperio government, with Eclipse House members holding key advisory positions. They practice "shadow governance"—influencing decisions without appearing to do so. The Order's political philosophy centers on "necessary heresy": they believe that to truly serve the light, one must be willing to embrace the darkness. This creates complex relationships with other factions, particularly the Guardian Domain's Octagram, who view the Order with suspicion.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Politically, the Order maintains a dual existence: publicly, they are honored as a religious-military order dedicated to Lux Aeterna's protection; secretly, they answer only to the Eclipse Council and their own interpretation of Celestine's will. The Order has infiltrated every level of Lux Imperio government, with Eclipse House members holding key advisory positions. They practice "shadow governance"—influencing decisions without appearing to do so.</p>
                 </div>
-
                 <!-- Mental Framework -->
                 <div class="framework-card rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
@@ -332,9 +406,8 @@
                         </div>
                         <h3 class="fantasy-heading text-xl font-bold text-white">Mental</h3>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Order's mental conditioning is among the most rigorous in existence. Recruits undergo "Duality Training" from their first day—learning to hold contradictory truths simultaneously. They are taught that light without shadow is blinding, and shadow without light is consuming. This creates a unique psychological profile: Order members tend to be comfortable with ambiguity, capable of seeing multiple perspectives, and resistant to ideological extremism. However, this same training can lead to moral flexibility that outsiders find disturbing. The highest-ranked Eclipse members undergo "Unity Meditation," a dangerous practice that seeks to dissolve the mental barrier between light and dark aspects of the self. Failures of this meditation have been known to cause madness.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Order's mental conditioning is among the most rigorous in existence. Recruits undergo "Duality Training" from their first day—learning to hold contradictory truths simultaneously. They are taught that light without shadow is blinding, and shadow without light is consuming. This creates a unique psychological profile: Order members tend to be comfortable with ambiguity, capable of seeing multiple perspectives, and resistant to ideological extremism.</p>
                 </div>
-
                 <!-- Spiritual Framework -->
                 <div class="framework-card rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
@@ -343,9 +416,8 @@
                         </div>
                         <h3 class="fantasy-heading text-xl font-bold text-white">Spiritual</h3>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Order's spirituality centers on the worship of Celestine as a martyred saint who revealed divine truth through sacrifice. Their theology holds that the divine exists not in pure light or pure darkness, but in the moment of eclipse when both are present. Rituals are conducted at solar and lunar eclipses, considered the most sacred times. Members maintain personal "Duality Altars" featuring both lit candles and shadow vessels. The highest spiritual achievement is the "Eclipse Vision"—a mystical experience where the practitioner perceives the unity of all things. The Order also venerates Luminara the Heretic as a prophet and maintains secret shrines in the Catacombs where both figures are honored.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Order's spirituality centers on the worship of Celestine as a martyred saint who revealed divine truth through sacrifice. Their theology holds that the divine exists not in pure light or pure darkness, but in the moment of eclipse when both are present. Rituals are conducted at solar and lunar eclipses, considered the most sacred times. Members maintain personal "Duality Altars" featuring both lit candles and shadow vessels.</p>
                 </div>
-
                 <!-- Social Framework -->
                 <div class="framework-card rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
@@ -354,9 +426,8 @@
                         </div>
                         <h3 class="fantasy-heading text-xl font-bold text-white">Social</h3>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">Socially, the Order operates as an extended family with Celestine as its spiritual mother. Members address each other as "brother" or "sister" regardless of rank. The House system creates sub-communities with distinct cultures: Radiant House members tend to be outgoing and socially adept, Shadow House members are reserved and observant, Eclipse House members are enigmatic leaders, and Beast House members form deep bonds with their creature companions. Marriage within the Order is encouraged to preserve magical bloodlines, but inter-House unions are carefully regulated to prevent conflicts. The Order maintains strict secrecy protocols—members may not reveal their affiliation to outsiders, creating a hidden society within Lux Imperio's broader culture.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Socially, the Order operates as an extended family with Celestine as its spiritual mother. Members address each other as "brother" or "sister" regardless of rank. The House system creates sub-communities with distinct cultures: Radiant House members tend to be outgoing and socially adept, Shadow House members are reserved and observant, Eclipse House members are enigmatic leaders, and Beast House members form deep bonds with their creature companions.</p>
                 </div>
-
                 <!-- Cultural Framework -->
                 <div class="framework-card rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
@@ -365,9 +436,8 @@
                         </div>
                         <h3 class="fantasy-heading text-xl font-bold text-white">Cultural</h3>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">Order culture is defined by dual symbolism—every artistic work, architectural element, and ritual object incorporates both light and shadow imagery. Their music uses harmonic contrasts between major and minor keys to represent duality. Literature focuses on themes of hidden truth, sacrifice, and the reconciliation of opposites. The Order maintains a secret library in the Radiant Bastion containing texts banned by the Lux Council, including Luminara's original writings. Dance and martial arts are combined in the "Eclipse Forms"—fluid movements that shift between open, expansive gestures and closed, defensive postures. Cultural festivals occur at each eclipse, featuring elaborate ceremonies that reenact Celestine's martyrdom.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Order culture is defined by dual symbolism—every artistic work, architectural element, and ritual object incorporates both light and shadow imagery. Their music uses harmonic contrasts between major and minor keys to represent duality. Literature focuses on themes of hidden truth, sacrifice, and the reconciliation of opposites. The Order maintains a secret library in the Radiant Bastion containing texts banned by the Lux Council.</p>
                 </div>
-
                 <!-- Economical Framework -->
                 <div class="framework-card rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
@@ -376,9 +446,8 @@
                         </div>
                         <h3 class="fantasy-heading text-xl font-bold text-white">Economical</h3>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Order's economy operates through multiple channels. Publicly, they receive tithes from Lux Imperio citizens grateful for their protection and donations from noble families seeking favor. Secretly, they control several merchant houses and banking operations that fund their covert activities. The Shadow House maintains networks of informants who provide intelligence on economic opportunities, while the Beast House breeds and sells rare creatures to select buyers. The Order also recovers treasures from ancient sites, some dating to the Primordial Era, which are either used to fund operations or studied for magical knowledge. Each House maintains its own treasury, with the Eclipse Council overseeing overall financial strategy. The Order's total wealth is unknown but estimated to rival that of minor nations.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">The Order's economy operates through multiple channels. Publicly, they receive tithes from Lux Imperio citizens grateful for their protection and donations from noble families seeking favor. Secretly, they control several merchant houses and banking operations that fund their covert activities. The Shadow House maintains networks of informants who provide intelligence on economic opportunities, while the Beast House breeds and sells rare creatures to select buyers.</p>
                 </div>
-
                 <!-- Physiological Framework -->
                 <div class="framework-card rounded-xl p-6 card-hover">
                     <div class="flex items-center mb-4">
@@ -387,153 +456,235 @@
                         </div>
                         <h3 class="fantasy-heading text-xl font-bold text-white">Physiological</h3>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">Order training produces distinctive physiological adaptations. Light magic practitioners develop enhanced visual acuity and resistance to bright light, while Shadow magic users gain superior night vision and the ability to move silently. Eclipse members exhibit both sets of adaptations along with unique traits: their eyes often show heterochromia (one light, one dark), and they can voluntarily dilate or contract their pupils to extreme degrees. The Order maintains extensive knowledge of alchemical substances that enhance magical ability, though these are used sparingly due to side effects. Physical training emphasizes agility and endurance over brute strength, reflecting the Order's preference for precision over power. Dietary practices include fasting during eclipses and consuming foods believed to balance "light" and "dark" humors.</p>
-                </div>
-
-                <!-- Territorial Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-map-marked-alt text-amber-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Territorial</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Order's primary territory is the Radiant Bastion, a vast underground complex beneath Lux Aeterna that predates the city's current foundations. Built in stages over thousands of years, it incorporates sections of the original Catacombs of the Unnamed along with more recent excavations. The Bastion is organized into four quadrants corresponding to the Houses, with a central Eclipse Chamber where the Council meets. Surface-level safe houses exist throughout Lux Imperio territory, each disguised as ordinary buildings. The Order also maintains hidden outposts near key locations: the Twilight Vale (a region where light and shadow exist in permanent balance), the Luminara Memorial (Celestine's execution site), and various ancient ruins containing Primordial Era artifacts. All territories are protected by layered magical defenses and physical traps.</p>
-                </div>
-
-                <!-- Technological Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-telescope text-amber-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Technological</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Order's technology focuses on magical equipment that channels or enhances Light-Shadow synthesis. Their most prized creations are Eclipse Crystals—artifacts that can store both types of magic and release them in controlled combinations. Armor is typically lightweight and enchanted with both protective light shields and shadow-step abilities. Weapons include the Eclipse Blades (swords that can switch between radiating light and absorbing it) and the Shadow Lances (projectile weapons that strike from darkness). Communication devices use paired light-shadow crystals that vibrate when their mate is activated. The Order also maintains extensive astronomical equipment to predict eclipses and study celestial patterns they believe influence magical potency. Their most advanced technology, developed only in recent centuries, allows temporary creation of artificial eclipse conditions in controlled areas.</p>
-                </div>
-
-                <!-- Military Framework -->
-                <div class="framework-card rounded-xl p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-user-secret text-amber-500 text-xl"></i>
-                        </div>
-                        <h3 class="fantasy-heading text-xl font-bold text-white">Military</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed">The Order's military arm, the Eclipse Legions, represents one of the most formidable fighting forces in existence. Organized into House-based units with specialized roles, they emphasize coordination and tactical flexibility over individual prowess. Radiant Companies serve as shock troops and healers, Shadow Companies conduct infiltration and assassination, Eclipse Companies command mixed forces and handle strategic operations, and Beast Companies provide reconnaissance and cavalry support. The Legions train in combined-arms tactics that leverage the complementary strengths of each House. Their signature formation, the "Eclipse Wheel," surrounds enemies with alternating rings of light and shadow magic, disorienting and overwhelming them. Despite their power, the Legions are rarely deployed openly—the Order prefers to achieve objectives through subtle means, reserving military force for existential threats.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed">Order training produces distinctive physiological adaptations. Light magic practitioners develop enhanced visual acuity and resistance to bright light, while Shadow magic users gain superior night vision and the ability to move silently. Eclipse members exhibit both sets of adaptations along with unique traits: their eyes often show heterochromia (one light, one dark), and they can voluntarily dilate or contract their pupils to extreme degrees.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Eclipse Doctrine -->
+    <!-- Territorial Framework with Radiant Bastion Map -->
     <section class="py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-gradient-to-r from-amber-900/30 via-purple-900/30 to-indigo-900/30 rounded-xl p-8 border border-amber-500/30">
-                <h2 class="fantasy-heading text-3xl font-bold text-white mb-6 text-center">
-                    <i class="fas fa-adjust text-purple-400 mr-3"></i>The Eclipse Doctrine
-                </h2>
-                <div class="max-w-3xl mx-auto">
-                    <blockquote class="text-xl text-center text-gray-300 italic mb-6">
-                        "Shadow supports Light. Without darkness, we cannot see the stars. Without light, we cannot know the shadow's shape. Only in eclipse do we perceive truth."
-                    </blockquote>
-                    <p class="text-gray-400 leading-relaxed text-center mb-4">— Celestine, Final Words</p>
-                    <div class="grid md:grid-cols-3 gap-6 mt-8">
-                        <div class="text-center">
-                            <div class="w-16 h-16 rounded-full bg-amber-900/30 flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-sun text-amber-500 text-2xl"></i>
-                            </div>
-                            <h4 class="fantasy-heading text-lg font-bold text-amber-400 mb-2">Light Illuminates</h4>
-                            <p class="text-gray-400 text-sm">Truth, knowledge, and protection come from the light. It reveals what is hidden and guides the way forward.</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-16 h-16 rounded-full bg-purple-900/30 flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-adjust text-purple-400 text-2xl"></i>
-                            </div>
-                            <h4 class="fantasy-heading text-lg font-bold text-purple-400 mb-2">Eclipse Unifies</h4>
-                            <p class="text-gray-400 text-sm">In the moment of eclipse, light and shadow become one. This is the sacred state all Order members seek.</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-16 h-16 rounded-full bg-indigo-900/30 flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-moon text-indigo-400 text-2xl"></i>
-                            </div>
-                            <h4 class="fantasy-heading text-lg font-bold text-indigo-400 mb-2">Shadow Supports</h4>
-                            <p class="text-gray-400 text-sm">Darkness is not evil—it is the foundation upon which light stands. Shadow enables light to shine brighter.</p>
-                        </div>
+            <div class="framework-card rounded-xl p-8 card-hover">
+                <div class="flex items-center mb-5">
+                    <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
+                        <i class="fas fa-map-marked-alt text-amber-500 text-xl"></i>
                     </div>
+                    <h3 class="fantasy-heading text-2xl font-bold text-white">Territorial Framework</h3>
+                </div>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4">The Order's primary territory is the <strong>Radiant Bastion</strong>, a vast underground complex beneath Lux Aeterna that predates the city's current foundations. Built in stages over thousands of years, it incorporates sections of the original Catacombs of the Unnamed along with more recent excavations. The Bastion is organized into four quadrants corresponding to the Houses, with a central Eclipse Chamber where the Council meets. Surface-level safe houses exist throughout Lux Imperio territory, each disguised as ordinary buildings. The Order also maintains hidden outposts near key locations: the Twilight Vale, the Luminara Memorial, and various ancient ruins containing Primordial Era artifacts.</p>
+                <p class="text-gray-300 text-sm leading-relaxed mb-4"><strong>The Radiant Bastion</strong> serves as both fortress and sanctuary. Its Grand Spire houses the Eclipse High Command, while the Paladin Barracks and training grounds occupy the East and West Wings. Below ground, the Catacombs of the Shadowblade contain secret archives and training facilities, and the Dimming Chamber provides Edge-cognition training for elite operatives.</p>
+
+                <!-- Radiant Bastion Map -->
+                <div class="mt-6 mb-4">
+                    <p class="text-amber-400 text-sm font-semibold mb-3"><i class="fas fa-fort-awesome mr-1"></i>Fortress Map — Radiant Bastion (Order of the Star Headquarters)</p>
+                    <div class="img-container glow-border rounded-2xl border border-amber-500/25 shadow-2xl max-w-3xl"
+                    onclick="openLightbox('./Radiant%20Bastion.jpeg')" title="Click to enlarge — Detailed Radiant Bastion map">
+                    <img
+                    src="./Radiant%20Bastion.jpeg"
+                    alt="Detailed map of the Radiant Bastion — Order of the Star headquarters"
+                    class="w-full h-auto rounded-2xl"
+                    loading="lazy"
+                    onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                    <div class="img-fallback flex-col items-center justify-center p-16 bg-slate-900/80 rounded-2xl text-center"
+                    style="display:none;">
+                    <i class="fas fa-map text-6xl text-amber-400/50 mb-4"></i>
+                    <p class="text-slate-400 text-sm">Fortress Map: Radiant Bastion</p>
+                    <p class="text-slate-500 text-xs mt-1">Place "<strong>Radiant Bastion.jpeg</strong>" in the same folder</p>
+                </div>
+                <div class="img-zoom-hint">
+                    <i class="fas fa-search-plus mr-1"></i>Click to enlarge
                 </div>
             </div>
+            <p class="text-slate-500 text-xs mt-2 italic">Detailed cartography of the Order's underground fortress: Grand Spire (Eclipse High Command), East & West Wings, Paladin Gate Guards, Paladin Barracks, Paladin Channel of Dimmed Radiance (Eclipse Phalanx training ground), Light-barrier, Armory, The Shadow Chapel (initiations & shadow rituals), Beacon Tower (communication & early warning light-signal network), Catacombs of the Shadowblade (training & secret archives), The Dimming Chamber (Edge-cognition training), defensive towers, gateways, catacomb paths, wards, and secret tunnels.</p>
         </div>
-    </section>
 
-    <!-- Military Structure -->
-    <section class="py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="fantasy-heading text-3xl font-bold text-white mb-8">
-                <i class="fas fa-shield-alt text-amber-500 mr-3"></i>Eclipse Legions Structure
+        <p class="text-gray-300 text-sm"><strong>Key Features (from map):</strong></p>
+        <ul class="text-gray-300 text-sm mb-3 ml-4 space-y-1">
+            <li>• <strong>Grand Spire:</strong> Eclipse High Command — the Order's supreme strategic center</li>
+            <li>• <strong>East & West Wings:</strong> Housing Paladin Barracks and administrative chambers</li>
+            <li>• <strong>The Shadow Chapel:</strong> Sacred space for initiations, shadow rituals, and Eclipse Doctrine ceremonies</li>
+            <li>• <strong>Beacon Tower:</strong> Light-signal network hub for rapid communication across Lux Imperio</li>
+            <li>• <strong>Catacombs of the Shadowblade:</strong> Subterranean training grounds and secret archives</li>
+            <li>• <strong>The Dimming Chamber:</strong> Edge-cognition training facility for elite Eclipse operatives</li>
+            <li>• <strong>Paladin Channel of Dimmed Radiance:</strong> Eclipse Phalanx training ground for combined Light-Shadow combat</li>
+        </ul>
+        <p class="text-gray-300 text-sm"><strong>Defenses:</strong> Light-barrier wards, paladin gate guards, defensive towers, layered magical protections, secret tunnels for emergency evacuation, and catacomb paths connecting to the original Catacombs of the Unnamed.</p>
+    </div>
+</div>
+</section>
+
+<!-- Technological & Military Frameworks -->
+<section class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="framework-card rounded-xl p-6 card-hover">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
+                        <i class="fas fa-telescope text-amber-500 text-xl"></i>
+                    </div>
+                    <h3 class="fantasy-heading text-xl font-bold text-white">Technological</h3>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed">The Order's technology focuses on magical equipment that channels or enhances Light-Shadow synthesis. Their most prized creations are Eclipse Crystals—artifacts that can store both types of magic and release them in controlled combinations. Armor is typically lightweight and enchanted with both protective light shields and shadow-step abilities. Weapons include Eclipse Blades and Shadow Lances. Communication devices use paired light-shadow crystals that vibrate when their mate is activated. Their most advanced technology allows temporary creation of artificial eclipse conditions in controlled areas.</p>
+            </div>
+            <div class="framework-card rounded-xl p-6 card-hover">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-lg bg-amber-900/30 flex items-center justify-center mr-4">
+                        <i class="fas fa-user-secret text-amber-500 text-xl"></i>
+                    </div>
+                    <h3 class="fantasy-heading text-xl font-bold text-white">Military</h3>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed">The Order's military arm, the Eclipse Legions, represents one of the most formidable fighting forces in existence. Organized into House-based units with specialized roles, they emphasize coordination and tactical flexibility. Radiant Companies serve as shock troops and healers, Shadow Companies conduct infiltration and assassination, Eclipse Companies command mixed forces, and Beast Companies provide reconnaissance. Their signature formation, the "Eclipse Wheel," surrounds enemies with alternating rings of light and shadow magic, disorienting and overwhelming them.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Eclipse Doctrine -->
+<section class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-r from-amber-900/30 via-purple-900/30 to-indigo-900/30 rounded-xl p-8 border border-amber-500/30">
+            <h2 class="fantasy-heading text-3xl font-bold text-white mb-6 text-center">
+                <i class="fas fa-adjust text-purple-400 mr-3"></i>The Eclipse Doctrine
             </h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-secondary/50 rounded-xl p-6 border border-amber-500/20">
-                    <div class="text-center mb-4">
-                        <i class="fas fa-crown text-amber-500 text-4xl"></i>
+            <div class="max-w-3xl mx-auto">
+                <blockquote class="text-xl text-center text-gray-300 italic mb-6">
+                    "Shadow supports Light. Without darkness, we cannot see the stars. Without light, we cannot know the shadow's shape. Only in eclipse do we perceive truth."
+                </blockquote>
+                <p class="text-gray-400 leading-relaxed text-center mb-4">— Celestine, Final Words</p>
+                <div class="grid md:grid-cols-3 gap-6 mt-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 rounded-full bg-amber-900/30 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-sun text-amber-500 text-2xl"></i>
+                        </div>
+                        <h4 class="fantasy-heading text-lg font-bold text-amber-400 mb-2">Light Illuminates</h4>
+                        <p class="text-gray-400 text-sm">Truth, knowledge, and protection come from the light. It reveals what is hidden and guides the way forward.</p>
                     </div>
-                    <h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Eclipse Council</h3>
-                    <p class="text-gray-400 text-sm text-center">Supreme command composed of the four House Masters and the Eclipse Speaker who serves as tie-breaker.</p>
-                </div>
-                <div class="bg-secondary/50 rounded-xl p-6 border border-amber-500/20">
-                    <div class="text-center mb-4">
-                        <i class="fas fa-star text-purple-500 text-4xl"></i>
+                    <div class="text-center">
+                        <div class="w-16 h-16 rounded-full bg-purple-900/30 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-adjust text-purple-400 text-2xl"></i>
+                        </div>
+                        <h4 class="fantasy-heading text-lg font-bold text-purple-400 mb-2">Eclipse Unifies</h4>
+                        <p class="text-gray-400 text-sm">In the moment of eclipse, light and shadow become one. This is the sacred state all Order members seek.</p>
                     </div>
-                    <h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">House Masters</h3>
-                    <p class="text-gray-400 text-sm text-center">Each House is led by a Master who has achieved perfect Eclipse synthesis and commands their respective forces.</p>
-                </div>
-                <div class="bg-secondary/50 rounded-xl p-6 border border-amber-500/20">
-                    <div class="text-center mb-4">
-                        <i class="fas fa-users text-indigo-500 text-4xl"></i>
+                    <div class="text-center">
+                        <div class="w-16 h-16 rounded-full bg-indigo-900/30 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-moon text-indigo-400 text-2xl"></i>
+                        </div>
+                        <h4 class="fantasy-heading text-lg font-bold text-indigo-400 mb-2">Shadow Supports</h4>
+                        <p class="text-gray-400 text-sm">Darkness is not evil—it is the foundation upon which light stands. Shadow enables light to shine brighter.</p>
                     </div>
-                    <h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Company Captains</h3>
-                    <p class="text-gray-400 text-sm text-center">Veteran officers commanding units of 50-100 members, trained in both their House specialty and joint operations.</p>
-                </div>
-                <div class="bg-secondary/50 rounded-xl p-6 border border-amber-500/20">
-                    <div class="text-center mb-4">
-                        <i class="fas fa-user-shield text-green-500 text-4xl"></i>
-                    </div>
-                    <h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Eclipse Knights</h3>
-                    <p class="text-gray-400 text-sm text-center">The elite soldiers who have mastered their House's teachings and proven themselves in the Eclipse Trials.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="bg-dark border-t border-accent/20 mt-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="flex items-center space-x-3 mb-4 md:mb-0">
-                    <i class="fas fa-tree text-accent text-xl"></i>
-                    <span class="fantasy-heading text-lg font-bold gradient-text">Eternal Trees Saga</span>
-                </div>
-                <div class="flex space-x-6 text-sm text-gray-400">
-                    <a href="index.html" class="hover:text-accent transition">Home</a>
-                    <a href="key-figures.html" class="hover:text-accent transition">Key Figures</a>
-                    <a href="places.html" class="hover:text-accent transition">Places</a>
-                    <a href="factions.html" class="hover:text-accent transition">Factions</a>
-                </div>
+<!-- Military Structure -->
+<section class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="fantasy-heading text-3xl font-bold text-white mb-8">
+            <i class="fas fa-shield-alt text-amber-500 mr-3"></i>Eclipse Legions Structure
+        </h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-slate-800/50 rounded-xl p-6 border border-amber-500/20 card-hover">
+                <div class="text-center mb-4"><i class="fas fa-crown text-amber-500 text-4xl"></i></div>
+                <h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Eclipse Council</h3>
+                <p class="text-gray-400 text-sm text-center">Supreme command composed of the four House Masters and the Eclipse Speaker who serves as tie-breaker.</p>
             </div>
-            <div class="mt-6 pt-6 border-t border-gray-800 text-center text-sm text-gray-500">
-                <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
+            <div class="bg-slate-800/50 rounded-xl p-6 border border-amber-500/20 card-hover">
+                <div class="text-center mb-4"><i class="fas fa-star text-purple-500 text-4xl"></i></div>
+                <h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">House Masters</h3>
+                <p class="text-gray-400 text-sm text-center">Each House is led by a Master who has achieved perfect Eclipse synthesis and commands their respective forces.</p>
+            </div>
+            <div class="bg-slate-800/50 rounded-xl p-6 border border-amber-500/20 card-hover">
+                <div class="text-center mb-4"><i class="fas fa-users text-indigo-500 text-4xl"></i></div>
+                <h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Company Captains</h3>
+                <p class="text-gray-400 text-sm text-center">Veteran officers commanding units of 50-100 members, trained in both House specialty and joint operations.</p>
+            </div>
+            <div class="bg-slate-800/50 rounded-xl p-6 border border-amber-500/20 card-hover">
+                <div class="text-center mb-4"><i class="fas fa-user-shield text-green-500 text-4xl"></i></div>
+                <h3 class="fantasy-heading text-lg font-bold text-white text-center mb-2">Eclipse Knights</h3>
+                <p class="text-gray-400 text-sm text-center">The elite soldiers who have mastered their House's teachings and proven themselves in the Eclipse Trials.</p>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    </script>
+<!-- Image Gallery Summary -->
+<section class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="fantasy-heading text-2xl font-bold text-white mb-6">
+            <i class="fas fa-images text-amber-500 mr-2"></i>Cartographic Archives
+        </h2>
+        <div class="bg-slate-900/60 border border-slate-700 rounded-2xl p-5 text-center card-hover max-w-md"
+        onclick="openLightbox('./Radiant%20Bastion.jpeg')" style="cursor:zoom-in;">
+        <i class="fas fa-fort-awesome text-4xl text-amber-400 mb-3"></i>
+        <h3 class="font-bold text-slate-200 mb-1">Radiant Bastion Map</h3>
+        <p class="text-slate-400 text-xs">Order of the Star headquarters — Grand Spire, Shadow Chapel & Catacombs</p>
+        <span class="text-amber-400 text-xs mt-2 inline-block"><i class="fas fa-search-plus mr-1"></i>View full size</span>
+    </div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-950 border-t border-amber-500/20 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                <i class="fas fa-tree text-emerald-400 text-xl"></i>
+                <span class="fantasy-heading text-lg font-bold gradient-text">Eternal Trees Saga</span>
+            </div>
+            <div class="flex space-x-6 text-sm text-gray-400">
+                <a href="index.html" class="hover:text-amber-400 transition">Home</a>
+                <a href="key-figures.html" class="hover:text-amber-400 transition">Key Figures</a>
+                <a href="places.html" class="hover:text-amber-400 transition">Places</a>
+                <a href="eastern-factions.html" class="hover:text-amber-400 transition">Eastern Factions</a>
+            </div>
+        </div>
+        <div class="mt-6 pt-6 border-t border-gray-800 text-center text-sm text-gray-500">
+            <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    function openLightbox(src) {
+        lightboxImg.src = src;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+</script>
 </body>
 </html>

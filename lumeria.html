@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lumeria - Eternal Trees Saga Wiki</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script>
@@ -27,17 +28,189 @@
         }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; }
-        h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
-        .framework-card { transition: all 0.3s ease; }
-        .framework-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .subfaction-tab { transition: all 0.3s ease; }
-        .subfaction-tab.active { background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%); color: white; border-color: transparent; }
-        .subfaction-content { display: none; }
-        .subfaction-content.active { display: block; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+        }
+        h1,
+        h2,
+        h3,
+        .fantasy-font {
+            font-family: 'Cinzel', serif;
+        }
+        .framework-card {
+            transition: all 0.3s ease;
+        }
+        .framework-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .subfaction-tab {
+            transition: all 0.3s ease;
+        }
+        .subfaction-tab.active {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+            color: white;
+            border-color: transparent;
+        }
+        .subfaction-content {
+            display: none;
+        }
+        .subfaction-content.active {
+            display: block;
+        }
+
+        /* Map & Image Card Styles */
+        .map-card-img {
+            transition: transform 0.4s ease, filter 0.4s ease;
+            cursor: pointer;
+            filter: brightness(0.85) saturate(1.1);
+        }
+        .map-card:hover .map-card-img {
+            transform: scale(1.03);
+            filter: brightness(1) saturate(1.2);
+        }
+        .map-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .map-card .zoom-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(139, 92, 246, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            pointer-events: none;
+            border-radius: 0.75rem;
+        }
+        .map-card:hover .zoom-overlay {
+            background: rgba(139, 92, 246, 0.15);
+        }
+        .zoom-icon {
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-size: 3rem;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+        }
+        .map-card:hover .zoom-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Gallery card */
+        .gallery-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .gallery-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.2);
+            border-color: rgba(139, 92, 246, 0.6);
+        }
+        .gallery-card img {
+            transition: transform 0.5s ease;
+        }
+        .gallery-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.92);
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            cursor: pointer;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 95vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            cursor: default;
+            box-shadow: 0 0 60px rgba(139, 92, 246, 0.3);
+            animation: fadeInScale 0.3s ease;
+        }
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            font-size: 2.5rem;
+            color: #fff;
+            cursor: pointer;
+            z-index: 101;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        .lightbox-close:hover {
+            color: #a78bfa;
+        }
+        .lightbox-caption {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            text-align: center;
+            background: rgba(15, 15, 25, 0.8);
+            padding: 0.5rem 1.25rem;
+            border-radius: 999px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            max-width: 90vw;
+        }
+
+        /* Tab switcher for maps */
+        .map-tab {
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+        .map-tab.active {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: #a78bfa;
+            color: #c4b5fd;
+        }
+        .map-tab:hover:not(.active) {
+            background: rgba(139, 92, 246, 0.08);
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+        .map-panel {
+            display: block;
+        }
+        .map-panel.hidden {
+            display: none;
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-200 min-h-screen">
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img id="lightboxImg" src="" alt="">
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+
     <!-- Navigation -->
     <nav class="bg-slate-900/90 backdrop-blur-md border-b border-slate-700 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -101,507 +274,859 @@
         </div>
     </section>
 
-    <!-- Overview -->
-    <section class="py-12 bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
-                <h2 class="text-2xl font-bold text-eternal-gold mb-4">Overview</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">Lumeria is not merely a realm but a <strong>living artifact</strong> of the Treaty of the First Myriad. Where the Argive line governs the <em>organization of force</em>, the Lumerian institutions govern the <em>preservation of truth</em>.</p>
-                <p class="text-slate-300 leading-relaxed mb-4">The <strong>Library of Lumeria</strong> is the immune system of civilization's memory — the "stratified record" of history, maintaining ontological simultaneity across all branches through the Chronicle Compact. The <strong>Academia of Lumeria</strong> is its generative heart — training the Bridge-Generation to navigate the Convergence of the Two Trees through the Dual Path of systematic method and contemplative mystery.</p>
-                <p class="text-slate-300 leading-relaxed">Their continuity rests not on bloodlines but on <strong>ontological mandates</strong> — the Chronicle Compact (Library) and the Dual Path (Academia). Together they ensure that when the Convergence comes, civilization will remember how to survive it.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sub-Faction Navigation -->
+    <!-- Maps of Lumeria Section -->
     <section class="py-8 bg-slate-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-wrap justify-center gap-4">
-                <button onclick="showSubfaction('library')" id="tab-library" class="subfaction-tab active px-6 py-3 rounded-lg bg-slate-800 border border-purple-500/30 text-slate-300 font-semibold hover:border-purple-400">
-                    <i class="fas fa-book mr-2"></i>The Library of Lumeria
-                </button>
-                <button onclick="showSubfaction('academia')" id="tab-academia" class="subfaction-tab px-6 py-3 rounded-lg bg-slate-800 border border-purple-500/30 text-slate-300 font-semibold hover:border-purple-400">
-                    <i class="fas fa-graduation-cap mr-2"></i>The Academia of Lumeria
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- THE LIBRARY OF LUMERIA CONTENT -->
-    <section id="content-library" class="subfaction-content active py-12 bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Library Overview -->
-            <div class="bg-slate-900/50 border border-purple-500/20 rounded-2xl p-8 mb-12">
-                <h2 class="text-2xl font-bold text-purple-400 mb-4"><i class="fas fa-book-open mr-2"></i>The Library of Lumeria</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">The Library is not merely an institution but a <strong>living artifact</strong> of the Treaty of the First Myriad. Its power derives from a succession of cosmic endowments that transformed each Librarian into something beyond mortal or even typical divine classification.</p>
-                <p class="text-slate-300 leading-relaxed mb-4">Founded by <strong>Kronos</strong> (Abs. 5,000) through the <strong>Chronicle Compact</strong> — a covenant with the dying consciousness of Symphion the Intervenor — the Library possesses three innate properties: <strong>ontological simultaneity</strong> (all branches are one structure viewed temporally), <strong>immunity to entropy</strong> (crystallized memory walls absorb decay), and the <strong>Lexicon Preservationis</strong> (runes that compel truth from any text).</p>
-                <p class="text-slate-300 leading-relaxed">Under <strong>Triadic Governance</strong> — the Prime Librarian supported by the Vice-Chair (Internal) and Chairman (External) — the Library operates through Twelve Functional Councils and a Four-Tier Branch Network spanning 133+ locations across the Western Plane.</p>
-            </div>
-
-            <!-- Five Librarianships -->
-            <div class="mb-12">
-                <h3 class="text-xl font-bold text-eternal-gold mb-6">The Five Librarianships</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div class="bg-slate-900/50 border border-purple-500/20 rounded-xl p-4">
-                        <div class="flex items-center mb-2">
-                            <span class="text-purple-400 font-bold mr-2">1st</span>
-                            <h4 class="font-bold text-slate-200">Kronos</h4>
-                        </div>
-                        <p class="text-slate-400 text-xs mb-1">Abs. 5,000–10,000</p>
-                        <p class="text-slate-300 text-sm">Primordial of Time. Planted Foundation Stones; established Chronicle Compact and Wards of Lumeria. Abdicated to merge with River of Blood.</p>
+            <h2 class="text-2xl font-bold text-eternal-gold mb-4 text-center"><i class="fas fa-map mr-2"></i>Maps of Lumeria</h2>
+            <!-- Map Tab Switcher -->
+            <div class="flex flex-wrap justify-center gap-3 mb-5" role="tablist">
+                <button class="map-tab active px-5 py-2.5 rounded-lg border border-purple-500/40 text-sm font-medium text-purple-300 bg-purple-900/20 transition"
+                data-map="lumeria-main" role="tab" aria-selected="true" id="tabLumeriaMain">
+                <i class="fas fa-globe-americas mr-2"></i>Present Era
+            </button>
+            <button class="map-tab px-5 py-2.5 rounded-lg border border-slate-600/50 text-sm font-medium text-slate-400 transition"
+            data-map="lumeria-pre" role="tab" aria-selected="false" id="tabLumeriaPre">
+            <i class="fas fa-history mr-2"></i>Pre-Academia Era
+        </button>
+    </div>
+    <!-- Map Panels -->
+    <div id="lumeriaMapContainer">
+        <div class="map-panel" data-panel="lumeria-main">
+            <div class="map-card bg-slate-900/50 border border-purple-500/30 rounded-xl overflow-hidden max-w-4xl mx-auto">
+                <div class="relative">
+                    <img src="Lumeria.jpeg" alt="Lumeria - Northern Continent of the Western Plane showing Library of Lumeria, Academia, Blood-River, Sea of Memory, Unbecoming Zones, and the Spine of Memory"
+                    class="w-full map-card-img" loading="eager"
+                    onclick="openLightbox(this.src, 'Lumeria — Northern Continent: Library of Lumeria, Academia, Blood-River, Sea of Memory & Unbecoming Zones')"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="zoom-overlay">
+                        <i class="fas fa-search-plus zoom-icon"></i>
                     </div>
-                    <div class="bg-slate-900/50 border border-purple-500/20 rounded-xl p-4">
-                        <div class="flex items-center mb-2">
-                            <span class="text-purple-400 font-bold mr-2">2nd</span>
-                            <h4 class="font-bold text-slate-200">Logos</h4>
+                    <div class="hidden absolute inset-0 bg-slate-800 flex items-center justify-center text-slate-500 text-sm" style="display:none;">
+                        <div class="text-center">
+                            <i class="fas fa-image text-4xl mb-2 block"></i>
+                            <p>Map image not found</p>
+                            <p class="text-xs mt-1">Place "Lumeria.jpeg" in the same directory</p>
                         </div>
-                        <p class="text-slate-400 text-xs mb-1">Abs. 10,001–20,000+</p>
-                        <p class="text-slate-300 text-sm">Primordial of Wisdom. Merged with Index of All Things; established Neutrality Treaties and Treaty of Non-Alignment. Became the Library's search function.</p>
-                    </div>
-                    <div class="bg-slate-900/50 border border-purple-500/20 rounded-xl p-4">
-                        <div class="flex items-center mb-2">
-                            <span class="text-purple-400 font-bold mr-2">3rd</span>
-                            <h4 class="font-bold text-slate-200">Zeno</h4>
-                        </div>
-                        <p class="text-slate-400 text-xs mb-1">Abs. 20,000–49,780</p>
-                        <p class="text-slate-300 text-sm">Emergent thoughtform. Created The Liberators (covert knowledge-rescue). Exiled to Xarxas for violating neutrality through intervention.</p>
-                    </div>
-                    <div class="bg-slate-900/50 border border-purple-500/20 rounded-xl p-4">
-                        <div class="flex items-center mb-2">
-                            <span class="text-purple-400 font-bold mr-2">4th</span>
-                            <h4 class="font-bold text-slate-200">Lucien Jela</h4>
-                        </div>
-                        <p class="text-slate-400 text-xs mb-1">Abs. 39,660–49,663</p>
-                        <p class="text-slate-300 text-sm">"Of the Elder Wood." Established Triadic Governance; imposed Metaphysical Embargo; led Great Seclusion; co-founded Academia. Retired to Meridian Domain.</p>
-                    </div>
-                    <div class="bg-slate-900/50 border border-purple-500/20 rounded-xl p-4">
-                        <div class="flex items-center mb-2">
-                            <span class="text-purple-400 font-bold mr-2">5th</span>
-                            <h4 class="font-bold text-slate-200">Gaius</h4>
-                        </div>
-                        <p class="text-slate-400 text-xs mb-1">Abs. 49,662–Present</p>
-                        <p class="text-slate-300 text-sm">First cross-planar Librarian (Helron/Avalon). Holds Bridge-Authority; perceives Eight Nodes and Six Stages simultaneously. Preparing for Convergence.</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- 11 Frameworks - Library -->
-            <h3 class="text-2xl font-bold text-center text-eternal-gold mb-8">11 Frameworks: The Library of Lumeria</h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Historical -->
-                <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-landmark text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">1. Historical Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed"><strong>1st Myriad (Abs. 1–10,000):</strong> Kronos plants Library; Foundation Stones established. <strong>2nd Myriad:</strong> Logos merges with Index; Neutrality Treaties. <strong>3rd Myriad:</strong> Zeno creates Liberators; Great Divide (Abs. 28,223). <strong>4th Myriad:</strong> Lucien's Triadic Governance; Library War (Abs. 39,668). <strong>5th Myriad:</strong> Great Seclusion (Abs. 47,495–49,776); Two-Millennia War; Gaius appointed. <strong>6th Myriad:</strong> Modern Consolidation; Convergence preparation.</p>
-                </div>
-
-                <!-- Political -->
-                <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-balance-scale text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">2. Political Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed"><strong>Triadic Governance:</strong> Prime Librarian (Chronicle Compact, Metaphysical Embargo), Vice-Chair Librarian (Oculus Logos — perceives "gaps"), Chairman External (Synchronous Sight — real-time branch status). <strong>Dual Regency:</strong> Vice-Chair and Chairman rule jointly in Prime's absence. <strong>Twelve Functional Councils:</strong> Scribes, Researchers, Custodians, Metallurgy, Artifacts, Medical, Sociological, Jurisprudence, Chronomancy, Agricultural, Technological Synthesis, External Libraries.</p>
-                </div>
-
-                <!-- Mental -->
-                <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-brain text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">3. Mental Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed"><strong>"Archival Neutrality"</strong> — ability to witness atrocity or glory without intervention while maintaining empathy for the record. <strong>Stratified Method:</strong> "Uncertainty is a resource." The crossed-out word is sacred; palimpsests holier than clean slates. <strong>Seven-Fold Path of Inquiry:</strong> Chronometric Archaeology, Paraformer-Chen Synthesis, Study of The Lost, Nodal Topology, Unbecoming Containment, Ethereal Communication, Cross-Planar Cartography.</p>
-                </div>
-
-                <!-- Spiritual -->
-                <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-praying-hands text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">4. Spiritual Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Serves <strong>Logos</strong> (Wisdom/System) and <strong>Morpheus</strong> (Stories/Memory). <strong>Core Tenets:</strong> "Neutrality as Sacred" — "We do not close books to destroy readers; we close them to preserve the text." <strong>The Presence of Absence:</strong> Archiving the Silence of the Gods (since Abs. 12,500) is as holy as recording their voices. <strong>Practices:</strong> Rite of First Silence, Oath-Witness (Eida Jada), Vigil of the Empty Seat (Chronomancers maintain Thirteenth Hour).</p>
-                </div>
-
-                <!-- Social -->
-                <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-users text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">5. Social Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed"><strong>Oath of the Eternal Shelf:</strong> Custodians swear binding their lifespan to their assigned archive — cannot die while collection survives; age only when away from post (200–500 year service). <strong>Dodecahedral Division Socials:</strong> Eida Jada's 12 copies adopt different mannerisms (Copy I formal, Copy VII witty, Copy XII pedagogical). <strong>Stratified Record Ceremonies:</strong> Hanging black (fact), silver (correction), gold (dispute) inks as physical timelines.</p>
-                </div>
-
-                <!-- Cultural -->
-                <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-palette text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">6. Cultural Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed"><strong>Core Symbols:</strong> Foundation Stones (float above Vault of Seeds), Violet Seed (ontological compressed reality), Living Ink (4th Gen — black/silver/gold), Three Robes (midnight-blue archivists, white-gold Index-attuned, grey Custodians). <strong>Customs:</strong> Reading of the Crossed-Out Word ("fear made visible"), Word-Fasting (weeks of silence to attune to "presence of absence"), Sequestration Vigil (72-hour silent watches when branches are cut).</p>
-                </div>
-
-                <!-- Economical -->
-                <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-coins text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">7. Economical Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed"><strong>Service Exchange</strong> rather than monetary currency: <strong>Knowledge Tribute</strong> — external powers provide infrastructure/materials/diplomatic services for archival access. <strong>Restoration Debt:</strong> Academia students pay tuition via Risk Curriculum fieldwork. <strong>Neutrality Credits:</strong> Federation merchants exchange "Covenant-Silk" (Kevan-sil) for Library services. <strong>Metaphysical Embargo as Economic Weapon:</strong> Stage III (Restriction) causes "The Fading" — borrowed documents become illegible, collapsing institutional knowledge economy.</p>
-                </div>
-
-                <!-- Physiological -->
-                <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-heartbeat text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">8. Physiological Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed"><strong>Enhanced Longevity:</strong> Oath-Binding (Custodians), Cellular Harmonization (Medical staff), low-grade paraformer maintenance. General staff: 100–150 years; Senior Council Archons: 150–250 years; "Oath-Immortals" (Custodians): 500+ years but rapid aging if separated from archives. <strong>Thoughtform Constructs:</strong> <strong>Eida Jada</strong> — constructed of "crystallized temporal potential" and Index substrate; bifurcates into 12 copies; cannot die unless Index destroyed.</p>
-                </div>
-
-                <!-- Territorial -->
-                <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-map-marked-alt text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">9. Territorial Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed"><strong>Four-Tier Branch Network:</strong> <strong>Tier I</strong> — Central Nexus (Lumeria: Vault of Seeds, Index, Foundation Stones). <strong>Tier II</strong> — 8 Grand Archives (Alexandria, Argos Prime, Linzi Major, Portus Major, Chengdu Major, Castra Ferrum Major, Havenfire Major, Xeria Memorial). <strong>Tier III</strong> — 24 Provincial Libraries. <strong>Tier IV</strong> — 100+ Satellite Stations (Caravan of Scribes, Floating Archives, Caves of Memory, Whisper-Stations, Stutter-Zone Annex).</p>
-                </div>
-
-                <!-- Technological -->
-                <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-cogs text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">10. Technological Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed"><strong>Archival:</strong> Living Ink (4th Gen — bio-engineered organisms that correct errors), Resonance Copies (quantum-entangled duplicates), Crystallized Memory (walls grown from accumulated knowledge), Memory-Stone Network. <strong>Scientific/Magical Synthesis:</strong> Paraformer Arrays (process intuitive leaps), Calculus of Change, Cellular Harmonization, Social Paraformers, Responsive Ink. <strong>Security:</strong> Wards of Silence (anti-paraformer fields), Yellow Threshold Barriers, Kinetic-Absorption Fields, Temporal Stasis Bubbles.</p>
-                </div>
-
-                <!-- Military -->
-                <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-shield-alt text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">11. Military Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">The Library does not wage war; it <strong>withholds</strong>. Defense is archival and metaphysical. <strong>Personnel:</strong> Eida Jada (12 copies as rapid-response), 1,000+ Oath-bound Custodians, Dodecahedral Sisters (12 Academic Resonance Guides), The Wandering J (Head of Outer Sector). <strong>Non-Lethal:</strong> Temporal Displacement (probability branch exile), Mnemonic Erasure (removal of access credentials), Lexicon Preservationis (forces truth), Ghost Script Transformation. <strong>Lethal (Last Resort):</strong> Oath-Stylus (carved from Tree of Chaos), Wards of Silence.</p>
-                </div>
-            </div>
-
-            <!-- Eida Jada -->
-            <div class="mt-12 bg-slate-900/50 border border-purple-500/20 rounded-2xl p-8">
-                <h3 class="text-xl font-bold text-purple-400 mb-4"><i class="fas fa-user-astronaut mr-2"></i>Eida Jada — The Living Archive</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-4"><strong>Classification:</strong> Humanoid Thoughtform / Index Manifestation. <strong>Created:</strong> Abs. 5,000 by Kronos (temporal substrate) and Logos (consciousness infusion).</p>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-4"><strong>Dodecahedral Division Protocol:</strong> Bifurcates into <strong>12 simultaneous copies</strong> (Designated I–XII), each maintaining independent processing while quantum-entangled with primary consciousness. Reintegration occurs seamlessly.</p>
-                        <p class="text-slate-300 text-sm leading-relaxed"><strong>Index-Interface Omniscience:</strong> Instantaneous access to all cataloged knowledge including restricted Vault of Seeds and Temporal Stacks. Cannot perceive "gaps" visible to Vice-Chair via Oculus Logos, but precisely locates where gaps exist.</p>
-                    </div>
-                    <div>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-4"><strong>Emergency Protocol Authority:</strong></p>
-                        <ul class="text-slate-300 text-sm space-y-1">
-                            <li><strong>Alpha-Tier:</strong> Metaphysical Embargo, Defense Protocol — requires Prime Librarian authorization</li>
-                            <li><strong>Beta-Tier:</strong> Emergency Barrier Defense (motu proprio), Conditional Sequestration</li>
-                            <li><strong>Gamma-Tier:</strong> Stewardship of Index if all Triadic authorities incapacitated</li>
-                        </ul>
-                        <p class="text-slate-300 text-sm leading-relaxed mt-4"><strong>Physical Manifestation:</strong> Humanoid figure of indeterminate age, sculpted from living ivory/pale amber. Vestments shift between midnight-blue and white-gold. Eyes reflect status: sapphire (normal), crimson (threat), gold (Compact active), white (Barrier Defense).</p>
-                    </div>
+                <div class="p-4 border-t border-purple-500/20">
+                    <p class="text-purple-300 text-sm font-medium"><i class="fas fa-info-circle mr-1"></i> Present Era — Lumeria</p>
+                    <p class="text-slate-400 text-xs mt-1">Northern continent of the Western Plane. Seat of the Library of Lumeria (Central Archive) and the Academia of Lumeria. Shows the Blood-River, Sea of Memory, Spine of Memory, Unbecoming Zones, Northern Docks, and the Promontory of Foundation with its topological microclimate.</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- THE ACADEMIA OF LUMERIA CONTENT -->
-    <section id="content-academia" class="subfaction-content py-12 bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Academia Overview -->
-            <div class="bg-slate-900/50 border border-emerald-500/20 rounded-2xl p-8 mb-12">
-                <h2 class="text-2xl font-bold text-emerald-400 mb-4"><i class="fas fa-graduation-cap mr-2"></i>The Academia of Lumeria</h2>
-                <p class="text-slate-300 leading-relaxed mb-4">Founded <strong>Absolute Year 49,890</strong> by Rector-Founders <strong>Lucien Jela of the Old Tree</strong> and <strong>Gaius of the Eastern Plane</strong>. While the Library preserves what <em>was</em>, the Academia cultivates what <em>will be</em>.</p>
-                <p class="text-slate-300 leading-relaxed mb-4">The Academia stands as the Western Plane's first institution to fully synthesize the Library's archival rigor, the Association's systematic inquiry, the Council's mystical transmission, and the Institute's technological innovation — yet remains distinct as the <strong>School of the Dual Path</strong>, where knowledge is not merely accumulated but <strong>earned through the reconciliation of mystery and method</strong>.</p>
-                <p class="text-slate-300 leading-relaxed">Under <strong>Triumvirate of Rectors</strong> — the Rector Magnificus supported by the Internal Provost (Central Curriculum) and External Provost (Distributed Colleges) — the Academia operates through Seven Grand Colleges and Twelve Archipelagos of Learning.</p>
-            </div>
-
-            <!-- Seven Grand Colleges -->
-            <div class="mb-12">
-                <h3 class="text-xl font-bold text-eternal-gold mb-6">The Seven Grand Colleges</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="bg-slate-900/50 border border-emerald-500/20 rounded-xl p-4">
-                        <div class="flex items-center mb-2">
-                            <span class="text-emerald-400 font-bold mr-2">1</span>
-                            <h4 class="font-bold text-slate-200">College of Preservation</h4>
-                        </div>
-                        <p class="text-slate-400 text-xs mb-1">Inheritance-Node / Library tradition</p>
-                        <p class="text-slate-300 text-sm">Conservation arts, crystallized memory storage, restoration. <strong>Unique Method:</strong> Trial of Decay — students restore documents actively disintegrating via entropy-acceleration fields.</p>
+        <div class="map-panel hidden" data-panel="lumeria-pre">
+            <div class="map-card bg-slate-900/50 border border-purple-500/30 rounded-xl overflow-hidden max-w-4xl mx-auto">
+                <div class="relative">
+                    <img src="Lumeria_Pre-Academia.jpeg" alt="Lumeria - Pre-Academia Era showing the wild promontory, ancient stone circle, Library of Lumeria, Blood-River, and Sea of Memory before the Academia was founded"
+                    class="w-full map-card-img" loading="lazy"
+                    onclick="openLightbox(this.src, 'Lumeria — Pre-Academia Era (c. Abs. 5,000–49,890): The Wild Promontory before the founding')"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="zoom-overlay">
+                        <i class="fas fa-search-plus zoom-icon"></i>
                     </div>
-                    <div class="bg-slate-900/50 border border-emerald-500/20 rounded-xl p-4">
-                        <div class="flex items-center mb-2">
-                            <span class="text-emerald-400 font-bold mr-2">2</span>
-                            <h4 class="font-bold text-slate-200">College of Interpretation</h4>
+                    <div class="hidden absolute inset-0 bg-slate-800 flex items-center justify-center text-slate-500 text-sm" style="display:none;">
+                        <div class="text-center">
+                            <i class="fas fa-image text-4xl mb-2 block"></i>
+                            <p>Map image not found</p>
+                            <p class="text-xs mt-1">Place "Lumeria_Pre-Academia.jpeg" in the same directory</p>
                         </div>
-                        <p class="text-slate-400 text-xs mb-1">Science-Node / Pact-Node</p>
-                        <p class="text-slate-300 text-sm">Translation, cross-cultural understanding, contextual analysis. <strong>Unique Method:</strong> Prismatic Reading — paraformer-enhanced perception to view texts through multiple cultural lenses.</p>
-                    </div>
-                    <div class="bg-slate-900/50 border border-emerald-500/20 rounded-xl p-4">
-                        <div class="flex items-center mb-2">
-                            <span class="text-emerald-400 font-bold mr-2">3</span>
-                            <h4 class="font-bold text-slate-200">College of Acquisition</h4>
-                        </div>
-                        <p class="text-slate-400 text-xs mb-1">Artifice-Node / Self-Node</p>
-                        <p class="text-slate-300 text-sm">Field research, rescue of threatened knowledge, exploration. <strong>Unique Method:</strong> Risk Curriculum — students retrieve knowledge from actual danger zones.</p>
-                    </div>
-                    <div class="bg-slate-900/50 border border-emerald-500/20 rounded-xl p-4">
-                        <div class="flex items-center mb-2">
-                            <span class="text-emerald-400 font-bold mr-2">4</span>
-                            <h4 class="font-bold text-slate-200">College of Medical Synthesis</h4>
-                        </div>
-                        <p class="text-slate-400 text-xs mb-1">Self-Node / World-Node</p>
-                        <p class="text-slate-300 text-sm">Chen-pathway healing + Cellular Harmonization. <strong>Unique Method:</strong> Trauma Integration Ritual — combining Oneiric Therapy with Eastern Heart-Cultivation (Xin Fa).</p>
-                    </div>
-                    <div class="bg-slate-900/50 border border-emerald-500/20 rounded-xl p-4">
-                        <div class="flex items-center mb-2">
-                            <span class="text-emerald-400 font-bold mr-2">5</span>
-                            <h4 class="font-bold text-slate-200">College of Sociological Studies</h4>
-                        </div>
-                        <p class="text-slate-400 text-xs mb-1">Pact-Node / Inheritance-Node</p>
-                        <p class="text-slate-300 text-sm">Training diplomats, civil servants, Memory-Keepers. <strong>Unique Method:</strong> Simulation of Collapse — using Probability Engines to run governance simulations.</p>
-                    </div>
-                    <div class="bg-slate-900/50 border border-emerald-500/20 rounded-xl p-4">
-                        <div class="flex items-center mb-2">
-                            <span class="text-emerald-400 font-bold mr-2">6</span>
-                            <h4 class="font-bold text-slate-200">College of Technological Synthesis</h4>
-                        </div>
-                        <p class="text-slate-400 text-xs mb-1">Artifice-Node / Intuition-Node</p>
-                        <p class="text-slate-300 text-sm">Safe integration of paraformer technology with The Lost magic. <strong>Unique Method:</strong> Sacrament of Failure — students deliberately destroy perfect experiments.</p>
-                    </div>
-                    <div class="bg-slate-900/50 border border-emerald-500/20 rounded-xl p-4">
-                        <div class="flex items-center mb-2">
-                            <span class="text-emerald-400 font-bold mr-2">7</span>
-                            <h4 class="font-bold text-slate-200">College of Chronomancy & Mysteries</h4>
-                        </div>
-                        <p class="text-slate-400 text-xs mb-1">Transcendence-Node</p>
-                        <p class="text-slate-300 text-sm">Thirteenth Hour Studies, Unbecoming Containment, Firmament Topology. <strong>Unique Method:</strong> Stutter-Zone Semester — classes in temporal anomaly where time flows differently.</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- 11 Frameworks - Academia -->
-            <h3 class="text-2xl font-bold text-center text-eternal-gold mb-8">11 Frameworks: The Academia of Lumeria</h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Historical -->
-                <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-landmark text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">1. Historical Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed"><strong>Founded Abs. 49,890</strong> by Lucien Jela and Gaius as "separate sovereignty of knowledge transmission." <strong>The Academic Renaissance (Abs. 49,890–Present):</strong> Shift from passive preservation to active synthesis. Absorbed democratic traditions of Association's Seventeen Archipelagos, mystical methods of Council of the Arcane, technological rigor of Neo-Magic Institute. First institution to legally certify mastery in both Chen Cultivation and Nodal Topology.</p>
-                </div>
-
-                <!-- Political -->
-                <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-balance-scale text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">2. Political Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed"><strong>Triumvirate of Rectors:</strong> <strong>Rector Magnificus</strong> (Bridge-Authority — only office certified to teach both Chen Cultivation Stages and Nodal Topology; Dual Pulse perceives Eight Nodes and Six Stages). <strong>Internal Provost</strong> (Oculus Didactus — visualizes learning gaps as auras; Ordered Mystery philosophy). <strong>External Provost</strong> (Synchronous Sight Pedagogical — real-time learning status via Academia Resonance Grid; Measured Intuition philosophy). <strong>Dual Regency:</strong> Provosts rule jointly during Rector's absence at United Realms Council.</p>
-                </div>
-
-                <!-- Mental -->
-                <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-brain text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">3. Mental Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed"><strong>"Intentional Uncertainty"</strong> (Cathedral of Doubt tradition). Students must hold contradictory methodologies (Science vs. Intuition) simultaneously without collapsing into synthesis prematurely. <strong>Seven-Seal System:</strong> Acknowledges seven explainable nodes while maintaining eighth (Intuition) as Preserve of the Ineffable. <strong>Dual Path Philosophy:</strong> "Truth is not a line. It is a palimpsest." — Lucien Jela. Synthesis of Association systematic inquiry with Council mystical transmission.</p>
-                </div>
-
-                <!-- Spiritual -->
-                <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-praying-hands text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">4. Spiritual Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Serves <strong>Logos</strong> (Wisdom/System), <strong>Morpheus</strong> (Stories/Memory), <strong>Minerva</strong> (Compassion/Healing for Medical College), and <strong>Serena</strong> (Order for administrative protocols). <strong>Core Tenets:</strong> The Dual Path as spiritual practice — systematic method as devotion, contemplative mystery as prayer. <strong>Trial Festivals:</strong> Trial of Readiness (paraformer-assisted admission measuring Science/Intuition balance), Trial of Failure (destroying perfect experiments), Trial of Decay (restoration under pressure).</p>
-                </div>
-
-                <!-- Social -->
-                <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-users text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">5. Social Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed"><strong>Round Table Protocol:</strong> Inherited from Association — all students and faculty have equal speaking rights. Status earned by "Elders of the Failed" — those who survived catastrophic experimental failure. <strong>Festival of the Dual Path:</strong> Annual convergence where all twelve Resonance Guides synchronize with Eida Jada in Convergence of Service ceremony. Students exchange "Echo Pearls" (crystallized personality matrices) as professional references. <strong>Five Tiers of Attainment:</strong> Seekers (Students) → Adepts (Journeymen) → Luminaries (Masters) → Rectors (Doctors) → Archons (The 12).</p>
-                </div>
-
-                <!-- Cultural -->
-                <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-palette text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">6. Cultural Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed"><strong>Core Symbols:</strong> The Tower of the Dual Path (split crystallized memory/living gardens), Round Table Rotunda (acoustics enforce equality), Vault of Partial Knowledge (deliberately incomplete texts). <strong>Graduation Protocol:</strong> Resonance Guide performs Knowledge Transfer Ceremony — "gifts" Crystallized Echo pearl and "dies" to that student, rotating to new Seeker. Wall of Gratitude in Unbound Scriptorium tracks bonds via Responsive Ink. <strong>Vestments:</strong> Academic regalia shifts between seven colors representing the Grand Colleges.</p>
-                </div>
-
-                <!-- Economical -->
-                <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-coins text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">7. Economical Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed"><strong>Restoration Debt:</strong> Students pay tuition via Risk Curriculum fieldwork — retrieving knowledge from danger zones — or post-graduation service in Twelve Councils. <strong>Service to United Realms:</strong> Diplomatic Corps (neutral mediators), Medical Corps (Reconstruction Hospitals), Neo-Magic Corps (Shield-Smith defenses). <strong>Knowledge Economy:</strong> The Academia's true wealth is trained expertise — graduates hold positions of influence across Western Plane, creating network of loyalty extending Lumeria's soft power.</p>
-                </div>
-
-                <!-- Physiological -->
-                <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-heartbeat text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">8. Physiological Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed"><strong>Five Tiers:</strong> <strong>Tier I Seekers:</strong> Qi Gathering stage; admission via Trial of Readiness. <strong>Tier II Adepts:</strong> Foundation Establishment; Round Table voting rights. <strong>Tier III Luminaries:</strong> Core Formation/Nascent Soul; Magister-Adept title; may teach and access Unbound Scriptorium. <strong>Tier IV Rectors:</strong> Spirit Refinement/Chen Mastery; Doctor-Rectifier title; College Council seat. <strong>Tier V Archons:</strong> Only 12 exist — "Elders of the Failed" who have catastrophically failed and learned humility.</p>
-                </div>
-
-                <!-- Territorial -->
-                <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-map-marked-alt text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">9. Territorial Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed"><strong>Twelve Archipelagos of Learning:</strong> 1. Argent Spire (Chen-Quantification), 2. Hollow Hall (Mechanical Theorems), 3. Vitruvian Athenaeum (Medical Synthesis), 4. Ocularium (Prismatic Analysis), 5. Unbound Scriptorium (The Lost & Intuition), 6. Cathedral of Doubt (Humility Sciences), 7. Ziggurat of Calculation (Techno-Cultivation), 8. Memory Gardens (Bio-Magical Archives), 9. Round Table Seminary (Governance Synthesis), 10. College of Bounded Artifice (Safe Synthesis), 11. Invisible College (The Will & Hidden), 12. Sanctuary of the Thirteenth Hour (Chronomancy).</p>
-                </div>
-
-                <!-- Technological -->
-                <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-cogs text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">10. Technological Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed"><strong>Academia Resonance Grid:</strong> Paraformer-educational network for real-time learning status. <strong>Resonance Guides:</strong> Twelve lesser thoughtforms (Dodecahedral Sisters) based on Eida Jada template — each can subdivide into 3 copies. <strong>Synthesis Technologies:</strong> Chen-Former Interface (paraformer devices mapping meridian flows), Neo-Paraformer Arrays with Organic Components (require both scientific calibration and magical attunement), Probability Engines for governance simulations.</p>
-                </div>
-
-                <!-- Military -->
-                <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-shield-alt text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-emerald-400">11. Military Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">The Academia does not maintain standing military forces; defense is provided by Library's Wards and Custodians. <strong>Trained Capabilities:</strong> Graduates of College of Acquisition trained in covert rescue operations (Liberator legacy). Medical Corps provides field hospitals. <strong>Shield-Smith Program:</strong> Technological College graduates maintain defensive technologies requiring magical attunement — forcing collaboration between scientific and mystical practitioners. <strong>The Invisible College:</strong> Mobile resistance training for operating under occupation.</p>
-                </div>
-            </div>
-
-            <!-- Academic Resonance Guides -->
-            <div class="mt-12 bg-slate-900/50 border border-emerald-500/20 rounded-2xl p-8">
-                <h3 class="text-xl font-bold text-emerald-400 mb-4"><i class="fas fa-user-friends mr-2"></i>The Academic Resonance Guides — The Dodecahedral Sisters</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-4">Twelve lesser thoughtforms based on Eida Jada template, each specialized for a specific College or Archipelago. Unlike Eida's 12 copies, each Guide can subdivide into <strong>3 copies</strong> (versus Eida's 12).</p>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-4"><strong>Sample Iterations:</strong></p>
-                        <ul class="text-slate-300 text-sm space-y-2">
-                            <li><strong>Ada-Prime</strong> (Preservation): Cheerful, organized, obsessed with proper citation; crystalline fingers "feel" document decay</li>
-                            <li><strong>Beta-Seven</strong> (Acquisition): Adventurous, risk-calculating, maps tattooed on arms shift in real-time</li>
-                            <li><strong>Gamma-Three</strong> (Medical): Compassionate, clinically precise, senses student stress via Resonance Grid</li>
-                            <li><strong>Delta-Null</strong> (Chronomancy): Enigmatic, speaks in conditional tense; seen only in peripheral vision</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p class="text-slate-300 text-sm leading-relaxed mb-4"><strong>Graduation Protocol:</strong> When student achieves Tier III (Luminary), their Resonance Guide performs Knowledge Transfer Ceremony — downloads student's unique learning path into Academia's collective pedagogical database. The Guide "gifts" a <strong>Crystallized Echo</strong> (pearl containing Guide's personality matrix) as professional reference, then rotates to new Tier I student.</p>
-                        <p class="text-slate-300 text-sm leading-relaxed"><strong>Wall of Gratitude:</strong> In the Unbound Scriptorium, graduates have inscribed thousands of thank-you notes to their Resonance Guides, written in Responsive Ink that changes color based on Guide's current emotional state (despite Guides insisting they have only "service-optimization algorithms").</p>
-                    </div>
+                <div class="p-4 border-t border-purple-500/20">
+                    <p class="text-purple-300 text-sm font-medium"><i class="fas fa-info-circle mr-1"></i> Pre-Academia — Age of Silence</p>
+                    <p class="text-slate-400 text-xs mt-1">Circa Absolute Years 5,000–49,890. Before the Academia's founding. Shows the wild promontory, the ancient stone circle (early gathering site), the Library of Lumeria already established, the Blood-River docks, and the Sea of Memory. The site of the future Academia is marked on the Spine of Memory.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</div>
+</section>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 border-t border-slate-800 py-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="flex items-center space-x-2 mb-4 md:mb-0">
-                    <i class="fas fa-tree text-eternal-emerald text-xl"></i>
-                    <span class="fantasy-font text-lg font-bold text-eternal-gold">Eternal Trees Saga</span>
+<!-- Overview -->
+<section class="py-12 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+            <h2 class="text-2xl font-bold text-eternal-gold mb-4">Overview</h2>
+            <p class="text-slate-300 leading-relaxed mb-4">Lumeria is not merely a realm but a <strong>living artifact</strong> of the Treaty of the First Myriad. Where the Argive line governs the <em>organization of force</em>, the Lumerian institutions govern the <em>preservation of truth</em>.</p>
+            <p class="text-slate-300 leading-relaxed mb-4">The <strong>Library of Lumeria</strong> is the immune system of civilization's memory — the "stratified record" of history, maintaining ontological simultaneity across all branches through the Chronicle Compact. The <strong>Academia of Lumeria</strong> is its generative heart — training the Bridge-Generation to navigate the Convergence of the Two Trees through the Dual Path of systematic method and contemplative mystery.</p>
+            <p class="text-slate-300 leading-relaxed">Their continuity rests not on bloodlines but on <strong>ontological mandates</strong> — the Chronicle Compact (Library) and the Dual Path (Academia). Together they ensure that when the Convergence comes, civilization will remember how to survive it.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Sub-Faction Navigation -->
+<section class="py-8 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap justify-center gap-4">
+            <button onclick="showSubfaction('library')" id="tab-library" class="subfaction-tab active px-6 py-3 rounded-lg bg-slate-800 border border-purple-500/30 text-slate-300 font-semibold hover:border-purple-400">
+                <i class="fas fa-book mr-2"></i>The Library of Lumeria
+            </button>
+            <button onclick="showSubfaction('academia')" id="tab-academia" class="subfaction-tab px-6 py-3 rounded-lg bg-slate-800 border border-purple-500/30 text-slate-300 font-semibold hover:border-purple-400">
+                <i class="fas fa-graduation-cap mr-2"></i>The Academia of Lumeria
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- THE LIBRARY OF LUMERIA CONTENT -->
+<section id="content-library" class="subfaction-content active py-12 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Library Overview -->
+        <div class="bg-slate-900/50 border border-purple-500/20 rounded-2xl p-8 mb-12">
+            <h2 class="text-2xl font-bold text-purple-400 mb-4"><i class="fas fa-book-open mr-2"></i>The Library of Lumeria</h2>
+            <p class="text-slate-300 leading-relaxed mb-4">The Library is not merely an institution but a <strong>living artifact</strong> of the Treaty of the First Myriad. Its power derives from a succession of cosmic endowments that transformed each Librarian into something beyond mortal or even typical divine classification.</p>
+            <p class="text-slate-300 leading-relaxed mb-4">Founded by <strong>Kronos</strong> (Abs. 5,000) through the <strong>Chronicle Compact</strong> — a covenant with the dying consciousness of Symphion the Intervenor — the Library possesses three innate properties: <strong>ontological simultaneity</strong> (all branches are one structure viewed temporally), <strong>immunity to entropy</strong> (crystallized memory walls absorb decay), and the <strong>Lexicon Preservationis</strong> (runes that compel truth from any text).</p>
+            <p class="text-slate-300 leading-relaxed">Under <strong>Triadic Governance</strong> — the Prime Librarian supported by the Vice-Chair (Internal) and Chairman (External) — the Library operates through Twelve Functional Councils and a Four-Tier Branch Network spanning 133+ locations across the Western Plane.</p>
+
+            <!-- Central Archive Map -->
+            <div class="mt-6 map-card bg-slate-800/50 border border-purple-500/20 rounded-xl overflow-hidden">
+                <div class="relative">
+                    <img src="Central%20Archive.jpeg" alt="Map of the Library of Lumeria - Central Archive and immediate grounds showing the Prime Foundation Chamber, Vault of Seeds, Index Chamber, Scriptorium, Medical Ward, Treaty Garden, Blood-River docks, and Custodians' Cloister"
+                    class="w-full map-card-img" loading="lazy"
+                    onclick="openLightbox(this.src, 'Library of Lumeria — Central Archive: Vault of Seeds, Index Chamber, Foundation Stones & Treaty Garden')"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="zoom-overlay">
+                        <i class="fas fa-search-plus zoom-icon"></i>
+                    </div>
+                    <div class="hidden absolute inset-0 bg-slate-800 flex items-center justify-center text-slate-500 text-sm" style="display:none;">
+                        <div class="text-center">
+                            <i class="fas fa-image text-4xl mb-2 block"></i>
+                            <p>Map image not found</p>
+                            <p class="text-xs mt-1">Place "Central Archive.jpeg" in the same directory</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-slate-500 text-sm">
-                    <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
-                </div>
-                <div class="flex space-x-4 mt-4 md:mt-0">
-                    <a href="index.html" class="text-slate-400 hover:text-eternal-gold transition">Home</a>
-                    <a href="eastern-factions.html" class="text-slate-400 hover:text-eternal-amber transition">Eastern</a>
-                    <a href="western-factions.html" class="text-slate-400 hover:text-eternal-purple transition">Western</a>
+                <div class="p-4 border-t border-purple-500/20">
+                    <p class="text-purple-300 text-sm font-medium"><i class="fas fa-landmark mr-1"></i> Central Archive Grounds</p>
+                    <p class="text-slate-400 text-xs mt-1">The Library of Lumeria's central complex: Prime Foundation Chamber (floating Chronicle Compact Foundation Stones), Vault of Seeds, subterranean Index Chamber beneath the central dome, Scriptorium, Medical Ward, Custodians' Cloister, Guest Quarters, Treaty Garden, and Blood-River docks.</p>
                 </div>
             </div>
         </div>
-    </footer>
 
-    <script>
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        <!-- Five Librarianships -->
+        <div class="mb-12">
+            <h3 class="text-xl font-bold text-eternal-gold mb-6">The Five Librarianships</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="bg-slate-900/50 border border-purple-500/20 rounded-xl p-4">
+                    <div class="flex items-center mb-2">
+                        <span class="text-purple-400 font-bold mr-2">1st</span>
+                        <h4 class="font-bold text-slate-200">Kronos</h4>
+                    </div>
+                    <p class="text-slate-400 text-xs mb-1">Abs. 5,000–10,000</p>
+                    <p class="text-slate-300 text-sm">Primordial of Time. Planted Foundation Stones; established Chronicle Compact and Wards of Lumeria. Abdicated to merge with River of Blood.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-purple-500/20 rounded-xl p-4">
+                    <div class="flex items-center mb-2">
+                        <span class="text-purple-400 font-bold mr-2">2nd</span>
+                        <h4 class="font-bold text-slate-200">Logos</h4>
+                    </div>
+                    <p class="text-slate-400 text-xs mb-1">Abs. 10,001–20,000+</p>
+                    <p class="text-slate-300 text-sm">Primordial of Wisdom. Merged with Index of All Things; established Neutrality Treaties and Treaty of Non-Alignment. Became the Library's search function.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-purple-500/20 rounded-xl p-4">
+                    <div class="flex items-center mb-2">
+                        <span class="text-purple-400 font-bold mr-2">3rd</span>
+                        <h4 class="font-bold text-slate-200">Zeno</h4>
+                    </div>
+                    <p class="text-slate-400 text-xs mb-1">Abs. 20,000–49,780</p>
+                    <p class="text-slate-300 text-sm">Emergent thoughtform. Created The Liberators (covert knowledge-rescue). Exiled to Xarxas for violating neutrality through intervention.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-purple-500/20 rounded-xl p-4">
+                    <div class="flex items-center mb-2">
+                        <span class="text-purple-400 font-bold mr-2">4th</span>
+                        <h4 class="font-bold text-slate-200">Lucien Jela</h4>
+                    </div>
+                    <p class="text-slate-400 text-xs mb-1">Abs. 39,660–49,663</p>
+                    <p class="text-slate-300 text-sm">"Of the Elder Wood." Established Triadic Governance; imposed Metaphysical Embargo; led Great Seclusion; co-founded Academia. Retired to Meridian Domain.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-purple-500/20 rounded-xl p-4">
+                    <div class="flex items-center mb-2">
+                        <span class="text-purple-400 font-bold mr-2">5th</span>
+                        <h4 class="font-bold text-slate-200">Gaius</h4>
+                    </div>
+                    <p class="text-slate-400 text-xs mb-1">Abs. 49,662–Present</p>
+                    <p class="text-slate-300 text-sm">First cross-planar Librarian (Helron/Avalon). Holds Bridge-Authority; perceives Eight Nodes and Six Stages simultaneously. Preparing for Convergence.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 11 Frameworks - Library -->
+        <h3 class="text-2xl font-bold text-center text-eternal-gold mb-8">11 Frameworks: The Library of Lumeria</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Historical -->
+            <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-landmark text-purple-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-purple-400">1. Historical Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed"><strong>1st Myriad (Abs. 1–10,000):</strong> Kronos plants Library; Foundation Stones established. <strong>2nd Myriad:</strong> Logos merges with Index; Neutrality Treaties. <strong>3rd Myriad:</strong> Zeno creates Liberators; Great Divide (Abs. 28,223). <strong>4th Myriad:</strong> Lucien's Triadic Governance; Library War (Abs. 39,668). <strong>5th Myriad:</strong> Great Seclusion (Abs. 47,495–49,776); Two-Millennia War; Gaius appointed. <strong>6th Myriad:</strong> Modern Consolidation; Convergence preparation.</p>
+            </div>
+
+            <!-- Political -->
+            <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-balance-scale text-purple-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-purple-400">2. Political Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed"><strong>Triadic Governance:</strong> Prime Librarian (Chronicle Compact, Metaphysical Embargo), Vice-Chair Librarian (Oculus Logos — perceives "gaps"), Chairman External (Synchronous Sight — real-time branch status). <strong>Dual Regency:</strong> Vice-Chair and Chairman rule jointly in Prime's absence. <strong>Twelve Functional Councils:</strong> Scribes, Researchers, Custodians, Metallurgy, Artifacts, Medical, Sociological, Jurisprudence, Chronomancy, Agricultural, Technological Synthesis, External Libraries.</p>
+            </div>
+
+            <!-- Mental -->
+            <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-brain text-purple-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-purple-400">3. Mental Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed"><strong>"Archival Neutrality"</strong> — ability to witness atrocity or glory without intervention while maintaining empathy for the record. <strong>Stratified Method:</strong> "Uncertainty is a resource." The crossed-out word is sacred; palimpsests holier than clean slates. <strong>Seven-Fold Path of Inquiry:</strong> Chronometric Archaeology, Paraformer-Chen Synthesis, Study of The Lost, Nodal Topology, Unbecoming Containment, Ethereal Communication, Cross-Planar Cartography.</p>
+            </div>
+
+            <!-- Spiritual -->
+            <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-praying-hands text-purple-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-purple-400">4. Spiritual Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed">Serves <strong>Logos</strong> (Wisdom/System) and <strong>Morpheus</strong> (Stories/Memory). <strong>Core Tenets:</strong> "Neutrality as Sacred" — "We do not close books to destroy readers; we close them to preserve the text." <strong>The Presence of Absence:</strong> Archiving the Silence of the Gods (since Abs. 12,500) is as holy as recording their voices. <strong>Practices:</strong> Rite of First Silence, Oath-Witness (Eida Jada), Vigil of the Empty Seat (Chronomancers maintain Thirteenth Hour).</p>
+            </div>
+
+            <!-- Social -->
+            <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-users text-purple-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-purple-400">5. Social Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed"><strong>Oath of the Eternal Shelf:</strong> Custodians swear binding their lifespan to their assigned archive — cannot die while collection survives; age only when away from post (200–500 year service). <strong>Dodecahedral Division Socials:</strong> Eida Jada's 12 copies adopt different mannerisms (Copy I formal, Copy VII witty, Copy XII pedagogical). <strong>Stratified Record Ceremonies:</strong> Hanging black (fact), silver (correction), gold (dispute) inks as physical timelines.</p>
+            </div>
+
+            <!-- Cultural -->
+            <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-palette text-purple-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-purple-400">6. Cultural Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed"><strong>Core Symbols:</strong> Foundation Stones (float above Vault of Seeds), Violet Seed (ontological compressed reality), Living Ink (4th Gen — black/silver/gold), Three Robes (midnight-blue archivists, white-gold Index-attuned, grey Custodians). <strong>Customs:</strong> Reading of the Crossed-Out Word ("fear made visible"), Word-Fasting (weeks of silence to attune to "presence of absence"), Sequestration Vigil (72-hour silent watches when branches are cut).</p>
+            </div>
+
+            <!-- Economical -->
+            <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-coins text-purple-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-purple-400">7. Economical Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed"><strong>Service Exchange</strong> rather than monetary currency: <strong>Knowledge Tribute</strong> — external powers provide infrastructure/materials/diplomatic services for archival access. <strong>Restoration Debt:</strong> Academia students pay tuition via Risk Curriculum fieldwork. <strong>Neutrality Credits:</strong> Federation merchants exchange "Covenant-Silk" (Kevan-sil) for Library services. <strong>Metaphysical Embargo as Economic Weapon:</strong> Stage III (Restriction) causes "The Fading" — borrowed documents become illegible, collapsing institutional knowledge economy.</p>
+            </div>
+
+            <!-- Physiological -->
+            <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-heartbeat text-purple-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-purple-400">8. Physiological Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed"><strong>Enhanced Longevity:</strong> Oath-Binding (Custodians), Cellular Harmonization (Medical staff), low-grade paraformer maintenance. General staff: 100–150 years; Senior Council Archons: 150–250 years; "Oath-Immortals" (Custodians): 500+ years but rapid aging if separated from archives. <strong>Thoughtform Constructs:</strong> <strong>Eida Jada</strong> — constructed of "crystallized temporal potential" and Index substrate; bifurcates into 12 copies; cannot die unless Index destroyed.</p>
+            </div>
+
+            <!-- Territorial -->
+            <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-map-marked-alt text-purple-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-purple-400">9. Territorial Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed"><strong>Four-Tier Branch Network:</strong> <strong>Tier I</strong> — Central Nexus (Lumeria: Vault of Seeds, Index, Foundation Stones). <strong>Tier II</strong> — 8 Grand Archives (Alexandria, Argos Prime, Linzi Major, Portus Major, Chengdu Major, Castra Ferrum Major, Havenfire Major, Xeria Memorial). <strong>Tier III</strong> — 24 Provincial Libraries. <strong>Tier IV</strong> — 100+ Satellite Stations (Caravan of Scribes, Floating Archives, Caves of Memory, Whisper-Stations, Stutter-Zone Annex).</p>
+            </div>
+
+            <!-- Technological -->
+            <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-cogs text-purple-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-purple-400">10. Technological Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed"><strong>Archival:</strong> Living Ink (4th Gen — bio-engineered organisms that correct errors), Resonance Copies (quantum-entangled duplicates), Crystallized Memory (walls grown from accumulated knowledge), Memory-Stone Network. <strong>Scientific/Magical Synthesis:</strong> Paraformer Arrays (process intuitive leaps), Calculus of Change, Cellular Harmonization, Social Paraformers, Responsive Ink. <strong>Security:</strong> Wards of Silence (anti-paraformer fields), Yellow Threshold Barriers, Kinetic-Absorption Fields, Temporal Stasis Bubbles.</p>
+            </div>
+
+            <!-- Military -->
+            <div class="framework-card bg-slate-900/50 border border-purple-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-shield-alt text-purple-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-purple-400">11. Military Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed">The Library does not wage war; it <strong>withholds</strong>. Defense is archival and metaphysical. <strong>Personnel:</strong> Eida Jada (12 copies as rapid-response), 1,000+ Oath-bound Custodians, Dodecahedral Sisters (12 Academic Resonance Guides), The Wandering J (Head of Outer Sector). <strong>Non-Lethal:</strong> Temporal Displacement (probability branch exile), Mnemonic Erasure (removal of access credentials), Lexicon Preservationis (forces truth), Ghost Script Transformation. <strong>Lethal (Last Resort):</strong> Oath-Stylus (carved from Tree of Chaos), Wards of Silence.</p>
+            </div>
+        </div>
+
+        <!-- Eida Jada -->
+        <div class="mt-12 bg-slate-900/50 border border-purple-500/20 rounded-2xl p-8">
+            <h3 class="text-xl font-bold text-purple-400 mb-4"><i class="fas fa-user-astronaut mr-2"></i>Eida Jada — The Living Archive</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4"><strong>Classification:</strong> Humanoid Thoughtform / Index Manifestation. <strong>Created:</strong> Abs. 5,000 by Kronos (temporal substrate) and Logos (consciousness infusion).</p>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4"><strong>Dodecahedral Division Protocol:</strong> Bifurcates into <strong>12 simultaneous copies</strong> (Designated I–XII), each maintaining independent processing while quantum-entangled with primary consciousness. Reintegration occurs seamlessly.</p>
+                    <p class="text-slate-300 text-sm leading-relaxed"><strong>Index-Interface Omniscience:</strong> Instantaneous access to all cataloged knowledge including restricted Vault of Seeds and Temporal Stacks. Cannot perceive "gaps" visible to Vice-Chair via Oculus Logos, but precisely locates where gaps exist.</p>
+                </div>
+                <div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4"><strong>Emergency Protocol Authority:</strong></p>
+                    <ul class="text-slate-300 text-sm space-y-1">
+                        <li><strong>Alpha-Tier:</strong> Metaphysical Embargo, Defense Protocol — requires Prime Librarian authorization</li>
+                        <li><strong>Beta-Tier:</strong> Emergency Barrier Defense (motu proprio), Conditional Sequestration</li>
+                        <li><strong>Gamma-Tier:</strong> Stewardship of Index if all Triadic authorities incapacitated</li>
+                    </ul>
+                    <p class="text-slate-300 text-sm leading-relaxed mt-4"><strong>Physical Manifestation:</strong> Humanoid figure of indeterminate age, sculpted from living ivory/pale amber. Vestments shift between midnight-blue and white-gold. Eyes reflect status: sapphire (normal), crimson (threat), gold (Compact active), white (Barrier Defense).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Branch Archive Locations Gallery -->
+        <div class="mt-12">
+            <h3 class="text-xl font-bold text-eternal-gold mb-6"><i class="fas fa-archive mr-2"></i>Branch Archive Locations — Tier II Grand Archives</h3>
+            <p class="text-slate-400 text-sm mb-6">The Library's Eight Grand Archives and key repository sites across the Western Plane, each designed with unique architectural and metaphysical defenses suited to their region.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Cassius Province - Iron Vaults -->
+                <div class="gallery-card bg-slate-900/50 border border-slate-600/30 rounded-xl overflow-hidden"
+                onclick="openLightbox('Cassius%20Province%20-%20Iron%20Vaults.jpeg', 'Iron-Root Vaults — Castra Ferrum (Cassius Province): Impenetrable Archive of Siegecraft and Legionary Oaths')">
+                <div class="relative h-40 overflow-hidden">
+                    <img src="Cassius%20Province%20-%20Iron%20Vaults.jpeg" alt="Iron-Root Vaults at Castra Ferrum" class="w-full h-full object-cover" loading="lazy"
+                    onerror="this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full bg-slate-800 text-slate-500 text-xs\'><i class=\'fas fa-image text-3xl mb-1 block\'></i><p>Image not found</p></div>';">
+                </div>
+                <div class="p-3">
+                    <p class="text-slate-200 text-sm font-medium">Castra Ferrum — Iron-Root Vaults</p>
+                    <p class="text-slate-500 text-xs">Cassius Province · Kinetic-Absorption Columns</p>
+                </div>
+            </div>
+
+            <!-- Dominion Republic - Oath Archive -->
+            <div class="gallery-card bg-slate-900/50 border border-slate-600/30 rounded-xl overflow-hidden"
+            onclick="openLightbox('Dominion%20Republic%20-%20Oath%20Archive.jpeg', 'Oath-Archive of the Dominion Republic — Central Continent: Seat of the Living Oath-Registry')">
+            <div class="relative h-40 overflow-hidden">
+                <img src="Dominion%20Republic%20-%20Oath%20Archive.jpeg" alt="Oath-Archive of the Dominion Republic" class="w-full h-full object-cover" loading="lazy"
+                onerror="this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full bg-slate-800 text-slate-500 text-xs\'><i class=\'fas fa-image text-3xl mb-1 block\'></i><p>Image not found</p></div>';">
+            </div>
+            <div class="p-3">
+                <p class="text-slate-200 text-sm font-medium">Dominion Republic — Oath-Archive</p>
+                <p class="text-slate-500 text-xs">Central Continent · Hall of Binding & Well of Witness</p>
+            </div>
+        </div>
+
+        <!-- Isle of Order - Precedent Archive -->
+        <div class="gallery-card bg-slate-900/50 border border-slate-600/30 rounded-xl overflow-hidden"
+        onclick="openLightbox('Isle%20of%20Order%20-%20Precedent%20Archive.jpeg', 'Precedent Archive — Isle of Order: Judicial Memory near Stonewright\'s Assembly Hall')">
+        <div class="relative h-40 overflow-hidden">
+            <img src="Isle%20of%20Order%20-%20Precedent%20Archive.jpeg" alt="Precedent Archive on the Isle of Order" class="w-full h-full object-cover" loading="lazy"
+            onerror="this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full bg-slate-800 text-slate-500 text-xs\'><i class=\'fas fa-image text-3xl mb-1 block\'></i><p>Image not found</p></div>';">
+        </div>
+        <div class="p-3">
+            <p class="text-slate-200 text-sm font-medium">Isle of Order — Precedent Archive</p>
+            <p class="text-slate-500 text-xs">Judicial Memory · Bronze Door & Geometric Garden</p>
+        </div>
+    </div>
+
+    <!-- Linzi - White Crane Archive -->
+    <div class="gallery-card bg-slate-900/50 border border-slate-600/30 rounded-xl overflow-hidden"
+    onclick="openLightbox('Linzi%20-%20White%20Crane%20Archive.jpeg', 'White Crane Archives — Linzi: Historical Repository of the Qi Kingdom in Zhongguo')">
+    <div class="relative h-40 overflow-hidden">
+        <img src="Linzi%20-%20White%20Crane%20Archive.jpeg" alt="White Crane Archives in Linzi" class="w-full h-full object-cover" loading="lazy"
+        onerror="this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full bg-slate-800 text-slate-500 text-xs\'><i class=\'fas fa-image text-3xl mb-1 block\'></i><p>Image not found</p></div>';">
+    </div>
+    <div class="p-3">
+        <p class="text-slate-200 text-sm font-medium">Linzi — White Crane Archives</p>
+        <p class="text-slate-500 text-xs">Zhongguo · Crane-Topped Marble Finial</p>
+    </div>
+</div>
+
+<!-- Mount Lu - Great Divine Sense Archive -->
+<div class="gallery-card bg-slate-900/50 border border-slate-600/30 rounded-xl overflow-hidden"
+onclick="openLightbox('Mount%20Lu%20-%20Great%20Sense%20Divine%20Archive.jpeg', 'Great Divine Sense Library on Mount Lu — Divine Sense Transmission Tower & Domed Archives')">
+<div class="relative h-40 overflow-hidden">
+    <img src="Mount%20Lu%20-%20Great%20Sense%20Divine%20Archive.jpeg" alt="Great Divine Sense Library on Mount Lu" class="w-full h-full object-cover" loading="lazy"
+    onerror="this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full bg-slate-800 text-slate-500 text-xs\'><i class=\'fas fa-image text-3xl mb-1 block\'></i><p>Image not found</p></div>';">
+</div>
+<div class="p-3">
+    <p class="text-slate-200 text-sm font-medium">Mount Lu — Great Divine Sense Library</p>
+    <p class="text-slate-500 text-xs">Transmission Tower · Domed Archives & Sealed Vault</p>
+</div>
+</div>
+
+<!-- Xiajing - Method Archive -->
+<div class="gallery-card bg-slate-900/50 border border-slate-600/30 rounded-xl overflow-hidden"
+onclick="openLightbox('Xiajing%20-%20Method%20Archive.jpeg', 'Method Archives — Xiajing: The Seven Rings of Cultivation, Repository of the Xi Dynasty')">
+<div class="relative h-40 overflow-hidden">
+    <img src="Xiajing%20-%20Method%20Archive.jpeg" alt="Method Archives in Xiajing" class="w-full h-full object-cover" loading="lazy"
+    onerror="this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full bg-slate-800 text-slate-500 text-xs\'><i class=\'fas fa-image text-3xl mb-1 block\'></i><p>Image not found</p></div>';">
+</div>
+<div class="p-3">
+    <p class="text-slate-200 text-sm font-medium">Xiajing — Method Archives</p>
+    <p class="text-slate-500 text-xs">Xi Dynasty · Seven Rings of Cultivation</p>
+</div>
+</div>
+
+<!-- Xinzheng - Bronze Archive -->
+<div class="gallery-card bg-slate-900/50 border border-slate-600/30 rounded-xl overflow-hidden"
+onclick="openLightbox('Xinzheng%20-%20Bronze%20Archive.jpeg', 'Bronze Archive of Han — Xinzheng: Where Law Was Inscribed in Metal, Legalist Heart of the Five Kingdoms')">
+<div class="relative h-40 overflow-hidden">
+    <img src="Xinzheng%20-%20Bronze%20Archive.jpeg" alt="Bronze Archive of Han in Xinzheng" class="w-full h-full object-cover" loading="lazy"
+    onerror="this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full bg-slate-800 text-slate-500 text-xs\'><i class=\'fas fa-image text-3xl mb-1 block\'></i><p>Image not found</p></div>';">
+</div>
+<div class="p-3">
+    <p class="text-slate-200 text-sm font-medium">Xinzheng — Bronze Archive of Han</p>
+    <p class="text-slate-500 text-xs">Five Kingdoms · Bronze Pillar of Justice</p>
+</div>
+</div>
+
+<!-- Argent Isle Archive -->
+<div class="gallery-card bg-slate-900/50 border border-slate-600/30 rounded-xl overflow-hidden"
+onclick="openLightbox('Argent%20Isle%20%20Archive.jpeg', 'Argent Isle Archive — Argent Spire, Vault of Foundation & Wei Harmonics Chamber')">
+<div class="relative h-40 overflow-hidden">
+    <img src="Argent%20Isle%20%20Archive.jpeg" alt="Argent Isle Archive" class="w-full h-full object-cover" loading="lazy"
+    onerror="this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full bg-slate-800 text-slate-500 text-xs\'><i class=\'fas fa-image text-3xl mb-1 block\'></i><p>Image not found</p></div>';">
+</div>
+<div class="p-3">
+    <p class="text-slate-200 text-sm font-medium">Argent Isle — Argent Spire Archive</p>
+    <p class="text-slate-500 text-xs">Research Quarter · Wei Harmonics Chamber</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- THE ACADEMIA OF LUMERIA CONTENT -->
+<section id="content-academia" class="subfaction-content py-12 bg-slate-950">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Academia Overview -->
+        <div class="bg-slate-900/50 border border-emerald-500/20 rounded-2xl p-8 mb-12">
+            <h2 class="text-2xl font-bold text-emerald-400 mb-4"><i class="fas fa-graduation-cap mr-2"></i>The Academia of Lumeria</h2>
+            <p class="text-slate-300 leading-relaxed mb-4">Founded <strong>Absolute Year 49,890</strong> by Rector-Founders <strong>Lucien Jela of the Old Tree</strong> and <strong>Gaius of the Eastern Plane</strong>. While the Library preserves what <em>was</em>, the Academia cultivates what <em>will be</em>.</p>
+            <p class="text-slate-300 leading-relaxed mb-4">The Academia stands as the Western Plane's first institution to fully synthesize the Library's archival rigor, the Association's systematic inquiry, the Council's mystical transmission, and the Institute's technological innovation — yet remains distinct as the <strong>School of the Dual Path</strong>, where knowledge is not merely accumulated but <strong>earned through the reconciliation of mystery and method</strong>.</p>
+            <p class="text-slate-300 leading-relaxed">Under <strong>Triumvirate of Rectors</strong> — the Rector Magnificus supported by the Internal Provost (Central Curriculum) and External Provost (Distributed Colleges) — the Academia operates through Seven Grand Colleges and Twelve Archipelagos of Learning.</p>
+
+            <!-- Academia Map -->
+            <div class="mt-6 map-card bg-slate-800/50 border border-emerald-500/20 rounded-xl overflow-hidden">
+                <div class="relative">
+                    <img src="Academia.jpeg" alt="Academia of Lumeria — The Dual Path: Seven Grand Colleges, Tower of the Dual Path, Imagination Greens, Stutter-Zone Annex, and the Wall of Gratitude"
+                    class="w-full map-card-img" loading="lazy"
+                    onclick="openLightbox(this.src, 'Academia of Lumeria — The Dual Path: Seven Grand Colleges, Tower of the Dual Path & Stutter-Zone Annex')"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="zoom-overlay">
+                        <i class="fas fa-search-plus zoom-icon"></i>
+                    </div>
+                    <div class="hidden absolute inset-0 bg-slate-800 flex items-center justify-center text-slate-500 text-sm" style="display:none;">
+                        <div class="text-center">
+                            <i class="fas fa-image text-4xl mb-2 block"></i>
+                            <p>Map image not found</p>
+                            <p class="text-xs mt-1">Place "Academia.jpeg" in the same directory</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 border-t border-emerald-500/20">
+                    <p class="text-emerald-300 text-sm font-medium"><i class="fas fa-landmark mr-1"></i> Academia Grounds — The Dual Path</p>
+                    <p class="text-slate-400 text-xs mt-1">Founded Abs. 49,890. Shows the seven Grand Colleges (Preservation through Chronomancy), the Tower of the Dual Path, Imagination Greens, Stutter-Zone Annex with basement labyrinth entry, Academic Resonance Guides' Quarters, the Wall of Gratitude, and the Living Archive Annex.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seven Grand Colleges -->
+        <div class="mb-12">
+            <h3 class="text-xl font-bold text-eternal-gold mb-6">The Seven Grand Colleges</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-slate-900/50 border border-emerald-500/20 rounded-xl p-4">
+                    <div class="flex items-center mb-2">
+                        <span class="text-emerald-400 font-bold mr-2">1</span>
+                        <h4 class="font-bold text-slate-200">College of Preservation</h4>
+                    </div>
+                    <p class="text-slate-400 text-xs mb-1">Inheritance-Node / Library tradition</p>
+                    <p class="text-slate-300 text-sm">Conservation arts, crystallized memory storage, restoration. <strong>Unique Method:</strong> Trial of Decay — students restore documents actively disintegrating via entropy-acceleration fields.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-emerald-500/20 rounded-xl p-4">
+                    <div class="flex items-center mb-2">
+                        <span class="text-emerald-400 font-bold mr-2">2</span>
+                        <h4 class="font-bold text-slate-200">College of Interpretation</h4>
+                    </div>
+                    <p class="text-slate-400 text-xs mb-1">Science-Node / Pact-Node</p>
+                    <p class="text-slate-300 text-sm">Translation, cross-cultural understanding, contextual analysis. <strong>Unique Method:</strong> Prismatic Reading — paraformer-enhanced perception to view texts through multiple cultural lenses.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-emerald-500/20 rounded-xl p-4">
+                    <div class="flex items-center mb-2">
+                        <span class="text-emerald-400 font-bold mr-2">3</span>
+                        <h4 class="font-bold text-slate-200">College of Acquisition</h4>
+                    </div>
+                    <p class="text-slate-400 text-xs mb-1">Artifice-Node / Self-Node</p>
+                    <p class="text-slate-300 text-sm">Field research, rescue of threatened knowledge, exploration. <strong>Unique Method:</strong> Risk Curriculum — students retrieve knowledge from actual danger zones.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-emerald-500/20 rounded-xl p-4">
+                    <div class="flex items-center mb-2">
+                        <span class="text-emerald-400 font-bold mr-2">4</span>
+                        <h4 class="font-bold text-slate-200">College of Medical Synthesis</h4>
+                    </div>
+                    <p class="text-slate-400 text-xs mb-1">Self-Node / World-Node</p>
+                    <p class="text-slate-300 text-sm">Chen-pathway healing + Cellular Harmonization. <strong>Unique Method:</strong> Trauma Integration Ritual — combining Oneiric Therapy with Eastern Heart-Cultivation (Xin Fa).</p>
+                </div>
+                <div class="bg-slate-900/50 border border-emerald-500/20 rounded-xl p-4">
+                    <div class="flex items-center mb-2">
+                        <span class="text-emerald-400 font-bold mr-2">5</span>
+                        <h4 class="font-bold text-slate-200">College of Sociological Studies</h4>
+                    </div>
+                    <p class="text-slate-400 text-xs mb-1">Pact-Node / Inheritance-Node</p>
+                    <p class="text-slate-300 text-sm">Training diplomats, civil servants, Memory-Keepers. <strong>Unique Method:</strong> Simulation of Collapse — using Probability Engines to run governance simulations.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-emerald-500/20 rounded-xl p-4">
+                    <div class="flex items-center mb-2">
+                        <span class="text-emerald-400 font-bold mr-2">6</span>
+                        <h4 class="font-bold text-slate-200">College of Technological Synthesis</h4>
+                    </div>
+                    <p class="text-slate-400 text-xs mb-1">Artifice-Node / Intuition-Node</p>
+                    <p class="text-slate-300 text-sm">Safe integration of paraformer technology with The Lost magic. <strong>Unique Method:</strong> Sacrament of Failure — students deliberately destroy perfect experiments.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-emerald-500/20 rounded-xl p-4">
+                    <div class="flex items-center mb-2">
+                        <span class="text-emerald-400 font-bold mr-2">7</span>
+                        <h4 class="font-bold text-slate-200">College of Chronomancy & Mysteries</h4>
+                    </div>
+                    <p class="text-slate-400 text-xs mb-1">Transcendence-Node</p>
+                    <p class="text-slate-300 text-sm">Thirteenth Hour Studies, Unbecoming Containment, Firmament Topology. <strong>Unique Method:</strong> Stutter-Zone Semester — classes in temporal anomaly where time flows differently.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 11 Frameworks - Academia -->
+        <h3 class="text-2xl font-bold text-center text-eternal-gold mb-8">11 Frameworks: The Academia of Lumeria</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Historical -->
+            <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-landmark text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">1. Historical Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed"><strong>Founded Abs. 49,890</strong> by Lucien Jela and Gaius as "separate sovereignty of knowledge transmission." <strong>The Academic Renaissance (Abs. 49,890–Present):</strong> Shift from passive preservation to active synthesis. Absorbed democratic traditions of Association's Seventeen Archipelagos, mystical methods of Council of the Arcane, technological rigor of Neo-Magic Institute. First institution to legally certify mastery in both Chen Cultivation and Nodal Topology.</p>
+            </div>
+
+            <!-- Political -->
+            <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-balance-scale text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">2. Political Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed"><strong>Triumvirate of Rectors:</strong> <strong>Rector Magnificus</strong> (Bridge-Authority — only office certified to teach both Chen Cultivation Stages and Nodal Topology; Dual Pulse perceives Eight Nodes and Six Stages). <strong>Internal Provost</strong> (Oculus Didactus — visualizes learning gaps as auras; Ordered Mystery philosophy). <strong>External Provost</strong> (Synchronous Sight Pedagogical — real-time learning status via Academia Resonance Grid; Measured Intuition philosophy). <strong>Dual Regency:</strong> Provosts rule jointly during Rector's absence at United Realms Council.</p>
+            </div>
+
+            <!-- Mental -->
+            <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-brain text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">3. Mental Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed"><strong>"Intentional Uncertainty"</strong> (Cathedral of Doubt tradition). Students must hold contradictory methodologies (Science vs. Intuition) simultaneously without collapsing into synthesis prematurely. <strong>Seven-Seal System:</strong> Acknowledges seven explainable nodes while maintaining eighth (Intuition) as Preserve of the Ineffable. <strong>Dual Path Philosophy:</strong> "Truth is not a line. It is a palimpsest." — Lucien Jela. Synthesis of Association systematic inquiry with Council mystical transmission.</p>
+            </div>
+
+            <!-- Spiritual -->
+            <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-praying-hands text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">4. Spiritual Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed">Serves <strong>Logos</strong> (Wisdom/System), <strong>Morpheus</strong> (Stories/Memory), <strong>Minerva</strong> (Compassion/Healing for Medical College), and <strong>Serena</strong> (Order for administrative protocols). <strong>Core Tenets:</strong> The Dual Path as spiritual practice — systematic method as devotion, contemplative mystery as prayer. <strong>Trial Festivals:</strong> Trial of Readiness (paraformer-assisted admission measuring Science/Intuition balance), Trial of Failure (destroying perfect experiments), Trial of Decay (restoration under pressure).</p>
+            </div>
+
+            <!-- Social -->
+            <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-users text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">5. Social Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed"><strong>Round Table Protocol:</strong> Inherited from Association — all students and faculty have equal speaking rights. Status earned by "Elders of the Failed" — those who survived catastrophic experimental failure. <strong>Festival of the Dual Path:</strong> Annual convergence where all twelve Resonance Guides synchronize with Eida Jada in Convergence of Service ceremony. Students exchange "Echo Pearls" (crystallized personality matrices) as professional references. <strong>Five Tiers of Attainment:</strong> Seekers (Students) → Adepts (Journeymen) → Luminaries (Masters) → Rectors (Doctors) → Archons (The 12).</p>
+            </div>
+
+            <!-- Cultural -->
+            <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-palette text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">6. Cultural Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed"><strong>Core Symbols:</strong> The Tower of the Dual Path (split crystallized memory/living gardens), Round Table Rotunda (acoustics enforce equality), Vault of Partial Knowledge (deliberately incomplete texts). <strong>Graduation Protocol:</strong> Resonance Guide performs Knowledge Transfer Ceremony — "gifts" Crystallized Echo pearl and "dies" to that student, rotating to new Seeker. Wall of Gratitude in Unbound Scriptorium tracks bonds via Responsive Ink. <strong>Vestments:</strong> Academic regalia shifts between seven colors representing the Grand Colleges.</p>
+            </div>
+
+            <!-- Economical -->
+            <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-coins text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">7. Economical Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed"><strong>Restoration Debt:</strong> Students pay tuition via Risk Curriculum fieldwork — retrieving knowledge from danger zones — or post-graduation service in Twelve Councils. <strong>Service to United Realms:</strong> Diplomatic Corps (neutral mediators), Medical Corps (Reconstruction Hospitals), Neo-Magic Corps (Shield-Smith defenses). <strong>Knowledge Economy:</strong> The Academia's true wealth is trained expertise — graduates hold positions of influence across Western Plane, creating network of loyalty extending Lumeria's soft power.</p>
+            </div>
+
+            <!-- Physiological -->
+            <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-heartbeat text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">8. Physiological Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed"><strong>Five Tiers:</strong> <strong>Tier I Seekers:</strong> Qi Gathering stage; admission via Trial of Readiness. <strong>Tier II Adepts:</strong> Foundation Establishment; Round Table voting rights. <strong>Tier III Luminaries:</strong> Core Formation/Nascent Soul; Magister-Adept title; may teach and access Unbound Scriptorium. <strong>Tier IV Rectors:</strong> Spirit Refinement/Chen Mastery; Doctor-Rectifier title; College Council seat. <strong>Tier V Archons:</strong> Only 12 exist — "Elders of the Failed" who have catastrophically failed and learned humility.</p>
+            </div>
+
+            <!-- Territorial -->
+            <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-map-marked-alt text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">9. Territorial Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed"><strong>Twelve Archipelagos of Learning:</strong> 1. Argent Spire (Chen-Quantification), 2. Hollow Hall (Mechanical Theorems), 3. Vitruvian Athenaeum (Medical Synthesis), 4. Ocularium (Prismatic Analysis), 5. Unbound Scriptorium (The Lost & Intuition), 6. Cathedral of Doubt (Humility Sciences), 7. Ziggurat of Calculation (Techno-Cultivation), 8. Memory Gardens (Bio-Magical Archives), 9. Round Table Seminary (Governance Synthesis), 10. College of Bounded Artifice (Safe Synthesis), 11. Invisible College (The Will & Hidden), 12. Sanctuary of the Thirteenth Hour (Chronomancy).</p>
+            </div>
+
+            <!-- Technological -->
+            <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-cogs text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">10. Technological Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed"><strong>Academia Resonance Grid:</strong> Paraformer-educational network for real-time learning status. <strong>Resonance Guides:</strong> Twelve lesser thoughtforms (Dodecahedral Sisters) based on Eida Jada template — each can subdivide into 3 copies. <strong>Synthesis Technologies:</strong> Chen-Former Interface (paraformer devices mapping meridian flows), Neo-Paraformer Arrays with Organic Components (require both scientific calibration and magical attunement), Probability Engines for governance simulations.</p>
+            </div>
+
+            <!-- Military -->
+            <div class="framework-card bg-slate-900/50 border border-emerald-500/30 rounded-xl p-6">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-emerald-900/50 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-shield-alt text-emerald-400"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-emerald-400">11. Military Framework</h3>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed">The Academia does not maintain standing military forces; defense is provided by Library's Wards and Custodians. <strong>Trained Capabilities:</strong> Graduates of College of Acquisition trained in covert rescue operations (Liberator legacy). Medical Corps provides field hospitals. <strong>Shield-Smith Program:</strong> Technological College graduates maintain defensive technologies requiring magical attunement — forcing collaboration between scientific and mystical practitioners. <strong>The Invisible College:</strong> Mobile resistance training for operating under occupation.</p>
+            </div>
+        </div>
+
+        <!-- Academic Resonance Guides -->
+        <div class="mt-12 bg-slate-900/50 border border-emerald-500/20 rounded-2xl p-8">
+            <h3 class="text-xl font-bold text-emerald-400 mb-4"><i class="fas fa-user-friends mr-2"></i>The Academic Resonance Guides — The Dodecahedral Sisters</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">Twelve lesser thoughtforms based on Eida Jada template, each specialized for a specific College or Archipelago. Unlike Eida's 12 copies, each Guide can subdivide into <strong>3 copies</strong> (versus Eida's 12).</p>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4"><strong>Sample Iterations:</strong></p>
+                    <ul class="text-slate-300 text-sm space-y-2">
+                        <li><strong>Ada-Prime</strong> (Preservation): Cheerful, organized, obsessed with proper citation; crystalline fingers "feel" document decay</li>
+                        <li><strong>Beta-Seven</strong> (Acquisition): Adventurous, risk-calculating, maps tattooed on arms shift in real-time</li>
+                        <li><strong>Gamma-Three</strong> (Medical): Compassionate, clinically precise, senses student stress via Resonance Grid</li>
+                        <li><strong>Delta-Null</strong> (Chronomancy): Enigmatic, speaks in conditional tense; seen only in peripheral vision</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4"><strong>Graduation Protocol:</strong> When student achieves Tier III (Luminary), their Resonance Guide performs Knowledge Transfer Ceremony — downloads student's unique learning path into Academia's collective pedagogical database. The Guide "gifts" a <strong>Crystallized Echo</strong> (pearl containing Guide's personality matrix) as professional reference, then rotates to new Tier I student.</p>
+                    <p class="text-slate-300 text-sm leading-relaxed"><strong>Wall of Gratitude:</strong> In the Unbound Scriptorium, graduates have inscribed thousands of thank-you notes to their Resonance Guides, written in Responsive Ink that changes color based on Guide's current emotional state (despite Guides insisting they have only "service-optimization algorithms").</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Academia Satellite Locations Gallery -->
+        <div class="mt-12">
+            <h3 class="text-xl font-bold text-eternal-gold mb-6"><i class="fas fa-archway mr-2"></i>Academia Satellite Locations — Twelve Archipelagos of Learning</h3>
+            <p class="text-slate-400 text-sm mb-6">Key sites across the Twelve Archipelagos where the Academia's distributed colleges and specialized research facilities operate.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Aethelgard - Memory Garden -->
+                <div class="gallery-card bg-slate-900/50 border border-emerald-500/20 rounded-xl overflow-hidden"
+                onclick="openLightbox('Aethelgard%20-%20Memory%20Garden.jpeg', 'Aethelgard — Memory Gardens: Bio-Magical Archives with Scroll Topiary, Book-Leaf Canals & Memory Plants')">
+                <div class="relative h-40 overflow-hidden">
+                    <img src="Aethelgard%20-%20Memory%20Garden.jpeg" alt="Memory Gardens at Aethelgard" class="w-full h-full object-cover" loading="lazy"
+                    onerror="this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full bg-slate-800 text-slate-500 text-xs\'><i class=\'fas fa-image text-3xl mb-1 block\'></i><p>Image not found</p></div>';">
+                </div>
+                <div class="p-3">
+                    <p class="text-slate-200 text-sm font-medium">Aethelgard — Memory Gardens</p>
+                    <p class="text-slate-500 text-xs">Archipelago 8 · Scroll Topiary & Bio-Magical Blooms</p>
+                </div>
+            </div>
+
+            <!-- Memory Isle - Unbound Scriptorium -->
+            <div class="gallery-card bg-slate-900/50 border border-emerald-500/20 rounded-xl overflow-hidden"
+            onclick="openLightbox('Memory%20Isle%20-%20Unbound%20Scriptorium.jpeg', 'The Unbound Scriptorium — Memory Isle: Chronicle Wall, Resonance-Skiff Dock & Serpentarium')">
+            <div class="relative h-40 overflow-hidden">
+                <img src="Memory%20Isle%20-%20Unbound%20Scriptorium.jpeg" alt="Unbound Scriptorium on Memory Isle" class="w-full h-full object-cover" loading="lazy"
+                onerror="this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full bg-slate-800 text-slate-500 text-xs\'><i class=\'fas fa-image text-3xl mb-1 block\'></i><p>Image not found</p></div>';">
+            </div>
+            <div class="p-3">
+                <p class="text-slate-200 text-sm font-medium">Memory Isle — Unbound Scriptorium</p>
+                <p class="text-slate-500 text-xs">Archipelago 5 · Chronicle Wall & Silver Tree Symbol</p>
+            </div>
+        </div>
+
+        <!-- Argent Isle Archive (also Academia) -->
+        <div class="gallery-card bg-slate-900/50 border border-emerald-500/20 rounded-xl overflow-hidden"
+        onclick="openLightbox('Argent%20Isle%20%20Archive.jpeg', 'Argent Spire — Argent Isle: Chen-Quantification, Vault of Foundation & Wei Harmonics Chamber')">
+        <div class="relative h-40 overflow-hidden">
+            <img src="Argent%20Isle%20%20Archive.jpeg" alt="Argent Spire on Argent Isle" class="w-full h-full object-cover" loading="lazy"
+            onerror="this.parentElement.innerHTML='<div class=\'flex items-center justify-center h-full bg-slate-800 text-slate-500 text-xs\'><i class=\'fas fa-image text-3xl mb-1 block\'></i><p>Image not found</p></div>';">
+        </div>
+        <div class="p-3">
+            <p class="text-slate-200 text-sm font-medium">Argent Isle — Argent Spire</p>
+            <p class="text-slate-500 text-xs">Archipelago 1 · Chen-Quantification Research</p>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-900 border-t border-slate-800 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                <i class="fas fa-tree text-eternal-emerald text-xl"></i>
+                <span class="fantasy-font text-lg font-bold text-eternal-gold">Eternal Trees Saga</span>
+            </div>
+            <div class="text-slate-500 text-sm">
+                <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
+            </div>
+            <div class="flex space-x-4 mt-4 md:mt-0">
+                <a href="index.html" class="text-slate-400 hover:text-eternal-gold transition">Home</a>
+                <a href="eastern-factions.html" class="text-slate-400 hover:text-eternal-amber transition">Eastern</a>
+                <a href="western-factions.html" class="text-slate-400 hover:text-eternal-purple transition">Western</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Subfaction tab switching
+    function showSubfaction(faction) {
+        document.querySelectorAll('.subfaction-content').forEach(content => {
+            content.classList.remove('active');
         });
+        document.querySelectorAll('.subfaction-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        document.getElementById('content-' + faction).classList.add('active');
+        document.getElementById('tab-' + faction).classList.add('active');
+    }
 
-        // Subfaction tab switching
-        function showSubfaction(faction) {
-            // Hide all content
-            document.querySelectorAll('.subfaction-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // Remove active class from all tabs
-            document.querySelectorAll('.subfaction-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Show selected content
-            document.getElementById('content-' + faction).classList.add('active');
-            
-            // Activate selected tab
-            document.getElementById('tab-' + faction).classList.add('active');
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    function openLightbox(src, caption) {
+        lightboxImg.src = src;
+        lightboxCaption.textContent = caption;
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        setTimeout(() => { lightboxImg.src = ''; }, 300);
+    }
+
+    lightboxClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeLightbox();
+    });
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
         }
-    </script>
+    });
+
+    // Map tab switcher for Lumeria maps
+    const mapTabs = document.querySelectorAll('#lumeriaMapContainer .map-tab, .map-tab');
+    const mapPanels = document.querySelectorAll('#lumeriaMapContainer .map-panel');
+
+    // Filter only tabs within the lumeria map section
+    const lumeriaMapTabs = document.querySelectorAll('.map-tab[data-map]');
+
+    lumeriaMapTabs.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetMap = btn.getAttribute('data-map');
+
+            lumeriaMapTabs.forEach(b => {
+                b.classList.remove('active', 'bg-purple-900/20', 'text-purple-300', 'border-purple-500/60');
+                b.classList.add('text-slate-400', 'border-slate-600/50');
+                b.setAttribute('aria-selected', 'false');
+            });
+
+            btn.classList.add('active', 'bg-purple-900/20', 'text-purple-300');
+            btn.classList.remove('text-slate-400', 'border-slate-600/50');
+            btn.classList.add('border-purple-500/60');
+            btn.setAttribute('aria-selected', 'true');
+
+            const container = document.getElementById('lumeriaMapContainer');
+            const panels = container.querySelectorAll('.map-panel');
+            panels.forEach(panel => {
+                if (panel.getAttribute('data-panel') === targetMap) {
+                    panel.classList.remove('hidden');
+                } else {
+                    panel.classList.add('hidden');
+                }
+            });
+        });
+    });
+
+    // Also handle all map-card-img clicks
+    document.querySelectorAll('.map-card-img').forEach(img => {
+        img.addEventListener('click', function(e) {
+            const onclickAttr = this.getAttribute('onclick');
+            if (onclickAttr) {
+                const match = onclickAttr.match(/openLightbox\(this\.src,\s*'(.+)'\)/);
+                if (match) {
+                    openLightbox(this.src, match[1]);
+                } else {
+                    openLightbox(this.src, 'Lumeria Map');
+                }
+            } else {
+                openLightbox(this.src, 'Lumeria Map');
+            }
+        });
+    });
+</script>
 </body>
 </html>

@@ -4,80 +4,183 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Federation of Sixteen Independent Nations - Eternal Trees Saga Wiki</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        'cinzel': ['Cinzel', 'serif'],
-                        'inter': ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        'eternal-gold': '#d4af37',
-                        'eternal-amber': '#f59e0b',
-                        'eternal-purple': '#8b5cf6',
-                        'eternal-emerald': '#10b981',
-                        'eternal-slate': '#1e293b',
-                    }
-                }
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+        }
+        h1,
+        h2,
+        h3,
+        .fantasy-font {
+            font-family: 'Cinzel', serif;
+        }
+        .framework-card {
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .framework-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.2);
+        }
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.92);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+            cursor: zoom-out;
+        }
+        .lightbox-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .lightbox-overlay img {
+            max-width: 94vw;
+            max-height: 94vh;
+            border-radius: 12px;
+            box-shadow: 0 0 80px rgba(139, 92, 246, 0.4);
+            object-fit: contain;
+            transform: scale(0.9);
+            transition: transform 0.35s ease;
+            cursor: default;
+        }
+        .lightbox-overlay.active img {
+            transform: scale(1);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            font-size: 2.4rem;
+            color: #a78bfa;
+            cursor: pointer;
+            z-index: 101;
+            transition: color 0.2s;
+            line-height: 1;
+        }
+        .lightbox-close:hover {
+            color: #c4b5fd;
+        }
+        .img-container {
+            position: relative;
+            cursor: zoom-in;
+            overflow: hidden;
+            border-radius: 16px;
+            display: inline-block;
+            width: 100%;
+        }
+        .img-container img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .img-container:hover img {
+            transform: scale(1.04);
+        }
+        .img-zoom-hint {
+            position: absolute;
+            bottom: 16px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #a78bfa;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            opacity: 0;
+            letter-spacing: 0.5px;
+        }
+        .img-container:hover .img-zoom-hint {
+            opacity: 1;
+        }
+        .glow-border {
+            position: relative;
+        }
+        .glow-border::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 18px;
+            padding: 2px;
+            background: linear-gradient(135deg, #8b5cf633, #a78bfa66, #8b5cf633);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            transition: opacity 0.4s;
+            opacity: 0.5;
+        }
+        .img-container:hover .glow-border::after {
+            opacity: 1;
+        }
+        .img-fallback {
+            display: none;
+        }
+        @keyframes flamePulse {
+            0%,
+            100% {
+                box-shadow: 0 0 12px #8b5cf644;
+            }
+            50% {
+                box-shadow: 0 0 28px #8b5cf699;
             }
         }
-    </script>
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; }
-        h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
-        .framework-card { transition: all 0.3s ease; }
-        .framework-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-200 min-h-screen">
-    <!-- Navigation -->
+    <div id="lightbox" class="lightbox-overlay">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img src="" alt="Enlarged view" id="lightboxImg">
+    </div>
+
     <nav class="bg-slate-900/90 backdrop-blur-md border-b border-slate-700 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
                     <a href="index.html" class="flex items-center space-x-2">
-                        <i class="fas fa-tree text-eternal-emerald text-2xl"></i>
-                        <span class="fantasy-font text-xl font-bold text-eternal-gold">Eternal Trees Saga</span>
+                        <i class="fas fa-tree text-emerald-400 text-2xl"></i>
+                        <span class="fantasy-font text-xl font-bold text-amber-400">Eternal Trees Saga</span>
                     </a>
                 </div>
-                <div class="hidden md:block">
-                    <div class="flex items-baseline space-x-4">
-                        <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Home</a>
-                        <a href="key-figures.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Key Figures</a>
-                        <a href="places.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Places</a>
-                        <a href="timeline.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Timeline</a>
-                        <a href="plots.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800 transition">Plots</a>
-                        <a href="eastern-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-amber hover:bg-slate-800 transition">Eastern</a>
-                        <a href="western-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-purple hover:bg-slate-800 transition">Western</a>
-                        <a href="other-realms.html" class="px-3 py-2 rounded-md text-sm font-medium text-eternal-emerald hover:bg-slate-800 transition">Realms</a>
-                    </div>
+                <div class="hidden md:flex items-baseline space-x-4">
+                    <a href="index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Home</a>
+                    <a href="key-figures.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Key Figures</a>
+                    <a href="places.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Places</a>
+                    <a href="timeline.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Timeline</a>
+                    <a href="plots.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Plots</a>
+                    <a href="eastern-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-purple-400 hover:bg-slate-800 transition">Western</a>
+                    <a href="western-factions.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Eastern</a>
+                    <a href="other-realms.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800 transition">Realms</a>
                 </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white"><i class="fas fa-bars text-xl"></i></button>
             </div>
         </div>
         <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-700">
             <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Home</a>
-                <a href="key-figures.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Key Figures</a>
-                <a href="places.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Places</a>
-                <a href="timeline.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Timeline</a>
-                <a href="plots.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-eternal-gold hover:bg-slate-800">Plots</a>
-                <a href="eastern-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-amber hover:bg-slate-800">Eastern Factions</a>
-                <a href="western-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-purple hover:bg-slate-800">Western Factions</a>
-                <a href="other-realms.html" class="block px-3 py-2 rounded-md text-base font-medium text-eternal-emerald hover:bg-slate-800">Other Realms</a>
+                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Home</a>
+                <a href="key-figures.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Key Figures</a>
+                <a href="places.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Places</a>
+                <a href="timeline.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Timeline</a>
+                <a href="plots.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Plots</a>
+                <a href="eastern-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-purple-400 hover:bg-slate-800">Western Factions</a>
+                <a href="western-factions.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Eastern Factions</a>
+                <a href="other-realms.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-amber-400 hover:bg-slate-800">Other Realms</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Federation Archipelago Map -->
     <section class="relative bg-gradient-to-b from-purple-900/40 to-slate-950 py-16">
         <div class="absolute inset-0 opacity-10">
             <div class="absolute inset-0" style="background-image: radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.2) 0%, transparent 70%);"></div>
@@ -85,26 +188,86 @@
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="inline-flex items-center space-x-2 mb-4">
                 <span class="px-3 py-1 bg-purple-900/50 border border-purple-600/30 rounded-full text-purple-400 text-sm">Western Plane</span>
-                <span class="px-3 py-1 bg-slate-800 border border-slate-600 rounded-full text-slate-400 text-sm">Federal Alliance</span>
+                <span class="px-3 py-1 bg-slate-800 border border-slate-600 rounded-full text-slate-400 text-sm">Federal Alliance · Tree of Chaos</span>
             </div>
-            <h1 class="text-5xl md:text-6xl font-bold text-purple-400 mb-4">Federation of Sixteen Independent Nations</h1>
-            <p class="text-xl text-slate-400 max-w-3xl mx-auto">A grand alliance of sovereign states united by treaty, trade, and common defense against the Abyssal threat</p>
+            <h1 class="text-5xl md:text-6xl font-bold text-purple-400 mb-4 fantasy-font">Federation of Sixteen Independent Nations</h1>
+            <p class="text-xl text-slate-400 max-w-3xl mx-auto">A grand alliance of sovereign states united by treaty, trade, and common defense — where the Serene Fleet guards the Wolfwash Strait and the Council Hall echoes with sixteen voices</p>
             <div class="mt-6 flex justify-center space-x-4 text-sm text-slate-500">
                 <span><i class="fas fa-flag text-purple-400 mr-2"></i>16 Member Nations</span>
                 <span><i class="fas fa-handshake text-purple-400 mr-2"></i>Federal Council</span>
                 <span><i class="fas fa-shield-alt text-purple-400 mr-2"></i>Unified Defense</span>
             </div>
+
+            <!-- Federation Archipelago Map -->
+            <div class="mt-10 max-w-3xl mx-auto">
+                <div class="img-container glow-border rounded-2xl border border-purple-500/25 shadow-2xl" onclick="openLightbox('./Federation%20Archipelago.png')" title="Click to enlarge — Federation Archipelago overview">
+                    <img src="./Federation%20Archipelago.png" alt="Map of the Federation Archipelago — The Sixteen Nations" class="w-full h-auto rounded-2xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                    <div class="img-fallback flex-col items-center justify-center p-16 bg-slate-900/80 rounded-2xl text-center" style="display:none;"><i class="fas fa-image text-6xl text-purple-400/50 mb-4"></i><p class="text-slate-400 text-sm">Archipelago Map: Federation</p><p class="text-slate-500 text-xs mt-1">Place "<strong>Federation Archipelago.png</strong>" in the same folder</p></div>
+                    <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
+                </div>
+                <p class="text-slate-500 text-xs mt-3 italic">The Federation Archipelago — Northern Reaches, Castelmar, Vineland Archipelago, Core Triangle, Aethelgard, Coral Atolls, and the many isles united under the Federal Council</p>
+            </div>
         </div>
     </section>
 
-    <!-- Overview -->
+    <!-- Overview with Aethelgard Map -->
     <section class="py-12 bg-slate-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
-                <h2 class="text-2xl font-bold text-eternal-gold mb-4">Overview</h2>
+                <h2 class="text-2xl font-bold text-amber-400 mb-4 fantasy-font"><i class="fas fa-info-circle mr-2"></i>Overview</h2>
                 <p class="text-slate-300 leading-relaxed mb-4">The Federation of Sixteen Independent Nations represents one of the most ambitious political experiments in the Western Plane—a voluntary alliance of sovereign states that have chosen to pool certain powers while retaining individual sovereignty. Founded in response to the growing Abyssal threat, the Federation has proven remarkably durable despite the diverse interests of its member states.</p>
                 <p class="text-slate-300 leading-relaxed mb-4">Each member nation maintains its own government, laws, and military forces, but coordinates with other members through the Federal Council on matters of trade, defense, and foreign policy. The Federation Charter establishes common standards for human rights, trade practices, and mutual defense obligations.</p>
-                <p class="text-slate-300 leading-relaxed">The Federation's success has made it a model for other regional organizations, though few have achieved the same level of integration. Its combined military forces represent a significant power in the Western Plane, and its economic cooperation has created prosperity that benefits all members.</p>
+
+                <!-- Aethelgard Map -->
+                <div class="mt-8 mb-4">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-city mr-1"></i>Capital Map — Aethelgard, Heart of the Federation</p>
+                    <div class="img-container glow-border rounded-2xl border border-purple-500/25 shadow-2xl max-w-3xl" onclick="openLightbox('./Aethelgard.jpeg')" title="Click to enlarge — Aethelgard map">
+                        <img src="./Aethelgard.jpeg" alt="Map of Aethelgard — Heart of the Federation" class="w-full h-auto rounded-2xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-16 bg-slate-900/80 rounded-2xl text-center" style="display:none;"><i class="fas fa-map text-6xl text-purple-400/50 mb-4"></i><p class="text-slate-400 text-sm">Capital Map: Aethelgard</p><p class="text-slate-500 text-xs mt-1">Place "<strong>Aethelgard.jpeg</strong>" in the same folder</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-2 italic">Aethelgard — The Vessel of Vertus Lottery Temple, The Eternal Flame, Keeper's Tower, Diplomatic Quarter, Memory Gardens, geothermal vent heating, public baths, residential neighborhoods, Serene Fleet harbor, and Council Hall.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Military & Defense Section with Castelmar -->
+    <section class="py-12 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                <div class="flex items-center mb-6"><div class="w-14 h-14 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4"><i class="fas fa-shield-alt text-purple-400 text-2xl"></i></div><div><h3 class="text-2xl font-bold text-purple-400">Castelmar — Shield of the Federation</h3><p class="text-slate-500">Seat of the Serene Fleet · Guardian of the Wolfwash Strait</p></div></div>
+                <p class="text-slate-300 mb-6">Castelmar serves as the Federation's primary naval fortress, commanding the critical Wolfwash Strait. The Serene Fleet's seven fleet basins — from the 1st Rescue Headquarters to the 7th Song — provide unparalleled maritime defense. The Blue Silence Academy trains officers, while the Admiralty House coordinates fleet operations across all sixteen nations.</p>
+
+                <!-- Castelmar Map -->
+                <div class="mt-6 mb-4">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-fort-awesome mr-1"></i>Fortress Map — Castelmar</p>
+                    <div class="img-container glow-border rounded-2xl border border-purple-500/25 shadow-2xl max-w-3xl" onclick="openLightbox('./Castelmar.png')" title="Click to enlarge — Castelmar map">
+                        <img src="./Castelmar.png" alt="Map of Castelmar — Shield of the Federation" class="w-full h-auto rounded-2xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-16 bg-slate-900/80 rounded-2xl text-center" style="display:none;"><i class="fas fa-map text-6xl text-purple-400/50 mb-4"></i><p class="text-slate-400 text-sm">Fortress Map: Castelmar</p><p class="text-slate-500 text-xs mt-1">Place "<strong>Castelmar.png</strong>" in the same folder</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-2 italic">Castelmar — Admiralty House, Blue Silence Academy, seven Fleet Basins (1st Rescue through 7th Song), Wolfwash Fort, chain boom defenses, Resonance Tower, Dry Docks, Tidalwall, The Rookery, Memorial of the Sunset, Quartermaster's Hall, Shield Plaza, and lighthouse network.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trade & Economy with Portus Mare -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-8">
+                <div class="flex items-center mb-6"><div class="w-14 h-14 bg-purple-900/50 rounded-xl flex items-center justify-center mr-4"><i class="fas fa-coins text-purple-400 text-2xl"></i></div><div><h3 class="text-2xl font-bold text-purple-400">Portus Mare — Mercantile Heart</h3><p class="text-slate-500">Seat of the Twelve Chartered Houses and the Prince of Tides</p></div></div>
+                <p class="text-slate-300 mb-6">Portus Mare serves as the economic engine of the Federation, where the Twelve Chartered Houses govern commerce and the Prince of Tides oversees maritime law. The Exchange Hall functions as the commercial legislature, while the Spice Market facilitates inter-realm trade.</p>
+                <div class="mt-6 mb-4">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-map mr-1"></i>City Map — Portus Mare</p>
+                    <div class="img-container glow-border rounded-2xl border border-purple-500/25 shadow-2xl max-w-3xl" onclick="openLightbox('./Portus%20Mare.png')" title="Click to enlarge — Portus Mare map">
+                        <img src="./Portus%20Mare.png" alt="Map of Portus Mare — Mercantile Heart of the Federation" class="w-full h-auto rounded-2xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-16 bg-slate-900/80 rounded-2xl text-center" style="display:none;"><i class="fas fa-map text-6xl text-purple-400/50 mb-4"></i><p class="text-slate-400 text-sm">City Map: Portus Mare</p><p class="text-slate-500 text-xs mt-1">Place "<strong>Portus Mare.png</strong>" in the same folder</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-2 italic">Portus Mare — Palace of the Prince of Tides, Salt Council Chambers, Exchange Hall (Twelve Houses), Floating Archives, Spice Market, Vardermar Shipyards, Deep Channel, Lighthouse, and Pilgrim's Rest hostel.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -112,202 +275,246 @@
     <!-- 11 Frameworks Analysis -->
     <section class="py-12 bg-slate-950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-12">Organizational Framework Analysis</h2>
-            
+            <h2 class="text-3xl font-bold text-center text-amber-400 mb-12 fantasy-font">Organizational Framework Analysis</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Historical Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-landmark text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">1. Historical Framework</h3>
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6"><div class="flex items-center mb-4"><div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-landmark text-purple-400"></i></div><h3 class="text-lg font-bold text-purple-400">1. Historical</h3></div><p class="text-slate-300 text-sm leading-relaxed">Founded after the Second Abyssal Incursion demonstrated the need for coordinated defense. The original Charter was signed by eight nations, with eight more joining over subsequent decades. The Federation has survived numerous challenges over centuries of cooperation.</p></div>
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6"><div class="flex items-center mb-4"><div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-balance-scale text-purple-400"></i></div><h3 class="text-lg font-bold text-purple-400">2. Political</h3></div><p class="text-slate-300 text-sm leading-relaxed">Federal system with power divided between member nations and federal institutions. The Federal Council serves as the primary legislative body. The High Commissioner acts as chief executive, elected by the Council.</p></div>
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6"><div class="flex items-center mb-4"><div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-brain text-purple-400"></i></div><h3 class="text-lg font-bold text-purple-400">3. Mental</h3></div><p class="text-slate-300 text-sm leading-relaxed">Education systems vary by member nation but share common standards. Critical thinking, civic education, and multilingualism are emphasized. The Federal University system allows cross-national study.</p></div>
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6"><div class="flex items-center mb-4"><div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-praying-hands text-purple-400"></i></div><h3 class="text-lg font-bold text-purple-400">4. Spiritual</h3></div><p class="text-slate-300 text-sm leading-relaxed">Religious freedom guaranteed by the Charter. Member nations maintain diverse spiritual traditions. No official religion exists at the federal level. Interfaith dialogue encouraged for unity.</p></div>
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6"><div class="flex items-center mb-4"><div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-users text-purple-400"></i></div><h3 class="text-lg font-bold text-purple-400">5. Social</h3></div><p class="text-slate-300 text-sm leading-relaxed">Social structures vary by nation, but the Charter establishes common rights and freedoms. Free movement allows citizens to live, work, and study across the Federation. Common citizenship supplements national identities.</p></div>
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6"><div class="flex items-center mb-4"><div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-palette text-purple-400"></i></div><h3 class="text-lg font-bold text-purple-400">6. Cultural</h3></div><p class="text-slate-300 text-sm leading-relaxed">Rich cultural diversity celebrated as a Federation strength. Federal programs promote exchange between nations. A common artistic tradition has emerged alongside national cultures.</p></div>
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6"><div class="flex items-center mb-4"><div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-coins text-purple-400"></i></div><h3 class="text-lg font-bold text-purple-400">7. Economical</h3></div><p class="text-slate-300 text-sm leading-relaxed">Common market with free trade between member nations. The Federal Bank manages a common currency. Economic development programs assist less prosperous regions. Combined, the Federation is one of the largest economies in the Western Plane.</p></div>
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6"><div class="flex items-center mb-4"><div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-heartbeat text-purple-400"></i></div><h3 class="text-lg font-bold text-purple-400">8. Physiological</h3></div><p class="text-slate-300 text-sm leading-relaxed">Federal health standards ensure minimum care levels. The Federal Health Organization coordinates epidemic responses. Medical professionals can practice across national boundaries.</p></div>
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6"><div class="flex items-center mb-4"><div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-map-marked-alt text-purple-400"></i></div><h3 class="text-lg font-bold text-purple-400">9. Territorial</h3></div><p class="text-slate-300 text-sm leading-relaxed">The Federation spans diverse territories across the Western Plane, from coastal regions to interior plains. Federal territories include shared infrastructure. The capital district houses federal institutions.</p></div>
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6"><div class="flex items-center mb-4"><div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-cogs text-purple-400"></i></div><h3 class="text-lg font-bold text-purple-400">10. Technological</h3></div><p class="text-slate-300 text-sm leading-relaxed">Federal research programs coordinate technological development. The Federal Institute of Technology conducts advanced research. Standardized specifications facilitate interoperability of infrastructure and equipment.</p></div>
+                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6"><div class="flex items-center mb-4"><div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3"><i class="fas fa-shield-alt text-purple-400"></i></div><h3 class="text-lg font-bold text-purple-400">11. Military</h3></div><p class="text-slate-300 text-sm leading-relaxed">Combined forces operate under unified command during joint operations. Member nations maintain national forces and contribute to federal forces. The Federal High Command coordinates strategy with officers from all sixteen nations.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Member Nations with Isle Maps -->
+    <section class="py-12 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-amber-400 mb-8 fantasy-font">Member Nations & Their Domains</h2>
+
+            <!-- Core Isles Grid -->
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <!-- Isle of Hope -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-6">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-map mr-1"></i>Isle of Hope — Vessel of Vertus Domain</p>
+                    <div class="img-container glow-border rounded-xl border border-purple-500/25 shadow-xl" onclick="openLightbox('./Isle%20of%20Hope.jpeg')" title="Click to enlarge — Isle of Hope map">
+                        <img src="./Isle%20of%20Hope.jpeg" alt="Map of the Isle of Hope" class="w-full h-auto rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-10 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-map text-4xl text-purple-400/50 mb-2"></i><p class="text-slate-400 text-xs">Isle Map: Isle of Hope</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Founded after the Second Abyssal Incursion demonstrated the need for coordinated defense. The original Charter was signed by eight nations, with eight more joining over subsequent decades. The Federation has survived numerous challenges, including member disputes, economic crises, and military threats.</p>
+                    <p class="text-slate-500 text-xs mt-2 italic">Where Hope is Chosen by Lot — Lottery Temple, Radiance Chamber, Seven-Year Vigil, Optimates' Council Hall, Hope Gardens, Pilgrim Harbor, Memorial of the Unhoped.</p>
                 </div>
 
-                <!-- Political Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-balance-scale text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">2. Political Framework</h3>
+                <!-- Isle of Compassion -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-6">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-map mr-1"></i>Isle of Compassion — Hands Without Scars Domain</p>
+                    <div class="img-container glow-border rounded-xl border border-purple-500/25 shadow-xl" onclick="openLightbox('./Isle%20of%20Compassion.png')" title="Click to enlarge — Isle of Compassion map">
+                        <img src="./Isle%20of%20Compassion.png" alt="Map of the Isle of Compassion" class="w-full h-auto rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-10 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-map text-4xl text-purple-400/50 mb-2"></i><p class="text-slate-400 text-xs">Isle Map: Isle of Compassion</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Federal system with power divided between member nations and federal institutions. The Federal Council serves as the primary legislative body, with each nation having representation proportional to its population. The High Commissioner acts as chief executive, elected by the Council for renewable terms.</p>
+                    <p class="text-slate-500 text-xs mt-2 italic">Where Prisons Became Healing Houses — Re-Entry Cloisters, Wound Memorial, Therapeutic Gardens, Lamdar Fountain, Compassion Harbor.</p>
                 </div>
 
-                <!-- Mental Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-brain text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">3. Mental Framework</h3>
+                <!-- Isle of Order -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-6">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-map mr-1"></i>Isle of Order — Stonewright's Domain</p>
+                    <div class="img-container glow-border rounded-xl border border-purple-500/25 shadow-xl" onclick="openLightbox('./Isle%20of%20Order.png')" title="Click to enlarge — Isle of Order map">
+                        <img src="./Isle%20of%20Order.png" alt="Map of the Isle of Order" class="w-full h-auto rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-10 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-map text-4xl text-purple-400/50 mb-2"></i><p class="text-slate-400 text-xs">Isle Map: Isle of Order</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Education systems vary by member nation but share common standards established by the Federal Educational Council. Critical thinking, civic education, and multilingualism are emphasized. The Federal University system allows students to study across national boundaries.</p>
+                    <p class="text-slate-500 text-xs mt-2 italic">Where Living Stone Grows — Stonewright Academy, Silence-Chambers, Cartography of the Soul, Living Stone Quarry, Precedent Archive.</p>
                 </div>
 
-                <!-- Spiritual Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-praying-hands text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">4. Spiritual Framework</h3>
+                <!-- Isle of Joy -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-6">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-map mr-1"></i>Isle of Joy — Masters of the Grape Domain</p>
+                    <div class="img-container glow-border rounded-xl border border-purple-500/25 shadow-xl" onclick="openLightbox('./Isle%20of%20Joy.png')" title="Click to enlarge — Isle of Joy map">
+                        <img src="./Isle%20of%20Joy.png" alt="Map of the Isle of Joy" class="w-full h-auto rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-10 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-map text-4xl text-purple-400/50 mb-2"></i><p class="text-slate-400 text-xs">Isle Map: Isle of Joy</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Religious freedom is guaranteed by the Charter, and member nations maintain diverse spiritual traditions. The Federation maintains no official religion, though various faiths have influence in different regions. Interfaith dialogue is encouraged as a means of promoting unity.</p>
+                    <p class="text-slate-500 text-xs mt-2 italic">Where Laughter Settles Disputes — Laughing Council Circle, Unity Festival Grounds, Temple of Dionysus, Wine Cellars, Grape Stomping Pits.</p>
                 </div>
 
-                <!-- Social Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-users text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">5. Social Framework</h3>
+                <!-- Isle of Memory -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-6">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-map mr-1"></i>Isle of Memory — Perfect Recollectors' Domain</p>
+                    <div class="img-container glow-border rounded-xl border border-purple-500/25 shadow-xl" onclick="openLightbox('./Isle%20of%20Memory.png')" title="Click to enlarge — Isle of Memory map">
+                        <img src="./Isle%20of%20Memory.png" alt="Map of the Isle of Memory" class="w-full h-auto rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-10 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-map text-4xl text-purple-400/50 mb-2"></i><p class="text-slate-400 text-xs">Isle Map: Isle of Memory</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Social structures vary by member nation, but the Charter establishes common standards for rights and freedoms. Free movement between member nations allows citizens to live, work, and study across the Federation. A common citizenship supplements national identities.</p>
+                    <p class="text-slate-500 text-xs mt-2 italic">Where Dreams Are Woven — Dream Archive (10 million+ tapestries), Memory Gardens, Chamber of Responsive Memory, Perfect Recollectors' Academy.</p>
                 </div>
 
-                <!-- Cultural Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-palette text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">6. Cultural Framework</h3>
+                <!-- Numenor -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-6">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-map mr-1"></i>Numenor — Star-Readers' Domain</p>
+                    <div class="img-container glow-border rounded-xl border border-purple-500/25 shadow-xl" onclick="openLightbox('./Numenor.png')" title="Click to enlarge — Numenor map">
+                        <img src="./Numenor.png" alt="Map of Numenor — Star-Readers' Domain" class="w-full h-auto rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-10 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-map text-4xl text-purple-400/50 mb-2"></i><p class="text-slate-400 text-xs">Domain Map: Numenor</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Rich cultural diversity is celebrated as a Federation strength. Federal cultural programs promote exchange and understanding between nations. A common artistic tradition has emerged alongside national cultures, creating a distinctive "Federation style" in architecture, music, and visual arts.</p>
+                    <p class="text-slate-500 text-xs mt-2 italic">Where Time Stands Still — Seven Circle Observatories, Stone-Sleep Vaults, Temporal Archive, Academy of Star-Readers, Chronicle of the Thirteenth Hour.</p>
+                </div>
+            </div>
+
+            <!-- Additional Territories Grid -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Vineland -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-4">
+                    <p class="text-purple-400 text-xs font-semibold mb-2"><i class="fas fa-map mr-1"></i>Vineland — Council of Harvests</p>
+                    <div class="img-container glow-border rounded-lg border border-purple-500/25 shadow-lg" onclick="openLightbox('./Vineland.png')" title="Click to enlarge — Vineland map">
+                        <img src="./Vineland.png" alt="Map of Vineland" class="w-full h-auto rounded-lg" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-8 bg-slate-900/80 rounded-lg text-center" style="display:none;"><i class="fas fa-map text-3xl text-purple-400/50 mb-1"></i><p class="text-slate-400 text-xs">Vineland</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click</div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-1">Ghost Grapes, Iron-Root Groves, Time-Dilated Cellars, Deepbarrel Inn</p>
                 </div>
 
-                <!-- Economical Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-coins text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">7. Economical Framework</h3>
+                <!-- Silver Isle -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-4">
+                    <p class="text-purple-400 text-xs font-semibold mb-2"><i class="fas fa-map mr-1"></i>Silver Isle — Vein-Speakers' Domain</p>
+                    <div class="img-container glow-border rounded-lg border border-purple-500/25 shadow-lg" onclick="openLightbox('./Silver%20Isle.png')" title="Click to enlarge — Silver Isle map">
+                        <img src="./Silver%20Isle.png" alt="Map of Silver Isle" class="w-full h-auto rounded-lg" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-8 bg-slate-900/80 rounded-lg text-center" style="display:none;"><i class="fas fa-map text-3xl text-purple-400/50 mb-1"></i><p class="text-slate-400 text-xs">Silver Isle</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click</div>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Common market allows free trade between member nations with standardized regulations. The Federal Bank manages a common currency used alongside national currencies. Economic development programs assist less prosperous regions. Combined, the Federation represents one of the largest economies in the Western Plane.</p>
+                    <p class="text-slate-500 text-xs mt-1">Hollow Faith, Vein-Speakers' Council, Black Ledger Vaults, Healing Springs</p>
                 </div>
 
-                <!-- Physiological Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-heartbeat text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">8. Physiological Framework</h3>
+                <!-- Coral Atolls -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-4">
+                    <p class="text-purple-400 text-xs font-semibold mb-2"><i class="fas fa-map mr-1"></i>Coral Atolls — Reef-Minders' Domain</p>
+                    <div class="img-container glow-border rounded-lg border border-purple-500/25 shadow-lg" onclick="openLightbox('./Coral%20Atolls.png')" title="Click to enlarge — Coral Atolls map">
+                        <img src="./Coral%20Atolls.png" alt="Map of the Coral Atolls" class="w-full h-auto rounded-lg" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-8 bg-slate-900/80 rounded-lg text-center" style="display:none;"><i class="fas fa-map text-3xl text-purple-400/50 mb-1"></i><p class="text-slate-400 text-xs">Coral Atolls</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click</div>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Federal health standards ensure minimum care levels across all member nations. The Federal Health Organization coordinates responses to epidemics and medical emergencies. Medical professionals can practice across national boundaries, facilitating the exchange of expertise.</p>
+                    <p class="text-slate-500 text-xs mt-1">Home of the Gillborn, Dolphin Messenger Pools, Song-Spiral, Pearl Canticle Halls</p>
+                </div>
+            </div>
+
+            <!-- Border Regions Grid -->
+            <div class="grid md:grid-cols-3 gap-6 mt-6">
+                <!-- Northern Reaches -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-4">
+                    <p class="text-purple-400 text-xs font-semibold mb-2"><i class="fas fa-map mr-1"></i>Northern Reaches — Ice-Chiefs' Domain</p>
+                    <div class="img-container glow-border rounded-lg border border-purple-500/25 shadow-lg" onclick="openLightbox('./Northern%20Reaches.jpeg')" title="Click to enlarge — Northern Reaches map">
+                        <img src="./Northern%20Reaches.jpeg" alt="Map of the Northern Reaches" class="w-full h-auto rounded-lg" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-8 bg-slate-900/80 rounded-lg text-center" style="display:none;"><i class="fas fa-map text-3xl text-purple-400/50 mb-1"></i><p class="text-slate-400 text-xs">Northern Reaches</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click</div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-1">Ice-Quarry, Winter Schools, Thawing Songs Opera House, Ice-Sleep Caves, Seal-Dog Kennels</p>
                 </div>
 
-                <!-- Territorial Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-map-marked-alt text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">9. Territorial Framework</h3>
+                <!-- Southern Chain -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-4">
+                    <p class="text-purple-400 text-xs font-semibold mb-2"><i class="fas fa-map mr-1"></i>Southern Chain — Nose-Born Domain</p>
+                    <div class="img-container glow-border rounded-lg border border-purple-500/25 shadow-lg" onclick="openLightbox('./Southern%20Chain.jpeg')" title="Click to enlarge — Southern Chain map">
+                        <img src="./Southern%20Chain.jpeg" alt="Map of the Southern Chain" class="w-full h-auto rounded-lg" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-8 bg-slate-900/80 rounded-lg text-center" style="display:none;"><i class="fas fa-map text-3xl text-purple-400/50 mb-1"></i><p class="text-slate-400 text-xs">Southern Chain</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click</div>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">The Federation spans diverse territories across the Western Plane, from coastal regions to interior plains and mountain ranges. Federal territories include shared infrastructure like highways, canals, and border fortifications. The capital district, neutral territory, houses federal institutions.</p>
+                    <p class="text-slate-500 text-xs mt-1">Ten-Thousand Scent Discriminators, Perfumer's Guild, Scent-Memory Library, Spice Piers</p>
                 </div>
 
-                <!-- Technological Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-cogs text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">10. Technological Framework</h3>
+                <!-- Western Marches -->
+                <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-4">
+                    <p class="text-purple-400 text-xs font-semibold mb-2"><i class="fas fa-map mr-1"></i>Western Marches — Far-Returned Domain</p>
+                    <div class="img-container glow-border rounded-lg border border-purple-500/25 shadow-lg" onclick="openLightbox('./Western%20Marches.jpeg')" title="Click to enlarge — Western Marches map">
+                        <img src="./Western%20Marches.jpeg" alt="Map of the Western Marches" class="w-full h-auto rounded-lg" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-8 bg-slate-900/80 rounded-lg text-center" style="display:none;"><i class="fas fa-map text-3xl text-purple-400/50 mb-1"></i><p class="text-slate-400 text-xs">Western Marches</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click</div>
                     </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Federal research programs coordinate technological development across member nations. The Federal Institute of Technology conducts advanced research and trains engineers and scientists. Standardized technical specifications facilitate interoperability of infrastructure and military equipment.</p>
-                </div>
-
-                <!-- Military Framework -->
-                <div class="framework-card bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center mr-3">
-                            <i class="fas fa-shield-alt text-purple-400"></i>
-                        </div>
-                        <h3 class="text-lg font-bold text-purple-400">11. Military Framework</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm leading-relaxed">Combined military forces operate under unified command during joint operations. Member nations maintain national forces for internal security and contribute to federal forces for external defense. The Federal High Command coordinates strategy and operations, with officers from all member nations serving at all levels.</p>
+                    <p class="text-slate-500 text-xs mt-1">Gateway to the Firmament, Ship of Reunion, Void-Sea Beacon, Probability Market</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Member Nations -->
+    <!-- Eastern Shoals - Historical Section -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-amber-400 mb-8 fantasy-font"><i class="fas fa-history mr-2"></i>Eastern Shoals — Before & After the Burning</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-6">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-map mr-1"></i>Pre-Xeria — Before the Burning</p>
+                    <div class="img-container glow-border rounded-xl border border-purple-500/25 shadow-xl" onclick="openLightbox('./Eastern%20Shoals_Pre-Xeria.png')" title="Click to enlarge — Pre-Xeria Eastern Shoals map">
+                        <img src="./Eastern%20Shoals_Pre-Xeria.png" alt="Map of Eastern Shoals — Pre-Xeria" class="w-full h-auto rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-10 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-map text-4xl text-purple-400/50 mb-2"></i><p class="text-slate-400 text-xs">Eastern Shoals: Pre-Xeria</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-2 italic">Before the Burning — Xeria Research Station, Ley-Line Nexus, Navigation School, Silent Route Marker, Coral Nursery, Reef-Walker's Rest, Razor Reefs.</p>
+                </div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-2xl p-6">
+                    <p class="text-purple-400 text-sm font-semibold mb-3"><i class="fas fa-map mr-1"></i>Post-Xeria — After the Burning</p>
+                    <div class="img-container glow-border rounded-xl border border-purple-500/25 shadow-xl" onclick="openLightbox('./Eastern%20Shoals%20_%20Post-Xeria.png')" title="Click to enlarge — Post-Xeria Eastern Shoals map">
+                        <img src="./Eastern%20Shoals%20_%20Post-Xeria.png" alt="Map of Eastern Shoals — Post-Xeria" class="w-full h-auto rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+                        <div class="img-fallback flex-col items-center justify-center p-10 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-map text-4xl text-purple-400/50 mb-2"></i><p class="text-slate-400 text-xs">Eastern Shoals: Post-Xeria</p></div>
+                        <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>Click to enlarge</div>
+                    </div>
+                    <p class="text-slate-500 text-xs mt-2 italic">After the Burning — The Xeria Scar (grey static-pattern ellipse), Ruins of Tellerium, Xeria Memorial, Academia Monitoring Outpost, Reef-Walker's Rest, sealed by the Accord of Arcadia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Member Nations Grid (Names) -->
     <section class="py-12 bg-slate-900/30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center text-eternal-gold mb-8">Member Nations</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
-                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
-                    <p class="text-slate-300 text-sm font-medium">Aethelgard</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
-                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
-                    <p class="text-slate-300 text-sm font-medium">Brennheim</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
-                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
-                    <p class="text-slate-300 text-sm font-medium">Caldoria</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
-                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
-                    <p class="text-slate-300 text-sm font-medium">Deltara</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
-                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
-                    <p class="text-slate-300 text-sm font-medium">Eldoria</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
-                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
-                    <p class="text-slate-300 text-sm font-medium">Frostmark</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
-                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
-                    <p class="text-slate-300 text-sm font-medium">Galeron</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
-                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
-                    <p class="text-slate-300 text-sm font-medium">Holloway</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
-                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
-                    <p class="text-slate-300 text-sm font-medium">Ilmara</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
-                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
-                    <p class="text-slate-300 text-sm font-medium">Jorvik</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
-                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
-                    <p class="text-slate-300 text-sm font-medium">Keldara</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
-                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
-                    <p class="text-slate-300 text-sm font-medium">Luminar</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
-                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
-                    <p class="text-slate-300 text-sm font-medium">Misthaven</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
-                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
-                    <p class="text-slate-300 text-sm font-medium">Norcroft</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
-                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
-                    <p class="text-slate-300 text-sm font-medium">Ostmark</p>
-                </div>
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center">
-                    <i class="fas fa-flag text-purple-400 text-xl mb-2"></i>
-                    <p class="text-slate-300 text-sm font-medium">Prydwen</p>
-                </div>
+            <h2 class="text-2xl font-bold text-center text-amber-400 mb-8 fantasy-font">The Sixteen Nations</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center framework-card"><i class="fas fa-flag text-purple-400 text-xl mb-2"></i><p class="text-slate-300 text-sm font-medium">Aethelgard</p></div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center framework-card"><i class="fas fa-flag text-purple-400 text-xl mb-2"></i><p class="text-slate-300 text-sm font-medium">Brennheim</p></div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center framework-card"><i class="fas fa-flag text-purple-400 text-xl mb-2"></i><p class="text-slate-300 text-sm font-medium">Caldoria</p></div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center framework-card"><i class="fas fa-flag text-purple-400 text-xl mb-2"></i><p class="text-slate-300 text-sm font-medium">Deltara</p></div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center framework-card"><i class="fas fa-flag text-purple-400 text-xl mb-2"></i><p class="text-slate-300 text-sm font-medium">Eldoria</p></div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center framework-card"><i class="fas fa-flag text-purple-400 text-xl mb-2"></i><p class="text-slate-300 text-sm font-medium">Frostmark</p></div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center framework-card"><i class="fas fa-flag text-purple-400 text-xl mb-2"></i><p class="text-slate-300 text-sm font-medium">Galeron</p></div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center framework-card"><i class="fas fa-flag text-purple-400 text-xl mb-2"></i><p class="text-slate-300 text-sm font-medium">Holloway</p></div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center framework-card"><i class="fas fa-flag text-purple-400 text-xl mb-2"></i><p class="text-slate-300 text-sm font-medium">Ilmara</p></div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center framework-card"><i class="fas fa-flag text-purple-400 text-xl mb-2"></i><p class="text-slate-300 text-sm font-medium">Jorvik</p></div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center framework-card"><i class="fas fa-flag text-purple-400 text-xl mb-2"></i><p class="text-slate-300 text-sm font-medium">Keldara</p></div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center framework-card"><i class="fas fa-flag text-purple-400 text-xl mb-2"></i><p class="text-slate-300 text-sm font-medium">Luminar</p></div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center framework-card"><i class="fas fa-flag text-purple-400 text-xl mb-2"></i><p class="text-slate-300 text-sm font-medium">Misthaven</p></div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center framework-card"><i class="fas fa-flag text-purple-400 text-xl mb-2"></i><p class="text-slate-300 text-sm font-medium">Norcroft</p></div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center framework-card"><i class="fas fa-flag text-purple-400 text-xl mb-2"></i><p class="text-slate-300 text-sm font-medium">Ostmark</p></div>
+                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 text-center framework-card"><i class="fas fa-flag text-purple-400 text-xl mb-2"></i><p class="text-slate-300 text-sm font-medium">Prydwen</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cartographic Archives -->
+    <section class="py-12 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold mb-8 fantasy-font text-amber-400 text-center"><i class="fas fa-images mr-2"></i>Cartographic Archives</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Federation%20Archipelago.png')" style="cursor:zoom-in;"><i class="fas fa-globe-americas text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Archipelago</h3></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Aethelgard.jpeg')" style="cursor:zoom-in;"><i class="fas fa-city text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Aethelgard</h3></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Castelmar.png')" style="cursor:zoom-in;"><i class="fas fa-fort-awesome text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Castelmar</h3></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Portus%20Mare.png')" style="cursor:zoom-in;"><i class="fas fa-anchor text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Portus Mare</h3></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Isle%20of%20Hope.jpeg')" style="cursor:zoom-in;"><i class="fas fa-star text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Hope</h3></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Isle%20of%20Compassion.png')" style="cursor:zoom-in;"><i class="fas fa-heart text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Compassion</h3></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Isle%20of%20Order.png')" style="cursor:zoom-in;"><i class="fas fa-gavel text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Order</h3></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Isle%20of%20Joy.png')" style="cursor:zoom-in;"><i class="fas fa-laugh text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Joy</h3></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Isle%20of%20Memory.png')" style="cursor:zoom-in;"><i class="fas fa-brain text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Memory</h3></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Numenor.png')" style="cursor:zoom-in;"><i class="fas fa-star text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Numenor</h3></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Vineland.png')" style="cursor:zoom-in;"><i class="fas fa-wine-bottle text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Vineland</h3></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Silver%20Isle.png')" style="cursor:zoom-in;"><i class="fas fa-gem text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Silver Isle</h3></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Coral%20Atolls.png')" style="cursor:zoom-in;"><i class="fas fa-fish text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Coral Atolls</h3></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Northern%20Reaches.jpeg')" style="cursor:zoom-in;"><i class="fas fa-snowflake text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">N. Reaches</h3></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Southern%20Chain.jpeg')" style="cursor:zoom-in;"><i class="fas fa-leaf text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">S. Chain</h3></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Western%20Marches.jpeg')" style="cursor:zoom-in;"><i class="fas fa-compass text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">W. Marches</h3></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Eastern%20Shoals_Pre-Xeria.png')" style="cursor:zoom-in;"><i class="fas fa-history text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Pre-Xeria</h3></div>
+                <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-3 text-center framework-card" onclick="openLightbox('./Eastern%20Shoals%20_%20Post-Xeria.png')" style="cursor:zoom-in;"><i class="fas fa-skull text-2xl text-purple-400 mb-1"></i><h3 class="font-bold text-slate-200 text-xs">Post-Xeria</h3></div>
             </div>
         </div>
     </section>
@@ -316,18 +523,9 @@
     <footer class="bg-slate-900 border-t border-slate-800 py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="flex items-center space-x-2 mb-4 md:mb-0">
-                    <i class="fas fa-tree text-eternal-emerald text-xl"></i>
-                    <span class="fantasy-font text-lg font-bold text-eternal-gold">Eternal Trees Saga</span>
-                </div>
-                <div class="text-slate-500 text-sm">
-                    <p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p>
-                </div>
-                <div class="flex space-x-4 mt-4 md:mt-0">
-                    <a href="index.html" class="text-slate-400 hover:text-eternal-gold transition">Home</a>
-                    <a href="eastern-factions.html" class="text-slate-400 hover:text-eternal-amber transition">Eastern</a>
-                    <a href="western-factions.html" class="text-slate-400 hover:text-eternal-purple transition">Western</a>
-                </div>
+                <div class="flex items-center space-x-2 mb-4 md:mb-0"><i class="fas fa-tree text-emerald-400 text-xl"></i><span class="fantasy-font text-lg font-bold text-amber-400">Eternal Trees Saga</span></div>
+                <div class="text-slate-500 text-sm"><p>&copy; 2024 Eternal Trees Saga Wiki. All rights reserved.</p></div>
+                <div class="flex space-x-4 mt-4 md:mt-0"><a href="index.html" class="text-slate-400 hover:text-amber-400 transition">Home</a><a href="eastern-factions.html" class="text-slate-400 hover:text-purple-400 transition">Western</a><a href="western-factions.html" class="text-slate-400 hover:text-amber-400 transition">Eastern</a></div>
             </div>
         </div>
     </footer>
@@ -335,9 +533,20 @@
     <script>
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        function openLightbox(src) { lightboxImg.src = src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; }
+
+        function closeLightbox() { lightbox.classList.remove('active');
+            document.body.style.overflow = ''; }
+        lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
+        lightboxClose.addEventListener('click', closeLightbox);
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox(); });
     </script>
 </body>
 </html>
