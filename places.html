@@ -305,54 +305,111 @@
     <section class="mb-12">
       <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-tree mr-2"></i>Western Plane Locations</h2>
       <div class="grid md:grid-cols-2 gap-4">
+        <!-- Lumeria (Central Archive) -->
         <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Lumeria (Central Archive)</h3>
           <p class="text-purple-400 text-sm mb-2">Library Territory</p>
           <p class="text-slate-300 text-sm mb-3">Vault of Seeds; Index of All Things; Library headquarters. The heart of all knowledge.</p>
           <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">Library</span>
+          <div class="img-container glow-border" onclick="openLightbox('./Central%20Archive.jpeg')" title="Central Archive map">
+            <img src="./Central%20Archive.jpeg" alt="Library of Lumeria — Central Archive" class="rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+            <div class="img-fallback flex-col items-center justify-center p-6 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-image text-2xl text-purple-400/50 mb-1"></i><p class="text-slate-400 text-xs">Map: Central Archive</p></div>
+            <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>View map</div>
+          </div>
         </div>
+
+        <!-- Argos City -->
         <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Argos City</h3>
           <p class="text-purple-400 text-sm mb-2">Dominion Republic</p>
           <p class="text-slate-300 text-sm mb-3">Capital of New Republic; former Aurelius Empire capital. The eternal city of the Argive line.</p>
           <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">Capital</span>
+          <div class="img-container glow-border" onclick="openLightbox('./Central_Argos%20City.png')" title="Argos City map">
+            <img src="./Central_Argos%20City.png" alt="Argos City" class="rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+            <div class="img-fallback flex-col items-center justify-center p-6 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-image text-2xl text-purple-400/50 mb-1"></i><p class="text-slate-400 text-xs">Map: Argos City</p></div>
+            <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>View map</div>
+          </div>
         </div>
+
+        <!-- Aethelgard (Gwalakdon) -->
         <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Aethelgard (Gwalakdon)</h3>
           <p class="text-purple-400 text-sm mb-2">Federation</p>
           <p class="text-slate-300 text-sm mb-3">Spiritual capital; Eternal Flame of Vertus; Theocratic Meritocracy. The Fort of the Star-Under.</p>
           <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">Capital</span>
+          <div class="img-container glow-border" onclick="openLightbox('./Aethelgard.jpeg')" title="Aethelgard map">
+            <img src="./Aethelgard.jpeg" alt="Aethelgard — Heart of the Federation" class="rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+            <div class="img-fallback flex-col items-center justify-center p-6 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-image text-2xl text-purple-400/50 mb-1"></i><p class="text-slate-400 text-xs">Map: Aethelgard</p></div>
+            <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>View map</div>
+          </div>
         </div>
+
+        <!-- Castelmar (Kunodun) -->
         <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Castelmar (Kunodun)</h3>
           <p class="text-purple-400 text-sm mb-2">Federation</p>
           <p class="text-slate-300 text-sm mb-3">Administrative capital; Serene Fleet headquarters. The Wolf-Fort.</p>
           <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">Capital</span>
+          <div class="img-container glow-border" onclick="openLightbox('./Castelmar.png')" title="Castelmar map">
+            <img src="./Castelmar.png" alt="Castelmar — Shield of the Federation" class="rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+            <div class="img-fallback flex-col items-center justify-center p-6 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-image text-2xl text-purple-400/50 mb-1"></i><p class="text-slate-400 text-xs">Map: Castelmar</p></div>
+            <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>View map</div>
+          </div>
         </div>
+
+        <!-- Portus Mare (Gwandakur) -->
         <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Portus Mare (Gwandakur)</h3>
           <p class="text-purple-400 text-sm mb-2">Federation</p>
           <p class="text-slate-300 text-sm mb-3">Commercial capital; banking center; Plutocratic Republic. The Harbor of the Great Gathering.</p>
           <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">Capital</span>
+          <div class="img-container glow-border" onclick="openLightbox('./Portus%20Mare.png')" title="Portus Mare map">
+            <img src="./Portus%20Mare.png" alt="Portus Mare — Mercantile Heart of the Federation" class="rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+            <div class="img-fallback flex-col items-center justify-center p-6 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-image text-2xl text-purple-400/50 mb-1"></i><p class="text-slate-400 text-xs">Map: Portus Mare</p></div>
+            <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>View map</div>
+          </div>
         </div>
+
+        <!-- Xiajing (Capital of Summer) -->
         <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Xiajing (Capital of Summer)</h3>
           <p class="text-purple-400 text-sm mb-2">Union (former Xi)</p>
           <p class="text-slate-300 text-sm mb-3">Former capital of Xi Dynasty; largest city in Western Plane during imperial eras. The metaphysical core.</p>
           <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">City</span>
+          <div class="img-container glow-border" onclick="openLightbox('./Zhungguo_Xiajing.png')" title="Xiajing map">
+            <img src="./Zhungguo_Xiajing.png" alt="Xiajing — Capital of Zhongguo" class="rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+            <div class="img-fallback flex-col items-center justify-center p-6 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-image text-2xl text-purple-400/50 mb-1"></i><p class="text-slate-400 text-xs">Map: Xiajing</p></div>
+            <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>View map</div>
+          </div>
         </div>
+
+        <!-- Tellerium -->
         <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Tellerium</h3>
           <p class="text-purple-400 text-sm mb-2">Institute Territory</p>
           <p class="text-slate-300 text-sm mb-3">Former High Society capital; Neo-Magic Institute. Site of the Two-Millennia War's final battles.</p>
           <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">Research</span>
+          <div class="img-container glow-border" onclick="openLightbox('./Tellerium.jpeg')" title="Tellerium Prime map">
+            <img src="./Tellerium.jpeg" alt="Tellerium Prime — Capital of the High Society" class="rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+            <div class="img-fallback flex-col items-center justify-center p-6 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-image text-2xl text-purple-400/50 mb-1"></i><p class="text-slate-400 text-xs">Map: Tellerium</p></div>
+            <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>View map</div>
+          </div>
         </div>
+
+        <!-- Xeria Memorial -->
         <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Xeria Memorial</h3>
           <p class="text-purple-400 text-sm mb-2">Special Zone</p>
           <p class="text-slate-300 text-sm mb-3">Site of Burning; haunted archive; first Unbecoming manifestation. Warning monument to hubris.</p>
           <span class="px-2 py-1 bg-purple-900/30 text-purple-300 text-xs rounded">Memorial</span>
+          <div class="img-container glow-border" onclick="openLightbox('./Xeria%20Memorial.png')" title="Xeria Memorial map">
+            <img src="./Xeria%20Memorial.png" alt="Xeria Memorial — Scarred Ground" class="rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+            <div class="img-fallback flex-col items-center justify-center p-6 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-image text-2xl text-purple-400/50 mb-1"></i><p class="text-slate-400 text-xs">Map: Xeria Memorial</p></div>
+            <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>View map</div>
+          </div>
         </div>
+
+        <!-- The Meridian Domain -->
         <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">The Meridian Domain</h3>
           <p class="text-purple-400 text-sm mb-2">Between Planes</p>
