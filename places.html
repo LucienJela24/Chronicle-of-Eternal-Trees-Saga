@@ -15,9 +15,57 @@
     .emerald-gradient { background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #10b981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .card-hover { transition: all 0.3s ease; }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(124, 58, 237, 0.2); }
+
+    /* Lightbox */
+    .lightbox-overlay {
+      position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.92);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.35s ease; cursor: zoom-out;
+    }
+    .lightbox-overlay.active { opacity: 1; pointer-events: auto; }
+    .lightbox-overlay img {
+      max-width: 94vw; max-height: 94vh; border-radius: 12px;
+      box-shadow: 0 0 80px rgba(201,162,39,0.35); object-fit: contain;
+      transform: scale(0.9); transition: transform 0.35s ease; cursor: default;
+    }
+    .lightbox-overlay.active img { transform: scale(1); }
+    .lightbox-close {
+      position: absolute; top: 24px; right: 32px; font-size: 2.4rem;
+      color: #c9a227; cursor: pointer; z-index: 101; transition: color 0.2s; line-height: 1;
+    }
+    .lightbox-close:hover { color: #f4d03f; }
+
+    .img-container {
+      position: relative; cursor: zoom-in; overflow: hidden; border-radius: 16px;
+      display: inline-block; width: 100%; margin-top: 0.75rem;
+    }
+    .img-container img { transition: transform 0.5s ease; width: 100%; height: auto; display: block; }
+    .img-container:hover img { transform: scale(1.04); }
+    .img-zoom-hint {
+      position: absolute; bottom: 8px; right: 12px; background: rgba(0,0,0,0.7);
+      color: #c9a227; padding: 4px 10px; border-radius: 20px; font-size: 0.7rem;
+      pointer-events: none; transition: opacity 0.3s; opacity: 0; letter-spacing: 0.5px;
+    }
+    .img-container:hover .img-zoom-hint { opacity: 1; }
+    .img-fallback { display: none; }
+    .glow-border { position: relative; }
+    .glow-border::after {
+      content: ''; position: absolute; inset: -2px; border-radius: 18px; padding: 2px;
+      background: linear-gradient(135deg, #c9a22733, #f4d03f66, #c9a22733);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      pointer-events: none; transition: opacity 0.4s; opacity: 0.5;
+    }
+    .img-container:hover .glow-border::after { opacity: 1; }
   </style>
 </head>
 <body class="min-h-screen">
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox-overlay">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <img src="" alt="Enlarged view" id="lightboxImg">
+  </div>
+
   <!-- Header -->
   <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
     <div class="flex items-center justify-between p-4">
@@ -68,84 +116,157 @@
     <section class="mb-12">
       <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-tree mr-2"></i>Eastern Plane Locations</h2>
       <div class="grid md:grid-cols-2 gap-4">
+        
+        <!-- Arcadia Isle -->
         <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Arcadia Isle</h3>
           <p class="text-amber-400 text-sm mb-2">Guardian Domain</p>
           <p class="text-slate-300 text-sm mb-3">Threshold isle; School of Arcadia; Covenant Forge; Guardian Domain headquarters. The neutral ground where all Four Realms meet.</p>
           <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">Sacred Site</span>
+          <div class="img-container glow-border" onclick="openLightbox('./Arcadia_new.png')" title="Arcadia Isle map">
+            <img src="./Arcadia_new.png" alt="Arcadia Isle" class="rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+            <div class="img-fallback flex-col items-center justify-center p-6 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-image text-2xl text-amber-400/50 mb-1"></i><p class="text-slate-400 text-xs">Map: Arcadia</p></div>
+            <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>View map</div>
+          </div>
         </div>
+
+        <!-- Meridian Threshold -->
         <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Meridian Threshold</h3>
           <p class="text-amber-400 text-sm mb-2">Neutral</p>
           <p class="text-slate-300 text-sm mb-3">Primary sealing point; Gallian's anchor; passage between realms. The critical junction between Eastern and Western Planes.</p>
           <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">Threshold</span>
         </div>
+
+        <!-- Radiant Bastion -->
         <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Radiant Bastion</h3>
           <p class="text-amber-400 text-sm mb-2">Lux Imperio (North)</p>
           <p class="text-slate-300 text-sm mb-3">Order of the Star headquarters; military-spiritual center. The fortress of light against darkness.</p>
           <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">Fortress</span>
         </div>
+
+        <!-- City of Eternal Radiance -->
         <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">City of Eternal Radiance</h3>
           <p class="text-amber-400 text-sm mb-2">Lux Imperio (North)</p>
           <p class="text-slate-300 text-sm mb-3">Capital of Lux Imperio; home of the Eternal Flame (Solara's prison). The seat of the Dual Council.</p>
           <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">Capital</span>
+          <div class="img-container glow-border" onclick="openLightbox('./Lux_City%20of%20Eternal%20Radiance.png')" title="City of Eternal Radiance map">
+            <img src="./Lux_City%20of%20Eternal%20Radiance.png" alt="City of Eternal Radiance" class="rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+            <div class="img-fallback flex-col items-center justify-center p-6 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-image text-2xl text-amber-400/50 mb-1"></i><p class="text-slate-400 text-xs">Map: Eternal Radiance</p></div>
+            <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>View map</div>
+          </div>
         </div>
+
+        <!-- Temple of the Whispering Peak -->
         <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Temple of the Whispering Peak</h3>
           <p class="text-amber-400 text-sm mb-2">Chuugoku (East)</p>
           <p class="text-slate-300 text-sm mb-3">Spiritual center; Great Lama's seat; chi-cultivation nexus. Where the wind itself teaches.</p>
           <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">Sacred Site</span>
+          <div class="img-container glow-border" onclick="openLightbox('./Tower%20of%20Whispering%20Peak.jpeg')" title="Whispering Peak map">
+            <img src="./Tower%20of%20Whispering%20Peak.jpeg" alt="Whispering Peak" class="rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+            <div class="img-fallback flex-col items-center justify-center p-6 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-image text-2xl text-amber-400/50 mb-1"></i><p class="text-slate-400 text-xs">Map: Whispering Peak</p></div>
+            <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>View map</div>
+          </div>
         </div>
+
+        <!-- Dragon Capital -->
         <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Dragon Capital</h3>
           <p class="text-amber-400 text-sm mb-2">Chuugoku (East)</p>
           <p class="text-slate-300 text-sm mb-3">Temporal capital of Chuugoku; Dragon Throne. Seat of the Five Great Houses.</p>
           <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">Capital</span>
+          <div class="img-container glow-border" onclick="openLightbox('./Chuugoku_Dragon%20Capital.png')" title="Dragon Capital map">
+            <img src="./Chuugoku_Dragon%20Capital.png" alt="Dragon Capital" class="rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+            <div class="img-fallback flex-col items-center justify-center p-6 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-image text-2xl text-amber-400/50 mb-1"></i><p class="text-slate-400 text-xs">Map: Dragon Capital</p></div>
+            <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>View map</div>
+          </div>
         </div>
+
+        <!-- Standing Stones of Glastonbury -->
         <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Standing Stones of Glastonbury</h3>
           <p class="text-amber-400 text-sm mb-2">Avalon (West)</p>
           <p class="text-slate-300 text-sm mb-3">Sacred categorical anchor (destroyed 7584); ley nexus. Former site of primal magic convergence.</p>
           <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">Sacred Site</span>
+          <div class="img-container glow-border" onclick="openLightbox('./Standinf%20Stones%20of%20Glastonbury.jpeg')" title="Standing Stones ruins map">
+            <img src="./Standinf%20Stones%20of%20Glastonbury.jpeg" alt="Standing Stones of Glastonbury" class="rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+            <div class="img-fallback flex-col items-center justify-center p-6 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-image text-2xl text-amber-400/50 mb-1"></i><p class="text-slate-400 text-xs">Map: Glastonbury</p></div>
+            <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>View map</div>
+          </div>
         </div>
+
+        <!-- Tower of Drowning Light -->
         <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Tower of Drowning Light</h3>
           <p class="text-amber-400 text-sm mb-2">Avalon (West)</p>
           <p class="text-slate-300 text-sm mb-3">Prison; memory-extraction site; Wanderer's Path third clue. Where light itself becomes suffocating.</p>
           <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">Prison</span>
+          <div class="img-container glow-border" onclick="openLightbox('./Tower%20of%20Drowning%20Light.jpeg')" title="Tower of Drowning Light map">
+            <img src="./Tower%20of%20Drowning%20Light.jpeg" alt="Tower of Drowning Light" class="rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+            <div class="img-fallback flex-col items-center justify-center p-6 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-image text-2xl text-amber-400/50 mb-1"></i><p class="text-slate-400 text-xs">Map: Drowning Light</p></div>
+            <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>View map</div>
+          </div>
         </div>
+
+        <!-- Ley Nexus -->
         <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Ley Nexus</h3>
           <p class="text-amber-400 text-sm mb-2">Avalon (West)</p>
           <p class="text-slate-300 text-sm mb-3">Havenfire Guild headquarters; magical convergence point. The web of all Western magic.</p>
           <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">Guild HQ</span>
+          <div class="img-container glow-border" onclick="openLightbox('./Ley%20Nexus.jpeg')" title="Ley Nexus map">
+            <img src="./Ley%20Nexus.jpeg" alt="Ley Nexus" class="rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+            <div class="img-fallback flex-col items-center justify-center p-6 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-image text-2xl text-amber-400/50 mb-1"></i><p class="text-slate-400 text-xs">Map: Ley Nexus</p></div>
+            <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>View map</div>
+          </div>
         </div>
+
+        <!-- Null Chamber -->
         <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Null Chamber</h3>
           <p class="text-amber-400 text-sm mb-2">Helron (South)</p>
           <p class="text-slate-300 text-sm mb-3">Site of natural physics-failure; Wanderer's Path fourth clue. Where science breaks down.</p>
           <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">Anomaly</span>
+          <div class="img-container glow-border" onclick="openLightbox('./Null%20Chamber.jpeg')" title="Null Chamber map">
+            <img src="./Null%20Chamber.jpeg" alt="Null Chamber" class="rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+            <div class="img-fallback flex-col items-center justify-center p-6 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-image text-2xl text-amber-400/50 mb-1"></i><p class="text-slate-400 text-xs">Map: Null Chamber</p></div>
+            <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>View map</div>
+          </div>
         </div>
+
+        <!-- Vein Bunkers -->
         <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Vein Bunkers</h3>
           <p class="text-amber-400 text-sm mb-2">Helron (South)</p>
           <p class="text-slate-300 text-sm mb-3">Filwind Institute headquarters; underground research facility. Deep-earth laboratories.</p>
           <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">Research</span>
+          <div class="img-container glow-border" onclick="openLightbox('./Vein%20Bunkers.jpeg')" title="Vein Bunkers map">
+            <img src="./Vein%20Bunkers.jpeg" alt="Vein Bunkers" class="rounded-xl" loading="lazy" onerror="this.style.display='none'; this.parentElement.querySelector('.img-fallback').style.display='flex';">
+            <div class="img-fallback flex-col items-center justify-center p-6 bg-slate-900/80 rounded-xl text-center" style="display:none;"><i class="fas fa-image text-2xl text-amber-400/50 mb-1"></i><p class="text-slate-400 text-xs">Map: Vein Bunkers</p></div>
+            <div class="img-zoom-hint"><i class="fas fa-search-plus mr-1"></i>View map</div>
+          </div>
         </div>
+
+        <!-- Depths of Abyss (no image) -->
         <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Depths of Abyss</h3>
           <p class="text-amber-400 text-sm mb-2">Dark Realm</p>
           <p class="text-slate-300 text-sm mb-3">Aneian sacred-dangerous territory; Destroyer's first manifestation site. The crater where reality tore.</p>
           <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">Dangerous</span>
         </div>
+
+        <!-- Tartarus -->
         <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">Tartarus</h3>
           <p class="text-amber-400 text-sm mb-2">Beyond Mist</p>
           <p class="text-slate-300 text-sm mb-3">Prison dimension for Dark Emperors; depth prison beyond ordinary death. The inescapable pit.</p>
           <span class="px-2 py-1 bg-amber-900/30 text-amber-300 text-xs rounded">Prison</span>
         </div>
+
+        <!-- The Nexus -->
         <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-6 card-hover">
           <h3 class="text-xl font-bold text-slate-200 mb-1">The Nexus</h3>
           <p class="text-amber-400 text-sm mb-2">Dark Realm</p>
@@ -252,7 +373,6 @@
         </div>
       </div>
     </section>
-
   </main>
 
   <!-- Footer -->
@@ -267,6 +387,16 @@
     const mobileMenu = document.getElementById('mobileMenu');
     if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
     if (closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.getElementById('lightboxClose');
+    function openLightbox(src) { lightboxImg.src = src; lightbox.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeLightbox() { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+    lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
+    lightboxClose.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox(); });
   </script>
 </body>
 </html>
