@@ -1,332 +1,883 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Timeline - Eternal Trees Saga Wiki (Corrected & Expanded)</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
-    body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #e2e8f0; }
-    h1, h2, h3, .fantasy-font { font-family: 'Cinzel', serif; }
-    .gold-gradient { background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .timeline-line { position: absolute; left: 1rem; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, #c9a227, #7c3aed, #10b981); }
-    .timeline-dot { position: absolute; left: 0.6rem; width: 12px; height: 12px; background: #c9a227; border: 3px solid #0a0a0f; border-radius: 50%; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline – Chronicles of the Eternal Trees</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+        :root {
+            --gold: #c9a227;
+            --gold-light: #f4d03f;
+            --purple: #7c3aed;
+            --emerald: #10b981;
+            --red: #ef4444;
+            --amber: #f59e0b;
+            --bg: #0a0a0f;
+            --card: #0f0f1a;
+            --border: #1e1e30;
+            --eastern: #c9a227;
+            --western: #7c3aed;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: #e2e8f0;
+            scroll-behavior: smooth;
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        .fantasy-font {
+            font-family: 'Cinzel', serif;
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #c9a227 0%, #f4d03f 50%, #c9a227 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .purple-gradient {
+            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 50%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .emerald-gradient {
+            background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .timeline-vline {
+            position: absolute;
+            left: 1.25rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+        }
+        .timeline-vline.eastern {
+            background: linear-gradient(to bottom, #c9a227, #f4d03f, #c9a227);
+        }
+        .timeline-vline.western {
+            background: linear-gradient(to bottom, #7c3aed, #a78bfa, #7c3aed);
+        }
+        .timeline-vline.cosmic {
+            background: linear-gradient(to bottom, #7c3aed, #c9a227, #10b981);
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 0.55rem;
+            width: 14px;
+            height: 14px;
+            border: 3px solid var(--bg);
+            border-radius: 50%;
+            z-index: 2;
+        }
+        .timeline-dot.gold {
+            background: var(--gold);
+        }
+        .timeline-dot.purple {
+            background: var(--purple);
+        }
+        .timeline-dot.emerald {
+            background: var(--emerald);
+        }
+        .timeline-dot.red {
+            background: var(--red);
+        }
+        .timeline-dot.amber {
+            background: var(--amber);
+        }
+        .timeline-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 0.75rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            cursor: default;
+        }
+        .timeline-card:hover {
+            border-color: rgba(201, 162, 39, 0.35);
+            box-shadow: 0 0 20px rgba(201, 162, 39, 0.05);
+        }
+        .timeline-card.gold-border {
+            border-left: 3px solid rgba(201, 162, 39, 0.5);
+        }
+        .timeline-card.purple-border {
+            border-left: 3px solid rgba(124, 58, 237, 0.5);
+        }
+        .timeline-card.emerald-border {
+            border-left: 3px solid rgba(16, 185, 129, 0.5);
+        }
+        .timeline-card.red-border {
+            border-left: 3px solid rgba(239, 68, 68, 0.5);
+        }
+        .timeline-card.amber-border {
+            border-left: 3px solid rgba(245, 158, 11, 0.5);
+        }
+
+        details summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            user-select: none;
+        }
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+        details summary .toggle-icon {
+            transition: transform 0.3s;
+            font-size: 0.7rem;
+            color: #c9a227;
+            flex-shrink: 0;
+        }
+        details[open] summary .toggle-icon {
+            transform: rotate(90deg);
+        }
+
+        .search-highlight {
+            background: rgba(201, 162, 39, 0.35);
+            border-radius: 2px;
+            padding: 0 2px;
+        }
+        .era-badge {
+            display: inline-block;
+            padding: 0.15rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+        .era-badge.eastern {
+            background: rgba(201, 162, 39, 0.15);
+            color: #f4d03f;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+        }
+        .era-badge.western {
+            background: rgba(124, 58, 237, 0.15);
+            color: #a78bfa;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+        }
+        .era-badge.both {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c9a227;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f4d03f;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-dot {
+                left: 0.35rem;
+                width: 11px;
+                height: 11px;
+            }
+            .timeline-vline {
+                left: 0.85rem;
+            }
+            .timeline-vline.eastern,
+            .timeline-vline.western,
+            .timeline-vline.cosmic {
+                left: 0.85rem;
+            }
+        }
+    </style>
 </head>
 <body class="min-h-screen">
-  <!-- Header - unchanged links -->
-  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
-    <div class="flex items-center justify-between p-4">
-      <a href="index.html" class="flex items-center gap-3">
-        <i class="fas fa-tree text-amber-400 text-2xl"></i>
-        <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
-      </a>
-      <nav class="hidden md:flex items-center gap-6">
-        <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
-        <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
-        <a href="timeline.html" class="text-amber-400 font-medium">Timeline</a>
-        <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
-        <a href="eastern-factions.html" class="text-slate-300 hover:text-amber-400 transition">Eastern</a>
-        <a href="western-factions.html" class="text-slate-300 hover:text-amber-400 transition">Western</a>
-        <a href="other-realms.html" class="text-slate-300 hover:text-amber-400 transition">Realms</a>
-      </nav>
-      <button id="menuBtn" class="md:hidden text-slate-300 hover:text-amber-400"><i class="fas fa-bars text-xl"></i></button>
-    </div>
-  </header>
 
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform md:hidden">
+    <!-- ==================== HEADER ==================== -->
+    <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur border-b border-slate-800">
+        <div class="flex items-center justify-between p-4 max-w-7xl mx-auto">
+            <a href="index.html" class="flex items-center gap-3">
+                <i class="fas fa-tree text-amber-400 text-2xl"></i>
+                <h1 class="font-bold text-xl fantasy-font"><span class="gold-gradient">Eternal Tree Saga</span></h1>
+            </a>
+            <div class="flex items-center gap-4">
+                <div class="relative hidden sm:block">
+                    <input type="text" id="searchInput" placeholder="Search timeline..."
+                    class="bg-slate-800 border border-slate-600 rounded-lg px-3 py-1.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-400 w-48 transition">
+                    <i class="fas fa-search absolute right-3 top-2 text-slate-500 text-xs"></i>
+                </div>
+                <nav class="hidden lg:flex items-center gap-5 text-sm flex-wrap">
+                    <a href="index.html" class="text-slate-300 hover:text-amber-400 transition">Home</a>
+                    <a href="key-figures.html" class="text-slate-300 hover:text-amber-400 transition">Figures</a>
+                    <a href="places.html" class="text-slate-300 hover:text-amber-400 transition">Places</a>
+                    <a href="timeline.html" class="text-amber-400 font-medium">Timeline</a>
+                    <a href="plots.html" class="text-slate-300 hover:text-amber-400 transition">Plots</a>
+                    <a href="eastern-factions.html" class="text-slate-300 hover:text-amber-400 transition">Eastern</a>
+                    <a href="western-factions.html" class="text-slate-300 hover:text-amber-400 transition">Western</a>
+                    <a href="other-realms.html" class="text-slate-300 hover:text-amber-400 transition">Realms</a>
+                </nav>
+                <button id="menuBtn" class="lg:hidden text-slate-300 hover:text-amber-400"><i
+                class="fas fa-bars text-xl"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu"
+    class="fixed inset-0 z-40 bg-slate-900 transform -translate-x-full transition-transform lg:hidden">
     <div class="p-4">
-      <div class="flex justify-between items-center mb-6">
-        <span class="font-bold text-lg">Navigation</span>
-        <button id="closeMenu" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
-      </div>
-      <nav class="space-y-2">
-        <a href="key-figures.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-users w-6"></i>Key Figures</a>
-        <a href="places.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-map-marker-alt w-6"></i>Places</a>
-        <a href="timeline.html" class="block px-4 py-3 rounded-lg text-amber-400 bg-slate-800/50 transition"><i class="fas fa-clock w-6"></i>Timeline</a>
-        <a href="plots.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-book w-6"></i>Plots</a>
-        <a href="eastern-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Eastern Factions</a>
-        <a href="western-factions.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-shield-alt w-6"></i>Western Factions</a>
-        <a href="other-realms.html" class="block px-4 py-3 rounded-lg text-slate-300 hover:text-amber-400 hover:bg-slate-800/50 transition"><i class="fas fa-globe w-6"></i>Other Realms</a>
-      </nav>
+        <div class="flex justify-between items-center mb-6">
+            <span class="font-bold text-lg fantasy-font">Navigation</span>
+            <button id="closeMenu" class="text-slate-400 hover:text-white"><i
+            class="fas fa-times text-xl"></i></button>
+        </div>
+        <input type="text" id="searchInputMobile" placeholder="Search..."
+        class="w-full bg-slate-800 border border-slate-600 rounded-lg px-3 py-2 text-sm text-slate-200 mb-4 focus:outline-none focus:border-amber-400">
+        <nav class="space-y-1 text-sm max-h-[70vh] overflow-y-auto">
+            <a href="index.html" class="block px-3 py-2 rounded text-slate-300 hover:text-amber-400 hover:bg-slate-800/50"><i class="fas fa-home w-5"></i>Home</a>
+            <a href="key-figures.html" class="block px-3 py-2 rounded text-slate-300 hover:text-amber-400 hover:bg-slate-800/50"><i class="fas fa-users w-5"></i>Key Figures</a>
+            <a href="places.html" class="block px-3 py-2 rounded text-slate-300 hover:text-amber-400 hover:bg-slate-800/50"><i class="fas fa-map-marker-alt w-5"></i>Places</a>
+            <a href="plots.html" class="block px-3 py-2 rounded text-slate-300 hover:text-amber-400 hover:bg-slate-800/50"><i class="fas fa-book w-5"></i>Plots</a>
+            <a href="eastern-factions.html" class="block px-3 py-2 rounded text-slate-300 hover:text-amber-400 hover:bg-slate-800/50"><i class="fas fa-shield-alt w-5"></i>Eastern Factions</a>
+            <a href="western-factions.html" class="block px-3 py-2 rounded text-slate-300 hover:text-amber-400 hover:bg-slate-800/50"><i class="fas fa-shield-alt w-5"></i>Western Factions</a>
+            <a href="other-realms.html" class="block px-3 py-2 rounded text-slate-300 hover:text-amber-400 hover:bg-slate-800/50"><i class="fas fa-globe w-5"></i>Other Realms</a>
+            <hr class="border-slate-700 my-2">
+            <a href="#cosmic" class="block px-3 py-2 rounded text-purple-400 hover:text-purple-300 hover:bg-slate-800/50"><i class="fas fa-infinity w-5"></i>Before Time</a>
+            <a href="#seeding" class="block px-3 py-2 rounded text-amber-400 hover:text-amber-300 hover:bg-slate-800/50"><i class="fas fa-seedling w-5"></i>Seeding (Abs. 1)</a>
+            <a href="#primordial" class="block px-3 py-2 rounded text-amber-400 hover:text-amber-300 hover:bg-slate-800/50"><i class="fas fa-tree w-5"></i>Primordial Era</a>
+            <a href="#eastern-myriads" class="block px-3 py-2 rounded text-amber-400 hover:text-amber-300 hover:bg-slate-800/50"><i class="fas fa-flag w-5"></i>Eastern Myriads</a>
+            <a href="#western-history" class="block px-3 py-2 rounded text-purple-400 hover:text-purple-300 hover:bg-slate-800/50"><i class="fas fa-book-open w-5"></i>Western Plane</a>
+            <a href="#convergence-section" class="block px-3 py-2 rounded text-emerald-400 hover:text-emerald-300 hover:bg-slate-800/50"><i class="fas fa-star w-5"></i>Convergence</a>
+            <a href="#calendar-section" class="block px-3 py-2 rounded text-slate-300 hover:text-amber-400 hover:bg-slate-800/50"><i class="fas fa-calendar-alt w-5"></i>Calendar Systems</a>
+        </nav>
     </div>
-  </div>
+</div>
 
-  <main class="max-w-7xl mx-auto p-4 md:p-8">
-    <div class="text-center py-8 mb-10">
-      <h1 class="text-4xl font-bold mb-4 fantasy-font"><span class="gold-gradient">Timeline of the Eternal Trees</span></h1>
-      <p class="text-slate-400">A fully synchronized chronicle spanning six Myriads — Absolute Years 1 to 51,235+</p>
-      <p class="text-slate-500 text-sm mt-2">Based on the corrected alignment: Eastern Plane includes a 2,585‑year Primordial Era; Convergence occurs simultaneously at Abs. 51,235</p>
+<!-- ==================== MAIN CONTENT ==================== -->
+<main class="max-w-5xl mx-auto p-4 md:p-6 lg:p-8">
+
+    <!-- Hero -->
+    <div class="text-center py-10 mb-6">
+        <p class="text-amber-400/70 text-sm tracking-widest mb-2">THE COMPLETE TIMELINE CODEX</p>
+        <h1 class="text-3xl md:text-5xl font-bold mb-4 fantasy-font"><span class="gold-gradient">Chronicles of the
+        Eternal Trees</span></h1>
+        <p class="text-slate-400 max-w-2xl mx-auto text-sm md:text-base">A fully synchronized chronicle spanning the
+            14th Eon through six Myriads — <strong>Absolute Years 1 to 51,235+</strong></p>
+        <div class="flex justify-center gap-3 mt-4 flex-wrap">
+            <span class="era-badge eastern">Eastern Plane</span>
+            <span class="era-badge western">Western Plane</span>
+            <span class="era-badge both">Both Planes</span>
+        </div>
+        <p class="text-slate-500 text-xs mt-3">Eastern Plane: 2,585‑year Primordial Era + 5 Myriads (10,000 years each) · Convergence at Abs. 51,235</p>
     </div>
 
-    <!-- EASTERN PLANE TIMELINE (corrected with Primordial Era and Absolute Years) -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-bold mb-6 fantasy-font text-amber-400"><i class="fas fa-tree mr-2"></i>Eastern Plane Timeline (Tree of Order)</h2>
-      <div class="relative pl-8">
-        <div class="timeline-line"></div>
-
-        <!-- Primordial Era / Book 0.5 -->
-        <div class="relative mb-6">
-          <div class="timeline-dot" style="top: 0.5rem;"></div>
-          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="text-amber-400 font-bold">Abs. 1 – 2,585</span>
-              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Primordial Era / Book 0.5</span>
+    <!-- ============ BEFORE TIME ============ -->
+    <section id="cosmic" class="mb-10 scroll-mt-24">
+        <h2 class="text-xl md:text-2xl font-bold mb-5 fantasy-font text-purple-400 flex items-center gap-2">
+            <i class="fas fa-infinity"></i> Before Time — The 14th Eon Opening
+        </h2>
+        <div class="relative pl-10">
+            <div class="timeline-vline cosmic"></div>
+            <div class="relative mb-3">
+                <div class="timeline-dot purple" style="top:0.6rem;"></div>
+                <div class="timeline-card purple-border p-4 ml-5">
+                    <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded font-medium">Before
+                    Time</span>
+                    <div class="text-slate-300 mt-2 text-sm leading-relaxed space-y-1.5">
+                        <p><strong class="text-purple-300">The Endless Seed of Light</strong> — self-existent ground of possibility, neither created nor creator, containing infinite potential without prior differentiation.</p>
+                        <p><strong class="text-purple-300">The First Emergence:</strong> The <strong>chorus‑consciousness</strong> coalesces — a single awareness distributed across multiple forms, undivided, without individual identity.</p>
+                        <p><strong class="text-purple-300">The First Sorrow:</strong> A dream-world shaped by emerging preferences dissolves. Aspects of the chorus experience individual grief for the first time. The first crack in unity appears — birth of individual consciousness within the divine.</p>
+                        <p><strong class="text-purple-300">The Discovery of Names (1st Eon):</strong> <strong>Kronathos</strong> claims Time — the first named. <strong>Spatus</strong> (Space), <strong>Materia</strong> (Matter), <strong>Spiritus</strong> (Spirit), <strong>Aletheia</strong> (Truth), <strong>Symphion</strong> (Harmony), and <strong>Cosmarchos</strong> (Order) follow. The chorus becomes a pantheon.</p>
+                        <p><strong class="text-purple-300">The First Covenant (2nd Eon):</strong> The First Named establish <strong>Sovereignty, Hospitality, and Contest</strong> as governing principles. A fragile peace built on compromise.</p>
+                        <p><strong class="text-purple-300">The Great Question (3rd Eon):</strong> "What is creation for?" <strong>Cosmarchos</strong> argues for control, <strong>Symphion</strong> for guidance, <strong>Aletheia</strong> for freedom. The philosophical schism emerges.</p>
+                        <p><strong class="text-purple-300">The Age of Seeding (4th–7th Eons):</strong> Three World Trees are created: <strong>Throne of Cosmarchos</strong> (crystalline perfection), <strong>Garden of Symphion</strong> (adaptive growth), <strong>Wild of Aletheia</strong> (radical contingency).</p>
+                        <p><strong class="text-purple-300">The Void Wars (8th–11th Eons):</strong> The <strong>Great Void</strong> awakens. The three factions form the <strong>Unthinkable Alliance</strong>. The <strong>Firmament</strong> is built through mass divine sacrifice — thousands of First Named pour their essence into the boundary.</p>
+                        <p><strong class="text-purple-300">The Civil War of the Gods (12th Eon):</strong> Alliance fractures. <strong>Genocide of the Observers</strong> begins. The Wild of Aletheia is systematically destroyed realm by realm.</p>
+                        <p><strong class="text-purple-300">The Last Working of Aletheia:</strong> In the <strong>Meadow Realm</strong>, Aletheia gathers the essence of every unmade Observer. Her blood becomes the <strong>Blood‑River</strong>; her consciousness becomes the <strong>Last Observer</strong>. The <strong>Five Personas</strong> emerge.</p>
+                        <p><strong class="text-purple-300">The Sealing of the Fifth Persona (13th Eon):</strong> The Last Observer seals Order and Chaos, binding them until creation is ready. The <strong>Two Trees</strong> — Order and Chaos — are planted in the Meadow Realm. The Vigil begins.</p>
+                    </div>
+                </div>
             </div>
-            <p class="text-slate-300"><strong>The Silent Growth:</strong> The Tree of Order is planted. Ancient Ones perform the Rite of the Foundation. First People (Lux‑Children, Stone‑Blooded, Echo‑Born, Number‑Touched) form survival cults. Aris the Sorrowful establishes the Cult of the Eternal Flame. The Five Primal Shapers war; Tamashii’s essence becomes Aether. Glaston’s Fivefold Binding cages wild magic. Helron builds the First Hall of Reason. The Aneians are exiled to a pocket dimension. The <strong>Covenant of Lies</strong> (Abs. 2,584) seals the violent origins and begins the Myriad calendar.</p>
-          </div>
         </div>
-
-        <!-- Book 1: The Four Realms -->
-        <div class="relative mb-6">
-          <div class="timeline-dot" style="top: 0.5rem;"></div>
-          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="text-amber-400 font-bold">Abs. 2,586 – 7,585</span>
-              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">1st Myriad / Book 1</span>
-            </div>
-            <p class="text-slate-300"><strong>Gallian’s Covenant:</strong> Gallian meets Master Oren and gathers the first eight Guardians at Arcadia. The Four Realms harden. The School of Arcadia is founded (Abs. 4,586). <strong>First Hollow Breach (Abs. 3,712)</strong> – Void‑touched scouts appear. Gallian leads the first defense; the covenant is renewed (Abs. 3,713). The Four Covert Orders are seeded: Order of the Star (Abs. 3,735), Root Sanctuary (Abs. 3,785), Havenfire Guild (Abs. 4,085), Filwind Institute (Abs. 4,385).</p>
-          </div>
-        </div>
-
-        <!-- Book 1.5: War of the Grenlians -->
-        <div class="relative mb-6">
-          <div class="timeline-dot" style="top: 0.5rem;"></div>
-          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="text-amber-400 font-bold">Abs. 7,585 – 12,583</span>
-              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Late 1st Myriad / Book 1.5</span>
-            </div>
-            <p class="text-slate-300"><strong>Grenlian War & Fall of Guardians:</strong> Six millennia of warfare against Ordered Void manifestations. The 5‑Star Battalion (100,000 Void‑adapted warriors) is sealed near the Firmament at <strong>Abs. 12,583</strong>. Three Guardians – Tomoyama, Kross, Marcus – are corrupted into the first Dark Emperors. The Sealing Armada (Abs. 19,588) ends the war; Gallian sacrifices his physical form to maintain the Meridian Threshold.</p>
-          </div>
-        </div>
-
-        <!-- Book 2: Conclave of Shadows -->
-        <div class="relative mb-6">
-          <div class="timeline-dot" style="top: 0.5rem;"></div>
-          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="text-amber-400 font-bold">Abs. 19,588 – 22,584</span>
-              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">2nd Myriad / Book 2</span>
-            </div>
-            <p class="text-slate-300"><strong>Grey Tide & The Conclave:</strong> The Grey Tide manifests. The four Covert Orders formally ally with the Allied Races (Ethereals, Drakes, Mystics, Dromes). Celestine is exiled to the Dark Realm on a secret mission. The <strong>Octagram</strong> is founded at the Meridian Threshold (Abs. 19,592).</p>
-          </div>
-        </div>
-
-        <!-- Book 3: The Dark Emperors -->
-        <div class="relative mb-6">
-          <div class="timeline-dot" style="top: 0.5rem;"></div>
-          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="text-amber-400 font-bold">Abs. 22,585 – 32,584</span>
-              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">3rd Myriad / Book 3</span>
-            </div>
-            <p class="text-slate-300"><strong>Rite of Balancing & The Wanderer’s Birth:</strong> The Rite of Balancing (Abs. 23,507) catastrophically fails. <strong>Lucius Arogzan</strong> is born, marked by Void‑touch and haunted by inexplicable dreams. The Dark Emperors break free (Abs. 23,508) and wage a two‑century war. The Guardian Order is founded on Arcadia (Abs. 23,712). The Battle of Nexus (Abs. 23,740) defeats the Emperors, who are sealed in Tartarus (Abs. 23,750).</p>
-          </div>
-        </div>
-
-        <!-- Book 4: The Wanderer's Path -->
-        <div class="relative mb-6">
-          <div class="timeline-dot" style="top: 0.5rem;"></div>
-          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="text-amber-400 font-bold">Abs. 23,751 – 23,755</span>
-              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">Book 4</span>
-            </div>
-            <p class="text-slate-300"><strong>Eight Clues:</strong> Lucius walks the spiral path: Shadow (Pact), Breath (Self), Wind (World), Depth (Inheritance), Uncertainty (Science), Absence (Intuition), Transcendence, and Center (Artifice). He meets the Fourth Lord in the Sanctuary, receives the Essence of WILL, and becomes the 25th Guardian. He begins training Gael and Ren in the Eye Practice.</p>
-          </div>
-        </div>
-
-        <!-- Book 5: Council-Tribunic Wars -->
-        <div class="relative mb-6">
-          <div class="timeline-dot" style="top: 0.5rem;"></div>
-          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="text-amber-400 font-bold">Abs. 32,585 – 42,584</span>
-              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">4th Myriad / Book 5</span>
-            </div>
-            <p class="text-slate-300"><strong>Political Fracture & The Inquisitor:</strong> The Interdimensional United Realms (IUR) fractures. The Inquisitor Redford Heinsforth exceeds his mandate, conducting arrests, torture, and experiments. Ren discovers the Depths of Abyss laboratory. Heinsforth is tried and sentenced to Tartarus. The <strong>Accord of Arcadia</strong> (Abs. 40,819) and the <strong>Watchers’ Charter</strong> are ratified. The 5‑Star Battalion returns (Abs. 41,085) and warns of the Destroyer’s imminent assault.</p>
-          </div>
-        </div>
-
-        <!-- Book 6: Essence of Convergence -->
-        <div class="relative mb-6">
-          <div class="timeline-dot" style="top: 0.5rem;"></div>
-          <div class="bg-slate-900/50 border border-amber-900/30 rounded-xl p-4 ml-4">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="text-amber-400 font-bold">Abs. 42,585 – 51,235</span>
-              <span class="px-2 py-0.5 bg-amber-900/30 text-amber-300 text-xs rounded">5th Myriad / Book 6</span>
-            </div>
-            <p class="text-slate-300"><strong>The Five Personas:</strong> Dark Realm‑Inquisitor War (Abs. 51,015–51,085). <strong>Essence of POWER:</strong> Gael becomes a Firmament node (Abs. 51,025). <strong>Essence of WILL</strong> distributed to the Watchers (Abs. 51,040). <strong>Essence of BECOMING:</strong> Heinsforth transforms into the Warden. <strong>Essence of SACRIFICE:</strong> Gael dissolves completely into the Firmament (Abs. 51,055). Lucius is banished to the Meadow Realm. The Firmament seals fully. The Guardian Domain is established as a neutral Fifth Realm (Abs. 51,085). <strong>Western Tree seed grows</strong> in the Covenant Forge (Abs. 51,185).</p>
-          </div>
-        </div>
-
-        <!-- Convergence point -->
-        <div class="relative mb-6">
-          <div class="timeline-dot" style="top: 0.5rem; background: #10b981;"></div>
-          <div class="bg-emerald-950/40 border border-emerald-700/40 rounded-xl p-4 ml-4">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="text-emerald-400 font-bold">Abs. 51,235</span>
-              <span class="px-2 py-0.5 bg-emerald-800/50 text-emerald-300 text-xs rounded">THE CONVERGENCE</span>
-            </div>
-            <p class="text-slate-200"><strong>Three Trees meet:</strong> The Tree of Order, Tree of Chaos, and the Old Tree converge in the Meadow Realm. Lucius writes the final entry of <em>The Wanderer’s Path</em>. The Last Observer announces the 14th Eon’s end. A child with violet eyes is born in the Guardian Domain. The center holds – for now, for always.</p>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- WESTERN PLANE TIMELINE (Books 7–11, corrected) -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-bold mb-6 fantasy-font text-purple-400"><i class="fas fa-book-open mr-2"></i>Western Plane Timeline (Tree of Chaos / Library of Lumeria)</h2>
-      <div class="relative pl-8">
-        <div class="timeline-line"></div>
-
-        <!-- Book 7: Foundation -->
-        <div class="relative mb-6">
-          <div class="timeline-dot" style="top: 0.5rem;"></div>
-          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="text-purple-400 font-bold">Abs. 1 – 20,000</span>
-              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">Book 7</span>
+    <!-- ============ ABSOLUTE YEAR 1 ============ -->
+    <section id="seeding" class="mb-10 scroll-mt-24">
+        <h2 class="text-xl md:text-2xl font-bold mb-5 fantasy-font text-amber-400 flex items-center gap-2">
+            <i class="fas fa-seedling"></i> Absolute Year 1 — The Seeding of the Two Planes
+        </h2>
+        <div class="relative pl-10">
+            <div class="timeline-vline eastern"></div>
+            <div class="relative mb-3">
+                <div class="timeline-dot gold" style="top:0.6rem;"></div>
+                <div class="timeline-card gold-border p-4 ml-5">
+                    <span class="text-amber-400 font-bold text-sm">Abs. 1</span>
+                    <span class="era-badge eastern ml-2">Eastern</span>
+                    <span class="era-badge western ml-1">Western</span>
+                    <div class="text-slate-300 mt-2 text-sm leading-relaxed space-y-1.5">
+                        <p>The <strong>Tree of Order</strong> violently embeds itself into the Eastern Plane, tearing fissures in reality through which the Void leaks. Simultaneously, the <strong>Tree of Chaos</strong> takes root in the Western Plane.</p>
+                        <p><strong class="text-amber-300">EAST:</strong> The <strong>Ancient Ones</strong> — Primus, Solara, Terrakin, Aqualis, Ventus, Aetherius, Terram — emerge. They perform the <strong>Rite of the Foundation</strong>: each binds to the geography to stabilize reality. <strong>Primus</strong> leaves his exposed hand as the <strong>Stone Table</strong>. <strong>Solara</strong> is imprisoned in the <strong>Eternal Flame</strong>. The <strong>First Generation</strong> is born — grey‑tinted skin, golden eyes — ancestors of all human lineages including the Aneians.</p>
+                        <p><strong class="text-purple-300">WEST:</strong> The <strong>Primordial Eight</strong> tear themselves into existence: Kronos (Time), Logos (Wisdom), Freya (Life/Fate), Kairos (Opportunity), Archelaus (Force/Magic), Nyx (Night/Darkness), Eres (War/Struggle), Artemis (Light/Revelation). Primal war ends when Freya speaks "Enough" — first silence establishes primal truce.</p>
+                    </div>
+                </div>
             </div>
-            <p class="text-slate-300"><strong>The Seeding & The Library:</strong> Tree of Chaos planted. Primordial Eight and Ethereal Five emerge. First Covenant (Abs. 500). Kronos establishes the Library of Lumeria (Abs. 5,000). Logos becomes Second Librarian and merges with the Index (Abs. 10,000). The Silence begins. Aurelius Empire rises and falls (Abs. 12,000–16,723). <strong>Lucien Jela (Lucien Elder) summoned from Earth</strong> (Abs. ~4,987), trained for 15,000 years. Zeno serves as Third Librarian. At Abs. 20,001, Lucien is formally appointed <strong>Fourth Librarian</strong> and establishes Triadic Governance.</p>
-          </div>
         </div>
-
-        <!-- Book 8: Rise of Civilizations & Great Divide -->
-        <div class="relative mb-6">
-          <div class="timeline-dot" style="top: 0.5rem;"></div>
-          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="text-purple-400 font-bold">Abs. 20,001 – 28,500</span>
-              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">Book 8</span>
-            </div>
-            <p class="text-slate-300"><strong>Eastern Bridge & Severance:</strong> Xi Dynasty founded (Abs. 20,001). <strong>Great Decay (Abs. 20,203)</strong> – first Metaphysical Embargo. Xi Dynasty falls; Federation of Sixteen Nations and Republic of Argos emerge. The Legion founded by Aurelius Augustus Titus (Abs. 21,325). Ming Dynasty unifies the Eastern Continent. <strong>The Great Divide (Abs. 28,223)</strong> – dimensional rift severs all land routes between Eastern and Western Continents. The Five Domains formalize isolation (Abs. 28,500).</p>
-          </div>
-        </div>
-
-        <!-- Book 9: Synthesis Wars -->
-        <div class="relative mb-6">
-          <div class="timeline-dot" style="top: 0.5rem;"></div>
-          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="text-purple-400 font-bold">Abs. 28,500 – 39,660</span>
-              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">Book 9</span>
-            </div>
-            <p class="text-slate-300"><strong>Science-Magic Wars:</strong> Interim Concordat (Abs. 29,660) creates Synthesis Colleges. Paraformer Genesis: First Resonance Catcher developed. <strong>Topology Wars (Abs. 31,200–31,800)</strong> – Rationalist Purge vs. Silence Working. <strong>Compromise of the Seven Seals (Abs. 32,400)</strong> preserves Intuition as “The Preserve of the Ineffable.” Lucien’s tenure formally codified (Abs. 39,660).</p>
-          </div>
-        </div>
-
-        <!-- Book 10: Second Transition & Library War -->
-        <div class="relative mb-6">
-          <div class="timeline-dot" style="top: 0.5rem;"></div>
-          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="text-purple-400 font-bold">Abs. 39,660 – 47,495</span>
-              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">Book 10</span>
-            </div>
-            <p class="text-slate-300"><strong>Jurisdictional Crisis & Great Exclusion:</strong> Lucien’s first journey to the Meridian Domain (Abs. 39,667). <strong>The Library War (Abs. 39,668–39,675)</strong> – schism between Vice‑Chair and Chairman. <strong>Concordance of Jurisdictions</strong> restores order. <strong>Great Exclusion (Abs. 40,203)</strong> – second Metaphysical Embargo destroys a corrupt rump state. Neo‑Imperium rises and falls (Abs. 40,212–40,330). Tellerium High Society founded (Abs. 47,345). <strong>Burning of Xeria (Abs. 47,430)</strong> – first Unbecoming manifestation. United Realms forms (Abs. 47,490).</p>
-          </div>
-        </div>
-
-        <!-- Book 11: Trials & Convergence -->
-        <div class="relative mb-6">
-          <div class="timeline-dot" style="top: 0.5rem;"></div>
-          <div class="bg-slate-900/50 border border-purple-900/30 rounded-xl p-4 ml-4">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="text-purple-400 font-bold">Abs. 47,495 – 51,235+</span>
-              <span class="px-2 py-0.5 bg-purple-900/30 text-purple-300 text-xs rounded">Book 11</span>
-            </div>
-            <p class="text-slate-300"><strong>Two‑Millennia War & The Fifth Librarian:</strong> Library Seclusion begins (Abs. 47,495). Two‑Millennia War (Abs. 47,502–49,634) devastates the Western Plane. <strong>Trials of Tellerium (Abs. 49,636)</strong> – Helena Cross and Kael Varus executed. Union proclaimed under Gu Zu. <strong>Gaius of the Eastern Plane appointed Fifth Librarian (Abs. 49,662)</strong>. Lucien retires to the Meridian Domain (Abs. 49,663). Academia of Lumeria founded (Abs. 49,890). <strong>Dominion Republic of Argos proclaimed (Abs. 51,200)</strong> with Valeria Scipio and Marcus Varus as first Consuls. The seeds stir as the Convergence approaches.</p>
-          </div>
-        </div>
-
-        <!-- Western Convergence -->
-        <div class="relative mb-6">
-          <div class="timeline-dot" style="top: 0.5rem; background: #10b981;"></div>
-          <div class="bg-emerald-950/40 border border-emerald-700/40 rounded-xl p-4 ml-4">
-            <div class="flex flex-wrap items-center gap-2 mb-2">
-              <span class="text-emerald-400 font-bold">Abs. 51,235+</span>
-              <span class="px-2 py-0.5 bg-emerald-800/50 text-emerald-300 text-xs rounded">6th Myriad</span>
-            </div>
-            <p class="text-slate-200"><strong>The Convergence Approaches:</strong> The seeds in the Central Archive pulse with three‑part harmony (Order, Chaos, Elder Wood). Gaius maintains the vigil. The Library’s strict neutrality is upheld as the Dominion Republic, Union, Neo‑Magic Institute, and Federation seek access to the stirring seeds. The Ship of Reunion is constructed in the Federation. The Chronicle Compact passes into Gaius’s hands alone as the Sixth Myriad truly begins.</p>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- DATING SYSTEMS REFERENCE (updated with corrected formulas) -->
-    <section class="mb-12">
-      <h2 class="text-2xl font-bold mb-6 fantasy-font text-emerald-400"><i class="fas fa-calendar-alt mr-2"></i>Dating Systems & Conversion</h2>
-      <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-6">
-        <div class="overflow-x-auto">
-          <table class="w-full text-sm">
-            <thead>
-              <tr class="border-b border-slate-700">
-                <th class="text-left py-2 text-slate-400">System</th>
-                <th class="text-left py-2 text-slate-400">Epoch / Formula</th>
-                <th class="text-left py-2 text-slate-400">Example</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="border-b border-slate-800">
-                <td class="py-2 text-slate-200">Absolute Year</td>
-                <td class="py-2 text-slate-400">Universal count from the Seeding (Abs. 1)</td>
-                <td class="py-2 text-slate-400">Convergence = Abs. 51,235</td>
-               </tr>
-              <tr class="border-b border-slate-800">
-                <td class="py-2 text-slate-200">Eastern Myriad</td>
-                <td class="py-2 text-slate-400">Abs = 2,585 + (Myriad‑1)×10,000 + Year</td>
-                <td class="py-2 text-slate-400">1st Myriad 1127 = Abs. 3,712</td>
-               </tr>
-              <tr class="border-b border-slate-800">
-                <td class="py-2 text-slate-200">Imperial (Aurelius)</td>
-                <td class="py-2 text-slate-400">Year 1 = Abs. 10,001</td>
-                <td class="py-2 text-slate-400">Empire founded Year 1 = Abs. 10,001</td>
-               </tr>
-              <tr class="border-b border-slate-800">
-                <td class="py-2 text-slate-200">Xi Dynasty</td>
-                <td class="py-2 text-slate-400">Year 1 = Abs. 20,001</td>
-                <td class="py-2 text-slate-400">Great Decay Year 203 = Abs. 20,203</td>
-               </tr>
-              <tr class="border-b border-slate-800">
-                <td class="py-2 text-slate-200">Federation (Aethelgard)</td>
-                <td class="py-2 text-slate-400">Year 1 = Abs. 20,212</td>
-                <td class="py-2 text-slate-400">Abs. 51,200 = Fed. Year 30,988</td>
-               </tr>
-              <tr class="border-b border-slate-800">
-                <td class="py-2 text-slate-200">Union (Zhongguo)</td>
-                <td class="py-2 text-slate-400">Year 1 = Abs. 49,636</td>
-                <td class="py-2 text-slate-400">Abs. 51,235 = Union Year 1,599</td>
-               </tr>
-              <tr>
-                <td class="py-2 text-slate-200">Dominion Republic</td>
-                <td class="py-2 text-slate-400">Year 1 = Abs. 51,200</td>
-                <td class="py-2 text-slate-400">Convergence = Dom. Year 35+</td>
-               </tr>
-            </tbody>
-           </table>
+    <!-- ============ PRIMORDIAL ERA ============ -->
+    <section id="primordial" class="mb-10 scroll-mt-24">
+        <h2 class="text-xl md:text-2xl font-bold mb-5 fantasy-font text-amber-400 flex items-center gap-2">
+            <i class="fas fa-tree"></i> Primordial Era — The Silent Growth (Abs. 1 – 2,584)
+        </h2>
+        <div class="relative pl-10">
+            <div class="timeline-vline eastern"></div>
+
+            <details class="relative mb-3" open>
+                <summary class="timeline-card gold-border p-4 ml-5 relative cursor-pointer">
+                    <div class="timeline-dot gold" style="top:1.1rem;"></div>
+                    <span class="text-amber-400 font-bold text-sm">Abs. 1 – 800</span>
+                    <span class="era-badge eastern ml-2">Eastern</span>
+                    <span class="text-amber-300 text-xs ml-1">The First People Emerge</span>
+                    <i class="fas fa-chevron-right toggle-icon ml-auto text-amber-400"></i>
+                </summary>
+                <div class="ml-5 mt-1 bg-slate-900/30 border border-amber-900/20 rounded-b-xl p-4 text-sm text-slate-300 space-y-2">
+                    <p><strong>Abs. 1–100 — Lux‑Children (North):</strong> Albino features, photosensitive eyes. Discover the Eternal Flame; <strong>Cult of the Flame</strong> emerges.</p>
+                    <p><strong>Abs. 1–150 — Stone‑Blooded (East):</strong> Grey skin, carry Terrakin's ichor. Develop first crude <strong>chi‑cultivation</strong>. Five clans: fire, water, earth, wind, and Aether‑touched.</p>
+                    <p><strong>Abs. 1–200 — Echo‑Born (West):</strong> Fluid features, <strong>memory‑shifting</strong> abilities. First "memory‑drowning" case. First <strong>Mystics</strong> emerge.</p>
+                    <p><strong>Abs. 1–250 — Number‑Touched (South):</strong> Analytical minds. Build <strong>calculation circles</strong>. Discover <strong>null properties</strong>.</p>
+                    <p><strong>Abs. 1–300 — Threshold Tribe (Center):</strong> Maintain the Stone Table on Arcadia Isle. Navigate the Shroud. Become <strong>memory‑keepers</strong> of the Primordial Era.</p>
+                    <p><strong>Abs. 487 — First Ethereal‑Human Contact:</strong> Threshold Tribe Mist‑Walker encounters <strong>Kyris</strong> in a probability stream.</p>
+                    <p><strong>Abs. 612 — Aris the Sorrowful:</strong> Communes with Eternal Flame; learns Solara is imprisoned. Establishes <strong>Cult of the Eternal Radiance</strong> as a maintenance rite. Becomes <strong>First Master of Light</strong>.</p>
+                </div>
+            </details>
+
+            <details class="relative mb-3">
+                <summary class="timeline-card gold-border p-4 ml-5 relative cursor-pointer">
+                    <div class="timeline-dot gold" style="top:1.1rem;"></div>
+                    <span class="text-amber-400 font-bold text-sm">Abs. 800 – 1,500</span>
+                    <span class="era-badge eastern ml-2">Eastern</span>
+                    <span class="text-amber-300 text-xs ml-1">The Schisms</span>
+                    <i class="fas fa-chevron-right toggle-icon ml-auto text-amber-400"></i>
+                </summary>
+                <div class="ml-5 mt-1 bg-slate-900/30 border border-amber-900/20 rounded-b-xl p-4 text-sm text-slate-300 space-y-2">
+                    <p><strong>Abs. 800–1,000 — War of the First Elements:</strong> Five Primal Shapers clash. <strong>Hayate kills Tamashii</strong>. Tamashii's essence becomes <strong>Aether</strong>. First <strong>Aether Spring</strong> appears.</p>
+                    <p><strong>Abs. 890 — Luminara the Heretic:</strong> Attempts to extinguish the Eternal Flame to free Solara. Executed. Followers become the <strong>Eclipse</strong>, hiding in Catacombs of the Unnamed.</p>
+                    <p><strong>Abs. 1,000–1,200 — Survival Cantons form:</strong> Spark Domain (Fire), Mist Valley (Water), Stonehaven (Earth), Sky Peak (Wind), Aether Spring (Aether).</p>
+                    <p><strong>Abs. 1,445 — Glaston the Categorator:</strong> Performs <strong>Fivefold Binding</strong> at Standing Stones. Dies consumed by the <strong>Arcane</strong>. Creates first <strong>Hollow breach</strong>. Proto‑Guilds form.</p>
+                </div>
+            </details>
+
+            <details class="relative mb-3">
+                <summary class="timeline-card gold-border p-4 ml-5 relative cursor-pointer">
+                    <div class="timeline-dot gold" style="top:1.1rem;"></div>
+                    <span class="text-amber-400 font-bold text-sm">Abs. 1,500 – 2,400</span>
+                    <span class="era-badge eastern ml-2">Eastern</span>
+                    <span class="text-amber-300 text-xs ml-1">The Crystallization</span>
+                    <i class="fas fa-chevron-right toggle-icon ml-auto text-amber-400"></i>
+                </summary>
+                <div class="ml-5 mt-1 bg-slate-900/30 border border-amber-900/20 rounded-b-xl p-4 text-sm text-slate-300 space-y-2">
+                    <p><strong>Abs. 1,500–2,000 — Lux Imperio formalized:</strong> Dual Crown system (Pope + Emperor). Grand Matriarch emerges as third power.</p>
+                    <p><strong>Abs. 1,600–2,100 — Chuugoku unified:</strong> Dragon Throne established. First Great Lama emerges. Five Great Houses formalized.</p>
+                    <p><strong>Abs. 1,700–2,200 — Avalon formalized:</strong> Seven Kingdoms under High King's Ward Sovereignty. Council of Magisters (49 members). Enchantment and Engineering guilds suppressed.</p>
+                    <p><strong>Abs. 1,800 — First Drome refuses an order:</strong> Morko refuses to demolish a bridge. Dromes awaken to full consciousness.</p>
+                    <p><strong>Abs. 2,000–2,400 — Helron State formalized:</strong> Triumvirate (Director / President / High Command). Four Research Directorates.</p>
+                    <p><strong>Abs. 2,134 — Helron the Measurer</strong> completes <strong>Calculation of Decay</strong>. Exiled and executed. Followers become <strong>Filwind Precursors</strong>.</p>
+                    <p><strong>Abs. 2,200 — The Aneian Exile:</strong> Most severely mutated First People driven into <strong>Dark Realm</strong>. Drev Arogzan I establishes Periphery's Edge. Eight Great Families established.</p>
+                    <p><strong>Abs. 2,400 — Destroyer's First Whisper.</strong> <strong>Prophecy of the 25th</strong> received: <em>"When the star born of void and light walks between worlds, the scattered children shall be gathered."</em></p>
+                </div>
+            </details>
+
+            <div class="relative mb-3">
+                <div class="timeline-dot red" style="top:0.6rem;"></div>
+                <div class="timeline-card red-border p-4 ml-5">
+                    <span class="text-red-400 font-bold text-sm">Abs. 2,584</span>
+                    <span class="era-badge eastern ml-2">Eastern</span>
+                    <span class="px-2 py-0.5 bg-red-900/30 text-red-300 text-xs rounded ml-1">Covenant of Lies</span>
+                    <p class="text-slate-300 mt-2 text-sm leading-relaxed">Representatives agree to: (1) formalize the Four Realms and begin 1st Myriad calendar in Abs. 2,586; (2) propagate the myth of the "Noble Withdrawal"; (3) seal all Primordial Era records in the <strong>Meridian Vault</strong> beneath the Stone Table; (4) establish Arcadia as hidden covenant ground. <span class="text-red-400">The lie is institutionalized.</span></p>
+                </div>
+            </div>
+
+            <div class="relative mb-3">
+                <div class="timeline-dot gold" style="top:0.6rem;"></div>
+                <div class="timeline-card gold-border p-4 ml-5">
+                    <span class="text-amber-400 font-bold text-sm">Abs. 2,585</span>
+                    <span class="era-badge eastern ml-2">Eastern</span>
+                    <p class="text-slate-300 mt-2 text-sm leading-relaxed"><strong>Mera Who Walked the Mist</strong> performs the final rite at the Stone Table. She touches the eight cups: <em>"The center holds. Let it be measured now."</em> At midnight, the <strong>1st Myriad begins</strong>. Master Oren passes the Yew Staff to Gallian and walks into the Mist.</p>
+                </div>
+            </div>
         </div>
-        <p class="text-slate-400 text-sm mt-4 italic">Note: Eastern Plane includes a 2,585‑year Primordial Era (“Silent Growth”) before the formal 1st Myriad. All Absolute Years are synchronized so that the Convergence occurs simultaneously in both planes at Abs. 51,235.</p>
-      </div>
     </section>
 
-  </main>
+    <!-- ============ EASTERN MYRIADS ============ -->
+    <section id="eastern-myriads" class="mb-10 scroll-mt-24">
+        <h2 class="text-xl md:text-2xl font-bold mb-5 fantasy-font text-amber-400 flex items-center gap-2">
+            <i class="fas fa-flag"></i> Eastern Plane — The Five Myriads (Abs. 2,585 – 51,235)
+        </h2>
 
-  <footer class="border-t border-slate-800 bg-slate-900/50 p-6 text-center">
-    <p class="text-slate-400 text-sm">Eternal Tree Saga Wiki — A Fully Synchronized Chronicle Spanning Six Myriads</p>
-    <p class="text-slate-500 text-xs mt-2">“The center holds. For now. For always.” — Lucius Arogzan, 25th Guardian</p>
-  </footer>
+        <!-- 1st Myriad -->
+        <div class="relative pl-10 mb-8">
+            <h3 class="text-lg font-bold mb-3 fantasy-font text-amber-300 ml-5">1st Myriad — The Age of Founding (Abs. 2,585 – 12,584)</h3>
+            <div class="timeline-vline eastern"></div>
 
-  <script>
+            <details class="relative mb-3" open>
+                <summary class="timeline-card gold-border p-4 ml-5 relative cursor-pointer">
+                    <div class="timeline-dot gold" style="top:1.1rem;"></div>
+                    <span class="text-amber-400 font-bold text-sm">Abs. 2,586 – 3,712</span>
+                    <span class="text-amber-300 text-xs ml-1">Gallian's Covenant & The First Hollow Breaches</span>
+                    <i class="fas fa-chevron-right toggle-icon ml-auto text-amber-400"></i>
+                </summary>
+                <div class="ml-5 mt-1 bg-slate-900/30 border border-amber-900/20 rounded-b-xl p-4 text-sm text-slate-300 space-y-2">
+                    <p><strong>Abs. 2,586 (1st Myr 0):</strong> Gallian receives the Yew Staff. Departs to observe Four Realms. Meets Celestine (North), Tomoyama (East), Kross (West), Marcus (South).</p>
+                    <p><strong>Abs. 2,589 (1st Myr 3):</strong> <strong>First Covenant</strong> forged at Stone Table. Eight guardians — four visible, four Hidden. <em>"To the space between. We do not claim the center. We hold it."</em></p>
+                    <p><strong>Abs. 2,785–3,285 (1st Myr 200–700):</strong> Four Realms harden. Celestine executed (Abs. 2,900); students establish <strong>Order of the Star</strong>. Tomoyama establishes <strong>Root Sanctuary</strong>. Kross formalizes <strong>Havenfire Guild</strong>. Marcus establishes <strong>Filwind Institute</strong>.</p>
+                    <p><strong>Abs. 3,712 (1st Myr 1,127):</strong> <strong class="text-red-400">First Hollow Breaches.</strong> Seventeen fracture points at Meridian Threshold. Lord‑Type Hollow manifests. <strong>Twins fall</strong> — Black Twin unmade, White Twin dissolves sealing breach. <strong>Silent One</strong> speaks narrative gap, becomes part of Stone Table. Breaches across all Four Realms contained but not sealed. <strong>Seeds of Winter</strong> planted.</p>
+                </div>
+            </details>
+
+            <details class="relative mb-3">
+                <summary class="timeline-card gold-border p-4 ml-5 relative cursor-pointer">
+                    <div class="timeline-dot gold" style="top:1.1rem;"></div>
+                    <span class="text-amber-400 font-bold text-sm">Abs. 3,713 – 9,588</span>
+                    <span class="text-amber-300 text-xs ml-1">Institutionalization, Corruption & Gallian's Sacrifice</span>
+                    <i class="fas fa-chevron-right toggle-icon ml-auto text-amber-400"></i>
+                </summary>
+                <div class="ml-5 mt-1 bg-slate-900/30 border border-amber-900/20 rounded-b-xl p-4 text-sm text-slate-300 space-y-2">
+                    <p><strong>Abs. 3,735–4,385:</strong> Four Covert Orders formally institutionalized with hierarchies and doctrines.</p>
+                    <p><strong>Abs. 4,500 (1st Myr 1,915):</strong> <strong>5‑Star Battalion founded</strong> by Kaelen First‑Star. Nimorak provided as bridge entity. Recruits undergo Rite of Bonding; eyes turn golden.</p>
+                    <p><strong>Abs. 4,585 (1st Myr 2,000):</strong> <strong>School of Arcadia founded.</strong> Gallian establishes curriculum: Eye Practice, Eight Nodes, hybrid techniques.</p>
+                    <p><strong>Abs. 5,000 (1st Myr 2,415):</strong> Ancients warn Destroyer gathers. <strong>5‑Star Battalion sealed</strong> in temporal stasis. Will sleep for over 26,000 objective years.</p>
+                    <p><strong>Abs. 7,595–8,385 (1st Myr 5,010–5,800):</strong> <strong class="text-red-400">Corruption of the Guardians.</strong> Whispers from Nimorak‑Prime reach Tomoyama, Kross, and Marcus. All three fall. Become <strong>Dark Emperors</strong>: Demon Emperor, Shadow Emperor, Spawn Emperor.</p>
+                    <p><strong>Abs. 9,585 (1st Myr 7,000):</strong> Gallian confronts Dark Emperors at Depths of Abyss. Seals them with Pact‑anchors — not by force, but by <em>reminding</em> them of who they were. Cast into <strong>Tartarus</strong>.</p>
+                    <p><strong>Abs. 9,588 (1st Myr 7,003):</strong> <strong class="text-red-400">Gallian's Sacrifice.</strong> Body dissolves; consciousness diffuses into Meridian Domain. Last words: <em>"The center holds. For now. For always. As long as we hold it."</em></p>
+                </div>
+            </details>
+        </div>
+
+        <!-- 2nd Myriad -->
+        <div class="relative pl-10 mb-8">
+            <h3 class="text-lg font-bold mb-3 fantasy-font text-amber-300 ml-5">2nd Myriad — The Myriad of Shadows (Abs. 12,585 – 22,584)</h3>
+            <div class="timeline-vline eastern"></div>
+
+            <details class="relative mb-3" open>
+                <summary class="timeline-card gold-border p-4 ml-5 relative cursor-pointer">
+                    <div class="timeline-dot gold" style="top:1.1rem;"></div>
+                    <span class="text-amber-400 font-bold text-sm">Abs. 19,588 – 19,592 (2nd Myr 7,003–7,007)</span>
+                    <span class="text-amber-300 text-xs ml-1">The Grey Tide & Conclave of Shadows</span>
+                    <i class="fas fa-chevron-right toggle-icon ml-auto text-amber-400"></i>
+                </summary>
+                <div class="ml-5 mt-1 bg-slate-900/30 border border-amber-900/20 rounded-b-xl p-4 text-sm text-slate-300 space-y-2">
+                    <p><strong>Abs. 19,588:</strong> <strong>Grey Tide</strong> first encountered — grey mist that <em>consumes meaning</em>. Spreads across all Four Realms. Theron realizes it is the consequence of the Covenant of Lies.</p>
+                    <p><strong>Abs. 19,589:</strong> <strong>Conclave of Shadows</strong> convenes at Arcadia. All delegations arrive: Four Covert Orders, Aneians, Ethereals, Drakes, Mystics, Dromes. <strong>Meridian Vault opened</strong> — truth revealed: Aneians are the <em>originals</em>. <strong>Covenant of Shadows</strong> ratified. Celestine places pale gold seed on Stone Table.</p>
+                    <p><strong>Abs. 19,590–19,591:</strong> Aileen (Saintess of the North) and Drev Arogzan I unite. Aileen conceives <strong>Lucius Arogzan</strong>. Seals on Tartarus crack; Dark Emperors stir.</p>
+                    <p><strong>Abs. 19,592 (2nd Myr 7,007):</strong> <strong>Octagram founded</strong> by Selene of Lux Imperio. <strong>Lucius Arogzan born</strong> — one gold eye (Void‑Touch), one violet eye (prophecy mark). Celestine passes.</p>
+                </div>
+            </details>
+        </div>
+
+        <!-- 3rd Myriad -->
+        <div class="relative pl-10 mb-8">
+            <h3 class="text-lg font-bold mb-3 fantasy-font text-amber-300 ml-5">3rd Myriad — The Myriad of the Wanderer (Abs. 22,585 – 32,584)</h3>
+            <div class="timeline-vline eastern"></div>
+
+            <details class="relative mb-3" open>
+                <summary class="timeline-card gold-border p-4 ml-5 relative cursor-pointer">
+                    <div class="timeline-dot gold" style="top:1.1rem;"></div>
+                    <span class="text-amber-400 font-bold text-sm">Abs. 22,585 – 23,751 (3rd Myr 0–1,166)</span>
+                    <span class="text-amber-300 text-xs ml-1">Dark Emperors Break Free & The Wanderer's Path</span>
+                    <i class="fas fa-chevron-right toggle-icon ml-auto text-amber-400"></i>
+                </summary>
+                <div class="ml-5 mt-1 bg-slate-900/30 border border-amber-900/20 rounded-b-xl p-4 text-sm text-slate-300 space-y-2">
+                    <p><strong>Abs. 22,592 (3rd Myr 7):</strong> Lucius at age seven — Void‑Crystals illuminate path for him. Marked as extraordinary.</p>
+                    <p><strong>Abs. 22,707 (3rd Myr 122):</strong> First crack in Tartarus seals. Lucius begins Edge Protocol training under Border‑Captain Rika.</p>
+                    <p><strong>Abs. 23,307 (3rd Myr 722):</strong> Lucius discovers <strong>Eye Practice</strong> — perceiving simultaneously from Void and Light perspectives. Octagram makes indirect contact.</p>
+                    <p><strong>Abs. 23,407–23,507:</strong> <strong>Century of Preparation.</strong> Lucius studies with all four Covert Orders. Watched by <strong>Roushen the Unseen</strong> (346th Octagram Grandmaster).</p>
+                    <p><strong>Abs. 23,507 (3rd Myr 922):</strong> <strong class="text-red-400">Rite of Balancing catastrophe.</strong> Seals on Tartarus shatter; Dark Emperors break free. Lucius caught in surge — mismatched eyes permanently awakened.</p>
+                    <p><strong>Abs. 23,508–23,740:</strong> <strong>Two‑Century War.</strong> Lucius collects eight clues: ① Shadow (PACT) — Iron Key; ② Breath (SELF) — White Feather; ③ Wind (WORLD) — Mirror Fragment; ④ Depth (INHERITANCE) — Grey Crystal; ⑤ Uncertainty (SCIENCE) — Black Shard; ⑥ Absence (INTUITION) — Black Feather; ⑦ Transcendence — direction to Great Forest; ⑧ Center (ARTIFICE) — the gate itself. Meets Fourth Lord in Sanctuary.</p>
+                    <p><strong>Abs. 23,712 (3rd Myr 1,127):</strong> <strong>Guardian Order founded.</strong> Gallian's consciousness dictates eight‑Division structure.</p>
+                    <p><strong>Abs. 23,740 (3rd Myr 1,155):</strong> <strong>Battle of Nexus.</strong> Lucius confronts Dark Emperors — not with force, but with <em>relation</em>. Corruption begins to burn out.</p>
+                    <p><strong>Abs. 23,750:</strong> Dark Emperors sealed with new resonance‑based seals. Lucius takes Gael and Ren as apprentices.</p>
+                </div>
+            </details>
+        </div>
+
+        <!-- 4th Myriad -->
+        <div class="relative pl-10 mb-8">
+            <h3 class="text-lg font-bold mb-3 fantasy-font text-amber-300 ml-5">4th Myriad — The Myriad of Conflict (Abs. 32,585 – 42,584)</h3>
+            <div class="timeline-vline eastern"></div>
+
+            <details class="relative mb-3" open>
+                <summary class="timeline-card gold-border p-4 ml-5 relative cursor-pointer">
+                    <div class="timeline-dot gold" style="top:1.1rem;"></div>
+                    <span class="text-amber-400 font-bold text-sm">Abs. 32,585 – 34,115 (4th Myr 7,003–8,530)</span>
+                    <span class="text-amber-300 text-xs ml-1">Council‑Tribunic Wars & The Inquisitor</span>
+                    <i class="fas fa-chevron-right toggle-icon ml-auto text-amber-400"></i>
+                </summary>
+                <div class="ml-5 mt-1 bg-slate-900/30 border border-amber-900/20 rounded-b-xl p-4 text-sm text-slate-300 space-y-2">
+                    <p><strong>Abs. 32,588 (4th Myr 7,003):</strong> Lucius departs Arcadia. "I must learn what the center cannot teach me."</p>
+                    <p><strong>Abs. 32,589:</strong> <strong>IUR founded</strong> — foundation cracked from beginning. Council and Tribune using same words to mean different things.</p>
+                    <p><strong>Abs. 33,035 (4th Myr 7,450):</strong> <strong>Allied Races withdraw</strong> from IUR. Ethereals, Drakes, Mystics, Dromes depart.</p>
+                    <p><strong>Abs. 33,108 (4th Myr 7,523):</strong> <strong>Mistholme Massacre.</strong> 312 civilians die while Council and Tribune dispute jurisdiction.</p>
+                    <p><strong>Abs. 33,374 (4th Myr 7,789):</strong> Lucius meets <strong>Gael</strong>. Meets Roushen the Unseen. Takes Gael as first apprentice.</p>
+                    <p><strong>Abs. 33,430 (4th Myr 7,845):</strong> Lucius finds <strong>Ren</strong> — half‑Western, half‑Aneian survivor.</p>
+                    <p><strong>Abs. 33,550 (4th Myr 7,965):</strong> <strong class="text-red-400">Grand Marshal Redford Heinsforth</strong> proposes office of the <strong>Inquisitor</strong>. Council approves; Tribune rejects.</p>
+                    <p><strong>Abs. 33,555–33,600:</strong> Inquisitor exceeds mandate — retroactive arrests, torture, secret laboratory in Depths of Abyss. Ren discovers the laboratory (Abs. 33,600).</p>
+                    <p><strong>Abs. 33,603 (4th Myr 8,018):</strong> Heinsforth arrested. <strong>Trial of the Inquisitor</strong> — longest trial in Eastern Plane history (204 years).</p>
+                    <p><strong>Abs. 33,819 (4th Myr 8,234):</strong> <strong>Accord of Arcadia ratified.</strong> Council and Tribune as coordinated but autonomous. <strong>Watchers' Charter</strong> formalized.</p>
+                    <p><strong>Abs. 34,055 (4th Myr 8,470):</strong> <strong>Transformation of Gael.</strong> Becomes partially integrated with Firmament — a living node.</p>
+                    <p><strong>Abs. 34,085 (4th Myr 8,500):</strong> <strong>5‑Star Battalion returns</strong> after 26,000+ years. <strong>Guardian Domain proclaimed</strong> as neutral Fifth Realm.</p>
+                    <p><strong>Abs. 34,110 (4th Myr 8,525):</strong> <strong>Lucius's Second Departure.</strong> Walks Pilgrim's Road; Goldroad guides him into mist.</p>
+                </div>
+            </details>
+        </div>
+
+        <!-- 5th Myriad -->
+        <div class="relative pl-10 mb-8">
+            <h3 class="text-lg font-bold mb-3 fantasy-font text-amber-300 ml-5">5th Myriad — The Myriad of the Firmament (Abs. 42,585 – 51,235)</h3>
+            <div class="timeline-vline eastern"></div>
+
+            <details class="relative mb-3" open>
+                <summary class="timeline-card gold-border p-4 ml-5 relative cursor-pointer">
+                    <div class="timeline-dot gold" style="top:1.1rem;"></div>
+                    <span class="text-amber-400 font-bold text-sm">Abs. 51,015 – 51,235 (5th Myr 8,430–8,650)</span>
+                    <span class="text-amber-300 text-xs ml-1">The Five Essences & The Sealing</span>
+                    <i class="fas fa-chevron-right toggle-icon ml-auto text-amber-400"></i>
+                </summary>
+                <div class="ml-5 mt-1 bg-slate-900/30 border border-amber-900/20 rounded-b-xl p-4 text-sm text-slate-300 space-y-2">
+                    <p><strong>Abs. 51,015:</strong> Five Personas manifest through new Tree in Covenant Forge: POWER, WILL, SACRIFICE, BECOMING, CONTINUITY.</p>
+                    <p><strong>Abs. 51,015–51,085:</strong> <strong>Dark Realm‑Inquisitor War.</strong> Seventy years against Null Tribunal remnants. Reformed Dark Emperors temporarily released to aid.</p>
+                    <p><strong>Abs. 51,025 (5th Myr 8,440):</strong> <strong>Essence of POWER:</strong> Gael becomes Firmament node. Grenlian incursions reduce by 60%.</p>
+                    <p><strong>Abs. 51,040 (5th Myr 8,455):</strong> <strong>Essence of WILL:</strong> Distributed to Twelve Watchers. <strong>Essence of BECOMING:</strong> Heinsforth transforms into Becoming‑Warden.</p>
+                    <p><strong>Abs. 51,055 (5th Myr 8,470):</strong> <strong class="text-red-400">Essence of SACRIFICE:</strong> Gael dissolves completely into Firmament. <strong>Banishment Edict:</strong> Lucius enters Meadow Realm to hold Destroyer's gaze. <strong>Firmament seals completely.</strong></p>
+                    <p><strong>Abs. 51,135 (5th Myr 8,550):</strong> Western Tree seed stirs in Covenant Forge after 51,000+ years.</p>
+                    <p><strong>Abs. 51,185 (5th Myr 8,600):</strong> Western seed sprouts. <strong>Library of Lumeria</strong> acknowledges Eastern Plane. Eida Jada, Kronos, and Logos perceive the contact.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- ============ WESTERN PLANE ============ -->
+    <section id="western-history" class="mb-10 scroll-mt-24">
+        <h2 class="text-xl md:text-2xl font-bold mb-5 fantasy-font text-purple-400 flex items-center gap-2">
+            <i class="fas fa-book-open"></i> Western Plane — Library of Lumeria & Civilisations
+        </h2>
+        <div class="relative pl-10">
+            <div class="timeline-vline western"></div>
+
+            <details class="relative mb-3" open>
+                <summary class="timeline-card purple-border p-4 ml-5 relative cursor-pointer">
+                    <div class="timeline-dot purple" style="top:1.1rem;"></div>
+                    <span class="text-purple-400 font-bold text-sm">Abs. 1 – 5,000</span>
+                    <span class="era-badge western ml-2">Western</span>
+                    <span class="text-purple-300 text-xs ml-1">Primordial Foundation</span>
+                    <i class="fas fa-chevron-right toggle-icon ml-auto text-purple-400"></i>
+                </summary>
+                <div class="ml-5 mt-1 bg-slate-900/30 border border-purple-900/20 rounded-b-xl p-4 text-sm text-slate-300 space-y-2">
+                    <p><strong>Abs. 1:</strong> Tree of Chaos breaks through soil. Eight principles tear into existence. Freya speaks "Enough" — primal truce. Unspoken covenant: <em>"We will not consume each other. We will leave space for what comes after."</em></p>
+                    <p><strong>Abs. 200–350:</strong> <strong>Ethereal Five</strong> emerge: Vertus (Hope), Minerva (Compassion), Serena (Order), Dionysus (Love), Morpheus (Memory).</p>
+                    <p><strong>Abs. 500:</strong> <strong>First Covenant</strong> spoken by all thirteen principles at Tree's base. <strong>Blood‑River</strong> forms from Earlier Gods' sacrifice.</p>
+                    <p><strong>Abs. 2,500–3,000:</strong> First mortals created. Nine city‑states emerge. <strong>Elara Jela</strong> — first bearer of the name — marks elder trees at threshold of wild forest.</p>
+                    <p><strong>Abs. 3,500:</strong> Valerius Primus discovers Living Ink fungi that react to truth/falsehood.</p>
+                    <p><strong>Abs. 4,200:</strong> Livia Scriptoria creates first stratified record — black (fact), silver (correction), gold (dispute).</p>
+                    <p><strong>Abs. 4,987 (Earth: Oct 14, 2024):</strong> <strong>Dr. Lucien George Elder</strong> summoned from British Library Reading Room. Given planar name <strong>Lucien Jela</strong> ("Of the Elder Wood").</p>
+                    <p><strong>Abs. 5,000:</strong> <strong>Rite of Foundation.</strong> Kronos completes Library's metaphysical reality. <strong>Eida Jada</strong> fully awakens as Living Archive. Kronos: <em>"The Vigil begins."</em></p>
+                </div>
+            </details>
+
+            <details class="relative mb-3">
+                <summary class="timeline-card purple-border p-4 ml-5 relative cursor-pointer">
+                    <div class="timeline-dot purple" style="top:1.1rem;"></div>
+                    <span class="text-purple-400 font-bold text-sm">Abs. 5,001 – 49,663</span>
+                    <span class="era-badge western ml-2">Western</span>
+                    <span class="text-purple-300 text-xs ml-1">The Four Librarianships</span>
+                    <i class="fas fa-chevron-right toggle-icon ml-auto text-purple-400"></i>
+                </summary>
+                <div class="ml-5 mt-1 bg-slate-900/30 border border-purple-900/20 rounded-b-xl p-4 text-sm text-slate-300 space-y-2">
+                    <p><strong>Abs. 5,075 — Shadow‑Text Protocol:</strong> Lucien discovers erased threats. Receives Oath‑Stylus. <em>"The crossed‑out word is sacred."</em></p>
+                    <p><strong>Abs. 7,500 — Second Librarian:</strong> Kronos merges with Blood‑River. Logos accepts Second Librarianship; merges with Index.</p>
+                    <p><strong>Abs. 10,001 — The Silence:</strong> Primordials withdraw from direct engagement. Lucien documents the <em>quality</em> of silence.</p>
+                    <p><strong>Abs. 15,234 — Aurelius Empire founded.</strong> Titus Aurelius declares founding of Argos City. Twenty Noble Families established.</p>
+                    <p><strong>Abs. 16,723 — Fall of the Aurelius Empire.</strong> Argos City burns. Lucien opens <strong>Ark of the Dark Era</strong>.</p>
+                    <p><strong>Abs. 17,330 — Legion founded.</strong> Aurelius Augustus Titus establishes Fifteen Houses. Oath‑Merit Revolution.</p>
+                    <p><strong>Abs. 20,001 — Lucien Jela appointed Fourth Librarian.</strong> Triadic Governance established. Dual Regency Protocol.</p>
+                    <p><strong>Abs. 20,203 — First Metaphysical Embargo (Great Decay)</strong> imposed on Xi Dynasty. Dynasty falls within nine years.</p>
+                    <p><strong>Abs. 20,212 — Compact of Aethelgard.</strong> Federation of Independent Nations founded. Sixteen Nations established.</p>
+                    <p><strong>Abs. 28,223 — The Great Divide.</strong> Dimensional rift severs land routes between Central Continent and Zhongguo. Ambassador Wu Chen stranded.</p>
+                    <p><strong>Abs. 39,668–39,675 — The Library War.</strong> Vice‑Chair and Chairman conflict. Lucien imposes <strong>Concordance of Jurisdictions</strong>.</p>
+                    <p><strong>Abs. 40,203 — Second Metaphysical Embargo (Great Exclusion)</strong> imposed on Neo‑Imperium.</p>
+                    <p><strong>Abs. 47,495–49,776 — Library Seclusion</strong> (2,282 years). Library withdraws during Two‑Millennia War.</p>
+                    <p><strong>Abs. 49,662 — Gaius appointed Fifth Librarian.</strong> First cross‑planar Librarian.</p>
+                    <p><strong>Abs. 49,663 — Lucien Jela retires</strong> to Meridian Domain. <em>"The Elder returns to the Elder."</em></p>
+                    <p><strong>Abs. 49,890 — Academia of Lumeria founded.</strong> Seven Grand Colleges established. Dual Path pedagogy begins.</p>
+                </div>
+            </details>
+
+            <details class="relative mb-3">
+                <summary class="timeline-card purple-border p-4 ml-5 relative cursor-pointer">
+                    <div class="timeline-dot red" style="top:1.1rem;"></div>
+                    <span class="text-red-400 font-bold text-sm">Abs. 47,345 – 51,200</span>
+                    <span class="era-badge western ml-2">Western</span>
+                    <span class="text-red-300 text-xs ml-1">The Two‑Millennia War & Aftermath</span>
+                    <i class="fas fa-chevron-right toggle-icon ml-auto text-red-400"></i>
+                </summary>
+                <div class="ml-5 mt-1 bg-slate-900/30 border border-red-900/20 rounded-b-xl p-4 text-sm text-slate-300 space-y-2">
+                    <p><strong>Abs. 47,345:</strong> Tellerium High Society established. Seven Grand Architects seize control.</p>
+                    <p><strong>Abs. 47,430 — Burning of Xeria:</strong> First major Unbecoming manifestation. Elena of Xeria survives.</p>
+                    <p><strong>Abs. 47,502–49,634 — Two‑Millennia War.</strong> United Realms alliance against Tellerium.</p>
+                    <p><strong>Abs. 49,634 — Peace of Tellerium.</strong> Institute surrenders.</p>
+                    <p><strong>Abs. 49,636 — Trials of Tellerium.</strong> Helena Cross and Kael Varus executed. <strong>Union proclaimed</strong> — Gu Zu becomes first Prime Minister.</p>
+                    <p><strong>Abs. 49,672 — Neo‑Magic Research Institute founded.</strong> Council of Twelve Seats.</p>
+                    <p><strong>Abs. 51,200 — Dominion Republic of Argos Proclaimed.</strong> Valeria Scipio and Marcus Varus elected first Consuls.</p>
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- ============ THE CONVERGENCE ============ -->
+    <section id="convergence-section" class="mb-10 scroll-mt-24">
+        <h2 class="text-xl md:text-2xl font-bold mb-5 fantasy-font text-emerald-400 flex items-center gap-2">
+            <i class="fas fa-star"></i> The Convergence — Absolute Year 51,235
+        </h2>
+        <div class="relative pl-10">
+            <div class="timeline-vline cosmic"></div>
+            <div class="relative mb-3">
+                <div class="timeline-dot emerald" style="top:0.6rem;"></div>
+                <div class="timeline-card emerald-border p-5 ml-5 bg-emerald-950/15">
+                    <span class="text-emerald-400 font-bold text-base">Abs. 51,235</span>
+                    <span class="era-badge both ml-2">Both Planes</span>
+                    <span class="px-2 py-0.5 bg-emerald-800/50 text-emerald-300 text-xs rounded ml-1">5th Myr 8,650 · THE CONVERGENCE</span>
+                    <div class="text-slate-200 mt-3 text-sm leading-relaxed space-y-2">
+                        <p>The <strong>Tree of Order</strong> and <strong>Tree of Chaos</strong> meet in the Meadow Realm. Their roots intertwine across the Blood‑River. The Old Tree — preserved since the Civil War of the Gods — anchors them both. The Five Lords emerge. Primus is purified. The Dark Emperors accept penance. The Last Observer sacrifices itself, releasing the Old Tree. Gallian becomes the new watcher of the Meadow Realm.</p>
+                        <p><strong>Lucien Jela</strong> (Fourth Librarian of Lumeria) steps through a portal from the Meridian Domain. He sees <strong>Lucius Arogzan</strong> — the student he lost on Earth, reborn in the Eastern Plane. Lucius sees Lucien — the teacher he remembers only in dreams.</p>
+                        <p>Lucien speaks first: <em>"Luke. I remember you."</em></p>
+                        <p>Lucius: <em>"Dr. Elder. I dreamed of you."</em></p>
+                        <p>The <strong>Last Observer</strong> (Aletheia) watches from the threshold: <em>"The 14th Eon ends. The Two Trees will meet. The Vigil continues — but in a new key."</em></p>
+                        <p>Lucien learns his true origin: he was summoned from the Old Tree, from Earth, by Kronos and Logos in the First Myriad. He is free to return home. Lucius completes his purpose and returns to wandering. The bridge between planes is established.</p>
+                        <p class="text-emerald-300 italic mt-3">"The center holds. For now. For always. As long as we hold it."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ 6th MYRIAD ============ -->
+    <section class="mb-10 scroll-mt-24">
+        <h2 class="text-xl md:text-2xl font-bold mb-5 fantasy-font text-purple-400 flex items-center gap-2">
+            <i class="fas fa-forward"></i> 6th Myriad — Post‑Convergence (Abs. 51,236+)
+        </h2>
+        <div class="relative pl-10">
+            <div class="timeline-vline cosmic"></div>
+            <div class="relative mb-3">
+                <div class="timeline-dot purple" style="top:0.6rem;"></div>
+                <div class="timeline-card purple-border p-4 ml-5">
+                    <span class="text-purple-400 font-bold text-sm">Abs. 51,236+</span>
+                    <span class="era-badge both ml-2">Both Planes</span>
+                    <div class="text-slate-300 mt-2 text-sm leading-relaxed space-y-1.5">
+                        <p>The Great Divide closes. New thresholds between planes open. Eastern and Western civilizations begin cultural exchange.</p>
+                        <p>Guardian Domain and Library of Lumeria establish formal diplomatic relations. The Academia of Lumeria expands to accept students from both planes.</p>
+                        <p><strong>Sixth Librarian</strong> (Elara Vines) appointed (Abs. 51,240). Lucien returns to Earth via the Elder Path — arrives October 14, 2024, at the exact moment he left, carrying a crystallized seed of the Old Tree.</p>
+                        <p>Lucius continues wandering both planes. The Three Trees — Order, Chaos, and the Elder Wood — flourish. The Watchers witness. The Emperors serve. The Library preserves. The Academia teaches. Gallian watches from the Meadow Realm. Lucien tends the boundary-wood on Earth.</p>
+                        <p><strong>6M Y3000:</strong> A new generation of pilgrims visits the Meadow Realm. <em>"The center holds because we hold it together. Not because one holds it, but because many have become the holding."</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CALENDAR SYSTEMS ============ -->
+    <section id="calendar-section" class="mb-10 scroll-mt-24">
+        <h2 class="text-xl md:text-2xl font-bold mb-5 fantasy-font text-emerald-400 flex items-center gap-2">
+            <i class="fas fa-calendar-alt"></i> Dating Systems & Key Conversions
+        </h2>
+        <div class="bg-slate-900/50 border border-slate-700 rounded-xl p-5 md:p-6">
+            <div class="overflow-x-auto mb-6">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-slate-700">
+                            <th class="text-left py-2 text-slate-400 font-medium">System</th>
+                            <th class="text-left py-2 text-slate-400 font-medium">Epoch / Formula</th>
+                            <th class="text-left py-2 text-slate-400 font-medium">Example</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-300">
+                        <tr class="border-b border-slate-800"><td class="py-2.5 text-slate-200 font-medium">Absolute Year</td><td class="py-2.5 text-slate-400">Universal count from the Seeding (Abs. 1)</td><td class="py-2.5 text-slate-400">Convergence = Abs. 51,235</td></tr>
+                        <tr class="border-b border-slate-800"><td class="py-2.5 text-slate-200 font-medium">Eastern Myriad</td><td class="py-2.5 text-slate-400 font-mono text-xs">Abs = 2,585 + (Myriad−1)×10,000 + Year</td><td class="py-2.5 text-slate-400">1st Myr 1,127 = Abs. 3,712</td></tr>
+                        <tr class="border-b border-slate-800"><td class="py-2.5 text-slate-200 font-medium">Xi Dynasty</td><td class="py-2.5 text-slate-400">Year 1 = Abs. 20,001</td><td class="py-2.5 text-slate-400">Great Decay Year 203 = Abs. 20,203</td></tr>
+                        <tr class="border-b border-slate-800"><td class="py-2.5 text-slate-200 font-medium">Federation (Aethelgard)</td><td class="py-2.5 text-slate-400">Year 1 = Abs. 20,212</td><td class="py-2.5 text-slate-400">Abs. 51,200 = Fed. Year 30,988</td></tr>
+                        <tr class="border-b border-slate-800"><td class="py-2.5 text-slate-200 font-medium">Union (Zhongguo)</td><td class="py-2.5 text-slate-400">Year 1 = Abs. 49,636</td><td class="py-2.5 text-slate-400">Abs. 51,235 = Union Year 1,599</td></tr>
+                        <tr class="border-b border-slate-800"><td class="py-2.5 text-slate-200 font-medium">Dominion Republic</td><td class="py-2.5 text-slate-400">Year 1 = Abs. 51,200</td><td class="py-2.5 text-slate-400">Convergence = Dom. Year 35+</td></tr>
+                        <tr><td class="py-2.5 text-slate-200 font-medium">Western Leap Year</td><td class="py-2.5 text-slate-400">Every 5th year; +1 day to Nyx (6th month)</td><td class="py-2.5 text-slate-400">Abs. 5, 10, 15, 20… are leap years</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mb-6">
+                <h3 class="text-amber-400 font-bold text-sm mb-3 fantasy-font">Key Date Conversions</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead><tr class="border-b border-slate-700"><th class="text-left py-2 text-slate-400">Event</th><th class="text-left py-2 text-slate-400">Eastern Date</th><th class="text-left py-2 text-slate-400">Absolute Year</th></tr></thead>
+                        <tbody class="text-slate-300">
+                            <tr class="border-b border-slate-800"><td class="py-2">Seeding of Two Planes</td><td class="py-2 text-slate-400">Primordial Era</td><td class="py-2 text-amber-400 font-medium">Abs. 1</td></tr>
+                            <tr class="border-b border-slate-800"><td class="py-2">Covenant of Lies</td><td class="py-2 text-slate-400">Primordial Era</td><td class="py-2 text-red-400 font-medium">Abs. 2,584</td></tr>
+                            <tr class="border-b border-slate-800"><td class="py-2">First Hollow Breaches</td><td class="py-2 text-slate-400">1st Myr 1,127</td><td class="py-2 text-red-400 font-medium">Abs. 3,712</td></tr>
+                            <tr class="border-b border-slate-800"><td class="py-2">5‑Star Battalion Sealed</td><td class="py-2 text-slate-400">1st Myr 5,000</td><td class="py-2 text-amber-400 font-medium">Abs. 7,585</td></tr>
+                            <tr class="border-b border-slate-800"><td class="py-2">Gallian's Sacrifice</td><td class="py-2 text-slate-400">1st Myr 7,003</td><td class="py-2 text-red-400 font-medium">Abs. 9,588</td></tr>
+                            <tr class="border-b border-slate-800"><td class="py-2">Lucius Arogzan Born</td><td class="py-2 text-slate-400">3rd Myr 922</td><td class="py-2 text-amber-400 font-medium">Abs. 23,507</td></tr>
+                            <tr class="border-b border-slate-800"><td class="py-2">Accord of Arcadia</td><td class="py-2 text-slate-400">4th Myr 8,234</td><td class="py-2 text-amber-400 font-medium">Abs. 40,819</td></tr>
+                            <tr class="border-b border-slate-800"><td class="py-2">5‑Star Battalion Returns</td><td class="py-2 text-slate-400">4th Myr 8,500</td><td class="py-2 text-amber-400 font-medium">Abs. 41,085</td></tr>
+                            <tr class="border-b border-slate-800"><td class="py-2">Sealing of Firmament</td><td class="py-2 text-slate-400">5th Myr 8,470</td><td class="py-2 text-red-400 font-medium">Abs. 51,055</td></tr>
+                            <tr><td class="py-2 font-bold text-emerald-300">THE CONVERGENCE</td><td class="py-2 text-slate-400">5th Myr 8,650</td><td class="py-2 text-emerald-400 font-bold text-base">Abs. 51,235</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="p-4 bg-amber-900/10 border border-amber-900/20 rounded-lg">
+                <p class="text-amber-300 text-sm"><i class="fas fa-info-circle mr-2"></i><strong>Key Offset:</strong> The Eastern Plane includes a 2,585‑year Primordial Era ("Silent Growth") before the formal 1st Myriad. This offset ensures the <strong>Convergence occurs simultaneously</strong> in both planes at Absolute Year 51,235 (Eastern 5th Myriad 8,650). Conversion formula: <code class="text-amber-200 bg-slate-800 px-1 rounded">Abs = 2,585 + (Myriad−1)×10,000 + Year</code></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CALENDAR REFERENCE ============ -->
+    <section class="mb-10">
+        <h2 class="text-xl md:text-2xl font-bold mb-5 fantasy-font text-amber-400 flex items-center gap-2">
+            <i class="fas fa-clock"></i> Calendar Reference
+        </h2>
+        <div class="grid md:grid-cols-2 gap-5">
+            <div class="bg-slate-900/50 border border-amber-900/20 rounded-xl p-4">
+                <h3 class="text-amber-400 font-bold text-sm mb-3 fantasy-font">Eastern Plane (360‑day year)</h3>
+                <p class="text-slate-400 text-xs mb-2">12 months × 30 days · 7‑day weeks · No leap years</p>
+                <div class="grid grid-cols-2 gap-1 text-xs">
+                    <div class="text-slate-300 py-1"><span class="text-amber-400/70">1st</span> Primither <span class="text-slate-500">(Primus)</span></div>
+                    <div class="text-slate-300 py-1"><span class="text-amber-400/70">2nd</span> Solither <span class="text-slate-500">(Solara)</span></div>
+                    <div class="text-slate-300 py-1"><span class="text-amber-400/70">3rd</span> Kinither <span class="text-slate-500">(Terrakin)</span></div>
+                    <div class="text-slate-300 py-1"><span class="text-amber-400/70">4th</span> Aquither <span class="text-slate-500">(Aqualis)</span></div>
+                    <div class="text-slate-300 py-1"><span class="text-amber-400/70">5th</span> Venither <span class="text-slate-500">(Ventus)</span></div>
+                    <div class="text-slate-300 py-1"><span class="text-amber-400/70">6th</span> Aetither <span class="text-slate-500">(Aetherius)</span></div>
+                    <div class="text-slate-300 py-1"><span class="text-amber-400/70">7th</span> Terither <span class="text-slate-500">(Terram)</span></div>
+                    <div class="text-slate-300 py-1"><span class="text-amber-400/70">8th</span> Peakither <span class="text-slate-500">(Apex)</span></div>
+                    <div class="text-slate-300 py-1"><span class="text-amber-400/70">9th</span> Boughither <span class="text-slate-500">(Branches)</span></div>
+                    <div class="text-slate-300 py-1"><span class="text-amber-400/70">10th</span> Trunkither <span class="text-slate-500">(Sanctuary)</span></div>
+                    <div class="text-slate-300 py-1"><span class="text-amber-400/70">11th</span> Rootither <span class="text-slate-500">(Mist)</span></div>
+                    <div class="text-slate-300 py-1"><span class="text-amber-400/70">12th</span> Leafither <span class="text-slate-500">(Mortal Realm)</span></div>
+                </div>
+                <p class="text-slate-400 text-xs mt-3">Days: Primdias, Soldias, Kindias, Aqudias, Vendias, Aetdias, Terdias</p>
+            </div>
+            <div class="bg-slate-900/50 border border-purple-900/20 rounded-xl p-4">
+                <h3 class="text-purple-400 font-bold text-sm mb-3 fantasy-font">Western Plane (360‑day year)</h3>
+                <p class="text-slate-400 text-xs mb-2">5 seasons × 72 days · Leap day added to Nyx every 5th year</p>
+                <div class="space-y-1 text-xs">
+                    <div class="text-emerald-300">Season of Vertus (Hope) — Spring Equinox</div>
+                    <div class="text-amber-300">Season of Minerva (Compassion) — Solar Ingress</div>
+                    <div class="text-blue-300">Season of Serena (Order) — Summer Solstice</div>
+                    <div class="text-orange-300">Season of Dionysus (Love) — Autumn Equinox</div>
+                    <div class="text-indigo-300">Season of Morpheus (Memory) — Winter Solstice</div>
+                </div>
+                <p class="text-slate-400 text-xs mt-3">12 months: Kronos, Logos, Freya, Kairos, Archelaus, <strong>Nyx</strong> (leap), Eres, Artemis, Vertus, Minerva, Serena, Morpheus</p>
+                <p class="text-slate-500 text-xs mt-1">Leap year every 5th year: +1 day to Nyx. <strong>Forgotten Day</strong> — a day when oaths are not sworn.</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="border-t border-slate-800 bg-slate-900/70 p-8 text-center">
+    <p class="text-slate-400 text-sm">Chronicles of the Eternal Trees — The Complete Timeline Codex</p>
+    <p class="text-slate-500 text-xs mt-2">Compiled from Books 0–12.1 · Eastern & Western Planes · All Myriads</p>
+    <p class="text-slate-600 text-xs mt-1">Classification: UNRESTRICTED REFERENCE — MASTER CHRONOLOGICAL INDEX · Version 3.0</p>
+    <p class="text-amber-400/60 text-xs mt-4 italic">"The center holds. For now. For always." — Lucius Arogzan, 25th Guardian</p>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+    // Mobile menu
     const menuBtn = document.getElementById('menuBtn');
     const closeMenu = document.getElementById('closeMenu');
     const mobileMenu = document.getElementById('mobileMenu');
     if (menuBtn) menuBtn.addEventListener('click', () => mobileMenu.classList.remove('-translate-x-full'));
     if (closeMenu) closeMenu.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
-  </script>
+    mobileMenu?.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => mobileMenu.classList.add('-translate-x-full'));
+    });
+
+    // Search functionality
+    function setupSearch(inputId) {
+        const input = document.getElementById(inputId);
+        if (!input) return;
+        input.addEventListener('input', function() {
+            const query = this.value.trim().toLowerCase();
+            document.querySelectorAll('.search-highlight').forEach(el => el.outerHTML = el.innerHTML);
+            if (query.length < 2) {
+                document.querySelectorAll('.timeline-card, details').forEach(el => el.style.display = '');
+                return;
+            }
+            document.querySelectorAll('details').forEach(d => {
+                const text = d.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    d.style.display = '';
+                    d.open = true;
+                    let parent = d.parentElement?.closest('details');
+                    while (parent) { parent.open = true;
+                        parent = parent.parentElement?.closest('details'); }
+                    highlightText(d, query);
+                } else {
+                    const hasMatch = Array.from(d.querySelectorAll('.timeline-card, details')).some(inner => inner
+                        .textContent.toLowerCase().includes(query));
+                    if (!hasMatch) d.style.display = 'none';
+                }
+            });
+            document.querySelectorAll('.timeline-card').forEach(card => {
+                if (card.closest('details[style*="display: none"]')) return;
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(query) ? '' : 'none';
+                if (text.includes(query)) highlightText(card, query);
+            });
+            const firstVisible = document.querySelector('.timeline-card[style=""]');
+            if (firstVisible && query.length >= 3) firstVisible.scrollIntoView({ behavior: 'smooth',
+                block: 'center' });
+        });
+    }
+
+    function highlightText(container, query) {
+        const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false);
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach(node => {
+            if (node.textContent.toLowerCase().includes(query) && node.parentElement.tagName !== 'SCRIPT' &&
+                node.parentElement.tagName !== 'STYLE') {
+                const span = document.createElement('span');
+                const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+                span.innerHTML = node.textContent.replace(regex,
+                '<mark class="search-highlight">$1</mark>');
+                node.parentNode.replaceChild(span, node);
+            }
+        });
+    }
+
+    setupSearch('searchInput');
+    setupSearch('searchInputMobile');
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) { e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        });
+    });
+</script>
 </body>
 </html>
